@@ -19,28 +19,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="baoduo_xu&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="编译型语言和解释型语言 有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。  编译器和解释">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python入门">
+<meta property="og:url" content="http://example.com/2022/08/25/Python%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="baoduo_xu&#39;s Blog">
+<meta property="og:description" content="编译型语言和解释型语言 有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。  编译器和解释">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-25T02:05:21.000Z">
+<meta property="article:modified_time" content="2022-08-25T02:07:42.589Z">
 <meta property="article:author" content="Baoduo Xu">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/08/25/Python%E5%85%A5%E9%97%A8/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>baoduo_xu's Blog</title>
+  <title>Python入门 | baoduo_xu's Blog</title>
   
 
 
@@ -154,9 +159,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -172,10 +178,9 @@
       <meta itemprop="name" content="baoduo_xu's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/25/Python%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Python入门</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Python入门
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -208,7 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="编译型语言和解释型语言"><a href="#编译型语言和解释型语言" class="headerlink" title="编译型语言和解释型语言"></a>编译型语言和解释型语言</h2><ul>
+        <h2 id="编译型语言和解释型语言"><a href="#编译型语言和解释型语言" class="headerlink" title="编译型语言和解释型语言"></a>编译型语言和解释型语言</h2><ul>
 <li>有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做<strong>编译器</strong>。</li>
 <li>有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为<strong>解释器</strong>。</li>
 </ul>
@@ -444,180 +449,33 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myfun4</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> a:a*n</span><br><span class="line"><span class="built_in">print</span>(myfun4(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <p>参数数量不够，会输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;function myfun4.&lt;locals&gt;.&lt;lambda&gt; at 0x000001E7B43AEEF0&gt;</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="baoduo_xu's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/" class="post-title-link" itemprop="url">组合数学（1）：一些问题&排列与组合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-19 10:50:25 / Modified: 16:41:56" itemprop="dateCreated datePublished" datetime="2022-08-19T10:50:25+08:00">2022-08-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>组合数学是数数的艺术。</p>
-</blockquote>
-<h2 id="问题一：棋盘的完美覆盖"><a href="#问题一：棋盘的完美覆盖" class="headerlink" title="问题一：棋盘的完美覆盖"></a>问题一：棋盘的完美覆盖</h2><p>对于一个 $m\times n$ 的棋盘，能否用 $b\times 1$ 的长方形骨牌进行不重叠、不遗漏的完全覆盖？</p>
-<p>结论是，能完美覆盖的充分必要条件是 $b\mid m$ 或 $b\mid n.$</p>
-<p>充分性的证明：即证明若 $b\mid m$ 或 $b\mid n$ ，则可以完美覆盖。这是显然的，不妨设棋盘是 $m$ 行 $n$ 列且 $b\mid m,$ 那么将所有长方形骨牌竖着填充即可。 </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="baoduo_xu's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-19 08:20:27 / Modified: 16:41:34" itemprop="dateCreated datePublished" datetime="2022-08-19T08:20:27+08:00">2022-08-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/My-Start/" itemprop="url" rel="index"><span itemprop="name">My Start</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/19/hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/" rel="prev" title="组合数学（1）：一些问题&排列与组合">
+      <i class="fa fa-chevron-left"></i> 组合数学（1）：一些问题&排列与组合
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -670,6 +528,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">编译型语言和解释型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">模块和包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.1.</span> <span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">一些数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">6.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%BB%84"><span class="nav-number">6.2.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">6.3.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-number">6.4.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E4%B8%8E%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.</span> <span class="nav-text">分支与循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF"><span class="nav-number">7.1.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.2.</span> <span class="nav-text">循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">8.1.</span> <span class="nav-text">lambda匿名函数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
