@@ -160,6 +160,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/Calculus-review-Day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baoduo_xu's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/01/Calculus-review-Day1/" class="post-title-link" itemprop="url">Calculus review Day1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-01 22:49:09 / Modified: 22:57:09" itemprop="dateCreated datePublished" datetime="2022-09-01T22:49:09+08:00">2022-09-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1：计算</p>
+<script type="math/tex; mode=display">
+\int_0^{+\infty}\frac{x}{\mathrm{e}^x+1}\mathrm{d}x.</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/01/Calculus-review-Day1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -183,10 +264,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-26 16:40:00 / Modified: 17:03:45" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
+              <time title="Created: 2022-08-26 16:40:00" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-01 22:53:15" itemprop="dateModified" datetime="2022-09-01T22:53:15+08:00">2022-09-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -215,9 +302,13 @@
           <h2 id="容斥原理的基本形式"><a href="#容斥原理的基本形式" class="headerlink" title="容斥原理的基本形式"></a>容斥原理的基本形式</h2><p>减法原理是容斥原理的最简单示例。</p>
 <p><strong>定理1</strong> 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I=\{1,2,\cdots,n\},$ 则</p>
 <script type="math/tex; mode=display">
-\left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
+\begin{aligned}
+\left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.
+\end{aligned}\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
 <script type="math/tex; mode=display">
-\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
+\begin{equation}
+\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}
+\end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/#more" rel="contents">
@@ -267,10 +358,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-26 11:16:20 / Modified: 16:02:22" itemprop="dateCreated datePublished" datetime="2022-08-26T11:16:20+08:00">2022-08-26</time>
+              <time title="Created: 2022-08-26 11:16:20" itemprop="dateCreated datePublished" datetime="2022-08-26T11:16:20+08:00">2022-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-27 22:42:48" itemprop="dateModified" datetime="2022-08-27T22:42:48+08:00">2022-08-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -300,10 +397,49 @@
 <li><strong>方法</strong>：类中的所有函数通称为方法。和函数不同的是，类中的函数需要至少一个参数 <code>self</code> 。函数无法单独使用，只能和类的对象一起使用。</li>
 </ul>
 <p>实际上，Python的所有变量都是对象，都具有对应的属性以及方法。</p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>通过 <code>class</code> 关键字来实，格式如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span>:<span class="comment">#不要忘记冒号,这一行称作类头,下面的两行称作类体</span></span><br><span class="line">    <span class="comment">#定义多个属性#</span></span><br><span class="line">    <span class="comment">#定义多个方法#</span></span><br></pre></td></tr></table></figure>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>通过 <code>class</code> 关键字来实，格式如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span>:<span class="comment">#不要忘记冒号,这一行称作类头,下面的两行称作类体</span></span><br><span class="line">    <span class="comment">#定义多个属性#</span></span><br><span class="line">    <span class="comment">#定义多个方法#</span></span><br><span class="line">    <span class="comment">#或者在方法中定义属性#</span></span><br></pre></td></tr></table></figure>
+<p>类的实例化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class ClassName:</span><br><span class="line">    <span class="keyword">def</span> ...</span><br><span class="line">    <span class="comment">#Code#</span></span><br><span class="line">    </span><br><span class="line">ClassName(Parameters)<span class="comment">#类的实例化，可赋值给一个变量</span></span><br></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myclass</span>:</span><br><span class="line">	x=<span class="number">5</span></span><br><span class="line">p1=myclass()</span><br><span class="line"><span class="built_in">print</span>(p1.x)<span class="comment">#输出5</span></span><br></pre></td></tr></table></figure>
 <p>Python允许空类的存在，和分支、循环和函数一样，空类中要使用关键字 <code>pass</code> 来防止报错。</p>
-
+<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="_init_() 方法"></a><code>_init_()</code> 方法</h3><p>在类中可以手动添加一个 <code>_init_()</code> 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>_init_()</code> 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>+self.name)</span><br><span class="line">p1=student(<span class="string">&quot;A&quot;</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
+<p>如果上面的 <code>_init_()</code> 方法没有任何参数，像下面这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;involking construction method&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
+<p>运行后会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.__init__() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
+<p>而只要加上 <code>self</code> 参数就可以正常输出 <code>involking construction method</code> ，这表明在创建对象 <code>p1</code> 时Python解释器会自动调用 <code>_init_()</code> 方法并且给其传入一个参数。（传入的是什么？）</p>
+<p>当使用其他方法时，比如上面例子中的 <code>myfunc()</code> ，如果 <code>myfunc()</code> 的定义没有参数，那么运行后会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.myfunc() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
+<p>这表明对于类中的除了构造方法的其他的每一个方法，使用它们的时候Python解释器都会自动给它们传入一个参数。</p>
+<h3 id="self-参数基本介绍"><a href="#self-参数基本介绍" class="headerlink" title="self 参数基本介绍"></a><code>self</code> 参数基本介绍</h3><p>上面的 <code>self</code> 参数是对类的当前实例的引用，用于访问该类的变量。它不一定要命名为 <code>self</code>，但是它<strong>必须是类中任意函数的首个参数</strong>。不同的函数这一个参数可以不一样，比如上面的例子中，我们可以把 <code>_init_()</code> 函数的第一个参数改为 <code>abc</code> ，而把 <code>myfunc</code> 函数中的第一个参数改为 <code>xyz</code>.</p>
+<h3 id="self-用法详解"><a href="#self-用法详解" class="headerlink" title="self 用法详解"></a><code>self</code> 用法详解</h3><p>上面提到 <code>self</code> 参数不一定要命名为 <code>self</code>，可以随便命名，其实常命名为 <code>self</code> 时约定俗成的一种习惯，并且它的名称self已经指明了这个参数的意义，赋予了程序更好的可读性。</p>
+<p>同一个类可以产生多个对象，当某个对象调用类方法时，该对象会把自身的引用作为第一个参数自动传给该方法，换句话说，<strong>Python会自动绑定类方法的第一个参数指向该调用方法的对象</strong>。<code>self</code> 参数保证了每个对象<strong>只能调用自己的</strong>类变量和类方法。</p>
+<p><code>self</code> 表示实际调用该方法的对象，无论是构造方法还是普通的类方法，实际是谁调用的它们，第一个参数 <code>self</code> 就代表了谁。</p>
+<blockquote>
+<p><code>self</code> 参数其实相当于C++中的 <code>this</code> 指针。</p>
+</blockquote>
+<p>如果用 <code>print</code> 函数输出 <code>self</code>，会输出该对象在计算机中存储的位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;__main__.student object at 0x0000021C8EA0B670&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="类变量与实例变量"><a href="#类变量与实例变量" class="headerlink" title="类变量与实例变量"></a>类变量与实例变量</h3><p>1：修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.name=<span class="string">&quot;B&quot;</span><span class="comment">#p1的name属性被修改为B</span></span><br></pre></td></tr></table></figure>
+<p>2：添加属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1.gender=<span class="string">&quot;male&quot;</span><span class="comment">#格式：对象名.新增的属性=...   直接调用即可</span></span><br><span class="line"><span class="built_in">print</span>(p1.gender)</span><br></pre></td></tr></table></figure>
+<p>添加的属性仅在对象 <code>p1</code> 中存在，增加的方法也同理，方法的添加见后文。</p>
+<p>3：删除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> p1.age<span class="comment">#删除age属性</span></span><br><span class="line"><span class="keyword">del</span> p1<span class="comment">#删除对象</span></span><br></pre></td></tr></table></figure>
+<h3 id="类方法、静态方法和实例方法"><a href="#类方法、静态方法和实例方法" class="headerlink" title="类方法、静态方法和实例方法"></a>类方法、静态方法和实例方法</h3><p>见例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>():<span class="comment">#定义一个函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method!&quot;</span>)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1()<span class="comment">#调用后成功输出Add new method!</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于动态增加的方法，Python不会自动将方法调用者绑定到它们的第一个参数，因此程序必须手动为第一个参数传入参数值。</p>
+</blockquote>
+<p>如果我们定义的新方法有参数 <code>self</code> ，比如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1(p1,<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里要把p1作为参数手动传给self</span></span><br><span class="line"><span class="comment">#或者用lambda匿名函数</span></span><br><span class="line">p1.method2=<span class="keyword">lambda</span> self:<span class="built_in">print</span>(<span class="string">&quot;Add another method!&quot;</span>)</span><br><span class="line">p1.method2(p1)</span><br></pre></td></tr></table></figure>
+<p>借助 <code>types</code> 模块下的 <code>MethodType</code>，我们可以直接将 <code>self</code> 参数与对象绑定，再使用方法时便无需给手动给 <code>self</code> 传参：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">p1.method1=MethodType(method,p1)</span><br><span class="line"></span><br><span class="line">p1.method1(<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里无需写参数p1</span></span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2>
       
     </div>
 
@@ -715,14 +851,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

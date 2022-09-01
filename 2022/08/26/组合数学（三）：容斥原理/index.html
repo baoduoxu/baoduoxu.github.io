@@ -19,15 +19,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigcap_{i\in X}A_i\r">
+  <meta name="description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组合数学（三）：容斥原理">
 <meta property="og:url" content="http://example.com/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="baoduo_xu&#39;s Blog">
-<meta property="og:description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigcap_{i\in X}A_i\r">
+<meta property="og:description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-26T08:40:00.000Z">
-<meta property="article:modified_time" content="2022-08-26T09:03:45.578Z">
+<meta property="article:modified_time" content="2022-09-01T14:53:15.841Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -187,10 +187,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-26 16:40:00 / Modified: 17:03:45" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
+              <time title="Created: 2022-08-26 16:40:00" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-01 22:53:15" itemprop="dateModified" datetime="2022-09-01T22:53:15+08:00">2022-09-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,9 +225,13 @@
         <h2 id="容斥原理的基本形式"><a href="#容斥原理的基本形式" class="headerlink" title="容斥原理的基本形式"></a>容斥原理的基本形式</h2><p>减法原理是容斥原理的最简单示例。</p>
 <p><strong>定理1</strong> 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I=\{1,2,\cdots,n\},$ 则</p>
 <script type="math/tex; mode=display">
-\left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
+\begin{aligned}
+\left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.
+\end{aligned}\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
 <script type="math/tex; mode=display">
-\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
+\begin{equation}
+\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}
+\end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
 <span id="more"></span>
 <p>下面我们来证明容斥原理，这里我们证明另一种表述即式 $**$ 。</p>
 <p><strong><em>PROOF</em></strong> 设 $x\in A_i$ 表示 $x$ 具有性质 $P_i,1\le i\le n.$ 考虑恰好具有 $m$ 条性质的元素 $x,$ 我们利用 $x$ 对式 $**$ 每一部分的“贡献”进行证明，这个贡献的意思是，我们在计数的时候，元素 $x$ 是否给我们的计数增加了 $1.$ 只要 $x\in X,$ 那么 $x$ 对 $|X|$ 的贡献就为 $1,$ 否则为 $0.$ 由于等式的左边计数了 $U$ 中不具备所有性质的元素的个数，那么我们只需证明不具备任意一个性质的 $x$ 给等式右边的贡献为 $1,$ 具备至少一个性质的 $x$ 给等式右边的贡献为 $0,$ 就能说明等式右边也计数了 $U$ 中不具备所有性质的元素的个数。</p>
@@ -243,11 +253,13 @@
 <blockquote>
 <p>   $\{3\cdot a,\infty \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_1,$  $\{\infty\cdot a,4 \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_2,$ $\{\infty\cdot a,\infty \cdot b,5\cdot c\}$ 的 $10$ 组合的集合为 $A_3,$ 那么问题转化为求 $|A_1\cap A_2\cap A_3|.$ 且由容斥原理得</p>
 <script type="math/tex; mode=display">
-|A_1\cap A_2\cap A_3|=|A_1\cup A_2\cup A_3|-\sum|A_i|+\sum|A_i\cap A_j|\\=|A|-\sum|A_i|+\sum|A_i\cap A_j|</script><p>且 $|A|=\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ </p>
+   |A_1\cap A_2\cap A_3|=|A_1\cup A_2\cup A_3|-\sum|A_i|+\sum|A_i\cap A_j|\\=|A|-\sum|A_i|+\sum|A_i\cap A_j|</script><p>   且 $|A|=\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ </p>
 <script type="math/tex; mode=display">
-|A_1|=\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 3}\binom{11-i}{1}=38\\
-|A_2|=\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 4}\binom{11-i}{1}=45\\
-|A_3|=\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 5}\binom{11-i}{1}=51</script></blockquote>
+   \begin{aligned}
+   |A_1|=\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 3}\binom{11-i}{1}=38\\
+   |A_2|=\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 4}\binom{11-i}{1}=45\\
+   |A_3|=\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 5}\binom{11-i}{1}=51
+   \end{aligned}</script></blockquote>
 <p>求 $|A_1|,|A_2|,|A_3|$ 还算简单，但是 $|A_i\cap A_j|$ 计算起来就略有些麻烦，更不要说多重集合的元素更多的题目了。</p>
 <h3 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h3><p>错位排列的意思是，将给定的没有重复元素的字符串进行重新排列，使得每一个元素都不在原来的位置上。比如对于 $123,$ 它的一个错位排列就是 $312.$ 设含有 $n$ 个不重复元素的字符串的错位排列的数目为 $D_n,$ 下面给出 $D_n$ 的通项公式。</p>
 <p><strong><em>SOL</em></strong> 记第 $\ell(1\le \ell\le n)$ 个元素在第 $\ell$ 个位置（即它原来的位置）的排列的集合为 $A_{\ell},$ 那么问题就转化为求 $\left|\bigcap_{i\in I} \overline{A_i}\right|,$ 从而可以直接使用容斥原理。注意到 $\left|\bigcap_{i\in X}A_i\right|(X\subseteq I\land |X|=k)$ 仅仅依赖于 $k$ 而不依赖于在交集中使用了哪 $k$ 个集合，此时是我们在上面介绍过的容斥原理的特殊形式，且 $\alpha_k=(n-k)<br>!,$ 于是直接使用式 $(<em>*</em>),$ 得</p>
@@ -272,13 +284,15 @@ D_n=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}.</script><p>若从 $\{1,2,\cdots,n\}$ �
 <blockquote>
 <p>数列 $\{a_n\}$ 满足</p>
 <script type="math/tex; mode=display">
-a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n,n\ge 0,</script><p> 且 $a_0=1,a_1=2,$ 求其通项公式。</p>
+a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n,n\ge 0,</script><p>且 $a_0=1,a_1=2,$ 求其通项公式。</p>
 <p><strong><em>SOL</em></strong> </p>
 <script type="math/tex; mode=display">
-a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n\\
-(n+2)(n+1)a_{n+2}-(n+1)a_{n+1}=(n+1)a_{n+1}-a_n\\
-\frac{(n+2)!}{n!}a_{n+2}-\frac{(n+1)!}{n!}a_{n+1}=\frac{(n+1)!}{n!}a_{n+1}-a_n\\
-(n+2)!a_{n+2}-(n+1)!a_{n+1}=(n+1)!a_{n+1}-n!a_{n}=a_1-a_0=1</script><p>于是 $n!a_n=n+1,$ 即</p>
+\begin{aligned}
+&a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n\\
+&(n+2)(n+1)a_{n+2}-(n+1)a_{n+1}=(n+1)a_{n+1}-a_n\\
+&\frac{(n+2)!}{n!}a_{n+2}-\frac{(n+1)!}{n!}a_{n+1}=\frac{(n+1)!}{n!}a_{n+1}-a_n\\
+&(n+2)!a_{n+2}-(n+1)!a_{n+1}=(n+1)!a_{n+1}-n!a_{n}=a_1-a_0=1
+\end{aligned}</script><p>于是 $n!a_n=n+1,$ 即</p>
 <script type="math/tex; mode=display">
 a_n=\frac{n+1}{n!}.</script></blockquote>
 <p>倘若还有数列 $\{a_n\}$ 满足 $a_n=(n-1)(a_{n-1}+a_{n-2})$ 且 $a_1=1,a_2=2,$ 那么就有 $a_n=n a_{n-1},$ 则显然有 $a_n=n!.$ 即 $n!=(n-1)((n-1)!+(n-2)!),$ 看上去似乎没那么显然。  </p>
@@ -331,7 +345,7 @@ h(x,y)=(f*g)(x,y)=
 <script type="math/tex; mode=display">
 \mu*\zeta=\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)\zeta(z,y)=\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\delta(x,y)(x\preccurlyeq y).</script><p>所以 $\forall x\in X,\mu(x,x)=1.$ 当 $x\prec y$ 时，</p>
 <script type="math/tex; mode=display">
-\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\sum_{x\preccurlyeq z \prec y}\mu(x,z)+\mu(x,y)=\delta(x,y)=0\mathbb{R}ightarrow \mu(x,y)=-\sum_{x\preccurlyeq z \prec y}\mu(x,z).</script><p><strong>例2</strong> 我们现在来求偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯函数。</p>
+\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\sum_{x\preccurlyeq z \prec y}\mu(x,z)+\mu(x,y)=\delta(x,y)=0\Rightarrow \mu(x,y)=-\sum_{x\preccurlyeq z \prec y}\mu(x,z).</script><p><strong>例2</strong> 我们现在来求偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯函数。</p>
 <p><strong>例3</strong> 求全序集 $(X_n,\le)$ 的莫比乌斯函数。</p>
 <p>铺垫了那么多，现在我们可以给出并证明定义在有限偏序集上的莫比乌斯反演公式了。</p>
 <p><strong>定理5（Möbius Inversion Formula）</strong> 设偏序集 $(X,\preccurlyeq)$ 有最小元，记作 $0.$ 设 $\mu$ 是它的莫比乌斯函数，并设 $F:X\to \mathbb{R}$ 是定义在 $X$ 上的实值函数，同时定义 $G:X\to\mathbb{R}$ 满足</p>
@@ -368,7 +382,10 @@ F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.</script><blockquote>
     <a href="/2022/08/26/Python%E5%85%A5%E9%97%A8(2)%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="prev" title="Python入门(2):类和对象">
       <i class="fa fa-chevron-left"></i> Python入门(2):类和对象
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/01/Calculus-review-Day1/" rel="next" title="Calculus review Day1">
+      Calculus review Day1 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -441,14 +458,14 @@ F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.</script><blockquote>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
