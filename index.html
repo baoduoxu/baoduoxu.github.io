@@ -160,6 +160,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/04/Calculus-review-Day4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baoduo_xu's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/04/Calculus-review-Day4/" class="post-title-link" itemprop="url">Calculus review Day4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-04 23:02:51 / Modified: 23:04:01" itemprop="dateCreated datePublished" datetime="2022-09-04T23:02:51+08:00">2022-09-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>T1, T2为2018年预赛的T三和T六; T4为2017年预赛的最后一题; T2找不到来源了……</p>
+</blockquote>
+<p>1：设 $f(x)\in C[0,1],1\le f(x)\le 3,$ 求证：</p>
+<script type="math/tex; mode=display">
+1\le \int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\le \frac{4}{3}.</script><p><strong><em>PROOF</em></strong> 由Cauchy-Schwartz不等式得</p>
+<script type="math/tex; mode=display">
+\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\ge\left(\int_0^1\sqrt{f(x)\cdot\frac{1}{f(x)}}\mathrm{d} x\right)^2=1,</script><p>由AM-GM不等式得</p>
+<script type="math/tex; mode=display">
+\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\le\frac{1}{4}\left(\int_0^1\left(f(x)+\frac{1}{f(x)}\right)\mathrm{d} x\right)^2</script><p>且 $f(x)+1/f(x)\le 10/3,$ 这样得到的上界为 $25/9&gt;4/3,$ 考虑调整系数，即</p>
+<script type="math/tex; mode=display">
+\frac{1}{k}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{k}{f(x)}\mathrm{d} x\le\frac{1}{4k}\left(\int_0^1\left(f(x)+\frac{k}{f(x)}\right)\mathrm{d} x\right)^2\le\frac{(3+k/3)^2}{4k},</script><p>欲得到上界 $4/3,$ 应令</p>
+<script type="math/tex; mode=display">
+\frac{(3+k/3)^2}{4k}=\frac{4}{3},</script><p>解得 $k=3.$ 于是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x&=\frac{1}{3}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{3}{f(x)}\mathrm{d} x\\&\le\frac{1}{12}\left(\int_0^1\left(f(x)+\frac{3}{f(x)}\right)\mathrm{d} x\right)^2\\&\le\frac{3}{4}.\end{aligned}</script><p>事实上上述过程不够严谨，因为 $f(x)+k/f(x)$ 的最大值不一定在 $x=3$ 处取得，还可能在 $x=1$ 处取得，这时可以得到 $k=1/3,$ 仍然可以得到正确答案。 $\square$ </p>
+<p>2：设 $f(x)\in C[0,1]$ 且 $f(x)&gt;0,$ 证明</p>
+<script type="math/tex; mode=display">
+\ln \int_0^1f(x)\mathrm{d} x\ge \int_0^1\ln f(x)\mathrm{d} x.</script><p><strong><em>PROOF</em></strong> 这实际上是不等式：</p>
+<script type="math/tex; mode=display">
+\ln\frac{1}{n}\sum x_i\ge \ln\sqrt[n]{\prod_i x_i}=\frac{1}{n}\sum_i \ln x_i</script><p>的连续版本。只需要对区间 $[0,1]$ 进行 $n$ 等分即可，上述的 $x_i=f(i/n),0\le i\le n-1,$ 取极限即得证，当且仅当 $f(x)$ 为常函数取等。 $\square$ </p>
+<p>3：设 $f(x)\in C(\mathbb{R})\land f(x)&gt;0,$ 若 $\forall t\in\mathbb{R}$ 都有</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty}\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le 1,</script><p>求证：$\forall a,b\in \mathbb{R}\land a&lt;b,$ 有</p>
+<script type="math/tex; mode=display">
+\int_a^b f(x)\mathrm{d} x\le \frac{b-a+2}{2}.</script><p><strong><em>PROOF</em></strong> 注意到</p>
+<script type="math/tex; mode=display">
+\int_a^b\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le \int_{-\infty}^{+\infty}\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le 1,</script><p>于是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\int_a^b\mathrm{d} t\int_a^b\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x&=\int_a^b f(x)\left(\int_a^b\mathrm{e}^{-|t-x|}\mathrm{d} t\right)\mathrm{d} x\\&=\int_a^bf(x)(\mathrm{e}^{a-x}+\mathrm{e}^{x-b})\mathrm{d} x\\&\le b-a\end{aligned}</script><blockquote>
+<p>还以为和Laplace变换有关……</p>
+</blockquote>
+<p>4: 已知数列 $\{a_n\}_{n=1}^{\infty}$ 满足 $\lim_{n\to\infty}(a_{n+p}-a_n)=\lambda,p\in\mathbb{N}_+,$ 求证:  $\lim_{n\to\infty }a_n/n=\lambda/p.$ </p>
+<p><strong><em>PROOF</em></strong> 置 $b_{n}=a_n-a_{n-1},$ 有</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}(a_{n+p}-a_n)=\lim_{n\to\infty}(b_{n+1}+\cdots+b_{n+p})=\lambda,</script><p>于是 $\forall \varepsilon&gt;0,$ 存在 $N&gt;0,$ 当 $n&gt;N$ 时, </p>
+<script type="math/tex; mode=display">
+\left|\sum_{k=1}^{p}b_{n+k}-\lambda\right|<\varepsilon</script><p>成立, 且</p>
+<script type="math/tex; mode=display">
+\left|\sum_{k=1}^{p}b_{n+k}-\lambda\right|=\left|\sum_{k=1}^{p}(b_{n+k}-\lambda/p)\right|<\varepsilon,</script><p>这表明级数 $\sum_{n=1}^{\infty}(a_n-\lambda/p)$ 收敛, 于是</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty} (b_n-\lambda/p)=0\Rightarrow \lim_{n\to\infty}b_n=\lim_{n\to\infty}(a_{n}-a_{n-1})=\lambda/p,</script><p>于是由Stolz定理得</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}\frac{a_n}{n}=\lim_{n\to\infty}\frac{a_n-a_{n-1}}{n-(n-1)}=\lambda/p.</script><p>$\square$ </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/Calculus-review-Day3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,10 +378,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-02 22:54:29 / Modified: 22:58:38" itemprop="dateCreated datePublished" datetime="2022-09-02T22:54:29+08:00">2022-09-02</time>
+              <time title="Created: 2022-09-02 22:54:29" itemprop="dateCreated datePublished" datetime="2022-09-02T22:54:29+08:00">2022-09-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-04 09:34:42" itemprop="dateModified" datetime="2022-09-04T09:34:42+08:00">2022-09-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1019,7 +1140,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
