@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="参考书目：《概率论与数理统计》陈希孺 以及本校的教材和中科大的教材, 并以前两者为主.  概率论与数理统计是研究随机现象的统计规律性的数学学科。  陈的教材通俗易懂, 但对于一些概念没有给出严谨的定义, 所以根据本校的教材做了补充, 并调整了知识点的顺序. 比如陈的教材先把古典概率安排到了很靠前的位置, 并举了一些计算的例子, 然后才是概率的两种定义, 把事件的运算安排到了较靠后的位置. 个人觉得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论(1): 基本概念">
+<meta property="og:url" content="http://example.com/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="baoduo_xu&#39;s Blog">
+<meta property="og:description" content="参考书目：《概率论与数理统计》陈希孺 以及本校的教材和中科大的教材, 并以前两者为主.  概率论与数理统计是研究随机现象的统计规律性的数学学科。  陈的教材通俗易懂, 但对于一些概念没有给出严谨的定义, 所以根据本校的教材做了补充, 并调整了知识点的顺序. 比如陈的教材先把古典概率安排到了很靠前的位置, 并举了一些计算的例子, 然后才是概率的两种定义, 把事件的运算安排到了较靠后的位置. 个人觉得">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-05T04:27:48.000Z">
+<meta property="article:modified_time" content="2022-09-05T04:32:32.695Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>概率论(1): 基本概念 | baoduo_xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">baoduo_xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baoduo_xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          概率论(1): 基本概念
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-05 12:27:48 / Modified: 12:32:32" itemprop="dateCreated datePublished" datetime="2022-09-05T12:27:48+08:00">2022-09-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/probability-theory/" itemprop="url" rel="index"><span itemprop="name">probability theory</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>参考书目：《概率论与数理统计》陈希孺</em> 以及本校的教材和中科大的教材, 并以前两者为主.</p>
+<blockquote>
+<p>概率论与数理统计是研究随机现象的统计规律性的数学学科。</p>
+</blockquote>
+<p>陈的教材通俗易懂, 但对于一些概念没有给出严谨的定义, 所以根据本校的教材做了补充, 并调整了知识点的顺序. 比如陈的教材先把古典概率安排到了很靠前的位置, 并举了一些计算的例子, 然后才是概率的两种定义, 把事件的运算安排到了较靠后的位置. 个人觉得陈的教材的顺序更合理一些.</p>
+<h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h2><p>概率是表示某种情况（事件）出现的可能性大小的一种数量指标。</p>
+<p><strong>定义1（随机试验）</strong> 满足以下条件的试验称为随机试验：</p>
+<ul>
+<li>它可在相同条件下重复进行;</li>
+<li>试验的全部可能结果，在试验前就明确知道;</li>
+<li>一次试验结束之前，不能准确预知哪一个结果将会出现. </li>
+</ul>
+<p>$\square$ </p>
+<p><strong>定义2 (基本事件与复合事件)</strong> 称在随机试验 $E$ 中必发生一个且进发生一个的最简单事件为事件 $E$ 的基本事件, 由若干基本事件组合而成的事件称为复合事件. $\square$</p>
+<p>比如掷骰子, 掷出 $1,2,3,4,5,6$ 点是六个基本事件, 掷出合数点是一个符合事件, 它是掷出 $4,6$ 点这两个基本试验的复合. 一个随机试验的基本事件可能有无穷个. </p>
+<p><strong>定义3</strong> 用集合表示事件. 对于随机试验 $E$ 的每一个基本事件, 用一个只包含元素 $\omega$ 的集合 $\mathcal{E}=\{\omega\}$ 表示, 并称 $\omega$ 为基本事件 $\cal E$ 对应的元素 ; 对于由若干基本事件组成的复合事件, 则用对应的若干个元素所组成的集合表示; 由全体基本试验所对应的全部元素组成的集合, 称为随机试验 $E$ 的<strong>样本空间</strong>, 用 $\Omega$ 表示. 样本空间的每一个元素 $\omega$ 为<strong>样本点,</strong> 对于时间 $A,$ 若 $\omega\in A,$ 则表示事件 $A$ 发生. $\square$ </p>
+<h2 id="事件的运算"><a href="#事件的运算" class="headerlink" title="事件的运算"></a>事件的运算</h2><p>事件是基本事件所对应元素的集合，它仍然可以进行集合的运算，同时这些运算也有对应的实际意义。</p>
+<p><strong>事件的包含关系</strong> 设<strong>同一试验下</strong>的两个事件为 $A,B,$ 若 $A$ 发生可以推出 $B$ 一定发生，我们称 $A$ 蕴含 $B,$ 或 $B$ 包含 $A,$ 记作 $A\subset B.$ </p>
+<p>从集合的角度来考虑, 事件 $A$ 发生表明做试验的结果是某个基本事件 $\omega\in A,$ 由于 $B$  也发生了，这表明 $\omega \in B,$ 即 $\forall \omega \in A,\omega \in B,$ 这正表明了 $A\subset B.$  </p>
+<p>若 $A,B$ 互相蕴含，则称两事件相等，记作 $A=B.$ “两事件相等”的意思就是两个事件由完全相同的试验结果构成，它不过是同一件事表面上看起来不同的两个说法而已。</p>
+<p><strong>事件的和</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~至少发生一个\}$ 为事件 $A$ 与事件 $B$ 的和或并，记作 </p>
+<script type="math/tex; mode=display">
+C=A+B\text{ or }C=A\cup B.</script><p><strong>事件的积（交）</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~同时发生\}.$ 当 $A,B$ 都发生时 $C$ 发生，当 $A,B$ 两者有一个不发生时 $C$ 不发生。这样定义的事件称为事件 $A$ 和事件 $B$ 的积或交，记作</p>
+<script type="math/tex; mode=display">
+C=AB\text{ or }C=A\cap B.</script><p>上面定义了事件的积，需要两个事件同时发生，但是两个事件不总是能同时发生，比如掷一枚骰子这个试验，设掷到奇数点为事件 $A,$ 掷到偶数点为事件 $B,$ 显然 $A,B$ 不可能同时发生，于是我们引申出互斥事件的概念。</p>
+<p><strong>事件的互斥和对立</strong> 若两事件 $A,B$ 不能再同一次实验中都发生，则称它们是互斥的。</p>
+<p>互斥事件的一个重要情况是对立事件：若 $A$ 为一事件，则 $B=\{A不发生\}$ 称为 $A$ 的对立事件，记作 $\overline{A}.$ </p>
+<p>对立事件对应了集合的补集运算。</p>
+<p><strong>事件的差</strong> 设 $A,B$ 为两个事件，定义事件 $C=\{A发生,B不发生\}$ 为事件 $A,B$ 的和或差，记作</p>
+<script type="math/tex; mode=display">
+C=A-B.</script><p>注意到 $B$ 不发生可以用其互斥事件表示，于是有等式</p>
+<script type="math/tex; mode=display">
+A-B=A\overline{B}</script><p>成立。这正对应了集合之间的差集运算。$\square$ </p>
+<p>由于事件的运算对应了集合的运算,因此集合的运算性质在事件的运算中仍然适用. 这里只列出<strong>吸收率</strong>: 若 $A\subset B,$ 则 $AB=A,A\cup B=B.$ </p>
+<p>此外, 上述事件的运算均可推广至多个事件之间的运算.</p>
+<h2 id="古典概率"><a href="#古典概率" class="headerlink" title="古典概率"></a>古典概率</h2><blockquote>
+<p>设某个试验有有限个可能的结果 $e_1,e_2,\cdots,e_N,$ 若从该试验的条件以及实施方法上去分析，我们找不到任何理由认为其中的某个结果 $e_i$ 要比另一个事件 $e_j(j\ne i)$ ”更容易“发生，那么我们便认为所有的结果有同等的可能出现，这样的试验结果称作”等可能的“. </p>
+</blockquote>
+<p><strong>定义4</strong> 设 $E$ 是一个随机试验, 若它满足: (1) 仅有有限个基本事件; (2) 每个基本事件发生的可能性相等, 则称 $E$ 为<strong>古典概型</strong>试验.</p>
+<p>显然有 $|\Omega(E)|&lt;\infty.$ </p>
+<p><strong>定义5</strong><sup><a href="#fn_1" id="reffn_1">1</a></sup> 设一个试验有 $N$ 个等可能的结果（即基本事件），而事件 $A$ 恰好包含其中的 $M$ 个结果，则事件 $E$ 的概率，记为 $P(E),$ 定义为</p>
+<script type="math/tex; mode=display">
+P(A)=\frac{M}{N}.</script><p><strong>性质1</strong> 设 $A_1,A_2,\cdots,A_n$ 互斥，则</p>
+<script type="math/tex; mode=display">
+P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k= 1}^nP(A_k).</script><h3 id="计算举例"><a href="#计算举例" class="headerlink" title="计算举例"></a>计算举例</h3><p>按照古典概率的定义，古典概率的计算归结到 $M,N$ 的计算，而这往往涉及到排列组合。排列和组合的前置知识： <a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/19/组合数学（1）：一些问题-排列与组合/">组合数学（一）：一些问题&amp;排列与组合</a>。</p>
+<p><strong>例1</strong> 从有 $M$ 个废品的 $N(N\ge M)$ 个产品中随机抽出 $n$ 个产品，求里面恰好有 $m(m\le n)$ 个废品的概率。</p>
+<p><strong><em>SOL</em></strong> 显然为</p>
+<script type="math/tex; mode=display">
+P=\frac{\binom{N-M}{n-m}\binom{M}{m}}{\binom{N}{n}}.</script><p><strong>例2</strong> $n$ 个男孩 $m$ 个女孩排队，求所有女孩两两不相邻的概率，以及他们排列成一个圆时所有女孩两两不相邻的概率。</p>
+<p><strong><em>SOL</em></strong> 显然是插空法，先排男孩，再把女孩插入空隙即可。排列成直线时，</p>
+<script type="math/tex; mode=display">
+P=\frac{n!\binom{n+1}{m}m!}{(m+n)!}=\frac{\binom{n+1}{m}}{\binom{m+n}{m}}.</script><p>排列成圆时，直接套用圆排列公式即可，注意女孩插入空隙时并不是圆排列：</p>
+<script type="math/tex; mode=display">
+P=\frac{\frac{n!}{n}\binom{n}{m}m!}{\frac{(m+n)!}{m+n}}=\frac{(n-1)!\binom{n}{m}m!}{(m+n-1)!}=\frac{\binom{n}{m}}{\binom{m+n-1}{m}}.</script><p><strong>例3</strong> 某人在口袋里放了两盒火柴，每盒有 $n$ 支火柴，他每次抽烟时会随机拿出来一盒用掉其中一支。某次他拿出一盒发现该盒是空的，那么此时另一盒还剩 $m$ 支火柴的概率是多少？</p>
+<p><strong><em>SOL</em></strong> 拿到空盒是第 $2n+1-m$ 次去火柴盒,于是这 $2n+1-m$ 次的取法总数为 $2^{2n+1-m}$ 次; 至于前 $2n-m$ 词, 要保证一盒火柴用完，另一盒火柴还剩 $m$ 支，则有 $n$ 次取了同一盒火柴, 即 $\binom{2n-m}{n},$ 一共有两盒火柴, 取法应该是 $2\binom{2n-m}{n},$ 于是</p>
+<script type="math/tex; mode=display">
+P=\frac{2\binom{2n-m}{n}}{2^{2n+1-m}}=\frac{\binom{2n-m}{n}}{2^{2n-m}}.</script><p>$\square$</p>
+<h2 id="概率的统计定义"><a href="#概率的统计定义" class="headerlink" title="概率的统计定义"></a>概率的统计定义</h2><p>从实用的角度来看，概率的统计定义是一种同归实验去估计事件概率的方法。如果我们无法通过理论分析某个事件 $E$ 发生的概率有多大，我们可以做多次<strong>同样的</strong>实验（即同样条件下），假如为 $n$ 次，并设这 $n$ 次试验中事件 $E$ 发生的次数为 $m,$ 那么我们称 $m/n$ 是事件 $E$ 在这 $n$ 次试验中的<strong>频率</strong>，<strong>概率的统计定义即让这个频率作为事件 $E$ 概率 $P(E)$ 的估计</strong>。它的直观背景很简单：<strong>一件事出现的可能性大小应该由它在多次重复试验中出现的<em>频繁程度</em>去刻画</strong>。</p>
+<p>这样做的弊端很明显，即频率终究不是概率，于是我们自然想到极限，用极限来定义是个很好的选择，即 $\forall \varepsilon&gt;0,$ 存在 $N&gt;0,$ 当做试验的次数超过 $N$ 时，$|p-P(E)|&lt;\varepsilon,$ 通俗一点来讲，就是做试验的次数足够多的时候，频率总在一个固定的值周围浮动。 但是这样带来的问题就是，频率 $p$ 的极限一定存在吗？</p>
+<p>事实上，概率的统计定义的重要性不在于它是否提出了一种概率的定义，而是提出了一种<strong>估计概率的方法</strong>以及<strong>检验理论是否正确的方法</strong>，</p>
+<h2 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h2><p><strong>定义5</strong> 设随机试验 $E$ 的样本空间为 $\Omega,$ 定义事件的集合 $\cal F$ 满足 $\{\Omega,\emptyset\}\subset \mathcal{F}\subset \mathscr{P}(\Omega),$ 定义概率为函数 $P:\cal F\to \mathbb{R},$ 它满足三条性质:</p>
+<p>1: (非负性) $\forall A\in\cal F,$ $0\le P(A)\le 1;$</p>
+<p>2: (规范性) $P(\Omega)=1;$</p>
+<p>2: (可列可加性) 对 $E$ 的两两互斥的事件列 $A_1,A_2,\cdots\in \cal F,$ 有</p>
+<script type="math/tex; mode=display">
+P\left(\bigcup_{k\ge 1}A_k\right)=\sum_{k\ge 1}P(A_k).</script><p><strong>性质2</strong> 1: $P(\emptyset)=0;$</p>
+<p>2: (有限可加性) 对 $E$ 的两两互斥的事件 $A_1,A_2,\cdots,A_n,$ 有</p>
+<script type="math/tex; mode=display">
+P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k= 1}^nP(A_k);</script><p>3: $\forall A\in\cal F,$ $P(A)+P(\overline{A})=1.$</p>
+<p>4: (单调性) $\forall A,B\in\mathcal{F}\land A\subset B,$ 有 $P(A)\le P(B)$ 且 $P(B-A)=P(B)-P(A).$ $\square$</p>
+<p><strong><em>PROOF</em></strong> 性质2.4: 注意到 $A(B-A)=\emptyset$ 且 $A\cup(B-A)=B,$ 于是 $P(A\cup(B-A)=P(A)+P(B-A)=P(B), $ 这就证得了 $P(B-A)=P(B)-P(A),$ 且 $P(B-A)\ge 0,$ 于是 $P(B)\ge P(A.) $ $\blacksquare$  </p>
+<p><strong>性质3 (概率的加法定理)</strong></p>
+<p>设 $A_1,A_2,\cdots,A_n\in \cal F,$ 则有 </p>
+<script type="math/tex; mode=display">
+P\left(\sum_{k=1}^n A_k\right)=\sum_{k\in I}(-1)^{k}\sum_{X\subset I\land |X|=k}P\left(\prod_{\ell \in X}A_\ell\right).</script><p>当 $A_1,A_2,\cdots,A_n$ 两两互斥时，上式变为</p>
+<script type="math/tex; mode=display">
+P\left(\sum_{k=1}^n A_k\right)=\sum_{k=1}^nP(A_k).</script><p>$\square$ </p>
+<p>这本质上就是<a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">容斥原理</a>，因为 $P(A)=|A|/|\Omega|,$ 即 $P(A)$ 与 $|A|$ 之间是一一对应的。 </p>
+<p>从这里也可以推出:</p>
+<script type="math/tex; mode=display">
+P(A)+P(\overline{A})=1.</script><p>我们常用的是 $n=2$ 的情况，即</p>
+<script type="math/tex; mode=display">
+P(A\cup B)=P(A)+P(B)-P(AB).</script><h2 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h2><p>条件概率，顾名思义就是在附加一定条件之下所计算的概率。在概率论中，若除了试验的那些基础条件之外不再加入其他条件或假设，则算出的概率就叫做“无条件概率”；当说到条件概率时，我们总是指另外附加的条件，通常的形式为：在某件事已经发生的条件下计算另一件事情发生的概率。比如，掷一枚骰子，在掷出奇数点的条件下，掷出素数点的概率为 $2/3,$ 因为奇数点 $1,3,5$ 中的 $3,5$ 为素数。我们把在事件 $B$ 发生的条件下事件 $A$ 发生的概率记作 $P(A|B).$ </p>
+<p>考虑更一般的情况，设一个事件有 $N$ 个等可能的结果，事件 $A,B$ 分别包含其中的 $M_1,M_2(M_1,M_2\le N)$ 个结果，且它们有 $M$ 个公共的结果，即事件 $AB$ 包含的结果数为 $M$ 个。若要在事件 $B$ 发生的条件下计算事件 $A$ 发生的概率，则全部可能的结果由原先的 $N$ 个变为了 $M_2$ 个，而其中的 $M$ 个结果发生可以推出事件 $A$ 发生，这表明</p>
+<script type="math/tex; mode=display">
+P(A|B)=\frac{M}{M_2}=\frac{M/N}{M_2/N}=\frac{P(AB)}{P(B)}.</script><p> 这就是条件概率的定义，其中要限制 $P(B)\ne 0,$ 对于 $P(B)=0$ 的个别情况，我们可以用极限去处理。</p>
+<p><strong><em>REMARK</em></strong> 计算条件概率不一定要用上面的公式，比如在前面举的掷骰子的例子，我们直接从加入条件后改变了的情况去算更为方便。</p>
+<p><strong>性质4</strong> 设随机试验 $E$ 的样本空间为 $\Omega,$ 设 $A,B,A_1,A_2,\cdots\in\cal F,$ 且 $P(B)&gt;0,$ 则</p>
+<p>1: $\forall A\in\mathcal{F},P(A|B)\in[0,1];$ 2: $P(\Omega|B)=1;$ </p>
+<p>3: 若 $A_1,A_2\cdots$ 两两互斥, 则</p>
+<script type="math/tex; mode=display">
+P\left(\left.\bigcup_{k\ge 1}A_k\right| B\right)=\sum_{k\ge 1}P(A_k|B).</script><p>$\square$</p>
+<p>这里只证明性质4.3. </p>
+<p><strong><em>PROOF</em></strong> </p>
+<script type="math/tex; mode=display">
+\begin{aligned}P\left(\left.\bigcup_{k\ge 1}A_k\right| B\right)&=\frac{P(B\bigcup_{k\ge 1}A_k)}{P(B)}\\&=\frac{P(\bigcup_{k\ge 1}A_kB))}{P(B)}\\&=\frac{1}{P(B)}\sum_{k\ge 1}P(A_kB)\\&=\sum_{k\ge 1}P(A_k|B).\end{aligned}</script><p>$\blacksquare$ </p>
+<p><strong>定理1 乘法公式</strong> 设 $A_1,A_2,\cdots,A_n$ 是试验 $E$ 的若干事件, 且 $P(A_1,\cdots,A_n)&gt;0,$ 则</p>
+<script type="math/tex; mode=display">
+P\left(\prod_{k=1}^n A_k\right)=\prod_{k=1}^{n}P\left(A_k\left|\prod_{j=1}^{k-1}A_j\right.\right).</script><p>$\square$ </p>
+<p><strong><em>PROOF</em></strong> 从最后一个用乘法公式 $P(AB)=P(B)P(A|B)$ 逐步展开:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}P\left(\prod_{k=1}^n A_k\right)&=P(A_1\cdots A_{n-1})P(A_n|A_1\cdots A_{n-1})\\&=P(A_1\cdots A_{n-2})P(A_{n-1}|A_1\cdots A_{n-2})P(A_n|A_1\cdots A_{n-1})\\&=\cdots\\&=\prod_{k=1}^{n}P\left(A_k\left|\prod_{j=1}^{k-1}A_j\right.\right).\end{aligned}</script><p>$\blacksquare$ </p>
+<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><p>在条件概率中举的掷骰子的例子中，我们计算出了 $P(A|B)=2/3,$ 若无“掷出奇数点”这一条件，掷出素数点的概率为 $P(A)=1/2&lt;2/3,$ 这表明事件 $B$ 的发生对事件 $A$ 的发生起了“促进作用”，$B$ 影响到了 $A$ 的发生，这反映了 $A,B$ 之间存在着一定关系。于是自然的，若事件 $B$ 的发生对事件 $A$ 的发生无任何影响，应该有 $P(A|B)=P(A),$ 这意味着事件 $A,B$ 之间互不影响（因为我们很容易从该式中推出 $P(B|A)=P(B)$ ）, 我们称 $A,B$ 两事件独立,同时可以推出</p>
+<script type="math/tex; mode=display">
+P(AB)=P(A)P(B).</script><p>上式被称为”<strong>概率的乘法定理</strong>“, 用它来刻画独立性要比用 $P(A|B)=P(A)$ 更胜一筹, 因为使用后者还需要考虑 $P(B)$ 是否为零的问题. 它可以推广: 若从若干事件 $A_1,A_2,\cdots$ 中<strong>任意取出</strong> $n$ 个 (有限个) 事件 $A_{k_1},A_{k_2},\cdots,A_{k_n},$ 且它们满足</p>
+<script type="math/tex; mode=display">
+P\left(\prod_{i=1}^{n}A_{k_i}\right)=\prod_{i=1}^nP(A_{k_i}),</script><p>则称 $A_1,A_2,\cdots$ <strong>相互独立</strong>. </p>
+<p><strong>推论1</strong> 用一个A简单的例子来说明推论1: 设 $A_1,\cdots,A_6$ 相互独立, 则 $B_1=A_1+A_2,B_2=A_3A_4A_5$ 也相互独立. $\square$ </p>
+<p><strong>推论2</strong> 若事件 $A_1,A_2,\cdots,A_n$ 相互独立, 则把其中任意事件改为其对立事件后得到的这 $n$ 个事件仍然相互独立. $\square$ </p>
+<p>推论2证明起来思路比较简单, 但是比较繁琐, 在此不作证明.</p>
+<p><strong><em>REMARK (相互独立与两两独立)</em></strong> 两两独立的定义是, 在一些事件 $A_1,A_2,\cdots$ 中, 若任意两个事件都独立, 则称它们两两独立.需要注意的是, 相互独立是两两独立的充分不必要条件. </p>
+<p><strong>例4</strong> 甲乙进行比赛. 设任意一局比赛甲赢的概率为 $a,$ 乙赢的概率为 $b,$ 不考虑平局出现的可能性, 即 $a+b=1,$ 且有 $a&gt;b.$ 规定甲赢的条件为: 甲连续胜三局且在此之前乙从未连续胜过两局; 乙赢的条件为: 乙连胜两局且在此之前甲从未连胜过三局. 求甲, 乙分别赢得最终的比赛的概率.</p>
+<p><strong><em>SOL</em></strong> 记每一局甲胜为 $X,$ 乙胜为 $Y,$ $X,Y$ 相互独立. 我们先考虑甲赢得最终比赛, 记为事件 $A$. 此时有两种情况, 第一局甲胜或第一局乙胜, 记为子事件 $A_1,A_2$. 当第一局是甲胜时, 则比赛结果必然是由若干 $XY,XXY$ 以及一个 $XXX$ 组成的, 每个阶段相互独立; 且 $P(XY)=ab=p_1,P(XYY)=ab^2=p_2,$ 设除了最后一个阶段 $XXX$ 外有 $n$ 个阶段, 则</p>
+<script type="math/tex; mode=display">
+P_n=a^3\sum_{k=0}^n\binom{n}{k} p_1^kp_2^{n-k}=a^3(p_1+p_2)^n=a^3(ab+ab^2)^n</script><p>显然 $n$ 可以从 $0$ 取到 $+\infty,$ 且 $ab+ab^2&lt;\frac{3}{4}a&lt;1,$ 于是</p>
+<script type="math/tex; mode=display">
+P(A_1)=\sum_{n=0}^{\infty}P_n=\frac{a^3}{1-ab-ab^2}.</script><p> 而第一局是乙胜时, 比赛结果必然是由若干 $YX,YXX$ 以及一个 $YXXX$ 组成的, 每个阶段相互独立, 求解类似上述过程, 有</p>
+<script type="math/tex; mode=display">
+P(A_2)=\frac{a^3b}{1-ab-a^2b}.</script><p>两者相加即可. 对于乙分析也类似, 但实际上可以直接用 $P(B)=1-P(A)$ 来求. $\square$ </p>
+<h2 id="全概率公式与Bayes公式"><a href="#全概率公式与Bayes公式" class="headerlink" title="全概率公式与Bayes公式"></a>全概率公式与Bayes公式</h2><p><strong>定理2 全概率公式</strong> 设事件 $E$ 的样本空间为 $\Omega,$ $B_1,B_2,\cdots,B_n$ 是 $\Omega$ 的一个有限划分, 事件 $A\subset \Omega,$ 则有</p>
+<script type="math/tex; mode=display">
+P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong> 显然 $B_1,B_2,\cdots,B_n$ 相互独立, 则 $AB_1,AB_2,\cdots,AB_n$ 相互独立, 因此</p>
+<script type="math/tex; mode=display">
+\begin{aligned}P(A)&=P(A\Omega)\\ &=P(A(B_1\cup \cdots\cup B_n))\\&=P(AB_1\cup\cdots\cup AB_n)\\&=\sum_{1\le k\le n}P(AB_k)\\&=\sum_{1\le k\le n}P(B_k)P(A|B_k)\end{aligned}</script><p>$\blacksquare$ </p>
+<p>一种理解全概率公式的方式为: 把事件 $B_i$ 当作导致事件 $A$ 发生的原因, 即事件 $A$ 发生总要以某个事件 $B_i$ 为途径 , 对于不同途径, 条件概率 $P(A|B_i)$ 也各不相同, 采用哪个途径也完全是<strong>随机</strong>的, 于是事件 $A$ 发生是通过途径 $B_i$ 的概率为 $P(B_i),$ 而事件 $A$ 通过途径 $B_i$ 发生(即在事件 $B_i$ 发生的条件下) 的概率为 $P(A|B_i),$ 那么我们可以像求数学期望那样(或者直观感受), 把 $P(B_i)$ 作为 $P(A|B_i)$ 的权重, 作为 $P(A)$ 的一部分, 即 $P(A)$ 为 $P(A|B_i)$ 以 $P(B_i)(i=1,2,\cdots)$ 为权重的加权平均 , 从而可以得到全概率公式.</p>
+<p><strong>定理3 Bayes公式</strong> 利用 $P(AB_i)=P(A)P(B_i|A)=P(B_i)P(A|B_i)$ 以及全概率公式可得:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}P(B_i|A)&=\frac{P(AB_i)}{P(A)}\\&=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^nP(B_j)P(A|B_j)}\end{aligned}</script><p>这是所谓的Bayes公式. $\square$ </p>
+<p>从形式推导来看, Bayes公式平平无奇, 但是它的现实意义是很深刻的. </p>
+<p>像上面理解全概率公式那样, 若把事件 $A$ 看作”结果”, 事件 $B_1,B_2,\cdots$ 看作导致事件 $A$ 发生的原因, 那么Bayes公式是在做这样一件事: 现在有一个结果 $A$ 发生了, 在众多可能导致 $A$ 发生的原因中, 到底是哪一个导致 $A$ 发生的呢? 或者说, 哪个原因<strong>更可能</strong>导致事件 $A$ 的发生? Bayes公式告诉了我们, 在 $A$ 发生的条件下, 是某个原因 $B_i$ 导致 $A$ 发生的概率大小.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 这个定义是陈教材上的定义, 此时还没有基本事件的概念, 并且陈的教材上并无”样本空间”这个词. 补充前面的定义后, 古典概率的定义也可以直接写为 $P(A)=|A|/|\Omega|.$ <a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/04/Calculus-review-Day4/" rel="prev" title="Calculus review Day4">
+      <i class="fa fa-chevron-left"></i> Calculus review Day4
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">事件的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87"><span class="nav-number">3.</span> <span class="nav-text">古典概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">计算举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AE%9A%E4%B9%89"><span class="nav-number">4.</span> <span class="nav-text">概率的统计定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">6.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E4%B8%8EBayes%E5%85%AC%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">全概率公式与Bayes公式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa-light fa-atom"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
