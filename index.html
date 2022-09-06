@@ -183,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-05 12:27:48 / Modified: 12:32:32" itemprop="dateCreated datePublished" datetime="2022-09-05T12:27:48+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 12:27:48" itemprop="dateCreated datePublished" datetime="2022-09-05T12:27:48+08:00">2022-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-06 23:06:17" itemprop="dateModified" datetime="2022-09-06T23:06:17+08:00">2022-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -216,136 +222,14 @@
 <blockquote>
 <p>概率论与数理统计是研究随机现象的统计规律性的数学学科。</p>
 </blockquote>
-<p>陈的教材通俗易懂, 但对于一些概念没有给出严谨的定义, 所以根据本校的教材做了补充, 并调整了知识点的顺序. 比如陈的教材先把古典概率安排到了很靠前的位置, 并举了一些计算的例子, 然后才是概率的两种定义, 把事件的运算安排到了较靠后的位置. 个人觉得陈的教材的顺序更合理一些.</p>
-<h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h2><p>概率是表示某种情况（事件）出现的可能性大小的一种数量指标。</p>
-<p><strong>定义1（随机试验）</strong> 满足以下条件的试验称为随机试验：</p>
-<ul>
-<li>它可在相同条件下重复进行;</li>
-<li>试验的全部可能结果，在试验前就明确知道;</li>
-<li>一次试验结束之前，不能准确预知哪一个结果将会出现. </li>
-</ul>
-<p>$\square$ </p>
-<p><strong>定义2 (基本事件与复合事件)</strong> 称在随机试验 $E$ 中必发生一个且进发生一个的最简单事件为事件 $E$ 的基本事件, 由若干基本事件组合而成的事件称为复合事件. $\square$</p>
-<p>比如掷骰子, 掷出 $1,2,3,4,5,6$ 点是六个基本事件, 掷出合数点是一个符合事件, 它是掷出 $4,6$ 点这两个基本试验的复合. 一个随机试验的基本事件可能有无穷个. </p>
-<p><strong>定义3</strong> 用集合表示事件. 对于随机试验 $E$ 的每一个基本事件, 用一个只包含元素 $\omega$ 的集合 $\mathcal{E}=\{\omega\}$ 表示, 并称 $\omega$ 为基本事件 $\cal E$ 对应的元素 ; 对于由若干基本事件组成的复合事件, 则用对应的若干个元素所组成的集合表示; 由全体基本试验所对应的全部元素组成的集合, 称为随机试验 $E$ 的<strong>样本空间</strong>, 用 $\Omega$ 表示. 样本空间的每一个元素 $\omega$ 为<strong>样本点,</strong> 对于时间 $A,$ 若 $\omega\in A,$ 则表示事件 $A$ 发生. $\square$ </p>
-<h2 id="事件的运算"><a href="#事件的运算" class="headerlink" title="事件的运算"></a>事件的运算</h2><p>事件是基本事件所对应元素的集合，它仍然可以进行集合的运算，同时这些运算也有对应的实际意义。</p>
-<p><strong>事件的包含关系</strong> 设<strong>同一试验下</strong>的两个事件为 $A,B,$ 若 $A$ 发生可以推出 $B$ 一定发生，我们称 $A$ 蕴含 $B,$ 或 $B$ 包含 $A,$ 记作 $A\subset B.$ </p>
-<p>从集合的角度来考虑, 事件 $A$ 发生表明做试验的结果是某个基本事件 $\omega\in A,$ 由于 $B$  也发生了，这表明 $\omega \in B,$ 即 $\forall \omega \in A,\omega \in B,$ 这正表明了 $A\subset B.$  </p>
-<p>若 $A,B$ 互相蕴含，则称两事件相等，记作 $A=B.$ “两事件相等”的意思就是两个事件由完全相同的试验结果构成，它不过是同一件事表面上看起来不同的两个说法而已。</p>
-<p><strong>事件的和</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~至少发生一个\}$ 为事件 $A$ 与事件 $B$ 的和或并，记作 </p>
-<script type="math/tex; mode=display">
-C=A+B\text{ or }C=A\cup B.</script><p><strong>事件的积（交）</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~同时发生\}.$ 当 $A,B$ 都发生时 $C$ 发生，当 $A,B$ 两者有一个不发生时 $C$ 不发生。这样定义的事件称为事件 $A$ 和事件 $B$ 的积或交，记作</p>
-<script type="math/tex; mode=display">
-C=AB\text{ or }C=A\cap B.</script><p>上面定义了事件的积，需要两个事件同时发生，但是两个事件不总是能同时发生，比如掷一枚骰子这个试验，设掷到奇数点为事件 $A,$ 掷到偶数点为事件 $B,$ 显然 $A,B$ 不可能同时发生，于是我们引申出互斥事件的概念。</p>
-<p><strong>事件的互斥和对立</strong> 若两事件 $A,B$ 不能再同一次实验中都发生，则称它们是互斥的。</p>
-<p>互斥事件的一个重要情况是对立事件：若 $A$ 为一事件，则 $B=\{A不发生\}$ 称为 $A$ 的对立事件，记作 $\overline{A}.$ </p>
-<p>对立事件对应了集合的补集运算。</p>
-<p><strong>事件的差</strong> 设 $A,B$ 为两个事件，定义事件 $C=\{A发生,B不发生\}$ 为事件 $A,B$ 的和或差，记作</p>
-<script type="math/tex; mode=display">
-C=A-B.</script><p>注意到 $B$ 不发生可以用其互斥事件表示，于是有等式</p>
-<script type="math/tex; mode=display">
-A-B=A\overline{B}</script><p>成立。这正对应了集合之间的差集运算。$\square$ </p>
-<p>由于事件的运算对应了集合的运算,因此集合的运算性质在事件的运算中仍然适用. 这里只列出<strong>吸收率</strong>: 若 $A\subset B,$ 则 $AB=A,A\cup B=B.$ </p>
-<p>此外, 上述事件的运算均可推广至多个事件之间的运算.</p>
-<h2 id="古典概率"><a href="#古典概率" class="headerlink" title="古典概率"></a>古典概率</h2><blockquote>
-<p>设某个试验有有限个可能的结果 $e_1,e_2,\cdots,e_N,$ 若从该试验的条件以及实施方法上去分析，我们找不到任何理由认为其中的某个结果 $e_i$ 要比另一个事件 $e_j(j\ne i)$ ”更容易“发生，那么我们便认为所有的结果有同等的可能出现，这样的试验结果称作”等可能的“. </p>
-</blockquote>
-<p><strong>定义4</strong> 设 $E$ 是一个随机试验, 若它满足: (1) 仅有有限个基本事件; (2) 每个基本事件发生的可能性相等, 则称 $E$ 为<strong>古典概型</strong>试验.</p>
-<p>显然有 $|\Omega(E)|&lt;\infty.$ </p>
-<p><strong>定义5</strong><sup><a href="#fn_1" id="reffn_1">1</a></sup> 设一个试验有 $N$ 个等可能的结果（即基本事件），而事件 $A$ 恰好包含其中的 $M$ 个结果，则事件 $E$ 的概率，记为 $P(E),$ 定义为</p>
-<script type="math/tex; mode=display">
-P(A)=\frac{M}{N}.</script><p><strong>性质1</strong> 设 $A_1,A_2,\cdots,A_n$ 互斥，则</p>
-<script type="math/tex; mode=display">
-P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k= 1}^nP(A_k).</script><h3 id="计算举例"><a href="#计算举例" class="headerlink" title="计算举例"></a>计算举例</h3><p>按照古典概率的定义，古典概率的计算归结到 $M,N$ 的计算，而这往往涉及到排列组合。排列和组合的前置知识： <a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/19/组合数学（1）：一些问题-排列与组合/">组合数学（一）：一些问题&amp;排列与组合</a>。</p>
-<p><strong>例1</strong> 从有 $M$ 个废品的 $N(N\ge M)$ 个产品中随机抽出 $n$ 个产品，求里面恰好有 $m(m\le n)$ 个废品的概率。</p>
-<p><strong><em>SOL</em></strong> 显然为</p>
-<script type="math/tex; mode=display">
-P=\frac{\binom{N-M}{n-m}\binom{M}{m}}{\binom{N}{n}}.</script><p><strong>例2</strong> $n$ 个男孩 $m$ 个女孩排队，求所有女孩两两不相邻的概率，以及他们排列成一个圆时所有女孩两两不相邻的概率。</p>
-<p><strong><em>SOL</em></strong> 显然是插空法，先排男孩，再把女孩插入空隙即可。排列成直线时，</p>
-<script type="math/tex; mode=display">
-P=\frac{n!\binom{n+1}{m}m!}{(m+n)!}=\frac{\binom{n+1}{m}}{\binom{m+n}{m}}.</script><p>排列成圆时，直接套用圆排列公式即可，注意女孩插入空隙时并不是圆排列：</p>
-<script type="math/tex; mode=display">
-P=\frac{\frac{n!}{n}\binom{n}{m}m!}{\frac{(m+n)!}{m+n}}=\frac{(n-1)!\binom{n}{m}m!}{(m+n-1)!}=\frac{\binom{n}{m}}{\binom{m+n-1}{m}}.</script><p><strong>例3</strong> 某人在口袋里放了两盒火柴，每盒有 $n$ 支火柴，他每次抽烟时会随机拿出来一盒用掉其中一支。某次他拿出一盒发现该盒是空的，那么此时另一盒还剩 $m$ 支火柴的概率是多少？</p>
-<p><strong><em>SOL</em></strong> 拿到空盒是第 $2n+1-m$ 次去火柴盒,于是这 $2n+1-m$ 次的取法总数为 $2^{2n+1-m}$ 次; 至于前 $2n-m$ 词, 要保证一盒火柴用完，另一盒火柴还剩 $m$ 支，则有 $n$ 次取了同一盒火柴, 即 $\binom{2n-m}{n},$ 一共有两盒火柴, 取法应该是 $2\binom{2n-m}{n},$ 于是</p>
-<script type="math/tex; mode=display">
-P=\frac{2\binom{2n-m}{n}}{2^{2n+1-m}}=\frac{\binom{2n-m}{n}}{2^{2n-m}}.</script><p>$\square$</p>
-<h2 id="概率的统计定义"><a href="#概率的统计定义" class="headerlink" title="概率的统计定义"></a>概率的统计定义</h2><p>从实用的角度来看，概率的统计定义是一种同归实验去估计事件概率的方法。如果我们无法通过理论分析某个事件 $E$ 发生的概率有多大，我们可以做多次<strong>同样的</strong>实验（即同样条件下），假如为 $n$ 次，并设这 $n$ 次试验中事件 $E$ 发生的次数为 $m,$ 那么我们称 $m/n$ 是事件 $E$ 在这 $n$ 次试验中的<strong>频率</strong>，<strong>概率的统计定义即让这个频率作为事件 $E$ 概率 $P(E)$ 的估计</strong>。它的直观背景很简单：<strong>一件事出现的可能性大小应该由它在多次重复试验中出现的<em>频繁程度</em>去刻画</strong>。</p>
-<p>这样做的弊端很明显，即频率终究不是概率，于是我们自然想到极限，用极限来定义是个很好的选择，即 $\forall \varepsilon&gt;0,$ 存在 $N&gt;0,$ 当做试验的次数超过 $N$ 时，$|p-P(E)|&lt;\varepsilon,$ 通俗一点来讲，就是做试验的次数足够多的时候，频率总在一个固定的值周围浮动。 但是这样带来的问题就是，频率 $p$ 的极限一定存在吗？</p>
-<p>事实上，概率的统计定义的重要性不在于它是否提出了一种概率的定义，而是提出了一种<strong>估计概率的方法</strong>以及<strong>检验理论是否正确的方法</strong>，</p>
-<h2 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h2><p><strong>定义5</strong> 设随机试验 $E$ 的样本空间为 $\Omega,$ 定义事件的集合 $\cal F$ 满足 $\{\Omega,\emptyset\}\subset \mathcal{F}\subset \mathscr{P}(\Omega),$ 定义概率为函数 $P:\cal F\to \mathbb{R},$ 它满足三条性质:</p>
-<p>1: (非负性) $\forall A\in\cal F,$ $0\le P(A)\le 1;$</p>
-<p>2: (规范性) $P(\Omega)=1;$</p>
-<p>2: (可列可加性) 对 $E$ 的两两互斥的事件列 $A_1,A_2,\cdots\in \cal F,$ 有</p>
-<script type="math/tex; mode=display">
-P\left(\bigcup_{k\ge 1}A_k\right)=\sum_{k\ge 1}P(A_k).</script><p><strong>性质2</strong> 1: $P(\emptyset)=0;$</p>
-<p>2: (有限可加性) 对 $E$ 的两两互斥的事件 $A_1,A_2,\cdots,A_n,$ 有</p>
-<script type="math/tex; mode=display">
-P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k= 1}^nP(A_k);</script><p>3: $\forall A\in\cal F,$ $P(A)+P(\overline{A})=1.$</p>
-<p>4: (单调性) $\forall A,B\in\mathcal{F}\land A\subset B,$ 有 $P(A)\le P(B)$ 且 $P(B-A)=P(B)-P(A).$ $\square$</p>
-<p><strong><em>PROOF</em></strong> 性质2.4: 注意到 $A(B-A)=\emptyset$ 且 $A\cup(B-A)=B,$ 于是 $P(A\cup(B-A)=P(A)+P(B-A)=P(B), $ 这就证得了 $P(B-A)=P(B)-P(A),$ 且 $P(B-A)\ge 0,$ 于是 $P(B)\ge P(A.) $ $\blacksquare$  </p>
-<p><strong>性质3 (概率的加法定理)</strong></p>
-<p>设 $A_1,A_2,\cdots,A_n\in \cal F,$ 则有 </p>
-<script type="math/tex; mode=display">
-P\left(\sum_{k=1}^n A_k\right)=\sum_{k\in I}(-1)^{k}\sum_{X\subset I\land |X|=k}P\left(\prod_{\ell \in X}A_\ell\right).</script><p>当 $A_1,A_2,\cdots,A_n$ 两两互斥时，上式变为</p>
-<script type="math/tex; mode=display">
-P\left(\sum_{k=1}^n A_k\right)=\sum_{k=1}^nP(A_k).</script><p>$\square$ </p>
-<p>这本质上就是<a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">容斥原理</a>，因为 $P(A)=|A|/|\Omega|,$ 即 $P(A)$ 与 $|A|$ 之间是一一对应的。 </p>
-<p>从这里也可以推出:</p>
-<script type="math/tex; mode=display">
-P(A)+P(\overline{A})=1.</script><p>我们常用的是 $n=2$ 的情况，即</p>
-<script type="math/tex; mode=display">
-P(A\cup B)=P(A)+P(B)-P(AB).</script><h2 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h2><p>条件概率，顾名思义就是在附加一定条件之下所计算的概率。在概率论中，若除了试验的那些基础条件之外不再加入其他条件或假设，则算出的概率就叫做“无条件概率”；当说到条件概率时，我们总是指另外附加的条件，通常的形式为：在某件事已经发生的条件下计算另一件事情发生的概率。比如，掷一枚骰子，在掷出奇数点的条件下，掷出素数点的概率为 $2/3,$ 因为奇数点 $1,3,5$ 中的 $3,5$ 为素数。我们把在事件 $B$ 发生的条件下事件 $A$ 发生的概率记作 $P(A|B).$ </p>
-<p>考虑更一般的情况，设一个事件有 $N$ 个等可能的结果，事件 $A,B$ 分别包含其中的 $M_1,M_2(M_1,M_2\le N)$ 个结果，且它们有 $M$ 个公共的结果，即事件 $AB$ 包含的结果数为 $M$ 个。若要在事件 $B$ 发生的条件下计算事件 $A$ 发生的概率，则全部可能的结果由原先的 $N$ 个变为了 $M_2$ 个，而其中的 $M$ 个结果发生可以推出事件 $A$ 发生，这表明</p>
-<script type="math/tex; mode=display">
-P(A|B)=\frac{M}{M_2}=\frac{M/N}{M_2/N}=\frac{P(AB)}{P(B)}.</script><p> 这就是条件概率的定义，其中要限制 $P(B)\ne 0,$ 对于 $P(B)=0$ 的个别情况，我们可以用极限去处理。</p>
-<p><strong><em>REMARK</em></strong> 计算条件概率不一定要用上面的公式，比如在前面举的掷骰子的例子，我们直接从加入条件后改变了的情况去算更为方便。</p>
-<p><strong>性质4</strong> 设随机试验 $E$ 的样本空间为 $\Omega,$ 设 $A,B,A_1,A_2,\cdots\in\cal F,$ 且 $P(B)&gt;0,$ 则</p>
-<p>1: $\forall A\in\mathcal{F},P(A|B)\in[0,1];$ 2: $P(\Omega|B)=1;$ </p>
-<p>3: 若 $A_1,A_2\cdots$ 两两互斥, 则</p>
-<script type="math/tex; mode=display">
-P\left(\left.\bigcup_{k\ge 1}A_k\right| B\right)=\sum_{k\ge 1}P(A_k|B).</script><p>$\square$</p>
-<p>这里只证明性质4.3. </p>
-<p><strong><em>PROOF</em></strong> </p>
-<script type="math/tex; mode=display">
-\begin{aligned}P\left(\left.\bigcup_{k\ge 1}A_k\right| B\right)&=\frac{P(B\bigcup_{k\ge 1}A_k)}{P(B)}\\&=\frac{P(\bigcup_{k\ge 1}A_kB))}{P(B)}\\&=\frac{1}{P(B)}\sum_{k\ge 1}P(A_kB)\\&=\sum_{k\ge 1}P(A_k|B).\end{aligned}</script><p>$\blacksquare$ </p>
-<p><strong>定理1 乘法公式</strong> 设 $A_1,A_2,\cdots,A_n$ 是试验 $E$ 的若干事件, 且 $P(A_1,\cdots,A_n)&gt;0,$ 则</p>
-<script type="math/tex; mode=display">
-P\left(\prod_{k=1}^n A_k\right)=\prod_{k=1}^{n}P\left(A_k\left|\prod_{j=1}^{k-1}A_j\right.\right).</script><p>$\square$ </p>
-<p><strong><em>PROOF</em></strong> 从最后一个用乘法公式 $P(AB)=P(B)P(A|B)$ 逐步展开:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}P\left(\prod_{k=1}^n A_k\right)&=P(A_1\cdots A_{n-1})P(A_n|A_1\cdots A_{n-1})\\&=P(A_1\cdots A_{n-2})P(A_{n-1}|A_1\cdots A_{n-2})P(A_n|A_1\cdots A_{n-1})\\&=\cdots\\&=\prod_{k=1}^{n}P\left(A_k\left|\prod_{j=1}^{k-1}A_j\right.\right).\end{aligned}</script><p>$\blacksquare$ </p>
-<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><p>在条件概率中举的掷骰子的例子中，我们计算出了 $P(A|B)=2/3,$ 若无“掷出奇数点”这一条件，掷出素数点的概率为 $P(A)=1/2&lt;2/3,$ 这表明事件 $B$ 的发生对事件 $A$ 的发生起了“促进作用”，$B$ 影响到了 $A$ 的发生，这反映了 $A,B$ 之间存在着一定关系。于是自然的，若事件 $B$ 的发生对事件 $A$ 的发生无任何影响，应该有 $P(A|B)=P(A),$ 这意味着事件 $A,B$ 之间互不影响（因为我们很容易从该式中推出 $P(B|A)=P(B)$ ）, 我们称 $A,B$ 两事件独立,同时可以推出</p>
-<script type="math/tex; mode=display">
-P(AB)=P(A)P(B).</script><p>上式被称为”<strong>概率的乘法定理</strong>“, 用它来刻画独立性要比用 $P(A|B)=P(A)$ 更胜一筹, 因为使用后者还需要考虑 $P(B)$ 是否为零的问题. 它可以推广: 若从若干事件 $A_1,A_2,\cdots$ 中<strong>任意取出</strong> $n$ 个 (有限个) 事件 $A_{k_1},A_{k_2},\cdots,A_{k_n},$ 且它们满足</p>
-<script type="math/tex; mode=display">
-P\left(\prod_{i=1}^{n}A_{k_i}\right)=\prod_{i=1}^nP(A_{k_i}),</script><p>则称 $A_1,A_2,\cdots$ <strong>相互独立</strong>. </p>
-<p><strong>推论1</strong> 用一个A简单的例子来说明推论1: 设 $A_1,\cdots,A_6$ 相互独立, 则 $B_1=A_1+A_2,B_2=A_3A_4A_5$ 也相互独立. $\square$ </p>
-<p><strong>推论2</strong> 若事件 $A_1,A_2,\cdots,A_n$ 相互独立, 则把其中任意事件改为其对立事件后得到的这 $n$ 个事件仍然相互独立. $\square$ </p>
-<p>推论2证明起来思路比较简单, 但是比较繁琐, 在此不作证明.</p>
-<p><strong><em>REMARK (相互独立与两两独立)</em></strong> 两两独立的定义是, 在一些事件 $A_1,A_2,\cdots$ 中, 若任意两个事件都独立, 则称它们两两独立.需要注意的是, 相互独立是两两独立的充分不必要条件. </p>
-<p><strong>例4</strong> 甲乙进行比赛. 设任意一局比赛甲赢的概率为 $a,$ 乙赢的概率为 $b,$ 不考虑平局出现的可能性, 即 $a+b=1,$ 且有 $a&gt;b.$ 规定甲赢的条件为: 甲连续胜三局且在此之前乙从未连续胜过两局; 乙赢的条件为: 乙连胜两局且在此之前甲从未连胜过三局. 求甲, 乙分别赢得最终的比赛的概率.</p>
-<p><strong><em>SOL</em></strong> 记每一局甲胜为 $X,$ 乙胜为 $Y,$ $X,Y$ 相互独立. 我们先考虑甲赢得最终比赛, 记为事件 $A$. 此时有两种情况, 第一局甲胜或第一局乙胜, 记为子事件 $A_1,A_2$. 当第一局是甲胜时, 则比赛结果必然是由若干 $XY,XXY$ 以及一个 $XXX$ 组成的, 每个阶段相互独立; 且 $P(XY)=ab=p_1,P(XYY)=ab^2=p_2,$ 设除了最后一个阶段 $XXX$ 外有 $n$ 个阶段, 则</p>
-<script type="math/tex; mode=display">
-P_n=a^3\sum_{k=0}^n\binom{n}{k} p_1^kp_2^{n-k}=a^3(p_1+p_2)^n=a^3(ab+ab^2)^n</script><p>显然 $n$ 可以从 $0$ 取到 $+\infty,$ 且 $ab+ab^2&lt;\frac{3}{4}a&lt;1,$ 于是</p>
-<script type="math/tex; mode=display">
-P(A_1)=\sum_{n=0}^{\infty}P_n=\frac{a^3}{1-ab-ab^2}.</script><p> 而第一局是乙胜时, 比赛结果必然是由若干 $YX,YXX$ 以及一个 $YXXX$ 组成的, 每个阶段相互独立, 求解类似上述过程, 有</p>
-<script type="math/tex; mode=display">
-P(A_2)=\frac{a^3b}{1-ab-a^2b}.</script><p>两者相加即可. 对于乙分析也类似, 但实际上可以直接用 $P(B)=1-P(A)$ 来求. $\square$ </p>
-<h2 id="全概率公式与Bayes公式"><a href="#全概率公式与Bayes公式" class="headerlink" title="全概率公式与Bayes公式"></a>全概率公式与Bayes公式</h2><p><strong>定理2 全概率公式</strong> 设事件 $E$ 的样本空间为 $\Omega,$ $B_1,B_2,\cdots,B_n$ 是 $\Omega$ 的一个有限划分, 事件 $A\subset \Omega,$ 则有</p>
-<script type="math/tex; mode=display">
-P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong> 显然 $B_1,B_2,\cdots,B_n$ 相互独立, 则 $AB_1,AB_2,\cdots,AB_n$ 相互独立, 因此</p>
-<script type="math/tex; mode=display">
-\begin{aligned}P(A)&=P(A\Omega)\\ &=P(A(B_1\cup \cdots\cup B_n))\\&=P(AB_1\cup\cdots\cup AB_n)\\&=\sum_{1\le k\le n}P(AB_k)\\&=\sum_{1\le k\le n}P(B_k)P(A|B_k)\end{aligned}</script><p>$\blacksquare$ </p>
-<p>一种理解全概率公式的方式为: 把事件 $B_i$ 当作导致事件 $A$ 发生的原因, 即事件 $A$ 发生总要以某个事件 $B_i$ 为途径 , 对于不同途径, 条件概率 $P(A|B_i)$ 也各不相同, 采用哪个途径也完全是<strong>随机</strong>的, 于是事件 $A$ 发生是通过途径 $B_i$ 的概率为 $P(B_i),$ 而事件 $A$ 通过途径 $B_i$ 发生(即在事件 $B_i$ 发生的条件下) 的概率为 $P(A|B_i),$ 那么我们可以像求数学期望那样(或者直观感受), 把 $P(B_i)$ 作为 $P(A|B_i)$ 的权重, 作为 $P(A)$ 的一部分, 即 $P(A)$ 为 $P(A|B_i)$ 以 $P(B_i)(i=1,2,\cdots)$ 为权重的加权平均 , 从而可以得到全概率公式.</p>
-<p><strong>定理3 Bayes公式</strong> 利用 $P(AB_i)=P(A)P(B_i|A)=P(B_i)P(A|B_i)$ 以及全概率公式可得:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}P(B_i|A)&=\frac{P(AB_i)}{P(A)}\\&=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^nP(B_j)P(A|B_j)}\end{aligned}</script><p>这是所谓的Bayes公式. $\square$ </p>
-<p>从形式推导来看, Bayes公式平平无奇, 但是它的现实意义是很深刻的. </p>
-<p>像上面理解全概率公式那样, 若把事件 $A$ 看作”结果”, 事件 $B_1,B_2,\cdots$ 看作导致事件 $A$ 发生的原因, 那么Bayes公式是在做这样一件事: 现在有一个结果 $A$ 发生了, 在众多可能导致 $A$ 发生的原因中, 到底是哪一个导致 $A$ 发生的呢? 或者说, 哪个原因<strong>更可能</strong>导致事件 $A$ 的发生? Bayes公式告诉了我们, 在 $A$ 发生的条件下, 是某个原因 $B_i$ 导致 $A$ 发生的概率大小.</p>
-<blockquote id="fn_1">
-<sup>1</sup>. 这个定义是陈教材上的定义, 此时还没有基本事件的概念, 并且陈的教材上并无”样本空间”这个词. 补充前面的定义后, 古典概率的定义也可以直接写为 $P(A)=|A|/|\Omega|.$ <a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -511,7 +395,7 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/09/03/Calculus-review-Day3/" class="post-title-link" itemprop="url">Calculus review Day3--</a>
+            <a href="/2022/09/03/Calculus-review-Day3/" class="post-title-link" itemprop="url">Calculus review Day3,6,...</a>
         </h2>
 
         <div class="post-meta">
@@ -520,10 +404,16 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-03 22:57:43 / Modified: 23:03:50" itemprop="dateCreated datePublished" datetime="2022-09-03T22:57:43+08:00">2022-09-03</time>
+              <time title="Created: 2022-09-03 22:57:43" itemprop="dateCreated datePublished" datetime="2022-09-03T22:57:43+08:00">2022-09-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-06 23:04:20" itemprop="dateModified" datetime="2022-09-06T23:04:20+08:00">2022-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -549,7 +439,8 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="复习Day-不定积分"><a href="#复习Day-不定积分" class="headerlink" title="复习Day: 不定积分"></a>复习Day: 不定积分</h1><p>参考书目：<em>菲赫金哥尔茨《微积分学教程》第二卷</em></p>
+          <p>(第五天摆烂了)</p>
+<p>参考书目：<em>菲赫金哥尔茨《微积分学教程》第二卷</em></p>
 <p>这一部分主要是含有根式的不定积分的处理方法。</p>
           <!--noindex-->
             <div class="post-button">
@@ -783,7 +674,7 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-01 22:53:15" itemprop="dateModified" datetime="2022-09-01T22:53:15+08:00">2022-09-01</time>
+                <time title="Modified: 2022-09-06 23:05:31" itemprop="dateModified" datetime="2022-09-06T23:05:31+08:00">2022-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -815,10 +706,10 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
 <script type="math/tex; mode=display">
 \begin{aligned}
 \left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.
-\end{aligned}\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
+\end{aligned}\quad\quad (*)</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
 <script type="math/tex; mode=display">
 \begin{equation}
-\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}
+\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\quad\quad(**)
 \end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
           <!--noindex-->
             <div class="post-button">
@@ -877,7 +768,7 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-27 22:42:48" itemprop="dateModified" datetime="2022-08-27T22:42:48+08:00">2022-08-27</time>
+                <time title="Modified: 2022-09-06 08:42:28" itemprop="dateModified" datetime="2022-09-06T08:42:28+08:00">2022-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -911,11 +802,11 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
 <h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>通过 <code>class</code> 关键字来实，格式如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span>:<span class="comment">#不要忘记冒号,这一行称作类头,下面的两行称作类体</span></span><br><span class="line">    <span class="comment">#定义多个属性#</span></span><br><span class="line">    <span class="comment">#定义多个方法#</span></span><br><span class="line">    <span class="comment">#或者在方法中定义属性#</span></span><br></pre></td></tr></table></figure>
 <p>类的实例化：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class ClassName:</span><br><span class="line">    <span class="keyword">def</span> ...</span><br><span class="line">    <span class="comment">#Code#</span></span><br><span class="line">    </span><br><span class="line">ClassName(Parameters)<span class="comment">#类的实例化，可赋值给一个变量</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class ClassName:</span><br><span class="line">    <span class="keyword">def</span> ...</span><br><span class="line">    <span class="comment">#Code#</span></span><br><span class="line">    </span><br><span class="line">object1=ClassName(Parameters)<span class="comment">#类的实例化，可赋值给一个变量</span></span><br></pre></td></tr></table></figure>
 <p>比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myclass</span>:</span><br><span class="line">	x=<span class="number">5</span></span><br><span class="line">p1=myclass()</span><br><span class="line"><span class="built_in">print</span>(p1.x)<span class="comment">#输出5</span></span><br></pre></td></tr></table></figure>
 <p>Python允许空类的存在，和分支、循环和函数一样，空类中要使用关键字 <code>pass</code> 来防止报错。</p>
-<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="_init_() 方法"></a><code>_init_()</code> 方法</h3><p>在类中可以手动添加一个 <code>_init_()</code> 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>_init_()</code> 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。</p>
+<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__() 方法"></a><code>__init__()</code> 方法</h3><p>在类中可以手动添加一个 <code>__init__()</code> 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>__init__()</code> 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。注意 <code>__init__</code> 有四个下划线。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>+self.name)</span><br><span class="line">p1=student(<span class="string">&quot;A&quot;</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
 <p>如果上面的 <code>_init_()</code> 方法没有任何参数，像下面这样：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;involking construction method&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
@@ -934,7 +825,17 @@ P(A)=\sum_{1\le k\le n}P(B_k)P(A|B_k).</script><p><strong><em>PROOF</em></strong
 </blockquote>
 <p>如果用 <code>print</code> 函数输出 <code>self</code>，会输出该对象在计算机中存储的位置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;__main__.student object at 0x0000021C8EA0B670&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="类变量与实例变量"><a href="#类变量与实例变量" class="headerlink" title="类变量与实例变量"></a>类变量与实例变量</h3><p>1：修改：</p>
+<h3 id="类变量与实例变量"><a href="#类变量与实例变量" class="headerlink" title="类变量与实例变量"></a>类变量与实例变量</h3><ul>
+<li><p>类体中、所有函数之外的范围内定义的变量叫做<strong>类属性或类变量</strong></p>
+<p>类变量被所有类的实例化对象所共有。可以直接用类名或者类的实例化对象调用类变量，同时也可以使用类名调用类变量来修改它的值。通过类名修改类变量的值，会影响到所有的实例化对象。</p>
+</li>
+<li><p>类体中，所有函数内部，以 <code>self.para_name=para_name</code> 的方式定义的变量就做<strong>实例属性或实例变量</strong>。</p>
+<p>与类变量不同的是，实例变量<strong>不能通过类名调用</strong>，只能通过实例化对象调用。</p>
+</li>
+<li><p>类体中、所有函数内部以 <code>para_name=value</code> 的方式定义的变量称为<strong>局部变量</strong>。</p>
+</li>
+</ul>
+<p>1：修改：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.name=<span class="string">&quot;B&quot;</span><span class="comment">#p1的name属性被修改为B</span></span><br></pre></td></tr></table></figure>
 <p>2：添加属性。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1.gender=<span class="string">&quot;male&quot;</span><span class="comment">#格式：对象名.新增的属性=...   直接调用即可</span></span><br><span class="line"><span class="built_in">print</span>(p1.gender)</span><br></pre></td></tr></table></figure>

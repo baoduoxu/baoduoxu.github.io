@@ -27,7 +27,7 @@
 <meta property="og:description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-26T08:40:00.000Z">
-<meta property="article:modified_time" content="2022-09-01T14:53:15.841Z">
+<meta property="article:modified_time" content="2022-09-06T15:05:31.494Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-01 22:53:15" itemprop="dateModified" datetime="2022-09-01T22:53:15+08:00">2022-09-01</time>
+                <time title="Modified: 2022-09-06 23:05:31" itemprop="dateModified" datetime="2022-09-06T23:05:31+08:00">2022-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,10 +227,10 @@
 <script type="math/tex; mode=display">
 \begin{aligned}
 \left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.
-\end{aligned}\tag{*}</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
+\end{aligned}\quad\quad (*)</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
 <script type="math/tex; mode=display">
 \begin{equation}
-\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\tag{**}
+\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\quad\quad(**)
 \end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
 <span id="more"></span>
 <p>下面我们来证明容斥原理，这里我们证明另一种表述即式 $**$ 。</p>
