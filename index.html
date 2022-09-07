@@ -16,7 +16,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -143,10 +143,7 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -208,6 +205,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -279,7 +304,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-05 12:44:06" itemprop="dateModified" datetime="2022-09-05T12:44:06+08:00">2022-09-05</time>
+                <time title="Modified: 2022-09-07 12:22:07" itemprop="dateModified" datetime="2022-09-07T12:22:07+08:00">2022-09-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,6 +321,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/04/Calculus-review-Day4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/04/Calculus-review-Day4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -311,58 +364,15 @@
 </blockquote>
 <p>1：设 $f(x)\in C[0,1],1\le f(x)\le 3,$ 求证：</p>
 <script type="math/tex; mode=display">
-1\le \int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\le \frac{4}{3}.</script><p><strong><em>PROOF</em></strong> 由Cauchy-Schwartz不等式得</p>
-<script type="math/tex; mode=display">
-\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\ge\left(\int_0^1\sqrt{f(x)\cdot\frac{1}{f(x)}}\mathrm{d} x\right)^2=1,</script><p>由AM-GM不等式得</p>
-<script type="math/tex; mode=display">
-\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\le\frac{1}{4}\left(\int_0^1\left(f(x)+\frac{1}{f(x)}\right)\mathrm{d} x\right)^2</script><p>且 $f(x)+1/f(x)\le 10/3,$ 这样得到的上界为 $25/9&gt;4/3,$ 考虑调整系数，即</p>
-<script type="math/tex; mode=display">
-\frac{1}{k}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{k}{f(x)}\mathrm{d} x\le\frac{1}{4k}\left(\int_0^1\left(f(x)+\frac{k}{f(x)}\right)\mathrm{d} x\right)^2\le\frac{(3+k/3)^2}{4k},</script><p>欲得到上界 $4/3,$ 应令</p>
-<script type="math/tex; mode=display">
-\frac{(3+k/3)^2}{4k}=\frac{4}{3},</script><p>解得 $k=3.$ 于是</p>
-<script type="math/tex; mode=display">
-\begin{aligned}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x&=\frac{1}{3}\int_0^1 f(x)\mathrm{d} x\int_0^1\frac{3}{f(x)}\mathrm{d} x\\&\le\frac{1}{12}\left(\int_0^1\left(f(x)+\frac{3}{f(x)}\right)\mathrm{d} x\right)^2\\&\le\frac{3}{4}.\end{aligned}</script><p>事实上上述过程不够严谨，因为 $f(x)+k/f(x)$ 的最大值不一定在 $x=3$ 处取得，还可能在 $x=1$ 处取得，这时可以得到 $k=1/3,$ 仍然可以得到正确答案。 $\square$ </p>
-<p>2：设 $f(x)\in C[0,1]$ 且 $f(x)&gt;0,$ 证明</p>
-<script type="math/tex; mode=display">
-\ln \int_0^1f(x)\mathrm{d} x\ge \int_0^1\ln f(x)\mathrm{d} x.</script><p><strong><em>PROOF</em></strong> 这实际上是不等式：</p>
-<script type="math/tex; mode=display">
-\ln\frac{1}{n}\sum x_i\ge \ln\sqrt[n]{\prod_i x_i}=\frac{1}{n}\sum_i \ln x_i</script><p>的连续版本。只需要对区间 $[0,1]$ 进行 $n$ 等分即可，上述的 $x_i=f(i/n),0\le i\le n-1,$ 取极限即得证，当且仅当 $f(x)$ 为常函数取等。 $\square$ </p>
-<p>3：设 $f(x)\in C(\mathbb{R})\land f(x)&gt;0,$ 若 $\forall t\in\mathbb{R}$ 都有</p>
-<script type="math/tex; mode=display">
-\int_{-\infty}^{+\infty}\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le 1,</script><p>求证：$\forall a,b\in \mathbb{R}\land a&lt;b,$ 有</p>
-<script type="math/tex; mode=display">
-\int_a^b f(x)\mathrm{d} x\le \frac{b-a+2}{2}.</script><p><strong><em>PROOF</em></strong> 注意到</p>
-<script type="math/tex; mode=display">
-\int_a^b\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le \int_{-\infty}^{+\infty}\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x\le 1,</script><p>于是</p>
-<script type="math/tex; mode=display">
-\begin{aligned}\int_a^b\mathrm{d} t\int_a^b\mathrm{e}^{-|t-x|}f(x)\mathrm{d} x&=\int_a^b f(x)\left(\int_a^b\mathrm{e}^{-|t-x|}\mathrm{d} t\right)\mathrm{d} x\\&=\int_a^bf(x)(2-\mathrm{e}^{a-x}-\mathrm{e}^{x-b})\mathrm{d} x\\&\le b-a\end{aligned}</script><p>整理得</p>
-<script type="math/tex; mode=display">
-\int_a^b f(x)\mathrm{d} x\le\frac{b-a}{2}+\frac{1}{2}\int_a^bf(x)(\mathrm{e}^{a-x}+\mathrm{e}^{x-b})\mathrm{d}x</script><p>并且</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\int_a^bf(x)(\mathrm{e}^{a-x}+\mathrm{e}^{x-b})\mathrm{d}x
-&=\int_a^b f(x)\mathrm{e}^{-|a-x|}\mathrm{d}x+\int_a^b f(x)\mathrm{e}^{-|b-x|}\mathrm{d}x\\
-&\le\int_{-\infty}^{+\infty} f(x)\mathrm{e}^{-|a-x|}\mathrm{d}x+\int_{-\infty}^{+\infty} f(x)\mathrm{e}^{-|b-x|}\mathrm{d}x\\
-&=1+1=2
-\end{aligned}</script><p>这就证得了</p>
-<script type="math/tex; mode=display">
-\int_a^b f(x)\mathrm{d} x\le \frac{b-a+2}{2}.</script><p>$\square$ </p>
-<blockquote>
-<p>还以为和Laplace变换有关……</p>
-</blockquote>
-<p>4: 已知数列 $\{a_n\}_{n=1}^{\infty}$ 满足 $\lim_{n\to\infty}(a_{n+p}-a_n)=\lambda,p\in\mathbb{N}_+,$ 求证:  $\lim_{n\to\infty }a_n/n=\lambda/p.$ </p>
-<p><strong><em>PROOF</em></strong> 置 $b_{n}=a_n-a_{n-1},$ 有</p>
-<script type="math/tex; mode=display">
-\lim_{n\to\infty}(a_{n+p}-a_n)=\lim_{n\to\infty}(b_{n+1}+\cdots+b_{n+p})=\lambda,</script><p>于是 $\forall \varepsilon&gt;0,$ 存在 $N&gt;0,$ 当 $n&gt;N$ 时, </p>
-<script type="math/tex; mode=display">
-\left|\sum_{k=1}^{p}b_{n+k}-\lambda\right|<\varepsilon</script><p>成立, 且</p>
-<script type="math/tex; mode=display">
-\left|\sum_{k=1}^{p}b_{n+k}-\lambda\right|=\left|\sum_{k=1}^{p}(b_{n+k}-\lambda/p)\right|<\varepsilon,</script><p>这表明级数 $\sum_{n=1}^{\infty}(a_n-\lambda/p)$ 收敛, 于是</p>
-<script type="math/tex; mode=display">
-\lim_{n\to\infty} (b_n-\lambda/p)=0\Rightarrow \lim_{n\to\infty}b_n=\lim_{n\to\infty}(a_{n}-a_{n-1})=\lambda/p,</script><p>于是由Stolz定理得</p>
-<script type="math/tex; mode=display">
-\lim_{n\to\infty}\frac{a_n}{n}=\lim_{n\to\infty}\frac{a_n-a_{n-1}}{n-(n-1)}=\lambda/p.</script><p>$\square$ </p>
-
+1\le \int_0^1 f(x)\mathrm{d} x\int_0^1\frac{1}{f(x)}\mathrm{d} x\le \frac{4}{3}.</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/04/Calculus-review-Day4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -429,6 +439,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/03/Calculus-review-Day3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/03/Calculus-review-Day3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -516,6 +554,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/02/Calculus-review-Day2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/02/Calculus-review-Day2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -604,6 +670,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/01/Calculus-review-Day1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/01/Calculus-review-Day1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -691,6 +785,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -768,7 +890,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-06 08:42:28" itemprop="dateModified" datetime="2022-09-06T08:42:28+08:00">2022-09-06</time>
+                <time title="Modified: 2022-09-07 12:22:21" itemprop="dateModified" datetime="2022-09-07T12:22:21+08:00">2022-09-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -781,6 +903,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/08/26/Python%E5%85%A5%E9%97%A8(2)%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/26/Python%E5%85%A5%E9%97%A8(2)%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -792,66 +942,14 @@
 
       
           <h2 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h2><p>面向对象编程（Object-oriented Programming，简称OOP），指一种<strong>封装代码</strong>的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。</p>
-<h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><ul>
-<li><strong>类</strong>：类是一个模板，是一个宽泛的概念，通过它可以创造出无数具体的实例。比如物种可以看作是类。</li>
-<li><strong>对象</strong>：对象是类的具体化。类不能直接使用，它是一个“蓝图”。</li>
-<li><strong>属性</strong>：类中所有的变量称为属性。我们可以认为它是某些性质。</li>
-<li><strong>方法</strong>：类中的所有函数通称为方法。和函数不同的是，类中的函数需要至少一个参数 <code>self</code> 。函数无法单独使用，只能和类的对象一起使用。</li>
-</ul>
-<p>实际上，Python的所有变量都是对象，都具有对应的属性以及方法。</p>
-<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>通过 <code>class</code> 关键字来实，格式如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Name</span>:<span class="comment">#不要忘记冒号,这一行称作类头,下面的两行称作类体</span></span><br><span class="line">    <span class="comment">#定义多个属性#</span></span><br><span class="line">    <span class="comment">#定义多个方法#</span></span><br><span class="line">    <span class="comment">#或者在方法中定义属性#</span></span><br></pre></td></tr></table></figure>
-<p>类的实例化：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class ClassName:</span><br><span class="line">    <span class="keyword">def</span> ...</span><br><span class="line">    <span class="comment">#Code#</span></span><br><span class="line">    </span><br><span class="line">object1=ClassName(Parameters)<span class="comment">#类的实例化，可赋值给一个变量</span></span><br></pre></td></tr></table></figure>
-<p>比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myclass</span>:</span><br><span class="line">	x=<span class="number">5</span></span><br><span class="line">p1=myclass()</span><br><span class="line"><span class="built_in">print</span>(p1.x)<span class="comment">#输出5</span></span><br></pre></td></tr></table></figure>
-<p>Python允许空类的存在，和分支、循环和函数一样，空类中要使用关键字 <code>pass</code> 来防止报错。</p>
-<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__() 方法"></a><code>__init__()</code> 方法</h3><p>在类中可以手动添加一个 <code>__init__()</code> 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>__init__()</code> 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。注意 <code>__init__</code> 有四个下划线。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>+self.name)</span><br><span class="line">p1=student(<span class="string">&quot;A&quot;</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
-<p>如果上面的 <code>_init_()</code> 方法没有任何参数，像下面这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;involking construction method&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
-<p>运行后会报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.__init__() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
-<p>而只要加上 <code>self</code> 参数就可以正常输出 <code>involking construction method</code> ，这表明在创建对象 <code>p1</code> 时Python解释器会自动调用 <code>_init_()</code> 方法并且给其传入一个参数。（传入的是什么？）</p>
-<p>当使用其他方法时，比如上面例子中的 <code>myfunc()</code> ，如果 <code>myfunc()</code> 的定义没有参数，那么运行后会报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.myfunc() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
-<p>这表明对于类中的除了构造方法的其他的每一个方法，使用它们的时候Python解释器都会自动给它们传入一个参数。</p>
-<h3 id="self-参数基本介绍"><a href="#self-参数基本介绍" class="headerlink" title="self 参数基本介绍"></a><code>self</code> 参数基本介绍</h3><p>上面的 <code>self</code> 参数是对类的当前实例的引用，用于访问该类的变量。它不一定要命名为 <code>self</code>，但是它<strong>必须是类中任意函数的首个参数</strong>。不同的函数这一个参数可以不一样，比如上面的例子中，我们可以把 <code>_init_()</code> 函数的第一个参数改为 <code>abc</code> ，而把 <code>myfunc</code> 函数中的第一个参数改为 <code>xyz</code>.</p>
-<h3 id="self-用法详解"><a href="#self-用法详解" class="headerlink" title="self 用法详解"></a><code>self</code> 用法详解</h3><p>上面提到 <code>self</code> 参数不一定要命名为 <code>self</code>，可以随便命名，其实常命名为 <code>self</code> 时约定俗成的一种习惯，并且它的名称self已经指明了这个参数的意义，赋予了程序更好的可读性。</p>
-<p>同一个类可以产生多个对象，当某个对象调用类方法时，该对象会把自身的引用作为第一个参数自动传给该方法，换句话说，<strong>Python会自动绑定类方法的第一个参数指向该调用方法的对象</strong>。<code>self</code> 参数保证了每个对象<strong>只能调用自己的</strong>类变量和类方法。</p>
-<p><code>self</code> 表示实际调用该方法的对象，无论是构造方法还是普通的类方法，实际是谁调用的它们，第一个参数 <code>self</code> 就代表了谁。</p>
-<blockquote>
-<p><code>self</code> 参数其实相当于C++中的 <code>this</code> 指针。</p>
-</blockquote>
-<p>如果用 <code>print</code> 函数输出 <code>self</code>，会输出该对象在计算机中存储的位置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;__main__.student object at 0x0000021C8EA0B670&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="类变量与实例变量"><a href="#类变量与实例变量" class="headerlink" title="类变量与实例变量"></a>类变量与实例变量</h3><ul>
-<li><p>类体中、所有函数之外的范围内定义的变量叫做<strong>类属性或类变量</strong></p>
-<p>类变量被所有类的实例化对象所共有。可以直接用类名或者类的实例化对象调用类变量，同时也可以使用类名调用类变量来修改它的值。通过类名修改类变量的值，会影响到所有的实例化对象。</p>
-</li>
-<li><p>类体中，所有函数内部，以 <code>self.para_name=para_name</code> 的方式定义的变量就做<strong>实例属性或实例变量</strong>。</p>
-<p>与类变量不同的是，实例变量<strong>不能通过类名调用</strong>，只能通过实例化对象调用。</p>
-</li>
-<li><p>类体中、所有函数内部以 <code>para_name=value</code> 的方式定义的变量称为<strong>局部变量</strong>。</p>
-</li>
-</ul>
-<p>1：修改：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.name=<span class="string">&quot;B&quot;</span><span class="comment">#p1的name属性被修改为B</span></span><br></pre></td></tr></table></figure>
-<p>2：添加属性。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1.gender=<span class="string">&quot;male&quot;</span><span class="comment">#格式：对象名.新增的属性=...   直接调用即可</span></span><br><span class="line"><span class="built_in">print</span>(p1.gender)</span><br></pre></td></tr></table></figure>
-<p>添加的属性仅在对象 <code>p1</code> 中存在，增加的方法也同理，方法的添加见后文。</p>
-<p>3：删除。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> p1.age<span class="comment">#删除age属性</span></span><br><span class="line"><span class="keyword">del</span> p1<span class="comment">#删除对象</span></span><br></pre></td></tr></table></figure>
-<h3 id="类方法、静态方法和实例方法"><a href="#类方法、静态方法和实例方法" class="headerlink" title="类方法、静态方法和实例方法"></a>类方法、静态方法和实例方法</h3><p>见例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>():<span class="comment">#定义一个函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method!&quot;</span>)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1()<span class="comment">#调用后成功输出Add new method!</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>对于动态增加的方法，Python不会自动将方法调用者绑定到它们的第一个参数，因此程序必须手动为第一个参数传入参数值。</p>
-</blockquote>
-<p>如果我们定义的新方法有参数 <code>self</code> ，比如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1(p1,<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里要把p1作为参数手动传给self</span></span><br><span class="line"><span class="comment">#或者用lambda匿名函数</span></span><br><span class="line">p1.method2=<span class="keyword">lambda</span> self:<span class="built_in">print</span>(<span class="string">&quot;Add another method!&quot;</span>)</span><br><span class="line">p1.method2(p1)</span><br></pre></td></tr></table></figure>
-<p>借助 <code>types</code> 模块下的 <code>MethodType</code>，我们可以直接将 <code>self</code> 参数与对象绑定，再使用方法时便无需给手动给 <code>self</code> 传参：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">p1.method1=MethodType(method,p1)</span><br><span class="line"></span><br><span class="line">p1.method1(<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里无需写参数p1</span></span><br></pre></td></tr></table></figure>
-<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/26/Python%E5%85%A5%E9%97%A8(2)%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -912,6 +1010,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -982,7 +1108,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-26 16:53:42" itemprop="dateModified" datetime="2022-08-26T16:53:42+08:00">2022-08-26</time>
+                <time title="Modified: 2022-09-07 12:04:41" itemprop="dateModified" datetime="2022-09-07T12:04:41+08:00">2022-09-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -995,6 +1121,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/08/25/Python%E5%85%A5%E9%97%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/25/Python%E5%85%A5%E9%97%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -1084,6 +1238,34 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
 
         </div>
       </header>
@@ -1213,6 +1395,10 @@
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1233,11 +1419,23 @@
   &copy; 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa-light fa-atom"></i>
+    <i class="fa-thin fa-atom-simple"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">51k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">46 mins.</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
         
@@ -1263,7 +1461,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -1347,6 +1545,35 @@
     
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
