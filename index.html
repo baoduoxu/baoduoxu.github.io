@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-09-09 23:17:03 / Modified: 23:17:46" itemprop="dateCreated datePublished" datetime="2022-09-09T23:17:03+08:00">2022-09-09</time>
+              <time title="Created: 2022-09-09 23:17:03 / Modified: 23:20:13" itemprop="dateCreated datePublished" datetime="2022-09-09T23:17:03+08:00">2022-09-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,9 +252,9 @@
 \lim_{n\to\infty}\sqrt[n]{\sum_{i}x_i^n}=\max_{i}|x_i|</script><p>的连续版本, 不过我们证明时并不采用定积分定义. 设 $M=\max_{x\in[a,b]}f(x).$ </p>
 <p>首先, </p>
 <script type="math/tex; mode=display">
-\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}\le \sqrt[n]{M^n(b-a)}= M\sqrt[n]{b-a}.</script><p>不难想到应该用夹逼定理, 记 $\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=I_n,$ 设 $f(x_0)=M(x_0\in[a,b])$ (这由介值定理显然成立),  $\forall \varepsilon&gt;0,$  存在 $\mathrm{d}elta&gt;0,$ 当 $x\in[x_0-\mathrm{d}elta,x_0+\mathrm{d}elta]\subset[a,b]$ 时有 $|f(x)-M|&lt;\varepsilon$ 即 $f(x)&gt;M-\varepsilon.$ 于是</p>
+\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}\le \sqrt[n]{M^n(b-a)}= M\sqrt[n]{b-a}.</script><p>不难想到应该用夹逼定理, 记 $\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=I_n,$ 设 $f(x_0)=M(x_0\in[a,b])$ (这由介值定理显然成立),  $\forall \varepsilon&gt;0,$  存在 $\delta&gt;0,$ 当 $x\in[x_0-\delta,x_0+\delta]\subset[a,b]$ 时有 $|f(x)-M|&lt;\varepsilon$ 即 $f(x)&gt;M-\varepsilon.$ 于是</p>
 <script type="math/tex; mode=display">
-I_n>\sqrt[n]{\int_{x_0-\mathrm{d}elta}^{x_0+\mathrm{d}elta} [f(x)]^n\mathrm{d} x}>(M-\varepsilon)\sqrt[n]{2\mathrm{d}elta},</script><p>显然 $\lim_{n\to\infty}\sqrt[n]{b-a}=\lim_{n\to\infty}\sqrt[n]{2\mathrm{d}elta}=1,$ 于是 $\forall \varepsilon_1,\varepsilon_2&gt;0,$当 $n$ 充分大时有</p>
+I_n>\sqrt[n]{\int_{x_0-\delta}^{x_0+\delta} [f(x)]^n\mathrm{d} x}>(M-\varepsilon)\sqrt[n]{2\delta},</script><p>显然 $\lim_{n\to\infty}\sqrt[n]{b-a}=\lim_{n\to\infty}\sqrt[n]{2\delta}=1,$ 于是 $\forall \varepsilon_1,\varepsilon_2&gt;0,$当 $n$ 充分大时有</p>
 <script type="math/tex; mode=display">
 M-\varepsilon(1-\varepsilon_1)=(M-\varepsilon)(1-\varepsilon_1)<I_n<(M+\varepsilon)(1+\varepsilon_2)=M+\varepsilon(1+\varepsilon_2)</script><p>记 $\varepsilon_0=\max\{\varepsilon(1-\varepsilon_1),\varepsilon(1+\varepsilon_2)\},$ 于是</p>
 <script type="math/tex; mode=display">
