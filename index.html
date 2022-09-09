@@ -157,6 +157,131 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/09/Calculus-review-Day7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baoduo_xu's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/09/Calculus-review-Day7/" class="post-title-link" itemprop="url">Calculus review Day7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-09 23:17:03 / Modified: 23:17:46" itemprop="dateCreated datePublished" datetime="2022-09-09T23:17:03+08:00">2022-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/09/Calculus-review-Day7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/09/Calculus-review-Day7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>1: 判断级数 $\displaystyle \sum_{n=1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0$ 的敛散性.</p>
+<p><strong><em>SOL</em></strong> 考虑有理化:</p>
+<script type="math/tex; mode=display">
+\frac{(-1)^n}{\sqrt{kn}+(-1)^n}=\frac{(-1)^n\sqrt{kn}-1}{kn-1}=\frac{(-1)^n\sqrt{kn}}{kn-1}-\frac{1}{kn-1}</script><p>第二项与调和级数敛散性相同, 发散, 故原级数发散.$\square$ </p>
+<p>2: 设 $f(x)\in C[a,b]\land f(x)\ge 0,$  $f(x)$ 严格递增, 且存在 $x_n\in[a,b]$ 使得</p>
+<script type="math/tex; mode=display">
+[f(x_n)]^n=\frac{1}{b-a}\int_a^b[f(x)]^n\mathrm{d} x,</script><p>求 $\displaystyle \lim_{n\to\infty}x_n.$</p>
+<p><strong><em>SOL</em></strong> 我们只需要证明</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=\max_{x\in[a,b]} f(x)</script><p>即可, 并且很容易发现这是</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}\sqrt[n]{\sum_{i}x_i^n}=\max_{i}|x_i|</script><p>的连续版本, 不过我们证明时并不采用定积分定义. 设 $M=\max_{x\in[a,b]}f(x).$ </p>
+<p>首先, </p>
+<script type="math/tex; mode=display">
+\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}\le \sqrt[n]{M^n(b-a)}= M\sqrt[n]{b-a}.</script><p>不难想到应该用夹逼定理, 记 $\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=I_n,$ 设 $f(x_0)=M(x_0\in[a,b])$ (这由介值定理显然成立),  $\forall \varepsilon&gt;0,$  存在 $\mathrm{d}elta&gt;0,$ 当 $x\in[x_0-\mathrm{d}elta,x_0+\mathrm{d}elta]\subset[a,b]$ 时有 $|f(x)-M|&lt;\varepsilon$ 即 $f(x)&gt;M-\varepsilon.$ 于是</p>
+<script type="math/tex; mode=display">
+I_n>\sqrt[n]{\int_{x_0-\mathrm{d}elta}^{x_0+\mathrm{d}elta} [f(x)]^n\mathrm{d} x}>(M-\varepsilon)\sqrt[n]{2\mathrm{d}elta},</script><p>显然 $\lim_{n\to\infty}\sqrt[n]{b-a}=\lim_{n\to\infty}\sqrt[n]{2\mathrm{d}elta}=1,$ 于是 $\forall \varepsilon_1,\varepsilon_2&gt;0,$当 $n$ 充分大时有</p>
+<script type="math/tex; mode=display">
+M-\varepsilon(1-\varepsilon_1)=(M-\varepsilon)(1-\varepsilon_1)<I_n<(M+\varepsilon)(1+\varepsilon_2)=M+\varepsilon(1+\varepsilon_2)</script><p>记 $\varepsilon_0=\max\{\varepsilon(1-\varepsilon_1),\varepsilon(1+\varepsilon_2)\},$ 于是</p>
+<script type="math/tex; mode=display">
+|I_n-M|<\varepsilon_0,</script><p>这就表明了</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=\max_{x\in[a,b]} f(x).</script><p>于是</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}f(x_n)=f\left(\lim_{n\to\infty}x_n \right) =\max_{x\in[a,b]}f(x),</script><p>$f(x)$ 的非负性保证了开方后值得唯一性, 单调性保证了 $\max_{x\in[a,b]}f(x)=f(b),$ 以及 $\lim_{n\to\infty}x_n=b.$ $\square$ </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/%E6%A6%82%E7%8E%87%E8%AE%BA-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,7 +313,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-06 23:06:17" itemprop="dateModified" datetime="2022-09-06T23:06:17+08:00">2022-09-06</time>
+                <time title="Modified: 2022-09-08 18:34:39" itemprop="dateModified" datetime="2022-09-08T18:34:39+08:00">2022-09-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1186,124 +1311,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="baoduo_xu's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/" class="post-title-link" itemprop="url">组合数学（一）：一些问题&排列与组合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-19 10:50:25" itemprop="dateCreated datePublished" datetime="2022-08-19T10:50:25+08:00">2022-08-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-26 16:53:35" itemprop="dateModified" datetime="2022-08-26T16:53:35+08:00">2022-08-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.6k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>6 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>组合数学是数数的艺术。</p>
-</blockquote>
-<h2 id="问题一：棋盘的完美覆盖"><a href="#问题一：棋盘的完美覆盖" class="headerlink" title="问题一：棋盘的完美覆盖"></a>问题一：棋盘的完美覆盖</h2><p>对于一个 $m\times n$ 的棋盘，能否用 $b\times 1$ 的长方形骨牌进行不重叠、不遗漏的完全覆盖？</p>
-<p>结论是，能完美覆盖的充分必要条件是 $b\mid m$ 或 $b\mid n.$</p>
-<p>充分性的证明：即证明若 $b\mid m$ 或 $b\mid n$ ，则可以完美覆盖。这是显然的，不妨设棋盘是 $m$ 行 $n$ 列且 $b\mid m,$ 那么将所有长方形骨牌竖着填充即可。 </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/19/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%881%EF%BC%89%EF%BC%9A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1373,7 +1380,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1427,13 +1434,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">51k</span>
+    <span title="Symbols count total">53k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">46 mins.</span>
+    <span title="Reading time total">48 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="参考书目：《概率论与数理统计》陈希孺 以及本校的教材和中科大的教材, 并以前两者为主.  概率论与数理统计是研究随机现象的统计规律性的数学学科。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-05T04:27:48.000Z">
-<meta property="article:modified_time" content="2022-09-06T15:06:17.738Z">
+<meta property="article:modified_time" content="2022-09-08T10:34:39.907Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-06 23:06:17" itemprop="dateModified" datetime="2022-09-06T23:06:17+08:00">2022-09-06</time>
+                <time title="Modified: 2022-09-08 18:34:39" itemprop="dateModified" datetime="2022-09-08T18:34:39+08:00">2022-09-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -311,7 +311,14 @@ C=A-B.</script><p>注意到 $B$ 不发生可以用其互斥事件表示，于是
 A-B=A\overline{B}</script><p>成立。这正对应了集合之间的差集运算。$\square$ </p>
 <p>由于事件的运算对应了集合的运算,因此集合的运算性质在事件的运算中仍然适用. 这里只列出<strong>吸收率</strong>: 若 $A\subset B,$ 则 $AB=A,A\cup B=B.$ </p>
 <p>此外, 上述事件的运算均可推广至多个事件之间的运算.</p>
-<h2 id="古典概率"><a href="#古典概率" class="headerlink" title="古典概率"></a>古典概率</h2><blockquote>
+<h3 id="常用公式"><a href="#常用公式" class="headerlink" title="常用公式"></a>常用公式</h3><script type="math/tex; mode=display">
+P(A\overline{B})=P(A(\Omega -B))=P(A\Omega-AB)=P(A-AB)=P(A)-P(AB)</script><p>即</p>
+<script type="math/tex; mode=display">
+\boxed{P(A\overline{B})=P(A)-P(AB)}.</script><p>用容斥原理可以得到另一个式子: </p>
+<script type="math/tex; mode=display">
+P(A\overline{B})=1-P(\overline{A}\cup B)=1-P(\overline{A})-P(B)+P(\overline{A}B)=P(A)-P(B)+P(\overline{A}B),</script><p>借助上个式子整理即得:</p>
+<script type="math/tex; mode=display">
+\boxed{P(A\overline{B})-P(\overline{A}B)=P(A)-P(B)}</script><h2 id="古典概率"><a href="#古典概率" class="headerlink" title="古典概率"></a>古典概率</h2><blockquote>
 <p>设某个试验有有限个可能的结果 $e_1,e_2,\cdots,e_N,$ 若从该试验的条件以及实施方法上去分析，我们找不到任何理由认为其中的某个结果 $e_i$ 要比另一个事件 $e_j(j\ne i)$ ”更容易“发生，那么我们便认为所有的结果有同等的可能出现，这样的试验结果称作”等可能的“. </p>
 </blockquote>
 <p><strong>定义4</strong> 设 $E$ 是一个随机试验, 若它满足: (1) 仅有有限个基本事件; (2) 每个基本事件发生的可能性相等, 则称 $E$ 为<strong>古典概型</strong>试验.</p>
@@ -439,7 +446,10 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
     <a href="/2022/09/04/Calculus-review-Day4/" rel="prev" title="Calculus review Day4">
       <i class="fa fa-chevron-left"></i> Calculus review Day4
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/09/Calculus-review-Day7/" rel="next" title="Calculus review Day7">
+      Calculus review Day7 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -499,7 +509,7 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80-%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">序言: 概率论的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%AF%E5%B7%9D%E5%BE%B7%E6%82%96%E8%AE%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">2: 伯川德悖论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">事件的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">古典概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">计算举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">概率的统计定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">7.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E4%B8%8EBayes%E5%85%AC%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">全概率公式与Bayes公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">习题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80-%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">序言: 概率论的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%AF%E5%B7%9D%E5%BE%B7%E6%82%96%E8%AE%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">2: 伯川德悖论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">事件的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">常用公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">古典概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">计算举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">概率的统计定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">7.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E4%B8%8EBayes%E5%85%AC%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">全概率公式与Bayes公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">习题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -513,7 +523,7 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -567,13 +577,13 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">51k</span>
+    <span title="Symbols count total">53k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">46 mins.</span>
+    <span title="Reading time total">48 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
