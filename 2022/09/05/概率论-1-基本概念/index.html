@@ -27,7 +27,7 @@
 <meta property="og:description" content="参考书目：《概率论与数理统计》陈希孺 以及本校的教材和中科大的教材, 并以前两者为主.  概率论与数理统计是研究随机现象的统计规律性的数学学科。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-05T04:27:48.000Z">
-<meta property="article:modified_time" content="2022-09-12T13:49:17.562Z">
+<meta property="article:modified_time" content="2022-09-13T08:28:56.199Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-12 21:49:17" itemprop="dateModified" datetime="2022-09-12T21:49:17+08:00">2022-09-12</time>
+                <time title="Modified: 2022-09-13 16:28:56" itemprop="dateModified" datetime="2022-09-13T16:28:56+08:00">2022-09-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -272,7 +272,7 @@ B:\frac{1}{2}\times 0+\frac{1}{2}\times\frac{1}{2}=\frac{1}{4}.
 <p>在单位圆内随机取一条弦, 求其长度超过该圆内接等边三角形边长的概率.</p>
 </blockquote>
 <p>这道题之所以被称为悖论, 是因为”随机取一条弦”不够具体, 我们不清楚是何种随机, 不同的 “等可能性” 假定导致了不同的样本空间. 若取得弦的中点在一条直径上均匀分布, 直径上的点为样本空间, 则 $p=1/2;$ 若取得的弦的端点在圆周上均匀分布, 圆周上的点为样本空间, 则 $p=1/3;$ 若取得的弦的中点在圆内均匀分布, 圆内的点为样本空间, 则 $p=1/4.$ </p>
-<h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h2><p>概率是表示某种情况（事件）出现的可能性大小的一种数量指标。</p>
+<h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h2><p>概率是表示某种情况（事件）出现的可能性大小的一种数量指标.</p>
 <p>自然界的现象一般分为: </p>
 <ul>
 <li>确定现象: 条件决定结果, 研究工具为分析/几何/代数等;</li>
@@ -289,33 +289,42 @@ B:\frac{1}{2}\times 0+\frac{1}{2}\times\frac{1}{2}=\frac{1}{4}.
 <p>重复进行试验时所需要的”相同条件”</p>
 <p><strong>定义2 (基本事件与复合事件)</strong> 称在随机试验 $E$ 中必发生一个且仅发生一个的最简单事件为事件 $E$ 的基本事件, 由若干基本事件组合而成的事件称为复合事件. $\square$</p>
 <p>比如掷骰子, 掷出 $1,2,3,4,5,6$ 点是六个基本事件, 掷出合数点是一个复合事件, 它是掷出 $4,6$ 点这两个基本试验的复合. 一个随机试验的基本事件可能有无穷个. </p>
-<p><strong>定义3</strong> 用集合表示事件. 对于随机试验 $E$ 的每一个基本事件, 用一个只包含元素 $\omega$ 的集合 $\mathcal{E}=\{\omega\}$ 表示, 并称 $\omega$ 为基本事件 $\cal E$ 对应的元素 ; 对于由若干基本事件组成的复合事件, 则用对应的若干个元素所组成的集合表示; 由全体基本试验所对应的全部元素组成的集合, 称为随机试验 $E$ 的<strong>样本空间</strong>, 用 $\Omega$ 表示. 样本空间的每一个元素 $\omega$ 为<strong>样本点,</strong> 对于时间 $A,$ 若 $\omega\in A,$ 则表示事件 $A$ 发生. $\square$ </p>
+<p><strong>定义3</strong> 用集合表示事件. 对于随机试验 $E$ 的每一个基本事件, 用一个只包含元素 $\omega$ 的集合 $\mathcal{E}=\{\omega\}$ 表示, 并称 $\omega$ 为基本事件 $\cal E$ 对应的元素 ; 对于由若干基本事件组成的复合事件, 则用对应的若干个元素所组成的集合表示; 由全体基本试验所对应的全部元素组成的集合, 称为随机试验 $E$ 的<strong>样本空间</strong>, 用 $\Omega$ 表示. <em>样本空间的每一个元素 $\omega$ 为<strong>样本点,</strong> 对于事件 $A,$ 若我们观测到样本点 $\omega\in A,$ 则表示事件 $A$ 发生.</em> $\square$ </p>
 <p>$\Omega$ <strong>即一个随机试验结束时所有可能的结果构成的集合. 事件即为 $\Omega$ 的子集. 特别地, $\Omega$ 称为必然事件, $\emptyset$ 称为不可能事件.</strong> </p>
 <p><strong><em>REMARK</em></strong> 1) 根据基本事件与复合事件的定义, $\emptyset$ 是基本事件还是复合事件? 答案是<strong>复合事件</strong>, 因为 $\emptyset$ 不满足基本事件的定义, 即<strong>必发生一个且仅发生一个的最简单事件</strong>, 而 $\emptyset$ 在一次试验中是不可能发生的.</p>
 <p>2) 基本事件是<strong>试验结束时</strong>的结果, 不同基本事件发生的概率并不一定相等. 比如试验: 抛硬币直到抛出正面结束试验, 其样本空间为 $\Omega=\{T,FT,FFT,\cdots\},$ 其中 $F$ 为反面, $T$ 为正面, $P(T)=1/2\ne P(FT)=1/4.$ </p>
 <h2 id="事件的运算"><a href="#事件的运算" class="headerlink" title="事件的运算"></a>事件的运算</h2><p>事件是基本事件所对应元素的集合，它仍然可以进行集合的运算，同时这些运算也有对应的实际意义。</p>
-<p><strong>事件的包含关系</strong> 设<strong>同一试验下</strong>的两个事件为 $A,B,$ 若 $A$ 发生可以推出 $B$ 一定发生，我们称 $A$ 蕴含 $B,$ 或 $B$ 包含 $A,$ 记作 $A\subset B.$ </p>
+<p><strong>事件的包含关系</strong> 设<strong>同一试验下</strong>的两个事件为 $A,B,$ 若 $A$ 发生可以推出 $B$ 一定发生，我们称 $A$ 蕴含 $B,$ 或 $B$ 包含 $A,$ 记作 $A\subset B.$ $\square$ </p>
 <p>从集合的角度来考虑, 事件 $A$ 发生表明做试验的结果是某个基本事件 $\omega\in A,$ 由于 $B$  也发生了，这表明 $\omega \in B,$ 即 $\forall \omega \in A,\omega \in B,$ 这正表明了 $A\subset B.$  </p>
 <p>若 $A,B$ 互相蕴含，则称两事件相等，记作 $A=B.$ “两<strong>事件相等”的意思就是两个事件由<em>完全相同的试验结果</em>构成，它不过是同一件事表面上看起来不同的两种描述而已。</strong></p>
-<p><strong>事件的和</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~至少发生一个\}$ 为事件 $A$ 与事件 $B$ 的和或并，记作 </p>
+<p>根据子事件的定义, $\emptyset\sub A$ 表明了”不可能事件的发生会导致 $A$” 的发生, 这看起来有些荒诞, 但是既然不可能事件都发生了, 我们为什么没有理由认为 $A$ 不发生呢? 这实际上是错误的前提可以推出任意的结果, 即当 $p_1$ 为真 $p_2$ 为真或 $p_1$ 为假时 $p_1\to p_2$ 为真.</p>
+<p><strong>事件的和 (并) </strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~至少发生一个\}$ 为事件 $A$ 与事件 $B$ 的和或并，记作 </p>
 <script type="math/tex; mode=display">
-C=A+B\text{ or }C=A\cup B.</script><p><strong>事件的积（交）</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~同时发生\}.$ 当 $A,B$ 都发生时 $C$ 发生，当 $A,B$ 两者有一个不发生时 $C$ 不发生。这样定义的事件称为事件 $A$ 和事件 $B$ 的积或交，记作</p>
+C=A+B\text{ or }C=A\cup B.</script><p>$\square$ </p>
+<p>我们可以借助事件的并给并联电路建模: 任意支路工作, 整个系统工作.</p>
+<p><strong>事件的积（交）</strong> 设有两个事件 $A,B,$ 定义事件 $C=\{A,B~同时发生\}.$ 当 $A,B$ 都发生时 $C$ 发生，当 $A,B$ 两者有一个不发生时 $C$ 不发生。这样定义的事件称为事件 $A$ 和事件 $B$ 的积或交，记作</p>
 <script type="math/tex; mode=display">
-C=AB\text{ or }C=A\cap B.</script><p>上面定义了事件的积，需要两个事件同时发生，但是两个事件不总是能同时发生，比如掷一枚骰子这个试验，设掷到奇数点为事件 $A,$ 掷到偶数点为事件 $B,$ 显然 $A,B$ 不可能同时发生，于是我们引申出互斥事件的概念。</p>
+C=AB\text{ or }C=A\cap B.</script><p>我们可以借助事件的交给串联电路建模. </p>
+<p>$\square$</p>
+<p>上面定义了事件的积，需要两个事件同时发生，但是两个事件不总是能同时发生，比如掷一枚骰子这个试验，设掷到奇数点为事件 $A,$ 掷到偶数点为事件 $B,$ 显然 $A,B$ 不可能同时发生，于是我们引申出互斥事件的概念。</p>
 <p><strong>事件的互斥和对立</strong> 若两事件 $A,B$ 不能再同一次实验中都发生，则称它们是互斥的。</p>
 <p>互斥事件的一个重要情况是对立事件：若 $A$ 为一事件，则 $B=\{A不发生\}$ 称为 $A$ 的对立事件，记作 $\overline{A}.$ </p>
-<p>对立事件对应了集合的补集运算。</p>
+<p>对立事件对应了集合的补集运算。$\square$ </p>
+<p>$\emptyset$ 与任何事件都互斥, 且同一试验的基本事件之间两两互斥.</p>
 <p><strong>事件的差</strong> 设 $A,B$ 为两个事件，定义事件 $C=\{A发生,B不发生\}$ 为事件 $A,B$ 的和或差，记作</p>
 <script type="math/tex; mode=display">
 C=A-B.</script><p>注意到 $B$ 不发生可以用其互斥事件表示，于是有等式</p>
 <script type="math/tex; mode=display">
 A-B=A\overline{B}</script><p>成立。这正对应了集合之间的差集运算。$\square$ </p>
-<p>由于事件的运算对应了集合的运算,因此集合的运算性质在事件的运算中仍然适用. 这里只列出<strong>吸收率</strong>: 若 $A\subset B,$ 则 $AB=A,A\cup B=B.$ </p>
+<p>注意:</p>
+<script type="math/tex; mode=display">
+\emptyset -\Omega=\emptyset, A-\Omega=\emptyset.</script><p>由于事件的运算对应了集合的运算,因此集合的运算性质在事件的运算中仍然适用. 这里只列出<strong>吸收率</strong>: 若 $A\subset B,$ 则 $AB=A,A\cup B=B.$ </p>
 <p>此外, 上述事件的运算均可推广至多个事件之间的运算.</p>
 <h3 id="常用公式"><a href="#常用公式" class="headerlink" title="常用公式"></a>常用公式</h3><script type="math/tex; mode=display">
 P(A\overline{B})=P(A(\Omega -B))=P(A\Omega-AB)=P(A-AB)=P(A)-P(AB)</script><p>即</p>
 <script type="math/tex; mode=display">
-\boxed{P(A\overline{B})=P(A)-P(AB)}.</script><p>用容斥原理可以得到另一个式子: </p>
+\boxed{P(A\overline{B})=P(A)-P(AB)}.</script><p>当然, 直观上也很容易理解 $A-B=A-AB,$ “去掉两个集合的公共元素”.</p>
+<p>用容斥原理可以得到另一个式子: </p>
 <script type="math/tex; mode=display">
 P(A\overline{B})=1-P(\overline{A}\cup B)=1-P(\overline{A})-P(B)+P(\overline{A}B)=P(A)-P(B)+P(\overline{A}B),</script><p>借助上个式子整理即得:</p>
 <script type="math/tex; mode=display">
@@ -341,12 +350,12 @@ P=\frac{\frac{n!}{n}\binom{n}{m}m!}{\frac{(m+n)!}{m+n}}=\frac{(n-1)!\binom{n}{m}
 <p><strong><em>SOL</em></strong> 拿到空盒是第 $2n+1-m$ 次去火柴盒,于是这 $2n+1-m$ 次的取法总数为 $2^{2n+1-m}$ 次; 至于前 $2n-m$ 词, 要保证一盒火柴用完，另一盒火柴还剩 $m$ 支，则有 $n$ 次取了同一盒火柴, 即 $\binom{2n-m}{n},$ 一共有两盒火柴, 取法应该是 $2\binom{2n-m}{n},$ 于是</p>
 <script type="math/tex; mode=display">
 P=\frac{2\binom{2n-m}{n}}{2^{2n+1-m}}=\frac{\binom{2n-m}{n}}{2^{2n-m}}.</script><p>$\square$</p>
-<h2 id="概率的统计定义"><a href="#概率的统计定义" class="headerlink" title="概率的统计定义"></a>概率的统计定义</h2><p>从实用的角度来看，概率的统计定义是一种同归实验去估计事件概率的方法。如果我们无法通过理论分析某个事件 $E$ 发生的概率有多大，我们可以做多次<strong>同样的</strong>实验（即同样条件下），假如为 $n$ 次，并设这 $n$ 次试验中事件 $E$ 发生的次数为 $m,$ 那么我们称 $m/n$ 是事件 $E$ 在这 $n$ 次试验中的<strong>频率</strong>，<strong>概率的统计定义即让这个频率作为事件 $E$ 概率 $P(E)$ 的估计</strong>。它的直观背景很简单：<strong>一件事出现的可能性大小应该由它在多次重复试验中出现的<em>频繁程度</em>去刻画</strong>。</p>
+<h3 id="几何概率"><a href="#几何概率" class="headerlink" title="几何概率"></a>几何概率</h3><h2 id="概率的统计定义"><a href="#概率的统计定义" class="headerlink" title="概率的统计定义"></a>概率的统计定义</h2><p>从实用的角度来看，概率的统计定义是一种同归实验去估计事件概率的方法。如果我们无法通过理论分析某个事件 $E$ 发生的概率有多大，我们可以做多次<strong>同样的</strong>实验（即同样条件下），假如为 $n$ 次，并设这 $n$ 次试验中事件 $E$ 发生的次数为 $m,$ 那么我们称 $m/n$ 是事件 $E$ 在这 $n$ 次试验中的<strong>频率</strong>，<strong>概率的统计定义即让这个频率作为事件 $E$ 概率 $P(E)$ 的估计</strong>。它的直观背景很简单：<strong>一件事出现的可能性大小应该由它在多次重复试验中出现的<em>频繁程度</em>去刻画</strong>。</p>
 <p>事实上，概率的统计定义的重要性不在于它是否提出了一种概率的定义，而是提出了一种<strong>估计概率的方法</strong>以及<strong>检验理论是否正确的方法</strong>，</p>
 <h2 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h2><p><strong>定义5</strong> 设随机试验 $E$ 的样本空间为 $\Omega,$ 定义事件的集合 $\cal F$ 满足 $\{\Omega,\emptyset\}\subset \mathcal{F}\subset \mathscr{P}(\Omega),$ 定义概率为函数 $P:\cal F\to \mathbb{R},$ 它满足三条性质:</p>
 <p>1: (非负性) $\forall A\in\cal F,$ $0\le P(A)\le 1;$</p>
 <p>2: (规范性) $P(\Omega)=1;$</p>
-<p>2: (可列可加性) 对 $E$ 的两两互斥的事件列 $A_1,A_2,\cdots\in \cal F,$ 有</p>
+<p>2: (可列可加性) 对 $E$ 的两两互斥的事件列<sup><a href="#fn_2" id="reffn_2">2</a></sup> $A_1,A_2,\cdots\in \cal F,$ 有</p>
 <script type="math/tex; mode=display">
 P\left(\bigcup_{k\ge 1}A_k\right)=\sum_{k\ge 1}P(A_k).</script><p><strong>性质2</strong> 1: $P(\emptyset)=0;$</p>
 <p>2: (有限可加性) 对 $E$ 的两两互斥的事件 $A_1,A_2,\cdots,A_n,$ 有</p>
@@ -360,7 +369,7 @@ P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k= 1}^nP(A_k);</script><p>3: $\forall A\i
 P\left(\sum_{k=1}^n A_k\right)=\sum_{k\in I}(-1)^{k}\sum_{X\subset I\land |X|=k}P\left(\prod_{\ell \in X}A_\ell\right).</script><p>当 $A_1,A_2,\cdots,A_n$ 两两互斥时，上式变为</p>
 <script type="math/tex; mode=display">
 P\left(\sum_{k=1}^n A_k\right)=\sum_{k=1}^nP(A_k).</script><p>$\square$ </p>
-<p>这本质上就是<a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">容斥原理</a>，因为 $P(A)=|A|/|\Omega|,$ 即 $P(A)$ 与 $|A|$ 之间是一一对应的<sup><a href="#fn_2" id="reffn_2">2</a></sup>。 </p>
+<p>这本质上就是<a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">容斥原理</a>，因为 $P(A)=|A|/|\Omega|,$ 即 $P(A)$ 与 $|A|$ 之间是一一对应的<sup><a href="#fn_3" id="reffn_3">3</a></sup>。 </p>
 <p>从这里也可以推出:</p>
 <script type="math/tex; mode=display">
 P(A)+P(\overline{A})=1.</script><p>我们常用的是 $n=2$ 的情况，即</p>
@@ -416,9 +425,11 @@ P(A_2)=\frac{a^3b}{1-ab-a^2b}.</script><p>两者相加即可. 对于乙分析也
 <h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>!: 若假定一年按 $365$ 天记, 求 $r$ 各人中至少有两个人生日相同的概率(记此事件为 $A$). </p>
 <p><strong><em>SOL</em></strong> 记样本空间为 $\Omega,$ 由乘法原理可知, 每个人的生日都有 $365$ 中情况, 于是 $|\Omega|=365^r,$ 考虑要求的事件的反面, 即所有人生日都不相同, 于是 $|\overline{A}|=\binom{365}{r}r!.$ 于是</p>
 <script type="math/tex; mode=display">
-P(A)=1-P(\overline{A})=1-\frac{\binom{365}{r}r!}{365^r}=1-\frac{365!}{(365-r)!365^r}=1-\prod_{1\le k\le r-1}\left(1-\frac{k}{365}\right)</script><p>当 $r=50$ 时 $P(A)\approx 0.9651,$ 这似乎很出乎意料, 因为这意味着只要有五十个人就极有可能出现两个人生日相同, 而与我们的直觉(即这五十个人的生日应该均匀分布在这 $365$ 天中) 相悖. 这是因为每个人的出生日期对别人的出生日期并无影响, 所以容易产生随机扎堆. </p>
+P(A)=1-P(\overline{A})=1-\frac{\binom{365}{r}r!}{365^r}=1-\frac{365!}{(365-r)!365^r}=1-\prod_{1\le k\le r-1}\left(1-\frac{k}{365}\right)</script><p>当 $r=50$ 时 $P(A)\approx 0.9651,$ 这似乎很出乎意料, 因为这意味着只要有五十个人就<em>极有可能</em>出现两个人生日相同, 而与我们的直觉(即这五十个人的生日应该均匀分布在这 $365$ 天中) 相悖. 这是因为每个人的出生日期对别人的出生日期并无影响, 所以容易产生随机扎堆. </p>
 <p>$\square$ </p>
-<p>2: (Buffon投针问题) 平面上画满了间距为 $a$ 的平行线, 向该平面随机投掷一枚长为 $\ell(\ell&lt;a)$ 的针, 求针与直线相交的概率.</p>
+<p>2: (Buffon投针问题) 平面上画满了间距为 $a$ 的平行线, 向该平面随机投掷一枚长为 $\ell(\ell&lt;a)$ 的针, 求针与直</p>
+<p><sup><a href="#fn_" id="reffn_"></a></sup>: </p>
+<p>线相交的概率.</p>
 <p><strong><em>SOL</em></strong> 记针与直线相交为事件 $A,$ 设针与直线的夹角为 $\theta(0\le \theta\le \pi),$ 针的中点到最近的一条直线的距离为 $x,$ 显然有 $0\le x&lt;a/2.$ 现在针的状态可由序偶 $(x,\theta)$ 唯一确定, 我们可以在 $\theta Ox$ 平面上讨论这个问题, 这就转化成了度量为面积的几何概型问题, 现在只需要确定针与直线相交时 $(x,\theta)$ 所形成的图形即可.</p>
 <p>于是 $\Omega=\{(x,\theta)\mid 0\le x&lt;a/2,0\le \theta\le \pi\},$ $A=\{(x,\theta)\in\Omega\mid x&lt;\frac{\ell}{2}\sin\theta\}.$ 显然集合 $\Omega$ 所形成的图形为矩形, $|\Omega|=\frac{a}{2}\pi,$ $A$ 为曲线 $x=\frac{\ell}{2}\sin\theta$ 与直线 $x=0$ 围成的区域, 于是</p>
 <script type="math/tex; mode=display">
@@ -431,7 +442,10 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
 <sup>1</sup>. 这个定义是陈教材上的定义, 此时还没有基本事件的概念, 并且陈的教材上并无”样本空间”这个词. 补充前面的定义后, 古典概率的定义也可以直接写为 $P(A)=|A|/|\Omega|.$ <a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_2">
-<sup>2</sup>. 这句话是不对的, 因为 $A$ 可能是无穷集合, 容斥原理不适用于无穷集合的情况. 目前还没找到好的解释.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+<sup>2</sup>. 事件列表示这些事件是”可列的”或”可数的”, 至于”可列”是什么意思, 待我查阅一番.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 这句话是不对的, 因为 $A$ 可能是无穷集合, 容斥原理不适用于无穷集合的情况. 目前还没找到好的解释.<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
 </blockquote>
 
     </div>
@@ -514,7 +528,7 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80-%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">序言: 概率论的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%AF%E5%B7%9D%E5%BE%B7%E6%82%96%E8%AE%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">2: 伯川德悖论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">事件的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">常用公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">古典概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">计算举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">概率的统计定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">7.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E4%B8%8EBayes%E5%85%AC%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">全概率公式与Bayes公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">习题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80-%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">序言: 概率论的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BC%AF%E5%B7%9D%E5%BE%B7%E6%82%96%E8%AE%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">2: 伯川德悖论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">事件的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">常用公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">古典概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">计算举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E6%A6%82%E7%8E%87"><span class="nav-number">4.2.</span> <span class="nav-text">几何概率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">概率的统计定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">7.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E4%B8%8EBayes%E5%85%AC%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">全概率公式与Bayes公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">习题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -528,7 +542,7 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -582,13 +596,13 @@ P(A)=\frac{|A|}{|\Omega|}=\frac{2\ell}{a\pi}.</script><p>这种做法实际上�
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">62k</span>
+    <span title="Symbols count total">64k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">56 mins.</span>
+    <span title="Reading time total">58 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
