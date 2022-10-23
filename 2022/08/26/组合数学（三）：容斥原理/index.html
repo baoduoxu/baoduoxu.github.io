@@ -19,15 +19,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigc">
+  <meta name="description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert X">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组合数学（三）：容斥原理">
 <meta property="og:url" content="http://example.com/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="baoduo_xu&#39;s Blog">
-<meta property="og:description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left|\bigcup_{i\in I} A_i\right|&#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|&#x3D;k}\left|\bigc">
+<meta property="og:description" content="容斥原理的基本形式减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则  \begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert X">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-26T08:40:00.000Z">
-<meta property="article:modified_time" content="2022-09-10T14:27:18.687Z">
+<meta property="article:modified_time" content="2022-10-04T09:09:40.495Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-10 22:27:18" itemprop="dateModified" datetime="2022-09-10T22:27:18+08:00">2022-09-10</time>
+                <time title="Modified: 2022-10-04 17:09:40" itemprop="dateModified" datetime="2022-10-04T17:09:40+08:00">2022-10-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +228,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>10k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>9 mins.</span>
+              <span>10 mins.</span>
             </span>
 
         </div>
@@ -251,46 +251,46 @@
 <p><strong>定理1</strong> 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I=\{1,2,\cdots,n\},$ 则</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-\left|\bigcup_{i\in I} A_i\right|=\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.
+\left\vert \bigcup_{i\in I} A_i\right\vert =\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert .
 \end{aligned}\quad\quad (*)</script><p>它用来求一些有交集的集合的并集的元素个数。若有全集 $U$ ，则可以有另一种表述，即</p>
 <script type="math/tex; mode=display">
 \begin{equation}
-\left|\bigcap_{i\in I} \overline{A_i}\right|=|U|+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|.\quad\quad(**)
-\end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left|\overline{A}\right|=|U-A|=|U|-|A|$ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
+\left\vert \bigcap_{i\in I} \overline{A_i}\right\vert =\vert U\vert +\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert .\quad\quad(**)
+\end{equation}</script><p>这是很容易证的，利用 $\rm De~Morgan$ 律以及 $\left\vert \overline{A}\right\vert =\vert U-A\vert =\vert U\vert -\vert A\vert $ 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
 <span id="more"></span>
 <p>下面我们来证明容斥原理，这里我们证明另一种表述即式 $**$ 。</p>
-<p><strong><em>PROOF</em></strong> 设 $x\in A_i$ 表示 $x$ 具有性质 $P_i,1\le i\le n.$ 考虑恰好具有 $m$ 条性质的元素 $x,$ 我们利用 $x$ 对式 $**$ 每一部分的“贡献”进行证明，这个贡献的意思是，我们在计数的时候，元素 $x$ 是否给我们的计数增加了 $1.$ 只要 $x\in X,$ 那么 $x$ 对 $|X|$ 的贡献就为 $1,$ 否则为 $0.$ 由于等式的左边计数了 $U$ 中不具备所有性质的元素的个数，那么我们只需证明不具备任意一个性质的 $x$ 给等式右边的贡献为 $1,$ 具备至少一个性质的 $x$ 给等式右边的贡献为 $0,$ 就能说明等式右边也计数了 $U$ 中不具备所有性质的元素的个数。</p>
-<p>当 $x$ 一条性质也不具备即 $m=0$ 时，它对等式 <script type="math/tex">(**)</script> 右边的贡献为 $1-0+0-\cdots+(-1)^n \times0=1.$ 当 $m\ge 1$ 时，$x$ 对 $|U|$ 的贡献为 $1=\binom{m}{0};$ 对和式的第一项的贡献为 $(-1)\binom{m}{1},$ 对和式的第二项的贡献为 $(-1)^2\binom{m}{2},$ 因为满足 $x \in A_i\cap A_j$ 的集合 $A_i$ 和 $A_j$ 要在 $m$ 个集合中选，数量为 $\binom{m}{2};$ 以此类推，$x$ 对等式 <script type="math/tex">(**)</script> 右边的贡献为</p>
+<p><strong><em>PROOF</em></strong> 设 $x\in A_i$ 表示 $x$ 具有性质 $P_i,1\le i\le n.$ 考虑恰好具有 $m$ 条性质的元素 $x,$ 我们利用 $x$ 对式 $**$ 每一部分的“贡献”进行证明，这个贡献的意思是，我们在计数的时候，元素 $x$ 是否给我们的计数增加了 $1.$ 只要 $x\in X,$ 那么 $x$ 对 $\vert X\vert $ 的贡献就为 $1,$ 否则为 $0.$ 由于等式的左边计数了 $U$ 中不具备所有性质的元素的个数，那么我们只需证明不具备任意一个性质的 $x$ 给等式右边的贡献为 $1,$ 具备至少一个性质的 $x$ 给等式右边的贡献为 $0,$ 就能说明等式右边也计数了 $U$ 中不具备所有性质的元素的个数。</p>
+<p>当 $x$ 一条性质也不具备即 $m=0$ 时，它对等式 <script type="math/tex">(**)</script> 右边的贡献为 $1-0+0-\cdots+(-1)^n \times0=1.$ 当 $m\ge 1$ 时，$x$ 对 $\vert U\vert $ 的贡献为 $1=\binom{m}{0};$ 对和式的第一项的贡献为 $(-1)\binom{m}{1},$ 对和式的第二项的贡献为 $(-1)^2\binom{m}{2},$ 因为满足 $x \in A_i\cap A_j$ 的集合 $A_i$ 和 $A_j$ 要在 $m$ 个集合中选，数量为 $\binom{m}{2};$ 以此类推，$x$ 对等式 <script type="math/tex">(**)</script> 右边的贡献为</p>
 <script type="math/tex; mode=display">
 \binom{m}{0}+\sum_{k=1}^{n}(-1)^k\binom{m}{k}=\sum_{k=0}^n(-1)^k\binom{m}{k}</script><p>当 $k&gt;m$ 时 $\binom{m}{k}=0$ 且 $n\ge m,$ 于是</p>
 <script type="math/tex; mode=display">
 \sum_{k=0}^n(-1)^k\binom{m}{k}=\sum_{k=0}^m(-1)^k\binom{m}{k}=0,</script><p>这表明了若 $x$ 具有至少一个性质，那么它对式 <script type="math/tex">(**)</script> 右边的贡献为零；若 $x$ 不具有任何一个性质，它对式 <script type="math/tex">(**)</script> 右边的贡献为 $1,$ 这就是要证的。$\square$ </p>
-<p>倘若 $|\bigcap_{1\le j\le k} A_{i_j}|$ 仅依赖于 $k$ 而不依赖于在交集中使用了哪 $k$ 个集合，那么我们可以令 $\alpha_k=|\bigcap_{1\le j\le k} A_{i_j}|(1\le k\le n),$ 那么容斥原理可以有下面的特殊形式：</p>
+<p>倘若 $\vert \bigcap_{1\le j\le k} A_{i_j}\vert $ 仅依赖于 $k$ 而不依赖于在交集中使用了哪 $k$ 个集合，那么我们可以令 $\alpha_k=\vert \bigcap_{1\le j\le k} A_{i_j}\vert (1\le k\le n),$ 那么容斥原理可以有下面的特殊形式：</p>
 <script type="math/tex; mode=display">
-\left|\bigcup_{i\in I} A_i\right|=\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k,\tag{***}</script><p>式中的组合数是和式 $\sum_{X\subseteq I\land |X|=k}\left|\bigcap_{i\in X}A_i\right|$ 项的个数（即 $I$ 的 $k$ 子集的个数），且每一项都为 $\alpha_k.$ </p>
+\left\vert \bigcup_{i\in I} A_i\right\vert =\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k,\tag{***}</script><p>式中的组合数是和式 $\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert $ 项的个数（即 $I$ 的 $k$ 子集的个数），且每一项都为 $\alpha_k.$ </p>
 <h2 id="容斥原理的应用（1）"><a href="#容斥原理的应用（1）" class="headerlink" title="容斥原理的应用（1）"></a>容斥原理的应用（1）</h2><h3 id="多重集合的组合（2）"><a href="#多重集合的组合（2）" class="headerlink" title="多重集合的组合（2）"></a>多重集合的组合（2）</h3><p>在多重集合的组合（1）部分，我们讨论了多重集合 $\mathcal{S}=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\}$ 在 $n_i\ge r(i=1,2,\cdots,k)$ 时它的 $r$ 组合的个数。现在我们考虑 $n_i&lt;r(1\le i\le k)$ 的情形，也即不定方程 $x_1+x_2+\cdots+x_k=r$ 的部分元有上界时的非负整数解的组数。</p>
 <p>我们举一个例子：</p>
 <p><strong>例1</strong> 求集合 $\{3\cdot a,4\cdot b,5\cdot c\}$ 的 $10$ 组合数目。</p>
-<p><strong><em>SOL</em></strong> 设 $T=\{\infty\cdot a,\infty \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $S,$  $T$ 的 $10$ 组合中 $a$ 的个数至少为 $4$ 的那部分的集合记作 $A,$ $b$ 的个数至少为 $5$ 的那部分的集合记作 $B,$ $c$ 的个数至少为 $6$ 的那部分的集合记作 $C,$ 则问题转化为求 $|\overline{A}\cap \overline{B}\cap \overline{C}|.$ 由容斥原理得</p>
+<p><strong><em>SOL</em></strong> 设 $T=\{\infty\cdot a,\infty \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $S,$  $T$ 的 $10$ 组合中 $a$ 的个数至少为 $4$ 的那部分的集合记作 $A,$ $b$ 的个数至少为 $5$ 的那部分的集合记作 $B,$ $c$ 的个数至少为 $6$ 的那部分的集合记作 $C,$ 则问题转化为求 $\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert .$ 由容斥原理得</p>
 <script type="math/tex; mode=display">
-|\overline{A}\cap \overline{B}\cap \overline{C}|=|S|-\sum|A|+\sum|A\cap B|-|A\cap B\cap C|\tag{i}</script><p>且由已知结论得 $|S|=\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ 对于 $A,$ 容易发现它是 $T$ 的 $6$ 组合的集合（倘若我们取出 $A$ 中的任意一个元素并去掉其中的 $4$ 个 $a,$ 那么就得到了 $T$ 的一个 $6$ 组合；若在 $T$ 的某个 $6$ 组合加入 $4$ 个 $a,$ 便又得到了 $A$ 中的一个元素），于是 $|A|=\binom{6+3-1}{3-1}=\binom{8}{2}=28.$ 同理有 $|B|=\binom{7}{2}=21,|C|=\binom{6}{2}=15.$ 对于 $|A\cap B|,$ 按照上述的分析思路，可以发现它是 $T$ 的 $1$ 组合数目，于是 $|A\cap B|=\binom{3}{2}=3,$ 同理有 $|B\cap C|=0,|A\cap C|=\binom{0+3-1}{0}=1,|A\cap B\cap C|=0.$ 代入 $\rm i$ 计算得 $|\overline{A}\cap \overline{B}\cap \overline{C}|=6.$ 于是 $\{3\cdot a,4\cdot b,5\cdot c\}$ 的 $10$ 组合有 $6$ 个。$\square$ </p>
+\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert =\vert S\vert -\sum\vert A\vert +\sum\vert A\cap B\vert -\vert A\cap B\cap C\vert \tag{i}</script><p>且由已知结论得 $\vert S\vert =\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ 对于 $A,$ 容易发现它是 $T$ 的 $6$ 组合的集合（倘若我们取出 $A$ 中的任意一个元素并去掉其中的 $4$ 个 $a,$ 那么就得到了 $T$ 的一个 $6$ 组合；若在 $T$ 的某个 $6$ 组合加入 $4$ 个 $a,$ 便又得到了 $A$ 中的一个元素），于是 $\vert A\vert =\binom{6+3-1}{3-1}=\binom{8}{2}=28.$ 同理有 $\vert B\vert =\binom{7}{2}=21,\vert C\vert =\binom{6}{2}=15.$ 对于 $\vert A\cap B\vert ,$ 按照上述的分析思路，可以发现它是 $T$ 的 $1$ 组合数目，于是 $\vert A\cap B\vert =\binom{3}{2}=3,$ 同理有 $\vert B\cap C\vert =0,\vert A\cap C\vert =\binom{0+3-1}{0}=1,\vert A\cap B\cap C\vert =0.$ 代入 $\rm i$ 计算得 $\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert =6.$ 于是 $\{3\cdot a,4\cdot b,5\cdot c\}$ 的 $10$ 组合有 $6$ 个。$\square$ </p>
 <p>如果没有直接设出 $A,B,C$ 而是直接设出它们在 $S$ 中的补集，像下面这样：</p>
 <blockquote>
-<p>   $\{3\cdot a,\infty \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_1,$  $\{\infty\cdot a,4 \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_2,$ $\{\infty\cdot a,\infty \cdot b,5\cdot c\}$ 的 $10$ 组合的集合为 $A_3,$ 那么问题转化为求 $|A_1\cap A_2\cap A_3|.$ 且由容斥原理得</p>
+<p>   $\{3\cdot a,\infty \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_1,$  $\{\infty\cdot a,4 \cdot b,\infty\cdot c\}$ 的 $10$ 组合的集合为 $A_2,$ $\{\infty\cdot a,\infty \cdot b,5\cdot c\}$ 的 $10$ 组合的集合为 $A_3,$ 那么问题转化为求 $\vert A_1\cap A_2\cap A_3\vert .$ 且由容斥原理得</p>
 <script type="math/tex; mode=display">
-   |A_1\cap A_2\cap A_3|=|A_1\cup A_2\cup A_3|-\sum|A_i|+\sum|A_i\cap A_j|\\=|A|-\sum|A_i|+\sum|A_i\cap A_j|</script><p>   且 $|A|=\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ </p>
+   \vert A_1\cap A_2\cap A_3\vert =\vert A_1\cup A_2\cup A_3\vert -\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert \\=\vert A\vert -\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert</script><p>   且 $\vert A\vert =\binom{10+3-1}{3-1}=\binom{12}{2}=66.$ </p>
 <script type="math/tex; mode=display">
    \begin{aligned}
-   |A_1|=\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 3}\binom{11-i}{1}=38\\
-   |A_2|=\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 4}\binom{11-i}{1}=45\\
-   |A_3|=\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 5}\binom{11-i}{1}=51
+   \vert A_1\vert =\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 3}\binom{11-i}{1}=38\\
+   \vert A_2\vert =\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 4}\binom{11-i}{1}=45\\
+   \vert A_3\vert =\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 5}\binom{11-i}{1}=51
    \end{aligned}</script></blockquote>
-<p>求 $|A_1|,|A_2|,|A_3|$ 还算简单，但是 $|A_i\cap A_j|$ 计算起来就略有些麻烦，更不要说多重集合的元素更多的题目了。</p>
+<p>求 $\vert A_1\vert ,\vert A_2\vert ,\vert A_3\vert $ 还算简单，但是 $\vert A_i\cap A_j\vert $ 计算起来就略有些麻烦，更不要说多重集合的元素更多的题目了。</p>
 <h3 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h3><p>错位排列的意思是，将给定的没有重复元素的字符串进行重新排列，使得每一个元素都不在原来的位置上。比如对于 $123,$ 它的一个错位排列就是 $312.$ 设含有 $n$ 个不重复元素的字符串的错位排列的数目为 $D_n,$ 下面给出 $D_n$ 的通项公式。</p>
-<p><strong><em>SOL</em></strong> 记第 $\ell(1\le \ell\le n)$ 个元素在第 $\ell$ 个位置（即它原来的位置）的排列的集合为 $A_{\ell},$ 那么问题就转化为求 $\left|\bigcap_{i\in I} \overline{A_i}\right|,$ 从而可以直接使用容斥原理。注意到 $\left|\bigcap_{i\in X}A_i\right|(X\subseteq I\land |X|=k)$ 仅仅依赖于 $k$ 而不依赖于在交集中使用了哪 $k$ 个集合，此时是我们在上面介绍过的容斥原理的特殊形式，且 $\alpha_k=(n-k)<br>!,$ 于是直接使用式 $(<em>*</em>),$ 得</p>
+<p><strong><em>SOL</em></strong> 记第 $\ell(1\le \ell\le n)$ 个元素在第 $\ell$ 个位置（即它原来的位置）的排列的集合为 $A_{\ell},$ 那么问题就转化为求 $\left\vert \bigcap_{i\in I} \overline{A_i}\right\vert ,$ 从而可以直接使用容斥原理。注意到 $\left\vert \bigcap_{i\in X}A_i\right\vert (X\subseteq I\land \vert X\vert =k)$ 仅仅依赖于 $k$ 而不依赖于在交集中使用了哪 $k$ 个集合，此时是我们在上面介绍过的容斥原理的特殊形式，且 $\alpha_k=(n-k)<br>!,$ 于是直接使用式 $(<em>*</em>),$ 得</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-D_n=n!-\left|\bigcup_{i\in I} A_i\right|
+D_n=n!-\left\vert \bigcup_{i\in I} A_i\right\vert 
 &=n!-\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k\\
 &=n!+\sum_{k=1}^n(-1)^{k}\frac{n!}{k!(n-k)!}\cdot(n-k)!\\
 &=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}\\
@@ -326,28 +326,28 @@ a_n=\frac{n+1}{n!}.</script></blockquote>
 <script type="math/tex; mode=display">
 G(K)=\sum_{L\subseteq K}F(L),K\subseteq X_n.</script><p>上式中，$K$ 是 $X_n$ 的一个子集，$G(K)$ 是函数 $F$ 在 $K$ 的所有子集 $L$ 处的函数值的和。若已知函数 $G,$ 莫比乌斯反演可求出函数 $F,$ 由下面的关系式确定：</p>
 <script type="math/tex; mode=display">
-F(K)=\sum_{L\subseteq K}(-1)^{|K|-|L|}G(L),K\subseteq X_n.\tag{ii}</script><p>其中二元函数 $f(A,B)=(-1)^{|A|-|B|}$ 称为偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯函数，等式 $(\rm ii)$ 即为偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯反演公式，我们会在后面给出这个式子的证明。</p>
+F(K)=\sum_{L\subseteq K}(-1)^{\vert K\vert -\vert L\vert }G(L),K\subseteq X_n.\tag{ii}</script><p>其中二元函数 $f(A,B)=(-1)^{\vert A\vert -\vert B\vert }$ 称为偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯函数，等式 $(\rm ii)$ 即为偏序集 $(\mathscr{P}(X_n),\subseteq)$ 上的莫比乌斯反演公式，我们会在后面给出这个式子的证明。</p>
 <p>现在我们给出 $F$ 的更确切的定义，并借助等式 $(\rm ii)$ 推导出更一般的容斥原理 。设 $A_1,A_2,\cdots,A_n$ 是有限集 $S$ 的子集，对于 $K\subseteq X_n,$ 我们定义</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 F(K)&=\#\{x\in S\mid \forall i\notin K,x\in A_i\land \forall j\in K,x\notin A_j\}\\
 &=\#\left\{x\in S\mid x\in\bigcap_{i\notin K} A_i\land x\notin \bigcup_{j\in K}A_j \right \}\\
-\end{aligned}</script><p>其中对于集合 $S$ 有 <script type="math/tex">\# S=|S|,</script> 上面 $F$ 的定义用语言描述就是：<strong>$F(K)$ 为 $S$ 中<em>恰好</em> 属于所有 $i\notin K$ 的集合 $A_i$ 的元素的个数</strong>。若 $x\in A_i$ 表明 $x$ 具有性质 $P_i,$ 则 $F(K)$ 计数了<strong>恰好具有</strong> $n-|K|$ 个性质的元素的个数，且这 $n-|K|$ 个性质为 $P_i,i\notin K.$ 下面我们证明 $G(K)=\left|\bigcap_{i\notin K} A_i\right|.$ 为了体现证明的思想，我们先举一个实例。</p>
+\end{aligned}</script><p>其中对于集合 $S$ 有 <script type="math/tex">\# S=\vert S\vert ,</script> 上面 $F$ 的定义用语言描述就是：<strong>$F(K)$ 为 $S$ 中<em>恰好</em> 属于所有 $i\notin K$ 的集合 $A_i$ 的元素的个数</strong>。若 $x\in A_i$ 表明 $x$ 具有性质 $P_i,$ 则 $F(K)$ 计数了<strong>恰好具有</strong> $n-\vert K\vert $ 个性质的元素的个数，且这 $n-\vert K\vert $ 个性质为 $P_i,i\notin K.$ 下面我们证明 $G(K)=\left\vert \bigcap_{i\notin K} A_i\right\vert .$ 为了体现证明的思想，我们先举一个实例。</p>
 <blockquote>
 <p>假设 $X_4$ 以及 $K=\{1,2\},$ 那么 $F(K)$ 为属于 $A_3,A_4$ 且不属于 $A_1,A_2$ 的元素的个数，即 $F(K)$ 计数了恰好具有 $P_3,P_4$ 这两条性质的元素。$L=\emptyset$ 时，$F(L)$ 计数了恰好具有 $P_1,P_2,P_3,P_4$ 这四条性质的元素；$L=\{1\}$ 时，$F(L)$ 计数了恰好具有 $P_2,P_3,P_4$ 这三条性质的元素；$L=\{2\}$ 时，$F(L)$ 计数了恰好具有 $P_1,P_3,P_4$ 这三条性质的元素；$L=\{1,2\}$ 时，$F(L)$ 计数了恰好具有 $P_3,P_4$ 这两条性质的元素。 在具有 $P_3,P_4$ 这两条性质的元素中，根据它们是否具有性质 $P_1,P_2$ 可以划分为四部分，这刚好是上面的四个 $F(L),$ 于是 $G(K)$ 计数了 $A_3\cap A_4$ 中的元素的个数。</p>
 </blockquote>
 <p>对于 $X_n$ 的情况，设 $K=\{i_1,i_2,\cdots,i_s\},X_n-K=\{j_1,j_2,\cdots,j_t\},s+t=n.$ 在同时具有 $P_{j_1},P_{j_2},\cdots,P_{j_t}$ 这 $s$ 个性质的元素中，根据它们是否具有性质 $P_{i_1},P_{i_2},\cdots,P_{i_s} $ 可以划分为 $2^s$ 个部分，这恰好是 $L\subseteq K$ 的个数，且每一部分的元素所具有的性质的指标集恰好与这 $2^s$ 个 $K$ 的子集一一对应，而 $G(K)$ 将这 $2^s$ 个 $F(L)$ 进行求和，所得到的刚好是具备 $P_{j_1},P_{j_2},\cdots,P_{j_t}$ 这 $s$ 个性质的元素的个数，这就表明了</p>
 <script type="math/tex; mode=display">
-G(K)=\left|\bigcap_{1\le \ell\le s}A_{j_{\ell}}\right|=\left|\bigcap_{i\in X_n-K}A_i\right|=\left|\bigcap_{i\notin K}A_i\right|.</script><p>现在我们用式 $\rm (ii)$ 来得到更一般的容斥原理。将 $X_n$ 代入式 $\rm (ii)$ 得</p>
+G(K)=\left\vert \bigcap_{1\le \ell\le s}A_{j_{\ell}}\right\vert =\left\vert \bigcap_{i\in X_n-K}A_i\right\vert =\left\vert \bigcap_{i\notin K}A_i\right\vert .</script><p>现在我们用式 $\rm (ii)$ 来得到更一般的容斥原理。将 $X_n$ 代入式 $\rm (ii)$ 得</p>
 <script type="math/tex; mode=display">
-F(X_n)=\sum_{L\subseteq X_n}(-1)^{n-|L|}G(L)=\sum_{L\subseteq X_n}(-1)^{n-|L|}\left|\bigcap_{i\notin L}A_i\right|=\sum_{J\subseteq X_n}(-1)^{|J|}\left|\bigcap_{i\in J}A_i\right|</script><p>其中 $J$ 是 $L$ 在 $X_n$ 中的补集，最后两个和式之间可以一一对应。而 $F(X_n)$ 计数了恰好具有 $0$ 个性质的元素的个数即不具备所有性质的元素的个数，于是</p>
+F(X_n)=\sum_{L\subseteq X_n}(-1)^{n-\vert L\vert }G(L)=\sum_{L\subseteq X_n}(-1)^{n-\vert L\vert }\left\vert \bigcap_{i\notin L}A_i\right\vert =\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in J}A_i\right\vert</script><p>其中 $J$ 是 $L$ 在 $X_n$ 中的补集，最后两个和式之间可以一一对应。而 $F(X_n)$ 计数了恰好具有 $0$ 个性质的元素的个数即不具备所有性质的元素的个数，于是</p>
 <script type="math/tex; mode=display">
-F(X_n)=\left|\bigcap_{i\in X_n} \overline{A_i}\right|=\sum_{J\subseteq X_n}(-1)^{|J|}\left|\bigcap_{i\in J}A_i\right|.\tag{iii}</script><p>式 $\rm(iii)$ 与式 <script type="math/tex">(**)</script> 显然是等价的。这就是更为一般的容斥原理。</p>
+F(X_n)=\left\vert \bigcap_{i\in X_n} \overline{A_i}\right\vert =\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in J}A_i\right\vert .\tag{iii}</script><p>式 $\rm(iii)$ 与式 <script type="math/tex">(**)</script> 显然是等价的。这就是更为一般的容斥原理。</p>
 <h3 id="更一般的偏序集-X-preccurlyeq-的莫比乌斯反演公式"><a href="#更一般的偏序集-X-preccurlyeq-的莫比乌斯反演公式" class="headerlink" title="更一般的偏序集 $(X,\preccurlyeq)$ 的莫比乌斯反演公式"></a>更一般的偏序集 $(X,\preccurlyeq)$ 的莫比乌斯反演公式</h3><p>现在我们讨论更一般的偏序集 $(X,\preccurlyeq).$ 设所有只要满足 $x\succ y(x,y\in X)$ 就有 $f(x,y)=0$ 的实值函数 $f:X\times X\to\mathbb{R}$ 的集合为 $\mathcal{F}.$ 若 $f,g\in\mathcal{F},$ 定义 $f$ 和 $g$ 的卷积为</p>
 <script type="math/tex; mode=display">
 h(x,y)=(f*g)(x,y)=
 \begin{cases}
-\sum_{x\preccurlyeq z \preccurlyeq y}f(x,z)f(z,y),&x\preccurlyeq y,\\
+\displaystyle \sum_{x\preccurlyeq z \preccurlyeq y}f(x,z)f(z,y),&x\preccurlyeq y,\\
 0,&\text{otherwise.}
 \end{cases}</script><p>卷积运算不具有交换律，但是它具有结合律：</p>
 <p><strong>定理3</strong> 卷积满足结合律 <script type="math/tex">f*(g*h)=(f*g)*h.</script> </p>
@@ -484,14 +484,14 @@ F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.</script><blockquote>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -538,13 +538,13 @@ F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.</script><blockquote>
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">64k</span>
+    <span title="Symbols count total">93k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">58 mins.</span>
+    <span title="Reading time total">1:25</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

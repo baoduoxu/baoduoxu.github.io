@@ -27,7 +27,7 @@
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-19T00:20:27.933Z">
-<meta property="article:modified_time" content="2022-09-07T04:21:41.341Z">
+<meta property="article:modified_time" content="2022-10-23T15:07:09.566Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta property="article:tag" content="Hello World">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-07 12:21:41" itemprop="dateModified" datetime="2022-09-07T12:21:41+08:00">2022-09-07</time>
+                <time title="Modified: 2022-10-23 23:07:09" itemprop="dateModified" datetime="2022-10-23T23:07:09+08:00">2022-10-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +225,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>484</span>
+              <span>993</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -255,17 +255,18 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <hr>
-<p>本文件是Hexo自动生成的, 现用来记录搭建博客的过程.</p>
-<p>要添加的功能:</p>
-<ul>
-<li>评论系统</li>
-<li>文章字数/事件的统计</li>
-<li>行内公式的换行</li>
-<li>主页显示, 文章边框等</li>
-<li>代码块外观的优化</li>
-<li>夜间模式</li>
-</ul>
-<p>Next主题自定义: <a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a></p>
+<blockquote>
+<p>下面是一些问题的记录.</p>
+</blockquote>
+<h2 id="如何自定义"><a href="#如何自定义" class="headerlink" title="如何自定义?"></a>如何自定义?</h2><p><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a></p>
+<h2 id="如何插入图片"><a href="#如何插入图片" class="headerlink" title="如何插入图片"></a>如何插入图片</h2><h2 id="一些公式渲染的问题"><a href="#一些公式渲染的问题" class="headerlink" title="一些公式渲染的问题"></a>一些公式渲染的问题</h2><p>主要是LaTeX和markdown一些符号的语义冲突。</p>
+<p>1: 公式中出现两个下划线时，markdown会将两个下划线之间的部分识别为斜体。解决方法是将 <code>\node_modules\kramed\lib\rules\inline.js</code> 中的 <code>escape</code> 项和 <code>em</code> 项做如下更改:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/, </span></span><br><span class="line">  <span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br></pre></td></tr></table></figure>
+<p>以及<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line">  <span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br></pre></td></tr></table></figure></p>
+<p>记得将 <code>\themes\next\_config.yml</code> 中的 <code>math</code> 项中的 <code>per_page</code> 项设置为 <code>false</code>, 否则要在每篇文章的 <code>Front-matter</code> 中加入 <code>mathjax: true</code>. </p>
+<p>2: 公式中出现两个及以上的 <code>&lt;</code> 时, 某两个 <code>&lt;</code> 之间的内容可能会不见. 在这些小于号的前后加上空格即可.</p>
+<p>3: 公式中出现多个 <code>*</code> 时, 某两个星号之间的内容也会被markdown变为斜体. 解决方法是用 <code>\ast</code> 代替.</p>
+<p>4: 两个大括号连用可能会渲染失败(虽然我还没碰到过), 解决方法是在大括号之间加空格.</p>
 
     </div>
 
@@ -347,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">如何自定义?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">3.</span> <span class="nav-text">如何插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">一些公式渲染的问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -361,14 +362,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -415,13 +416,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">64k</span>
+    <span title="Symbols count total">93k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">58 mins.</span>
+    <span title="Reading time total">1:25</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

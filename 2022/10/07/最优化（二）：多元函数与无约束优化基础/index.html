@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="多元函数相关概念水平集曲面 $F(x,y,z)&#x3D;0$ 的水平集为 $S&#x3D;\{(x,y)|F(x,y,c)&#x3D;0\}.$  不同的水平集不相交;  水平集稠密的地方目标函数函数变化较快, 稀疏的地方变化较慢. 在极值点附近, 水平集会呈现为同心椭圆集. 梯度、雅可比矩阵与黑塞矩阵多维实值函数: 对向量求导若 $f:\mathbb{R}^n\to\mathbb{R}$ 且在定义域内一阶可微, 我们可以求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最优化（二）：多元函数与无约束优化基础">
+<meta property="og:url" content="http://example.com/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="baoduo_xu&#39;s Blog">
+<meta property="og:description" content="多元函数相关概念水平集曲面 $F(x,y,z)&#x3D;0$ 的水平集为 $S&#x3D;\{(x,y)|F(x,y,c)&#x3D;0\}.$  不同的水平集不相交;  水平集稠密的地方目标函数函数变化较快, 稀疏的地方变化较慢. 在极值点附近, 水平集会呈现为同心椭圆集. 梯度、雅可比矩阵与黑塞矩阵多维实值函数: 对向量求导若 $f:\mathbb{R}^n\to\mathbb{R}$ 且在定义域内一阶可微, 我们可以求">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-07T07:21:28.000Z">
+<meta property="article:modified_time" content="2022-10-23T03:53:19.125Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>最优化（二）：多元函数与无约束优化基础 | baoduo_xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">baoduo_xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baoduo_xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          最优化（二）：多元函数与无约束优化基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-10-07 15:21:28" itemprop="dateCreated datePublished" datetime="2022-10-07T15:21:28+08:00">2022-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-23 11:53:19" itemprop="dateModified" datetime="2022-10-23T11:53:19+08:00">2022-10-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Optimization/" itemprop="url" rel="index"><span itemprop="name">Optimization</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="多元函数相关概念"><a href="#多元函数相关概念" class="headerlink" title="多元函数相关概念"></a>多元函数相关概念</h2><h3 id="水平集"><a href="#水平集" class="headerlink" title="水平集"></a>水平集</h3><p>曲面 $F(x,y,z)=0$ 的水平集为 $S=\{(x,y)|F(x,y,c)=0\}.$ </p>
+<p>不同的水平集不相交; </p>
+<p>水平集稠密的地方目标函数函数变化较快, 稀疏的地方变化较慢.</p>
+<p>在极值点附近, 水平集会呈现为同心椭圆集.</p>
+<h3 id="梯度、雅可比矩阵与黑塞矩阵"><a href="#梯度、雅可比矩阵与黑塞矩阵" class="headerlink" title="梯度、雅可比矩阵与黑塞矩阵"></a>梯度、雅可比矩阵与黑塞矩阵</h3><h4 id="多维实值函数-对向量求导"><a href="#多维实值函数-对向量求导" class="headerlink" title="多维实值函数: 对向量求导"></a>多维实值函数: 对向量求导</h4><p>若 $f:\mathbb{R}^n\to\mathbb{R}$ 且在定义域内一阶可微, 我们可以求出来</p>
+<script type="math/tex; mode=display">
+\frac{\partial f}{\partial \mathbf{x}}=\frac{\partial f}{\partial(x_1,\cdots,x_n)}=\left[\frac{\partial f}{\partial x_1},\cdots,\frac{\partial f}{\partial x_n}\right],</script><p>上面的 $\frac{\partial f}{\partial(x_1,\cdots,x_n)}$ 可以看作一个形式上的记号, 表示 $f$ 对这些变量求偏导, 最后得到的是一个<strong>行向量</strong>. 同时定义 $f(\mathbf{x})$ 的梯度 $\nabla f(\mathbf{x})=\left(\frac{\partial f}{\partial \mathbf{x}}\right)^{\top} .$ 多元实值函数的梯度是一个<strong>列向量</strong>, 是一个 $\mathbb{R}^n\to\mathbb{R}^n$ 的函数.</p>
+<blockquote>
+<p>查到的一些资料给出的规则是对列/行向量求导得到的是列/行向量, 与上面的描述不知为何有些矛盾.</p>
+</blockquote>
+<p>就像一元函数在给出导函数的定义后推出一些常用的导数公式那样, 对于高维实值函数也有类似的公式(下面默认 $\mathbf{x}$ 为变量而 $\mathbf{c}$ 为常量): </p>
+<ul>
+<li><p>$\nabla \mathbf{c}=\mathbf{0}.$ </p>
+</li>
+<li><p>$\nabla \mathbf{c}^{\top} \mathbf{x}= \mathbf{c}.$ </p>
+</li>
+<li><p>$\nabla \mathbf{x}^{\top} \mathbf{x}=2\mathbf{x}.$ </p>
+<p><strong><em>PROOF</em></strong> </p>
+<script type="math/tex; mode=display">
+\nabla \mathbf{x}^{\top} \mathbf{x}=\left(\frac{\partial\sum_{i}x_i^2}{\partial (x_1,\cdots,x_n)}\right)^{\top} =[2x_1,\cdots,2x_n]^{\top} =2\mathbf{x}.</script></li>
+<li><p>$\nabla \mathbf{x}^{\top} \mathbf{Ax}=2\mathbf{A}^{\top} \mathbf{x}.$ </p>
+<p><strong><em>PROOF</em></strong> </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\begin{aligned}
+\nabla \boldsymbol{x}^{\top} \boldsymbol{Ax}
+&=\left(\frac{\partial \sum_{i}x_{i}\sum_{j}a_{ij}x_{j}}{\partial (x_1,\cdots,x_n)}\right)^{\top} \\
+&=\left[\sum_{j}x_1(a_{j1}+a_{1j}),\cdots,\sum_{j}x_n(a_{jn}+a_{nj}) \right]^{\top} \\
+&=\left[\sum_{j}x_1a_{j1},\cdots,\sum_{j}x_na_{jn}+\right]^{\top}+\left[\sum_{j}x_1a_{1j},\cdots,2\sum_{j}x_na_{nj} \right]^{\top}\\
+&=(\boldsymbol{x}^{\top} \boldsymbol{A}+\boldsymbol{x}^{\top} \boldsymbol{A}^{\top})^{\top}\\
+&=(\boldsymbol{A}+\boldsymbol{A}^{\top})\boldsymbol{x}
+\end{aligned}
+\end{aligned}</script><p> $\mathbf{x}^{\top} \mathbf{Ax}$ 是二次型函数, 对于不对称的 $\mathbf{A}$ 我们总可以用下述手段让其对称: 令 $\mathbf{B}=\frac{1}{2}\left(\mathbf{A}+\mathbf{A}^{\top} \right),$ $\mathbf{B}^{\top} =\mathbf{B},$ 且</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{x}^{\top} \mathbf{Ax}
+&=\sum_{i}\sum_{j}a_{ij}x_ix_j\\
+&=\frac{1}{2}\sum_i\sum_ja_{ij}x_ix_j+\frac{1}{2}\sum_{i}\sum_ja_{ij}x_ix_j\\
+&=\frac{1}{2}\sum_i\sum_ja_{ij}x_ix_j+\frac{1}{2}\sum_{i}\sum_{j}a_{ji}x_ix_j\\
+&=\sum_{i}\sum_{j}\frac{a_{ij}+a_{ji}}{2}x_ix_j\\
+&=\mathbf{x}^{\top} \mathbf{Bx}.
+\end{aligned}</script><p>于是在处理的时候 $\mathbf{A}$ 往往是实对称矩阵, 也就有 $\nabla \mathbf{x}^{\top} \mathbf{Ax}=2\mathbf{Ax}$ 成立. </p>
+<p>有时候也会称函数 $f(\mathbf{x})=\mathbf{x}^{\top} \mathbf{Ax}+\mathbf{b}^{\top} \mathbf{x}+c$ 为一般的二次型函数.</p>
+<h5 id="二次型函数性质"><a href="#二次型函数性质" class="headerlink" title="二次型函数性质"></a>二次型函数性质</h5><p>给定对称矩阵 $\mathbf{Q}\in \mathbb{R}^{n\times n},$ 若 $\forall \mathbf{x}\in\mathbb{R}^n\backslash\{\mathbf{0}\}$ 都有 $\mathbf{x}^{\top} \mathbf{Qx}&gt;0$ 成立, 则称 $\mathbf{Q}$ 是一个正定矩阵; 若仅有 $\mathbf{x}^{\top} \mathbf{Qx}\ge 0$ 成立则称 $\mathbf{Q}$ 为半正定矩阵. 类似也可定义负定矩阵与半负定矩阵.</p>
+<p><strong>定理1 (Sylvester 定理)</strong> 对称矩阵 $\mathbf{Q}$ 为正定矩阵当且仅当 $\mathbf{Q}$ 的顺序主子式是正定的.</p>
+<p><strong>定理2</strong> 对称矩阵 $\mathbf{Q}$ 是正定/半正定当且仅当 $\mathbf{Q}$ 的所有特征值都是正/非负的.</p>
+<h4 id="梯度矩阵与雅可比矩阵"><a href="#梯度矩阵与雅可比矩阵" class="headerlink" title="梯度矩阵与雅可比矩阵"></a>梯度矩阵与雅可比矩阵</h4><p>我们现在给出函数 $\mathbf{f}:\mathbb{R}^n \to\mathbb{R}^m$ 对向量 $\mathbf{x}$ 求导的公式. $\mathbf{f}$ 是一个列向量: $\mathbf{f}=[f_1,\cdots,f_m]^{\top} ,$ 对 $\mathbf{x}$ 求导相当于每一个分量 $f_i$ 对 $\mathbf{x}$ 求导, 而每一个 $\frac{\partial f_i}{\partial \mathbf{x}}$ 又是一个行向量, 于是</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathbf{f}}{\partial\mathbf{x}}=
+\begin{bmatrix}
+\frac{\partial f_1}{\partial \mathbf{x}}\\
+\vdots\\
+\frac{\partial f_m}{\partial \mathbf{x}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1}&\cdots&\frac{\partial f_1}{\partial x_n}\\
+\vdots&&\vdots\\
+\frac{\partial f_m}{\partial x_1}&\cdots&\frac{\partial f_m}{\partial x_n}
+\end{bmatrix}</script><p>这是所谓的<strong>导数矩阵</strong>, 又称为雅可比矩阵(Jacobian), 记作 $\mathscr{D}\mathbf{f}(\mathbf{x})$ 或者 $J\mathbf{f}(\mathbf{x}),$ 它是 $m\times n$ 矩阵. 同样定义<strong>梯度矩阵</strong> $\nabla \mathbf{f}(\mathbf{x})=(\mathscr{D}\mathbf{f}(\mathbf{x}))^{\top} ,$ 梯度矩阵是 $n\times m$ 矩阵. </p>
+<p>因此对于实值函数 $f:\mathbb{R}^n\to\mathbb{R}$ , 它的雅可比矩阵 $\mathscr{D}f(\mathbf{x})$ 是一个行向量.</p>
+<h4 id="黑塞矩阵"><a href="#黑塞矩阵" class="headerlink" title="黑塞矩阵"></a>黑塞矩阵</h4><p>对于实值函数 $f:\mathbb{R}^n\to\mathbb{R},$ 若梯度 $\nabla f$ 可微, 则称 $f$ 二阶可微, $\nabla f$ 的导数记为</p>
+<script type="math/tex; mode=display">
+\mathscr{D}^2 f=\left[\begin{array}{cccc}
+\frac{\partial ^2 f}{\partial  x_1^2} & \frac{\partial ^2 f}{\partial  x_2 \partial  x_1} & \cdots & \frac{\partial ^2 f}{\partial  x_n \partial  x_1} \\
+\frac{\partial ^2 f}{\partial  x_1 \partial  x_2} & \frac{\partial ^2 f}{\partial  x_2^2} & \cdots & \frac{\partial ^2 f}{\partial  x_n \partial  x_2} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial ^2 f}{\partial  x_1 \partial  x_n} & \frac{\partial ^2 f}{\partial  x_2 \partial  x_n} & \cdots & \frac{\partial ^2 f}{\partial  x_n^2}
+\end{array}\right].</script><p>矩阵 $\mathscr{D}^2 f(\mathbf{x})$ 被称为 $f$ (在点 $\mathbf{x}$ 处)的黑塞矩阵(Hessian). 本文中也会用 $\nabla^2 f(\mathbf{x})$ 表示黑塞矩阵.</p>
+<p>若 $f$ 是二阶连续可微的, 则 $f$ 的黑塞矩阵是对称的.</p>
+<p>一个实例: $f(\mathbf{x})$ 在定义域内二阶可微, $\phi(\alpha)=f(\mathbf{x}+\alpha\mathbf{p}),$ 求 $\phi’(\alpha),\phi’’(\alpha).$ </p>
+<p><strong><em>SOL</em></strong> 这个函数是以后经常碰到的函数, 直接用链式法则即可:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\phi'(\alpha)=\nabla f(\mathbf{x}+\alpha \mathbf{p})^{\top}\mathbf{p}\\\phi''(\alpha)=p^{\top}\nabla^2 f(\mathbf{x}+\alpha \mathbf{p})\mathbf{p}\end{aligned}</script><h3 id="Taylor展开"><a href="#Taylor展开" class="headerlink" title="Taylor展开"></a>Taylor展开</h3><blockquote>
+<p><strong>Theorem</strong><sup><a href="#fn_1" id="reffn_1">1</a></sup> (Taylor) Suppose $f$ from $\mathbb{R}^n$ to $\mathbb{R}$ is a $C^{m+1}$ function on an open ball centered at $\mathbf{A}$. Then for $\mathbf{A}+\mathbf{H}$ in the ball,</p>
+<script type="math/tex; mode=display">
+\begin{gathered}f(\mathbf{A}+\mathbf{H})=f(\mathbf{A})+\sum_{i_1=1}^n h_{i_1} f_{x_{i_1}}(\mathbf{A})+\frac{1}{2} \sum_{i_1, i_2=1}^n h_{i_1} h_{i_2} f_{x_{i_1} x_{i_2}}(\mathbf{A}) \\+\cdots+\frac{1}{m !} \sum_{i_1, \ldots, i_m=1}^n\left(h_{i_1} h_{i_2} \cdots h_{i_m}\right) f_{x_{i_1} x_{i_2} \cdots x_{i_m}}(\mathbf{A})+R_m(\mathbf{A}, \mathbf{H}),\end{gathered}</script><p>where $\left|R_m(\mathbf{A}, \mathbf{H})\right| \leq k|\mathbf{H}|^{m+1}$ for some constant $k$. The remainder goes to zero faster than $|\mathbf{H}|^m$ in the sense that</p>
+<script type="math/tex; mode=display">
+0 \leq \frac{\left|R_m(\mathbf{A}, \mathbf{H})\right|}{\|\mathbf{H}\|^m} \leq k\|\mathbf{H}\| .</script></blockquote>
+<p>当然常用的Taylor展开只需要展开到一阶或二阶即可. </p>
+<p>若函数 $f:\mathbb{R}^n\to\mathbb{R},$ 在开集 $\Omega\subset \mathbb{R}^n$ 上一阶/二阶连续可微, 且 $\mathbf{x_0}\in\Omega,$ 则</p>
+<p>一阶:</p>
+<script type="math/tex; mode=display">
+f(\mathbf{x})=f(\mathbf{x}_0)+\nabla f(\mathbf{x})^{\top} (\mathbf{x}-\mathbf{x}_0)+o(\|\mathbf{x}-\mathbf{x}_0\|).</script><p>二阶:</p>
+<script type="math/tex; mode=display">
+f(\mathbf{x})=f(\mathbf{x}_0)+\nabla f(\mathbf{x})^{\top} (\mathbf{x}-\mathbf{x}_0)+\frac{1}{2}(\mathbf{x}-\mathbf{x}_0)^{\top} \nabla^2f(\mathbf{x}_0)(\mathbf{x}-\mathbf{x}_0)+o(\|\mathbf{x}-\mathbf{x}_0\|^2).</script><blockquote>
+<p>这里不是数学笔记就不补充证明过程了.</p>
+</blockquote>
+<h2 id="集合约束优化"><a href="#集合约束优化" class="headerlink" title="集合约束优化"></a>集合约束优化</h2><p>集合约束优化是形如</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\min f(\mathbf{x})\\
+\text{s.t. }&\mathbf{x}\in\Omega
+\end{aligned}</script><p>的优化问题, 其中 $f:\Omega\subset \mathbb{R}^n\to\mathbb{R}.$ 由于最小值会在极小值点取到, 先给出两类极小点的定义.</p>
+<p><strong>定义1</strong> 对于 $f$ 定义域中的一个点 $\mathbf{x}^{\ast},$ 若存在 $\mathbf{x}^{\ast}$ 的一个去心邻域 $\tilde{U}(\mathbf{x}^{\ast})$ 使得 $\forall \mathbf{x}\in \tilde{U}(\mathbf{x}^{\ast}),$ 不等式 $f(\mathbf{x})\ge f(\mathbf{x}^{\ast})$ 都成立, 则称 $\mathbf{x}^{\ast}$ 是 $f$ 在 $\Omega$ 中的一个<strong>局部极小点</strong>. 若 $\forall \mathbf{x}\in\Omega\backslash\{\mathbf{x}^{\ast}\}$ 不等式 $f(\mathbf{x})\ge f(\mathbf{x}^{\ast})$ 都成立, 则称 $\mathbf{x}^{\ast}$ 是 $f$ 在 $\Omega$ 中的一个<strong>全局极小点</strong>. $\square$</p>
+<p>若将 $\ge$ 改成 $&gt;,$ 则得到的是<strong>严格</strong>局部极小点和<strong>严格</strong>全局极小点的定义.</p>
+<h3 id="可行方向"><a href="#可行方向" class="headerlink" title="可行方向"></a>可行方向</h3><p><strong>定义2</strong> 对于 $\mathbf{d}\in\mathbb{R}^n\land \mathbf{d}\ne \mathbf{0}$ 和$\mathbf{x}\in\Omega,$ 若存在一个实数 $\alpha_0&gt;0$ 使得 $\forall \alpha\in[0,\alpha_0],$ 都有 $\mathbf{x}+\alpha\mathbf{d}\in\Omega,$ 则称 $\mathbf{d}$ 为 $\mathbf{x}$ 处的可行方向. $\square$ </p>
+<p>显然若 $\mathbf{x}$ 在 $\Omega$ 的内部, 任意一个方向都是可行方向; 若 $\mathbf{x}$ 处于边缘, 则肯定某个范围内的方向是不可行的.   为什么我们要关注可行方向? $\mathbf{x}$ 在约束集边缘和在约束集内部时能使用的信息是不一样的</p>
+<h4 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h4><p>在可行方向定义的基础下，我们给出方向导数的定义。</p>
+<p>设 $\mathbf{d}\in \mathbb{R}^n,$ 可微函数 $f(\mathbf{x})$ 在 $\mathbf{x}$ 处沿 $\mathbf{d}$ 的方向导数为 </p>
+<script type="math/tex; mode=display">
+\frac{\partial f}{\partial \mathbf{d}}(\mathbf{x})=\frac{\mathrm{d} f(\mathbf{x}+\alpha\mathbf{d})}{\mathrm{d}\alpha}=\nabla f(\mathbf{x})^{\top} \mathbf{d}.</script><p>$\square$ </p>
+<p>方向导数描述了函数 $f(\mathbf{x})$ 在 $\mathbf{x}$ 处沿 $\mathbf{d}$ 方向变化的快慢, 我们自然关注函数在何方向变化得最快, 也即 $\mathbf{d}$ 满足什么条件 $\nabla f(\mathbf{x})^{\top} \mathbf{d}$ 最大. 由Cauchy-Schwartz不等式有 $|\nabla f(\mathbf{x})^{\top} \mathbf{d}|\le |\nabla f(\mathbf{x})^{\top} ||\mathbf{d}|$ 当且仅当 $\nabla f(\mathbf{x})^{\top}$ 和 $\mathbf{d}$ 在一个方向时取等, 也即在某点沿梯度方向函数 $f(x)$ 拥有最大的增长率, 同理 $f(x)$ 在某点的负梯度方向减小得最快.</p>
+<p>这部分实际上是对微积分中多元变量微积分的推广, 因为大部分工科的教材在介绍黑塞矩阵时只给出了二元函数的情形.</p>
+<p>下面我们给出某一点是多元函数的极小值点的一些必要条件与充分条件.</p>
+<blockquote>
+<p>虽然我们更关注的是在约束集 $\Omega$ 内部的极小点, 但是难免会碰到在边界取得极小值的函数, 所以我们需要都考虑进去.</p>
+</blockquote>
+<h3 id="一阶必要条件"><a href="#一阶必要条件" class="headerlink" title="一阶必要条件"></a>一阶必要条件</h3><p><strong>定理3 (一阶必要条件)</strong> 设 $f:\mathbb{R}^n\to\mathbb{R}$ 在开集 $\Omega$ 上连续可微, 若 $\mathbf{x}^{\ast}$ 是函数 $f$ 在 $\Omega$ 上的局部极小点, 则对 $\mathbf{x}^{\ast}$ 的任意可行方向 $\mathbf{d}$ 都有 $\mathbf{d}^{\top} \nabla f(\mathbf{x}^{\ast})\ge 0.$ $\square$ </p>
+<p><strong><em>PROOF</em></strong> 对任意 $\alpha&gt; 0\land \mathbf{x}^{\ast}+\alpha \mathbf{d}\in\Omega,$ 有 $f(\mathbf{x}^{\ast}+\alpha\mathbf{d})\ge f(\mathbf{x})$ 成立, 由Taylor展开有</p>
+<script type="math/tex; mode=display">
+\nabla f(\mathbf{x}^{\ast})^{\top} \mathbf{d}+\frac{o(\alpha\|\mathbf{d} \|)}{\alpha}\ge 0.</script><p>取 $\alpha\to 0,$ 便有 $\nabla f(\mathbf{x}^{\ast})^{\top} \mathbf{d}\ge 0$ 也即 $\mathbf{d}^{\top} \nabla f(\mathbf{x}^{\ast})\ge 0.$ $\blacksquare$</p>
+<p>需要注意的是定理3中 $x^{\ast}$ 并不一定是在约束集内部, 所以我们不能断定 $\nabla f(x^{\ast})=\mathbf{0}.$ </p>
+<p><strong>推论1</strong> 设 $f:\mathbb{R}^n\to\mathbb{R}$ 在开集 $\Omega$ 上连续可微, 若 $\mathbf{x}^{\ast}$ 是函数 $f$ 在 $\Omega$ 上的局部极小值点<em>且为内点</em>, 则有 $\nabla f(\mathbf{x}^{\ast})= \mathbf{0}$ 成立. </p>
+<p><strong><em>PROOF</em></strong> 由于 $\mathbf{x}^{\ast}$ 为内点, 可行方向可以任取, 于是取 $\mathbf{d}$ 和 $\mathbf{-d},$ 就有 $\mathbf{d}^{\top} \nabla f(\mathbf{x}^{\ast})\ge 0,-\mathbf{d}^{\top} \nabla f(\mathbf{x}^{\ast})\ge 0,$ 这就表明了 $\mathbf{d}^{\top} \nabla f(\mathbf{x}^{\ast})= 0,$ 而 $\mathbf{d}$ 是任意的, 那么有 $\nabla f(\mathbf{x}^{\ast})=\mathbf{0}$ 成立. $\blacksquare$ </p>
+<p>值得注意的是 $\nabla f(\mathbf{x}^{\ast})=0$ 的点 $\mathbf{x}^{\ast}$ 被称作为驻点, 并不一定是极值点, 比如马鞍面(双曲抛物面)的鞍点.</p>
+<h3 id="二阶必要条件"><a href="#二阶必要条件" class="headerlink" title="二阶必要条件"></a>二阶必要条件</h3><blockquote>
+<p>这里和前面一样要注意局部极小点可能在边界处.</p>
+</blockquote>
+<p><strong>定理4 (二阶必要条件)</strong> 设 $f:\mathbb{R}^n\to\mathbb{R}$ 在约束集 $\Omega\subset \mathbb{R}^n$ 上二阶连续可微, 若 $\mathbf{x}^{\ast}$ 是函数 $f$ 在 $\Omega$ 上的局部极小值点, 且对某个可行方向 $\mathbf{d}$ 有 $\mathbf{d}^{\top} \nabla f(\mathbf{x^{\ast}})=0,$ 那么就有 $\mathbf{d}^{\top} \nabla^2 f(\mathbf{x}^{\ast})\mathbf{d}\ge 0$ 成立. $\square$ </p>
+<p><strong><em>PROOF</em></strong> 由 $\mathbf{d}^{\top} \nabla f(\mathbf{x^{\ast}})=0$ 可得 $\nabla f(\mathbf{x^{\ast}})^{\top} \mathbf{d}=0,$ 由于 $\mathbf{x}^{\ast}$ 是极小点, 于是当正数 $\alpha$ 充分小时一定有 $f(\mathbf{x}^{\ast}+\alpha\mathbf{d})\ge f(\mathbf{x}^{\ast}),$ 于是对 $f(\mathbf{x}^{\ast}+\alpha\mathbf{d})$ 进行Taylor展开, 有</p>
+<script type="math/tex; mode=display">
+f(\mathbf{x}^{\ast}+\alpha \mathbf{d})=f(\mathbf{x}^{\ast})+\alpha\nabla f(\mathbf{x}^{\ast})^{\top} \mathbf{d}+\frac{1}{2}\alpha^2\mathbf{d}^{\top} \nabla^2f(\mathbf{x})\mathbf{d}+o(\alpha^2\|\mathbf{d}\|^2)\ge f(\mathbf{x}^{\ast})</script><p>化简有 $\frac{1}{2}\alpha^2\mathbf{d}^{\top} \nabla^2f(\mathbf{x})\mathbf{d}+o(\alpha^2|\mathbf{d}|^2)\ge 0,$ 于是</p>
+<script type="math/tex; mode=display">
+\mathbf{d}^{\top} \nabla^2 f(\mathbf{x}^{\ast})\mathbf{d}+\frac{o(\alpha^2\|\mathbf{d}\|^2)}{2\alpha^2}\ge 0,</script><p>取 $\alpha \to 0$ 即得结论. $\blacksquare$ </p>
+<p><strong>推论2</strong> 设 $f:\mathbb{R}^n\to\mathbb{R}$ 在约束集 $\Omega\subset \mathbb{R}^n$ 上二阶连续可微, 若 $\mathbf{x}^{\ast}$ 是函数 $f$ 在 $\Omega$ 上的局部极小值点<em>且为内点</em>, 则对任意可行方向 $\mathbf{d}$ 都有 $\mathbf{d}^{\top} \nabla^2 f(\mathbf{x}^{\ast})\mathbf{d}\ge 0$ 成立, 即黑塞矩阵半正定. $\square$ </p>
+<p>证明推论只需要用到一阶必要条件和二阶必要条件即可.</p>
+<h3 id="充分条件"><a href="#充分条件" class="headerlink" title="充分条件"></a>充分条件</h3><p><strong>引理1 (瑞利不等式)</strong> 设 $\mathbf{P}\in\mathbb{R}^{n\times n}$ 是实对称矩阵, 则</p>
+<script type="math/tex; mode=display">
+\lambda_{\min}(\mathbf{P})\|\mathbf{x}\|^2\le \mathbf{x}^{\top} \mathbf{Px}\le \lambda_{\max} \|\mathbf{x}\|^2.</script><p>$\square$ </p>
+<p><strong>定理5</strong> 设 $f:\mathbb{R}^n\to\mathbb{R}$ 在 $\Omega$ 上二阶连续可微, $x^{\ast}$ 是约束集的一个内点, 若 $\nabla f(x^{\ast})=0$ 且在 $x^{\ast}$ 处的黑塞矩阵 $F(x^{\ast})$ 正定, 则 $x^{\ast}$ 为 $f$ 的一个严格局部极小点. $\square$ </p>
+<p><strong><em>PROOF</em></strong> 对任意的且范数充分小的可行方向 $d$ , 对 $f(x^{\ast}+ d)$ 进行Taylor展开有</p>
+<script type="math/tex; mode=display">
+f(x^{\ast}+d)=f(x^{\ast})+\frac{1}{2}d^{\top} F(x^{\ast})d+o(\|d\|^2),</script><p>由于 $F(x^{\ast})$ 正定, 故由瑞利不等式有 $d^{\top} F(x^{\ast})d\ge \lambda_{\min}(F(x^{\ast}))|d|^2&gt;0,$ 且在 $|d|$ 充分小时, 有 $|d|^2&gt;|o(|d|^2)|,$ 这表明了</p>
+<script type="math/tex; mode=display">
+\frac{1}{2}d^{\top} F(x^{\ast})d+o(\|d\|^2)>0,</script><p>这也就意味着对任意可行方向 $d$ 都有 $f(x^{\ast}+d)&gt;f(x^{\ast}),$ 这也就表明了 $x^{\ast}$ 为严格局部极小点. $\blacksquare$ </p>
+<blockquote id="fn_1">
+<sup>1</sup>. Peter D. Lax, Maria Shea Terrell: <em>Multivariable Calculus with Applications</em>.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E4%B8%80%E7%BB%B4%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/" rel="prev" title="最优化（一）：一维搜索方法">
+      <i class="fa fa-chevron-left"></i> 最优化（一）：一维搜索方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/07/%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E6%A2%AF%E5%BA%A6%E6%B3%95/" rel="next" title="最优化（三）：梯度法">
+      最优化（三）：梯度法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">多元函数相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">水平集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E3%80%81%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5"><span class="nav-number">1.2.</span> <span class="nav-text">梯度、雅可比矩阵与黑塞矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E5%AE%9E%E5%80%BC%E5%87%BD%E6%95%B0-%E5%AF%B9%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC"><span class="nav-number">1.2.1.</span> <span class="nav-text">多维实值函数: 对向量求导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B%E5%87%BD%E6%95%B0%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">二次型函数性质</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5"><span class="nav-number">1.2.2.</span> <span class="nav-text">梯度矩阵与雅可比矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5"><span class="nav-number">1.2.3.</span> <span class="nav-text">黑塞矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Taylor%E5%B1%95%E5%BC%80"><span class="nav-number">1.3.</span> <span class="nav-text">Taylor展开</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">集合约束优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A1%8C%E6%96%B9%E5%90%91"><span class="nav-number">2.1.</span> <span class="nav-text">可行方向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">方向导数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%98%B6%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">一阶必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">二阶必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%85%E5%88%86%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">充分条件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">93k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:25</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
