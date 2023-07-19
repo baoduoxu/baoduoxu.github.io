@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="">
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="T2为2019年的真题.  1：设 $f(x)$ 在 $\mathbb{R}$ 上任意阶可导, 且 $\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,$ 同时存在非负实数 $C$ 使得 $\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$ 求证: $f(x)\equiv 0.$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Calculus review Day10">
+<meta property="og:url" content="http://example.com/2022/09/13/calculus/Calculus-review-Day10/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="T2为2019年的真题.  1：设 $f(x)$ 在 $\mathbb{R}$ 上任意阶可导, 且 $\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,$ 同时存在非负实数 $C$ 使得 $\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$ 求证: $f(x)\equiv 0.$">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-13T14:56:47.000Z">
+<meta property="article:modified_time" content="2022-10-25T02:30:30.241Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/09/13/calculus/Calculus-review-Day10/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Calculus review Day10 | XBD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XBD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/calculus/Calculus-review-Day10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Calculus review Day10
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-09-13 22:56:47" itemprop="dateCreated datePublished" datetime="2022-09-13T22:56:47+08:00">2022-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-25 10:30:30" itemprop="dateModified" datetime="2022-10-25T10:30:30+08:00">2022-10-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2022/09/13/calculus/Calculus-review-Day10/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/13/calculus/Calculus-review-Day10/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>T2为2019年的真题.</p>
+</blockquote>
+<p>1：设 <span class="markdown-them-math-inline">$f(x)$</span> 在 <span class="markdown-them-math-inline">$\mathbb{R}$</span> 上任意阶可导, 且 <span class="markdown-them-math-inline">$\forall n\in\mathbb{N},f^{(n)}(0)=0,$</span> 同时存在非负实数 <span class="markdown-them-math-inline">$C$</span> 使得 <span class="markdown-them-math-inline">$\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$</span> 求证: <span class="markdown-them-math-inline">$f(x)\equiv 0.$</span></p>
+<span id="more"></span>
+<p><em><strong>PROOF</strong></em> 一眼Taylor.</p>
+<p><span class="markdown-them-math-inline">$C=0$</span> 时显然成立.</p>
+<p><span class="markdown-them-math-inline">$C&gt;0$</span> 时, 在 <span class="markdown-them-math-inline">$0$</span> 处展开 <span class="markdown-them-math-inline">$f(x),$</span> 有</p>
+<div class="markdown-them-math-block">$$f(x)=\frac{f^{(n)}{(\xi)}}{n!}x^n,
+$$</div><p><span class="markdown-them-math-inline">$\xi$</span> 在 <span class="markdown-them-math-inline">$0,x$</span> 之间,  于是取绝对值利用题干条件的不等式有</p>
+<div class="markdown-them-math-block">$$|f(x) |\le C^n|x^n|,
+$$</div><p>要使 <span class="markdown-them-math-inline">$f(x)=0$</span> 不难想到夹逼, 于是我们要保证 <span class="markdown-them-math-inline">$n\to\infty$</span> 时 <span class="markdown-them-math-inline">$|(Cx)^n|\to0,$</span> 这是很容易做到的, 只需要令 <span class="markdown-them-math-inline">$x\in(-1/C,1/C),$</span> 即 <span class="markdown-them-math-inline">$f(x)\equiv 0$</span> 在 <span class="markdown-them-math-inline">$(-1/C,1/C)$</span> 上成立. 现在我们可以取 <span class="markdown-them-math-inline">$x_0\in(0,1/C),$</span> 在 <span class="markdown-them-math-inline">$x_0$</span> 处进行上述过程, 并重复进行下去, <span class="markdown-them-math-inline">$f(x)\equiv0$</span> 的区间便可以覆盖整个坐标轴, 便能证得我们要证的结论.</p>
+<p>2: 设 <span class="markdown-them-math-inline">$f(x)\in D[0,+\infty),$</span> <span class="markdown-them-math-inline">$f(0)=0,$</span> 且存在常数 <span class="markdown-them-math-inline">$A&gt;0$</span> 使得 <span class="markdown-them-math-inline">$|f'(x)|\le A|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,+\infty)$</span> 上恒成立, 证明在 <span class="markdown-them-math-inline">$(0,+\infty)$</span> 上有 <span class="markdown-them-math-inline">$f(x)\equiv 0.$</span></p>
+<p><em><strong>PROOF1</strong></em> 取 <span class="markdown-them-math-inline">$x&gt;0,$</span> 在 <span class="markdown-them-math-inline">$(0,x)$</span> 上由Lagrange中值定理有 <span class="markdown-them-math-inline">$f'(\xi_{1})(x-0)=f(x)-f(0)$</span> 即 <span class="markdown-them-math-inline">$f'(\xi_{1})x=f(x),$</span> 其中 <span class="markdown-them-math-inline">$\xi_{1}\in(0,x).$</span> 于是 <span class="markdown-them-math-inline">$|f(x)|=|f'(\xi_{1})|x\le Ax|f(\xi_1)|.$</span> 令 <span class="markdown-them-math-inline">$x=1/2A,$</span> 于是</p>
+<div class="markdown-them-math-block">$$|f(x)|\le\frac{1}{2}|f(\xi_1)|\le\frac{1}{2^2}|f(\xi_2)|\le \cdots\le\frac{1}{2^n}|f(\xi_n)|,
+$$</div><p>其中 <span class="markdown-them-math-inline">$0&lt;\xi_n&lt;\xi_{n-1}&lt;\cdots&lt;\xi_1&lt;x,$</span> 于是 <span class="markdown-them-math-inline">$|f(\xi_n)|$</span> 有界, 因此 <span class="markdown-them-math-inline">$n\to\infty$</span> 时, 有 <span class="markdown-them-math-inline">$|f(x)|\le 0,$</span> 即 <span class="markdown-them-math-inline">$f(x)=0$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上成立. 现在我们可以在区间 <span class="markdown-them-math-inline">$(1/2A,2/2A],(2/2A,3/2A],\cdots$</span> 上采用相同的证法, 证得 <span class="markdown-them-math-inline">$f(x)=0$</span> 在 <span class="markdown-them-math-inline">$[0,+\infty)$</span> 上成立. <span class="markdown-them-math-inline">$\square$</span></p>
+<blockquote>
+<p>函数一阶可导时常用Lagrange中值定理和Rolle定理.</p>
+</blockquote>
+<p><em><strong>PROOF2</strong></em></p>
+<p>在求出 <span class="markdown-them-math-inline">$|f(x)|\le 1/2|f(\xi_1)|$</span> 后也可采用下面的做法.</p>
+<p>设 <span class="markdown-them-math-inline">$|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上的最大值为 <span class="markdown-them-math-inline">$M,$</span> 对应的取值为 <span class="markdown-them-math-inline">$x_0,$</span></p>
+<div class="markdown-them-math-block">$$M=|f(x_0)|\le 1/2|f(\xi) |\le M/2,
+$$</div><p>即 <span class="markdown-them-math-inline">$M\le 0,$</span> 于是 <span class="markdown-them-math-inline">$M=0,$</span> <span class="markdown-them-math-inline">$|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上的最大值为 <span class="markdown-them-math-inline">$0,$</span> 即 <span class="markdown-them-math-inline">$f(x)\equiv 0,$</span> 在区间 <span class="markdown-them-math-inline">$(1/2A,2/2A],(2/2A,3/2A],\cdots$</span> 上采用相同的证法可以证得最终结论. <span class="markdown-them-math-inline">$\square$</span></p>
+<blockquote>
+<p>T1, T2的相似之处是限制不等式上界中的其中一个变量的范围(T1是令 <span class="markdown-them-math-inline">$|x|&lt;1/C,$</span> T2是令 <span class="markdown-them-math-inline">$x=1/2A$</span> 或 <span class="markdown-them-math-inline">$x\le 1/2A$</span> ), 让我们可以用极限求出精确的上界.</p>
+<p>这提供了一种证明 <span class="markdown-them-math-inline">$X\equiv 0$</span> 的方法: 构造出 <span class="markdown-them-math-inline">$|X|&lt;a_n$</span> 或 <span class="markdown-them-math-inline">$|X|\le a_n$</span> 且 <span class="markdown-them-math-inline">$\{a_n\}$</span> 收敛于 <span class="markdown-them-math-inline">$0.$</span></p>
+</blockquote>
+<p>3: 证明: <span class="markdown-them-math-inline">$\displaystyle f(x,y)=1+\int_0^x\int_0^y f(u,u)\mathrm{d} u\mathrm{d} v$</span> 在 <span class="markdown-them-math-inline">$[0,1]\times [0,1]$</span> 上至多有一个连续解.</p>
+<p><em><strong>PROOF</strong></em> 看到<em><strong>至多, 至少, 唯一</strong></em> 等字眼的时候, 经常要用反证法. 不妨该方程有两个解, 我们只需要证明这两个解相等即可. 设这两个解的差为 <span class="markdown-them-math-inline">$g(x),$</span> 便转化为证明 <span class="markdown-them-math-inline">$g(x)\equiv 0,$</span> 于是有</p>
+<div class="markdown-them-math-block">$$g(x,y)=\int_0^x\int_0^y g(u,u)\mathrm{d} u\mathrm{d} v
+$$</div><blockquote>
+<p>证明某个函数 <span class="markdown-them-math-inline">$\phi(x)\equiv0$</span> 常用的手段之一就是利用 <span class="markdown-them-math-inline">$\phi(x)=f(\phi(x))$</span> 的关系式进行迭代, 往往能得到 <span class="markdown-them-math-inline">$|\phi(x)|\le g(n,x),$</span> 且 <span class="markdown-them-math-inline">$\lim_{n\to\infty}g(n,x)=0.$</span></p>
+<p>上面这个问题的一元函数的版本是: 连续函数 <span class="markdown-them-math-inline">$\phi(x)$</span> 满足</p>
+<div class="markdown-them-math-block">$$\phi(x)=\int_0^x\phi(u)\mathrm{d} u,x\in[0,1],
+$$</div><p>证明在 <span class="markdown-them-math-inline">$[0,1]$</span> 上有 <span class="markdown-them-math-inline">$\phi(u)\equiv 0.$</span></p>
+<p><em><strong>PROOF</strong></em> 显然 <span class="markdown-them-math-inline">$\phi(x)$</span> 在 <span class="markdown-them-math-inline">$[0,1]$</span> 上有界, 设 <span class="markdown-them-math-inline">$|\phi(x)|$</span> 的最大值为 <span class="markdown-them-math-inline">$M,$</span> 于是对任意 <span class="markdown-them-math-inline">$x_1\in[0,1]$</span> 有</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+|\phi(x_1)|
+&amp;\le \int_0^{x_1}|\phi(x_2)|\mathrm{d} x_2\\
+&amp;\le\int_0^{x_1}\int_{0}^{x_2}|\phi(x_3) |\mathrm{d} x_3\mathrm{d} x_2\\
+&amp;\le \cdots\\
+&amp;\le\int_0^{x_1}\cdots\int_0^{x_{n}}|\phi(x_{n+1})|\mathrm{d} x_{n+1}\mathrm{d} x_{n}\cdots \mathrm{d} x_2\\
+&amp;\le M\int_0^{x_1}\cdots\int_0^{x_{n-1}}\mathrm{d} x_{n}\mathrm{d} x_{n-1}\cdots \mathrm{d} x_2\\
+&amp;=\frac{M x_1^n}{n!}
+\end{aligned}
+$$</div><p>不论 <span class="markdown-them-math-inline">$x_1$</span> 取何值总有 <span class="markdown-them-math-inline">$\lim_{n\to\infty}Mx_1^n/n!=0,$</span> 这就表明了 <span class="markdown-them-math-inline">$\phi(x)\equiv 0.$</span></p>
+</blockquote>
+<p>对于本题而言, 我们只需要像下面这样:</p>
+<div class="markdown-them-math-block">$$|g(x,y)|\le\iint_{D_1}\cdots \iint_{D_n} |g(u,v)|\mathrm{d} \sigma_n\cdots \mathrm{d} \sigma_1\le\iint_{D_1}\cdots \iint_{D_n} M\mathrm{d} \sigma_n\cdots \mathrm{d} \sigma_1
+$$</div><p>即可得到</p>
+<div class="markdown-them-math-block">$$g(x,y)\le M\frac{x^n}{n!}\frac{y^n}{n!},
+$$</div><p>这就证得了结论. <span class="markdown-them-math-inline">$\square$</span></p>
+<blockquote>
+<p>好多还是不会, 还是先看教程复习复习基础吧😭</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/12/calculus/Calculus-review-Day9/" rel="prev" title="Calculus review Day9">
+      <i class="fa fa-chevron-left"></i> Calculus review Day9
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/07/OR/num-opt/one-dim/" rel="next" title="最优化（一）：一维搜索方法">
+      最优化（一）：一维搜索方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">121k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:50</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
