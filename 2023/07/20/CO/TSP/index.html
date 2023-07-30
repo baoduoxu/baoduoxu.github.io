@@ -24,17 +24,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="典型图论问题">
-<meta property="og:url" content="http://example.com/2023/07/09/math/graph/classic-problem/index.html">
+  <meta name="description" content="考虑欧氏平面上的完全图 $G&#x3D;(V,E),|V|&#x3D;n$, 此时边权为正且满足三角不等式. 设最优环游为 $H^*$, 启发式算法产生的解记作 $H$, 边权 $c:E\to\mathbb{R}_+$. 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 $c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\rceil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Heuristic Algorithms for TSP">
+<meta property="og:url" content="http://example.com/2023/07/20/CO/TSP/index.html">
 <meta property="og:site_name" content="XBD">
+<meta property="og:description" content="考虑欧氏平面上的完全图 $G&#x3D;(V,E),|V|&#x3D;n$, 此时边权为正且满足三角不等式. 设最优环游为 $H^*$, 启发式算法产生的解记作 $H$, 边权 $c:E\to\mathbb{R}_+$. 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 $c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\rceil">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-09T02:49:19.829Z">
-<meta property="article:modified_time" content="2023-07-19T03:28:54.822Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png">
+<meta property="article:published_time" content="2023-07-20T02:40:04.000Z">
+<meta property="article:modified_time" content="2023-07-30T09:00:33.213Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png">
 
-<link rel="canonical" href="http://example.com/2023/07/09/math/graph/classic-problem/">
+<link rel="canonical" href="http://example.com/2023/07/20/CO/TSP/">
 
 
 <script id="page-configurations">
@@ -47,7 +51,7 @@
   };
 </script>
 
-  <title>典型图论问题 | XBD</title>
+  <title>Heuristic Algorithms for TSP | XBD</title>
   
 
 
@@ -165,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/09/math/graph/classic-problem/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/20/CO/TSP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          典型图论问题
+          Heuristic Algorithms for TSP
         </h1>
 
         <div class="post-meta">
@@ -188,15 +192,24 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2023-07-09 10:49:19" itemprop="dateCreated datePublished" datetime="2023-07-09T10:49:19+08:00">2023-07-09</time>
+              <time title="Created: 2023-07-20 10:40:04" itemprop="dateCreated datePublished" datetime="2023-07-20T10:40:04+08:00">2023-07-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-07-19 11:28:54" itemprop="dateModified" datetime="2023-07-19T11:28:54+08:00">2023-07-19</time>
+                <time title="Modified: 2023-07-30 17:00:33" itemprop="dateModified" datetime="2023-07-30T17:00:33+08:00">2023-07-30</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+                </span>
+            </span>
 
           
   
@@ -207,8 +220,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2023/07/09/math/graph/classic-problem/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/09/math/graph/classic-problem/" itemprop="commentCount"></span>
+    <a title="valine" href="/2023/07/20/CO/TSP/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/20/CO/TSP/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -218,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>0</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -237,7 +250,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>考虑欧氏平面上的完全图 <span class="markdown-them-math-inline">$G=(V,E),|V|=n$</span>, 此时边权为正且满足三角不等式. 设最优环游为 <span class="markdown-them-math-inline">$H^*$</span>, 启发式算法产生的解记作 <span class="markdown-them-math-inline">$H$</span>, 边权 <span class="markdown-them-math-inline">$c:E\to\mathbb{R}_+$</span>.</p>
+<h2 id="最近邻法">最近邻法</h2>
+<p>从起点开始, 每次选择距离当前点最近的点即可. 满足 <span class="markdown-them-math-inline">$c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\rceil c(H^*)$</span>, 粗略点就是 <span class="markdown-them-math-inline">$c(H)/c(H^*)=O(\log n)$</span>.</p>
+<p>如果图不满足三角不等式, 那么最近邻法产生的环游与最优环游的比值可以任意大.</p>
+<h2 id="插入法">插入法</h2>
+<h2 id="christofides-启发式方法">Christofides 启发式方法</h2>
+<p>需要用到最小生成树 <span class="markdown-them-math-inline">$T$</span>, 记 <span class="markdown-them-math-inline">$W$</span> 为 <span class="markdown-them-math-inline">$T$</span> 中度数为奇数的顶点的集合, 在 <span class="markdown-them-math-inline">$T$</span> 中, 由握手定理可得 <span class="markdown-them-math-inline">$\sum_{v\in W}\deg(v)$</span> 为偶数, 于是必然有 <span class="markdown-them-math-inline">$|W|$</span> 为偶数, 因此诱导子图 <span class="markdown-them-math-inline">$G[W]$</span> 存在最小费用完美匹配 <span class="markdown-them-math-inline">$M$</span>, 令 <span class="markdown-them-math-inline">$J=E(T)\cup M$</span>, 在这里边集的并要求保留重复元素, 即允许出现重边, 这样得到子图 <span class="markdown-them-math-inline">$G'=(V,J)=T\cup (W,M)$</span>, 显然 <span class="markdown-them-math-inline">$G'$</span> 中所有点的度数均为偶数, 因为将完美匹配并入最小生成树 <span class="markdown-them-math-inline">$T$</span> 中时未改变偶数度顶点的度数, 给每个奇数度顶点的度数加上了一, 于是 <span class="markdown-them-math-inline">$G'$</span> 中存在欧拉圈, 设欧拉圈为 <span class="markdown-them-math-inline">$v_0,\cdots,v_0$</span>, 在欧拉圈的基础上构造TSP环游: 置 <span class="markdown-them-math-inline">$H:=\emptyset$</span>, 按照欧拉圈的顺序逐边向 <span class="markdown-them-math-inline">$H$</span> 中添加边, 若在 <span class="markdown-them-math-inline">$v_{i}$</span> 时 <span class="markdown-them-math-inline">$v_{i+1},\cdots,v_{j}(j\ge i+1)$</span> 已经被访问过且 <span class="markdown-them-math-inline">$v_{j+1}$</span> 未被访问过, 则置 <span class="markdown-them-math-inline">$H:=H\cup \{v_{i},v_{j+1}\}$</span>(即跳过已经被访问过的点), 直到所有顶点都被访问.</p>
+<p><strong>定理1</strong> Christofides 启发式方法得到的环游满足 <span class="markdown-them-math-inline">$c(H)/c(H^*)\le 3/2$</span>.</p>
+<p><em><strong>PROOF</strong></em> 由于环游 <span class="markdown-them-math-inline">$H$</span> 是在 <span class="markdown-them-math-inline">$G'=T\cup (W,M)$</span> 上进行改进得到的, 只需要证明 <span class="markdown-them-math-inline">$c(E(G'))\le 1.5c(H^*)$</span> 即可, 分别考虑最小生成树和完美匹配的边权. 首先一定有 <span class="markdown-them-math-inline">$c(E(T))\le c(H^*)$</span>, 如若不然, 去掉 <span class="markdown-them-math-inline">$H^*$</span> 的一条边得到的生成树便可成为新的最小生成树; 对于 <span class="markdown-them-math-inline">$W$</span>, 按照顶点在 <span class="markdown-them-math-inline">$H^*$</span> 的顺序将 <span class="markdown-them-math-inline">$W$</span> 中的点画成一个圈 <span class="markdown-them-math-inline">$C$</span>, 由三角不等式可得 <span class="markdown-them-math-inline">$c(C)\le c(H^*)$</span>, 且圈 <span class="markdown-them-math-inline">$C$</span> 可以被划分为 <span class="markdown-them-math-inline">$G[W]$</span> 的两个完美匹配 <span class="markdown-them-math-inline">$M_1,M_2$</span>, 显然最小费用完美匹配 <span class="markdown-them-math-inline">$M$</span> 满足 <span class="markdown-them-math-inline">$c(M)\le \min \{c(M_1),c(M_2)\}\le \frac{c(M_1)+c(M_2)}{2}=c(C)/2\le c(H^*)/2$</span>. 因此 <span class="markdown-them-math-inline">$c(H)\le c(J)=c(E(T))+c(M)\le 1.5c(H^*)$</span>. <span class="markdown-them-math-inline">$\blacksquare$</span></p>
+<h2 id="$k$-交换"><span class="markdown-them-math-inline">$k$</span>-交换</h2>
+<p>常用的是2-opt和3-opt.</p>
+<p><span class="markdown-them-math-inline">$k$</span>-opt用于改进已有的环游, 比如Chrisrofides产生的环游 <span class="markdown-them-math-inline">$H$</span>. <span class="markdown-them-math-inline">$2$</span>-opt 是对 <span class="markdown-them-math-inline">$H$</span> 的不相邻的两条边做交换操作, 更详细地说, 是将这两条边删去得到两条路径 <span class="markdown-them-math-inline">$H_1,H_2$</span>, 通过一种唯一的方法将 <span class="markdown-them-math-inline">$H_1,H_2$</span> 组合成一条新的环游 <span class="markdown-them-math-inline">$H'$</span>, 若 <span class="markdown-them-math-inline">$c(H')&lt; c(H)$</span>, 那我们就认为 <span class="markdown-them-math-inline">$H'$</span> 是更优的选择. 最终可以达到一个最优的状态, 即不能再通过2-交换得到更优的环游. 3-交换是类似的操作, 删边-重新组合. 当 <span class="markdown-them-math-inline">$k&gt;3$</span> 时, 删边重新组合成新的环游的方法数呈指数级上升, 一般不采用.</p>
+<p>遗憾的是虽然可以在 <span class="markdown-them-math-inline">$O(|V|^2)$</span> 内验证一条环游是否是2-opt的, 但是有可能需要指数次交换才能将任意一条环游变为2-opt的.</p>
+<h2 id="lin-kernighan">Lin-Kernighan</h2>
+<p>Lin-Kernighan启发式方法简称为LKH, 是目前最高效的TSP启发式算法之一。</p>
+<p>首先需要定义 <span class="markdown-them-math-inline">$\delta$</span>-path相关的概念. <span class="markdown-them-math-inline">$\delta$</span>-path是一条path满足path的终点是路径上的某个点, 也就是说 <span class="markdown-them-math-inline">$\delta$</span>-path中含有一个圈, 如下图的 <span class="markdown-them-math-inline">$P$</span> 所示, 其中 <span class="markdown-them-math-inline">$w$</span> 为该路径的终点(当然也在路径中出现过), <span class="markdown-them-math-inline">$r$</span> 为 <span class="markdown-them-math-inline">$w$</span> 紧跟着的点.</p>
+<p>可以通过一个 <span class="markdown-them-math-inline">$\delta$</span>-path 构造一个TSP环游, 构造规则为: 将路径终点所在的路径中的</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png" alt=""></p>
+<p>LKH算法的核心思想就是不断通过删边与加边构造费用越来越小的 <span class="markdown-them-math-inline">$\delta$</span>-path.</p>
+<p><a target="_blank" rel="noopener" href="https://stemlounge.com/animated-algorithms-for-the-traveling-salesman-problem/">11 Animated Algorithms for the Traveling Salesman Problem (stemlounge.com)</a></p>
+<h2 id="tsp的一个dp算法">TSP的一个DP算法</h2>
+<p>设 <span class="markdown-them-math-inline">$V=\{c_1,\cdots,c_n\}$</span>, 考虑到环游中起点的任意性, 以 <span class="markdown-them-math-inline">$c_1$</span> 为起点. 对非空集合 <span class="markdown-them-math-inline">$S\subset \{c_2,\cdots,c_n\}\land c_i\in S$</span>, 设 <span class="markdown-them-math-inline">$f(S,c_i)$</span> 表示以 <span class="markdown-them-math-inline">$c_1$</span> 为起点 <span class="markdown-them-math-inline">$c_i$</span> 为终点且经过 <span class="markdown-them-math-inline">$S$</span> 中所有点的最短路径, 首先 <span class="markdown-them-math-inline">$|S|=1$</span> 时 <span class="markdown-them-math-inline">$f(S,c_i)=f(\{c_i\},c_i)=d(c_1,c_i)$</span>; 当 <span class="markdown-them-math-inline">$|S|&gt;1$</span> 时, 只需枚举 <span class="markdown-them-math-inline">$c_i$</span> 的前置结点 <span class="markdown-them-math-inline">$c_j(j\ne i)$</span>, 此时终止于 <span class="markdown-them-math-inline">$c_j$</span> 的最短路径对应的 <span class="markdown-them-math-inline">$f$</span> 可以表示为 <span class="markdown-them-math-inline">$f(S\backslash\{c_i\},c_j)$</span>, 那么就有</p>
+<div class="markdown-them-math-block">$$f(S,c_i)=\min_{c_j\in S\backslash\{c_i\}}f(S\backslash\{c_i\},c_j)+d(c_j,c_i)
+$$</div><p>最终最优环游为 <span class="markdown-them-math-inline">$\min_{2\le i\le n}f(\{c_2,\cdots,c_n\},c_i)+d(c_i,c_1)$</span>. 这个动态规划的复杂度为 <span class="markdown-them-math-inline">$\sum_{k=1}^{n-1}O\left(\binom{n}{k}k^2\right)=O(n^22^n)=O^*(2^n)$</span>, <span class="markdown-them-math-inline">$O^*(b^n)=O(b^np(n))$</span>其中 <span class="markdown-them-math-inline">$p(n)$</span> 为多项式.</p>
+
     </div>
 
     
@@ -252,12 +289,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/03/thesis/rho-ring-star/" rel="prev" title="rho-ring-star.md">
-      <i class="fa fa-chevron-left"></i> rho-ring-star.md
+    <a href="/2023/07/10/OR/int-prop/well-solved/" rel="prev" title="Well-Solved Problems">
+      <i class="fa fa-chevron-left"></i> Well-Solved Problems
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/07/10/OR/int-prop/well-solved/" rel="next" title="Well-Solved Problems">
-      Well-Solved Problems <i class="fa fa-chevron-right"></i>
+    <a href="/2023/07/24/OR/int-prop/valid-inequation/" rel="next" title="有效不等式与强有效不等式">
+      有效不等式与强有效不等式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -318,6 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E8%BF%91%E9%82%BB%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">最近邻法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">插入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#christofides-%E5%90%AF%E5%8F%91%E5%BC%8F%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Christofides 启发式方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#$k$-%E4%BA%A4%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">$k$-交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lin-kernighan"><span class="nav-number">5.</span> <span class="nav-text">Lin-Kernighan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tsp%E7%9A%84%E4%B8%80%E4%B8%AAdp%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">TSP的一个DP算法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -331,20 +369,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -385,13 +423,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">121k</span>
+    <span title="Symbols count total">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">1:50</span>
+    <span title="Reading time total">2:02</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

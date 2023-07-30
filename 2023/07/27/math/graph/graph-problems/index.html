@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="">
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 $G&#x3D;(V,E)$ 的基础上描述的, 默认为无向图. 1: 匹配. 图 $G$ 的一个匹配 $M$ 是 $E$ 的子集, 满足 $M$ 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 $M$. 2: 覆盖. 图 $G$ 的一个覆盖 $R$ 是顶点 $V$ 的子集, 满足">
+<meta property="og:type" content="article">
+<meta property="og:title" content="典型图论问题">
+<meta property="og:url" content="http://example.com/2023/07/27/math/graph/graph-problems/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 $G&#x3D;(V,E)$ 的基础上描述的, 默认为无向图. 1: 匹配. 图 $G$ 的一个匹配 $M$ 是 $E$ 的子集, 满足 $M$ 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 $M$. 2: 覆盖. 图 $G$ 的一个覆盖 $R$ 是顶点 $V$ 的子集, 满足">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-27T09:53:44.000Z">
+<meta property="article:modified_time" content="2023-07-30T08:28:18.201Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/07/27/math/graph/graph-problems/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>典型图论问题 | XBD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XBD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/27/math/graph/graph-problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          典型图论问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-27 17:53:44" itemprop="dateCreated datePublished" datetime="2023-07-27T17:53:44+08:00">2023-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-30 16:28:18" itemprop="dateModified" datetime="2023-07-30T16:28:18+08:00">2023-07-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/07/27/math/graph/graph-problems/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/27/math/graph/graph-problems/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>981</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 <span class="markdown-them-math-inline">$G=(V,E)$</span> 的基础上描述的, 默认为无向图.</p>
+<p>1: <strong>匹配</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个匹配 <span class="markdown-them-math-inline">$M$</span> 是 <span class="markdown-them-math-inline">$E$</span> 的子集, 满足 <span class="markdown-them-math-inline">$M$</span> 中的任意两条边都没有公共的顶点. <strong>最大匹配问题</strong>要求找到满足最大的满足条件的 <span class="markdown-them-math-inline">$M$</span>.</p>
+<p>2: <strong>覆盖</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个覆盖 <span class="markdown-them-math-inline">$R$</span> 是顶点 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$E$</span> 中的任意一条边中的某个端点在 <span class="markdown-them-math-inline">$R$</span> 中. 最小覆盖问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$R$</span>.</p>
+<p>3: <strong>集合覆盖(Set Cover)</strong>. 对于给定的集合 <span class="markdown-them-math-inline">$U$</span> 和集合<span class="markdown-them-math-inline">$\mathcal{S}\subset \mathcal{P}(U)$</span>, 若 <span class="markdown-them-math-inline">$\mathcal{S}'\subset \mathcal{S}$</span> 满足 <span class="markdown-them-math-inline">$\bigcup_{S\subset \mathcal{S}'}S=U$</span>, 则称 <span class="markdown-them-math-inline">$\mathcal{S}'$</span> 覆盖集合 <span class="markdown-them-math-inline">$U$</span>. 最小集合覆盖(MSC)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$\mathcal{S}'$</span>.</p>
+<p>4: <strong>独立集(Independent Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的独立集 <span class="markdown-them-math-inline">$I$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$I$</span> 中的任意一对顶点都不相邻. 最大独立集(MIS)问题要求找到最大的满足条件的 <span class="markdown-them-math-inline">$I$</span>, 同时将最大的 <span class="markdown-them-math-inline">$|I|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的独立数 <span class="markdown-them-math-inline">$\alpha(G)$</span>.</p>
+<p>5: <strong>支配集(Dominant Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的支配集 <span class="markdown-them-math-inline">$D$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$V$</span> 可以被划分为 <span class="markdown-them-math-inline">$D$</span> 和 <span class="markdown-them-math-inline">$N(D)=\bigcup_{v\in D}N(v)$</span>. 最小支配集(MDS)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$D$</span>, 同时将最小的 <span class="markdown-them-math-inline">$|D|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的支配数 <span class="markdown-them-math-inline">$\gamma(G)$</span>.</p>
+<p>6: <strong>染色(Graph Coloring)</strong>. 无向图 <span class="markdown-them-math-inline">$G$</span> 的 <span class="markdown-them-math-inline">$k$</span>-coloring <span class="markdown-them-math-inline">$c:V\to [k]$</span> 满足 <span class="markdown-them-math-inline">$\forall\{u,v\}\in E,c(u)\ne c(v)$</span>, 即使用 <span class="markdown-them-math-inline">$k$</span> 种颜色给图 <span class="markdown-them-math-inline">$G$</span> 的每个顶点都分配一种颜色, 使得相邻顶点的颜色都不相同. 最小的能给 <span class="markdown-them-math-inline">$G$</span> 进行上述染色过程的 <span class="markdown-them-math-inline">$k$</span> 称为图 <span class="markdown-them-math-inline">$G$</span> 的色数, 记作 <span class="markdown-them-math-inline">$\chi(G)$</span>, <span class="markdown-them-math-inline">$c:V\to [\chi(G)]$</span> 称为最优染色(optimal coloring). 染色问题要求找到图 <span class="markdown-them-math-inline">$G$</span> 的色数 <span class="markdown-them-math-inline">$\chi(G)$</span> 或者更进一步地, 最优的染色方案 <span class="markdown-them-math-inline">$c$</span>.</p>
+<p>7: 最优树(最短路, 最小生成树, Steiner Tree)</p>
+<p>8: 网络流(最大流, 最小费用流, 最小割)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/25/essay/essay/" rel="prev" title="一些做题记录">
+      <i class="fa fa-chevron-left"></i> 一些做题记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/07/29/seminar2023/" rel="next" title="seminar2023">
+      seminar2023 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">134k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">2:02</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

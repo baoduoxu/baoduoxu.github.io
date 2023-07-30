@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="">
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="设 $X$ 为单纯形与 $\mathbb{Z}$ 的交集，定义其有效不等式为不等式 $\lambda^Tx\le \lambda_0$ 满足 $\forall x\in X,\lambda^Tx\le \lambda_0$。设 $\mathrm{conv}(X)$ 表示 $X$ 的凸包，显然凸包的某个方向的任意边界都是一个有效不等式。 Chvatal-Gomory方法 Chvatal-Gomory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有效不等式与强有效不等式">
+<meta property="og:url" content="http://example.com/2023/07/24/OR/int-prop/valid-inequation/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="设 $X$ 为单纯形与 $\mathbb{Z}$ 的交集，定义其有效不等式为不等式 $\lambda^Tx\le \lambda_0$ 满足 $\forall x\in X,\lambda^Tx\le \lambda_0$。设 $\mathrm{conv}(X)$ 表示 $X$ 的凸包，显然凸包的某个方向的任意边界都是一个有效不等式。 Chvatal-Gomory方法 Chvatal-Gomory">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-24T02:55:24.000Z">
+<meta property="article:modified_time" content="2023-07-29T12:42:34.370Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/07/24/OR/int-prop/valid-inequation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>有效不等式与强有效不等式 | XBD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XBD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/24/OR/int-prop/valid-inequation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          有效不等式与强有效不等式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-24 10:55:24" itemprop="dateCreated datePublished" datetime="2023-07-24T10:55:24+08:00">2023-07-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-29 20:42:34" itemprop="dateModified" datetime="2023-07-29T20:42:34+08:00">2023-07-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96%E4%B8%8E%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">组合优化与整数规划</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/07/24/OR/int-prop/valid-inequation/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/24/OR/int-prop/valid-inequation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>设 <span class="markdown-them-math-inline">$X$</span> 为单纯形与 <span class="markdown-them-math-inline">$\mathbb{Z}$</span> 的交集，定义其<strong>有效不等式</strong>为不等式 <span class="markdown-them-math-inline">$\lambda^Tx\le \lambda_0$</span> 满足 <span class="markdown-them-math-inline">$\forall x\in X,\lambda^Tx\le \lambda_0$</span>。设 <span class="markdown-them-math-inline">$\mathrm{conv}(X)$</span> 表示 <span class="markdown-them-math-inline">$X$</span> 的凸包，显然凸包的某个方向的任意边界都是一个有效不等式。</p>
+<h2 id="chvatal-gomory方法">Chvatal-Gomory方法</h2>
+<p>Chvatal-Gomory方法（简称C-G方法）用于产生有效不等式。对于 <span class="markdown-them-math-inline">$X=\{x:Ax\le b,x\in\mathbb{Z}^{n}_+\}$</span>, 考虑 <span class="markdown-them-math-inline">$P=\{x\in\mathbb{R}^n_+:Ax\le b\}$</span>, 先构造 <span class="markdown-them-math-inline">$P$</span> 的有效不等式，按照下面的步骤：</p>
+<ol>
+<li>选择权值向量 <span class="markdown-them-math-inline">$\mu\in\mathbb{R}^m_+$</span>，则 <span class="markdown-them-math-inline">$P$</span> 中的不等式的线性组合即为其有效不等式，为</li>
+</ol>
+<div class="markdown-them-math-block">$$\sum_{j=1}^n\mu^Ta_jx_j\le\mu^Tb
+$$</div><p>其中 <span class="markdown-them-math-inline">$A\in\mathbb{R}^{m\times n}=(a_1,\cdots,a_n)$</span>.</p>
+<ol start="2">
+<li>根据下取整的性质以及 <span class="markdown-them-math-inline">$x$</span> 的正性，可以将上面有效不等式的系数做一个下取整，就有</li>
+</ol>
+<div class="markdown-them-math-block">$$\sum_{j=1}^n\lfloor\mu^Ta_j\rfloor x_j\le\mu^Tb
+$$</div><ol start="3">
+<li>由于不等式的左侧是整数，因此就有</li>
+</ol>
+<div class="markdown-them-math-block">$$\sum_{j=1}^n\lfloor\mu^Ta_j\rfloor x_j\le\lfloor\mu^Tb\rfloor
+$$</div><p>这就是 <span class="markdown-them-math-inline">$X$</span> 的一个有效不等式。</p>
+<h2 id="gomory割平面法">Gomory割平面法</h2>
+<p>在求出整数规划对应的线性松弛问题的解之后, 若线性松弛问题的最优解都是整数, 那么该最优解就是整数规划的最优解. 下面讨论最优解不全为整数的情况. Gomory 割平面法的思想是, 当得到的线性松弛问题的最优解不全是整数时, 想办法添加新的约束条件把该最优解排除, 而不把约束集中的原整数可行解排除(将最优解割掉).</p>
+<p><strong>Gomory割平面实际上就是有效不等式.</strong></p>
+<p>不妨设线性松弛问题的最优解的基在前 <span class="markdown-them-math-inline">$m$</span> 列, 即最优解可以写成 <span class="markdown-them-math-inline">$\hat{x}=[b^T,0]^T$</span> 形式. 假设 <span class="markdown-them-math-inline">$b_i$</span> 不是整数, 首先由约束条件得:</p>
+<div class="markdown-them-math-block">$$x_i+\sum_{j=m+1}^{n}a_{ij}x_{j}=b_i\tag{i}
+$$</div><p>由于 <span class="markdown-them-math-inline">$x\ge 0,$</span> 故</p>
+<div class="markdown-them-math-block">$$x_i+\sum_{j=m+1}^{n}\lfloor a_{ij}\rfloor x_{j}\le x_i+\sum_{j=m+1}^{n}a_{ij}x_{j}=b_i
+$$</div><p>在要求解为整数的前提下, 上式左边向下取整之后不发生变化, 于是不等式两边同时向下取整就有</p>
+<div class="markdown-them-math-block">$$x_i+\sum_{j=m+1}^{n}\lfloor a_{ij}\rfloor x_{j}\le \lfloor b_i\rfloor \tag{ii}
+$$</div><p><span class="markdown-them-math-inline">$\rm (i)-(ii),$</span> 有</p>
+<div class="markdown-them-math-block">$$\sum_{j=m+1}^n (a_{ij}-\lfloor a_{ij}\rfloor)x_j\ge b_i-\lfloor b_{i}\rfloor\tag{iii}
+$$</div><p>由于 <span class="markdown-them-math-inline">$b_i\notin \mathbb{Z},$</span> 则 <span class="markdown-them-math-inline">$b_i-\lfloor b_{i}\rfloor&gt;0,$</span> 而显然 <span class="markdown-them-math-inline">$\hat{x}$</span> 不符合该 <span class="markdown-them-math-inline">$\rm (iii)$</span> , 因为代入 <span class="markdown-them-math-inline">$\hat{x}$</span> 之后左边为 <span class="markdown-them-math-inline">$0$</span> 而右边是一个大于 <span class="markdown-them-math-inline">$0$</span> 的数, 而对于原线性松弛问题的所有的整数可行解, 它们满足上述讨论的每一步的约束, 那么它们自然满足 <span class="markdown-them-math-inline">$\rm (iii),$</span> 于是约束 <span class="markdown-them-math-inline">$\rm (iii)$</span> 就称为 Gomory 割平面, 把它添加到原线性松弛问题中继续求解, 直到新得到的最优解所有的分量都为整数.</p>
+<p>添加新的变量把 Gomory 割平面写成标准形式:</p>
+<div class="markdown-them-math-block">$$\sum_{j=m+1}^n (a_{ij}-\lfloor a_{ij}\rfloor)x_j-x_{n+1}= b_i-\lfloor b_{i}\rfloor
+$$</div><p>需要注意的是, 新添加的变量并不是我们想要的变量, 它无需是整数.</p>
+<p>如果最优解不在前 <span class="markdown-them-math-inline">$m$</span> 列, 设最优解/基变量对应的下标集为 <span class="markdown-them-math-inline">$I,$</span> 非基变量对应的下标集为 <span class="markdown-them-math-inline">$J,$</span> 则 Gomory 割平面为:</p>
+<div class="markdown-them-math-block">$$\sum_{j\in J} (a_{ij}-\lfloor a_{ij}\rfloor)x_j-x_{n+1}= b_i-\lfloor b_{i}\rfloor
+$$</div><p>其中 <span class="markdown-them-math-inline">$i\in I,$</span> 且满足 <span class="markdown-them-math-inline">$\hat{x}_i\not\in \mathbb{Z},$</span> 其中 <span class="markdown-them-math-inline">$\hat{x}_i$</span> 为 IP 对应的线性松弛问题最优解中的不是整数的那个.</p>
+<p>如果有多个解不是整数, 可以选择每次只添加一个割平面, 也可以将所有的割平面添加进去.</p>
+<h2 id="混合整数割">混合整数割</h2>
+<p>上文的割平面适用于严格的整数规划问题, 对于混合整数规划问题, 它的约束集一般表述为 <span class="markdown-them-math-inline">$\{x\in\mathbb{Z}_+^n,y\in\mathbb{R}_+^p:Ax+Gy\le b,b\in\mathbb{R}^m\}$</span>, 此时的有效不等式/割平面要复杂一些. 记记号 <span class="markdown-them-math-inline">$\tilde{\cdot}=\cdot-\lfloor\cdot\rfloor$</span>.</p>
+<p><strong>定理1</strong> 设 <span class="markdown-them-math-inline">$X=\left\{x\in\mathbb{Z}_+^n,y\in\mathbb{R}_+^p:\sum_{j\in [n]}a_jx_j+\sum_{j\in[p]}g_jy_j\le b,a_j,g_j,b\in\mathbb{R}\right\}$</span>, 它的有效不等式为</p>
+<div class="markdown-them-math-block">$$\sum_{j\in[n]}\lfloor a_j\rfloor x_j+\frac{1}{1-\tilde{b}}\sum_{j\in J^-}g_jy_j\le \lfloor b\rfloor
+$$</div><p>其中 <span class="markdown-them-math-inline">$J^{-}=\{j\in [p]:g_j&lt;0\}$</span>, 同时该有效不等式为 <span class="markdown-them-math-inline">$\mathrm{conv}(X)$</span>的一个刻面.</p>
+<p><strong>定理2</strong> 设通过单纯形法求解混合整数线性规划的最优解时得到的单纯形表中描述整数基变量 <span class="markdown-them-math-inline">$y_{B_u}$</span> 的等式约束为 <span class="markdown-them-math-inline">$X^{(B_u)}=\left\{y_{B_u}\in\mathbb{Z},x\in\mathbb{Z}_+^{n_1},y\in\mathbb{R}_+^{n_2}:y_{B_u}+\sum_{j\in N_1}\bar{a}_{uj}y_j+\sum_{j\in N_2}\bar{a}_{uj}x_j\le \bar{a}_{u0},\right\}$</span>, <span class="markdown-them-math-inline">$N_2$</span> 为整数非基变量下标集, <span class="markdown-them-math-inline">$N_2$</span> 为实数非基变量的下标集, 那么 <span class="markdown-them-math-inline">$X^{(B_u)}$</span> 的有效不等式为</p>
+<div class="markdown-them-math-block">$$\left(\sum_{\tilde{a}_j\le \tilde{a}_0}\tilde{a}_jy_j+\sum_{\tilde{a}_j&gt;\tilde{a}_j}\frac{\tilde{a}_0(1-\tilde{a}_0)}{1-\tilde{a}_0}y_j\right)+\left(\sum_{\bar{a}_{uj}&gt;0}\bar{a}_{uj}x_j+\sum_{\bar{a}_{uj}&lt;0}\frac{\tilde{a}_0}{1-\tilde{a}_0}\bar{a}_{uj}x_j\right) \ge \tilde{a}_0
+$$</div><p>这是所谓的Gomory混合整数割(平面).</p>
+<blockquote>
+<p>证明上述定理仅需要通过分类讨论, 取整函数的性质和不等式的基本性质即可, 要证明构造的有效不等式为凸包的刻面, 还需要找到 <span class="markdown-them-math-inline">$n+p$</span> 个仿射无关的点使有效不等式等号成立(在有效不等式平面上).</p>
+</blockquote>
+<h2 id="多面体理论与强有效不等式">多面体理论与强有效不等式</h2>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/20/CO/TSP/" rel="prev" title="Heuristic Algorithms for TSP">
+      <i class="fa fa-chevron-left"></i> Heuristic Algorithms for TSP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/07/25/OR/int-prop/lagrangian-duality/" rel="next" title="lagrangian-duality">
+      lagrangian-duality <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chvatal-gomory%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Chvatal-Gomory方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gomory%E5%89%B2%E5%B9%B3%E9%9D%A2%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Gomory割平面法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E6%95%B4%E6%95%B0%E5%89%B2"><span class="nav-number">3.</span> <span class="nav-text">混合整数割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%9D%A2%E4%BD%93%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BC%BA%E6%9C%89%E6%95%88%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">多面体理论与强有效不等式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">134k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">2:02</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

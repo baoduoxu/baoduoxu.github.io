@@ -32,7 +32,7 @@
 <meta property="og:description" content="这部分与数理统计中的多元线性回归（最小二乘法），一些优化迭代算法以及简单的矩阵微分有重叠，比较简单，主要引入了一些概念，不过也是新瓶装旧酒，没什么新的东西。 术语与记号含义 $x$ 为输入变量或特征(features), $y$ 为输出变量. 训练集(training set): $\mathcal{T}&#x3D;\{(x^{(i)},y^{(i)}):i&#x3D;1,\cdots,m \},$ 输入集 $\c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-05T09:56:10.000Z">
-<meta property="article:modified_time" content="2023-01-05T10:16:41.652Z">
+<meta property="article:modified_time" content="2023-07-30T15:04:16.425Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -189,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-01-05 17:56:10 / Modified: 18:16:41" itemprop="dateCreated datePublished" datetime="2023-01-05T17:56:10+08:00">2023-01-05</time>
+              <time title="Created: 2023-01-05 17:56:10" itemprop="dateCreated datePublished" datetime="2023-01-05T17:56:10+08:00">2023-01-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-30 23:04:16" itemprop="dateModified" datetime="2023-07-30T23:04:16+08:00">2023-07-30</time>
+              </span>
 
           
   
@@ -472,14 +478,12 @@ $$</div><p>且 <span class="markdown-them-math-inline">$\eta_i=\theta_i^Tx,$</sp
 \frac{\mathrm{e}^{\eta_2}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_i}}\\
 \vdots\\
 \frac{\mathrm{e}^{\eta_{k-1}}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_{i}}}
-
 \end{bmatrix}=
 \begin{bmatrix}
 \frac{\mathrm{e}^{\theta_1^Tx}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\theta_i^Tx}}\\
 \frac{\mathrm{e}^{\theta_2^Tx}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\theta_i^Tx}}\\
 \vdots\\
 \frac{\mathrm{e}^{\theta_{k-1}^Tx}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\theta_i^Tx}}
-
 \end{bmatrix}
 $$</div><p>这是一个 <span class="markdown-them-math-inline">$k-1$</span> 维向量, 其中第 <span class="markdown-them-math-inline">$i$</span> 维是参数 <span class="markdown-them-math-inline">$P(y=i|x;\phi)=\phi_i$</span> 的预测值, 利用所有维度可以求出 <span class="markdown-them-math-inline">$P(y=k|x;\phi)=\phi_k$</span> 的预测值. 如果想要求出最佳参数, 采用 MLE 并利用梯度法和牛顿法进行求解即可, 似然函数为 <span class="markdown-them-math-inline">$\prod_{i=1}^{k}P(y=i|x;\phi).$</span></p>
 
@@ -577,20 +581,20 @@ $$</div><p>这是一个 <span class="markdown-them-math-inline">$k-1$</span> 维
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -631,13 +635,13 @@ $$</div><p>这是一个 <span class="markdown-them-math-inline">$k-1$</span> 维
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">121k</span>
+    <span title="Symbols count total">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">1:50</span>
+    <span title="Reading time total">2:02</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
