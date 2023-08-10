@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 $G&#x3D;(V,E)$ 的基础上描述的, 默认为无向图. 1: 匹配. 图 $G$ 的一个匹配 $M$ 是 $E$ 的子集, 满足 $M$ 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 $M$. 2: 覆盖. 图 $G$ 的一个覆盖 $R$ 是顶点 $V$ 的子集, 满足">
+  <meta name="description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 \(G&#x3D;(V,E)\) 的基础上描述的, 默认为无向图. 1: 匹配. 图 \(G\) 的一个匹配 \(M\) 是 \(E\) 的子集, 满足 \(M\) 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 \(M\). 2: 覆盖. 图 \(G\) 的一个覆盖">
 <meta property="og:type" content="article">
 <meta property="og:title" content="典型图论问题">
 <meta property="og:url" content="http://example.com/2023/07/27/math/graph/graph-problems/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 $G&#x3D;(V,E)$ 的基础上描述的, 默认为无向图. 1: 匹配. 图 $G$ 的一个匹配 $M$ 是 $E$ 的子集, 满足 $M$ 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 $M$. 2: 覆盖. 图 $G$ 的一个覆盖 $R$ 是顶点 $V$ 的子集, 满足">
+<meta property="og:description" content="对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 \(G&#x3D;(V,E)\) 的基础上描述的, 默认为无向图. 1: 匹配. 图 \(G\) 的一个匹配 \(M\) 是 \(E\) 的子集, 满足 \(M\) 中的任意两条边都没有公共的顶点. 最大匹配问题要求找到满足最大的满足条件的 \(M\). 2: 覆盖. 图 \(G\) 的一个覆盖">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-27T09:53:44.000Z">
 <meta property="article:modified_time" content="2023-07-30T08:28:18.201Z">
@@ -229,7 +229,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>981</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -248,13 +248,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 <span class="markdown-them-math-inline">$G=(V,E)$</span> 的基础上描述的, 默认为无向图.</p>
-<p>1: <strong>匹配</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个匹配 <span class="markdown-them-math-inline">$M$</span> 是 <span class="markdown-them-math-inline">$E$</span> 的子集, 满足 <span class="markdown-them-math-inline">$M$</span> 中的任意两条边都没有公共的顶点. <strong>最大匹配问题</strong>要求找到满足最大的满足条件的 <span class="markdown-them-math-inline">$M$</span>.</p>
-<p>2: <strong>覆盖</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个覆盖 <span class="markdown-them-math-inline">$R$</span> 是顶点 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$E$</span> 中的任意一条边中的某个端点在 <span class="markdown-them-math-inline">$R$</span> 中. 最小覆盖问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$R$</span>.</p>
-<p>3: <strong>集合覆盖(Set Cover)</strong>. 对于给定的集合 <span class="markdown-them-math-inline">$U$</span> 和集合<span class="markdown-them-math-inline">$\mathcal{S}\subset \mathcal{P}(U)$</span>, 若 <span class="markdown-them-math-inline">$\mathcal{S}'\subset \mathcal{S}$</span> 满足 <span class="markdown-them-math-inline">$\bigcup_{S\subset \mathcal{S}'}S=U$</span>, 则称 <span class="markdown-them-math-inline">$\mathcal{S}'$</span> 覆盖集合 <span class="markdown-them-math-inline">$U$</span>. 最小集合覆盖(MSC)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$\mathcal{S}'$</span>.</p>
-<p>4: <strong>独立集(Independent Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的独立集 <span class="markdown-them-math-inline">$I$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$I$</span> 中的任意一对顶点都不相邻. 最大独立集(MIS)问题要求找到最大的满足条件的 <span class="markdown-them-math-inline">$I$</span>, 同时将最大的 <span class="markdown-them-math-inline">$|I|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的独立数 <span class="markdown-them-math-inline">$\alpha(G)$</span>.</p>
-<p>5: <strong>支配集(Dominant Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的支配集 <span class="markdown-them-math-inline">$D$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$V$</span> 可以被划分为 <span class="markdown-them-math-inline">$D$</span> 和 <span class="markdown-them-math-inline">$N(D)=\bigcup_{v\in D}N(v)$</span>. 最小支配集(MDS)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$D$</span>, 同时将最小的 <span class="markdown-them-math-inline">$|D|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的支配数 <span class="markdown-them-math-inline">$\gamma(G)$</span>.</p>
-<p>6: <strong>染色(Graph Coloring)</strong>. 无向图 <span class="markdown-them-math-inline">$G$</span> 的 <span class="markdown-them-math-inline">$k$</span>-coloring <span class="markdown-them-math-inline">$c:V\to [k]$</span> 满足 <span class="markdown-them-math-inline">$\forall\{u,v\}\in E,c(u)\ne c(v)$</span>, 即使用 <span class="markdown-them-math-inline">$k$</span> 种颜色给图 <span class="markdown-them-math-inline">$G$</span> 的每个顶点都分配一种颜色, 使得相邻顶点的颜色都不相同. 最小的能给 <span class="markdown-them-math-inline">$G$</span> 进行上述染色过程的 <span class="markdown-them-math-inline">$k$</span> 称为图 <span class="markdown-them-math-inline">$G$</span> 的色数, 记作 <span class="markdown-them-math-inline">$\chi(G)$</span>, <span class="markdown-them-math-inline">$c:V\to [\chi(G)]$</span> 称为最优染色(optimal coloring). 染色问题要求找到图 <span class="markdown-them-math-inline">$G$</span> 的色数 <span class="markdown-them-math-inline">$\chi(G)$</span> 或者更进一步地, 最优的染色方案 <span class="markdown-them-math-inline">$c$</span>.</p>
+        <p>对典型的图论问题的描述做一下汇总,
+仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 <span
+class="math inline">\(G=(V,E)\)</span> 的基础上描述的, 默认为无向图.</p>
+<p>1: <strong>匹配</strong>. 图 <span class="math inline">\(G\)</span>
+的一个匹配 <span class="math inline">\(M\)</span> 是 <span
+class="math inline">\(E\)</span> 的子集, 满足 <span
+class="math inline">\(M\)</span> 中的任意两条边都没有公共的顶点.
+<strong>最大匹配问题</strong>要求找到满足最大的满足条件的 <span
+class="math inline">\(M\)</span>.</p>
+<p>2: <strong>覆盖</strong>. 图 <span class="math inline">\(G\)</span>
+的一个覆盖 <span class="math inline">\(R\)</span> 是顶点 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(E\)</span> 中的任意一条边中的某个端点在 <span
+class="math inline">\(R\)</span> 中.
+最小覆盖问题要求找到最小的满足条件的 <span
+class="math inline">\(R\)</span>.</p>
+<p>3: <strong>集合覆盖(Set Cover)</strong>. 对于给定的集合 <span
+class="math inline">\(U\)</span> 和集合<span
+class="math inline">\(\mathcal{S}\subset \mathcal{P}(U)\)</span>, 若
+<span class="math inline">\(\mathcal{S}&#39;\subset \mathcal{S}\)</span>
+满足 <span class="math inline">\(\bigcup_{S\subset
+\mathcal{S}&#39;}S=U\)</span>, 则称 <span
+class="math inline">\(\mathcal{S}&#39;\)</span> 覆盖集合 <span
+class="math inline">\(U\)</span>.
+最小集合覆盖(MSC)问题要求找到最小的满足条件的 <span
+class="math inline">\(\mathcal{S}&#39;\)</span>.</p>
+<p>4: <strong>独立集(Independent Set)</strong>. 图 <span
+class="math inline">\(G\)</span> 的独立集 <span
+class="math inline">\(I\)</span> 是顶点集 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(I\)</span> 中的任意一对顶点都不相邻.
+最大独立集(MIS)问题要求找到最大的满足条件的 <span
+class="math inline">\(I\)</span>, 同时将最大的 <span
+class="math inline">\(|I|\)</span> 记作图 <span
+class="math inline">\(G\)</span> 的独立数 <span
+class="math inline">\(\alpha(G)\)</span>.</p>
+<p>5: <strong>支配集(Dominant Set)</strong>. 图 <span
+class="math inline">\(G\)</span> 的支配集 <span
+class="math inline">\(D\)</span> 是顶点集 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(V\)</span> 可以被划分为 <span
+class="math inline">\(D\)</span> 和 <span
+class="math inline">\(N(D)=\bigcup_{v\in D}N(v)\)</span>.
+最小支配集(MDS)问题要求找到最小的满足条件的 <span
+class="math inline">\(D\)</span>, 同时将最小的 <span
+class="math inline">\(|D|\)</span> 记作图 <span
+class="math inline">\(G\)</span> 的支配数 <span
+class="math inline">\(\gamma(G)\)</span>.</p>
+<p>6: <strong>染色(Graph Coloring)</strong>. 无向图 <span
+class="math inline">\(G\)</span> 的 <span
+class="math inline">\(k\)</span>-coloring <span
+class="math inline">\(c:V\to [k]\)</span> 满足 <span
+class="math inline">\(\forall\{u,v\}\in E,c(u)\ne c(v)\)</span>, 即使用
+<span class="math inline">\(k\)</span> 种颜色给图 <span
+class="math inline">\(G\)</span> 的每个顶点都分配一种颜色,
+使得相邻顶点的颜色都不相同. 最小的能给 <span
+class="math inline">\(G\)</span> 进行上述染色过程的 <span
+class="math inline">\(k\)</span> 称为图 <span
+class="math inline">\(G\)</span> 的色数, 记作 <span
+class="math inline">\(\chi(G)\)</span>, <span
+class="math inline">\(c:V\to [\chi(G)]\)</span> 称为最优染色(optimal
+coloring). 染色问题要求找到图 <span class="math inline">\(G\)</span>
+的色数 <span class="math inline">\(\chi(G)\)</span> 或者更进一步地,
+最优的染色方案 <span class="math inline">\(c\)</span>.</p>
 <p>7: 最优树(最短路, 最小生成树, Steiner Tree)</p>
 <p>8: 网络流(最大流, 最小费用流, 最小割)</p>
 
@@ -351,7 +408,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -405,13 +462,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">134k</span>
+    <span title="Symbols count total">148k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:02</span>
+    <span title="Reading time total">2:15</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

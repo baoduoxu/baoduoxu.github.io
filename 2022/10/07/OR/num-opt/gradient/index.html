@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 $f(x)$ 的局部极小点, 即 $$\begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} $$在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点">
+  <meta name="description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 \(f(x)\) 的局部极小点, 即 \[ \begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} \] 在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最优化（三）：梯度法">
 <meta property="og:url" content="http://example.com/2022/10/07/OR/num-opt/gradient/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 $f(x)$ 的局部极小点, 即 $$\begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} $$在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点">
+<meta property="og:description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 \(f(x)\) 的局部极小点, 即 \[ \begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} \] 在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-07T07:26:26.000Z">
 <meta property="article:modified_time" content="2022-10-23T03:20:15.007Z">
@@ -229,7 +229,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.7k</span>
+              <span>5.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -250,80 +250,199 @@
       
         <h1 id="梯度法">梯度法</h1>
 <h2 id="迭代算法与收敛率">迭代算法与收敛率</h2>
-<p>现在要考虑满足在定义域内一阶可微的多元实值函数 <span class="markdown-them-math-inline">$f(x)$</span> 的局部极小点, 即</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>现在要考虑满足在定义域内一阶可微的多元实值函数 <span
+class="math inline">\(f(x)\)</span> 的局部极小点, 即 <span
+class="math display">\[
+\begin{aligned}
 &amp;\min f(x)\\
 \text{s.t. }&amp;x\in \mathbb{R}
 \end{aligned}
-$$</div><p>在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点 <span class="markdown-them-math-inline">$x_0$</span> (有时会把这称为<em>极小点的估计</em>), 以 <span class="markdown-them-math-inline">$x_0$</span> 为初始点, 通过<em>某种规则</em>产生一个点 <span class="markdown-them-math-inline">$x_1,$</span> 并继续以点 <span class="markdown-them-math-inline">$x_1$</span> 采用同样的规则产生 <span class="markdown-them-math-inline">$x_2,$</span> 以此类推, 理想情况下(实际操作中中在达到停机条件时会停止该过程)最终会产生一个无穷序列 <span class="markdown-them-math-inline">$\{x_{k}\}_{k=0}^{\infty},$</span> 每一步(第 <span class="markdown-them-math-inline">$k$</span> 次)的迭代利用的规则实际上是序列的某个递推关系式: <span class="markdown-them-math-inline">$x_{k}=\phi(x_{k-1},\cdots),k\ge 1,\phi:\mathbb{R}^n\to\mathbb{R}^n.$</span> 理想的情况是, 该迭代序列收敛于极小点 <span class="markdown-them-math-inline">$x^{\ast},$</span> 这样我们就成功地得到了一个搜索极小点的算法. 后面介绍的算法, 大都属于迭代算法.</p>
-<p>不管是什么算法, 它的效率/运行速度总是我们最需要关注的性质之一, 显然, 对于迭代算法而言, 这与迭代产生的序列 <span class="markdown-them-math-inline">$\{x_k\}_{k=0}^{\infty}$</span> 的<strong>收敛速度</strong>息息相关, 于是我们借此定义收敛率, 并以收敛率衡量迭代算法的收敛速度.</p>
-<p><strong>定义</strong> 设序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛到 <span class="markdown-them-math-inline">$x^{\ast},$</span> 若</p>
-<div class="markdown-them-math-block">$$\lim_{k\to\infty}\frac{\|x_{k+1}-x^{\ast}\|}{\|x_{k}-x^{\ast} \|^p}=\beta&lt;\infty,
-$$</div><p>则序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 的收敛阶数为 <span class="markdown-them-math-inline">$p(p\in\mathbb{R})$</span> 或 <span class="markdown-them-math-inline">$p$</span> 阶收敛. <span class="markdown-them-math-inline">$\square$</span></p>
+\]</span> 在各种各样的搜索极小点的方法中,
+迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法,
+选定某个(接近极小点)的点 <span class="math inline">\(x_0\)</span>
+(有时会把这称为<em>极小点的估计</em>), 以 <span
+class="math inline">\(x_0\)</span> 为初始点,
+通过<em>某种规则</em>产生一个点 <span
+class="math inline">\(x_1,\)</span> 并继续以点 <span
+class="math inline">\(x_1\)</span> 采用同样的规则产生 <span
+class="math inline">\(x_2,\)</span> 以此类推,
+理想情况下(实际操作中中在达到停机条件时会停止该过程)最终会产生一个无穷序列
+<span class="math inline">\(\{x_{k}\}_{k=0}^{\infty},\)</span> 每一步(第
+<span class="math inline">\(k\)</span>
+次)的迭代利用的规则实际上是序列的某个递推关系式: <span
+class="math inline">\(x_{k}=\phi(x_{k-1},\cdots),k\ge
+1,\phi:\mathbb{R}^n\to\mathbb{R}^n.\)</span> 理想的情况是,
+该迭代序列收敛于极小点 <span class="math inline">\(x^{\ast},\)</span>
+这样我们就成功地得到了一个搜索极小点的算法. 后面介绍的算法,
+大都属于迭代算法.</p>
+<p>不管是什么算法, 它的效率/运行速度总是我们最需要关注的性质之一, 显然,
+对于迭代算法而言, 这与迭代产生的序列 <span
+class="math inline">\(\{x_k\}_{k=0}^{\infty}\)</span>
+的<strong>收敛速度</strong>息息相关, 于是我们借此定义收敛率,
+并以收敛率衡量迭代算法的收敛速度.</p>
+<p><strong>定义</strong> 设序列 <span
+class="math inline">\(\{x_k\}\)</span> 收敛到 <span
+class="math inline">\(x^{\ast},\)</span> 若 <span
+class="math display">\[
+\lim_{k\to\infty}\frac{\|x_{k+1}-x^{\ast}\|}{\|x_{k}-x^{\ast}
+\|^p}=\beta&lt;\infty,
+\]</span> 则序列 <span class="math inline">\(\{x_k\}\)</span>
+的收敛阶数为 <span class="math inline">\(p(p\in\mathbb{R})\)</span> 或
+<span class="math inline">\(p\)</span> 阶收敛. <span
+class="math inline">\(\square\)</span></p>
 <p>特别地:</p>
 <ul>
-<li><span class="markdown-them-math-inline">$p=1,\beta =0$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 超线性收敛;</li>
-<li><span class="markdown-them-math-inline">$p=1,0&lt;\beta &lt;1$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> <span class="markdown-them-math-inline">$\beta$</span> 线性收敛;</li>
-<li><span class="markdown-them-math-inline">$p=1,\beta=1$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 次线性收敛;</li>
-<li><span class="markdown-them-math-inline">$p=2$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 是二次型收敛.</li>
+<li><span class="math inline">\(p=1,\beta =0\)</span> 时称 <span
+class="math inline">\(\{x_k\}\)</span> 超线性收敛;</li>
+<li><span class="math inline">\(p=1,0&lt;\beta &lt;1\)</span> 时称 <span
+class="math inline">\(\{x_k\}\)</span> <span
+class="math inline">\(\beta\)</span> 线性收敛;</li>
+<li><span class="math inline">\(p=1,\beta=1\)</span> 时称 <span
+class="math inline">\(\{x_k\}\)</span> 次线性收敛;</li>
+<li><span class="math inline">\(p=2\)</span> 时称 <span
+class="math inline">\(\{x_k\}\)</span> 是二次型收敛.</li>
 </ul>
-<p>一般而言, 具有超线性及以上收敛速度的算法就可以被称为&quot;很好的算法&quot;了. <span class="markdown-them-math-inline">$p$</span> 越大, 算法/数列的收敛速度就越快.</p>
-<p>可以证明任意序列的收敛阶数不会小于 <span class="markdown-them-math-inline">$1$</span>.</p>
+<p>一般而言, 具有超线性及以上收敛速度的算法就可以被称为"很好的算法"了.
+<span class="math inline">\(p\)</span> 越大,
+算法/数列的收敛速度就越快.</p>
+<p>可以证明任意序列的收敛阶数不会小于 <span
+class="math inline">\(1\)</span>.</p>
 <h2 id="最速下降法">最速下降法</h2>
-<p>在迭代算法中, 我们可以这样描述第 <span class="markdown-them-math-inline">$k$</span> 次迭代产生的新的点 <span class="markdown-them-math-inline">$x_{k+1}:$</span> <span class="markdown-them-math-inline">$x_k,x_{k+1}$</span> 是 <span class="markdown-them-math-inline">$\mathbb{R}^n$</span> 上的两个点, 产生点 <span class="markdown-them-math-inline">$x_{k+1}$</span> 的过程可以看作是从点 <span class="markdown-them-math-inline">$x_k$</span> 出发沿着方向 <span class="markdown-them-math-inline">$x_{k+1}-x_{k}$</span> 前进 <span class="markdown-them-math-inline">$\|x_{k+1}-x_k\|$</span> 的距离, 借助可行方向, 我们将向量 <span class="markdown-them-math-inline">$x_{k+1}-x_{k}$</span> 作为一个可行方向, 记作 <span class="markdown-them-math-inline">$p_k,$</span> 为了方便用范数和方向分别描述向量, 保证 <span class="markdown-them-math-inline">$\|p_k\|=1,$</span> 前进的距离记作 <span class="markdown-them-math-inline">$\alpha_k=\|x_{k+1}-x_k\|,$</span> 这称为<em><strong>步长</strong></em>, 这样就有 <span class="markdown-them-math-inline">$x_{k+1}=x_{k}+\alpha_kp_k,$</span> 我们的任务变成了通过某种规则产生&quot;合适&quot;的可行方向与步长.</p>
-<p>什么样可行方向和步长的才算是&quot;合适&quot;呢? 这不难想, 既然我们的目的是求极小点, 那必然要保证在迭代的过程中序列 <span class="markdown-them-math-inline">$\{f(x_k)\}_{k=0}^{\infty}$</span> 整体呈下降的趋势, 或者干脆让条件再强一些, 序列 <span class="markdown-them-math-inline">$\{f(x_k)\}_{k=0}^{\infty}$</span> 严格递减, 那么我们便得到了<strong>下降迭代法</strong>.</p>
+<p>在迭代算法中, 我们可以这样描述第 <span
+class="math inline">\(k\)</span> 次迭代产生的新的点 <span
+class="math inline">\(x_{k+1}:\)</span> <span
+class="math inline">\(x_k,x_{k+1}\)</span> 是 <span
+class="math inline">\(\mathbb{R}^n\)</span> 上的两个点, 产生点 <span
+class="math inline">\(x_{k+1}\)</span> 的过程可以看作是从点 <span
+class="math inline">\(x_k\)</span> 出发沿着方向 <span
+class="math inline">\(x_{k+1}-x_{k}\)</span> 前进 <span
+class="math inline">\(\|x_{k+1}-x_k\|\)</span> 的距离, 借助可行方向,
+我们将向量 <span class="math inline">\(x_{k+1}-x_{k}\)</span>
+作为一个可行方向, 记作 <span class="math inline">\(p_k,\)</span>
+为了方便用范数和方向分别描述向量, 保证 <span
+class="math inline">\(\|p_k\|=1,\)</span> 前进的距离记作 <span
+class="math inline">\(\alpha_k=\|x_{k+1}-x_k\|,\)</span>
+这称为<strong><em>步长</em></strong>, 这样就有 <span
+class="math inline">\(x_{k+1}=x_{k}+\alpha_kp_k,\)</span>
+我们的任务变成了通过某种规则产生"合适"的可行方向与步长.</p>
+<p>什么样可行方向和步长的才算是"合适"呢? 这不难想,
+既然我们的目的是求极小点, 那必然要保证在迭代的过程中序列 <span
+class="math inline">\(\{f(x_k)\}_{k=0}^{\infty}\)</span>
+整体呈下降的趋势, 或者干脆让条件再强一些, 序列 <span
+class="math inline">\(\{f(x_k)\}_{k=0}^{\infty}\)</span> 严格递减,
+那么我们便得到了<strong>下降迭代法</strong>.</p>
 <p>但是这还不够具体, 我们要得到可行方向和步长的确切信息.</p>
-<p>我们希望只利用可行方向和步长得到<em><strong>最好</strong></em>的下降迭代法, 那么我们显然需要<em>下降最快的方向</em>以及使 <span class="markdown-them-math-inline">$f(x)$</span> 在该方向上取得最小值的步长. 那么方向的选择便呼之欲出了, 即<strong>负梯度方向</strong>, 于是我们可以令 <span class="markdown-them-math-inline">$p_k=-\nabla f(x_k).$</span> 可行方向选择负梯度的算法又被称作梯度法.</p>
+<p>我们希望只利用可行方向和步长得到<strong><em>最好</em></strong>的下降迭代法,
+那么我们显然需要<em>下降最快的方向</em>以及使 <span
+class="math inline">\(f(x)\)</span> 在该方向上取得最小值的步长.
+那么方向的选择便呼之欲出了, 即<strong>负梯度方向</strong>,
+于是我们可以令 <span class="math inline">\(p_k=-\nabla f(x_k).\)</span>
+可行方向选择负梯度的算法又被称作梯度法.</p>
 <h3 id="固定步长">固定步长</h3>
-<p>在使用最优步长之前, 我们不妨&quot;偷一下懒&quot;, 选择固定的步长, 这样就免去了每次迭代还要找最优步长的麻烦, 于是我们得到了<strong>固定步长梯度法</strong>. 这样做的好处比较明显, 缺点是:</p>
+<p>在使用最优步长之前, 我们不妨"偷一下懒", 选择固定的步长,
+这样就免去了每次迭代还要找最优步长的麻烦,
+于是我们得到了<strong>固定步长梯度法</strong>. 这样做的好处比较明显,
+缺点是:</p>
 <ul>
-<li>步长较大在远离极小点的地方比较快但是容易在极小点附近产生锯齿状的收敛路径, <em><strong>甚至不收敛</strong></em>;</li>
+<li>步长较大在远离极小点的地方比较快但是容易在极小点附近产生锯齿状的收敛路径,
+<strong><em>甚至不收敛</em></strong>;</li>
 <li>步长太小效率会偏低.</li>
 </ul>
-<p>事实上, 我们可以确定固定步长梯度法中使得算法收敛至极小点的步长的范围, 这放在后面介绍.</p>
+<p>事实上, 我们可以确定固定步长梯度法中使得算法收敛至极小点的步长的范围,
+这放在后面介绍.</p>
 <h3 id="最优步长">最优步长</h3>
-<p>显然最优步长 <span class="markdown-them-math-inline">$\alpha_k=\arg\min_{\alpha&gt;0}f(x_k+\alpha p_k),$</span> 这是一个一维函数, 记作 <span class="markdown-them-math-inline">$\phi(\alpha),$</span> 极小值点在驻点处取得, 于是令 <span class="markdown-them-math-inline">$\phi'(\alpha)=0$</span> 有 <span class="markdown-them-math-inline">$\nabla f(x_k+\alpha p_k)^{\top} p_k=\nabla f(x_{k+1})^{\top} p_k=0.$</span> 但是在实现算法的时候我们通常使用一维搜索方法.</p>
-<p>确定了最优可行方向和最优步长后, 我们得到了<strong>最速下降梯度法</strong>:</p>
-<ol>
-<li>确定初始点 <span class="markdown-them-math-inline">$x_0,$</span> 并置迭代次数 <span class="markdown-them-math-inline">$k:=0.$</span></li>
-<li>令 <span class="markdown-them-math-inline">$\phi_k(\alpha)=f(x_{k}-\alpha\nabla f(x_k)),$</span> 置 <span class="markdown-them-math-inline">$\alpha_k:=\arg\min\limits_{\alpha&gt;0}\phi_k(\alpha),$</span> <span class="markdown-them-math-inline">$x_{k+1}=x_{k}-\alpha_k\nabla f(x_k).$</span> 其中 <span class="markdown-them-math-inline">$\alpha_k$</span> 的计算可采用一维优化方法.</li>
-<li>当满足要求的精度时停止上述过程, 否则置 <span class="markdown-them-math-inline">$k:=k+1$</span> 转 2.</li>
+<p>显然最优步长 <span
+class="math inline">\(\alpha_k=\arg\min_{\alpha&gt;0}f(x_k+\alpha
+p_k),\)</span> 这是一个一维函数, 记作 <span
+class="math inline">\(\phi(\alpha),\)</span> 极小值点在驻点处取得,
+于是令 <span class="math inline">\(\phi&#39;(\alpha)=0\)</span> 有 <span
+class="math inline">\(\nabla f(x_k+\alpha p_k)^{\top} p_k=\nabla
+f(x_{k+1})^{\top} p_k=0.\)</span>
+但是在实现算法的时候我们通常使用一维搜索方法.</p>
+<p>确定了最优可行方向和最优步长后,
+我们得到了<strong>最速下降梯度法</strong>:</p>
+<ol type="1">
+<li>确定初始点 <span class="math inline">\(x_0,\)</span> 并置迭代次数
+<span class="math inline">\(k:=0.\)</span></li>
+<li>令 <span class="math inline">\(\phi_k(\alpha)=f(x_{k}-\alpha\nabla
+f(x_k)),\)</span> 置 <span
+class="math inline">\(\alpha_k:=\arg\min\limits_{\alpha&gt;0}\phi_k(\alpha),\)</span>
+<span class="math inline">\(x_{k+1}=x_{k}-\alpha_k\nabla
+f(x_k).\)</span> 其中 <span class="math inline">\(\alpha_k\)</span>
+的计算可采用一维优化方法.</li>
+<li>当满足要求的精度时停止上述过程, 否则置 <span
+class="math inline">\(k:=k+1\)</span> 转 2.</li>
 </ol>
 <p>最速下降法得到的序列一定会收敛至极小点, 证明过程在后文会有提到.</p>
 <h3 id="停机条件的选择">停机条件的选择</h3>
-<p>理论上来讲, 我们最好把 <span class="markdown-them-math-inline">$\nabla f(x_k)=0$</span> 作为停机条件, 但是在实际中我们很难恰好得到梯度为零的结果, 只能得到某个接近 <span class="markdown-them-math-inline">$0$</span> 的结果, 此时若给定一个较小的预设的阈值 <span class="markdown-them-math-inline">$\varepsilon&gt;0$</span> ,便有下面三种停机条件可以使用:</p>
+<p>理论上来讲, 我们最好把 <span class="math inline">\(\nabla
+f(x_k)=0\)</span> 作为停机条件,
+但是在实际中我们很难恰好得到梯度为零的结果, 只能得到某个接近 <span
+class="math inline">\(0\)</span> 的结果, 此时若给定一个较小的预设的阈值
+<span class="math inline">\(\varepsilon&gt;0\)</span>
+,便有下面三种停机条件可以使用:</p>
 <ul>
-<li>
-<p><strong>梯度范数</strong>: 利用 <span class="markdown-them-math-inline">$\|\nabla f(x_k)\|&lt; \varepsilon$</span> 作为停机条件;</p>
-</li>
-<li>
-<p><strong>绝对数值</strong>: 利用 <span class="markdown-them-math-inline">$\|f(x_{k+1})-f(x_k) \|&lt;\varepsilon$</span> 或 <span class="markdown-them-math-inline">$\|x_{k+1}-x_k\|&lt;\varepsilon$</span> 来作为停机条件.</p>
-</li>
-<li>
-<p><strong>相对数值</strong>: 利用 <span class="markdown-them-math-inline">$\displaystyle \frac{|f(x_{k+1})-f(x_k) |}{|f(x_k) |}&lt;\varepsilon$</span> 或 <span class="markdown-them-math-inline">$\displaystyle \frac{\|x_{k+1}-x_k \|}{\|x_{k} \|}&lt;\varepsilon$</span> 作为停机条件.</p>
-</li>
+<li><p><strong>梯度范数</strong>: 利用 <span
+class="math inline">\(\|\nabla f(x_k)\|&lt; \varepsilon\)</span>
+作为停机条件;</p></li>
+<li><p><strong>绝对数值</strong>: 利用 <span
+class="math inline">\(\|f(x_{k+1})-f(x_k) \|&lt;\varepsilon\)</span> 或
+<span class="math inline">\(\|x_{k+1}-x_k\|&lt;\varepsilon\)</span>
+来作为停机条件.</p></li>
+<li><p><strong>相对数值</strong>: 利用 <span
+class="math inline">\(\displaystyle \frac{|f(x_{k+1})-f(x_k) |}{|f(x_k)
+|}&lt;\varepsilon\)</span> 或 <span class="math inline">\(\displaystyle
+\frac{\|x_{k+1}-x_k \|}{\|x_{k} \|}&lt;\varepsilon\)</span>
+作为停机条件.</p></li>
 </ul>
-<p>利用梯度范数和绝对数值作为停机条件的缺点是它们会受到 <span class="markdown-them-math-inline">$f(x)$</span> 或 <span class="markdown-them-math-inline">$\nabla f(x)$</span> 的数量级的影响, 而相对数值<em>是尺度无关</em>的. 然而若 <span class="markdown-them-math-inline">$|f(x)|&lt;1$</span> 或 <span class="markdown-them-math-inline">$\|x_k\|&lt;1$</span> 时, 相对数值反而会比绝对数值大, 为避免这一情况我们可以采用下面的修正:</p>
-<div class="markdown-them-math-block">$$\frac{|f(x_{k+1})-f(x_k) |}{\max\{|f(x_k) |,1\}}&lt;\varepsilon,\displaystyle \frac{\|x_{k+1}-x_k \|}{\max\{\|x_{k} \|,1\}}&lt;\varepsilon
-$$</div><p>这也是后面的算法常用的停机条件.</p>
+<p>利用梯度范数和绝对数值作为停机条件的缺点是它们会受到 <span
+class="math inline">\(f(x)\)</span> 或 <span
+class="math inline">\(\nabla f(x)\)</span> 的数量级的影响,
+而相对数值<em>是尺度无关</em>的. 然而若 <span
+class="math inline">\(|f(x)|&lt;1\)</span> 或 <span
+class="math inline">\(\|x_k\|&lt;1\)</span> 时,
+相对数值反而会比绝对数值大, 为避免这一情况我们可以采用下面的修正: <span
+class="math display">\[
+\frac{|f(x_{k+1})-f(x_k) |}{\max\{|f(x_k)
+|,1\}}&lt;\varepsilon,\displaystyle \frac{\|x_{k+1}-x_k
+\|}{\max\{\|x_{k} \|,1\}}&lt;\varepsilon
+\]</span> 这也是后面的算法常用的停机条件.</p>
 <p>经过测试利用修正过的相对数值作为停机条件比使用绝对数值速度快了至少十倍.</p>
 <h3 id="二次型函数的最速下降梯度法">二次型函数的最速下降梯度法</h3>
-<p>设 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c,$</span> 有 <span class="markdown-them-math-inline">$\nabla f(x)=Qx+b,$</span> 于是 <span class="markdown-them-math-inline">$\alpha_k$</span> 满足</p>
-<div class="markdown-them-math-block">$$\phi_k'(\alpha_k)=0\Rightarrow -\nabla f(x_k-\alpha_k\nabla f(x_k))^{\top} \nabla f(x_k)=0.
-$$</div><p>整理可得</p>
-<div class="markdown-them-math-block">$$\alpha_k=\frac{\|Qx_k+b\|^2}{(Qx_k+b)^{\top} Q(Qx_k+b)},
-$$</div><p>至于 <span class="markdown-them-math-inline">$x_{k+1},$</span> 它的形式并不是很漂亮, 就没有把它写出来的必要了.</p>
-<hr>
+<p>设 <span class="math inline">\(f(x)=\frac{1}{2}x^{\top} Qx+b^{\top}
+x+c,\)</span> 有 <span class="math inline">\(\nabla f(x)=Qx+b,\)</span>
+于是 <span class="math inline">\(\alpha_k\)</span> 满足 <span
+class="math display">\[
+\phi_k&#39;(\alpha_k)=0\Rightarrow -\nabla f(x_k-\alpha_k\nabla
+f(x_k))^{\top} \nabla f(x_k)=0.
+\]</span> 整理可得 <span class="math display">\[
+\alpha_k=\frac{\|Qx_k+b\|^2}{(Qx_k+b)^{\top} Q(Qx_k+b)},
+\]</span> 至于 <span class="math inline">\(x_{k+1},\)</span>
+它的形式并不是很漂亮, 就没有把它写出来的必要了.</p>
+<hr />
 <h3 id="收敛性质">收敛性质</h3>
 <h4 id="固定步长-1">固定步长</h4>
-<p>对于二次型函数 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c,$</span> , 我们能确定使迭代序列收敛的步长范围, 这表述为下面的命题:</p>
-<p>**命题 ** 对二次型函数 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c$</span> 使用固定步长梯度法时, 当且仅当步长满足</p>
-<div class="markdown-them-math-block">$$0&lt;\alpha&lt;\frac{2}{\lambda_{\max}}.
-$$</div><p>时迭代产生的序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛至极小点 <span class="markdown-them-math-inline">$x^{\ast}.$</span> 其中 <span class="markdown-them-math-inline">$\lambda_{\max}$</span> 是 <span class="markdown-them-math-inline">$Q$</span> 的最大特征值. <span class="markdown-them-math-inline">$\square$</span></p>
+<p>对于二次型函数 <span class="math inline">\(f(x)=\frac{1}{2}x^{\top}
+Qx+b^{\top} x+c,\)</span> , 我们能确定使迭代序列收敛的步长范围,
+这表述为下面的命题:</p>
+<p><strong>命题 </strong> 对二次型函数 <span
+class="math inline">\(f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c\)</span>
+使用固定步长梯度法时, 当且仅当步长满足 <span class="math display">\[
+0&lt;\alpha&lt;\frac{2}{\lambda_{\max}}.
+\]</span> 时迭代产生的序列 <span class="math inline">\(\{x_k\}\)</span>
+收敛至极小点 <span class="math inline">\(x^{\ast}.\)</span> 其中 <span
+class="math inline">\(\lambda_{\max}\)</span> 是 <span
+class="math inline">\(Q\)</span> 的最大特征值. <span
+class="math inline">\(\square\)</span></p>
 <h4 id="最速下降">最速下降</h4>
-<p><strong>命题</strong> 若 <span class="markdown-them-math-inline">$f$</span> 在定域上连续一阶可微， 且集合 <span class="markdown-them-math-inline">$G=\{x|f(x)\le f(x_0)\}$</span> 有界, 若最速下降法迭代过程中得到的序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛, 则其收敛点为 <span class="markdown-them-math-inline">$f$</span> 的驻点. <span class="markdown-them-math-inline">$\square$</span></p>
-<p><em><strong>PROOF</strong></em> 设最速下降法</p>
-<hr>
+<p><strong>命题</strong> 若 <span class="math inline">\(f\)</span>
+在定域上连续一阶可微， 且集合 <span class="math inline">\(G=\{x|f(x)\le
+f(x_0)\}\)</span> 有界, 若最速下降法迭代过程中得到的序列 <span
+class="math inline">\(\{x_k\}\)</span> 收敛, 则其收敛点为 <span
+class="math inline">\(f\)</span> 的驻点. <span
+class="math inline">\(\square\)</span></p>
+<p><strong><em>PROOF</em></strong> 设最速下降法</p>
+<hr />
 <h3 id="代码实现">代码实现</h3>
 <h4 id="python">Python</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>(<span class="params">var, val</span>):  <span class="comment">#构建变量与值之间的以元组为元素的列表</span></span><br><span class="line">    l = []</span><br><span class="line">    it1 = <span class="built_in">iter</span>(var)</span><br><span class="line">    it2 = <span class="built_in">iter</span>(val)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(var.shape[<span class="number">0</span>]):</span><br><span class="line">        l.append(<span class="built_in">tuple</span>((<span class="built_in">next</span>(it1), <span class="built_in">next</span>(it2))))</span><br><span class="line">    <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">golden_cut</span>(<span class="params">f, l, r, var, eps</span>):</span><br><span class="line">    rho = (<span class="number">3</span>-math.sqrt(<span class="number">5</span>))/<span class="number">2</span></span><br><span class="line">    a = l+(r-l)*rho</span><br><span class="line">    b = r-(r-l)*rho</span><br><span class="line">    <span class="keyword">while</span> (math.fabs(l-r) &gt; eps):</span><br><span class="line">        f_a = f.subs([(var, a)])</span><br><span class="line">        f_b = f.subs([(var, b)])</span><br><span class="line">        <span class="keyword">if</span> f_a[<span class="number">0</span>, <span class="number">0</span>] &gt; f_b[<span class="number">0</span>, <span class="number">0</span>]:</span><br><span class="line">            l = a</span><br><span class="line">            a = b</span><br><span class="line">            b = r-(r-l)*rho</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = b</span><br><span class="line">            b = a</span><br><span class="line">            a = l+(r-l)*rho</span><br><span class="line">    <span class="keyword">return</span> a  <span class="comment">#取左端点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SteepestDescent</span>(<span class="params">f, x0, var, eps</span>):</span><br><span class="line">    grad_f = f.jacobian(var)  <span class="comment"># 雅可比矩阵</span></span><br><span class="line">    x1 = sympy.Matrix.zeros(var.shape[<span class="number">0</span>], <span class="number">1</span>)</span><br><span class="line">    con = sympy.Matrix.norm(x1-x0)/<span class="built_in">max</span>(sympy.Matrix.norm(x0), <span class="number">1</span>)</span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> con &gt; eps:</span><br><span class="line">        rel1 = change(var, x0)</span><br><span class="line">        d = grad_f.subs(rel1).T  <span class="comment"># 这里要加转置，否则会出现维数不一致的情况</span></span><br><span class="line">        alpha = sympy.symbols(<span class="string">&#x27;alpha&#x27;</span>, positive = <span class="literal">True</span>)  <span class="comment">#步长变量</span></span><br><span class="line">        rel2 = change(var, x0-alpha*d)</span><br><span class="line">        phi = f.subs(rel2)  <span class="comment">#以步长为变量的函数</span></span><br><span class="line">        alpha0 = golden_cut(phi, <span class="number">0</span>, <span class="number">100</span>, alpha, <span class="number">1e-4</span>)  <span class="comment">#黄金分割法找最短步长</span></span><br><span class="line">        x1 = x0-alpha0*d</span><br><span class="line">        tmp = x1</span><br><span class="line">        x1 = x0</span><br><span class="line">        x0 = tmp</span><br><span class="line">        con = sympy.Matrix.norm(x1-x0)/<span class="built_in">max</span>(sympy.Matrix.norm(x0), <span class="number">1</span>)</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(x0.evalf(<span class="number">6</span>))</span><br><span class="line">    rel3 = change(var, x0)</span><br><span class="line">    min_f = f.subs(rel3)</span><br><span class="line">    <span class="built_in">print</span>(min_f[<span class="number">0</span>, <span class="number">0</span>].evalf(<span class="number">6</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Total iterations:&quot;</span>, k)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x, y, z, w = sympy.symbols(<span class="string">&#x27;x,y,z,w&#x27;</span>)</span><br><span class="line">w = (x-<span class="number">5</span>)**<span class="number">2</span>+(y+<span class="number">4</span>)**<span class="number">2</span>+<span class="number">4</span>*(z-<span class="number">6</span>)**<span class="number">2</span></span><br><span class="line">var = sympy.Matrix([x, y, z])</span><br><span class="line">f = sympy.Matrix([w])</span><br><span class="line">x0 = sympy.Matrix([<span class="number">1000</span>, <span class="number">1000</span>, <span class="number">1000</span>])</span><br><span class="line">SteepestDescent(f, x0, var, <span class="number">1e-6</span>)</span><br></pre></td></tr></table></figure>
@@ -426,7 +545,7 @@ $$</div><p>时迭代产生的序列 <span class="markdown-them-math-inline">$\{x
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -480,13 +599,13 @@ $$</div><p>时迭代产生的序列 <span class="markdown-them-math-inline">$\{x
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">134k</span>
+    <span title="Symbols count total">148k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:02</span>
+    <span title="Reading time total">2:15</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>

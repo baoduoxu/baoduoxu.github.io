@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1: 计算积分 $$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. $$">
+  <meta name="description" content="1: 计算积分 \[ \int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. \]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus review Day9">
 <meta property="og:url" content="http://example.com/2022/09/12/calculus/Calculus-review-Day9/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="1: 计算积分 $$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. $$">
+<meta property="og:description" content="1: 计算积分 \[ \int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. \]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-12T13:56:36.000Z">
 <meta property="article:modified_time" content="2022-09-21T07:42:21.315Z">
@@ -234,7 +234,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.5k</span>
+              <span>5.6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -253,39 +253,57 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>1: 计算积分</p>
-<div class="markdown-them-math-block">$$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta.
-$$</div><span id="more"></span>
-<p><em><strong>SOL1</strong></em> 不难发现该积分(记作 <span class="markdown-them-math-inline">$I$</span> ) 可以写成曲面积分的形式:</p>
-<div class="markdown-them-math-block">$$I=\iint_{\Sigma}\mathrm{e}^{x-y}\mathrm{d}S.
-$$</div><p>其中 <span class="markdown-them-math-inline">$\Sigma$</span> 为单位球面.</p>
-<p>于是</p>
-<div class="markdown-them-math-block">$$I=2\iint_{x^2+y^2\le 1}\frac{\mathrm{e}^{x-y}}{\sqrt{1-x^2-y^2}}\mathrm{d}x\mathrm{d}y
-$$</div><blockquote>
+        <p>1: 计算积分 <span class="math display">\[
+\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta
+\mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta.
+\]</span> <span id="more"></span></p>
+<p><strong><em>SOL1</em></strong> 不难发现该积分(记作 <span
+class="math inline">\(I\)</span> ) 可以写成曲面积分的形式: <span
+class="math display">\[
+I=\iint_{\Sigma}\mathrm{e}^{x-y}\mathrm{d}S.
+\]</span> 其中 <span class="math inline">\(\Sigma\)</span>
+为单位球面.</p>
+<p>于是 <span class="math display">\[
+I=2\iint_{x^2+y^2\le
+1}\frac{\mathrm{e}^{x-y}}{\sqrt{1-x^2-y^2}}\mathrm{d}x\mathrm{d}y
+\]</span></p>
+<blockquote>
 <p>好菜, 自己做的时候写到这一步就不会了, 还在想着用极坐标.</p>
 </blockquote>
-<p>考虑将积分区域绕原点逆时针旋转 <span class="markdown-them-math-inline">$\pi/4,$</span> 将指数部分变为单项式(更好处理), 此时积分区域和分母不发生变化, 即令</p>
-<div class="markdown-them-math-block">$$[u,v]^T=\begin{bmatrix}
+<p>考虑将积分区域绕原点逆时针旋转 <span
+class="math inline">\(\pi/4,\)</span> 将指数部分变为单项式(更好处理),
+此时积分区域和分母不发生变化, 即令 <span class="math display">\[
+[u,v]^T=\begin{bmatrix}
 \cos\pi/4&amp;-\sin\pi/4\\
 \sin\pi/4&amp;\cos\pi/4
 \end{bmatrix}[x,y]^{T}
-$$</div><p>得到 <span class="markdown-them-math-inline">$x-y=\sqrt{2}u,x+y=\sqrt{2}v,\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert =1.$</span> 于是积分变为</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+\]</span> 得到 <span
+class="math inline">\(x-y=\sqrt{2}u,x+y=\sqrt{2}v,\left\vert
+\frac{\partial(x,y)}{\partial(u,v)}\right\vert =1.\)</span> 于是积分变为
+<span class="math display">\[
+\begin{aligned}
 I
-&amp;=2\iint_{u^2+v^2\le 1}\frac{\mathrm{e}^{\sqrt{2}u}}{\sqrt{1-u^2-v^2}}\mathrm{d}u\mathrm{d}v\\
+&amp;=2\iint_{u^2+v^2\le
+1}\frac{\mathrm{e}^{\sqrt{2}u}}{\sqrt{1-u^2-v^2}}\mathrm{d}u\mathrm{d}v\\
 &amp;=2\int_{-1}^1\mathrm{e}^{\sqrt{2}u}\mathrm{d}u\int_{-\sqrt{1-u^2}}^{\sqrt{1-u^2}}\frac{1}{\sqrt{1-u^2-v^2}}\mathrm{d}v\\
 &amp;=\sqrt{2}\pi(\mathrm{e}^{\sqrt{2}}-\mathrm{e}^{-\sqrt{2}})  \\
 &amp;=2\sqrt{2}\pi\sinh\sqrt{2}
 \end{aligned}
-$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+\]</span> <span class="math inline">\(\square\)</span></p>
 <blockquote>
-<p><em><strong>REMARK</strong></em>: 总结就是, 不要用球坐标和极坐标. 原式本来就是曲面积分利用球坐标化简出来的, 所以就老老实实在 <span class="markdown-them-math-inline">$xOy$</span> 上做就好了. 不过结果可以写成双曲正弦的形式, 应该也可以用双曲代换.</p>
+<p><strong><em>REMARK</em></strong>: 总结就是, 不要用球坐标和极坐标.
+原式本来就是曲面积分利用球坐标化简出来的, 所以就老老实实在 <span
+class="math inline">\(xOy\)</span> 上做就好了.
+不过结果可以写成双曲正弦的形式, 应该也可以用双曲代换.</p>
 <p>复习一下重积分的换元.</p>
-<p>对于二重积分 <span class="markdown-them-math-inline">$\displaystyle \iint_{D}f(x,y)\mathrm{d}x\mathrm{d}y,$</span> 若做换元 <span class="markdown-them-math-inline">$x=f(u,v),y=g(u,v),$</span> 则</p>
-<div class="markdown-them-math-block">$$\mathrm{d}x=f_u \mathrm{d}u+f_v\mathrm{d}v\\
+<p>对于二重积分 <span class="math inline">\(\displaystyle
+\iint_{D}f(x,y)\mathrm{d}x\mathrm{d}y,\)</span> 若做换元 <span
+class="math inline">\(x=f(u,v),y=g(u,v),\)</span> 则 <span
+class="math display">\[
+\mathrm{d}x=f_u \mathrm{d}u+f_v\mathrm{d}v\\
 \mathrm{d}y=g_u \mathrm{d}u+g_v\mathrm{d}v
-$$</div><p>即</p>
-<div class="markdown-them-math-block">$$\begin{bmatrix}
+\]</span> 即 <span class="math display">\[
+\begin{bmatrix}
 \mathrm{d}x\\
 \mathrm{d}y
 \end{bmatrix}
@@ -296,93 +314,171 @@ g_u &amp; g_v
 \mathrm{d}u\\
 \mathrm{d}v
 \end{bmatrix}
-$$</div><p><span class="markdown-them-math-inline">$\mathrm{d}u,\mathrm{d}v$</span> 可近似看作直线, 于是面积微元从 <span class="markdown-them-math-inline">$\mathrm{d}x,\mathrm{d}y$</span> 张成的平行四边形变成了 <span class="markdown-them-math-inline">$\mathrm{d}u,\mathrm{d}v$</span> 张成的平行四边形, 它们的面积比为线性变换对应矩阵的行列式, 即Jacobi行列式:</p>
-<div class="markdown-them-math-block">$$\vert J\vert =\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert =\begin{vmatrix}
+\]</span> <span class="math inline">\(\mathrm{d}u,\mathrm{d}v\)</span>
+可近似看作直线, 于是面积微元从 <span
+class="math inline">\(\mathrm{d}x,\mathrm{d}y\)</span>
+张成的平行四边形变成了 <span
+class="math inline">\(\mathrm{d}u,\mathrm{d}v\)</span> 张成的平行四边形,
+它们的面积比为线性变换对应矩阵的行列式, 即Jacobi行列式: <span
+class="math display">\[
+\vert J\vert =\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert
+=\begin{vmatrix}
 f_u &amp; f_v\\
 g_u &amp; g_v
 \end{vmatrix},
-$$</div><p>即 <span class="markdown-them-math-inline">$\mathrm{d}x\mathrm{d}y=\vert J\vert \mathrm{d}u\mathrm{d}v.$</span></p>
-<p>或者更本质些, <span class="markdown-them-math-inline">$\mathrm{d}x,\mathrm{d}y$</span> 均为向量, <span class="markdown-them-math-inline">$\mathrm{d}x\mathrm{d}y$</span> 是一种特殊的叉乘即楔积(wedge product): <span class="markdown-them-math-inline">$\mathrm{d}x\wedge \mathrm{d}y,$</span> 于是 <span class="markdown-them-math-inline">$\mathrm{d}u\land \mathrm{d}u=\mathrm{d}v\land \mathrm{d}v=0,$</span> <span class="markdown-them-math-inline">$\mathrm{d}u\land \mathrm{d}v=-\mathrm{d}v\land \mathrm{d}u,$</span> 于是</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+\]</span> 即 <span class="math inline">\(\mathrm{d}x\mathrm{d}y=\vert
+J\vert \mathrm{d}u\mathrm{d}v.\)</span></p>
+<p>或者更本质些, <span
+class="math inline">\(\mathrm{d}x,\mathrm{d}y\)</span> 均为向量, <span
+class="math inline">\(\mathrm{d}x\mathrm{d}y\)</span>
+是一种特殊的叉乘即楔积(wedge product): <span
+class="math inline">\(\mathrm{d}x\wedge \mathrm{d}y,\)</span> 于是 <span
+class="math inline">\(\mathrm{d}u\land \mathrm{d}u=\mathrm{d}v\land
+\mathrm{d}v=0,\)</span> <span class="math inline">\(\mathrm{d}u\land
+\mathrm{d}v=-\mathrm{d}v\land \mathrm{d}u,\)</span> 于是 <span
+class="math display">\[
+\begin{aligned}
 \mathrm{d}x\land \mathrm{d}y
-&amp;=(f_u\mathrm{d}u+f_v \mathrm{d}v)\land (g_u\mathrm{d}u+g_v \mathrm{d}v)\\
-&amp;=f_ug_u\mathrm{d}u\land \mathrm{d}v-f_vg_v\mathrm{d}u\land\mathrm{d}v\\
+&amp;=(f_u\mathrm{d}u+f_v \mathrm{d}v)\land (g_u\mathrm{d}u+g_v
+\mathrm{d}v)\\
+&amp;=f_ug_u\mathrm{d}u\land
+\mathrm{d}v-f_vg_v\mathrm{d}u\land\mathrm{d}v\\
 &amp;=(f_ug_u-f_vg_v)\mathrm{d}u\land \mathrm{d}v\\
 &amp;=\begin{vmatrix}
 f_u &amp; f_v\\
 g_u &amp; g_v
 \end{vmatrix}\mathrm{d}u\land \mathrm{d}v
 \end{aligned}
-$$</div><p>不过为什么在积分的时候可以认为 <span class="markdown-them-math-inline">$\mathrm{d}u\mathrm{d}v=\mathrm{d}v\mathrm{d}u$</span> 呢?</p>
-<p>一个比较清晰的理解Jacobi行列式的回答: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/318504273/answer/639295875">雅可比行列式该如何理解? - 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/368888687">直角坐标与极坐标的互化中，为什么 dxdy=rdrdθ？ - 知乎 (zhihu.com)</a></p>
-<p>本题来源: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44949135/article/details/109584486">2019年 第11届 全国大学生数学竞赛 初赛(非数学类)试题详细解答</a></p>
+\]</span> 不过为什么在积分的时候可以认为 <span
+class="math inline">\(\mathrm{d}u\mathrm{d}v=\mathrm{d}v\mathrm{d}u\)</span>
+呢?</p>
+<p>一个比较清晰的理解Jacobi行列式的回答: <a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/318504273/answer/639295875">雅可比行列式该如何理解?
+- 知乎 (zhihu.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/368888687">直角坐标与极坐标的互化中，为什么
+dxdy=rdrdθ？ - 知乎 (zhihu.com)</a></p>
+<p>本题来源: <a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44949135/article/details/109584486">2019年
+第11届 全国大学生数学竞赛 初赛(非数学类)试题详细解答</a></p>
 <p>有时间把Jacobi矩阵和Jacobi行列式总结一下.</p>
 </blockquote>
-<p><em><strong>SOL2</strong></em></p>
+<p><strong><em>SOL2</em></strong></p>
 <blockquote>
-<p>看到 <span class="markdown-them-math-inline">$\sin\phi-\cos\phi$</span> 这种东西怎么会想不到辅助角公式换元呢(</p>
+<p>看到 <span class="math inline">\(\sin\phi-\cos\phi\)</span>
+这种东西怎么会想不到辅助角公式换元呢(</p>
 </blockquote>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 I
-&amp;\xlongequal{\phi\mapsto\phi+\pi/4}\int_{\pi/4}^{9\pi/4}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta\\
-&amp;=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{\pi/2}\sin\theta \mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta
+&amp;\xlongequal{\phi\mapsto\phi+\pi/4}\int_{\pi/4}^{9\pi/4}\mathrm{d}\phi\int_0^{\pi}\sin\theta
+\mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta\\
+&amp;=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{\pi/2}\sin\theta
+\mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta
 \end{aligned}
-$$</div><p>这个式子还是能联想到极坐标, 作换元 <span class="markdown-them-math-inline">$\sin \theta=r,$</span> 就有</p>
-<div class="markdown-them-math-block">$$I=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{1} \frac{\mathrm{e}^{\sqrt{2}r\cos\phi}}{\sqrt{1-r^2}}r\mathrm{d}r,
-$$</div><p>更明显了, 化成二重积分后用直角坐标计算即可, 剩下的和 <em><strong>SOL1</strong></em> 一样. <span class="markdown-them-math-inline">$\square$</span></p>
+\]</span></p>
+<p>这个式子还是能联想到极坐标, 作换元 <span class="math inline">\(\sin
+\theta=r,\)</span> 就有 <span class="math display">\[
+I=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{1}
+\frac{\mathrm{e}^{\sqrt{2}r\cos\phi}}{\sqrt{1-r^2}}r\mathrm{d}r,
+\]</span> 更明显了, 化成二重积分后用直角坐标计算即可, 剩下的和
+<strong><em>SOL1</em></strong> 一样. <span
+class="math inline">\(\square\)</span></p>
 <blockquote>
-<p><em><strong>REMARK</strong></em>: 1) 看到 <span class="markdown-them-math-inline">$[0,\pi]$</span> 上的三角函数的积分会很自然地将其化到 <span class="markdown-them-math-inline">$[0,\pi/2]$</span> 上, 即</p>
-<div class="markdown-them-math-block">$$\int_0^\pi f(\sin\theta)\mathrm{d}\theta=2\int_0^{\pi/2} f(\sin\theta)\mathrm{d}\theta.
-$$</div><p>对称性易得.</p>
-<ol start="2">
-<li>对于周期为 <span class="markdown-them-math-inline">$T$</span> 的周期函数 <span class="markdown-them-math-inline">$g(x)$</span> 而言, 它在任意一个周期上的积分都是一样的, 即</li>
+<p><strong><em>REMARK</em></strong>: 1) 看到 <span
+class="math inline">\([0,\pi]\)</span>
+上的三角函数的积分会很自然地将其化到 <span
+class="math inline">\([0,\pi/2]\)</span> 上, 即 <span
+class="math display">\[
+\int_0^\pi f(\sin\theta)\mathrm{d}\theta=2\int_0^{\pi/2}
+f(\sin\theta)\mathrm{d}\theta.
+\]</span> 对称性易得.</p>
+<ol start="2" type="1">
+<li>对于周期为 <span class="math inline">\(T\)</span> 的周期函数 <span
+class="math inline">\(g(x)\)</span> 而言,
+它在任意一个周期上的积分都是一样的, 即 <span class="math display">\[
+\begin{aligned}\int_a^{a+T}g(x)\mathrm{d}x&amp;=\int_0^T
+g(x)\mathrm{d}x+\int_T^{a+T}g(x+T)\mathrm{d}{(x+T)}-\int_0^ag(x)\mathrm{d}x\\&amp;=\int_0^T
+g(x)\mathrm{d}x.\end{aligned}
+\]</span></li>
 </ol>
-<div class="markdown-them-math-block">$$\begin{aligned}\int_a^{a+T}g(x)\mathrm{d}x&amp;=\int_0^T g(x)\mathrm{d}x+\int_T^{a+T}g(x+T)\mathrm{d}{(x+T)}-\int_0^ag(x)\mathrm{d}x\\&amp;=\int_0^T g(x)\mathrm{d}x.\end{aligned}
-$$</div></blockquote>
-<p>2: 设</p>
-<div class="markdown-them-math-block">$$u_n=\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n},n\ge 1.
-$$</div><ol>
-<li>证明 <span class="markdown-them-math-inline">$\{u_n\}$</span> 收敛, 并求其极限.</li>
-</ol>
-<p><em><strong>PROOF</strong></em> 由于 <span class="markdown-them-math-inline">$1/(1+t^4)&lt;1,$</span> 故 <span class="markdown-them-math-inline">$1/(1+t^4)^n&gt;1/(1+t^4)^{n+1},$</span> 因此 <span class="markdown-them-math-inline">$\{u_n\}$</span> 递减, 且</p>
-<div class="markdown-them-math-block">$$\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}&gt;0,
-$$</div><p>故 <span class="markdown-them-math-inline">$\{u_n\}$</span> 单调递减有下界, 收敛. 取任意 <span class="markdown-them-math-inline">$\varepsilon\in(0,1),$</span> 有</p>
-<div class="markdown-them-math-block">$$\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}=\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}+\int_\varepsilon^1\frac{\mathrm{d}t}{(1+t^4)^n}
-$$</div><p>对于第二项, 由积分中值定理得</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\int_\varepsilon^{1}\frac{\mathrm{d}t}{(1+t^4)^n}=\lim_{n\to\infty}\frac{1}{(1+\xi_n^4)^n}=0,\xi_n\in(\varepsilon,1).
-$$</div><blockquote>
-<p>不能直接用积分中值定理是因为若 <span class="markdown-them-math-inline">$\{\xi_n\}$</span> 收敛至 <span class="markdown-them-math-inline">$0,$</span> 那么上式就变为了 <span class="markdown-them-math-inline">$1^{\infty}$</span> 的不定式.</p>
 </blockquote>
-<p>对于第一项, 当 <span class="markdown-them-math-inline">$n$</span> 充分大时, 有</p>
-<div class="markdown-them-math-block">$$\left\vert \int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}\right\vert &lt;\varepsilon,
-$$</div><p>于是</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}=0,
-$$</div><p>这就证得了 <span class="markdown-them-math-inline">$\lim_{n\to\infty }u_n=0.$</span>  <span class="markdown-them-math-inline">$\square$</span></p>
-<ol start="2">
-<li>证明级数 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}(-1)^nu_n$</span> 条件收敛.</li>
+<p>2: 设 <span class="math display">\[
+u_n=\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n},n\ge 1.
+\]</span> 1) 证明 <span class="math inline">\(\{u_n\}\)</span> 收敛,
+并求其极限.</p>
+<p><strong><em>PROOF</em></strong> 由于 <span
+class="math inline">\(1/(1+t^4)&lt;1,\)</span> 故 <span
+class="math inline">\(1/(1+t^4)^n&gt;1/(1+t^4)^{n+1},\)</span> 因此
+<span class="math inline">\(\{u_n\}\)</span> 递减, 且 <span
+class="math display">\[
+\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}&gt;0,
+\]</span> 故 <span class="math inline">\(\{u_n\}\)</span>
+单调递减有下界, 收敛. 取任意 <span
+class="math inline">\(\varepsilon\in(0,1),\)</span> 有 <span
+class="math display">\[
+\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}=\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}+\int_\varepsilon^1\frac{\mathrm{d}t}{(1+t^4)^n}
+\]</span> 对于第二项, 由积分中值定理得 <span class="math display">\[
+\lim_{n\to\infty}\int_\varepsilon^{1}\frac{\mathrm{d}t}{(1+t^4)^n}=\lim_{n\to\infty}\frac{1}{(1+\xi_n^4)^n}=0,\xi_n\in(\varepsilon,1).
+\]</span></p>
+<blockquote>
+<p>不能直接用积分中值定理是因为若 <span
+class="math inline">\(\{\xi_n\}\)</span> 收敛至 <span
+class="math inline">\(0,\)</span> 那么上式就变为了 <span
+class="math inline">\(1^{\infty}\)</span> 的不定式.</p>
+</blockquote>
+<p>对于第一项, 当 <span class="math inline">\(n\)</span> 充分大时, 有
+<span class="math display">\[
+\left\vert \int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}\right\vert
+&lt;\varepsilon,
+\]</span> 于是 <span class="math display">\[
+\lim_{n\to\infty}\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}=0,
+\]</span> 这就证得了 <span class="math inline">\(\lim_{n\to\infty
+}u_n=0.\)</span> <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="1">
+<li>证明级数 <span class="math inline">\(\displaystyle
+\sum_{n=1}^{\infty}(-1)^nu_n\)</span> 条件收敛.</li>
 </ol>
-<p><em><strong>PROOF</strong></em> <span class="markdown-them-math-inline">$\{u_n\}$</span> 为正项数列且递减且极限为 <span class="markdown-them-math-inline">$0,$</span> 于是由Leibniz判别法知其收敛. <span class="markdown-them-math-inline">$\square$</span></p>
-<p>3)证明级数 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n^p}$</span> 在 <span class="markdown-them-math-inline">$p\ge 1$</span> 时收敛, 并求 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n}$</span> 的值.</p>
-<p><em><strong>PROOF</strong></em> 由于 <span class="markdown-them-math-inline">$0&lt;u_n&lt; 1(n\ge 1),$</span> 于是</p>
-<div class="markdown-them-math-block">$$\sum_{n=1}^{\infty}\frac{u_n}{n^p}&lt;\frac{1}{n^p},
-$$</div><p>后者为 <span class="markdown-them-math-inline">$p$</span> 级数在 <span class="markdown-them-math-inline">$p&gt;1$</span> 时收敛. 下面证明 <span class="markdown-them-math-inline">$p=1$</span> 时的情况.</p>
-<p>利用分部积分可以求出递推公式:</p>
-<div class="markdown-them-math-block">$$u_{n+1}=\frac{4n-1}{4n}u_n+\frac{1}{2^n}
-$$</div><p>得到</p>
-<div class="markdown-them-math-block">$$\frac{u_n}{n}=4(u_n-u_{n+1})+\frac{1}{2^{n-2}}
-$$</div><p>于是</p>
-<div class="markdown-them-math-block">$$\sum_{n=1}^{\infty}\frac{u_n}{n}=4\sum_{n=1}^{\infty}(u_n-u_{n+1})+\sum_{n=1}^{\infty}\frac{1}{2^{n-2}}=4u_1+4.
-$$</div><p><span class="markdown-them-math-inline">$u_1$</span> 是一个老生常谈的积分了, 令 <span class="markdown-them-math-inline">$\omega_k=\exp\mathrm{i} (2k-5)\pi/4,k=1,2,3,4,$</span> 这是方程 <span class="markdown-them-math-inline">$x^4+1=0$</span> 的四个根, 于是</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p><strong><em>PROOF</em></strong> <span
+class="math inline">\(\{u_n\}\)</span> 为正项数列且递减且极限为 <span
+class="math inline">\(0,\)</span> 于是由Leibniz判别法知其收敛. <span
+class="math inline">\(\square\)</span></p>
+<p>3)证明级数 <span class="math inline">\(\displaystyle
+\sum_{n=1}^{\infty}\frac{u_n}{n^p}\)</span> 在 <span
+class="math inline">\(p\ge 1\)</span> 时收敛, 并求 <span
+class="math inline">\(\displaystyle
+\sum_{n=1}^{\infty}\frac{u_n}{n}\)</span> 的值.</p>
+<p><strong><em>PROOF</em></strong> 由于 <span
+class="math inline">\(0&lt;u_n&lt; 1(n\ge 1),\)</span> 于是 <span
+class="math display">\[
+\sum_{n=1}^{\infty}\frac{u_n}{n^p}&lt;\frac{1}{n^p},
+\]</span> 后者为 <span class="math inline">\(p\)</span> 级数在 <span
+class="math inline">\(p&gt;1\)</span> 时收敛. 下面证明 <span
+class="math inline">\(p=1\)</span> 时的情况.</p>
+<p>利用分部积分可以求出递推公式: <span class="math display">\[
+u_{n+1}=\frac{4n-1}{4n}u_n+\frac{1}{2^n}
+\]</span> 得到 <span class="math display">\[
+\frac{u_n}{n}=4(u_n-u_{n+1})+\frac{1}{2^{n-2}}
+\]</span> 于是 <span class="math display">\[
+\sum_{n=1}^{\infty}\frac{u_n}{n}=4\sum_{n=1}^{\infty}(u_n-u_{n+1})+\sum_{n=1}^{\infty}\frac{1}{2^{n-2}}=4u_1+4.
+\]</span> <span class="math inline">\(u_1\)</span>
+是一个老生常谈的积分了, 令 <span
+class="math inline">\(\omega_k=\exp\mathrm{i}
+(2k-5)\pi/4,k=1,2,3,4,\)</span> 这是方程 <span
+class="math inline">\(x^4+1=0\)</span> 的四个根, 于是 <span
+class="math display">\[
+\begin{aligned}
 \int_0^1\frac{\mathrm{d}t}{1+t^4}
 &amp;=\int_0^1\frac{\mathrm{d}t}{(t-\omega_1)(t-\omega_2)(t-\omega_3)(t-\omega_4)}\\
 &amp;=\int_0^1\frac{\mathrm{d}t}{(t^2-\sqrt{2}t+1)(t^2+\sqrt{2}t+1)}\\
 &amp;=\frac{1}{2\sqrt{2}}\int_0^1\left(\frac{t+\sqrt{2}}{t^2+\sqrt{2}t+1}-\frac{t-\sqrt{2}}{t^2-\sqrt{2}t+1}\right)\mathrm{d}t\\
-&amp;=\left.\frac{1}{4\sqrt{2}}\ln\left\vert \frac{t^2+\sqrt{2}t+1}{t^2-\sqrt{2}t+1}\right\vert +\frac{1}{2\sqrt{2}}\arctan\frac{\sqrt{2}t}{1-t^2}\right\vert _0^1\\
+&amp;=\left.\frac{1}{4\sqrt{2}}\ln\left\vert
+\frac{t^2+\sqrt{2}t+1}{t^2-\sqrt{2}t+1}\right\vert
++\frac{1}{2\sqrt{2}}\arctan\frac{\sqrt{2}t}{1-t^2}\right\vert _0^1\\
 &amp;=\frac{1}{4\sqrt{2}}\ln\frac{2+\sqrt{2}}{2-\sqrt{2}}+\frac{\pi}{4\sqrt{2}}
 \end{aligned}
-$$</div><p>代入即得 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n}.$</span></p>
+\]</span> 代入即得 <span class="math inline">\(\displaystyle
+\sum_{n=1}^{\infty}\frac{u_n}{n}.\)</span></p>
 <blockquote>
 <p>计算能力有待加强.</p>
 </blockquote>
@@ -483,7 +579,7 @@ $$</div><p>代入即得 <span class="markdown-them-math-inline">$\displaystyle \
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -537,13 +633,13 @@ $$</div><p>代入即得 <span class="markdown-them-math-inline">$\displaystyle \
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">134k</span>
+    <span title="Symbols count total">148k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:02</span>
+    <span title="Reading time total">2:15</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
