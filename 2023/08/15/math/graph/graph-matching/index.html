@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="">
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="二分图最大匹配 匈牙利算法 匈牙利算法用来求解二分图的最大匹配. 对于一个匹配为 \(M\) 的二分图 \(G&#x3D;(V,E)\), 顶点集被划分为 \(V_1,V_2\), 若 \(v\in V\) 满足某个以 \(v\) 为端点的边在 \(M\) 中, 则称 \(v\) 被匹配, 否则称其未被匹配; 若 \(e\in M\) 则称边 \(e\) 为匹配边, 否则称为未匹配边. 定义交替路如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图匹配">
+<meta property="og:url" content="http://example.com/2023/08/15/math/graph/graph-matching/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="二分图最大匹配 匈牙利算法 匈牙利算法用来求解二分图的最大匹配. 对于一个匹配为 \(M\) 的二分图 \(G&#x3D;(V,E)\), 顶点集被划分为 \(V_1,V_2\), 若 \(v\in V\) 满足某个以 \(v\) 为端点的边在 \(M\) 中, 则称 \(v\) 被匹配, 否则称其未被匹配; 若 \(e\in M\) 则称边 \(e\) 为匹配边, 否则称为未匹配边. 定义交替路如">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-15T03:43:59.000Z">
+<meta property="article:modified_time" content="2023-08-16T15:35:59.267Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/08/15/math/graph/graph-matching/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>图匹配 | XBD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XBD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        
+      
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/15/math/graph/graph-matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图匹配
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-08-15 11:43:59" itemprop="dateCreated datePublished" datetime="2023-08-15T11:43:59+08:00">2023-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-16 23:35:59" itemprop="dateModified" datetime="2023-08-16T23:35:59+08:00">2023-08-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/08/15/math/graph/graph-matching/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/15/math/graph/graph-matching/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="二分图最大匹配">二分图最大匹配</h1>
+<h2 id="匈牙利算法">匈牙利算法</h2>
+<p>匈牙利算法用来求解二分图的最大匹配.</p>
+<p>对于一个匹配为 <span class="math inline">\(M\)</span> 的二分图 <span
+class="math inline">\(G=(V,E)\)</span>, 顶点集被划分为 <span
+class="math inline">\(V_1,V_2\)</span>, 若 <span
+class="math inline">\(v\in V\)</span> 满足某个以 <span
+class="math inline">\(v\)</span> 为端点的边在 <span
+class="math inline">\(M\)</span> 中, 则称 <span
+class="math inline">\(v\)</span> 被匹配, 否则称其未被匹配; 若 <span
+class="math inline">\(e\in M\)</span> 则称边 <span
+class="math inline">\(e\)</span> 为匹配边, 否则称为未匹配边.
+定义交替路如下:</p>
+<p><strong>定义1 (交替路)</strong> 交替路是一段 path <span
+class="math inline">\(v_1,\cdots,v_k\)</span>, 满足 <span
+class="math inline">\(v_1\)</span>
+未被匹配且路径上的边是未匹配边和匹配边交错的, 即 <span
+class="math inline">\((v_{2i-1},v_{2i})\not\in M,(v_{2i},v_{2i+1})\in
+M\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>在交替路的基础上给出增广路的定义:</p>
+<p><strong>定义2 (增广路)</strong> 增广路是一条交替路,
+满足其终点未被匹配. <span class="math inline">\(\square\)</span></p>
+<p>显然增广路中, 未匹配边比匹配边多一条,
+于是可以<strong>将匹配边变成未匹配边,
+而未匹配边变成匹配边</strong>(即匹配边和未匹配边进行对调),
+这不会违反匹配的要求, 于是得到新的匹配 <span
+class="math inline">\(M&#39;\)</span>, 且满足 <span
+class="math inline">\(|M&#39;|=|M|+1\)</span>,
+这样的一次操作使匹配的条数增加了 <span class="math inline">\(1\)</span>.
+于是自然就有下面的思路:</p>
+<p>通过搜索不断地发现增广路, 每次找到一条增广路就做如上述的操作,
+直到找不到增广路为止.</p>
+<blockquote>
+<p>每个未被匹配的点只需要枚举一次.</p>
+</blockquote>
+<h3 id="dfs">DFS</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3386</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">500</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn2=<span class="number">5e4</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> from,to;</span><br><span class="line">    _edge(<span class="type">int</span> _from, <span class="type">int</span> _to):<span class="built_in">from</span>(_from),<span class="built_in">to</span>(_to)&#123;&#125;</span><br><span class="line">&#125;Edge; <span class="comment">// 边结构体, 存起点和终点</span></span><br><span class="line">vector&lt;Edge&gt;edge; </span><br><span class="line">vector&lt;<span class="type">int</span>&gt; g[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// g[i]为从顶点i出发的边的编号</span></span><br><span class="line"><span class="type">int</span> mate[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// 存每个点的配偶, 初始化为-1, 同时可以判断是否被匹配了</span></span><br><span class="line"><span class="type">int</span> check[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// 记录点是否在交替路中, 防止重复访问</span></span><br><span class="line"><span class="type">int</span> n,m,e;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> s)</span></span>&#123; <span class="comment">// 以s为起点, 返回是否能找到增广路 </span></span><br><span class="line">    <span class="keyword">for</span>(vector&lt;<span class="type">int</span>&gt;::iterator it=g[s].<span class="built_in">begin</span>();it!=g[s].<span class="built_in">end</span>();++it)&#123;</span><br><span class="line">        <span class="type">int</span> v=edge[*it].to;</span><br><span class="line">        <span class="keyword">if</span>(!check[v])&#123;</span><br><span class="line">            check[v]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(mate[v]==<span class="number">-1</span>||<span class="built_in">dfs</span>(mate[v]))&#123;</span><br><span class="line">                mate[v]=s;</span><br><span class="line">                mate[s]=v;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">matching</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(mate,<span class="number">-1</span>,<span class="built_in">sizeof</span>(mate));</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mate[i]==<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">memset</span>(check,<span class="number">0</span>,<span class="built_in">sizeof</span>(check));</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">dfs</span>(i))ans++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> isv[<span class="number">2</span>*maxn+<span class="number">5</span>][<span class="number">2</span>*maxn+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;e;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;e;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span>(!isv[a][b+n])&#123;</span><br><span class="line">            edge.<span class="built_in">push_back</span>(<span class="built_in">Edge</span>(a,b+n));</span><br><span class="line">            g[a].<span class="built_in">push_back</span>(cnt++);</span><br><span class="line">            isv[a][b+n]=isv[b+n][a]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">matching</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bfs">BFS</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3386</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">500</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn2=<span class="number">5e4</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> from,to;</span><br><span class="line">    _edge(<span class="type">int</span> _from, <span class="type">int</span> _to):<span class="built_in">from</span>(_from),<span class="built_in">to</span>(_to)&#123;&#125;</span><br><span class="line">&#125;Edge; <span class="comment">// 边结构体, 存起点和终点</span></span><br><span class="line">vector&lt;Edge&gt;edge; </span><br><span class="line">vector&lt;<span class="type">int</span>&gt; g[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// g[i]为从顶点i出发的边的编号</span></span><br><span class="line"><span class="type">int</span> mate[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// 存每个点的配偶, 初始化为-1, 同时可以判断是否被匹配了</span></span><br><span class="line"><span class="type">int</span> pre[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// 存路径, 起点的值为-1, prev[v]存v的前置结点</span></span><br><span class="line"><span class="type">int</span> check[<span class="number">2</span>*maxn+<span class="number">5</span>]; <span class="comment">// 记录点是否在交替路中, 值为当前所在交替路的起点, 防止重复入队</span></span><br><span class="line">queue&lt;<span class="type">int</span>&gt; Q;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">matching</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(mate,<span class="number">-1</span>,<span class="built_in">sizeof</span>(mate));</span><br><span class="line">    <span class="built_in">memset</span>(check,<span class="number">-1</span>,<span class="built_in">sizeof</span>(check));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123; </span><br><span class="line">        <span class="keyword">if</span>(mate[i]==<span class="number">-1</span>)&#123; <span class="comment">// 找到未被匹配的点, 以该点为起点搜索增广路</span></span><br><span class="line">            <span class="keyword">while</span>(!Q.<span class="built_in">empty</span>()) Q.<span class="built_in">pop</span>(); <span class="comment">// 每一轮搜索都需要空队列</span></span><br><span class="line">            <span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="built_in">sizeof</span>(pre));</span><br><span class="line">            Q.<span class="built_in">push</span>(i);</span><br><span class="line">            pre[i]=<span class="number">-1</span>; <span class="comment">// 记录起点</span></span><br><span class="line">            <span class="type">int</span> flag=<span class="number">0</span>; <span class="comment">// 用于判断增广路是否找到了</span></span><br><span class="line">            <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>()&amp;&amp;!flag) <span class="comment">// 广搜, 结束条件为队列为空或者找到增广路</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> v=Q.<span class="built_in">front</span>(); Q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">for</span>(vector&lt;<span class="type">int</span>&gt;::iterator it=g[v].<span class="built_in">begin</span>();it!=g[v].<span class="built_in">end</span>()&amp;&amp;!flag;++it)&#123; <span class="comment">// 满足交错路条件的临界点加入队列</span></span><br><span class="line">                    <span class="type">int</span> u=edge[*it].to; <span class="comment">// u为v的邻接点</span></span><br><span class="line">                    <span class="keyword">if</span>(check[u]!=i)&#123; <span class="comment">// 如果起点不是当前的起点i</span></span><br><span class="line">                        check[u]=i;</span><br><span class="line">                        Q.<span class="built_in">push</span>(mate[u]); <span class="comment">// u的配偶入队, 这里为什么不需要邻接点u入队呢?</span></span><br><span class="line">                        <span class="keyword">if</span>(mate[u]&gt;=<span class="number">0</span>)&#123; <span class="comment">// 如果有配偶, 表明仍然满足交替路的条件, 则记录路径</span></span><br><span class="line">                            pre[u]=v; <span class="comment">// 记录前置结点</span></span><br><span class="line">                            pre[mate[u]]=u;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span>&#123; <span class="comment">// 没有配偶, 表明找到了一条增广路, 进行匹配边和非匹配边的转换</span></span><br><span class="line">                            pre[u]=v; <span class="comment">// 记录前置结点</span></span><br><span class="line">                            flag=<span class="number">1</span>;</span><br><span class="line">                            <span class="type">int</span> x=u;</span><br><span class="line">                            <span class="keyword">while</span>(x!=<span class="number">-1</span>)&#123;</span><br><span class="line">                                <span class="type">int</span> y=pre[x];</span><br><span class="line">                                mate[x]=y;</span><br><span class="line">                                mate[y]=x;</span><br><span class="line">                                x=pre[y];</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(mate[i]!=<span class="number">-1</span>) ans++; <span class="comment">// 如果经过上述搜索, 起点成功有了配偶, 则匹配数目加1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> isv[<span class="number">2</span>*maxn+<span class="number">5</span>][<span class="number">2</span>*maxn+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,e;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;e;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;e;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span>(!isv[a][b+n])&#123;</span><br><span class="line">            edge.<span class="built_in">push_back</span>(<span class="built_in">Edge</span>(a,b+n));</span><br><span class="line">            g[a].<span class="built_in">push_back</span>(cnt++);</span><br><span class="line">            isv[a][b+n]=isv[b+n][a]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">matching</span>(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用BFS实现时, 需要注意在将点待搜索点放入队列时, 需要放的点是当前点
+<span class="math inline">\(u\)</span> 的邻接点 <span
+class="math inline">\(v\)</span> 的配偶, 这样相当于一次搜索跳了两步,
+包括非匹配边 <span class="math inline">\((u,v)\)</span> 和匹配边 <span
+class="math inline">\((v,\mathrm{mate}(v))\)</span>,
+效率比深度一次只增加一层要高一些并且不用额外判断是否满足交替路的条件.</p>
+<p>和网络流的FF算法和EK算法一样, 使用 BFS 的匈牙利算法要比使用 DFS
+的效率高一些(稀疏图尤甚), 虽然时间复杂度都为 <span
+class="math inline">\(O(|V||E|)\)</span>. (枚举 <span
+class="math inline">\(n=O(|V|)\)</span> 个点, 每个点找增广路需要 <span
+class="math inline">\(O(|E|)\)</span> 的时间.)</p>
+<h2 id="转化为网络流">转化为网络流</h2>
+<h1 id="一般图最大匹配">一般图最大匹配</h1>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/14/CO/network-flow1/" rel="prev" title="网络流(1)">
+      <i class="fa fa-chevron-left"></i> 网络流(1)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D"><span class="nav-number">1.</span> <span class="nav-text">二分图最大匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">匈牙利算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfs"><span class="nav-number">1.1.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bfs"><span class="nav-number">1.1.2.</span> <span class="nav-text">BFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8C%96%E4%B8%BA%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="nav-number">1.2.</span> <span class="nav-text">转化为网络流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D"><span class="nav-number">2.</span> <span class="nav-text">一般图最大匹配</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">165k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">2:30</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

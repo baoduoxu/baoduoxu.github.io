@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="">
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基本概念 已知有向图 \(G&#x3D;(V,E),\) 映射 \(c:E\to \mathbb{R}_{\ge 0}\) 称为 \(G\) 中每条边的容量, 是一个非负实数, 记作 \(c(e),e\in E\) 或者 \(c(u,v),(u,v)\in E,u,v\in V.\) 在 \(G\) 中有两个特殊顶点 \(s,t(s\ne t),\) 分别称作源点和汇点, 这样可以用一个五元组 \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流(1)">
+<meta property="og:url" content="http://example.com/2023/08/14/CO/network-flow1/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="基本概念 已知有向图 \(G&#x3D;(V,E),\) 映射 \(c:E\to \mathbb{R}_{\ge 0}\) 称为 \(G\) 中每条边的容量, 是一个非负实数, 记作 \(c(e),e\in E\) 或者 \(c(u,v),(u,v)\in E,u,v\in V.\) 在 \(G\) 中有两个特殊顶点 \(s,t(s\ne t),\) 分别称作源点和汇点, 这样可以用一个五元组 \">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-14T09:40:56.000Z">
+<meta property="article:modified_time" content="2023-08-16T15:36:25.814Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/08/14/CO/network-flow1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>网络流(1) | XBD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XBD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        
+      
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/CO/network-flow1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络流(1)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-08-14 17:40:56" itemprop="dateCreated datePublished" datetime="2023-08-14T17:40:56+08:00">2023-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-16 23:36:25" itemprop="dateModified" datetime="2023-08-16T23:36:25+08:00">2023-08-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2023/08/14/CO/network-flow1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/14/CO/network-flow1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>9.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>9 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基本概念">基本概念</h1>
+<p>已知有向图 <span class="math inline">\(G=(V,E),\)</span> 映射 <span
+class="math inline">\(c:E\to \mathbb{R}_{\ge 0}\)</span> 称为 <span
+class="math inline">\(G\)</span> 中每条边的<strong>容量</strong>,
+是一个非负实数, 记作 <span class="math inline">\(c(e),e\in E\)</span>
+或者 <span class="math inline">\(c(u,v),(u,v)\in E,u,v\in V.\)</span> 在
+<span class="math inline">\(G\)</span> 中有两个特殊顶点 <span
+class="math inline">\(s,t(s\ne t),\)</span> 分别称作源点和汇点,
+这样可以用一个五元组 <span class="math inline">\((V,E,c,s,t)\)</span>
+表示一个容量网络 <span class="math inline">\(N\)</span>. 定义每条边
+<span class="math inline">\(e\)</span> 的可行流为 <span
+class="math inline">\(f(e),\)</span> 映射 <span
+class="math inline">\(f:E\to \mathbb{R}_{\ge 0},\)</span> 表示大小为有
+<span class="math inline">\(f(e)\)</span> 的<strong>流量</strong>流经边
+<span class="math inline">\(e,\)</span> <span
+class="math inline">\(f\)</span> 需满足两个要求:</p>
+<p>1: 每条边的流量不能超过该边的容量, 即 <span
+class="math inline">\(\forall e\in E,f(e)\le c(e).\)</span></p>
+<p>2: 对于所有的非源点和汇点的点,
+流入每个点的流量之和等于流出每个点的流量之和, 即 <span
+class="math inline">\(\forall v\in V-\{s,t\},\)</span> 有 <span
+class="math display">\[
+\sum_{(u,v)\in E}f(u,v)=\sum_{(v,u)\in E}f(v,u)
+\]</span></p>
+<p>这很像基尔霍夫电流定律, 即流入每个结点的电流等于流出每个结点的电流.
+为了方便, 用 <span
+class="math inline">\(\mathrm{in}(v),\mathrm{out}(v)\)</span>
+分别表示流入 <span class="math inline">\(v\)</span> 和流出 <span
+class="math inline">\(v\)</span> 的流量, 在定义了广义结点后, <span
+class="math inline">\(\mathrm{in}(),\mathrm{out}()\)</span>
+的含义同样适用.</p>
+<p>在上面两个要求的定义之下, 可以定义<strong>整张网络的流量</strong>
+<span class="math inline">\(\mathcal{F}(f)\)</span> 为原点 <span
+class="math inline">\(s\)</span> 的<strong>净流出量</strong>, 或者汇点
+<span class="math inline">\(t\)</span> 的<strong>净流入量</strong>, 即
+<span class="math display">\[
+\mathcal{F}(f)=\mathrm{out}(s)-\mathrm{in}(s)=\mathrm{in}(v)-\mathrm{out}(v)
+\]</span> 最关注的问题是最大流问题,
+也就是求出一张容量网络的最大流量.</p>
+<p>如果对于结点 <span class="math inline">\(u,v\)</span> 同时有 <span
+class="math inline">\((u,v)\in E\land (v,u)\in E\)</span> ,
+可以定义广义节点 <span class="math inline">\(v&#39;=\{u,v\},\)</span>
+或者在 <span class="math inline">\(u,v\)</span> 之间插入一个节点 <span
+class="math inline">\(k,\)</span> 并使 <span
+class="math inline">\(c(v,k)=c(k,u)=c(v,u)\)</span> 或者 <span
+class="math inline">\(c(u,k)=c(k,v)=c(u,v).\)</span>
+在后面就默认两个结点之间有且仅有一条边.</p>
+<p>容量网络中另一个有用的概念是<strong>割集</strong>: 对于 <span
+class="math inline">\(N=(V,E,c,s,t),\)</span> 若 <span
+class="math inline">\(A\subset V\)</span> 满足 <span
+class="math inline">\(s\in A\land t\in \bar{A},\)</span> 则称 <span
+class="math inline">\((A\times \bar{A})\cap E\)</span> 为 <span
+class="math inline">\(N\)</span> 的一个割集, 记作 <span
+class="math inline">\((A,\bar{A})\)</span> (这只是一种形式上的记法).
+割集是一些边的集合, 这些边的流量之和 <span
+class="math inline">\(\sum_{e\in (A,\bar{A})}c(e)\)</span>
+称为割集的<strong>容量</strong>, 记作 <span
+class="math inline">\(C(A,\bar{A}).\)</span> 割集就是把 <span
+class="math inline">\(V\)</span> 分成两部分后,
+端点分别在两部分的那部分边的集合, 和二分图很是相似.</p>
+<p>若将 <span class="math inline">\(A,\bar{A}\)</span> 均看作广义节点,
+那么整张网络中只剩下这两个结点, 此时显然有 <span
+class="math inline">\(\mathcal{F}(f)=\mathrm{out}(A)-\mathrm{in}(A)=\mathrm{in}(\bar{A})-\mathrm{out}(\bar{A}),\)</span>
+以及 <span class="math inline">\(\mathrm{out}(A)=
+\mathrm{in}(\bar{A}),\mathrm{out}(\bar{A})= \mathrm{in}(A).\)</span></p>
+<p>最关注的问题是最小割问题,
+也就是求出一张容量网络的所有割集中容量最小的那个.</p>
+<p>下面通过线性规划理论论述最大流与最小割的关系.</p>
+<p>最大流与最小割都可以写成线性规划问题的形式.</p>
+<p>最大流: <span class="math display">\[
+\begin{aligned}
+&amp;\max \sum_{(s,u)\in E}f(s,u)-\sum_{(u,s)\in E}f(u,s)\\
+\text{s.t.}&amp;\forall e\in E,0\le f(e)\le c(e)\\
+&amp;\forall v\in V-\{s,t\},\sum_{(u,v)\in E}f(u,v)=\sum_{(v,u)\in
+E}f(v,u)
+\end{aligned}
+\]</span></p>
+<p>最小割: <span class="math display">\[
+\begin{aligned}
+&amp;\min \sum_{e\in (A\times \bar{A})\cap E}c(e)\\
+\text{s.t.}&amp; A\subset V\\
+&amp; s\in A,t\in \bar{A}
+\end{aligned}
+\]</span></p>
+<p>最大流问题和最小割问题实际上互为对偶问题, 下面证明这一结论.</p>
+<p>考虑用式 <span
+class="math inline">\(\mathcal{F}(f)=\mathrm{out}(A)-\mathrm{in}(A),\)</span>
+则最大流问题是如下的线性规划问题 <span class="math display">\[
+\begin{aligned}
+&amp;\max \sum_{(s,u)\in (A\times \bar{A})\cap E}f(s,u)-\sum_{(u,s)\in
+(\bar{A}\times A)\cap E}f(u,s)\\
+\text{s.t.}&amp;\forall e\in E,0\le f(e)\le c(e)\\
+&amp;\forall v\in V-\{s,t\},\sum_{(u,v)\in E}f(u,v)=\sum_{(v,u)\in
+E}f(v,u)\\
+&amp;A\subset V\\
+&amp; s\in A,t\in \bar{A}
+\end{aligned}
+\]</span> 一共 <span class="math inline">\(m+n-2\)</span>
+个约束条件(<span class="math inline">\(m\)</span> 个容量限制, <span
+class="math inline">\(n-2\)</span> 个平衡条件) , <span
+class="math inline">\(m\)</span> 个变量 <span
+class="math inline">\(f(e),e\in E\)</span> , 则对偶问题有 <span
+class="math inline">\(m+n-2\)</span> 个变量, <span
+class="math inline">\(m\)</span> 个约束条件, 且变量可以写为 <span
+class="math inline">\(g(e),e\in E,\)</span> 与 <span
+class="math inline">\(m\)</span> 个不等式约束条件进行对应; <span
+class="math inline">\(g_1,\cdots,g_{n-2},\)</span> 与 <span
+class="math inline">\(n-2\)</span> 个等式约束条件进行对应,
+于是对偶问题为 <span class="math display">\[
+\begin{aligned}&amp;\min \sum_{e\in E} g(e)c(e)\\\text{s.t.}&amp;
+g(e)\ge 0 \\&amp;\forall e\in (A\times \bar{A})\cap E,g(e)\ge
+1\\&amp;\forall e\in (\bar{A}\times A)\cap E,g(e)\ge -1\\&amp;A\subset
+V\\&amp; s\in A,t\in \bar{A}\end{aligned}
+\]</span> 其中 <span class="math inline">\(g_1,\cdots,g_{n-2}\)</span>
+是自由变量. 由于 <span class="math inline">\(\forall e,g(e)\ge
+0,\)</span> 因此每个 <span class="math inline">\(g(e)\)</span>
+都取最小值时 <span class="math inline">\(\sum_{e\in E} g(e)c(e)\)</span>
+取得最小值, 此时 <span class="math display">\[
+\sum_{e\in E} g(e)c(e)=\sum_{e\in (A\times \bar{A})\cap E}c(e)
+\]</span> 因此上述优化问题就可以改写为 <span class="math display">\[
+\begin{aligned}
+&amp;\min \sum_{e\in (A\times \bar{A})\cap E}c(e)\\
+\text{s.t.}&amp; A\subset V\\
+&amp; s\in A,t\in \bar{A}
+\end{aligned}
+\]</span> 也就是最小割问题.
+这就证得了最大流与最小割问题互为对偶问题.</p>
+<p>下面介绍常见的算法.</p>
+<h1 id="ff算法">FF算法</h1>
+<p>首先是Ford-Fulkerson算法. 最简单的想法是,
+从源点开始搜索到汇点的可行路径,
+该条路径上的最小容量为该条路径上的可行流, 不断重复该过程,
+直到没有可行路径为止, 所有可行流的流量.</p>
+<p>给出一些定义:</p>
+<ul>
+<li>增广路: 考虑从 <span class="math inline">\(s\)</span> 到 <span
+class="math inline">\(t\)</span> 的一条路径, 在该条路径中,
+如果所有前向边非饱和, 所有后向边非零流, 则称这样的一条路径为增广路.</li>
+</ul>
+<p>FF算法就是通过DFS不断搜索增广路的过程, 需要注意的是,
+每找到一条增广路且有 <span class="math inline">\(f(u,v)\)</span>
+的流流过边 <span class="math inline">\((u,v)\)</span> 时, 需要再使 <span
+class="math inline">\(-f(u,v)\)</span> 的流流过 <span
+class="math inline">\((u,v)\)</span>, 即建立反向边 <span
+class="math inline">\((v,u)\)</span>, 并使得 <span
+class="math inline">\(f(u,v)\)</span> 的流流过 <span
+class="math inline">\((v,u)\)</span>,
+这个过程实际上相当于一个撤销返反悔的过程,
+即在刚开始搜索得到的可行流可能并不是最优的,
+它们中有的边可能并不需要经过.</p>
+<p>下面给出FF算法的证明, 即下面的定理:</p>
+<p>可行流 <span class="math inline">\(f\)</span> 是最大流的充要条件是
+<span class="math inline">\(N\)</span> 中不存在增广路.</p>
+<p><strong><em>PROOF</em></strong> 必要性: 如果 <span
+class="math inline">\(f\)</span> 是最大流, 且仍然存在增广路,
+设增广路可流的剩余流量为 <span
+class="math inline">\(\delta&gt;0\)</span>,
+显然可以继续从增广路增加流量, 增加 <span
+class="math inline">\(\delta\)</span> 后的流 <span
+class="math inline">\(f&#39;\)</span> 显然是最大流, 且此时不存在增广路,
+这就证得了必要性.</p>
+<p>充分性. 假设 <span class="math inline">\(N\)</span>
+中不存在关于可行流 <span class="math inline">\(f\)</span> 的 <span
+class="math inline">\(s-t\)</span> 增广路, 置集合 <span
+class="math inline">\(A=\{j\in V:存在关于f的s-j增广路\}\)</span>, 同时令
+<span class="math inline">\(s\in A\)</span>, 显然由条件可得 <span
+class="math inline">\(t\not\in A\)</span>. 对任意 <span
+class="math inline">\((i,j)\in (A,\bar{A})\)</span>, 必定有 <span
+class="math inline">\(f(i,j)=c(i,j)\)</span>,
+即割集中的每条边都是饱和的, 否则, 假设存在 <span
+class="math inline">\((i,j)\)</span> 使得 <span
+class="math inline">\(f(i,j)\le c(i,j)\)</span>, 由于 <span
+class="math inline">\(i\in A\)</span>, 则 <span
+class="math inline">\(s-i\)</span> 增广路可以延伸到 <span
+class="math inline">\(j\)</span>, 这就意味着 <span
+class="math inline">\(j\in A\)</span>, 这与 <span
+class="math inline">\(j\in \bar A\)</span> 显然矛盾, 于是割集 <span
+class="math inline">\((A,\bar{A})\)</span> 的每条边都是饱和的.
+同理可以证明所有的 <span class="math inline">\((j,i)\in
+(\bar{A},A)\)</span> 都是零流的, 即若存在非零流的 <span
+class="math inline">\((j,i)\)</span>, 仍然可以得到 <span
+class="math inline">\(j\in\bar{A}\)</span>, 矛盾! 于是 <span
+class="math display">\[
+v(f)=\sum_{(i,j)\in (A\times \bar{A})\cap E}f(s,u)-\sum_{(j,i)\in
+(\bar{A}\times A)\cap E}f(u,s)=\sum_{(i,j)\in
+(A,\bar{A})}c(i,j)=c(A,\bar{A})
+\]</span> 这实际上就是最大流.这同时也再一次证明了最大流等于最小割.</p>
+<p>FF的时间复杂度: 记 <span class="math inline">\(C=\sum_{(s,j)\in
+E}c(s,j)\)</span>, 且容量均为整数,
+则每次搜索后至少会当前可行流的流量至少增加 <span
+class="math inline">\(1\)</span>, 且每次至多遍历所有的边,
+于是时间复杂度为 <span class="math inline">\(O(C|E|)\)</span>,
+与流量的大小成正比.</p>
+<p>FF算法的过程, 在基础的DFS基础上, 遍历的时候要给点做一些标记,
+包括点是否被访问过的标记, 到当前点 <span
+class="math inline">\(j\)</span> 的前一个顶点 <span
+class="math inline">\(i\)</span> 和 <span
+class="math inline">\((i,j)\)</span> 为前向边还是反向边, 以及到当前点时
+<span class="math inline">\(j\)</span>
+的路径上的所有正向边的残存容量与反向边的容量的最小值.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P3376</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a[<span class="number">205</span>][<span class="number">205</span>]; <span class="comment">//采用邻接矩阵</span></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> inf=<span class="number">0x7777777</span>;</span><br><span class="line"><span class="type">int</span> n,m,s,t,ans=<span class="number">0</span>,isv[<span class="number">105</span>];</span><br><span class="line"><span class="type">int</span> flag=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> v,<span class="type">int</span> flow)</span></span>&#123; <span class="comment">//_min为这条增广路上的最小容量</span></span><br><span class="line">    <span class="keyword">if</span>(v==t)&#123;</span><br><span class="line">        <span class="keyword">return</span> flow; <span class="comment">//该增广路的流量</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[v][i]&gt;<span class="number">0</span>&amp;&amp;isv[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            isv[i]=<span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> c=<span class="built_in">dfs</span>(i,<span class="built_in">min</span>(flow,a[v][i]));</span><br><span class="line">            <span class="keyword">if</span>(c!=<span class="number">-1</span>)&#123;</span><br><span class="line">                a[v][i]-=c;</span><br><span class="line">                a[i][v]=c;<span class="comment">//建反边</span></span><br><span class="line">                <span class="keyword">return</span> c;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FF</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> c;</span><br><span class="line">    <span class="keyword">while</span>((c=<span class="built_in">dfs</span>(s,inf))&amp;&amp;c!=<span class="number">-1</span>)&#123;</span><br><span class="line">        ans+=c;</span><br><span class="line">        <span class="built_in">memset</span>(isv,<span class="number">0</span>,<span class="built_in">sizeof</span>(isv));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x,y;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        cin&gt;&gt;a[x][y]; <span class="comment">//容量</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FF</span>();</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ek算法">EK算法</h1>
+<p>EK算法并没有在FF算法上做什么改进, 只是换了搜索方式,
+即使用BFS而不是DFS. 但是这会使得EK算法的性能好于FF算法,
+因为BFS能保证每次找到的增广路是最短的(假设边权为 <span
+class="math inline">\(1\)</span>),
+而DFS为了找到容量最大的增广路可能会绕远路.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line">ll a[<span class="number">205</span>][<span class="number">205</span>]; <span class="comment">//采用邻接矩阵</span></span><br><span class="line">ll <span class="type">const</span> inf=<span class="number">0xffffffffff</span>;</span><br><span class="line"><span class="type">int</span> n,m,s,t;</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line">queue&lt;<span class="type">int</span>&gt;q;</span><br><span class="line">ll flow[<span class="number">205</span>];<span class="comment">//流向每个结点的流量，其中流向源点的流量可以认为是inf</span></span><br><span class="line">ll last[<span class="number">205</span>];<span class="comment">//每个结点的前置结点，默认为-1，即如果为-1表示</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(last,<span class="number">-1</span>,<span class="built_in">sizeof</span>(last));</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())q.<span class="built_in">pop</span>();</span><br><span class="line">    flow[s]=inf;</span><br><span class="line">    q.<span class="built_in">push</span>(s);</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="type">int</span> u=q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">if</span>(u==t)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[u][i]&gt;<span class="number">0</span>&amp;&amp;last[i]==<span class="number">-1</span>&amp;&amp;i!=s)&#123;</span><br><span class="line">                last[i]=u;</span><br><span class="line">                flow[i]=<span class="built_in">min</span>(flow[u],a[u][i]);<span class="comment">//流向结点i的流量是流向u的流量与边(u,i)的当前容量的较小值</span></span><br><span class="line">                q.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> last[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">EK</span><span class="params">()</span></span>&#123; <span class="comment">//要不停地进行bfs，直到无法搜索到汇点t</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">bfs</span>()!=<span class="number">-1</span>)&#123;<span class="comment">///每次搜索过后都要更新整张网络</span></span><br><span class="line">        ans+=flow[t];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=t;i!=s&amp;&amp;i!=<span class="number">-1</span>;i=last[i])&#123;</span><br><span class="line">            <span class="comment">// cout&lt;&lt;i&lt;&lt;&#x27; &#x27;;</span></span><br><span class="line">            flow[last[i]]=flow[i];</span><br><span class="line">            a[last[i]][i]-=flow[i];</span><br><span class="line">            a[i][last[i]]+=flow[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x,y;</span><br><span class="line">        ll w;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y&gt;&gt;w;</span><br><span class="line">        a[x][y]+=w; <span class="comment">//容量</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">EK</span>();</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="dinic算法">Dinic算法</h1>
+<p>FF算法每次只能找到一条增广路, 同时每次寻找的时候都需要重新进行标号,
+然后在寻找新的增广路时, 原来顶点的标号可能不变, 这样就造成了重复标号,
+Dinic算法就是这样的思想, 借助已经做过的标记,
+防止做重复性工作来提高效率.</p>
+<p>现在定义关于容量网络 <span class="math inline">\(N\)</span>
+上的可行流 <span class="math inline">\(f\)</span> 的辅助网络 <span
+class="math inline">\(N(f)=\langle V,E_f,c_a,s,t
+\mathbb{R}angle\)</span>: <span class="math inline">\(E_f=E^+_f\cup
+E_f^-\)</span>, 其中 <span class="math inline">\(E^+_f=\{(i,j)\in
+E:f(i,j)&lt;c(i,j)\},E_f^-=\{(j,i)\in E:f(i,j)&gt;0\}\)</span>, 即 <span
+class="math inline">\(E_f^+\)</span> 并表示不饱和的正向边, <span
+class="math inline">\(E_f^-\)</span> 表示流量大于零的反向边. <span
+class="math inline">\(c_a:E_f\to\mathbb{R}_{+}\)</span> 满足 <span
+class="math display">\[
+c_a(i,j)=
+\begin{cases}
+c(i,j)-f(i,j),&amp;(i,j)\in E_f^+\\
+f(j,i),&amp;(i,j)\in E_f^-
+\end{cases}
+\]</span> <span class="math inline">\(c_a\)</span> 称为辅助容量, 显然,
+<span class="math inline">\(N(f)\)</span> 也是一个容量网络, <span
+class="math inline">\(c_a\)</span> 是它的容量, 不难发现, <span
+class="math inline">\(N(f)\)</span> 中的<span
+class="math inline">\(s-t\)</span> 有向路径均为 <span
+class="math inline">\(N\)</span> 中的 <span
+class="math inline">\(s-t\)</span> 增广路.</p>
+<p>首先想关注的问题是,辅助容量网络 <span
+class="math inline">\(N(f)\)</span> 的最大流和原容量网络 <span
+class="math inline">\(N\)</span> 的最大流有什么关系呢?
+这是下面的定理:</p>
+<p>设 <span class="math inline">\(N\)</span> 的最大流为 <span
+class="math inline">\(v_N\)</span>, 则 <span
+class="math inline">\(f\)</span> 是它的一可行流, 则 <span
+class="math inline">\(N(f)\)</span>的最大流为 <span
+class="math inline">\(v_N-v(f)\)</span>.</p>
+<p><strong><em>PROOF</em></strong> 设 <span
+class="math inline">\(N\)</span> 的一个割集为 <span
+class="math inline">\((A,\bar{A})\)</span>, 显然它也是 <span
+class="math inline">\(N(f)\)</span> 的一个割集, 记作 <span
+class="math inline">\((A,\bar{A})_f\)</span>, <span
+class="math inline">\((A,\bar{A})_f\)</span> 包括 <span
+class="math inline">\((A,\bar{A})\)</span> 的非饱和正向边和非零流反向边,
+设这两者的集合分别为 <span class="math inline">\(E_1,E_2\)</span>,
+那么可以得到 <span class="math display">\[
+\begin{aligned}
+c_a((A,\bar{A})_f)
+&amp;=\sum_{(i,j)\in E_1}(c(i,j)-f(i,j))+\sum_{(i,j)\in E_2}f(j,i)\\
+&amp;=\sum_{(i,j)\in (A,\bar{A})}(c(i,j)-f(i,j))+\sum_{(j,i)\in
+(\bar{A},A)}f(j,i)\\
+&amp;=\sum_{e\in (A,\bar{A})}c(e)-\left(\sum_{(i,j)\in
+(A,\bar{A})}f(i,j)-\sum_{(j,i)\in (\bar{A},A)}f(j,i) \right)\\
+&amp;=c(A,\bar{A})-v(f)
+\end{aligned}
+\]</span> 且 <span class="math inline">\(c(A,\bar{A})=v_N\)</span>,
+这就证得了 <span
+class="math inline">\(c_a((A,\bar{A})_f)=v_N-v(f)\)</span>, 同时 <span
+class="math inline">\(c_a((A,\bar{A})_f)\)</span> 也为 <span
+class="math inline">\(N(f)\)</span> 的最大流.</p>
+<p>设 <span class="math inline">\(f\)</span> 为 <span
+class="math inline">\(N\)</span> 上的可行流, <span
+class="math inline">\(g\)</span> 为 <span
+class="math inline">\(N(f)\)</span> 上的可行流, 定义 <span
+class="math inline">\(f&#39;=f+g\)</span> 满足对任意 <span
+class="math inline">\((i,j)\in E\)</span> 都有 <span
+class="math inline">\(f&#39;(i,j)=f(i,j)+g(i,j)-g(j,i)\)</span>, 那么
+<span class="math inline">\(f+g\)</span> 也是 <span
+class="math inline">\(N\)</span> 上的可行流, 且满足 <span
+class="math inline">\(v(f+g)=v(f)+g(f)\)</span>.</p>
+<p>现在在 Dinic 算法中引入分层的思想. 设 <span
+class="math inline">\(s\)</span> 的层数为 <span
+class="math inline">\(0\)</span>, 顶点 <span
+class="math inline">\(u\)</span> 的层数 <span
+class="math inline">\(d(u)\)</span> 定义为 <span
+class="math inline">\(s\)</span> 到 <span
+class="math inline">\(u\)</span> 的最短路径, 且边权定义为 <span
+class="math inline">\(1\)</span>, 这通过一次BFS便可预处理出, 并令 <span
+class="math inline">\(d=d(t)\)</span>, 显然要获得最短的可行流,
+可行流不可能从高层流向低层, 同时不会经过 <span
+class="math inline">\(d(x)&gt;d\)</span> 的点 <span
+class="math inline">\(x\)</span>. 现在定义分层辅助网络 <span
+class="math inline">\(N_A(f)\)</span> 为删去 <span
+class="math inline">\(N(f)\)</span> 中冗余的边和点,
+冗余的边和点定义如上, 即高层到低层的边以及层数大于 <span
+class="math inline">\(d\)</span> 的点, 用符号表示为 <span
+class="math inline">\(N_A(f)=(V_f,E_A(f),c_a,s,t)\)</span>, 且 <span
+class="math inline">\(\displaystyle V_f=\bigcup_{0 \le k\le
+d}V_{f_k},V_{f_k}=\{i\in V:d(i)=k\},0\le k\le
+d-1,V_{f_d}=\{t\}\)</span>, <span class="math inline">\(\displaystyle
+E_A(f)=\bigcup_{0\le k\le d-1}E_{f_k},E_{f_k}=\{(i,j)\in E_f:i\in
+V_{f_k}\land j\in V_{f_{k+1}}\}\)</span>. 即 <span
+class="math inline">\(V_{f_k}\)</span> 表示第 <span
+class="math inline">\(k\)</span> 层顶点的集合, <span
+class="math inline">\(E_{f_k}\)</span> 表示起点为第 <span
+class="math inline">\(k\)</span> 层顶点终点为第 <span
+class="math inline">\(k+1\)</span> 层顶点的有向边. 于是 <span
+class="math inline">\(N_A(f)\)</span> 实际上是一个有向无环图,
+且只有一个源点和汇点.</p>
+<p>如果 <span class="math inline">\(N\)</span> 中不存在关于 <span
+class="math inline">\(f\)</span> 的且不含反向边的增广路, 那么称 <span
+class="math inline">\(f\)</span> 为 <span
+class="math inline">\(N\)</span> 中的极大流.
+显然可行流是最大流的必要条件是可行流为极大流. Dinic算法的关键步骤是求
+<span class="math inline">\(N_A(f)\)</span> 的极大流, 即在 <span
+class="math inline">\(N_A(f)\)</span> 中找到尽可能多的可行流.</p>
+<p>对于每个顶点而言, 能流经该顶点 <span class="math inline">\(i\)</span>
+的最大流量显然为终点为该顶点的边的容量和与起点为该顶点边的容量和这两者之间的最小值,
+记作 <span class="math inline">\(\ell(i)\)</span>, 规定 <span
+class="math inline">\(\ell(s)=\ell(t)=\infty\)</span>.</p>
+<p>求 <span class="math inline">\(N_A(f)\)</span>
+的极大流的过程也类似于寻找增广路, 但是不像FF算法那样一条一条的找,
+而是一次找多条. 在定义过顶点最大流量 <span
+class="math inline">\(\ell\)</span> 后, 只需要删去满足 <span
+class="math inline">\(\ell(u)=0\)</span> 的顶点及其边, 在剩下的顶点中,
+假设 <span class="math inline">\(k=\arg\min_{y\in E_A(f)}
+\ell(y)\)</span>, 那么就把流量 <span
+class="math inline">\(\ell(k)\)</span> 推送到 <span
+class="math inline">\(t\)</span>, 再反向推送到 <span
+class="math inline">\(s\)</span>, 接着删去 <span
+class="math inline">\(k\)</span> 及其相邻的边, 然后再删去 <span
+class="math inline">\(N(f)\)</span> 中已经饱和的边, 得到新的 <span
+class="math inline">\(N_A(f)\)</span>, 直到 不存在从 <span
+class="math inline">\(s\)</span> 到 <span
+class="math inline">\(t\)</span> 的路径为止, 此时便得到了 <span
+class="math inline">\(N_A(f)\)</span> 的极大流 <span
+class="math inline">\(g\)</span>, 接着置 <span
+class="math inline">\(f:=f+g\)</span> 即可, 直到 <span
+class="math inline">\(N(f)\)</span> 中也不存在从 <span
+class="math inline">\(s\)</span> 到 <span
+class="math inline">\(t\)</span> 的路径, 算法即可停止.</p>
+<p>Dinic 算法得到的 <span class="math inline">\(f\)</span> 是最大流,
+且复杂度为 <span class="math inline">\(O(|V|^3)\)</span>.</p>
+<p><strong><em>PROOF</em></strong> 算法终止时, <span
+class="math inline">\(N(f)\)</span> 不存在从 <span
+class="math inline">\(s\)</span> 到 <span
+class="math inline">\(t\)</span> 的路径, 这意味着 <span
+class="math inline">\(N(f)\)</span> 的最大流为零, 于是 <span
+class="math inline">\(v_N=v(f)\)</span>, 即 <span
+class="math inline">\(f\)</span> 为 <span
+class="math inline">\(N\)</span> 的最大流. 注意到每个阶段的 <span
+class="math inline">\(N_A(f)\)</span> 中的 <span
+class="math inline">\(d(t)\)</span> 都大于前一阶段的 <span
+class="math inline">\(d(t)\)</span>, 而整张图中最长路径为 <span
+class="math inline">\(|V|\)</span>, 于是至多有 <span
+class="math inline">\(|V|\)</span> 个阶段. 在每个阶段中,
+需要做的事情包括构造 <span class="math inline">\(N_A(f)\)</span> 和计算
+<span class="math inline">\(\ell\)</span>, 这在一次BFS中可以做到,
+复杂度为 <span class="math inline">\(O(|E|)\)</span>; 接着需要计算极大流
+<span class="math inline">\(g\)</span>, 包括删边和修改容量,
+删边的次数显然为 <span class="math inline">\(O(|E|)\)</span> 次,
+而对于修改容量, 由于 <span class="math inline">\(N_A(f)\)</span>
+为有向无环图, 则推送最小 <span class="math inline">\(\ell(k)\)</span>
+时至多推送 <span class="math inline">\(|V|\)</span> 次,
+每次推送修改容量至多修改 <span class="math inline">\(|V|\)</span> 次,
+于是工作为 <span class="math inline">\(O(|V|^2)\)</span>,
+因此每个阶段的复杂度为 <span
+class="math inline">\(O(|E|)+O(|E|)+O(|V|^2)=O(|V^2|)\)</span>,
+于是最终的复杂度为 <span class="math inline">\(O(|V|^3)\)</span>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/11/seminar/august2023/advanced-informed-search/" rel="prev" title="Advanced Informed Search">
+      <i class="fa fa-chevron-left"></i> Advanced Informed Search
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/08/15/math/graph/graph-matching/" rel="next" title="图匹配">
+      图匹配 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ff%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">FF算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ek%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">EK算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dinic%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">Dinic算法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa-thin fa-atom-simple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">165k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">2:30</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
+      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
