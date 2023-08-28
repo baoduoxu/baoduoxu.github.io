@@ -2,55 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
   <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="">
-
+<link rel="stylesheet" href="[object Object]">
 
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="默认连通图. 最大独立集 独立集一些简单的结论:  若 \(v\in I\), 则 \(N(v)\cap I&#x3D;\emptyset\). 若 \(I\) 是 MIS, 则对于 \(v\not\in I\), \(N(v)\) 中至少有一个点在 \(I\) 中即 \(|N(v)\cap I|\ge 1\), 如若不然, \(I\cup\{v\}\) 可称为新的独立集. 对于每一个 \(v\">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="染色 染色问题的暴力复杂度为 $O(n^n)$. 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 $X\subset V$,  记 $f(X)&#x3D;\chi(G[X])$, $G[X]$ 的最大独立集集合为 $\mathcal{I}_X$, 那么就有下面的递推 $$f(X) &#x3D; \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="精确算法：动态规划">
 <meta property="og:url" content="http://example.com/2023/07/29/seminar/july2023/exact-algorithms/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="默认连通图. 最大独立集 独立集一些简单的结论:  若 \(v\in I\), 则 \(N(v)\cap I&#x3D;\emptyset\). 若 \(I\) 是 MIS, 则对于 \(v\not\in I\), \(N(v)\) 中至少有一个点在 \(I\) 中即 \(|N(v)\cap I|\ge 1\), 如若不然, \(I\cup\{v\}\) 可称为新的独立集. 对于每一个 \(v\">
+<meta property="og:description" content="染色 染色问题的暴力复杂度为 $O(n^n)$. 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 $X\subset V$,  记 $f(X)&#x3D;\chi(G[X])$, $G[X]$ 的最大独立集集合为 $\mathcal{I}_X$, 那么就有下面的递推 $$f(X) &#x3D; \">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png">
 <meta property="article:published_time" content="2023-07-29T12:44:09.000Z">
-<meta property="article:modified_time" content="2023-08-10T15:21:37.184Z">
+<meta property="article:modified_time" content="2023-08-17T09:37:42.502Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png">
+
 
 <link rel="canonical" href="http://example.com/2023/07/29/seminar/july2023/exact-algorithms/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>精确算法：动态规划 | XBD</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/07/29/seminar/july2023/exact-algorithms/","path":"2023/07/29/seminar/july2023/exact-algorithms/","title":"精确算法：动态规划"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>精确算法：动态规划 | XBD</title>
   
+
+
 
 
 
@@ -58,385 +56,84 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">XBD</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        
-      
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/seminar/july2023/exact-algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          精确算法：动态规划
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-07-29 20:44:09" itemprop="dateCreated datePublished" datetime="2023-07-29T20:44:09+08:00">2023-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-08-10 23:21:37" itemprop="dateModified" datetime="2023-08-10T23:21:37+08:00">2023-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2023/07/29/seminar/july2023/exact-algorithms/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/29/seminar/july2023/exact-algorithms/" itemprop="commentCount"></span>
-    </a>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
   </span>
-  
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>默认连通图.</p>
-<h1 id="最大独立集">最大独立集</h1>
-<p>独立集一些简单的结论:</p>
-<ul>
-<li>若 <span class="math inline">\(v\in I\)</span>, 则 <span
-class="math inline">\(N(v)\cap I=\emptyset\)</span>.</li>
-<li>若 <span class="math inline">\(I\)</span> 是 MIS, 则对于 <span
-class="math inline">\(v\not\in I\)</span>, <span
-class="math inline">\(N(v)\)</span> 中至少有一个点在 <span
-class="math inline">\(I\)</span> 中即 <span
-class="math inline">\(|N(v)\cap I|\ge 1\)</span>, 如若不然, <span
-class="math inline">\(I\cup\{v\}\)</span> 可称为新的独立集.</li>
-<li>对于每一个 <span class="math inline">\(v\in V\)</span> 和MIS <span
-class="math inline">\(I\)</span>, 存在一个 <span
-class="math inline">\(y\in N[v]\)</span> 使得 <span
-class="math inline">\(y\in I\)</span> 但 <span
-class="math inline">\(N(y)\cap I=\emptyset\)</span>.</li>
-</ul>
-<blockquote>
-<p>第三条怎么和第一条重复了?</p>
-</blockquote>
-<p>下面是递推关系式: <span class="math display">\[
-\alpha(G)=
-\begin{cases}
-0,&amp; V=\emptyset\\
-\displaystyle 1+\max_{y\in N[v],v=\arg\min_{u\in V(G)}\deg
-(u)}\alpha(G\backslash\ N[y]),&amp;\text{otherwise}
-\end{cases}
-\]</span> 复杂度为 <span class="math inline">\(O^*(s^{n/s}),s=\min_{v\in
-V}\deg(v)+1\)</span>, <span class="math inline">\(s=3\)</span> 时为<span
-class="math inline">\(O^*(3^{n/3})\)</span> 是最大值. 这个复杂度分析并不
-trivial, 先贴在下面:</p>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png" /></p>
-<h1 id="染色">染色</h1>
-<p>染色问题的暴力复杂度为 <span
-class="math inline">\(O(n^n)\)</span>.</p>
-<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质,
-在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集),
-对于 <span class="math inline">\(X\subset V\)</span>, 记 <span
-class="math inline">\(f(X)=\chi(G[X])\)</span>, <span
-class="math inline">\(G[X]\)</span> 的最大独立集集合为 <span
-class="math inline">\(\mathcal{I}_X\)</span>, 那么就有下面的递推 <span
-class="math display">\[
-f(X)
-=
-\begin{cases}
-0,&amp;X=\emptyset\\
-\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash
-I),&amp;\text{otherwise}.
-\end{cases}
-\]</span> 可以断言 <span
-class="math inline">\(\chi(G)=f(V)\)</span>.</p>
-<p>这个 DP 算法的复杂度为 <span
-class="math inline">\(O^*((1+\sqrt[3]{3})^n)\)</span>,
-证明需要用到上面最大独立集的 branching 算法的时间复杂度.</p>
-<p>先把证明贴到下面:</p>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" /></p>
-<h1 id="最小支配集">最小支配集</h1>
-<p>首先叙述最小支配集问题与集合覆盖问题 <span
-class="math inline">\((\cal U,S)\)</span> 的关系: 令 <span
-class="math inline">\(\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V
-\}\)</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span
-class="math inline">\(u\)</span> 被 <span
-class="math inline">\(v\)</span> 支配当且仅当 <span
-class="math inline">\(u\in N(v)\)</span>, 那么 <span
-class="math inline">\(N[v]\)</span> 是所有被 <span
-class="math inline">\(v\)</span> 支配的点的集合, 因此对于 <span
-class="math inline">\(D\subset V\)</span>, <span
-class="math inline">\(D\)</span> 是最小支配集当且仅当 <span
-class="math inline">\(\{N[v]:v\in D\}\)</span> 能够覆盖 <span
-class="math inline">\(\{N[v]:v\in V\}\)</span>.</p>
-<p>对于一般的图 <span class="math inline">\(G\)</span> 而言,
-存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span
-class="math inline">\(O(n^{O(1)}2^{n-|I|})\)</span>, 其中 <span
-class="math inline">\(I\)</span> 为最大独立集, 特别地, 对于二分图而言
-<span class="math inline">\(|I|=n/2\)</span>, 时间复杂度为 <span
-class="math inline">\(O^*(2^{n/2})\)</span>. 下面叙述这个算法.</p>
-<p>设 <span class="math inline">\(J=V\backslash I\)</span>, 首先 <span
-class="math inline">\(J\)</span> 一定是支配集, 考虑反证法, 假设存在
-<span class="math inline">\(v\in I\)</span> 且 <span
-class="math inline">\(v\)</span> 没有被 <span
-class="math inline">\(J\)</span> 支配, 那么 <span
-class="math inline">\(v\)</span> 不与 <span
-class="math inline">\(J\)</span> 中的点相邻, 而 <span
-class="math inline">\(v\)</span> 又不与 <span
-class="math inline">\(I\)</span> 中的相邻, 那么 <span
-class="math inline">\(v\)</span> 就是一个孤立的点,
-而我们只考虑连通图.</p>
-<p>考虑枚举 <span class="math inline">\(V\)</span> 的子集 <span
-class="math inline">\(D\)</span> 在 <span
-class="math inline">\(J\)</span> 上的投影来寻找最小支配集, 令 <span
-class="math inline">\(J_D=J\cap D\)</span>, 逐步向 <span
-class="math inline">\(J_D\)</span> 中添加 <span
-class="math inline">\(I\)</span> 中的顶点, 可以得到支配集. ?</p>
-<p>对于每个 <span class="math inline">\(J_D\subset J\)</span>, 令 <span
-class="math inline">\(|D|=\min\{|D&#39;|:D&#39;\text{ is a dominating
-set}\land J\cap D&#39;=J_D\}\)</span>, 那么就有<span
-class="math inline">\(\gamma(G)=\min_{J_D\subset J}|D|\)</span>.</p>
-<p>令 <span class="math inline">\(I_D=I\backslash N(J_D)\)</span>,
-表示最大独立集 <span class="math inline">\(I\)</span> 中没有被 <span
-class="math inline">\(J_D\)</span> 支配的部分, 再令 <span
-class="math inline">\(J_X=J\backslash(N(J_D)\cup N(I_D))\)</span> 表示
-<span class="math inline">\(J\)</span> 中没有被 <span
-class="math inline">\(J_D\cup I_D\)</span> 支配的部分, 那么通过置 <span
-class="math inline">\(\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in
-I\backslash I_D \}\)</span>,
-便可将原问题转化成一个新的规模稍小一些的集合覆盖问题,
-这个集合覆盖问题可以在 <span
-class="math inline">\(O(n^{O(1)}2^{|J_X|})\)</span> 内解决,
-那么总的时间复杂度为 <span
-class="math inline">\(O(3^{n-|I|})\)</span>.</p>
-<blockquote>
-<p>看不懂. 先放弃了. 以后有时间再看吧. /kk</p>
-</blockquote>
-<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span
-class="math inline">\(O^*(3^{n-|I|})\)</span> 降到 <span
-class="math inline">\(O^*(2^{n-|I|})\)</span> 的过程.</p>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" /></p>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
     </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/07/27/math/graph/graph-problems/" rel="prev" title="典型图论问题">
-      <i class="fa fa-chevron-left"></i> 典型图论问题
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/07/29/seminar/july2023/search-strategy/" rel="next" title="搜索策略">
-      搜索策略 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+</header>
+        
+  
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
         </li>
@@ -445,229 +142,266 @@ src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/20230803114
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">最大独立集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%93%E8%89%B2"><span class="nav-number">2.</span> <span class="nav-text">染色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E6%94%AF%E9%85%8D%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">最小支配集</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%93%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">染色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E8%A6%86%E7%9B%96"><span class="nav-number">2.</span> <span class="nav-text">集合覆盖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E6%94%AF%E9%85%8D%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">最小支配集</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Baoduo Xu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
 
-
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
         </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+
+    <div class="main-inner post posts-expand">
 
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa-thin fa-atom-simple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/29/seminar/july2023/exact-algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
     </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">165k</span>
-    <span class="post-meta-divider">|</span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="精确算法：动态规划 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          精确算法：动态规划
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-07-29 20:44:09" itemprop="dateCreated datePublished" datetime="2023-07-29T20:44:09+08:00">2023-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-08-17 17:37:42" itemprop="dateModified" datetime="2023-08-17T17:37:42+08:00">2023-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="染色">染色</h1>
+<p>染色问题的暴力复杂度为 <span class="markdown-them-math-inline">$O(n^n)$</span>.</p>
+<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 <span class="markdown-them-math-inline">$X\subset V$</span>,  记 <span class="markdown-them-math-inline">$f(X)=\chi(G[X])$</span>, <span class="markdown-them-math-inline">$G[X]$</span> 的最大独立集集合为 <span class="markdown-them-math-inline">$\mathcal{I}_X$</span>, 那么就有下面的递推</p>
+<div class="markdown-them-math-block">$$f(X)
+=
+\begin{cases}
+0,&amp;X=\emptyset\\
+\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash I),&amp;\text{otherwise}.
+\end{cases}
+$$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</span>.</p>
+<p>这个 DP 算法的复杂度为 <span class="markdown-them-math-inline">$O^*((1+\sqrt[3]{3})^n)$</span>, 证明需要用到上面最大独立集的 branching 算法的时间复杂度.</p>
+<p>先把证明贴到下面:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" alt=""></p>
+<h1 id="集合覆盖">集合覆盖</h1>
+<h1 id="最小支配集">最小支配集</h1>
+<p>首先叙述最小支配集问题与集合覆盖问题 <span class="markdown-them-math-inline">$(\cal U,S)$</span> 的关系: 令 <span class="markdown-them-math-inline">$\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V \}$</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span class="markdown-them-math-inline">$u$</span> 被 <span class="markdown-them-math-inline">$v$</span> 支配当且仅当 <span class="markdown-them-math-inline">$u\in N(v)$</span>, 那么 <span class="markdown-them-math-inline">$N[v]$</span> 是所有被 <span class="markdown-them-math-inline">$v$</span> 支配的点的集合, 因此对于 <span class="markdown-them-math-inline">$D\subset V$</span>, <span class="markdown-them-math-inline">$D$</span> 是最小支配集当且仅当 <span class="markdown-them-math-inline">$\{N[v]:v\in D\}$</span> 能够覆盖 <span class="markdown-them-math-inline">$\{N[v]:v\in V\}$</span>.</p>
+<p>对于一般的图 <span class="markdown-them-math-inline">$G$</span> 而言, 存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{n-|I|})$</span>, 其中 <span class="markdown-them-math-inline">$I$</span> 为最大独立集, 特别地, 对于二分图而言 <span class="markdown-them-math-inline">$|I|=n/2$</span>, 时间复杂度为 <span class="markdown-them-math-inline">$O^*(2^{n/2})$</span>. 下面叙述这个算法.</p>
+<p>设 <span class="markdown-them-math-inline">$J=V\backslash I$</span>, 首先 <span class="markdown-them-math-inline">$J$</span> 一定是支配集, 考虑反证法, 假设存在 <span class="markdown-them-math-inline">$v\in I$</span> 且 <span class="markdown-them-math-inline">$v$</span> 没有被 <span class="markdown-them-math-inline">$J$</span> 支配, 那么 <span class="markdown-them-math-inline">$v$</span> 不与 <span class="markdown-them-math-inline">$J$</span> 中的点相邻, 而 <span class="markdown-them-math-inline">$v$</span> 又不与 <span class="markdown-them-math-inline">$I$</span> 中的相邻, 那么 <span class="markdown-them-math-inline">$v$</span> 就是一个孤立的点, 而我们只考虑连通图.</p>
+<p>考虑枚举 <span class="markdown-them-math-inline">$V$</span> 的子集 <span class="markdown-them-math-inline">$D$</span> 在 <span class="markdown-them-math-inline">$J$</span> 上的投影来寻找最小支配集, 令 <span class="markdown-them-math-inline">$J_D=J\cap D$</span>, 逐步向 <span class="markdown-them-math-inline">$J_D$</span> 中添加 <span class="markdown-them-math-inline">$I$</span> 中的顶点, 可以得到支配集. ?</p>
+<p>对于每个 <span class="markdown-them-math-inline">$J_D\subset J$</span>, 令 <span class="markdown-them-math-inline">$|D|=\min\{|D'|:D'\text{ is a dominating set}\land J\cap D'=J_D\}$</span>, 那么就有<span class="markdown-them-math-inline">$\gamma(G)=\min_{J_D\subset J}|D|$</span>.</p>
+<p>令 <span class="markdown-them-math-inline">$I_D=I\backslash N(J_D)$</span>, 表示最大独立集 <span class="markdown-them-math-inline">$I$</span> 中没有被 <span class="markdown-them-math-inline">$J_D$</span> 支配的部分, 再令 <span class="markdown-them-math-inline">$J_X=J\backslash(N(J_D)\cup N(I_D))$</span> 表示 <span class="markdown-them-math-inline">$J$</span> 中没有被 <span class="markdown-them-math-inline">$J_D\cup I_D$</span> 支配的部分, 那么通过置 <span class="markdown-them-math-inline">$\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in I\backslash I_D \}$</span>, 便可将原问题转化成一个新的规模稍小一些的集合覆盖问题, 这个集合覆盖问题可以在 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{|J_X|})$</span> 内解决, 那么总的时间复杂度为 <span class="markdown-them-math-inline">$O(3^{n-|I|})$</span>.</p>
+<blockquote>
+<p>看不懂. 先放弃了. 以后有时间再看吧. /kk</p>
+</blockquote>
+<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span class="markdown-them-math-inline">$O^*(3^{n-|I|})$</span> 降到 <span class="markdown-them-math-inline">$O^*(2^{n-|I|})$</span> 的过程.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/27/math/graph/graph-problems/" rel="prev" title="典型图论问题">
+                  <i class="fa fa-angle-left"></i> 典型图论问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/07/29/seminar/july2023/search-strategy/" rel="next" title="搜索策略">
+                  搜索策略 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">161k</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:30</span>
+    <span title="Reading time total">2:27</span>
+  </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  
-      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
 
-    
+
+
+
+
 
   
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
-      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

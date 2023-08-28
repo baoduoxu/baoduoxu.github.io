@@ -2,34 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
   <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="">
-
+<link rel="stylesheet" href="[object Object]">
 
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="组合数学是数数的艺术。  问题一：棋盘的完美覆盖 对于一个 \(m\times n\) 的棋盘，能否用 \(b\times 1\) 的长方形骨牌进行不重叠、不遗漏的完全覆盖？ 结论是，能完美覆盖的充分必要条件是 \(b\mid m\) 或 \(b\mid n.\) 充分性的证明：即证明若 \(b\mid m\) 或 \(b\mid n\) ，则可以完美覆盖。这是显然的，不妨">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="组合数学是数数的艺术。  问题一：棋盘的完美覆盖 对于一个 $m\times n$ 的棋盘，能否用 $b\times 1$ 的长方形骨牌进行不重叠、不遗漏的完全覆盖？ 结论是，能完美覆盖的充分必要条件是 $b\mid m$ 或 $b\mid n.$ 充分性的证明：即证明若 $b\mid m$ 或 $b\mid n$ ，则可以完美覆盖。这是显然的，不妨设棋盘是 $m$ 行 $n$ 列且 $b\mi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组合数学（一）：一些问题&amp;排列与组合">
 <meta property="og:url" content="http://example.com/2022/08/19/math/combinatorial-math/basic/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="组合数学是数数的艺术。  问题一：棋盘的完美覆盖 对于一个 \(m\times n\) 的棋盘，能否用 \(b\times 1\) 的长方形骨牌进行不重叠、不遗漏的完全覆盖？ 结论是，能完美覆盖的充分必要条件是 \(b\mid m\) 或 \(b\mid n.\) 充分性的证明：即证明若 \(b\mid m\) 或 \(b\mid n\) ，则可以完美覆盖。这是显然的，不妨">
+<meta property="og:description" content="组合数学是数数的艺术。  问题一：棋盘的完美覆盖 对于一个 $m\times n$ 的棋盘，能否用 $b\times 1$ 的长方形骨牌进行不重叠、不遗漏的完全覆盖？ 结论是，能完美覆盖的充分必要条件是 $b\mid m$ 或 $b\mid n.$ 充分性的证明：即证明若 $b\mid m$ 或 $b\mid n$ ，则可以完美覆盖。这是显然的，不妨设棋盘是 $m$ 行 $n$ 列且 $b\mi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-5483d98730778cb74be3f191f91059c5_r.jpg">
 <meta property="article:published_time" content="2022-08-19T02:50:25.000Z">
@@ -38,21 +36,18 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic2.zhimg.com/v2-5483d98730778cb74be3f191f91059c5_r.jpg">
 
+
 <link rel="canonical" href="http://example.com/2022/08/19/math/combinatorial-math/basic/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>组合数学（一）：一些问题&排列与组合 | XBD</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/19/math/combinatorial-math/basic/","path":"2022/08/19/math/combinatorial-math/basic/","title":"组合数学（一）：一些问题&排列与组合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>组合数学（一）：一些问题&排列与组合 | XBD</title>
   
+
+
 
 
 
@@ -60,674 +55,84 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">XBD</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        
-      
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/math/combinatorial-math/basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          组合数学（一）：一些问题&排列与组合
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-19 10:50:25" itemprop="dateCreated datePublished" datetime="2022-08-19T10:50:25+08:00">2022-08-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-07-29 20:40:36" itemprop="dateModified" datetime="2023-07-29T20:40:36+08:00">2023-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/08/19/math/combinatorial-math/basic/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/19/math/combinatorial-math/basic/" itemprop="commentCount"></span>
-    </a>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
   </span>
-  
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>7.2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>7 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <blockquote>
-<p>组合数学是数数的艺术。</p>
-</blockquote>
-<h2 id="问题一棋盘的完美覆盖">问题一：棋盘的完美覆盖</h2>
-<p>对于一个 <span class="math inline">\(m\times n\)</span>
-的棋盘，能否用 <span class="math inline">\(b\times 1\)</span>
-的长方形骨牌进行不重叠、不遗漏的完全覆盖？</p>
-<p>结论是，能完美覆盖的充分必要条件是 <span class="math inline">\(b\mid
-m\)</span> 或 <span class="math inline">\(b\mid n.\)</span></p>
-<p>充分性的证明：即证明若 <span class="math inline">\(b\mid m\)</span>
-或 <span class="math inline">\(b\mid n\)</span>
-，则可以完美覆盖。这是显然的，不妨设棋盘是 <span
-class="math inline">\(m\)</span> 行 <span
-class="math inline">\(n\)</span> 列且 <span class="math inline">\(b\mid
-m,\)</span> 那么将所有长方形骨牌竖着填充即可。</p>
-<span id="more"></span>
-<p>必要性的证明：若棋盘能被完美覆盖，则 <span
-class="math inline">\(b\mid m\)</span> 或 <span
-class="math inline">\(b\mid n\)</span>.</p>
-<p>利用染色进行证明。设每一个 <span class="math inline">\(b\times
-1\)</span>
-的长方型骨牌的每一格上有不同的颜色，则整个棋盘上每一种颜色的格子数目一定是相等的。在
-<span class="math inline">\(b\times b\)</span>
-的正方形棋盘中，考虑如下的颜色排列</p>
-<p><img src="https://pic2.zhimg.com/v2-5483d98730778cb74be3f191f91059c5_r.jpg" alt="preview" style="zoom: 50%;" /></p>
-<p>我们以这个 <span class="math inline">\(b\times b\)</span>
-的棋盘为基础，进行填补 <span class="math inline">\(m\times n\)</span>
-的棋盘。为了方便我们不妨令 <span class="math inline">\(m\le n\)</span>.
-由带余除法知 <span class="math display">\[
-m=bq_1+r_1,r_1\in[0,b)\\
-n=bq_2+r_2,r_2\in[0,b)
-\]</span> 于是把 <span class="math inline">\(m\times n\)</span>
-的棋盘分为三个部分：上方的 <span class="math inline">\(bq_1\times
-n\)</span> 的棋盘，左下方的 <span class="math inline">\(r_1\times
-bq_2\)</span> 的棋盘和右下方的 <span class="math inline">\(r_1\times
-r_2\)</span>棋盘。</p>
-<blockquote>
-<p>待补充。</p>
-</blockquote>
-<h2 id="问题二空间划分问题1">问题二：空间划分问题（1）</h2>
-<p>给定 <span class="math inline">\(n\)</span>
-条简单曲线（曲线可闭合，但不允许打结），求出这 <span
-class="math inline">\(n\)</span>
-条曲线最多能将平面划分为多少个区域。</p>
-<p>对于可任意弯曲的曲线，我们能得到的区域数的最大值为 <span
-class="math inline">\(2^n,\)</span> 即确保增加的第 <span
-class="math inline">\(n\)</span> 条曲线 <span
-class="math inline">\(\Gamma_n\)</span> 可以经过前 <span
-class="math inline">\(n-1\)</span>
-条曲线将平面分成的每一个区域，这样区域数呈指数增加，公比为 <span
-class="math inline">\(2.\)</span>
-下面我们考虑几种特殊的情况：直线与一些二次曲线，分析的基本思路是相同的。</p>
-<h3 id="直线">直线</h3>
-<p>增加的第 <span class="math inline">\(n\)</span> 条直线需要被前 <span
-class="math inline">\(n-1\)</span> 条直线分为 <span
-class="math inline">\(n\)</span> 个部分，而这 <span
-class="math inline">\(n\)</span> 条射线或线段经过前 <span
-class="math inline">\(n-1\)</span> 条直线分割成的 <span
-class="math inline">\(a_{n-1}\)</span> 个区域区域中的 <span
-class="math inline">\(n\)</span>
-个区域，并将其分成两份，于是容易得到递推公式为 <span
-class="math display">\[
-a_n=a_{n-1}-n+2n=a_{n-1}+n,
-\]</span> 因此 <span class="math display">\[
-a_n=\frac{n^2+n+2}{2}
-\]</span></p>
-<h3 id="圆">圆</h3>
-<p>两个圆最多有两个交点。对于第 <span class="math inline">\(n\)</span>
-个圆 <span class="math inline">\(\Gamma_n\)</span>，它与前 <span
-class="math inline">\(n-1\)</span> 个圆的每一个都有两个交点，于是一共有
-<span class="math inline">\(2(n-1)\)</span> 个交点。这 <span
-class="math inline">\(2(n-1)\)</span> 个点把圆 <span
-class="math inline">\(\Gamma_n\)</span> 分成了 <span
-class="math inline">\(2(n-1)\)</span> 段圆弧，而每一段圆弧都经过前 <span
-class="math inline">\(n-1\)</span> 个圆分割成的若干区域区域中的 <span
-class="math inline">\(2(n-1)\)</span> 个区域，并将其分成两份 ，因此
-<span class="math display">\[
-a_n=a_{n-1}-2(n-1)+4(n-1)=a_{n-1}+2(n-1)
-\]</span> 于是 <span class="math display">\[
-a_n=a_1+\sum_{k=2}^{n}2(k-1)=n^2-n+2.
-\]</span></p>
-<h3 id="椭圆">椭圆</h3>
-<p>两个椭圆最多有 <span class="math inline">\(4\)</span>
-个交点，将椭圆分为 <span class="math inline">\(4\)</span> 段。对于第
-<span class="math inline">\(n\)</span> 个椭圆 <span
-class="math inline">\(\Gamma_n,\)</span> 它与前 <span
-class="math inline">\(n-1\)</span> 个椭圆有 <span
-class="math inline">\(4(n-1)\)</span> 个交点，这些交点把 <span
-class="math inline">\(\Gamma_n\)</span> 分成了 <span
-class="math inline">\(4(n-1)\)</span> 条曲线段。在这 <span
-class="math inline">\(4(n-1)\)</span>
-条曲线段中，有四条特殊的曲线段，将它们分为两组，其中一组同时经过了最外围的区域，另一组同时经过了最里面的区域（这只是其中一种较为容易分析的一种画法）。对于另外
-<span class="math inline">\(4(n-2)\)</span> 的曲线段，它们都经过了前
-<span class="math inline">\(n-1\)</span> 个椭圆分割成的若干区域区域中的
-<span class="math inline">\(4(n-2)\)</span> 个区域，并将其分成两份，于是
-<span class="math display">\[
-a_{n}=a_{n-1}-2+2\times 3-4(n-2)+8(n-2)=a_{n-1}+4(n-1),n\ge 2
-\]</span> 因此 <span class="math display">\[
-a_n=a_1+\sum_{k=2}^{n}4(n-1)=2n^2-2n+2
-\]</span></p>
-<h3 id="抛物线">抛物线</h3>
-<p>两条抛物线最多可以有 <span class="math inline">\(4\)</span>
-个交点，将抛物线分为 <span class="math inline">\(5\)</span> 段。对于第
-<span class="math inline">\(n\)</span> 条抛物线 <span
-class="math inline">\(\Gamma_n,\)</span> 它与前 <span
-class="math inline">\(n-1\)</span> 个椭圆有 <span
-class="math inline">\(4(n-1)\)</span> 个交点，这些交点把 <span
-class="math inline">\(\Gamma_n\)</span> 分成了 <span
-class="math inline">\(4n-3\)</span> 条曲线段。在这 <span
-class="math inline">\(4n-3\)</span> 条曲线段中，有 <span
-class="math inline">\(5\)</span>
-条特殊的曲线段，其中三条同时经过了某个所有抛物线顶点附近的无界区域，另外两条同时经过了最里面的区域（这只是其中一种较为容易分析的一种画法）。对于另外
-<span class="math inline">\(4n-8\)</span> 的曲线段，它们都经过了前 <span
-class="math inline">\(n-1\)</span> 个椭圆分割成的若干区域区域中的 <span
-class="math inline">\(4n-8\)</span> 个区域，并将其分成两份，于是 <span
-class="math display">\[
-a_n=a_{n-1}+(-1+3)+(-1+4)+(-(4n-8)+2(4n-8))=a_{n-1}+4n-3
-\]</span> 于是 <span class="math display">\[
-a_{n}=a_1+\sum_{k=2}^{n}(4n-3)=2n^2-n+1
-\]</span></p>
-<h3 id="直线和圆">直线和圆</h3>
-<blockquote>
-<p>待补充。</p>
-</blockquote>
-<h3 id="三维时的情形">三维时的情形</h3>
-<h4 id="平面">平面</h4>
-<p>第 <span class="math inline">\(n\)</span> 个平面 <span
-class="math inline">\(\Gamma_n\)</span> 与前 <span
-class="math inline">\(n-1\)</span> 个平面有 <span
-class="math inline">\(n-1\)</span>
-条交线，根据已有的二维时的情况，这些交线最多把 <span
-class="math inline">\(\Gamma_n\)</span> 分成了 <span
-class="math inline">\(\frac{n(n-1)}{2}+1\)</span>
-个区域，而这些区域经过了前 <span class="math inline">\(n-1\)</span>
-个平面分割成的若干区域中的 <span
-class="math inline">\(\frac{n(n-1)}{2}+1\)</span>
-个区域，并将其分成两份。于是 <span class="math display">\[
-a_n=a_{n-1}+\frac{n(n-1)}{2}+1
-\]</span> 于是 <span class="math display">\[
-a_n=a_1+\sum_{k=2}^{n}\left(\frac{k(k-1)}{2}+1\right)=\frac{n(n-1)(n+1)}{6}+n+1=\frac{n^3+5n}{6}+1
-\]</span></p>
-<h3 id="m-维的情形"><span class="math inline">\(m\)</span> 维的情形</h3>
-<p>求解三维时，我们很容易注意到不同维度之间存在着递推关系。设 <span
-class="math inline">\(n\)</span> 个超平面最多可以将 <span
-class="math inline">\(\mathbb{R}^m\)</span> 划分为 <span
-class="math inline">\(\mathcal{C}(m,n)\)</span> 个区域。则显然有 <span
-class="math display">\[
-\mathcal{C}(m,n)=\mathcal{C}(m,n-1)+\mathcal{C}(m-1,n).
-\]</span> <span class="math inline">\(m\)</span> 维的空间被 <span
-class="math inline">\(n\)</span> 个超平面分成的区域数量最多是 <span
-class="math display">\[
-S(m,n)=
-\begin{cases}
-2^n,&amp;n\le m\\
-\sum_{k=0}^{m}\binom{n}{k},&amp;n&gt;m
-\end{cases}
-\]</span></p>
-<p>归纳易证。在后续文章会再次介绍此数列。</p>
-<h2 id="排列与组合">排列与组合</h2>
-<h3 id="排列">排列</h3>
-<p><span class="math inline">\(n\)</span> 元素集合 <span
-class="math inline">\(\cal{S}\)</span> 的 <strong><span
-class="math inline">\(r\)</span> 排列</strong>的意思是，<span
-class="math inline">\(n\)</span> 个元素中的 <span
-class="math inline">\(r\)</span>
-个元素的<strong>有序放置</strong>。比如集合 <span
-class="math inline">\(\{a,b,c\}\)</span> 的 <span
-class="math inline">\(2\)</span> 排列为 <span
-class="math inline">\(ab,ac,ba,bc,ca,cb.\)</span> 我们将 <span
-class="math inline">\(n\)</span> 元素集合的 <span
-class="math inline">\(r\)</span> 排列的数目记作 <span
-class="math inline">\(P(n,r),\)</span> 显然有 <span
-class="math display">\[
-P(n,r)=n\times(n-1)\times\cdots\times (n-r+1)=\frac{n!}{(n-r)!}.
-\]</span> 这在高中的记号是 <span class="math inline">\(A_n^r.\)</span>
-也可以理解为，在 <span class="math inline">\(n\)</span> 元素集合中选择
-<span class="math inline">\(r\)</span> 个元素，并将这 <span
-class="math inline">\(r\)</span> 个元素进行全排列。</p>
-<h4 id="圆排列">圆排列</h4>
-<p>上面介绍的排列是<strong>线性排列</strong>。圆排列又称为循环排列，即将取出的
-<span class="math inline">\(r\)</span> 个元素排列成一个圆。<span
-class="math inline">\(n\)</span> 元素集合的 <span
-class="math inline">\(r\)</span> 圆排列的数目为 <span
-class="math display">\[
-\frac{P(n,r)}{r}=\frac{n!}{r(n-r)!}.
-\]</span> 这很容易理解，只需要考察下面 <span
-class="math inline">\(r\)</span> 个线性排列： <span
-class="math display">\[
-\langle i_1i_2\cdots i_{r-1}i_r\rangle,\langle i_2i_3\cdots
-i_ri_1\rangle,\langle i_3i_4\cdots i_1i_2\rangle,\cdots,\langle
-i_ri_1\cdots i_{r-2}i_{r-1}\rangle
-\]</span> 它们实际上是同一个圆排列，这一共是 <span
-class="math inline">\(r\)</span> 个，于是可以将 <span
-class="math inline">\(P(n,r)\)</span> 个线性排列划分为 <span
-class="math inline">\(r\)</span>
-个部分，每一部分是一个圆排列，因此将线性排列的个数除以 <span
-class="math inline">\(r\)</span> 即得圆排列的个数。</p>
-<h3 id="组合">组合</h3>
-<p><span class="math inline">\(n\)</span> 元素集合 <span
-class="math inline">\(\cal S\)</span> 的一个组合或子集表示集合 <span
-class="math inline">\(\cal S\)</span>
-的元素的一个<strong>无序</strong>选择，这是与排列不同的地方。<span
-class="math inline">\(n\)</span> 元素集合 <span
-class="math inline">\(\cal S\)</span> 的 <span
-class="math inline">\(r\)</span> 子集的意思是它的含有 <span
-class="math inline">\(r\)</span> 个元素的子集的集合。用 <span
-class="math inline">\(\binom{n}{r}\)</span> 表示 <span
-class="math inline">\(n\)</span> 元素集合的 <span
-class="math inline">\(r\)</span> 子集个数，并且有下面的定理</p>
-<p><strong>定理1</strong> <span class="math display">\[
-\binom{n}{r}=\frac{P(n,r)}{r!}=\frac{n!}{r!(n-r)!}.\tag{i}
-\]</span> <strong><em>PROOF</em></strong>
-借助排列是十分容易证明的，这是因为由乘法原理显然有 <span
-class="math inline">\(P(n,r)=r!\binom{n}{r}.\)</span> <span
-class="math inline">\(\square\)</span></p>
-<p><strong>定理2（组合数的性质）</strong></p>
-<p>（1）<span class="math inline">\(\displaystyle
-\binom{n}{r}=\binom{n}{n-r};\)</span></p>
-<p><strong><em>PROOF</em></strong> 我们可以在 <span
-class="math inline">\(n\)</span> 元素集合的 <span
-class="math inline">\(r\)</span> 子集的构成的集合与 <span
-class="math inline">\(n\)</span> 元素集合的 <span
-class="math inline">\(n-r\)</span>
-子集构成的集合之间建立双射，于是等式便得证。<span
-class="math inline">\(\square\)</span></p>
-<p>（2）（Pascal公式）<span class="math inline">\(\displaystyle
-\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k},1\le k\le n;\)</span></p>
-<p><strong><em>PROOF</em></strong>
-在组合数学中，我们更倾向于用组合的方法进行证明。</p>
-<p>设 <span class="math inline">\(n\)</span> 元素集合 <span
-class="math inline">\(\cal S\)</span> 满足 <span
-class="math inline">\(x\in\cal S,S\)</span> 的所有 <span
-class="math inline">\(k\)</span> 子集的集合记作 <span
-class="math inline">\(\cal X,\)</span> 并将其划分为两部分 <span
-class="math inline">\(\cal A\)</span> 和 <span
-class="math inline">\(\cal B,\)</span> 其中 <span
-class="math inline">\(\cal A\)</span> 中的每个集合都含有 <span
-class="math inline">\(x\)</span> 而 <span class="math inline">\(\cal
-B\)</span> 中的每个集合均不含，那么显然有 <span class="math display">\[
-\cal |X|=\binom{n}{k}=|A|+|B|.
-\]</span> 而 <span class="math inline">\(\cal |A|\)</span> 等于集合
-<span class="math inline">\(\cal S\backslash \{x\}\)</span> 的 <span
-class="math inline">\(k-1\)</span> 子集的个数，<span
-class="math inline">\(\cal |B|\)</span> 等于集合 <span
-class="math inline">\(\cal S\backslash \{x\}\)</span> 的 <span
-class="math inline">\(k\)</span> 子集的个数，也即 <span
-class="math display">\[
-|\mathcal{A}|=\binom{n-1}{k-1},|\mathcal{B}|=\binom{n-1}{k},
-\]</span> 这就是要证的。<span class="math inline">\(\square\)</span></p>
-<p>（3） <span class="math display">\[
-\sum_{k=0}^{n}\binom{n}{k}=2^n.
-\]</span> 这个很容易理解，因为左边的和式相当于 <span
-class="math inline">\(n\)</span> 元素集合 <span
-class="math inline">\(\cal S\)</span> 所有子集的数目，也即 <span
-class="math inline">\(2^n.\)</span></p>
-<h3 id="多重集合">多重集合</h3>
-<p>所谓多重集合，就是允许元素重复的集合，比如构成串 <span
-class="math inline">\(aabccc\)</span> 的元素可以表示为集合 <span
-class="math inline">\(\{2\cdot a,1\cdot b,3\cdot c\}.\)</span> 若元素
-<span class="math inline">\(x\)</span> 有无穷多则可记作 <span
-class="math inline">\(\infty\cdot x.\)</span></p>
-<h4 id="多重集合的排列">多重集合的排列</h4>
-<p><strong>定理3</strong> 设多重集合 <span class="math inline">\(\cal
-S\)</span> 有 <span class="math inline">\(k\)</span>
-种不同的元素，且每种元素的数目分别为 <span
-class="math inline">\(n_i&lt;\infty,1\le n\le k,\)</span> 并记 <span
-class="math inline">\(|\cal S|=n,\)</span> 那么 <span
-class="math inline">\(\cal S\)</span> 的排列数目为 <span
-class="math display">\[
-P=\frac{n!}{\prod_{1\le i\le k}n_i!}.
-\]</span> <strong><em>PROOF</em></strong> 分别在 <span
-class="math inline">\(n\)</span> 个位置放置元素即可。先从 <span
-class="math inline">\(n\)</span> 个位置选取 <span
-class="math inline">\(n_1\)</span> 个位置放置第一个元素，再从剩下的
-<span class="math inline">\(n-n_1\)</span> 个位置取 <span
-class="math inline">\(n_2\)</span>
-个位置放置第二个元素，以此类推，可以得到下面的式子： <span
-class="math display">\[
-\begin{aligned}
-&amp;\binom{n}{n_1}\binom{n-n_1}{n_2}\cdots\binom{n-n_1-\cdots
-n_{k-1}}{n_k}\\
-&amp;=\frac{n!}{n_1!(n-n_1)!}\cdot\frac{(n-n_1)!}{n_2!(n-n_1-n_2)!}\cdot\cdots\cdot\frac{(n-n_1-\cdots
-n_{k-1})!}{n_k!0!}\\
-&amp;=\frac{n!}{\prod_{1\le i\le k}n_i!}.
-\end{aligned}
-\]</span> <span class="math inline">\(\square\)</span></p>
-<p>下面是数 <span class="math inline">\(P\)</span> 的另一种描述。</p>
-<p><strong>定理4</strong> <span class="math inline">\(n\)</span>
-元素集合的 <span class="math inline">\(k\)</span>
-<strong>有序划分</strong>（划分为 <span class="math inline">\(k\)</span>
-个集合后把所有子集视作不同元素进行排列 ）的数目为 <span
-class="math inline">\(P,\)</span> 其中 <span
-class="math inline">\(n_i\)</span> 表示第 <span
-class="math inline">\(i\)</span> 个子集有 <span
-class="math inline">\(n_i\)</span> 个元素，<span
-class="math inline">\(k\)</span> 为划分得到的子集数目；而 <span
-class="math inline">\(k\)</span> 无序划分的数目为 <span
-class="math inline">\(P/k!.\)</span></p>
-<p>证明过程与定理3基本相同。</p>
-<p>举个例子，<span class="math inline">\(\{a,b,c,d\}\)</span> 的 <span
-class="math inline">\(2\)</span> 有序划分中的 <span
-class="math inline">\(\{a,b\},\{c,d\}\)</span> 与 <span
-class="math inline">\(\{c,d\},\{a,b\}\)</span>
-是不同的划分。可以看作将这些元素放入了不同的盒子，无序划分则放入了相同的盒子里。</p>
-<p><strong>例1</strong> 在 <span class="math inline">\(n\times
-n\)</span> 的棋盘上放置 <span class="math inline">\(n\)</span>
-辆车，使得任意两辆车都不在同一直线或同一竖线上，那么放置的方法种数有
-<span class="math inline">\(n!\)</span> 种；若这些车有 <span
-class="math inline">\(k\)</span> 种且第 <span
-class="math inline">\(i(1\le i\le k)\)</span> 种车有 <span
-class="math inline">\(n_i\)</span> 辆，那么放置的方法种数为 <span
-class="math display">\[
-n!\frac{n!}{\prod_{1\le i\le k}n_i!}=\frac{(n!)^2}{\prod_{1\le i\le
-k}n_i!}.
-\]</span> <strong><em>SOL</em></strong> 实际上是要找出 <span
-class="math inline">\(n\)</span> 个序偶 <span
-class="math inline">\((x_i,y_i)(1\le i,x_i,y_i\le n)\)</span>
-的组合的个数，每一种组合的这些序偶的横纵坐标两两不等。车子都相同时，每一行只有一辆车，无需考虑顺序，于是可以直接假定坐标为
-<span class="math inline">\((1,y_1),(2,y_2),\cdots,(n,y_n),\)</span>
-那么 <span class="math inline">\(y_1,y_2,\cdots,y_n\)</span> 实际上就是
-<span class="math inline">\(1,2,\cdots,n\)</span> 的排列，于是总数目为
-<span class="math inline">\(n!\)</span>
-个。当车之间有差异时，车的集合相当于一个多重集合，相当于要对这些坐标（车子）根据它们之间的差异将进行排列，于是问题转化为多重集合的排列，最终答案就很显然了。<span
-class="math inline">\(\square\)</span></p>
-<h4 id="多重集合的组合1">多重集合的组合（1）</h4>
-<p>多重集合 <span class="math inline">\(\cal S\)</span> 的 <span
-class="math inline">\(r\)</span> 组合是 <span class="math inline">\(\cal
-S\)</span> 中 <span class="math inline">\(r\)</span>
-个对象的无序选择，选择的结果仍然是一些多重集合。</p>
-<p><strong>定理5</strong> 设 <span class="math inline">\(\cal S\)</span>
-有 <span class="math inline">\(k\)</span>
-种元素且每种元素有无穷多个，那么 <span class="math inline">\(\cal
-S\)</span> 的 <span class="math inline">\(r\)</span> 组合的个数为 <span
-class="math display">\[
-\binom{r+k-1}{r}=\binom{r+k-1}{k-1}.
-\]</span> <strong><em>PROOF</em></strong> 设 <span
-class="math inline">\(\mathcal{S}=\{\infty\cdot a_1,\infty\cdot
-a_2,\cdots,\infty\cdot a_k\},\)</span> 于是它的 <span
-class="math inline">\(r\)</span> 组合是形如 <span
-class="math inline">\(\{x_1\cdot a_1,x_2\cdot a_2,\cdots,x_k\cdot
-a_k\}\)</span> 的集合，满足 <span
-class="math inline">\(x_1+x_2+\cdots+x_k=r\)</span> 且 <span
-class="math inline">\(x_i\)</span> 为非负整数。问题就转化为了不定方程
-<span class="math inline">\(x_1+x_2+\cdots+x_k=r\)</span>
-的非负整数解的组数问题了。下面证明该方程的非负整数解的组数为多重集合
-<span class="math inline">\(T=\{r\cdot 1,(k-1)\cdot 0\}\)</span>
-的排列的个数（即长度为 <span class="math inline">\(r+k-1\)</span> 且含有
-<span class="math inline">\(r\)</span> 个 <span
-class="math inline">\(1\)</span> 和 <span
-class="math inline">\(k-1\)</span> 个 <span
-class="math inline">\(0\)</span> 的串）。给定 <span
-class="math inline">\(T\)</span> 的一个排列，其中的 <span
-class="math inline">\(k-1\)</span> 个 <span
-class="math inline">\(0\)</span> 将这 <span
-class="math inline">\(r\)</span> 个 <span
-class="math inline">\(1\)</span> 分成了 <span
-class="math inline">\(k\)</span> 部分<a href="#fn1" class="footnote-ref"
-id="fnref1" role="doc-noteref"><sup>1</sup></a> ，即从左到右分别有 <span
-class="math inline">\(x_1,x_2,\cdots,x_k\ge 0\)</span> 个 <span
-class="math inline">\(1,\)</span> 它们显然满足 <span
-class="math inline">\(x_1+x_2+\cdots+x_k=r;\)</span> 反之，若给定满足
-<span class="math inline">\(x_1+x_2+\cdots+x_k=r\)</span> 的非负整数
-<span class="math inline">\(x_i(1\le i\le k),\)</span>
-把上述步骤倒推可以构造出 <span class="math inline">\(T\)</span>
-的一个排列；这就证得了该方程的非负整数解的组数为多重集合 <span
-class="math inline">\(T=\{r\cdot 1,(k-1)\cdot 0\}\)</span>
-的排列的个数。于是解的组数为 <span class="math display">\[
-\frac{(r+k-1)!}{r!(k-1)!}=\binom{r+k-1}{r}=\binom{r+k-1}{k-1}.
-\]</span> <span class="math inline">\(\square\)</span></p>
-<blockquote>
-<p>额，自己在做时搞出来一个没啥用的东西……</p>
-<p>设从 <span class="math inline">\(p\)</span> 种元素取出 <span
-class="math inline">\(q(q\ge p)\)</span> 个包含所有种类的元素的取法为
-<span class="math inline">\(S(p,q),\)</span> 当第一种元素取出 <span
-class="math inline">\(\ell\)</span> 个时，相当于要在剩下的 <span
-class="math inline">\(p-1\)</span> 种元素取出 <span
-class="math inline">\(q-\ell\)</span>
-个元素且要包含剩下所有种类的元素，这个取法刚好是 <span
-class="math inline">\(S(p-1,q-\ell),\)</span> 且 <span
-class="math inline">\(1\le \ell\le q-p+1,\)</span> 于是 <span
-class="math display">\[
-S(p,q)=\sum_{1\le \ell \le q-p+1}S(p-1,q-\ell).
-\]</span> 于是结果为 <span class="math display">\[
-\sum_{i=1}^{r}\binom{k}{i}S(i,r)
-\]</span> （化简不了……</p>
-</blockquote>
-<p>后续的章节中将继续讨论不定方程 <span
-class="math inline">\(x_1+x_2+\cdots+x_k=r\)</span>
-的解有上界时的解（解有下界时换个元即可）。</p>
-<h3 id="练习">练习</h3>
-<p>1：确定性如 <span
-class="math inline">\(\emptyset\subseteq\mathcal{A}_1\subseteq\mathcal{A}_2\subseteq\cdots
-\subseteq\mathcal{A}_k\subseteq\{1,2,\cdots,n\}\)</span>
-的塔状集的数目。</p>
-<p><strong><em>SOL</em></strong> 显然为 <span class="math display">\[
-\sum_{i_1=0}^n\binom{n}{i_1}\sum_{i_2=0}^{i_1}\binom{i_1}{i_2}\cdots\sum_{i_k=0}^{i_{k-1}}\binom{i_{k-1}}{i_k}2^{i_k}=(k+1)^n.
-\]</span></p>
-<aside id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li
-id="fn1"><p>很容易发现这就是隔板法。应该可以认为这个论证过程在证明隔板法的正确性？<a
-href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
     </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/08/19/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/25/python/Python1/" rel="next" title="Python入门(1):基础用法">
-      Python入门(1):基础用法 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+</header>
+        
+  
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
         </li>
@@ -736,229 +141,380 @@ href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%E6%A3%8B%E7%9B%98%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%A6%86%E7%9B%96"><span class="nav-number">1.</span> <span class="nav-text">问题一：棋盘的完美覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%E7%A9%BA%E9%97%B4%E5%88%92%E5%88%86%E9%97%AE%E9%A2%981"><span class="nav-number">2.</span> <span class="nav-text">问题二：空间划分问题（1）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E7%BA%BF"><span class="nav-number">2.1.</span> <span class="nav-text">直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%86"><span class="nav-number">2.2.</span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A4%AD%E5%9C%86"><span class="nav-number">2.3.</span> <span class="nav-text">椭圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%9B%E7%89%A9%E7%BA%BF"><span class="nav-number">2.4.</span> <span class="nav-text">抛物线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86"><span class="nav-number">2.5.</span> <span class="nav-text">直线和圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E6%97%B6%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">2.6.</span> <span class="nav-text">三维时的情形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2"><span class="nav-number">2.6.1.</span> <span class="nav-text">平面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#m-%E7%BB%B4%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">2.7.</span> <span class="nav-text">\(m\) 维的情形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">排列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%86%E6%8E%92%E5%88%97"><span class="nav-number">3.1.1.</span> <span class="nav-text">圆排列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88"><span class="nav-number">3.2.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">多重集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">3.3.1.</span> <span class="nav-text">多重集合的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%84%E5%90%881"><span class="nav-number">3.3.2.</span> <span class="nav-text">多重集合的组合（1）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">3.4.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9A%E6%A3%8B%E7%9B%98%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%A6%86%E7%9B%96"><span class="nav-number">1.</span> <span class="nav-text">问题一：棋盘的完美覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9A%E7%A9%BA%E9%97%B4%E5%88%92%E5%88%86%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">问题二：空间划分问题（1）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E7%BA%BF"><span class="nav-number">2.1.</span> <span class="nav-text">直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%86"><span class="nav-number">2.2.</span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A4%AD%E5%9C%86"><span class="nav-number">2.3.</span> <span class="nav-text">椭圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%9B%E7%89%A9%E7%BA%BF"><span class="nav-number">2.4.</span> <span class="nav-text">抛物线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86"><span class="nav-number">2.5.</span> <span class="nav-text">直线和圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E6%97%B6%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">2.6.</span> <span class="nav-text">三维时的情形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2"><span class="nav-number">2.6.1.</span> <span class="nav-text">平面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#$m$-%E7%BB%B4%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">2.7.</span> <span class="nav-text">$m$ 维的情形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">排列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%86%E6%8E%92%E5%88%97"><span class="nav-number">3.1.1.</span> <span class="nav-text">圆排列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88"><span class="nav-number">3.2.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">多重集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-number">3.3.1.</span> <span class="nav-text">多重集合的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%84%E5%90%88%EF%BC%881%EF%BC%89"><span class="nav-number">3.3.2.</span> <span class="nav-text">多重集合的组合（1）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">3.4.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Baoduo Xu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
 
-
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
         </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+
+    <div class="main-inner post posts-expand">
 
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa-thin fa-atom-simple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/math/combinatorial-math/basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
     </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">165k</span>
-    <span class="post-meta-divider">|</span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="组合数学（一）：一些问题&排列与组合 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          组合数学（一）：一些问题&排列与组合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-19 10:50:25" itemprop="dateCreated datePublished" datetime="2022-08-19T10:50:25+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-29 20:40:36" itemprop="dateModified" datetime="2023-07-29T20:40:36+08:00">2023-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>6.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>组合数学是数数的艺术。</p>
+</blockquote>
+<h2 id="问题一：棋盘的完美覆盖">问题一：棋盘的完美覆盖</h2>
+<p>对于一个 <span class="markdown-them-math-inline">$m\times n$</span> 的棋盘，能否用 <span class="markdown-them-math-inline">$b\times 1$</span> 的长方形骨牌进行不重叠、不遗漏的完全覆盖？</p>
+<p>结论是，能完美覆盖的充分必要条件是 <span class="markdown-them-math-inline">$b\mid m$</span> 或 <span class="markdown-them-math-inline">$b\mid n.$</span></p>
+<p>充分性的证明：即证明若 <span class="markdown-them-math-inline">$b\mid m$</span> 或 <span class="markdown-them-math-inline">$b\mid n$</span> ，则可以完美覆盖。这是显然的，不妨设棋盘是 <span class="markdown-them-math-inline">$m$</span> 行 <span class="markdown-them-math-inline">$n$</span> 列且 <span class="markdown-them-math-inline">$b\mid m,$</span> 那么将所有长方形骨牌竖着填充即可。</p>
+<span id="more"></span>
+<p>必要性的证明：若棋盘能被完美覆盖，则 <span class="markdown-them-math-inline">$b\mid m$</span> 或 <span class="markdown-them-math-inline">$b\mid n$</span>.</p>
+<p>利用染色进行证明。设每一个 <span class="markdown-them-math-inline">$b\times 1$</span> 的长方型骨牌的每一格上有不同的颜色，则整个棋盘上每一种颜色的格子数目一定是相等的。在 <span class="markdown-them-math-inline">$b\times b$</span> 的正方形棋盘中，考虑如下的颜色排列</p>
+ <img src="https://pic2.zhimg.com/v2-5483d98730778cb74be3f191f91059c5_r.jpg" alt="preview" style="zoom: 50%;" /> 
+<p>我们以这个 <span class="markdown-them-math-inline">$b\times b$</span> 的棋盘为基础，进行填补 <span class="markdown-them-math-inline">$m\times n$</span> 的棋盘。为了方便我们不妨令 <span class="markdown-them-math-inline">$m\le n$</span>. 由带余除法知</p>
+<div class="markdown-them-math-block">$$m=bq_1+r_1,r_1\in[0,b)\\
+n=bq_2+r_2,r_2\in[0,b)
+$$</div><p>于是把 <span class="markdown-them-math-inline">$m\times n$</span> 的棋盘分为三个部分：上方的 <span class="markdown-them-math-inline">$bq_1\times n$</span> 的棋盘，左下方的 <span class="markdown-them-math-inline">$r_1\times bq_2$</span> 的棋盘和右下方的 <span class="markdown-them-math-inline">$r_1\times r_2$</span>棋盘。</p>
+<blockquote>
+<p>待补充。</p>
+</blockquote>
+<h2 id="问题二：空间划分问题（1）">问题二：空间划分问题（1）</h2>
+<p>给定 <span class="markdown-them-math-inline">$n$</span> 条简单曲线（曲线可闭合，但不允许打结），求出这 <span class="markdown-them-math-inline">$n$</span> 条曲线最多能将平面划分为多少个区域。</p>
+<p>对于可任意弯曲的曲线，我们能得到的区域数的最大值为 <span class="markdown-them-math-inline">$2^n,$</span> 即确保增加的第 <span class="markdown-them-math-inline">$n$</span> 条曲线 <span class="markdown-them-math-inline">$\Gamma_n$</span> 可以经过前 <span class="markdown-them-math-inline">$n-1$</span> 条曲线将平面分成的每一个区域，这样区域数呈指数增加，公比为 <span class="markdown-them-math-inline">$2.$</span> 下面我们考虑几种特殊的情况：直线与一些二次曲线，分析的基本思路是相同的。</p>
+<h3 id="直线">直线</h3>
+<p>增加的第 <span class="markdown-them-math-inline">$n$</span> 条直线需要被前 <span class="markdown-them-math-inline">$n-1$</span> 条直线分为 <span class="markdown-them-math-inline">$n$</span> 个部分，而这 <span class="markdown-them-math-inline">$n$</span> 条射线或线段经过前 <span class="markdown-them-math-inline">$n-1$</span> 条直线分割成的 <span class="markdown-them-math-inline">$a_{n-1}$</span> 个区域区域中的 <span class="markdown-them-math-inline">$n$</span> 个区域，并将其分成两份，于是容易得到递推公式为</p>
+<div class="markdown-them-math-block">$$a_n=a_{n-1}-n+2n=a_{n-1}+n,
+$$</div><p>因此</p>
+<div class="markdown-them-math-block">$$a_n=\frac{n^2+n+2}{2}
+$$</div><h3 id="圆">圆</h3>
+<p>两个圆最多有两个交点。对于第 <span class="markdown-them-math-inline">$n$</span> 个圆 <span class="markdown-them-math-inline">$\Gamma_n$</span>，它与前 <span class="markdown-them-math-inline">$n-1$</span> 个圆的每一个都有两个交点，于是一共有 <span class="markdown-them-math-inline">$2(n-1)$</span> 个交点。这 <span class="markdown-them-math-inline">$2(n-1)$</span> 个点把圆 <span class="markdown-them-math-inline">$\Gamma_n$</span> 分成了 <span class="markdown-them-math-inline">$2(n-1)$</span> 段圆弧，而每一段圆弧都经过前 <span class="markdown-them-math-inline">$n-1$</span> 个圆分割成的若干区域区域中的 <span class="markdown-them-math-inline">$2(n-1)$</span> 个区域，并将其分成两份 ，因此</p>
+<div class="markdown-them-math-block">$$a_n=a_{n-1}-2(n-1)+4(n-1)=a_{n-1}+2(n-1)
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$a_n=a_1+\sum_{k=2}^{n}2(k-1)=n^2-n+2.
+$$</div><h3 id="椭圆">椭圆</h3>
+<p>两个椭圆最多有 <span class="markdown-them-math-inline">$4$</span> 个交点，将椭圆分为 <span class="markdown-them-math-inline">$4$</span> 段。对于第 <span class="markdown-them-math-inline">$n$</span> 个椭圆 <span class="markdown-them-math-inline">$\Gamma_n,$</span> 它与前 <span class="markdown-them-math-inline">$n-1$</span> 个椭圆有 <span class="markdown-them-math-inline">$4(n-1)$</span> 个交点，这些交点把 <span class="markdown-them-math-inline">$\Gamma_n$</span> 分成了 <span class="markdown-them-math-inline">$4(n-1)$</span> 条曲线段。在这 <span class="markdown-them-math-inline">$4(n-1)$</span> 条曲线段中，有四条特殊的曲线段，将它们分为两组，其中一组同时经过了最外围的区域，另一组同时经过了最里面的区域（这只是其中一种较为容易分析的一种画法）。对于另外 <span class="markdown-them-math-inline">$4(n-2)$</span> 的曲线段，它们都经过了前 <span class="markdown-them-math-inline">$n-1$</span> 个椭圆分割成的若干区域区域中的 <span class="markdown-them-math-inline">$4(n-2)$</span> 个区域，并将其分成两份，于是</p>
+<div class="markdown-them-math-block">$$a_{n}=a_{n-1}-2+2\times 3-4(n-2)+8(n-2)=a_{n-1}+4(n-1),n\ge 2
+$$</div><p>因此</p>
+<div class="markdown-them-math-block">$$a_n=a_1+\sum_{k=2}^{n}4(n-1)=2n^2-2n+2
+$$</div><h3 id="抛物线">抛物线</h3>
+<p>两条抛物线最多可以有 <span class="markdown-them-math-inline">$4$</span> 个交点，将抛物线分为 <span class="markdown-them-math-inline">$5$</span> 段。对于第 <span class="markdown-them-math-inline">$n$</span> 条抛物线 <span class="markdown-them-math-inline">$\Gamma_n,$</span> 它与前 <span class="markdown-them-math-inline">$n-1$</span> 个椭圆有 <span class="markdown-them-math-inline">$4(n-1)$</span> 个交点，这些交点把 <span class="markdown-them-math-inline">$\Gamma_n$</span> 分成了 <span class="markdown-them-math-inline">$4n-3$</span> 条曲线段。在这 <span class="markdown-them-math-inline">$4n-3$</span> 条曲线段中，有 <span class="markdown-them-math-inline">$5$</span> 条特殊的曲线段，其中三条同时经过了某个所有抛物线顶点附近的无界区域，另外两条同时经过了最里面的区域（这只是其中一种较为容易分析的一种画法）。对于另外 <span class="markdown-them-math-inline">$4n-8$</span> 的曲线段，它们都经过了前 <span class="markdown-them-math-inline">$n-1$</span> 个椭圆分割成的若干区域区域中的 <span class="markdown-them-math-inline">$4n-8$</span> 个区域，并将其分成两份，于是</p>
+<div class="markdown-them-math-block">$$a_n=a_{n-1}+(-1+3)+(-1+4)+(-(4n-8)+2(4n-8))=a_{n-1}+4n-3
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$a_{n}=a_1+\sum_{k=2}^{n}(4n-3)=2n^2-n+1
+$$</div><h3 id="直线和圆">直线和圆</h3>
+<blockquote>
+<p>待补充。</p>
+</blockquote>
+<h3 id="三维时的情形">三维时的情形</h3>
+<h4 id="平面">平面</h4>
+<p>第 <span class="markdown-them-math-inline">$n$</span> 个平面 <span class="markdown-them-math-inline">$\Gamma_n$</span> 与前 <span class="markdown-them-math-inline">$n-1$</span> 个平面有 <span class="markdown-them-math-inline">$n-1$</span> 条交线，根据已有的二维时的情况，这些交线最多把 <span class="markdown-them-math-inline">$\Gamma_n$</span> 分成了 <span class="markdown-them-math-inline">$\frac{n(n-1)}{2}+1$</span> 个区域，而这些区域经过了前 <span class="markdown-them-math-inline">$n-1$</span> 个平面分割成的若干区域中的 <span class="markdown-them-math-inline">$\frac{n(n-1)}{2}+1$</span> 个区域，并将其分成两份。于是</p>
+<div class="markdown-them-math-block">$$a_n=a_{n-1}+\frac{n(n-1)}{2}+1
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$a_n=a_1+\sum_{k=2}^{n}\left(\frac{k(k-1)}{2}+1\right)=\frac{n(n-1)(n+1)}{6}+n+1=\frac{n^3+5n}{6}+1
+$$</div><h3 id="$m$-维的情形"><span class="markdown-them-math-inline">$m$</span> 维的情形</h3>
+<p>求解三维时，我们很容易注意到不同维度之间存在着递推关系。设 <span class="markdown-them-math-inline">$n$</span> 个超平面最多可以将 <span class="markdown-them-math-inline">$\mathbb{R}^m$</span> 划分为 <span class="markdown-them-math-inline">$\mathcal{C}(m,n)$</span> 个区域。则显然有</p>
+<div class="markdown-them-math-block">$$\mathcal{C}(m,n)=\mathcal{C}(m,n-1)+\mathcal{C}(m-1,n).
+$$</div><p><span class="markdown-them-math-inline">$m$</span> 维的空间被 <span class="markdown-them-math-inline">$n$</span> 个超平面分成的区域数量最多是</p>
+<div class="markdown-them-math-block">$$S(m,n)=
+\begin{cases}
+2^n,&amp;n\le m\\
+\sum_{k=0}^{m}\binom{n}{k},&amp;n&gt;m
+\end{cases}
+$$</div><p>归纳易证。在后续文章会再次介绍此数列。</p>
+<h2 id="排列与组合">排列与组合</h2>
+<h3 id="排列">排列</h3>
+<p><span class="markdown-them-math-inline">$n$</span> 元素集合 <span class="markdown-them-math-inline">$\cal{S}$</span> 的 <strong><span class="markdown-them-math-inline">$r$</span> 排列</strong>的意思是，<span class="markdown-them-math-inline">$n$</span> 个元素中的 <span class="markdown-them-math-inline">$r$</span> 个元素的<strong>有序放置</strong>。比如集合 <span class="markdown-them-math-inline">$\{a,b,c\}$</span> 的 <span class="markdown-them-math-inline">$2$</span> 排列为 <span class="markdown-them-math-inline">$ab,ac,ba,bc,ca,cb.$</span> 我们将 <span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$r$</span> 排列的数目记作 <span class="markdown-them-math-inline">$P(n,r),$</span> 显然有</p>
+<div class="markdown-them-math-block">$$P(n,r)=n\times(n-1)\times\cdots\times (n-r+1)=\frac{n!}{(n-r)!}.
+$$</div><p>这在高中的记号是 <span class="markdown-them-math-inline">$A_n^r.$</span> 也可以理解为，在 <span class="markdown-them-math-inline">$n$</span> 元素集合中选择 <span class="markdown-them-math-inline">$r$</span> 个元素，并将这 <span class="markdown-them-math-inline">$r$</span> 个元素进行全排列。</p>
+<h4 id="圆排列">圆排列</h4>
+<p>上面介绍的排列是<strong>线性排列</strong>。圆排列又称为循环排列，即将取出的 <span class="markdown-them-math-inline">$r$</span> 个元素排列成一个圆。<span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$r$</span> 圆排列的数目为</p>
+<div class="markdown-them-math-block">$$\frac{P(n,r)}{r}=\frac{n!}{r(n-r)!}.
+$$</div><p>这很容易理解，只需要考察下面 <span class="markdown-them-math-inline">$r$</span> 个线性排列：</p>
+<div class="markdown-them-math-block">$$\langle i_1i_2\cdots i_{r-1}i_r\rangle,\langle i_2i_3\cdots i_ri_1\rangle,\langle i_3i_4\cdots i_1i_2\rangle,\cdots,\langle i_ri_1\cdots i_{r-2}i_{r-1}\rangle
+$$</div><p>它们实际上是同一个圆排列，这一共是 <span class="markdown-them-math-inline">$r$</span> 个，于是可以将 <span class="markdown-them-math-inline">$P(n,r)$</span> 个线性排列划分为 <span class="markdown-them-math-inline">$r$</span> 个部分，每一部分是一个圆排列，因此将线性排列的个数除以 <span class="markdown-them-math-inline">$r$</span> 即得圆排列的个数。</p>
+<h3 id="组合">组合</h3>
+<p><span class="markdown-them-math-inline">$n$</span> 元素集合 <span class="markdown-them-math-inline">$\cal S$</span> 的一个组合或子集表示集合 <span class="markdown-them-math-inline">$\cal S$</span> 的元素的一个<strong>无序</strong>选择，这是与排列不同的地方。<span class="markdown-them-math-inline">$n$</span> 元素集合 <span class="markdown-them-math-inline">$\cal S$</span> 的 <span class="markdown-them-math-inline">$r$</span> 子集的意思是它的含有 <span class="markdown-them-math-inline">$r$</span> 个元素的子集的集合。用 <span class="markdown-them-math-inline">$\binom{n}{r}$</span> 表示 <span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$r$</span> 子集个数，并且有下面的定理</p>
+<p><strong>定理1</strong></p>
+<div class="markdown-them-math-block">$$\binom{n}{r}=\frac{P(n,r)}{r!}=\frac{n!}{r!(n-r)!}.\tag{i}
+$$</div><p><em><strong>PROOF</strong></em> 借助排列是十分容易证明的，这是因为由乘法原理显然有 <span class="markdown-them-math-inline">$P(n,r)=r!\binom{n}{r}.$</span> <span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong>定理2（组合数的性质）</strong></p>
+<p>（1）<span class="markdown-them-math-inline">$\displaystyle \binom{n}{r}=\binom{n}{n-r};$</span></p>
+<p><em><strong>PROOF</strong></em> 我们可以在 <span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$r$</span> 子集的构成的集合与 <span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$n-r$</span> 子集构成的集合之间建立双射，于是等式便得证。<span class="markdown-them-math-inline">$\square$</span></p>
+<p>（2）（Pascal公式）<span class="markdown-them-math-inline">$\displaystyle \binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k},1\le k\le n;$</span></p>
+<p><em><strong>PROOF</strong></em> 在组合数学中，我们更倾向于用组合的方法进行证明。</p>
+<p>设 <span class="markdown-them-math-inline">$n$</span> 元素集合 <span class="markdown-them-math-inline">$\cal S$</span> 满足 <span class="markdown-them-math-inline">$x\in\cal S,S$</span> 的所有 <span class="markdown-them-math-inline">$k$</span> 子集的集合记作 <span class="markdown-them-math-inline">$\cal X,$</span> 并将其划分为两部分 <span class="markdown-them-math-inline">$\cal A$</span> 和 <span class="markdown-them-math-inline">$\cal B,$</span> 其中 <span class="markdown-them-math-inline">$\cal  A$</span> 中的每个集合都含有 <span class="markdown-them-math-inline">$x$</span> 而 <span class="markdown-them-math-inline">$\cal B$</span> 中的每个集合均不含，那么显然有</p>
+<div class="markdown-them-math-block">$$\cal |X|=\binom{n}{k}=|A|+|B|.
+$$</div><p>而 <span class="markdown-them-math-inline">$\cal |A|$</span> 等于集合 <span class="markdown-them-math-inline">$\cal S\backslash \{x\}$</span> 的 <span class="markdown-them-math-inline">$k-1$</span> 子集的个数，<span class="markdown-them-math-inline">$\cal |B|$</span> 等于集合 <span class="markdown-them-math-inline">$\cal S\backslash \{x\}$</span> 的 <span class="markdown-them-math-inline">$k$</span> 子集的个数，也即</p>
+<div class="markdown-them-math-block">$$ |\mathcal{A}|=\binom{n-1}{k-1},|\mathcal{B}|=\binom{n-1}{k},
+$$</div><p>这就是要证的。<span class="markdown-them-math-inline">$\square$</span></p>
+<p>（3）</p>
+<div class="markdown-them-math-block">$$\sum_{k=0}^{n}\binom{n}{k}=2^n.
+$$</div><p>这个很容易理解，因为左边的和式相当于 <span class="markdown-them-math-inline">$n$</span> 元素集合 <span class="markdown-them-math-inline">$\cal S$</span> 所有子集的数目，也即 <span class="markdown-them-math-inline">$2^n.$</span></p>
+<h3 id="多重集合">多重集合</h3>
+<p>所谓多重集合，就是允许元素重复的集合，比如构成串 <span class="markdown-them-math-inline">$aabccc$</span> 的元素可以表示为集合 <span class="markdown-them-math-inline">$\{2\cdot a,1\cdot b,3\cdot c\}.$</span> 若元素 <span class="markdown-them-math-inline">$x$</span> 有无穷多则可记作 <span class="markdown-them-math-inline">$\infty\cdot x.$</span></p>
+<h4 id="多重集合的排列">多重集合的排列</h4>
+<p><strong>定理3</strong> 设多重集合 <span class="markdown-them-math-inline">$\cal S$</span> 有 <span class="markdown-them-math-inline">$k$</span> 种不同的元素，且每种元素的数目分别为 <span class="markdown-them-math-inline">$n_i&lt;\infty,1\le n\le k,$</span> 并记 <span class="markdown-them-math-inline">$|\cal S|=n,$</span> 那么 <span class="markdown-them-math-inline">$\cal S$</span> 的排列数目为</p>
+<div class="markdown-them-math-block">$$P=\frac{n!}{\prod_{1\le i\le k}n_i!}.
+$$</div><p><em><strong>PROOF</strong></em> 分别在 <span class="markdown-them-math-inline">$n$</span> 个位置放置元素即可。先从 <span class="markdown-them-math-inline">$n$</span> 个位置选取 <span class="markdown-them-math-inline">$n_1$</span> 个位置放置第一个元素，再从剩下的 <span class="markdown-them-math-inline">$n-n_1$</span> 个位置取 <span class="markdown-them-math-inline">$n_2$</span> 个位置放置第二个元素，以此类推，可以得到下面的式子：</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+&amp;\binom{n}{n_1}\binom{n-n_1}{n_2}\cdots\binom{n-n_1-\cdots n_{k-1}}{n_k}\\
+&amp;=\frac{n!}{n_1!(n-n_1)!}\cdot\frac{(n-n_1)!}{n_2!(n-n_1-n_2)!}\cdot\cdots\cdot\frac{(n-n_1-\cdots n_{k-1})!}{n_k!0!}\\
+&amp;=\frac{n!}{\prod_{1\le i\le k}n_i!}.
+\end{aligned}
+$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+<p>下面是数 <span class="markdown-them-math-inline">$P$</span> 的另一种描述。</p>
+<p><strong>定理4</strong> <span class="markdown-them-math-inline">$n$</span> 元素集合的 <span class="markdown-them-math-inline">$k$</span> <strong>有序划分</strong>（划分为 <span class="markdown-them-math-inline">$k$</span> 个集合后把所有子集视作不同元素进行排列 ）的数目为 <span class="markdown-them-math-inline">$P,$</span> 其中 <span class="markdown-them-math-inline">$n_i$</span> 表示第 <span class="markdown-them-math-inline">$i$</span> 个子集有 <span class="markdown-them-math-inline">$n_i$</span> 个元素，<span class="markdown-them-math-inline">$k$</span> 为划分得到的子集数目；而 <span class="markdown-them-math-inline">$k$</span> 无序划分的数目为 <span class="markdown-them-math-inline">$P/k!.$</span></p>
+<p>证明过程与定理3基本相同。</p>
+<p>举个例子，<span class="markdown-them-math-inline">$\{a,b,c,d\}$</span> 的 <span class="markdown-them-math-inline">$2$</span> 有序划分中的 <span class="markdown-them-math-inline">$\{a,b\},\{c,d\}$</span> 与 <span class="markdown-them-math-inline">$\{c,d\},\{a,b\}$</span> 是不同的划分。可以看作将这些元素放入了不同的盒子，无序划分则放入了相同的盒子里。</p>
+<p><strong>例1</strong> 在 <span class="markdown-them-math-inline">$n\times n$</span> 的棋盘上放置 <span class="markdown-them-math-inline">$n$</span> 辆车，使得任意两辆车都不在同一直线或同一竖线上，那么放置的方法种数有 <span class="markdown-them-math-inline">$n!$</span> 种；若这些车有 <span class="markdown-them-math-inline">$k$</span> 种且第 <span class="markdown-them-math-inline">$i(1\le i\le k)$</span> 种车有 <span class="markdown-them-math-inline">$n_i$</span> 辆，那么放置的方法种数为</p>
+<div class="markdown-them-math-block">$$n!\frac{n!}{\prod_{1\le i\le k}n_i!}=\frac{(n!)^2}{\prod_{1\le i\le k}n_i!}.
+$$</div><p><em><strong>SOL</strong></em> 实际上是要找出 <span class="markdown-them-math-inline">$n$</span> 个序偶 <span class="markdown-them-math-inline">$(x_i,y_i)(1\le i,x_i,y_i\le n)$</span> 的组合的个数，每一种组合的这些序偶的横纵坐标两两不等。车子都相同时，每一行只有一辆车，无需考虑顺序，于是可以直接假定坐标为 <span class="markdown-them-math-inline">$(1,y_1),(2,y_2),\cdots,(n,y_n),$</span> 那么 <span class="markdown-them-math-inline">$y_1,y_2,\cdots,y_n$</span> 实际上就是 <span class="markdown-them-math-inline">$1,2,\cdots,n$</span> 的排列，于是总数目为 <span class="markdown-them-math-inline">$n!$</span> 个。当车之间有差异时，车的集合相当于一个多重集合，相当于要对这些坐标（车子）根据它们之间的差异将进行排列，于是问题转化为多重集合的排列，最终答案就很显然了。<span class="markdown-them-math-inline">$\square$</span></p>
+<h4 id="多重集合的组合（1）">多重集合的组合（1）</h4>
+<p>多重集合 <span class="markdown-them-math-inline">$\cal S$</span> 的 <span class="markdown-them-math-inline">$r$</span> 组合是 <span class="markdown-them-math-inline">$\cal S$</span> 中 <span class="markdown-them-math-inline">$r$</span> 个对象的无序选择，选择的结果仍然是一些多重集合。</p>
+<p><strong>定理5</strong> 设 <span class="markdown-them-math-inline">$\cal S$</span> 有 <span class="markdown-them-math-inline">$k$</span> 种元素且每种元素有无穷多个，那么 <span class="markdown-them-math-inline">$\cal S$</span> 的 <span class="markdown-them-math-inline">$r$</span> 组合的个数为</p>
+<div class="markdown-them-math-block">$$\binom{r+k-1}{r}=\binom{r+k-1}{k-1}.
+$$</div><p><em><strong>PROOF</strong></em> 设 <span class="markdown-them-math-inline">$\mathcal{S}=\{\infty\cdot a_1,\infty\cdot a_2,\cdots,\infty\cdot a_k\},$</span> 于是它的 <span class="markdown-them-math-inline">$r$</span> 组合是形如 <span class="markdown-them-math-inline">$\{x_1\cdot a_1,x_2\cdot a_2,\cdots,x_k\cdot a_k\}$</span> 的集合，满足 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r$</span> 且 <span class="markdown-them-math-inline">$x_i$</span> 为非负整数。问题就转化为了不定方程 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r$</span> 的非负整数解的组数问题了。下面证明该方程的非负整数解的组数为多重集合 <span class="markdown-them-math-inline">$T=\{r\cdot 1,(k-1)\cdot 0\}$</span> 的排列的个数（即长度为 <span class="markdown-them-math-inline">$r+k-1$</span> 且含有 <span class="markdown-them-math-inline">$r$</span> 个 <span class="markdown-them-math-inline">$1$</span> 和 <span class="markdown-them-math-inline">$k-1$</span> 个 <span class="markdown-them-math-inline">$0$</span> 的串）。给定 <span class="markdown-them-math-inline">$T$</span> 的一个排列，其中的 <span class="markdown-them-math-inline">$k-1$</span> 个 <span class="markdown-them-math-inline">$0$</span> 将这 <span class="markdown-them-math-inline">$r$</span> 个 <span class="markdown-them-math-inline">$1$</span> 分成了 <span class="markdown-them-math-inline">$k$</span> 部分<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>  ，即从左到右分别有 <span class="markdown-them-math-inline">$x_1,x_2,\cdots,x_k\ge 0$</span> 个 <span class="markdown-them-math-inline">$1,$</span> 它们显然满足 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r;$</span> 反之，若给定满足 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r$</span> 的非负整数 <span class="markdown-them-math-inline">$x_i(1\le i\le k),$</span> 把上述步骤倒推可以构造出 <span class="markdown-them-math-inline">$T$</span> 的一个排列；这就证得了该方程的非负整数解的组数为多重集合 <span class="markdown-them-math-inline">$T=\{r\cdot 1,(k-1)\cdot 0\}$</span> 的排列的个数。于是解的组数为</p>
+<div class="markdown-them-math-block">$$\frac{(r+k-1)!}{r!(k-1)!}=\binom{r+k-1}{r}=\binom{r+k-1}{k-1}.
+$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+<blockquote>
+<p>额，自己在做时搞出来一个没啥用的东西……</p>
+<p>设从 <span class="markdown-them-math-inline">$p$</span> 种元素取出 <span class="markdown-them-math-inline">$q(q\ge p)$</span> 个包含所有种类的元素的取法为 <span class="markdown-them-math-inline">$S(p,q),$</span> 当第一种元素取出 <span class="markdown-them-math-inline">$\ell$</span> 个时，相当于要在剩下的 <span class="markdown-them-math-inline">$p-1$</span> 种元素取出 <span class="markdown-them-math-inline">$q-\ell$</span> 个元素且要包含剩下所有种类的元素，这个取法刚好是 <span class="markdown-them-math-inline">$S(p-1,q-\ell),$</span> 且 <span class="markdown-them-math-inline">$1\le \ell\le q-p+1,$</span> 于是</p>
+<div class="markdown-them-math-block">$$S(p,q)=\sum_{1\le \ell \le q-p+1}S(p-1,q-\ell).
+$$</div><p>于是结果为</p>
+<div class="markdown-them-math-block">$$\sum_{i=1}^{r}\binom{k}{i}S(i,r)
+$$</div><p>（化简不了……</p>
+</blockquote>
+<p>后续的章节中将继续讨论不定方程 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r$</span> 的解有上界时的解（解有下界时换个元即可）。</p>
+<h3 id="练习">练习</h3>
+<p>1：确定性如 <span class="markdown-them-math-inline">$\emptyset\subseteq\mathcal{A}_1\subseteq\mathcal{A}_2\subseteq\cdots \subseteq\mathcal{A}_k\subseteq\{1,2,\cdots,n\}$</span> 的塔状集的数目。</p>
+<p><em><strong>SOL</strong></em> 显然为</p>
+<div class="markdown-them-math-block">$$\sum_{i_1=0}^n\binom{n}{i_1}\sum_{i_2=0}^{i_1}\binom{i_1}{i_2}\cdots\sum_{i_k=0}^{i_{k-1}}\binom{i_{k-1}}{i_k}2^{i_k}=(k+1)^n.
+$$</div><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>很容易发现这就是隔板法。应该可以认为这个论证过程在证明隔板法的正确性？ <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/19/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/25/python/Python1/" rel="next" title="Python入门(1):基础用法">
+                  Python入门(1):基础用法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">161k</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:30</span>
+    <span title="Reading time total">2:27</span>
+  </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  
-      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
 
-    
+
+
+
+
 
   
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
-      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

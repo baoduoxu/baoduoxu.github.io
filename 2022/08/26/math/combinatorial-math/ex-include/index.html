@@ -2,55 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
   <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="">
-
+<link rel="stylesheet" href="[object Object]">
 
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="容斥原理的基本形式 减法原理是容斥原理的最简单示例。 定理1 设 \(A_1,A_2,\cdots,A_n\) 为集合，指标集 \(I&#x3D;\{1,2,\cdots,n\},\) 则 \[ \begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="容斥原理的基本形式 减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则 $$\begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组合数学（三）：容斥原理">
 <meta property="og:url" content="http://example.com/2022/08/26/math/combinatorial-math/ex-include/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="容斥原理的基本形式 减法原理是容斥原理的最简单示例。 定理1 设 \(A_1,A_2,\cdots,A_n\) 为集合，指标集 \(I&#x3D;\{1,2,\cdots,n\},\) 则 \[ \begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\">
+<meta property="og:description" content="容斥原理的基本形式 减法原理是容斥原理的最简单示例。 定理1 设 $A_1,A_2,\cdots,A_n$ 为集合，指标集 $I&#x3D;\{1,2,\cdots,n\},$ 则 $$\begin{aligned} \left\vert \bigcup_{i\in I} A_i\right\vert &#x3D;\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-26T08:40:00.000Z">
 <meta property="article:modified_time" content="2022-10-04T09:09:40.495Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="http://example.com/2022/08/26/math/combinatorial-math/ex-include/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>组合数学（三）：容斥原理 | XBD</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/26/math/combinatorial-math/ex-include/","path":"2022/08/26/math/combinatorial-math/ex-include/","title":"组合数学（三）：容斥原理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>组合数学（三）：容斥原理 | XBD</title>
   
+
+
 
 
 
@@ -58,813 +53,84 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">XBD</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        
-      
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/math/combinatorial-math/ex-include/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          组合数学（三）：容斥原理
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-26 16:40:00" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-04 17:09:40" itemprop="dateModified" datetime="2022-10-04T17:09:40+08:00">2022-10-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/08/26/math/combinatorial-math/ex-include/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/26/math/combinatorial-math/ex-include/" itemprop="commentCount"></span>
-    </a>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
   </span>
-  
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>10 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h2 id="容斥原理的基本形式">容斥原理的基本形式</h2>
-<p>减法原理是容斥原理的最简单示例。</p>
-<p><strong>定理1</strong> 设 <span
-class="math inline">\(A_1,A_2,\cdots,A_n\)</span> 为集合，指标集 <span
-class="math inline">\(I=\{1,2,\cdots,n\},\)</span> 则 <span
-class="math display">\[
-\begin{aligned}
-\left\vert \bigcup_{i\in I} A_i\right\vert =\sum_{k\in
-I}(-1)^{k-1}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert
-\bigcap_{i\in X}A_i\right\vert .
-\end{aligned}\quad\quad (*)
-\]</span> 它用来求一些有交集的集合的并集的元素个数。若有全集 <span
-class="math inline">\(U\)</span> ，则可以有另一种表述，即 <span
-class="math display">\[
-\begin{equation}
-\left\vert \bigcap_{i\in I} \overline{A_i}\right\vert =\vert U\vert
-+\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert
-\bigcap_{i\in X}A_i\right\vert .\quad\quad(**)
-\end{equation}
-\]</span> 这是很容易证的，利用 <span class="math inline">\(\rm
-De~Morgan\)</span> 律以及 $=U-A=U-A$
-即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
-<span id="more"></span>
-<p>下面我们来证明容斥原理，这里我们证明另一种表述即式 <span
-class="math inline">\(**\)</span> 。</p>
-<p><strong><em>PROOF</em></strong> 设 <span class="math inline">\(x\in
-A_i\)</span> 表示 <span class="math inline">\(x\)</span> 具有性质 <span
-class="math inline">\(P_i,1\le i\le n.\)</span> 考虑恰好具有 <span
-class="math inline">\(m\)</span> 条性质的元素 <span
-class="math inline">\(x,\)</span> 我们利用 <span
-class="math inline">\(x\)</span> 对式 <span
-class="math inline">\(**\)</span>
-每一部分的“贡献”进行证明，这个贡献的意思是，我们在计数的时候，元素 <span
-class="math inline">\(x\)</span> 是否给我们的计数增加了 <span
-class="math inline">\(1.\)</span> 只要 <span class="math inline">\(x\in
-X,\)</span> 那么 <span class="math inline">\(x\)</span> 对 $X$
-的贡献就为 <span class="math inline">\(1,\)</span> 否则为 <span
-class="math inline">\(0.\)</span> 由于等式的左边计数了 <span
-class="math inline">\(U\)</span>
-中不具备所有性质的元素的个数，那么我们只需证明不具备任意一个性质的 <span
-class="math inline">\(x\)</span> 给等式右边的贡献为 <span
-class="math inline">\(1,\)</span> 具备至少一个性质的 <span
-class="math inline">\(x\)</span> 给等式右边的贡献为 <span
-class="math inline">\(0,\)</span> 就能说明等式右边也计数了 <span
-class="math inline">\(U\)</span> 中不具备所有性质的元素的个数。</p>
-<p>当 <span class="math inline">\(x\)</span> 一条性质也不具备即 <span
-class="math inline">\(m=0\)</span> 时，它对等式 <span
-class="math display">\[(**)\]</span> 右边的贡献为 <span
-class="math inline">\(1-0+0-\cdots+(-1)^n \times0=1.\)</span> 当 <span
-class="math inline">\(m\ge 1\)</span> 时，<span
-class="math inline">\(x\)</span> 对 $U$ 的贡献为 <span
-class="math inline">\(1=\binom{m}{0};\)</span> 对和式的第一项的贡献为
-<span class="math inline">\((-1)\binom{m}{1},\)</span>
-对和式的第二项的贡献为 <span
-class="math inline">\((-1)^2\binom{m}{2},\)</span> 因为满足 <span
-class="math inline">\(x \in A_i\cap A_j\)</span> 的集合 <span
-class="math inline">\(A_i\)</span> 和 <span
-class="math inline">\(A_j\)</span> 要在 <span
-class="math inline">\(m\)</span> 个集合中选，数量为 <span
-class="math inline">\(\binom{m}{2};\)</span> 以此类推，<span
-class="math inline">\(x\)</span> 对等式 <span
-class="math display">\[(**)\]</span> 右边的贡献为 <span
-class="math display">\[
-\binom{m}{0}+\sum_{k=1}^{n}(-1)^k\binom{m}{k}=\sum_{k=0}^n(-1)^k\binom{m}{k}
-\]</span> 当 <span class="math inline">\(k&gt;m\)</span> 时 <span
-class="math inline">\(\binom{m}{k}=0\)</span> 且 <span
-class="math inline">\(n\ge m,\)</span> 于是 <span
-class="math display">\[
-\sum_{k=0}^n(-1)^k\binom{m}{k}=\sum_{k=0}^m(-1)^k\binom{m}{k}=0,
-\]</span> 这表明了若 <span class="math inline">\(x\)</span>
-具有至少一个性质，那么它对式 <span class="math display">\[(**)\]</span>
-右边的贡献为零；若 <span class="math inline">\(x\)</span>
-不具有任何一个性质，它对式 <span class="math display">\[(**)\]</span>
-右边的贡献为 <span class="math inline">\(1,\)</span> 这就是要证的。<span
-class="math inline">\(\square\)</span></p>
-<p>倘若 $<em>{1jk} A</em>{i_j}$ 仅依赖于 <span
-class="math inline">\(k\)</span> 而不依赖于在交集中使用了哪 <span
-class="math inline">\(k\)</span> 个集合，那么我们可以令 <span
-class="math inline">\(\alpha_k=\vert \bigcap_{1\le j\le k} A_{i_j}\vert
-(1\le k\le n),\)</span> 那么容斥原理可以有下面的特殊形式： <span
-class="math display">\[
-\left\vert \bigcup_{i\in I} A_i\right\vert
-=\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k,\tag{***}
-\]</span> 式中的组合数是和式 $<em>{XIX=k}</em>{iX}A_i$ 项的个数（即
-<span class="math inline">\(I\)</span> 的 <span
-class="math inline">\(k\)</span> 子集的个数），且每一项都为 <span
-class="math inline">\(\alpha_k.\)</span></p>
-<h2 id="容斥原理的应用1">容斥原理的应用（1）</h2>
-<h3 id="多重集合的组合2">多重集合的组合（2）</h3>
-<p>在多重集合的组合（1）部分，我们讨论了多重集合 <span
-class="math inline">\(\mathcal{S}=\{n_1\cdot a_1,n_2\cdot
-a_2,\cdots,n_k\cdot a_k\}\)</span> 在 <span class="math inline">\(n_i\ge
-r(i=1,2,\cdots,k)\)</span> 时它的 <span class="math inline">\(r\)</span>
-组合的个数。现在我们考虑 <span class="math inline">\(n_i&lt;r(1\le i\le
-k)\)</span> 的情形，也即不定方程 <span
-class="math inline">\(x_1+x_2+\cdots+x_k=r\)</span>
-的部分元有上界时的非负整数解的组数。</p>
-<p>我们举一个例子：</p>
-<p><strong>例1</strong> 求集合 <span class="math inline">\(\{3\cdot
-a,4\cdot b,5\cdot c\}\)</span> 的 <span
-class="math inline">\(10\)</span> 组合数目。</p>
-<p><strong><em>SOL</em></strong> 设 <span
-class="math inline">\(T=\{\infty\cdot a,\infty \cdot b,\infty\cdot
-c\}\)</span> 的 <span class="math inline">\(10\)</span> 组合的集合为
-<span class="math inline">\(S,\)</span> <span
-class="math inline">\(T\)</span> 的 <span
-class="math inline">\(10\)</span> 组合中 <span
-class="math inline">\(a\)</span> 的个数至少为 <span
-class="math inline">\(4\)</span> 的那部分的集合记作 <span
-class="math inline">\(A,\)</span> <span class="math inline">\(b\)</span>
-的个数至少为 <span class="math inline">\(5\)</span> 的那部分的集合记作
-<span class="math inline">\(B,\)</span> <span
-class="math inline">\(c\)</span> 的个数至少为 <span
-class="math inline">\(6\)</span> 的那部分的集合记作 <span
-class="math inline">\(C,\)</span> 则问题转化为求 <span
-class="math inline">\(\vert \overline{A}\cap \overline{B}\cap
-\overline{C}\vert .\)</span> 由容斥原理得 <span class="math display">\[
-\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert =\vert S\vert
--\sum\vert A\vert +\sum\vert A\cap B\vert -\vert A\cap B\cap C\vert
-\tag{i}
-\]</span> 且由已知结论得 <span class="math inline">\(\vert S\vert
-=\binom{10+3-1}{3-1}=\binom{12}{2}=66.\)</span> 对于 <span
-class="math inline">\(A,\)</span> 容易发现它是 <span
-class="math inline">\(T\)</span> 的 <span
-class="math inline">\(6\)</span> 组合的集合（倘若我们取出 <span
-class="math inline">\(A\)</span> 中的任意一个元素并去掉其中的 <span
-class="math inline">\(4\)</span> 个 <span
-class="math inline">\(a,\)</span> 那么就得到了 <span
-class="math inline">\(T\)</span> 的一个 <span
-class="math inline">\(6\)</span> 组合；若在 <span
-class="math inline">\(T\)</span> 的某个 <span
-class="math inline">\(6\)</span> 组合加入 <span
-class="math inline">\(4\)</span> 个 <span
-class="math inline">\(a,\)</span> 便又得到了 <span
-class="math inline">\(A\)</span> 中的一个元素），于是 <span
-class="math inline">\(\vert A\vert
-=\binom{6+3-1}{3-1}=\binom{8}{2}=28.\)</span> 同理有 <span
-class="math inline">\(\vert B\vert =\binom{7}{2}=21,\vert C\vert
-=\binom{6}{2}=15.\)</span> 对于 <span class="math inline">\(\vert A\cap
-B\vert ,\)</span> 按照上述的分析思路，可以发现它是 <span
-class="math inline">\(T\)</span> 的 <span
-class="math inline">\(1\)</span> 组合数目，于是 <span
-class="math inline">\(\vert A\cap B\vert =\binom{3}{2}=3,\)</span>
-同理有 <span class="math inline">\(\vert B\cap C\vert =0,\vert A\cap
-C\vert =\binom{0+3-1}{0}=1,\vert A\cap B\cap C\vert =0.\)</span> 代入
-<span class="math inline">\(\rm i\)</span> 计算得 <span
-class="math inline">\(\vert \overline{A}\cap \overline{B}\cap
-\overline{C}\vert =6.\)</span> 于是 <span class="math inline">\(\{3\cdot
-a,4\cdot b,5\cdot c\}\)</span> 的 <span
-class="math inline">\(10\)</span> 组合有 <span
-class="math inline">\(6\)</span> 个。<span
-class="math inline">\(\square\)</span></p>
-<p>如果没有直接设出 <span class="math inline">\(A,B,C\)</span>
-而是直接设出它们在 <span class="math inline">\(S\)</span>
-中的补集，像下面这样：</p>
-<blockquote>
-<p><span class="math inline">\(\{3\cdot a,\infty \cdot b,\infty\cdot
-c\}\)</span> 的 <span class="math inline">\(10\)</span> 组合的集合为
-<span class="math inline">\(A_1,\)</span> <span
-class="math inline">\(\{\infty\cdot a,4 \cdot b,\infty\cdot c\}\)</span>
-的 <span class="math inline">\(10\)</span> 组合的集合为 <span
-class="math inline">\(A_2,\)</span> <span
-class="math inline">\(\{\infty\cdot a,\infty \cdot b,5\cdot c\}\)</span>
-的 <span class="math inline">\(10\)</span> 组合的集合为 <span
-class="math inline">\(A_3,\)</span> 那么问题转化为求 <span
-class="math inline">\(\vert A_1\cap A_2\cap A_3\vert .\)</span>
-且由容斥原理得</p>
-<p><span class="math display">\[
-   \vert A_1\cap A_2\cap A_3\vert =\vert A_1\cup A_2\cup A_3\vert
--\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert \\=\vert A\vert
--\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert
-   \]</span></p>
-<p>且 <span class="math inline">\(\vert A\vert
-=\binom{10+3-1}{3-1}=\binom{12}{2}=66.\)</span></p>
-<p><span class="math display">\[
-   \begin{aligned}
-   \vert A_1\vert =\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le
-i\le 3}\binom{11-i}{1}=38\\
-   \vert A_2\vert =\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le
-i\le 4}\binom{11-i}{1}=45\\
-   \vert A_3\vert =\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le
-i\le 5}\binom{11-i}{1}=51
-   \end{aligned}
-   \]</span></p>
-</blockquote>
-<p>求 $A_1,A_2,A_3$ 还算简单，但是 $A_iA_j$
-计算起来就略有些麻烦，更不要说多重集合的元素更多的题目了。</p>
-<h3 id="错位排列">错位排列</h3>
-<p>错位排列的意思是，将给定的没有重复元素的字符串进行重新排列，使得每一个元素都不在原来的位置上。比如对于
-<span class="math inline">\(123,\)</span> 它的一个错位排列就是 <span
-class="math inline">\(312.\)</span> 设含有 <span
-class="math inline">\(n\)</span> 个不重复元素的字符串的错位排列的数目为
-<span class="math inline">\(D_n,\)</span> 下面给出 <span
-class="math inline">\(D_n\)</span> 的通项公式。</p>
-<p><strong><em>SOL</em></strong> 记第 <span
-class="math inline">\(\ell(1\le \ell\le n)\)</span> 个元素在第 <span
-class="math inline">\(\ell\)</span>
-个位置（即它原来的位置）的排列的集合为 <span
-class="math inline">\(A_{\ell},\)</span> 那么问题就转化为求 <span
-class="math inline">\(\left\vert \bigcap_{i\in I}
-\overline{A_i}\right\vert ,\)</span> 从而可以直接使用容斥原理。注意到
-<span class="math inline">\(\left\vert \bigcap_{i\in X}A_i\right\vert
-(X\subseteq I\land \vert X\vert =k)\)</span> 仅仅依赖于 <span
-class="math inline">\(k\)</span> 而不依赖于在交集中使用了哪 <span
-class="math inline">\(k\)</span>
-个集合，此时是我们在上面介绍过的容斥原理的特殊形式，且 <span
-class="math inline">\(\alpha_k=(n-k) !,\)</span> 于是直接使用式 <span
-class="math inline">\((***),\)</span> 得 <span class="math display">\[
-\begin{aligned}
-D_n=n!-\left\vert \bigcup_{i\in I} A_i\right\vert
-&amp;=n!-\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k\\
-&amp;=n!+\sum_{k=1}^n(-1)^{k}\frac{n!}{k!(n-k)!}\cdot(n-k)!\\
-&amp;=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}\\
-&amp;=n!\left(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}-\cdots+(-1)^{n}\frac{1}{n!}\right)
-\end{aligned}
-\]</span> <span class="math inline">\(\square\)</span></p>
-<p>于是给出下面的定理：</p>
-<p><strong>定理2</strong> 对于 <span class="math inline">\(n\ge
-1,\)</span> 有 <span class="math display">\[
-D_n=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}.
-\]</span> 若从 <span class="math inline">\(\{1,2,\cdots,n\}\)</span>
-的排列中中任意取出一个排列，则它是错位排列的概率 <span
-class="math inline">\(P_n=D_n/n!,\)</span> 且 <span
-class="math display">\[
-\lim_{n\to\infty}
-P_n=\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}=\frac{1}{\mathrm{e}}.
-\]</span> 这可对 <span class="math inline">\(D_n\)</span>
-作估计。实际上， <span class="math inline">\(D_n\)</span> 是最接近 <span
-class="math inline">\(n!/\mathrm{e}\)</span> 的整数。</p>
-<p>除了利用容斥原理求出 <span class="math inline">\(D_n\)</span>
-的方法，还有一种利用递推公式求通项公式的方法。</p>
-<p><strong><em>SOL</em></strong> 注意到 <span
-class="math inline">\(\{1,2,\cdots,n\}\)</span> 的 <span
-class="math inline">\(D_n\)</span> 个错位排列按照第一个位置为 <span
-class="math inline">\(2,3,\cdots,n\)</span> 这 <span
-class="math inline">\(n-1\)</span> 中的一个可划分为 <span
-class="math inline">\(n-1\)</span> 个部分，且这 <span
-class="math inline">\(n-1\)</span> 个部分每一部分的数量都相等，设为
-<span class="math inline">\(d_n,\)</span> 有 <span
-class="math inline">\(D_n=(n-1)d_n.\)</span> 考虑 <span
-class="math inline">\(2\)</span> 在第一个位置的错位排列 <span
-class="math inline">\(2i_2i_3\cdots i_n,\)</span> 它又可以根据 <span
-class="math inline">\(i_2=1\)</span> 和 <span
-class="math inline">\(i_2\ne 1\)</span> 划分为两个子部分，设 <span
-class="math inline">\(i_2=1\)</span> 的部分的数目为 <span
-class="math inline">\(d_n&#39;,\)</span> <span
-class="math inline">\(i_2\ne 1\)</span> 的部分的数目为 <span
-class="math inline">\(d_n&#39;&#39;.\)</span> 对于 <span
-class="math inline">\(d_n&#39;,\)</span> 它等于 <span
-class="math inline">\(\{3,4,\cdots,n\}\)</span> 的错位排列数目，即 <span
-class="math inline">\(d_n&#39;=D_{n-1};\)</span> 而对于 <span
-class="math inline">\(d_n&#39;&#39;,\)</span> 不考虑最左边的 <span
-class="math inline">\(2,\)</span> 这相当于 <span
-class="math inline">\(1\)</span>
-不能在第一个位置，剩下的数字不能在各自原来的位置，于是它是 <span
-class="math inline">\(\{1,3,4,\cdots,n\}\)</span> 共 <span
-class="math inline">\(n-1\)</span> 个数字的错位排列数目，即 <span
-class="math inline">\(d_n&#39;&#39;=D_{n-1},\)</span> 这就得到了 <span
-class="math inline">\(D_n=(n-1)(D_{n-1}+D_{n-2})(n\ge 3).\)</span></p>
-<p>若设 <span
-class="math inline">\(D_n+(An+B)D_{n-1}=C(D_{n-1}+(A(n-1)+B)D_{n-2}),\)</span>
-则可以求出 <span class="math inline">\(A=-1,B=0,C=-1,\)</span> 于是就有
-<span
-class="math inline">\(D_n-nD_{n-1}=-(D_{n-1}-(n-1)D_{n-2})=\cdots=(-1)^{n-2}(D_2-2D_1)=(-1)^n,\)</span>
-即 <span class="math inline">\(D_n=nD_{n-1}+(-1)^n.\)</span>
-两边同时除以 <span class="math inline">\(n!,\)</span> 有 <span
-class="math inline">\(D_n/n!=D_{n-1}/(n-1)!+(-1)^n/n!,\)</span>
-再利用迭代即得通项公式。<span class="math inline">\(\square\)</span></p>
-<p>这是不借助容斥原理求出错位排列通项公式的做法。想起来了做过的一道类似借助等式两边除以阶乘的求通项公式的题目：</p>
-<blockquote>
-<p>数列 <span class="math inline">\(\{a_n\}\)</span> 满足 <span
-class="math display">\[
-a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n,n\ge 0,
-\]</span> 且 <span class="math inline">\(a_0=1,a_1=2,\)</span>
-求其通项公式。</p>
-<p><strong><em>SOL</em></strong> <span class="math display">\[
-\begin{aligned}
-&amp;a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n\\
-&amp;(n+2)(n+1)a_{n+2}-(n+1)a_{n+1}=(n+1)a_{n+1}-a_n\\
-&amp;\frac{(n+2)!}{n!}a_{n+2}-\frac{(n+1)!}{n!}a_{n+1}=\frac{(n+1)!}{n!}a_{n+1}-a_n\\
-&amp;(n+2)!a_{n+2}-(n+1)!a_{n+1}=(n+1)!a_{n+1}-n!a_{n}=a_1-a_0=1
-\end{aligned}
-\]</span> 于是 <span class="math inline">\(n!a_n=n+1,\)</span> 即 <span
-class="math display">\[
-a_n=\frac{n+1}{n!}.
-\]</span></p>
-</blockquote>
-<p>倘若还有数列 <span class="math inline">\(\{a_n\}\)</span> 满足 <span
-class="math inline">\(a_n=(n-1)(a_{n-1}+a_{n-2})\)</span> 且 <span
-class="math inline">\(a_1=1,a_2=2,\)</span> 那么就有 <span
-class="math inline">\(a_n=n a_{n-1},\)</span> 则显然有 <span
-class="math inline">\(a_n=n!.\)</span> 即 <span
-class="math inline">\(n!=(n-1)((n-1)!+(n-2)!),\)</span>
-看上去似乎没那么显然。</p>
-<h2 id="莫比乌斯反演">莫比乌斯反演</h2>
-<p>我们在这里讨论更一般的容斥原理。<strong>容斥原理是莫比乌斯反演（Möbius
-Inversion）在有限偏序集上的一个实例。</strong>
-为了给莫比乌斯反演的一般性设置一个好的平台，我们先讨论某种程度上更具有一般性的容斥原理。</p>
-<h3 id="引子偏序集-mathscrpx_nsubseteq">引子：偏序集 <span
-class="math inline">\((\mathscr{P}(X_n),\subseteq)\)</span></h3>
-<p>设 <span class="math inline">\(n\)</span> 为正整数且 <span
-class="math inline">\(X_n=\{1,2,\cdots,n\},\)</span> 以及偏序集 <span
-class="math inline">\((\mathscr{P}(X_n),\subseteq).\)</span>
-定义实值函数 <span class="math inline">\(F:\mathscr{P}(X_n)\to
-\mathbb{R},\)</span> 其中 <span
-class="math inline">\(\mathscr{P}(X_n)\)</span> 为 <span
-class="math inline">\(X_n\)</span> 的幂集。同时利用 <span
-class="math inline">\(F\)</span> 定义实值函数 $G:(X_n) $ 且 <span
-class="math display">\[
-G(K)=\sum_{L\subseteq K}F(L),K\subseteq X_n.
-\]</span> 上式中，<span class="math inline">\(K\)</span> 是 <span
-class="math inline">\(X_n\)</span> 的一个子集，<span
-class="math inline">\(G(K)\)</span> 是函数 <span
-class="math inline">\(F\)</span> 在 <span
-class="math inline">\(K\)</span> 的所有子集 <span
-class="math inline">\(L\)</span> 处的函数值的和。若已知函数 <span
-class="math inline">\(G,\)</span> 莫比乌斯反演可求出函数 <span
-class="math inline">\(F,\)</span> 由下面的关系式确定： <span
-class="math display">\[
-F(K)=\sum_{L\subseteq K}(-1)^{\vert K\vert -\vert L\vert
-}G(L),K\subseteq X_n.\tag{ii}
-\]</span> 其中二元函数 <span class="math inline">\(f(A,B)=(-1)^{\vert
-A\vert -\vert B\vert }\)</span> 称为偏序集 <span
-class="math inline">\((\mathscr{P}(X_n),\subseteq)\)</span>
-上的莫比乌斯函数，等式 <span class="math inline">\((\rm ii)\)</span>
-即为偏序集 <span
-class="math inline">\((\mathscr{P}(X_n),\subseteq)\)</span>
-上的莫比乌斯反演公式，我们会在后面给出这个式子的证明。</p>
-<p>现在我们给出 <span class="math inline">\(F\)</span>
-的更确切的定义，并借助等式 <span class="math inline">\((\rm ii)\)</span>
-推导出更一般的容斥原理 。设 <span
-class="math inline">\(A_1,A_2,\cdots,A_n\)</span> 是有限集 <span
-class="math inline">\(S\)</span> 的子集，对于 <span
-class="math inline">\(K\subseteq X_n,\)</span> 我们定义 <span
-class="math display">\[
-\begin{aligned}
-F(K)&amp;=\#\{x\in S\mid \forall i\notin K,x\in A_i\land \forall j\in
-K,x\notin A_j\}\\
-&amp;=\#\left\{x\in S\mid x\in\bigcap_{i\notin K} A_i\land x\notin
-\bigcup_{j\in K}A_j \right \}\\
-\end{aligned}
-\]</span> 其中对于集合 <span class="math inline">\(S\)</span> 有 <span
-class="math display">\[\# S=\vert S\vert ,\]</span> 上面 <span
-class="math inline">\(F\)</span> 的定义用语言描述就是：<strong><span
-class="math inline">\(F(K)\)</span> 为 <span
-class="math inline">\(S\)</span> 中<em>恰好</em> 属于所有 <span
-class="math inline">\(i\notin K\)</span> 的集合 <span
-class="math inline">\(A_i\)</span> 的元素的个数</strong>。若 <span
-class="math inline">\(x\in A_i\)</span> 表明 <span
-class="math inline">\(x\)</span> 具有性质 <span
-class="math inline">\(P_i,\)</span> 则 <span
-class="math inline">\(F(K)\)</span> 计数了<strong>恰好具有</strong>
-$n-K$ 个性质的元素的个数，且这 $n-K$ 个性质为 <span
-class="math inline">\(P_i,i\notin K.\)</span> 下面我们证明 <span
-class="math inline">\(G(K)=\left\vert \bigcap_{i\notin K} A_i\right\vert
-.\)</span> 为了体现证明的思想，我们先举一个实例。</p>
-<blockquote>
-<p>假设 <span class="math inline">\(X_4\)</span> 以及 <span
-class="math inline">\(K=\{1,2\},\)</span> 那么 <span
-class="math inline">\(F(K)\)</span> 为属于 <span
-class="math inline">\(A_3,A_4\)</span> 且不属于 <span
-class="math inline">\(A_1,A_2\)</span> 的元素的个数，即 <span
-class="math inline">\(F(K)\)</span> 计数了恰好具有 <span
-class="math inline">\(P_3,P_4\)</span> 这两条性质的元素。<span
-class="math inline">\(L=\emptyset\)</span> 时，<span
-class="math inline">\(F(L)\)</span> 计数了恰好具有 <span
-class="math inline">\(P_1,P_2,P_3,P_4\)</span> 这四条性质的元素；<span
-class="math inline">\(L=\{1\}\)</span> 时，<span
-class="math inline">\(F(L)\)</span> 计数了恰好具有 <span
-class="math inline">\(P_2,P_3,P_4\)</span> 这三条性质的元素；<span
-class="math inline">\(L=\{2\}\)</span> 时，<span
-class="math inline">\(F(L)\)</span> 计数了恰好具有 <span
-class="math inline">\(P_1,P_3,P_4\)</span> 这三条性质的元素；<span
-class="math inline">\(L=\{1,2\}\)</span> 时，<span
-class="math inline">\(F(L)\)</span> 计数了恰好具有 <span
-class="math inline">\(P_3,P_4\)</span> 这两条性质的元素。 在具有 <span
-class="math inline">\(P_3,P_4\)</span>
-这两条性质的元素中，根据它们是否具有性质 <span
-class="math inline">\(P_1,P_2\)</span>
-可以划分为四部分，这刚好是上面的四个 <span
-class="math inline">\(F(L),\)</span> 于是 <span
-class="math inline">\(G(K)\)</span> 计数了 <span
-class="math inline">\(A_3\cap A_4\)</span> 中的元素的个数。</p>
-</blockquote>
-<p>对于 <span class="math inline">\(X_n\)</span> 的情况，设 <span
-class="math inline">\(K=\{i_1,i_2,\cdots,i_s\},X_n-K=\{j_1,j_2,\cdots,j_t\},s+t=n.\)</span>
-在同时具有 <span
-class="math inline">\(P_{j_1},P_{j_2},\cdots,P_{j_t}\)</span> 这 <span
-class="math inline">\(s\)</span> 个性质的元素中，根据它们是否具有性质
-$P_{i_1},P_{i_2},,P_{i_s} $ 可以划分为 <span
-class="math inline">\(2^s\)</span> 个部分，这恰好是 <span
-class="math inline">\(L\subseteq K\)</span>
-的个数，且每一部分的元素所具有的性质的指标集恰好与这 <span
-class="math inline">\(2^s\)</span> 个 <span
-class="math inline">\(K\)</span> 的子集一一对应，而 <span
-class="math inline">\(G(K)\)</span> 将这 <span
-class="math inline">\(2^s\)</span> 个 <span
-class="math inline">\(F(L)\)</span> 进行求和，所得到的刚好是具备 <span
-class="math inline">\(P_{j_1},P_{j_2},\cdots,P_{j_t}\)</span> 这 <span
-class="math inline">\(s\)</span> 个性质的元素的个数，这就表明了 <span
-class="math display">\[
-G(K)=\left\vert \bigcap_{1\le \ell\le s}A_{j_{\ell}}\right\vert
-=\left\vert \bigcap_{i\in X_n-K}A_i\right\vert =\left\vert
-\bigcap_{i\notin K}A_i\right\vert .
-\]</span> 现在我们用式 <span class="math inline">\(\rm (ii)\)</span>
-来得到更一般的容斥原理。将 <span class="math inline">\(X_n\)</span>
-代入式 <span class="math inline">\(\rm (ii)\)</span> 得 <span
-class="math display">\[
-F(X_n)=\sum_{L\subseteq X_n}(-1)^{n-\vert L\vert }G(L)=\sum_{L\subseteq
-X_n}(-1)^{n-\vert L\vert }\left\vert \bigcap_{i\notin L}A_i\right\vert
-=\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in
-J}A_i\right\vert
-\]</span> 其中 <span class="math inline">\(J\)</span> 是 <span
-class="math inline">\(L\)</span> 在 <span
-class="math inline">\(X_n\)</span>
-中的补集，最后两个和式之间可以一一对应。而 <span
-class="math inline">\(F(X_n)\)</span> 计数了恰好具有 <span
-class="math inline">\(0\)</span>
-个性质的元素的个数即不具备所有性质的元素的个数，于是 <span
-class="math display">\[
-F(X_n)=\left\vert \bigcap_{i\in X_n} \overline{A_i}\right\vert
-=\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in
-J}A_i\right\vert .\tag{iii}
-\]</span> 式 <span class="math inline">\(\rm(iii)\)</span> 与式 <span
-class="math display">\[(**)\]</span>
-显然是等价的。这就是更为一般的容斥原理。</p>
-<h3 id="更一般的偏序集-xpreccurlyeq-的莫比乌斯反演公式">更一般的偏序集
-<span class="math inline">\((X,\preccurlyeq)\)</span>
-的莫比乌斯反演公式</h3>
-<p>现在我们讨论更一般的偏序集 <span
-class="math inline">\((X,\preccurlyeq).\)</span> 设所有只要满足 <span
-class="math inline">\(x\succ y(x,y\in X)\)</span> 就有 <span
-class="math inline">\(f(x,y)=0\)</span> 的实值函数 <span
-class="math inline">\(f:X\times X\to\mathbb{R}\)</span> 的集合为 <span
-class="math inline">\(\mathcal{F}.\)</span> 若 <span
-class="math inline">\(f,g\in\mathcal{F},\)</span> 定义 <span
-class="math inline">\(f\)</span> 和 <span
-class="math inline">\(g\)</span> 的卷积为 <span class="math display">\[
-h(x,y)=(f*g)(x,y)=
-\begin{cases}
-\displaystyle \sum_{x\preccurlyeq z \preccurlyeq
-y}f(x,z)f(z,y),&amp;x\preccurlyeq y,\\
-0,&amp;\text{otherwise.}
-\end{cases}
-\]</span> 卷积运算不具有交换律，但是它具有结合律：</p>
-<p><strong>定理3</strong> 卷积满足结合律 <span
-class="math display">\[f*(g*h)=(f*g)*h.\]</span></p>
-<p>我们关注 <span class="math inline">\(\mathcal{F}\)</span>
-里的三种特殊函数。</p>
-<p><strong>Kronecker delta function <span
-class="math inline">\(\delta(x,y):\)</span></strong> <span
-class="math display">\[
-\delta (x,y)=
-\begin{cases}
-1,&amp;x=y,\\
-0,&amp;\text{otherwise.}
-\end{cases}
-\]</span> <strong>zeta function <span
-class="math inline">\(\zeta(x,y):\)</span> </strong> <span
-class="math display">\[
-\zeta (x,y)=
-\begin{cases}
-1,&amp;x\preccurlyeq y\\
-0,&amp;\text{otherwise.}
-\end{cases}
-\]</span> 在介绍第三种函数之前，我们先根据 <span
-class="math inline">\(\delta\)</span>
-函数的特殊性质给出一些新的定义。对于 <span
-class="math inline">\(\delta(x,y)\)</span> 函数而言，我们可以验证它满足
-<span class="math inline">\(\forall f\in\mathcal{F},\)</span> 都有 <span
-class="math display">\[f*\delta=\delta*f=f.\]</span>
-这表明对于卷积运算而言，<span class="math inline">\(\delta\)</span>
-是一个恒等函数，它是一个<strong>恒等元（Identity）</strong>。于是借助恒等元，我们可以定义<strong>逆元</strong>。即对于函数
-<span class="math inline">\(f\in\mathcal{F},\)</span> 若存在 <span
-class="math inline">\(g\in \mathcal{F}\)</span> 使得 <span
-class="math display">\[g*f=\delta,\]</span> 我们称 <span
-class="math inline">\(g\)</span> 是 <span
-class="math inline">\(f\)</span>
-的左逆函数；同理可以定义右逆函数。有下面的定理：</p>
-<p><strong>定理4</strong> <span class="math inline">\(\forall
-f\in\mathcal{F}\land \forall y\in X,f(y,y)\ne 0,\)</span> <span
-class="math inline">\(f\)</span> 都存在左逆函数 <span
-class="math inline">\(g\)</span> 和右逆函数 <span
-class="math inline">\(h,\)</span> 并且 <span
-class="math inline">\(g=h.\)</span></p>
-<p>于是对于满足定理4条件的函数 <span class="math inline">\(f,\)</span>
-它都有<strong>逆函数</strong> <span class="math inline">\(g\)</span>
-满足 <span class="math display">\[f*g=g*f=\delta.\]</span> 由于 <span
-class="math inline">\(\zeta\)</span> 函数满足 <span
-class="math inline">\(\forall x\in X,\zeta(x,x)\ne 0,\)</span>
-则它有逆函数，我们定义 <span class="math inline">\(\zeta\)</span>
-函数的逆函数为 <span class="math inline">\(\mu,\)</span> 即 <span
-class="math display">\[\mu * \zeta =\delta.\]</span> 这就是
-<strong>Möbius function <span
-class="math inline">\(\mu(x,y).\)</span></strong> 因此 <span
-class="math display">\[
-\mu*\zeta=\sum_{x\preccurlyeq z \preccurlyeq
-y}\mu(x,z)\zeta(z,y)=\sum_{x\preccurlyeq z \preccurlyeq
-y}\mu(x,z)=\delta(x,y)(x\preccurlyeq y).
-\]</span> 所以 <span class="math inline">\(\forall x\in
-X,\mu(x,x)=1.\)</span> 当 <span class="math inline">\(x\prec y\)</span>
-时， <span class="math display">\[
-\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\sum_{x\preccurlyeq z
-\prec y}\mu(x,z)+\mu(x,y)=\delta(x,y)=0\Rightarrow
-\mu(x,y)=-\sum_{x\preccurlyeq z \prec y}\mu(x,z).
-\]</span></p>
-<p><strong>例2</strong> 我们现在来求偏序集 <span
-class="math inline">\((\mathscr{P}(X_n),\subseteq)\)</span>
-上的莫比乌斯函数。</p>
-<p><strong>例3</strong> 求全序集 <span
-class="math inline">\((X_n,\le)\)</span> 的莫比乌斯函数。</p>
-<p>铺垫了那么多，现在我们可以给出并证明定义在有限偏序集上的莫比乌斯反演公式了。</p>
-<p><strong>定理5（Möbius Inversion Formula）</strong> 设偏序集 <span
-class="math inline">\((X,\preccurlyeq)\)</span> 有最小元，记作 <span
-class="math inline">\(0.\)</span> 设 <span
-class="math inline">\(\mu\)</span> 是它的莫比乌斯函数，并设 <span
-class="math inline">\(F:X\to \mathbb{R}\)</span> 是定义在 <span
-class="math inline">\(X\)</span> 上的实值函数，同时定义 <span
-class="math inline">\(G:X\to\mathbb{R}\)</span> 满足 <span
-class="math display">\[
-G(x)=\sum_{z\preccurlyeq x}F(z),x\in X.
-\]</span> 那么就有 <span class="math display">\[
-F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.
-\]</span></p>
-<blockquote>
-<p>待更新。</p>
-</blockquote>
-<p><span class="math inline">\(\square\)</span></p>
-<p><strong>例4</strong> 求偏序集 <span
-class="math inline">\((X_n,\mid)\)</span>
-的莫比乌斯函数，并给出最经典的数论上的莫比乌斯反演公式。</p>
-<h2 id="其他的反演">其他的反演</h2>
-<h3 id="二项式反演">二项式反演</h3>
-<h3 id="min-max-反演"><span class="math inline">\(\min-\max\)</span>
-反演</h3>
-<blockquote>
-<p>待更新。</p>
-</blockquote>
-<p><span class="math inline">\(\rm Stirling\)</span>
-反演在组合数学（四）：特殊的计数序列中会提到。</p>
-<blockquote>
-<p>待更新的内容还有容斥原理求 <span
-class="math inline">\(\varphi(n),\pi(x),\)</span>
-以及相关的经典练习题与算法题。</p>
-</blockquote>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
     </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/08/26/python/Python2/" rel="prev" title="Python入门(2):类和对象">
-      <i class="fa fa-chevron-left"></i> Python入门(2):类和对象
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/09/01/calculus/Calculus-review-Day1/" rel="next" title="Calculus review Day1">
-      Calculus review Day1 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+</header>
+        
+  
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
         </li>
@@ -873,232 +139,397 @@ class="math inline">\(\varphi(n),\pi(x),\)</span>
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">容斥原理的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A81"><span class="nav-number">2.</span> <span class="nav-text">容斥原理的应用（1）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%84%E5%90%882"><span class="nav-number">2.1.</span> <span class="nav-text">多重集合的组合（2）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E4%BD%8D%E6%8E%92%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">错位排列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">3.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90%E5%81%8F%E5%BA%8F%E9%9B%86-mathscrpx_nsubseteq"><span class="nav-number">3.1.</span> <span class="nav-text">引子：偏序集 \((\mathscr{P}(X_n),\subseteq)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E4%B8%80%E8%88%AC%E7%9A%84%E5%81%8F%E5%BA%8F%E9%9B%86-xpreccurlyeq-%E7%9A%84%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%85%AC%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">更一般的偏序集
-\((X,\preccurlyeq)\)
-的莫比乌斯反演公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E5%8F%8D%E6%BC%94"><span class="nav-number">4.</span> <span class="nav-text">其他的反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94"><span class="nav-number">4.1.</span> <span class="nav-text">二项式反演</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min-max-%E5%8F%8D%E6%BC%94"><span class="nav-number">4.2.</span> <span class="nav-text">\(\min-\max\)
-反演</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">容斥原理的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">容斥原理的应用（1）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88%E7%9A%84%E7%BB%84%E5%90%88%EF%BC%882%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">多重集合的组合（2）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E4%BD%8D%E6%8E%92%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">错位排列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">3.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AD%90%EF%BC%9A%E5%81%8F%E5%BA%8F%E9%9B%86-$(%5Cmathscr%7Bp%7D(x_n),%5Csubseteq)$"><span class="nav-number">3.1.</span> <span class="nav-text">引子：偏序集 $(\mathscr{P}(X_n),\subseteq)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E4%B8%80%E8%88%AC%E7%9A%84%E5%81%8F%E5%BA%8F%E9%9B%86-$(x,%5Cpreccurlyeq)$%20%E7%9A%84%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%85%AC%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">更一般的偏序集 $(X,\preccurlyeq)$ 的莫比乌斯反演公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E5%8F%8D%E6%BC%94"><span class="nav-number">4.</span> <span class="nav-text">其他的反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94"><span class="nav-number">4.1.</span> <span class="nav-text">二项式反演</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#$%5Cmin-%5Cmax$-%E5%8F%8D%E6%BC%94"><span class="nav-number">4.2.</span> <span class="nav-text">$\min-\max$ 反演</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Baoduo Xu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
 
-
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
         </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+
+    <div class="main-inner post posts-expand">
 
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa-thin fa-atom-simple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/math/combinatorial-math/ex-include/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
     </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">165k</span>
-    <span class="post-meta-divider">|</span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="组合数学（三）：容斥原理 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          组合数学（三）：容斥原理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-26 16:40:00" itemprop="dateCreated datePublished" datetime="2022-08-26T16:40:00+08:00">2022-08-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-04 17:09:40" itemprop="dateModified" datetime="2022-10-04T17:09:40+08:00">2022-10-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/Combinatorial-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Combinatorial Mathematics</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="容斥原理的基本形式">容斥原理的基本形式</h2>
+<p>减法原理是容斥原理的最简单示例。</p>
+<p><strong>定理1</strong> 设 <span class="markdown-them-math-inline">$A_1,A_2,\cdots,A_n$</span> 为集合，指标集 <span class="markdown-them-math-inline">$I=\{1,2,\cdots,n\},$</span> 则</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+\left\vert \bigcup_{i\in I} A_i\right\vert =\sum_{k\in I}(-1)^{k-1}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert .
+\end{aligned}\quad\quad (*)
+$$</div><p>它用来求一些有交集的集合的并集的元素个数。若有全集 <span class="markdown-them-math-inline">$U$</span> ，则可以有另一种表述，即</p>
+<div class="markdown-them-math-block">$$\begin{equation}
+\left\vert \bigcap_{i\in I} \overline{A_i}\right\vert =\vert U\vert +\sum_{k\in I}(-1)^{k}\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert .\quad\quad(**)
+\end{equation}
+$$</div><p>这是很容易证的，利用 <span class="markdown-them-math-inline">$\rm De~Morgan$</span> 律以及 <span class="markdown-them-math-inline">$\left\vert \overline{A}\right\vert =\vert U-A\vert =\vert U\vert -\vert A\vert $</span> 即可。这个式子可用来求出不具有给定的所有性质的元素的个数。</p>
+<span id="more"></span>
+<p>下面我们来证明容斥原理，这里我们证明另一种表述即式 <span class="markdown-them-math-inline">$**$</span> 。</p>
+<p><em><strong>PROOF</strong></em> 设 <span class="markdown-them-math-inline">$x\in A_i$</span> 表示 <span class="markdown-them-math-inline">$x$</span> 具有性质 <span class="markdown-them-math-inline">$P_i,1\le i\le n.$</span> 考虑恰好具有 <span class="markdown-them-math-inline">$m$</span> 条性质的元素 <span class="markdown-them-math-inline">$x,$</span> 我们利用 <span class="markdown-them-math-inline">$x$</span> 对式 <span class="markdown-them-math-inline">$**$</span> 每一部分的“贡献”进行证明，这个贡献的意思是，我们在计数的时候，元素 <span class="markdown-them-math-inline">$x$</span> 是否给我们的计数增加了 <span class="markdown-them-math-inline">$1.$</span> 只要 <span class="markdown-them-math-inline">$x\in X,$</span> 那么 <span class="markdown-them-math-inline">$x$</span> 对 <span class="markdown-them-math-inline">$\vert X\vert $</span> 的贡献就为 <span class="markdown-them-math-inline">$1,$</span> 否则为 <span class="markdown-them-math-inline">$0.$</span> 由于等式的左边计数了 <span class="markdown-them-math-inline">$U$</span> 中不具备所有性质的元素的个数，那么我们只需证明不具备任意一个性质的 <span class="markdown-them-math-inline">$x$</span> 给等式右边的贡献为 <span class="markdown-them-math-inline">$1,$</span> 具备至少一个性质的 <span class="markdown-them-math-inline">$x$</span> 给等式右边的贡献为 <span class="markdown-them-math-inline">$0,$</span> 就能说明等式右边也计数了 <span class="markdown-them-math-inline">$U$</span> 中不具备所有性质的元素的个数。</p>
+<p>当 <span class="markdown-them-math-inline">$x$</span> 一条性质也不具备即 <span class="markdown-them-math-inline">$m=0$</span> 时，它对等式 <div class="markdown-them-math-block">$$(**)$$</div> 右边的贡献为 <span class="markdown-them-math-inline">$1-0+0-\cdots+(-1)^n \times0=1.$</span> 当 <span class="markdown-them-math-inline">$m\ge 1$</span> 时，<span class="markdown-them-math-inline">$x$</span> 对 <span class="markdown-them-math-inline">$\vert U\vert $</span> 的贡献为 <span class="markdown-them-math-inline">$1=\binom{m}{0};$</span> 对和式的第一项的贡献为 <span class="markdown-them-math-inline">$(-1)\binom{m}{1},$</span> 对和式的第二项的贡献为 <span class="markdown-them-math-inline">$(-1)^2\binom{m}{2},$</span> 因为满足 <span class="markdown-them-math-inline">$x \in A_i\cap A_j$</span> 的集合 <span class="markdown-them-math-inline">$A_i$</span> 和 <span class="markdown-them-math-inline">$A_j$</span> 要在 <span class="markdown-them-math-inline">$m$</span> 个集合中选，数量为 <span class="markdown-them-math-inline">$\binom{m}{2};$</span> 以此类推，<span class="markdown-them-math-inline">$x$</span> 对等式 <div class="markdown-them-math-block">$$(**)$$</div> 右边的贡献为</p>
+<div class="markdown-them-math-block">$$\binom{m}{0}+\sum_{k=1}^{n}(-1)^k\binom{m}{k}=\sum_{k=0}^n(-1)^k\binom{m}{k}
+$$</div><p>当 <span class="markdown-them-math-inline">$k&gt;m$</span> 时 <span class="markdown-them-math-inline">$\binom{m}{k}=0$</span> 且 <span class="markdown-them-math-inline">$n\ge m,$</span> 于是</p>
+<div class="markdown-them-math-block">$$\sum_{k=0}^n(-1)^k\binom{m}{k}=\sum_{k=0}^m(-1)^k\binom{m}{k}=0,
+$$</div><p>这表明了若 <span class="markdown-them-math-inline">$x$</span> 具有至少一个性质，那么它对式 <div class="markdown-them-math-block">$$(**)$$</div> 右边的贡献为零；若 <span class="markdown-them-math-inline">$x$</span> 不具有任何一个性质，它对式 <div class="markdown-them-math-block">$$(**)$$</div> 右边的贡献为 <span class="markdown-them-math-inline">$1,$</span> 这就是要证的。<span class="markdown-them-math-inline">$\square$</span></p>
+<p>倘若 <span class="markdown-them-math-inline">$\vert \bigcap_{1\le j\le k} A_{i_j}\vert $</span> 仅依赖于 <span class="markdown-them-math-inline">$k$</span> 而不依赖于在交集中使用了哪 <span class="markdown-them-math-inline">$k$</span> 个集合，那么我们可以令 <span class="markdown-them-math-inline">$\alpha_k=\vert \bigcap_{1\le j\le k} A_{i_j}\vert (1\le k\le n),$</span> 那么容斥原理可以有下面的特殊形式：</p>
+<div class="markdown-them-math-block">$$\left\vert \bigcup_{i\in I} A_i\right\vert =\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k,\tag{***}
+$$</div><p>式中的组合数是和式 <span class="markdown-them-math-inline">$\sum_{X\subseteq I\land \vert X\vert =k}\left\vert \bigcap_{i\in X}A_i\right\vert $</span> 项的个数（即 <span class="markdown-them-math-inline">$I$</span> 的 <span class="markdown-them-math-inline">$k$</span> 子集的个数），且每一项都为 <span class="markdown-them-math-inline">$\alpha_k.$</span></p>
+<h2 id="容斥原理的应用（1）">容斥原理的应用（1）</h2>
+<h3 id="多重集合的组合（2）">多重集合的组合（2）</h3>
+<p>在多重集合的组合（1）部分，我们讨论了多重集合 <span class="markdown-them-math-inline">$\mathcal{S}=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\}$</span> 在 <span class="markdown-them-math-inline">$n_i\ge r(i=1,2,\cdots,k)$</span> 时它的 <span class="markdown-them-math-inline">$r$</span> 组合的个数。现在我们考虑 <span class="markdown-them-math-inline">$n_i&lt;r(1\le i\le k)$</span> 的情形，也即不定方程 <span class="markdown-them-math-inline">$x_1+x_2+\cdots+x_k=r$</span> 的部分元有上界时的非负整数解的组数。</p>
+<p>我们举一个例子：</p>
+<p><strong>例1</strong> 求集合 <span class="markdown-them-math-inline">$\{3\cdot a,4\cdot b,5\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合数目。</p>
+<p><em><strong>SOL</strong></em> 设 <span class="markdown-them-math-inline">$T=\{\infty\cdot a,\infty \cdot b,\infty\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合的集合为 <span class="markdown-them-math-inline">$S,$</span>  <span class="markdown-them-math-inline">$T$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合中 <span class="markdown-them-math-inline">$a$</span> 的个数至少为 <span class="markdown-them-math-inline">$4$</span> 的那部分的集合记作 <span class="markdown-them-math-inline">$A,$</span> <span class="markdown-them-math-inline">$b$</span> 的个数至少为 <span class="markdown-them-math-inline">$5$</span> 的那部分的集合记作 <span class="markdown-them-math-inline">$B,$</span> <span class="markdown-them-math-inline">$c$</span> 的个数至少为 <span class="markdown-them-math-inline">$6$</span> 的那部分的集合记作 <span class="markdown-them-math-inline">$C,$</span> 则问题转化为求 <span class="markdown-them-math-inline">$\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert .$</span> 由容斥原理得</p>
+<div class="markdown-them-math-block">$$\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert =\vert S\vert -\sum\vert A\vert +\sum\vert A\cap B\vert -\vert A\cap B\cap C\vert \tag{i}
+$$</div><p>且由已知结论得 <span class="markdown-them-math-inline">$\vert S\vert =\binom{10+3-1}{3-1}=\binom{12}{2}=66.$</span> 对于 <span class="markdown-them-math-inline">$A,$</span> 容易发现它是 <span class="markdown-them-math-inline">$T$</span> 的 <span class="markdown-them-math-inline">$6$</span> 组合的集合（倘若我们取出 <span class="markdown-them-math-inline">$A$</span> 中的任意一个元素并去掉其中的 <span class="markdown-them-math-inline">$4$</span> 个 <span class="markdown-them-math-inline">$a,$</span> 那么就得到了 <span class="markdown-them-math-inline">$T$</span> 的一个 <span class="markdown-them-math-inline">$6$</span> 组合；若在 <span class="markdown-them-math-inline">$T$</span> 的某个 <span class="markdown-them-math-inline">$6$</span> 组合加入 <span class="markdown-them-math-inline">$4$</span> 个 <span class="markdown-them-math-inline">$a,$</span> 便又得到了 <span class="markdown-them-math-inline">$A$</span> 中的一个元素），于是 <span class="markdown-them-math-inline">$\vert A\vert =\binom{6+3-1}{3-1}=\binom{8}{2}=28.$</span> 同理有 <span class="markdown-them-math-inline">$\vert B\vert =\binom{7}{2}=21,\vert C\vert =\binom{6}{2}=15.$</span> 对于 <span class="markdown-them-math-inline">$\vert A\cap B\vert ,$</span> 按照上述的分析思路，可以发现它是 <span class="markdown-them-math-inline">$T$</span> 的 <span class="markdown-them-math-inline">$1$</span> 组合数目，于是 <span class="markdown-them-math-inline">$\vert A\cap B\vert =\binom{3}{2}=3,$</span> 同理有 <span class="markdown-them-math-inline">$\vert B\cap C\vert =0,\vert A\cap C\vert =\binom{0+3-1}{0}=1,\vert A\cap B\cap C\vert =0.$</span> 代入 <span class="markdown-them-math-inline">$\rm i$</span> 计算得 <span class="markdown-them-math-inline">$\vert \overline{A}\cap \overline{B}\cap \overline{C}\vert =6.$</span> 于是 <span class="markdown-them-math-inline">$\{3\cdot a,4\cdot b,5\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合有 <span class="markdown-them-math-inline">$6$</span> 个。<span class="markdown-them-math-inline">$\square$</span></p>
+<p>如果没有直接设出 <span class="markdown-them-math-inline">$A,B,C$</span> 而是直接设出它们在 <span class="markdown-them-math-inline">$S$</span> 中的补集，像下面这样：</p>
+<blockquote>
+<p><span class="markdown-them-math-inline">$\{3\cdot a,\infty \cdot b,\infty\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合的集合为 <span class="markdown-them-math-inline">$A_1,$</span>  <span class="markdown-them-math-inline">$\{\infty\cdot a,4 \cdot b,\infty\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合的集合为 <span class="markdown-them-math-inline">$A_2,$</span> <span class="markdown-them-math-inline">$\{\infty\cdot a,\infty \cdot b,5\cdot c\}$</span> 的 <span class="markdown-them-math-inline">$10$</span> 组合的集合为 <span class="markdown-them-math-inline">$A_3,$</span> 那么问题转化为求 <span class="markdown-them-math-inline">$\vert A_1\cap A_2\cap A_3\vert .$</span> 且由容斥原理得</p>
+<div class="markdown-them-math-block">$$\vert A_1\cap A_2\cap A_3\vert =\vert A_1\cup A_2\cup A_3\vert -\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert \\=\vert A\vert -\sum\vert A_i\vert +\sum\vert A_i\cap A_j\vert 
+$$</div><p>且 <span class="markdown-them-math-inline">$\vert A\vert =\binom{10+3-1}{3-1}=\binom{12}{2}=66.$</span></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+\vert A_1\vert =\sum_{0\le i\le 3}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 3}\binom{11-i}{1}=38\\
+\vert A_2\vert =\sum_{0\le i\le 4}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 4}\binom{11-i}{1}=45\\
+\vert A_3\vert =\sum_{0\le i\le 5}\binom{10-i+2-1}{2-1}=\sum_{0\le i\le 5}\binom{11-i}{1}=51
+\end{aligned}
+$$</div></blockquote>
+<p>求 <span class="markdown-them-math-inline">$\vert A_1\vert ,\vert A_2\vert ,\vert A_3\vert $</span> 还算简单，但是 <span class="markdown-them-math-inline">$\vert A_i\cap A_j\vert $</span> 计算起来就略有些麻烦，更不要说多重集合的元素更多的题目了。</p>
+<h3 id="错位排列">错位排列</h3>
+<p>错位排列的意思是，将给定的没有重复元素的字符串进行重新排列，使得每一个元素都不在原来的位置上。比如对于 <span class="markdown-them-math-inline">$123,$</span> 它的一个错位排列就是 <span class="markdown-them-math-inline">$312.$</span> 设含有 <span class="markdown-them-math-inline">$n$</span> 个不重复元素的字符串的错位排列的数目为 <span class="markdown-them-math-inline">$D_n,$</span> 下面给出 <span class="markdown-them-math-inline">$D_n$</span> 的通项公式。</p>
+<p><em><strong>SOL</strong></em> 记第 <span class="markdown-them-math-inline">$\ell(1\le \ell\le n)$</span> 个元素在第 <span class="markdown-them-math-inline">$\ell$</span> 个位置（即它原来的位置）的排列的集合为 <span class="markdown-them-math-inline">$A_{\ell},$</span> 那么问题就转化为求 <span class="markdown-them-math-inline">$\left\vert \bigcap_{i\in I} \overline{A_i}\right\vert ,$</span> 从而可以直接使用容斥原理。注意到 <span class="markdown-them-math-inline">$\left\vert \bigcap_{i\in X}A_i\right\vert (X\subseteq I\land \vert X\vert =k)$</span> 仅仅依赖于 <span class="markdown-them-math-inline">$k$</span> 而不依赖于在交集中使用了哪 <span class="markdown-them-math-inline">$k$</span> 个集合，此时是我们在上面介绍过的容斥原理的特殊形式，且 <span class="markdown-them-math-inline">$\alpha_k=(n-k)
+!,$</span> 于是直接使用式 <span class="markdown-them-math-inline">$(***),$</span> 得</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+D_n=n!-\left\vert \bigcup_{i\in I} A_i\right\vert 
+&amp;=n!-\sum_{k=1}^n(-1)^{k-1}\binom{n}{k}\alpha_k\\
+&amp;=n!+\sum_{k=1}^n(-1)^{k}\frac{n!}{k!(n-k)!}\cdot(n-k)!\\
+&amp;=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}\\
+&amp;=n!\left(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}-\cdots+(-1)^{n}\frac{1}{n!}\right)
+\end{aligned}
+$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+<p>于是给出下面的定理：</p>
+<p><strong>定理2</strong> 对于 <span class="markdown-them-math-inline">$n\ge 1,$</span> 有</p>
+<div class="markdown-them-math-block">$$D_n=n!\sum_{k=0}^{n}\frac{(-1)^{k}}{k!}.
+$$</div><p>若从 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 的排列中中任意取出一个排列，则它是错位排列的概率 <span class="markdown-them-math-inline">$P_n=D_n/n!,$</span> 且</p>
+<div class="markdown-them-math-block">$$\lim_{n\to\infty} P_n=\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}=\frac{1}{\mathrm{e}}.
+$$</div><p>这可对 <span class="markdown-them-math-inline">$D_n$</span> 作估计。实际上， <span class="markdown-them-math-inline">$D_n$</span> 是最接近 <span class="markdown-them-math-inline">$n!/\mathrm{e}$</span> 的整数。</p>
+<p>除了利用容斥原理求出 <span class="markdown-them-math-inline">$D_n$</span> 的方法，还有一种利用递推公式求通项公式的方法。</p>
+<p><em><strong>SOL</strong></em> 注意到 <span class="markdown-them-math-inline">$\{1,2,\cdots,n\}$</span> 的 <span class="markdown-them-math-inline">$D_n$</span> 个错位排列按照第一个位置为 <span class="markdown-them-math-inline">$2,3,\cdots,n$</span> 这 <span class="markdown-them-math-inline">$n-1$</span> 中的一个可划分为 <span class="markdown-them-math-inline">$n-1$</span> 个部分，且这 <span class="markdown-them-math-inline">$n-1$</span> 个部分每一部分的数量都相等，设为 <span class="markdown-them-math-inline">$d_n,$</span> 有 <span class="markdown-them-math-inline">$D_n=(n-1)d_n.$</span> 考虑 <span class="markdown-them-math-inline">$2$</span> 在第一个位置的错位排列 <span class="markdown-them-math-inline">$2i_2i_3\cdots i_n,$</span> 它又可以根据 <span class="markdown-them-math-inline">$i_2=1$</span> 和 <span class="markdown-them-math-inline">$i_2\ne 1$</span> 划分为两个子部分，设 <span class="markdown-them-math-inline">$i_2=1$</span> 的部分的数目为 <span class="markdown-them-math-inline">$d_n',$</span> <span class="markdown-them-math-inline">$i_2\ne 1$</span> 的部分的数目为 <span class="markdown-them-math-inline">$d_n''.$</span> 对于 <span class="markdown-them-math-inline">$d_n',$</span> 它等于 <span class="markdown-them-math-inline">$\{3,4,\cdots,n\}$</span> 的错位排列数目，即 <span class="markdown-them-math-inline">$d_n'=D_{n-1};$</span> 而对于 <span class="markdown-them-math-inline">$d_n'',$</span> 不考虑最左边的 <span class="markdown-them-math-inline">$2,$</span> 这相当于 <span class="markdown-them-math-inline">$1$</span> 不能在第一个位置，剩下的数字不能在各自原来的位置，于是它是 <span class="markdown-them-math-inline">$\{1,3,4,\cdots,n\}$</span> 共 <span class="markdown-them-math-inline">$n-1$</span> 个数字的错位排列数目，即 <span class="markdown-them-math-inline">$d_n''=D_{n-1},$</span> 这就得到了 <span class="markdown-them-math-inline">$D_n=(n-1)(D_{n-1}+D_{n-2})(n\ge 3).$</span></p>
+<p>若设 <span class="markdown-them-math-inline">$D_n+(An+B)D_{n-1}=C(D_{n-1}+(A(n-1)+B)D_{n-2}),$</span> 则可以求出 <span class="markdown-them-math-inline">$A=-1,B=0,C=-1,$</span> 于是就有 <span class="markdown-them-math-inline">$D_n-nD_{n-1}=-(D_{n-1}-(n-1)D_{n-2})=\cdots=(-1)^{n-2}(D_2-2D_1)=(-1)^n,$</span> 即 <span class="markdown-them-math-inline">$D_n=nD_{n-1}+(-1)^n.$</span>   两边同时除以 <span class="markdown-them-math-inline">$n!,$</span> 有 <span class="markdown-them-math-inline">$D_n/n!=D_{n-1}/(n-1)!+(-1)^n/n!,$</span> 再利用迭代即得通项公式。<span class="markdown-them-math-inline">$\square$</span></p>
+<p>这是不借助容斥原理求出错位排列通项公式的做法。想起来了做过的一道类似借助等式两边除以阶乘的求通项公式的题目：</p>
+<blockquote>
+<p>数列 <span class="markdown-them-math-inline">$\{a_n\}$</span> 满足</p>
+<div class="markdown-them-math-block">$$a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n,n\ge 0,
+$$</div><p>且 <span class="markdown-them-math-inline">$a_0=1,a_1=2,$</span> 求其通项公式。</p>
+<p><em><strong>SOL</strong></em></p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+&amp;a_{n+2}=\frac{2}{n+2}a_{n+1}-\frac{1}{(n+2)(n+1)}a_n\\
+&amp;(n+2)(n+1)a_{n+2}-(n+1)a_{n+1}=(n+1)a_{n+1}-a_n\\
+&amp;\frac{(n+2)!}{n!}a_{n+2}-\frac{(n+1)!}{n!}a_{n+1}=\frac{(n+1)!}{n!}a_{n+1}-a_n\\
+&amp;(n+2)!a_{n+2}-(n+1)!a_{n+1}=(n+1)!a_{n+1}-n!a_{n}=a_1-a_0=1
+\end{aligned}
+$$</div><p>于是 <span class="markdown-them-math-inline">$n!a_n=n+1,$</span> 即</p>
+<div class="markdown-them-math-block">$$a_n=\frac{n+1}{n!}.
+$$</div></blockquote>
+<p>倘若还有数列 <span class="markdown-them-math-inline">$\{a_n\}$</span> 满足 <span class="markdown-them-math-inline">$a_n=(n-1)(a_{n-1}+a_{n-2})$</span> 且 <span class="markdown-them-math-inline">$a_1=1,a_2=2,$</span> 那么就有 <span class="markdown-them-math-inline">$a_n=n a_{n-1},$</span> 则显然有 <span class="markdown-them-math-inline">$a_n=n!.$</span> 即 <span class="markdown-them-math-inline">$n!=(n-1)((n-1)!+(n-2)!),$</span> 看上去似乎没那么显然。</p>
+<h2 id="莫比乌斯反演">莫比乌斯反演</h2>
+<p>我们在这里讨论更一般的容斥原理。<strong>容斥原理是莫比乌斯反演（Möbius Inversion）在有限偏序集上的一个实例。</strong> 为了给莫比乌斯反演的一般性设置一个好的平台，我们先讨论某种程度上更具有一般性的容斥原理。</p>
+<h3 id="引子：偏序集-$(\mathscr{p}(x_n),\subseteq)$">引子：偏序集 <span class="markdown-them-math-inline">$(\mathscr{P}(X_n),\subseteq)$</span></h3>
+<p>设 <span class="markdown-them-math-inline">$n$</span> 为正整数且 <span class="markdown-them-math-inline">$X_n=\{1,2,\cdots,n\},$</span> 以及偏序集 <span class="markdown-them-math-inline">$(\mathscr{P}(X_n),\subseteq).$</span> 定义实值函数 <span class="markdown-them-math-inline">$F:\mathscr{P}(X_n)\to \mathbb{R},$</span> 其中 <span class="markdown-them-math-inline">$\mathscr{P}(X_n)$</span> 为 <span class="markdown-them-math-inline">$X_n$</span> 的幂集。同时利用 <span class="markdown-them-math-inline">$F$</span> 定义实值函数 <span class="markdown-them-math-inline">$G:\mathscr{P}(X_n)\to \mathbb{R} $</span> 且</p>
+<div class="markdown-them-math-block">$$G(K)=\sum_{L\subseteq K}F(L),K\subseteq X_n.
+$$</div><p>上式中，<span class="markdown-them-math-inline">$K$</span> 是 <span class="markdown-them-math-inline">$X_n$</span> 的一个子集，<span class="markdown-them-math-inline">$G(K)$</span> 是函数 <span class="markdown-them-math-inline">$F$</span> 在 <span class="markdown-them-math-inline">$K$</span> 的所有子集 <span class="markdown-them-math-inline">$L$</span> 处的函数值的和。若已知函数 <span class="markdown-them-math-inline">$G,$</span> 莫比乌斯反演可求出函数 <span class="markdown-them-math-inline">$F,$</span> 由下面的关系式确定：</p>
+<div class="markdown-them-math-block">$$F(K)=\sum_{L\subseteq K}(-1)^{\vert K\vert -\vert L\vert }G(L),K\subseteq X_n.\tag{ii}
+$$</div><p>其中二元函数 <span class="markdown-them-math-inline">$f(A,B)=(-1)^{\vert A\vert -\vert B\vert }$</span> 称为偏序集 <span class="markdown-them-math-inline">$(\mathscr{P}(X_n),\subseteq)$</span> 上的莫比乌斯函数，等式 <span class="markdown-them-math-inline">$(\rm ii)$</span> 即为偏序集 <span class="markdown-them-math-inline">$(\mathscr{P}(X_n),\subseteq)$</span> 上的莫比乌斯反演公式，我们会在后面给出这个式子的证明。</p>
+<p>现在我们给出 <span class="markdown-them-math-inline">$F$</span> 的更确切的定义，并借助等式 <span class="markdown-them-math-inline">$(\rm ii)$</span> 推导出更一般的容斥原理 。设 <span class="markdown-them-math-inline">$A_1,A_2,\cdots,A_n$</span> 是有限集 <span class="markdown-them-math-inline">$S$</span> 的子集，对于 <span class="markdown-them-math-inline">$K\subseteq X_n,$</span> 我们定义</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
+F(K)&amp;=\#\{x\in S\mid \forall i\notin K,x\in A_i\land \forall j\in K,x\notin A_j\}\\
+&amp;=\#\left\{x\in S\mid x\in\bigcap_{i\notin K} A_i\land x\notin \bigcup_{j\in K}A_j \right \}\\
+\end{aligned}
+$$</div><p>其中对于集合 <span class="markdown-them-math-inline">$S$</span> 有 <div class="markdown-them-math-block">$$\# S=\vert S\vert ,$$</div> 上面 <span class="markdown-them-math-inline">$F$</span> 的定义用语言描述就是：<strong><span class="markdown-them-math-inline">$F(K)$</span> 为 <span class="markdown-them-math-inline">$S$</span> 中<em>恰好</em> 属于所有 <span class="markdown-them-math-inline">$i\notin K$</span> 的集合 <span class="markdown-them-math-inline">$A_i$</span> 的元素的个数</strong>。若 <span class="markdown-them-math-inline">$x\in A_i$</span> 表明 <span class="markdown-them-math-inline">$x$</span> 具有性质 <span class="markdown-them-math-inline">$P_i,$</span> 则 <span class="markdown-them-math-inline">$F(K)$</span> 计数了<strong>恰好具有</strong> <span class="markdown-them-math-inline">$n-\vert K\vert $</span> 个性质的元素的个数，且这 <span class="markdown-them-math-inline">$n-\vert K\vert $</span> 个性质为 <span class="markdown-them-math-inline">$P_i,i\notin K.$</span> 下面我们证明 <span class="markdown-them-math-inline">$G(K)=\left\vert \bigcap_{i\notin K} A_i\right\vert .$</span> 为了体现证明的思想，我们先举一个实例。</p>
+<blockquote>
+<p>假设 <span class="markdown-them-math-inline">$X_4$</span> 以及 <span class="markdown-them-math-inline">$K=\{1,2\},$</span> 那么 <span class="markdown-them-math-inline">$F(K)$</span> 为属于 <span class="markdown-them-math-inline">$A_3,A_4$</span> 且不属于 <span class="markdown-them-math-inline">$A_1,A_2$</span> 的元素的个数，即 <span class="markdown-them-math-inline">$F(K)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$P_3,P_4$</span> 这两条性质的元素。<span class="markdown-them-math-inline">$L=\emptyset$</span> 时，<span class="markdown-them-math-inline">$F(L)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$P_1,P_2,P_3,P_4$</span> 这四条性质的元素；<span class="markdown-them-math-inline">$L=\{1\}$</span> 时，<span class="markdown-them-math-inline">$F(L)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$P_2,P_3,P_4$</span> 这三条性质的元素；<span class="markdown-them-math-inline">$L=\{2\}$</span> 时，<span class="markdown-them-math-inline">$F(L)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$P_1,P_3,P_4$</span> 这三条性质的元素；<span class="markdown-them-math-inline">$L=\{1,2\}$</span> 时，<span class="markdown-them-math-inline">$F(L)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$P_3,P_4$</span> 这两条性质的元素。 在具有 <span class="markdown-them-math-inline">$P_3,P_4$</span> 这两条性质的元素中，根据它们是否具有性质 <span class="markdown-them-math-inline">$P_1,P_2$</span> 可以划分为四部分，这刚好是上面的四个 <span class="markdown-them-math-inline">$F(L),$</span> 于是 <span class="markdown-them-math-inline">$G(K)$</span> 计数了 <span class="markdown-them-math-inline">$A_3\cap A_4$</span> 中的元素的个数。</p>
+</blockquote>
+<p>对于 <span class="markdown-them-math-inline">$X_n$</span> 的情况，设 <span class="markdown-them-math-inline">$K=\{i_1,i_2,\cdots,i_s\},X_n-K=\{j_1,j_2,\cdots,j_t\},s+t=n.$</span> 在同时具有 <span class="markdown-them-math-inline">$P_{j_1},P_{j_2},\cdots,P_{j_t}$</span> 这 <span class="markdown-them-math-inline">$s$</span> 个性质的元素中，根据它们是否具有性质 <span class="markdown-them-math-inline">$P_{i_1},P_{i_2},\cdots,P_{i_s} $</span> 可以划分为 <span class="markdown-them-math-inline">$2^s$</span> 个部分，这恰好是 <span class="markdown-them-math-inline">$L\subseteq K$</span> 的个数，且每一部分的元素所具有的性质的指标集恰好与这 <span class="markdown-them-math-inline">$2^s$</span> 个 <span class="markdown-them-math-inline">$K$</span> 的子集一一对应，而 <span class="markdown-them-math-inline">$G(K)$</span> 将这 <span class="markdown-them-math-inline">$2^s$</span> 个 <span class="markdown-them-math-inline">$F(L)$</span> 进行求和，所得到的刚好是具备 <span class="markdown-them-math-inline">$P_{j_1},P_{j_2},\cdots,P_{j_t}$</span> 这 <span class="markdown-them-math-inline">$s$</span> 个性质的元素的个数，这就表明了</p>
+<div class="markdown-them-math-block">$$G(K)=\left\vert \bigcap_{1\le \ell\le s}A_{j_{\ell}}\right\vert =\left\vert \bigcap_{i\in X_n-K}A_i\right\vert =\left\vert \bigcap_{i\notin K}A_i\right\vert .
+$$</div><p>现在我们用式 <span class="markdown-them-math-inline">$\rm (ii)$</span> 来得到更一般的容斥原理。将 <span class="markdown-them-math-inline">$X_n$</span> 代入式 <span class="markdown-them-math-inline">$\rm (ii)$</span> 得</p>
+<div class="markdown-them-math-block">$$F(X_n)=\sum_{L\subseteq X_n}(-1)^{n-\vert L\vert }G(L)=\sum_{L\subseteq X_n}(-1)^{n-\vert L\vert }\left\vert \bigcap_{i\notin L}A_i\right\vert =\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in J}A_i\right\vert 
+$$</div><p>其中 <span class="markdown-them-math-inline">$J$</span> 是 <span class="markdown-them-math-inline">$L$</span> 在 <span class="markdown-them-math-inline">$X_n$</span> 中的补集，最后两个和式之间可以一一对应。而 <span class="markdown-them-math-inline">$F(X_n)$</span> 计数了恰好具有 <span class="markdown-them-math-inline">$0$</span> 个性质的元素的个数即不具备所有性质的元素的个数，于是</p>
+<div class="markdown-them-math-block">$$F(X_n)=\left\vert \bigcap_{i\in X_n} \overline{A_i}\right\vert =\sum_{J\subseteq X_n}(-1)^{\vert J\vert }\left\vert \bigcap_{i\in J}A_i\right\vert .\tag{iii}
+$$</div><p>式 <span class="markdown-them-math-inline">$\rm(iii)$</span> 与式 <div class="markdown-them-math-block">$$(**)$$</div> 显然是等价的。这就是更为一般的容斥原理。</p>
+<h3 id="更一般的偏序集-$(x,\preccurlyeq)$ 的莫比乌斯反演公式">更一般的偏序集 <span class="markdown-them-math-inline">$(X,\preccurlyeq)$</span> 的莫比乌斯反演公式</h3>
+<p>现在我们讨论更一般的偏序集 <span class="markdown-them-math-inline">$(X,\preccurlyeq).$</span> 设所有只要满足 <span class="markdown-them-math-inline">$x\succ y(x,y\in X)$</span> 就有 <span class="markdown-them-math-inline">$f(x,y)=0$</span> 的实值函数 <span class="markdown-them-math-inline">$f:X\times X\to\mathbb{R}$</span> 的集合为 <span class="markdown-them-math-inline">$\mathcal{F}.$</span> 若 <span class="markdown-them-math-inline">$f,g\in\mathcal{F},$</span> 定义 <span class="markdown-them-math-inline">$f$</span> 和 <span class="markdown-them-math-inline">$g$</span> 的卷积为</p>
+<div class="markdown-them-math-block">$$h(x,y)=(f*g)(x,y)=
+\begin{cases}
+\displaystyle \sum_{x\preccurlyeq z \preccurlyeq y}f(x,z)f(z,y),&amp;x\preccurlyeq y,\\
+0,&amp;\text{otherwise.}
+\end{cases}
+$$</div><p>卷积运算不具有交换律，但是它具有结合律：</p>
+<p><strong>定理3</strong> 卷积满足结合律 <div class="markdown-them-math-block">$$f*(g*h)=(f*g)*h.$$</div></p>
+<p>我们关注 <span class="markdown-them-math-inline">$\mathcal{F}$</span> 里的三种特殊函数。</p>
+<p><strong>Kronecker delta function <span class="markdown-them-math-inline">$\delta(x,y):$</span></strong></p>
+<div class="markdown-them-math-block">$$\delta (x,y)=
+\begin{cases}
+1,&amp;x=y,\\
+0,&amp;\text{otherwise.}
+\end{cases}
+$$</div><p>**zeta function <span class="markdown-them-math-inline">$\zeta(x,y):$</span> **</p>
+<div class="markdown-them-math-block">$$\zeta (x,y)=
+\begin{cases}
+1,&amp;x\preccurlyeq y\\
+0,&amp;\text{otherwise.}
+\end{cases}
+$$</div><p>在介绍第三种函数之前，我们先根据 <span class="markdown-them-math-inline">$\delta$</span> 函数的特殊性质给出一些新的定义。对于 <span class="markdown-them-math-inline">$\delta(x,y)$</span> 函数而言，我们可以验证它满足 <span class="markdown-them-math-inline">$\forall f\in\mathcal{F},$</span> 都有 <div class="markdown-them-math-block">$$f*\delta=\delta*f=f.$$</div> 这表明对于卷积运算而言，<span class="markdown-them-math-inline">$\delta$</span> 是一个恒等函数，它是一个<strong>恒等元（Identity）</strong>。于是借助恒等元，我们可以定义<strong>逆元</strong>。即对于函数 <span class="markdown-them-math-inline">$f\in\mathcal{F},$</span> 若存在 <span class="markdown-them-math-inline">$g\in \mathcal{F}$</span> 使得 <div class="markdown-them-math-block">$$g*f=\delta,$$</div> 我们称 <span class="markdown-them-math-inline">$g$</span> 是 <span class="markdown-them-math-inline">$f$</span> 的左逆函数；同理可以定义右逆函数。有下面的定理：</p>
+<p><strong>定理4</strong> <span class="markdown-them-math-inline">$\forall f\in\mathcal{F}\land \forall y\in X,f(y,y)\ne 0,$</span> <span class="markdown-them-math-inline">$f$</span> 都存在左逆函数 <span class="markdown-them-math-inline">$g$</span> 和右逆函数 <span class="markdown-them-math-inline">$h,$</span> 并且 <span class="markdown-them-math-inline">$g=h.$</span></p>
+<p>于是对于满足定理4条件的函数 <span class="markdown-them-math-inline">$f,$</span> 它都有<strong>逆函数</strong> <span class="markdown-them-math-inline">$g$</span> 满足 <div class="markdown-them-math-block">$$f*g=g*f=\delta.$$</div> 由于 <span class="markdown-them-math-inline">$\zeta$</span> 函数满足 <span class="markdown-them-math-inline">$\forall x\in X,\zeta(x,x)\ne 0,$</span> 则它有逆函数，我们定义 <span class="markdown-them-math-inline">$\zeta$</span> 函数的逆函数为 <span class="markdown-them-math-inline">$\mu,$</span> 即 <div class="markdown-them-math-block">$$\mu * \zeta =\delta.$$</div> 这就是 <strong>Möbius function <span class="markdown-them-math-inline">$\mu(x,y).$</span></strong> 因此</p>
+<div class="markdown-them-math-block">$$\mu*\zeta=\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)\zeta(z,y)=\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\delta(x,y)(x\preccurlyeq y).
+$$</div><p>所以 <span class="markdown-them-math-inline">$\forall x\in X,\mu(x,x)=1.$</span> 当 <span class="markdown-them-math-inline">$x\prec y$</span> 时，</p>
+<div class="markdown-them-math-block">$$\sum_{x\preccurlyeq z \preccurlyeq y}\mu(x,z)=\sum_{x\preccurlyeq z \prec y}\mu(x,z)+\mu(x,y)=\delta(x,y)=0\Rightarrow \mu(x,y)=-\sum_{x\preccurlyeq z \prec y}\mu(x,z).
+$$</div><p><strong>例2</strong> 我们现在来求偏序集 <span class="markdown-them-math-inline">$(\mathscr{P}(X_n),\subseteq)$</span> 上的莫比乌斯函数。</p>
+<p><strong>例3</strong> 求全序集 <span class="markdown-them-math-inline">$(X_n,\le)$</span> 的莫比乌斯函数。</p>
+<p>铺垫了那么多，现在我们可以给出并证明定义在有限偏序集上的莫比乌斯反演公式了。</p>
+<p><strong>定理5（Möbius Inversion Formula）</strong> 设偏序集 <span class="markdown-them-math-inline">$(X,\preccurlyeq)$</span> 有最小元，记作 <span class="markdown-them-math-inline">$0.$</span> 设 <span class="markdown-them-math-inline">$\mu$</span> 是它的莫比乌斯函数，并设 <span class="markdown-them-math-inline">$F:X\to \mathbb{R}$</span> 是定义在 <span class="markdown-them-math-inline">$X$</span> 上的实值函数，同时定义 <span class="markdown-them-math-inline">$G:X\to\mathbb{R}$</span> 满足</p>
+<div class="markdown-them-math-block">$$G(x)=\sum_{z\preccurlyeq x}F(z),x\in X.
+$$</div><p>那么就有</p>
+<div class="markdown-them-math-block">$$F(x)=\sum_{y\preccurlyeq x}\mu(y,x)G(y),x\in X.
+$$</div><blockquote>
+<p>待更新。</p>
+</blockquote>
+<p><span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong>例4</strong> 求偏序集 <span class="markdown-them-math-inline">$(X_n,\mid)$</span> 的莫比乌斯函数，并给出最经典的数论上的莫比乌斯反演公式。</p>
+<h2 id="其他的反演">其他的反演</h2>
+<h3 id="二项式反演">二项式反演</h3>
+<h3 id="$\min-\max$-反演"><span class="markdown-them-math-inline">$\min-\max$</span> 反演</h3>
+<blockquote>
+<p>待更新。</p>
+</blockquote>
+<p><span class="markdown-them-math-inline">$\rm Stirling$</span> 反演在组合数学（四）：特殊的计数序列中会提到。</p>
+<blockquote>
+<p>待更新的内容还有容斥原理求 <span class="markdown-them-math-inline">$\varphi(n),\pi(x),$</span> 以及相关的经典练习题与算法题。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/26/python/Python2/" rel="prev" title="Python入门(2):类和对象">
+                  <i class="fa fa-angle-left"></i> Python入门(2):类和对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/01/calculus/Calculus-review-Day1/" rel="next" title="Calculus review Day1">
+                  Calculus review Day1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">161k</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:30</span>
+    <span title="Reading time total">2:27</span>
+  </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  
-      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
 
-    
+
+
+
+
 
   
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
-      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

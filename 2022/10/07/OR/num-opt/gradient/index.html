@@ -2,55 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
   <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="">
-
+<link rel="stylesheet" href="[object Object]">
 
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 \(f(x)\) 的局部极小点, 即 \[ \begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} \] 在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 $f(x)$ 的局部极小点, 即 $$\begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} $$在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最优化（三）：梯度法">
 <meta property="og:url" content="http://example.com/2022/10/07/OR/num-opt/gradient/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 \(f(x)\) 的局部极小点, 即 \[ \begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} \] 在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选">
+<meta property="og:description" content="梯度法 迭代算法与收敛率 现在要考虑满足在定义域内一阶可微的多元实值函数 $f(x)$ 的局部极小点, 即 $$\begin{aligned} &amp;\min f(x)\\ \text{s.t. }&amp;x\in \mathbb{R} \end{aligned} $$在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-07T07:26:26.000Z">
 <meta property="article:modified_time" content="2022-10-23T03:20:15.007Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="http://example.com/2022/10/07/OR/num-opt/gradient/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>最优化（三）：梯度法 | XBD</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/07/OR/num-opt/gradient/","path":"2022/10/07/OR/num-opt/gradient/","title":"最优化（三）：梯度法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>最优化（三）：梯度法 | XBD</title>
   
+
+
 
 
 
@@ -58,183 +53,211 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">XBD</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        
-      
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
-    </header>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">梯度法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%E4%B8%8E%E6%94%B6%E6%95%9B%E7%8E%87"><span class="nav-number">1.1.</span> <span class="nav-text">迭代算法与收敛率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">最速下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E6%AD%A5%E9%95%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">固定步长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E6%AD%A5%E9%95%BF"><span class="nav-number">1.2.2.</span> <span class="nav-text">最优步长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E6%9C%BA%E6%9D%A1%E4%BB%B6%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.3.</span> <span class="nav-text">停机条件的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">二次型函数的最速下降梯度法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text">收敛性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E6%AD%A5%E9%95%BF-1"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">固定步长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">最速下降</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.6.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matlab"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">MATLAB</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  <div class="reading-progress-bar"></div>
+  </aside>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    </div>
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/07/OR/num-opt/gradient/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="最优化（三）：梯度法 | XBD">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           最优化（三）：梯度法
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-10-07 15:26:26" itemprop="dateCreated datePublished" datetime="2022-10-07T15:26:26+08:00">2022-10-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-23 11:20:15" itemprop="dateModified" datetime="2022-10-23T11:20:15+08:00">2022-10-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Optimization/" itemprop="url" rel="index"><span itemprop="name">Optimization</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/10/07/OR/num-opt/gradient/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/10/07/OR/num-opt/gradient/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-07 15:26:26" itemprop="dateCreated datePublished" datetime="2022-10-07T15:26:26+08:00">2022-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-23 11:20:15" itemprop="dateModified" datetime="2022-10-23T11:20:15+08:00">2022-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Optimization/" itemprop="url" rel="index"><span itemprop="name">Optimization</span></a>
+        </span>
+    </span>
+
   
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.8k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
-            </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -242,204 +265,82 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="梯度法">梯度法</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="梯度法">梯度法</h1>
 <h2 id="迭代算法与收敛率">迭代算法与收敛率</h2>
-<p>现在要考虑满足在定义域内一阶可微的多元实值函数 <span
-class="math inline">\(f(x)\)</span> 的局部极小点, 即 <span
-class="math display">\[
-\begin{aligned}
+<p>现在要考虑满足在定义域内一阶可微的多元实值函数 <span class="markdown-them-math-inline">$f(x)$</span> 的局部极小点, 即</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 &amp;\min f(x)\\
 \text{s.t. }&amp;x\in \mathbb{R}
 \end{aligned}
-\]</span> 在各种各样的搜索极小点的方法中,
-迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法,
-选定某个(接近极小点)的点 <span class="math inline">\(x_0\)</span>
-(有时会把这称为<em>极小点的估计</em>), 以 <span
-class="math inline">\(x_0\)</span> 为初始点,
-通过<em>某种规则</em>产生一个点 <span
-class="math inline">\(x_1,\)</span> 并继续以点 <span
-class="math inline">\(x_1\)</span> 采用同样的规则产生 <span
-class="math inline">\(x_2,\)</span> 以此类推,
-理想情况下(实际操作中中在达到停机条件时会停止该过程)最终会产生一个无穷序列
-<span class="math inline">\(\{x_{k}\}_{k=0}^{\infty},\)</span> 每一步(第
-<span class="math inline">\(k\)</span>
-次)的迭代利用的规则实际上是序列的某个递推关系式: <span
-class="math inline">\(x_{k}=\phi(x_{k-1},\cdots),k\ge
-1,\phi:\mathbb{R}^n\to\mathbb{R}^n.\)</span> 理想的情况是,
-该迭代序列收敛于极小点 <span class="math inline">\(x^{\ast},\)</span>
-这样我们就成功地得到了一个搜索极小点的算法. 后面介绍的算法,
-大都属于迭代算法.</p>
-<p>不管是什么算法, 它的效率/运行速度总是我们最需要关注的性质之一, 显然,
-对于迭代算法而言, 这与迭代产生的序列 <span
-class="math inline">\(\{x_k\}_{k=0}^{\infty}\)</span>
-的<strong>收敛速度</strong>息息相关, 于是我们借此定义收敛率,
-并以收敛率衡量迭代算法的收敛速度.</p>
-<p><strong>定义</strong> 设序列 <span
-class="math inline">\(\{x_k\}\)</span> 收敛到 <span
-class="math inline">\(x^{\ast},\)</span> 若 <span
-class="math display">\[
-\lim_{k\to\infty}\frac{\|x_{k+1}-x^{\ast}\|}{\|x_{k}-x^{\ast}
-\|^p}=\beta&lt;\infty,
-\]</span> 则序列 <span class="math inline">\(\{x_k\}\)</span>
-的收敛阶数为 <span class="math inline">\(p(p\in\mathbb{R})\)</span> 或
-<span class="math inline">\(p\)</span> 阶收敛. <span
-class="math inline">\(\square\)</span></p>
+$$</div><p>在各种各样的搜索极小点的方法中, 迭代算法是较为典型且常见的一种方法。迭代法是这样的一种算法, 选定某个(接近极小点)的点 <span class="markdown-them-math-inline">$x_0$</span> (有时会把这称为<em>极小点的估计</em>), 以 <span class="markdown-them-math-inline">$x_0$</span> 为初始点, 通过<em>某种规则</em>产生一个点 <span class="markdown-them-math-inline">$x_1,$</span> 并继续以点 <span class="markdown-them-math-inline">$x_1$</span> 采用同样的规则产生 <span class="markdown-them-math-inline">$x_2,$</span> 以此类推, 理想情况下(实际操作中中在达到停机条件时会停止该过程)最终会产生一个无穷序列 <span class="markdown-them-math-inline">$\{x_{k}\}_{k=0}^{\infty},$</span> 每一步(第 <span class="markdown-them-math-inline">$k$</span> 次)的迭代利用的规则实际上是序列的某个递推关系式: <span class="markdown-them-math-inline">$x_{k}=\phi(x_{k-1},\cdots),k\ge 1,\phi:\mathbb{R}^n\to\mathbb{R}^n.$</span> 理想的情况是, 该迭代序列收敛于极小点 <span class="markdown-them-math-inline">$x^{\ast},$</span> 这样我们就成功地得到了一个搜索极小点的算法. 后面介绍的算法, 大都属于迭代算法.</p>
+<p>不管是什么算法, 它的效率/运行速度总是我们最需要关注的性质之一, 显然, 对于迭代算法而言, 这与迭代产生的序列 <span class="markdown-them-math-inline">$\{x_k\}_{k=0}^{\infty}$</span> 的<strong>收敛速度</strong>息息相关, 于是我们借此定义收敛率, 并以收敛率衡量迭代算法的收敛速度.</p>
+<p><strong>定义</strong> 设序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛到 <span class="markdown-them-math-inline">$x^{\ast},$</span> 若</p>
+<div class="markdown-them-math-block">$$\lim_{k\to\infty}\frac{\|x_{k+1}-x^{\ast}\|}{\|x_{k}-x^{\ast} \|^p}=\beta&lt;\infty,
+$$</div><p>则序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 的收敛阶数为 <span class="markdown-them-math-inline">$p(p\in\mathbb{R})$</span> 或 <span class="markdown-them-math-inline">$p$</span> 阶收敛. <span class="markdown-them-math-inline">$\square$</span></p>
 <p>特别地:</p>
 <ul>
-<li><span class="math inline">\(p=1,\beta =0\)</span> 时称 <span
-class="math inline">\(\{x_k\}\)</span> 超线性收敛;</li>
-<li><span class="math inline">\(p=1,0&lt;\beta &lt;1\)</span> 时称 <span
-class="math inline">\(\{x_k\}\)</span> <span
-class="math inline">\(\beta\)</span> 线性收敛;</li>
-<li><span class="math inline">\(p=1,\beta=1\)</span> 时称 <span
-class="math inline">\(\{x_k\}\)</span> 次线性收敛;</li>
-<li><span class="math inline">\(p=2\)</span> 时称 <span
-class="math inline">\(\{x_k\}\)</span> 是二次型收敛.</li>
+<li><span class="markdown-them-math-inline">$p=1,\beta =0$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 超线性收敛;</li>
+<li><span class="markdown-them-math-inline">$p=1,0&lt;\beta &lt;1$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> <span class="markdown-them-math-inline">$\beta$</span> 线性收敛;</li>
+<li><span class="markdown-them-math-inline">$p=1,\beta=1$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 次线性收敛;</li>
+<li><span class="markdown-them-math-inline">$p=2$</span> 时称 <span class="markdown-them-math-inline">$\{x_k\}$</span> 是二次型收敛.</li>
 </ul>
-<p>一般而言, 具有超线性及以上收敛速度的算法就可以被称为"很好的算法"了.
-<span class="math inline">\(p\)</span> 越大,
-算法/数列的收敛速度就越快.</p>
-<p>可以证明任意序列的收敛阶数不会小于 <span
-class="math inline">\(1\)</span>.</p>
+<p>一般而言, 具有超线性及以上收敛速度的算法就可以被称为&quot;很好的算法&quot;了. <span class="markdown-them-math-inline">$p$</span> 越大, 算法/数列的收敛速度就越快.</p>
+<p>可以证明任意序列的收敛阶数不会小于 <span class="markdown-them-math-inline">$1$</span>.</p>
 <h2 id="最速下降法">最速下降法</h2>
-<p>在迭代算法中, 我们可以这样描述第 <span
-class="math inline">\(k\)</span> 次迭代产生的新的点 <span
-class="math inline">\(x_{k+1}:\)</span> <span
-class="math inline">\(x_k,x_{k+1}\)</span> 是 <span
-class="math inline">\(\mathbb{R}^n\)</span> 上的两个点, 产生点 <span
-class="math inline">\(x_{k+1}\)</span> 的过程可以看作是从点 <span
-class="math inline">\(x_k\)</span> 出发沿着方向 <span
-class="math inline">\(x_{k+1}-x_{k}\)</span> 前进 <span
-class="math inline">\(\|x_{k+1}-x_k\|\)</span> 的距离, 借助可行方向,
-我们将向量 <span class="math inline">\(x_{k+1}-x_{k}\)</span>
-作为一个可行方向, 记作 <span class="math inline">\(p_k,\)</span>
-为了方便用范数和方向分别描述向量, 保证 <span
-class="math inline">\(\|p_k\|=1,\)</span> 前进的距离记作 <span
-class="math inline">\(\alpha_k=\|x_{k+1}-x_k\|,\)</span>
-这称为<strong><em>步长</em></strong>, 这样就有 <span
-class="math inline">\(x_{k+1}=x_{k}+\alpha_kp_k,\)</span>
-我们的任务变成了通过某种规则产生"合适"的可行方向与步长.</p>
-<p>什么样可行方向和步长的才算是"合适"呢? 这不难想,
-既然我们的目的是求极小点, 那必然要保证在迭代的过程中序列 <span
-class="math inline">\(\{f(x_k)\}_{k=0}^{\infty}\)</span>
-整体呈下降的趋势, 或者干脆让条件再强一些, 序列 <span
-class="math inline">\(\{f(x_k)\}_{k=0}^{\infty}\)</span> 严格递减,
-那么我们便得到了<strong>下降迭代法</strong>.</p>
+<p>在迭代算法中, 我们可以这样描述第 <span class="markdown-them-math-inline">$k$</span> 次迭代产生的新的点 <span class="markdown-them-math-inline">$x_{k+1}:$</span> <span class="markdown-them-math-inline">$x_k,x_{k+1}$</span> 是 <span class="markdown-them-math-inline">$\mathbb{R}^n$</span> 上的两个点, 产生点 <span class="markdown-them-math-inline">$x_{k+1}$</span> 的过程可以看作是从点 <span class="markdown-them-math-inline">$x_k$</span> 出发沿着方向 <span class="markdown-them-math-inline">$x_{k+1}-x_{k}$</span> 前进 <span class="markdown-them-math-inline">$\|x_{k+1}-x_k\|$</span> 的距离, 借助可行方向, 我们将向量 <span class="markdown-them-math-inline">$x_{k+1}-x_{k}$</span> 作为一个可行方向, 记作 <span class="markdown-them-math-inline">$p_k,$</span> 为了方便用范数和方向分别描述向量, 保证 <span class="markdown-them-math-inline">$\|p_k\|=1,$</span> 前进的距离记作 <span class="markdown-them-math-inline">$\alpha_k=\|x_{k+1}-x_k\|,$</span> 这称为<em><strong>步长</strong></em>, 这样就有 <span class="markdown-them-math-inline">$x_{k+1}=x_{k}+\alpha_kp_k,$</span> 我们的任务变成了通过某种规则产生&quot;合适&quot;的可行方向与步长.</p>
+<p>什么样可行方向和步长的才算是&quot;合适&quot;呢? 这不难想, 既然我们的目的是求极小点, 那必然要保证在迭代的过程中序列 <span class="markdown-them-math-inline">$\{f(x_k)\}_{k=0}^{\infty}$</span> 整体呈下降的趋势, 或者干脆让条件再强一些, 序列 <span class="markdown-them-math-inline">$\{f(x_k)\}_{k=0}^{\infty}$</span> 严格递减, 那么我们便得到了<strong>下降迭代法</strong>.</p>
 <p>但是这还不够具体, 我们要得到可行方向和步长的确切信息.</p>
-<p>我们希望只利用可行方向和步长得到<strong><em>最好</em></strong>的下降迭代法,
-那么我们显然需要<em>下降最快的方向</em>以及使 <span
-class="math inline">\(f(x)\)</span> 在该方向上取得最小值的步长.
-那么方向的选择便呼之欲出了, 即<strong>负梯度方向</strong>,
-于是我们可以令 <span class="math inline">\(p_k=-\nabla f(x_k).\)</span>
-可行方向选择负梯度的算法又被称作梯度法.</p>
+<p>我们希望只利用可行方向和步长得到<em><strong>最好</strong></em>的下降迭代法, 那么我们显然需要<em>下降最快的方向</em>以及使 <span class="markdown-them-math-inline">$f(x)$</span> 在该方向上取得最小值的步长. 那么方向的选择便呼之欲出了, 即<strong>负梯度方向</strong>, 于是我们可以令 <span class="markdown-them-math-inline">$p_k=-\nabla f(x_k).$</span> 可行方向选择负梯度的算法又被称作梯度法.</p>
 <h3 id="固定步长">固定步长</h3>
-<p>在使用最优步长之前, 我们不妨"偷一下懒", 选择固定的步长,
-这样就免去了每次迭代还要找最优步长的麻烦,
-于是我们得到了<strong>固定步长梯度法</strong>. 这样做的好处比较明显,
-缺点是:</p>
+<p>在使用最优步长之前, 我们不妨&quot;偷一下懒&quot;, 选择固定的步长, 这样就免去了每次迭代还要找最优步长的麻烦, 于是我们得到了<strong>固定步长梯度法</strong>. 这样做的好处比较明显, 缺点是:</p>
 <ul>
-<li>步长较大在远离极小点的地方比较快但是容易在极小点附近产生锯齿状的收敛路径,
-<strong><em>甚至不收敛</em></strong>;</li>
+<li>步长较大在远离极小点的地方比较快但是容易在极小点附近产生锯齿状的收敛路径, <em><strong>甚至不收敛</strong></em>;</li>
 <li>步长太小效率会偏低.</li>
 </ul>
-<p>事实上, 我们可以确定固定步长梯度法中使得算法收敛至极小点的步长的范围,
-这放在后面介绍.</p>
+<p>事实上, 我们可以确定固定步长梯度法中使得算法收敛至极小点的步长的范围, 这放在后面介绍.</p>
 <h3 id="最优步长">最优步长</h3>
-<p>显然最优步长 <span
-class="math inline">\(\alpha_k=\arg\min_{\alpha&gt;0}f(x_k+\alpha
-p_k),\)</span> 这是一个一维函数, 记作 <span
-class="math inline">\(\phi(\alpha),\)</span> 极小值点在驻点处取得,
-于是令 <span class="math inline">\(\phi&#39;(\alpha)=0\)</span> 有 <span
-class="math inline">\(\nabla f(x_k+\alpha p_k)^{\top} p_k=\nabla
-f(x_{k+1})^{\top} p_k=0.\)</span>
-但是在实现算法的时候我们通常使用一维搜索方法.</p>
-<p>确定了最优可行方向和最优步长后,
-我们得到了<strong>最速下降梯度法</strong>:</p>
-<ol type="1">
-<li>确定初始点 <span class="math inline">\(x_0,\)</span> 并置迭代次数
-<span class="math inline">\(k:=0.\)</span></li>
-<li>令 <span class="math inline">\(\phi_k(\alpha)=f(x_{k}-\alpha\nabla
-f(x_k)),\)</span> 置 <span
-class="math inline">\(\alpha_k:=\arg\min\limits_{\alpha&gt;0}\phi_k(\alpha),\)</span>
-<span class="math inline">\(x_{k+1}=x_{k}-\alpha_k\nabla
-f(x_k).\)</span> 其中 <span class="math inline">\(\alpha_k\)</span>
-的计算可采用一维优化方法.</li>
-<li>当满足要求的精度时停止上述过程, 否则置 <span
-class="math inline">\(k:=k+1\)</span> 转 2.</li>
+<p>显然最优步长 <span class="markdown-them-math-inline">$\alpha_k=\arg\min_{\alpha&gt;0}f(x_k+\alpha p_k),$</span> 这是一个一维函数, 记作 <span class="markdown-them-math-inline">$\phi(\alpha),$</span> 极小值点在驻点处取得, 于是令 <span class="markdown-them-math-inline">$\phi'(\alpha)=0$</span> 有 <span class="markdown-them-math-inline">$\nabla f(x_k+\alpha p_k)^{\top} p_k=\nabla f(x_{k+1})^{\top} p_k=0.$</span> 但是在实现算法的时候我们通常使用一维搜索方法.</p>
+<p>确定了最优可行方向和最优步长后, 我们得到了<strong>最速下降梯度法</strong>:</p>
+<ol>
+<li>确定初始点 <span class="markdown-them-math-inline">$x_0,$</span> 并置迭代次数 <span class="markdown-them-math-inline">$k:=0.$</span></li>
+<li>令 <span class="markdown-them-math-inline">$\phi_k(\alpha)=f(x_{k}-\alpha\nabla f(x_k)),$</span> 置 <span class="markdown-them-math-inline">$\alpha_k:=\arg\min\limits_{\alpha&gt;0}\phi_k(\alpha),$</span> <span class="markdown-them-math-inline">$x_{k+1}=x_{k}-\alpha_k\nabla f(x_k).$</span> 其中 <span class="markdown-them-math-inline">$\alpha_k$</span> 的计算可采用一维优化方法.</li>
+<li>当满足要求的精度时停止上述过程, 否则置 <span class="markdown-them-math-inline">$k:=k+1$</span> 转 2.</li>
 </ol>
 <p>最速下降法得到的序列一定会收敛至极小点, 证明过程在后文会有提到.</p>
 <h3 id="停机条件的选择">停机条件的选择</h3>
-<p>理论上来讲, 我们最好把 <span class="math inline">\(\nabla
-f(x_k)=0\)</span> 作为停机条件,
-但是在实际中我们很难恰好得到梯度为零的结果, 只能得到某个接近 <span
-class="math inline">\(0\)</span> 的结果, 此时若给定一个较小的预设的阈值
-<span class="math inline">\(\varepsilon&gt;0\)</span>
-,便有下面三种停机条件可以使用:</p>
+<p>理论上来讲, 我们最好把 <span class="markdown-them-math-inline">$\nabla f(x_k)=0$</span> 作为停机条件, 但是在实际中我们很难恰好得到梯度为零的结果, 只能得到某个接近 <span class="markdown-them-math-inline">$0$</span> 的结果, 此时若给定一个较小的预设的阈值 <span class="markdown-them-math-inline">$\varepsilon&gt;0$</span> ,便有下面三种停机条件可以使用:</p>
 <ul>
-<li><p><strong>梯度范数</strong>: 利用 <span
-class="math inline">\(\|\nabla f(x_k)\|&lt; \varepsilon\)</span>
-作为停机条件;</p></li>
-<li><p><strong>绝对数值</strong>: 利用 <span
-class="math inline">\(\|f(x_{k+1})-f(x_k) \|&lt;\varepsilon\)</span> 或
-<span class="math inline">\(\|x_{k+1}-x_k\|&lt;\varepsilon\)</span>
-来作为停机条件.</p></li>
-<li><p><strong>相对数值</strong>: 利用 <span
-class="math inline">\(\displaystyle \frac{|f(x_{k+1})-f(x_k) |}{|f(x_k)
-|}&lt;\varepsilon\)</span> 或 <span class="math inline">\(\displaystyle
-\frac{\|x_{k+1}-x_k \|}{\|x_{k} \|}&lt;\varepsilon\)</span>
-作为停机条件.</p></li>
+<li>
+<p><strong>梯度范数</strong>: 利用 <span class="markdown-them-math-inline">$\|\nabla f(x_k)\|&lt; \varepsilon$</span> 作为停机条件;</p>
+</li>
+<li>
+<p><strong>绝对数值</strong>: 利用 <span class="markdown-them-math-inline">$\|f(x_{k+1})-f(x_k) \|&lt;\varepsilon$</span> 或 <span class="markdown-them-math-inline">$\|x_{k+1}-x_k\|&lt;\varepsilon$</span> 来作为停机条件.</p>
+</li>
+<li>
+<p><strong>相对数值</strong>: 利用 <span class="markdown-them-math-inline">$\displaystyle \frac{|f(x_{k+1})-f(x_k) |}{|f(x_k) |}&lt;\varepsilon$</span> 或 <span class="markdown-them-math-inline">$\displaystyle \frac{\|x_{k+1}-x_k \|}{\|x_{k} \|}&lt;\varepsilon$</span> 作为停机条件.</p>
+</li>
 </ul>
-<p>利用梯度范数和绝对数值作为停机条件的缺点是它们会受到 <span
-class="math inline">\(f(x)\)</span> 或 <span
-class="math inline">\(\nabla f(x)\)</span> 的数量级的影响,
-而相对数值<em>是尺度无关</em>的. 然而若 <span
-class="math inline">\(|f(x)|&lt;1\)</span> 或 <span
-class="math inline">\(\|x_k\|&lt;1\)</span> 时,
-相对数值反而会比绝对数值大, 为避免这一情况我们可以采用下面的修正: <span
-class="math display">\[
-\frac{|f(x_{k+1})-f(x_k) |}{\max\{|f(x_k)
-|,1\}}&lt;\varepsilon,\displaystyle \frac{\|x_{k+1}-x_k
-\|}{\max\{\|x_{k} \|,1\}}&lt;\varepsilon
-\]</span> 这也是后面的算法常用的停机条件.</p>
+<p>利用梯度范数和绝对数值作为停机条件的缺点是它们会受到 <span class="markdown-them-math-inline">$f(x)$</span> 或 <span class="markdown-them-math-inline">$\nabla f(x)$</span> 的数量级的影响, 而相对数值<em>是尺度无关</em>的. 然而若 <span class="markdown-them-math-inline">$|f(x)|&lt;1$</span> 或 <span class="markdown-them-math-inline">$\|x_k\|&lt;1$</span> 时, 相对数值反而会比绝对数值大, 为避免这一情况我们可以采用下面的修正:</p>
+<div class="markdown-them-math-block">$$\frac{|f(x_{k+1})-f(x_k) |}{\max\{|f(x_k) |,1\}}&lt;\varepsilon,\displaystyle \frac{\|x_{k+1}-x_k \|}{\max\{\|x_{k} \|,1\}}&lt;\varepsilon
+$$</div><p>这也是后面的算法常用的停机条件.</p>
 <p>经过测试利用修正过的相对数值作为停机条件比使用绝对数值速度快了至少十倍.</p>
 <h3 id="二次型函数的最速下降梯度法">二次型函数的最速下降梯度法</h3>
-<p>设 <span class="math inline">\(f(x)=\frac{1}{2}x^{\top} Qx+b^{\top}
-x+c,\)</span> 有 <span class="math inline">\(\nabla f(x)=Qx+b,\)</span>
-于是 <span class="math inline">\(\alpha_k\)</span> 满足 <span
-class="math display">\[
-\phi_k&#39;(\alpha_k)=0\Rightarrow -\nabla f(x_k-\alpha_k\nabla
-f(x_k))^{\top} \nabla f(x_k)=0.
-\]</span> 整理可得 <span class="math display">\[
-\alpha_k=\frac{\|Qx_k+b\|^2}{(Qx_k+b)^{\top} Q(Qx_k+b)},
-\]</span> 至于 <span class="math inline">\(x_{k+1},\)</span>
-它的形式并不是很漂亮, 就没有把它写出来的必要了.</p>
-<hr />
+<p>设 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c,$</span> 有 <span class="markdown-them-math-inline">$\nabla f(x)=Qx+b,$</span> 于是 <span class="markdown-them-math-inline">$\alpha_k$</span> 满足</p>
+<div class="markdown-them-math-block">$$\phi_k'(\alpha_k)=0\Rightarrow -\nabla f(x_k-\alpha_k\nabla f(x_k))^{\top} \nabla f(x_k)=0.
+$$</div><p>整理可得</p>
+<div class="markdown-them-math-block">$$\alpha_k=\frac{\|Qx_k+b\|^2}{(Qx_k+b)^{\top} Q(Qx_k+b)},
+$$</div><p>至于 <span class="markdown-them-math-inline">$x_{k+1},$</span> 它的形式并不是很漂亮, 就没有把它写出来的必要了.</p>
+<hr>
 <h3 id="收敛性质">收敛性质</h3>
 <h4 id="固定步长-1">固定步长</h4>
-<p>对于二次型函数 <span class="math inline">\(f(x)=\frac{1}{2}x^{\top}
-Qx+b^{\top} x+c,\)</span> , 我们能确定使迭代序列收敛的步长范围,
-这表述为下面的命题:</p>
-<p><strong>命题 </strong> 对二次型函数 <span
-class="math inline">\(f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c\)</span>
-使用固定步长梯度法时, 当且仅当步长满足 <span class="math display">\[
-0&lt;\alpha&lt;\frac{2}{\lambda_{\max}}.
-\]</span> 时迭代产生的序列 <span class="math inline">\(\{x_k\}\)</span>
-收敛至极小点 <span class="math inline">\(x^{\ast}.\)</span> 其中 <span
-class="math inline">\(\lambda_{\max}\)</span> 是 <span
-class="math inline">\(Q\)</span> 的最大特征值. <span
-class="math inline">\(\square\)</span></p>
+<p>对于二次型函数 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c,$</span> , 我们能确定使迭代序列收敛的步长范围, 这表述为下面的命题:</p>
+<p>**命题 ** 对二次型函数 <span class="markdown-them-math-inline">$f(x)=\frac{1}{2}x^{\top} Qx+b^{\top} x+c$</span> 使用固定步长梯度法时, 当且仅当步长满足</p>
+<div class="markdown-them-math-block">$$0&lt;\alpha&lt;\frac{2}{\lambda_{\max}}.
+$$</div><p>时迭代产生的序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛至极小点 <span class="markdown-them-math-inline">$x^{\ast}.$</span> 其中 <span class="markdown-them-math-inline">$\lambda_{\max}$</span> 是 <span class="markdown-them-math-inline">$Q$</span> 的最大特征值. <span class="markdown-them-math-inline">$\square$</span></p>
 <h4 id="最速下降">最速下降</h4>
-<p><strong>命题</strong> 若 <span class="math inline">\(f\)</span>
-在定域上连续一阶可微， 且集合 <span class="math inline">\(G=\{x|f(x)\le
-f(x_0)\}\)</span> 有界, 若最速下降法迭代过程中得到的序列 <span
-class="math inline">\(\{x_k\}\)</span> 收敛, 则其收敛点为 <span
-class="math inline">\(f\)</span> 的驻点. <span
-class="math inline">\(\square\)</span></p>
-<p><strong><em>PROOF</em></strong> 设最速下降法</p>
-<hr />
+<p><strong>命题</strong> 若 <span class="markdown-them-math-inline">$f$</span> 在定域上连续一阶可微， 且集合 <span class="markdown-them-math-inline">$G=\{x|f(x)\le f(x_0)\}$</span> 有界, 若最速下降法迭代过程中得到的序列 <span class="markdown-them-math-inline">$\{x_k\}$</span> 收敛, 则其收敛点为 <span class="markdown-them-math-inline">$f$</span> 的驻点. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><em><strong>PROOF</strong></em> 设最速下降法</p>
+<hr>
 <h3 id="代码实现">代码实现</h3>
 <h4 id="python">Python</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>(<span class="params">var, val</span>):  <span class="comment">#构建变量与值之间的以元组为元素的列表</span></span><br><span class="line">    l = []</span><br><span class="line">    it1 = <span class="built_in">iter</span>(var)</span><br><span class="line">    it2 = <span class="built_in">iter</span>(val)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(var.shape[<span class="number">0</span>]):</span><br><span class="line">        l.append(<span class="built_in">tuple</span>((<span class="built_in">next</span>(it1), <span class="built_in">next</span>(it2))))</span><br><span class="line">    <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">golden_cut</span>(<span class="params">f, l, r, var, eps</span>):</span><br><span class="line">    rho = (<span class="number">3</span>-math.sqrt(<span class="number">5</span>))/<span class="number">2</span></span><br><span class="line">    a = l+(r-l)*rho</span><br><span class="line">    b = r-(r-l)*rho</span><br><span class="line">    <span class="keyword">while</span> (math.fabs(l-r) &gt; eps):</span><br><span class="line">        f_a = f.subs([(var, a)])</span><br><span class="line">        f_b = f.subs([(var, b)])</span><br><span class="line">        <span class="keyword">if</span> f_a[<span class="number">0</span>, <span class="number">0</span>] &gt; f_b[<span class="number">0</span>, <span class="number">0</span>]:</span><br><span class="line">            l = a</span><br><span class="line">            a = b</span><br><span class="line">            b = r-(r-l)*rho</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = b</span><br><span class="line">            b = a</span><br><span class="line">            a = l+(r-l)*rho</span><br><span class="line">    <span class="keyword">return</span> a  <span class="comment">#取左端点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SteepestDescent</span>(<span class="params">f, x0, var, eps</span>):</span><br><span class="line">    grad_f = f.jacobian(var)  <span class="comment"># 雅可比矩阵</span></span><br><span class="line">    x1 = sympy.Matrix.zeros(var.shape[<span class="number">0</span>], <span class="number">1</span>)</span><br><span class="line">    con = sympy.Matrix.norm(x1-x0)/<span class="built_in">max</span>(sympy.Matrix.norm(x0), <span class="number">1</span>)</span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> con &gt; eps:</span><br><span class="line">        rel1 = change(var, x0)</span><br><span class="line">        d = grad_f.subs(rel1).T  <span class="comment"># 这里要加转置，否则会出现维数不一致的情况</span></span><br><span class="line">        alpha = sympy.symbols(<span class="string">&#x27;alpha&#x27;</span>, positive = <span class="literal">True</span>)  <span class="comment">#步长变量</span></span><br><span class="line">        rel2 = change(var, x0-alpha*d)</span><br><span class="line">        phi = f.subs(rel2)  <span class="comment">#以步长为变量的函数</span></span><br><span class="line">        alpha0 = golden_cut(phi, <span class="number">0</span>, <span class="number">100</span>, alpha, <span class="number">1e-4</span>)  <span class="comment">#黄金分割法找最短步长</span></span><br><span class="line">        x1 = x0-alpha0*d</span><br><span class="line">        tmp = x1</span><br><span class="line">        x1 = x0</span><br><span class="line">        x0 = tmp</span><br><span class="line">        con = sympy.Matrix.norm(x1-x0)/<span class="built_in">max</span>(sympy.Matrix.norm(x0), <span class="number">1</span>)</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(x0.evalf(<span class="number">6</span>))</span><br><span class="line">    rel3 = change(var, x0)</span><br><span class="line">    min_f = f.subs(rel3)</span><br><span class="line">    <span class="built_in">print</span>(min_f[<span class="number">0</span>, <span class="number">0</span>].evalf(<span class="number">6</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Total iterations:&quot;</span>, k)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x, y, z, w = sympy.symbols(<span class="string">&#x27;x,y,z,w&#x27;</span>)</span><br><span class="line">w = (x-<span class="number">5</span>)**<span class="number">2</span>+(y+<span class="number">4</span>)**<span class="number">2</span>+<span class="number">4</span>*(z-<span class="number">6</span>)**<span class="number">2</span></span><br><span class="line">var = sympy.Matrix([x, y, z])</span><br><span class="line">f = sympy.Matrix([w])</span><br><span class="line">x0 = sympy.Matrix([<span class="number">1000</span>, <span class="number">1000</span>, <span class="number">1000</span>])</span><br><span class="line">SteepestDescent(f, x0, var, <span class="number">1e-6</span>)</span><br></pre></td></tr></table></figure>
@@ -454,301 +355,107 @@ class="math inline">\(\square\)</span></p>
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/10/07/OR/num-opt/basic-of-multi-func/" rel="prev" title="最优化（二）：多元函数与无约束优化基础">
-      <i class="fa fa-chevron-left"></i> 最优化（二）：多元函数与无约束优化基础
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/10/07/OR/num-opt/newton/" rel="next" title="最优化（四）：牛顿法">
-      最优化（四）：牛顿法 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/07/OR/num-opt/basic-of-multi-func/" rel="prev" title="最优化（二）：多元函数与无约束优化基础">
+                  <i class="fa fa-angle-left"></i> 最优化（二）：多元函数与无约束优化基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/07/OR/num-opt/newton/" rel="next" title="最优化（四）：牛顿法">
+                  最优化（四）：牛顿法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
           </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">梯度法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%E4%B8%8E%E6%94%B6%E6%95%9B%E7%8E%87"><span class="nav-number">1.1.</span> <span class="nav-text">迭代算法与收敛率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">最速下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E6%AD%A5%E9%95%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">固定步长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E6%AD%A5%E9%95%BF"><span class="nav-number">1.2.2.</span> <span class="nav-text">最优步长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E6%9C%BA%E6%9D%A1%E4%BB%B6%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.3.</span> <span class="nav-text">停机条件的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">二次型函数的最速下降梯度法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text">收敛性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E6%AD%A5%E9%95%BF-1"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">固定步长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">最速下降</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.6.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matlab"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">MATLAB</span></a></li></ol></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
 
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa-thin fa-atom-simple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
     </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">165k</span>
-    <span class="post-meta-divider">|</span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">161k</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:30</span>
+    <span title="Reading time total">2:27</span>
+  </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  
-      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
 
-    
+
+
+
+
 
   
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
-      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

@@ -2,34 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
   <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="">
-
+<link rel="stylesheet" href="[object Object]">
 
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"falt"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="1: 计算积分 \[ \int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. \]">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1: 计算积分 $$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. $$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus review Day9">
 <meta property="og:url" content="http://example.com/2022/09/12/calculus/Calculus-review-Day9/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="1: 计算积分 \[ \int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. \]">
+<meta property="og:description" content="1: 计算积分 $$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta. $$">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-12T13:56:36.000Z">
 <meta property="article:modified_time" content="2022-09-21T07:42:21.315Z">
@@ -37,21 +35,18 @@
 <meta property="article:tag" content="Jacobi Determinant">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="http://example.com/2022/09/12/calculus/Calculus-review-Day9/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>Calculus review Day9 | XBD</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/12/calculus/Calculus-review-Day9/","path":"2022/09/12/calculus/Calculus-review-Day9/","title":"Calculus review Day9"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Calculus review Day9 | XBD</title>
   
+
+
 
 
 
@@ -59,187 +54,214 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">XBD</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        
-      
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
-    </header>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  <div class="reading-progress-bar"></div>
+  </aside>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    </div>
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/12/calculus/Calculus-review-Day9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Baoduo Xu">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Calculus review Day9 | XBD">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Calculus review Day9
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-12 21:56:36" itemprop="dateCreated datePublished" datetime="2022-09-12T21:56:36+08:00">2022-09-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-21 15:42:21" itemprop="dateModified" datetime="2022-09-21T15:42:21+08:00">2022-09-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
+        <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2022/09/12/calculus/Calculus-review-Day9/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/12/calculus/Calculus-review-Day9/" itemprop="commentCount"></span>
-    </a>
-  </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-12 21:56:36" itemprop="dateCreated datePublished" datetime="2022-09-12T21:56:36+08:00">2022-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-21 15:42:21" itemprop="dateModified" datetime="2022-09-21T15:42:21+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a>
+        </span>
+    </span>
+
   
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.6k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
-            </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>5.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -247,60 +269,39 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>1: 计算积分 <span class="math display">\[
-\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta
-\mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta.
-\]</span> <span id="more"></span></p>
-<p><strong><em>SOL1</em></strong> 不难发现该积分(记作 <span
-class="math inline">\(I\)</span> ) 可以写成曲面积分的形式: <span
-class="math display">\[
-I=\iint_{\Sigma}\mathrm{e}^{x-y}\mathrm{d}S.
-\]</span> 其中 <span class="math inline">\(\Sigma\)</span>
-为单位球面.</p>
-<p>于是 <span class="math display">\[
-I=2\iint_{x^2+y^2\le
-1}\frac{\mathrm{e}^{x-y}}{\sqrt{1-x^2-y^2}}\mathrm{d}x\mathrm{d}y
-\]</span></p>
-<blockquote>
+    <div class="post-body" itemprop="articleBody"><p>1: 计算积分</p>
+<div class="markdown-them-math-block">$$\int_0^{2\pi}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sin\theta(\cos\phi-\sin\phi)}\mathrm{d}\theta.
+$$</div><span id="more"></span>
+<p><em><strong>SOL1</strong></em> 不难发现该积分(记作 <span class="markdown-them-math-inline">$I$</span> ) 可以写成曲面积分的形式:</p>
+<div class="markdown-them-math-block">$$I=\iint_{\Sigma}\mathrm{e}^{x-y}\mathrm{d}S.
+$$</div><p>其中 <span class="markdown-them-math-inline">$\Sigma$</span> 为单位球面.</p>
+<p>于是</p>
+<div class="markdown-them-math-block">$$I=2\iint_{x^2+y^2\le 1}\frac{\mathrm{e}^{x-y}}{\sqrt{1-x^2-y^2}}\mathrm{d}x\mathrm{d}y
+$$</div><blockquote>
 <p>好菜, 自己做的时候写到这一步就不会了, 还在想着用极坐标.</p>
 </blockquote>
-<p>考虑将积分区域绕原点逆时针旋转 <span
-class="math inline">\(\pi/4,\)</span> 将指数部分变为单项式(更好处理),
-此时积分区域和分母不发生变化, 即令 <span class="math display">\[
-[u,v]^T=\begin{bmatrix}
+<p>考虑将积分区域绕原点逆时针旋转 <span class="markdown-them-math-inline">$\pi/4,$</span> 将指数部分变为单项式(更好处理), 此时积分区域和分母不发生变化, 即令</p>
+<div class="markdown-them-math-block">$$[u,v]^T=\begin{bmatrix}
 \cos\pi/4&amp;-\sin\pi/4\\
 \sin\pi/4&amp;\cos\pi/4
 \end{bmatrix}[x,y]^{T}
-\]</span> 得到 <span
-class="math inline">\(x-y=\sqrt{2}u,x+y=\sqrt{2}v,\left\vert
-\frac{\partial(x,y)}{\partial(u,v)}\right\vert =1.\)</span> 于是积分变为
-<span class="math display">\[
-\begin{aligned}
+$$</div><p>得到 <span class="markdown-them-math-inline">$x-y=\sqrt{2}u,x+y=\sqrt{2}v,\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert =1.$</span> 于是积分变为</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 I
-&amp;=2\iint_{u^2+v^2\le
-1}\frac{\mathrm{e}^{\sqrt{2}u}}{\sqrt{1-u^2-v^2}}\mathrm{d}u\mathrm{d}v\\
+&amp;=2\iint_{u^2+v^2\le 1}\frac{\mathrm{e}^{\sqrt{2}u}}{\sqrt{1-u^2-v^2}}\mathrm{d}u\mathrm{d}v\\
 &amp;=2\int_{-1}^1\mathrm{e}^{\sqrt{2}u}\mathrm{d}u\int_{-\sqrt{1-u^2}}^{\sqrt{1-u^2}}\frac{1}{\sqrt{1-u^2-v^2}}\mathrm{d}v\\
 &amp;=\sqrt{2}\pi(\mathrm{e}^{\sqrt{2}}-\mathrm{e}^{-\sqrt{2}})  \\
 &amp;=2\sqrt{2}\pi\sinh\sqrt{2}
 \end{aligned}
-\]</span> <span class="math inline">\(\square\)</span></p>
+$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
 <blockquote>
-<p><strong><em>REMARK</em></strong>: 总结就是, 不要用球坐标和极坐标.
-原式本来就是曲面积分利用球坐标化简出来的, 所以就老老实实在 <span
-class="math inline">\(xOy\)</span> 上做就好了.
-不过结果可以写成双曲正弦的形式, 应该也可以用双曲代换.</p>
+<p><em><strong>REMARK</strong></em>: 总结就是, 不要用球坐标和极坐标. 原式本来就是曲面积分利用球坐标化简出来的, 所以就老老实实在 <span class="markdown-them-math-inline">$xOy$</span> 上做就好了. 不过结果可以写成双曲正弦的形式, 应该也可以用双曲代换.</p>
 <p>复习一下重积分的换元.</p>
-<p>对于二重积分 <span class="math inline">\(\displaystyle
-\iint_{D}f(x,y)\mathrm{d}x\mathrm{d}y,\)</span> 若做换元 <span
-class="math inline">\(x=f(u,v),y=g(u,v),\)</span> 则 <span
-class="math display">\[
-\mathrm{d}x=f_u \mathrm{d}u+f_v\mathrm{d}v\\
+<p>对于二重积分 <span class="markdown-them-math-inline">$\displaystyle \iint_{D}f(x,y)\mathrm{d}x\mathrm{d}y,$</span> 若做换元 <span class="markdown-them-math-inline">$x=f(u,v),y=g(u,v),$</span> 则</p>
+<div class="markdown-them-math-block">$$\mathrm{d}x=f_u \mathrm{d}u+f_v\mathrm{d}v\\
 \mathrm{d}y=g_u \mathrm{d}u+g_v\mathrm{d}v
-\]</span> 即 <span class="math display">\[
-\begin{bmatrix}
+$$</div><p>即</p>
+<div class="markdown-them-math-block">$$\begin{bmatrix}
 \mathrm{d}x\\
 \mathrm{d}y
 \end{bmatrix}
@@ -311,171 +312,93 @@ g_u &amp; g_v
 \mathrm{d}u\\
 \mathrm{d}v
 \end{bmatrix}
-\]</span> <span class="math inline">\(\mathrm{d}u,\mathrm{d}v\)</span>
-可近似看作直线, 于是面积微元从 <span
-class="math inline">\(\mathrm{d}x,\mathrm{d}y\)</span>
-张成的平行四边形变成了 <span
-class="math inline">\(\mathrm{d}u,\mathrm{d}v\)</span> 张成的平行四边形,
-它们的面积比为线性变换对应矩阵的行列式, 即Jacobi行列式: <span
-class="math display">\[
-\vert J\vert =\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert
-=\begin{vmatrix}
+$$</div><p><span class="markdown-them-math-inline">$\mathrm{d}u,\mathrm{d}v$</span> 可近似看作直线, 于是面积微元从 <span class="markdown-them-math-inline">$\mathrm{d}x,\mathrm{d}y$</span> 张成的平行四边形变成了 <span class="markdown-them-math-inline">$\mathrm{d}u,\mathrm{d}v$</span> 张成的平行四边形, 它们的面积比为线性变换对应矩阵的行列式, 即Jacobi行列式:</p>
+<div class="markdown-them-math-block">$$\vert J\vert =\left\vert \frac{\partial(x,y)}{\partial(u,v)}\right\vert =\begin{vmatrix}
 f_u &amp; f_v\\
 g_u &amp; g_v
 \end{vmatrix},
-\]</span> 即 <span class="math inline">\(\mathrm{d}x\mathrm{d}y=\vert
-J\vert \mathrm{d}u\mathrm{d}v.\)</span></p>
-<p>或者更本质些, <span
-class="math inline">\(\mathrm{d}x,\mathrm{d}y\)</span> 均为向量, <span
-class="math inline">\(\mathrm{d}x\mathrm{d}y\)</span>
-是一种特殊的叉乘即楔积(wedge product): <span
-class="math inline">\(\mathrm{d}x\wedge \mathrm{d}y,\)</span> 于是 <span
-class="math inline">\(\mathrm{d}u\land \mathrm{d}u=\mathrm{d}v\land
-\mathrm{d}v=0,\)</span> <span class="math inline">\(\mathrm{d}u\land
-\mathrm{d}v=-\mathrm{d}v\land \mathrm{d}u,\)</span> 于是 <span
-class="math display">\[
-\begin{aligned}
+$$</div><p>即 <span class="markdown-them-math-inline">$\mathrm{d}x\mathrm{d}y=\vert J\vert \mathrm{d}u\mathrm{d}v.$</span></p>
+<p>或者更本质些, <span class="markdown-them-math-inline">$\mathrm{d}x,\mathrm{d}y$</span> 均为向量, <span class="markdown-them-math-inline">$\mathrm{d}x\mathrm{d}y$</span> 是一种特殊的叉乘即楔积(wedge product): <span class="markdown-them-math-inline">$\mathrm{d}x\wedge \mathrm{d}y,$</span> 于是 <span class="markdown-them-math-inline">$\mathrm{d}u\land \mathrm{d}u=\mathrm{d}v\land \mathrm{d}v=0,$</span> <span class="markdown-them-math-inline">$\mathrm{d}u\land \mathrm{d}v=-\mathrm{d}v\land \mathrm{d}u,$</span> 于是</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 \mathrm{d}x\land \mathrm{d}y
-&amp;=(f_u\mathrm{d}u+f_v \mathrm{d}v)\land (g_u\mathrm{d}u+g_v
-\mathrm{d}v)\\
-&amp;=f_ug_u\mathrm{d}u\land
-\mathrm{d}v-f_vg_v\mathrm{d}u\land\mathrm{d}v\\
+&amp;=(f_u\mathrm{d}u+f_v \mathrm{d}v)\land (g_u\mathrm{d}u+g_v \mathrm{d}v)\\
+&amp;=f_ug_u\mathrm{d}u\land \mathrm{d}v-f_vg_v\mathrm{d}u\land\mathrm{d}v\\
 &amp;=(f_ug_u-f_vg_v)\mathrm{d}u\land \mathrm{d}v\\
 &amp;=\begin{vmatrix}
 f_u &amp; f_v\\
 g_u &amp; g_v
 \end{vmatrix}\mathrm{d}u\land \mathrm{d}v
 \end{aligned}
-\]</span> 不过为什么在积分的时候可以认为 <span
-class="math inline">\(\mathrm{d}u\mathrm{d}v=\mathrm{d}v\mathrm{d}u\)</span>
-呢?</p>
-<p>一个比较清晰的理解Jacobi行列式的回答: <a
-target="_blank" rel="noopener" href="https://www.zhihu.com/question/318504273/answer/639295875">雅可比行列式该如何理解?
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.zhihu.com/question/368888687">直角坐标与极坐标的互化中，为什么
-dxdy=rdrdθ？ - 知乎 (zhihu.com)</a></p>
-<p>本题来源: <a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44949135/article/details/109584486">2019年
-第11届 全国大学生数学竞赛 初赛(非数学类)试题详细解答</a></p>
+$$</div><p>不过为什么在积分的时候可以认为 <span class="markdown-them-math-inline">$\mathrm{d}u\mathrm{d}v=\mathrm{d}v\mathrm{d}u$</span> 呢?</p>
+<p>一个比较清晰的理解Jacobi行列式的回答: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/318504273/answer/639295875">雅可比行列式该如何理解? - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/368888687">直角坐标与极坐标的互化中，为什么 dxdy=rdrdθ？ - 知乎 (zhihu.com)</a></p>
+<p>本题来源: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44949135/article/details/109584486">2019年 第11届 全国大学生数学竞赛 初赛(非数学类)试题详细解答</a></p>
 <p>有时间把Jacobi矩阵和Jacobi行列式总结一下.</p>
 </blockquote>
-<p><strong><em>SOL2</em></strong></p>
+<p><em><strong>SOL2</strong></em></p>
 <blockquote>
-<p>看到 <span class="math inline">\(\sin\phi-\cos\phi\)</span>
-这种东西怎么会想不到辅助角公式换元呢(</p>
+<p>看到 <span class="markdown-them-math-inline">$\sin\phi-\cos\phi$</span> 这种东西怎么会想不到辅助角公式换元呢(</p>
 </blockquote>
-<p><span class="math display">\[
-\begin{aligned}
+<div class="markdown-them-math-block">$$\begin{aligned}
 I
-&amp;\xlongequal{\phi\mapsto\phi+\pi/4}\int_{\pi/4}^{9\pi/4}\mathrm{d}\phi\int_0^{\pi}\sin\theta
-\mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta\\
-&amp;=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{\pi/2}\sin\theta
-\mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta
+&amp;\xlongequal{\phi\mapsto\phi+\pi/4}\int_{\pi/4}^{9\pi/4}\mathrm{d}\phi\int_0^{\pi}\sin\theta \mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta\\
+&amp;=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{\pi/2}\sin\theta \mathrm{e}^{\sqrt{2}\sin\theta\cos\phi}\mathrm{d}\theta
 \end{aligned}
-\]</span></p>
-<p>这个式子还是能联想到极坐标, 作换元 <span class="math inline">\(\sin
-\theta=r,\)</span> 就有 <span class="math display">\[
-I=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{1}
-\frac{\mathrm{e}^{\sqrt{2}r\cos\phi}}{\sqrt{1-r^2}}r\mathrm{d}r,
-\]</span> 更明显了, 化成二重积分后用直角坐标计算即可, 剩下的和
-<strong><em>SOL1</em></strong> 一样. <span
-class="math inline">\(\square\)</span></p>
+$$</div><p>这个式子还是能联想到极坐标, 作换元 <span class="markdown-them-math-inline">$\sin \theta=r,$</span> 就有</p>
+<div class="markdown-them-math-block">$$I=2\int_{0}^{2\pi}\mathrm{d}\phi\int_0^{1} \frac{\mathrm{e}^{\sqrt{2}r\cos\phi}}{\sqrt{1-r^2}}r\mathrm{d}r,
+$$</div><p>更明显了, 化成二重积分后用直角坐标计算即可, 剩下的和 <em><strong>SOL1</strong></em> 一样. <span class="markdown-them-math-inline">$\square$</span></p>
 <blockquote>
-<p><strong><em>REMARK</em></strong>: 1) 看到 <span
-class="math inline">\([0,\pi]\)</span>
-上的三角函数的积分会很自然地将其化到 <span
-class="math inline">\([0,\pi/2]\)</span> 上, 即 <span
-class="math display">\[
-\int_0^\pi f(\sin\theta)\mathrm{d}\theta=2\int_0^{\pi/2}
-f(\sin\theta)\mathrm{d}\theta.
-\]</span> 对称性易得.</p>
-<ol start="2" type="1">
-<li>对于周期为 <span class="math inline">\(T\)</span> 的周期函数 <span
-class="math inline">\(g(x)\)</span> 而言,
-它在任意一个周期上的积分都是一样的, 即 <span class="math display">\[
-\begin{aligned}\int_a^{a+T}g(x)\mathrm{d}x&amp;=\int_0^T
-g(x)\mathrm{d}x+\int_T^{a+T}g(x+T)\mathrm{d}{(x+T)}-\int_0^ag(x)\mathrm{d}x\\&amp;=\int_0^T
-g(x)\mathrm{d}x.\end{aligned}
-\]</span></li>
+<p><em><strong>REMARK</strong></em>: 1) 看到 <span class="markdown-them-math-inline">$[0,\pi]$</span> 上的三角函数的积分会很自然地将其化到 <span class="markdown-them-math-inline">$[0,\pi/2]$</span> 上, 即</p>
+<div class="markdown-them-math-block">$$\int_0^\pi f(\sin\theta)\mathrm{d}\theta=2\int_0^{\pi/2} f(\sin\theta)\mathrm{d}\theta.
+$$</div><p>对称性易得.</p>
+<ol start="2">
+<li>对于周期为 <span class="markdown-them-math-inline">$T$</span> 的周期函数 <span class="markdown-them-math-inline">$g(x)$</span> 而言, 它在任意一个周期上的积分都是一样的, 即</li>
 </ol>
-</blockquote>
-<p>2: 设 <span class="math display">\[
-u_n=\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n},n\ge 1.
-\]</span> 1) 证明 <span class="math inline">\(\{u_n\}\)</span> 收敛,
-并求其极限.</p>
-<p><strong><em>PROOF</em></strong> 由于 <span
-class="math inline">\(1/(1+t^4)&lt;1,\)</span> 故 <span
-class="math inline">\(1/(1+t^4)^n&gt;1/(1+t^4)^{n+1},\)</span> 因此
-<span class="math inline">\(\{u_n\}\)</span> 递减, 且 <span
-class="math display">\[
-\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}&gt;0,
-\]</span> 故 <span class="math inline">\(\{u_n\}\)</span>
-单调递减有下界, 收敛. 取任意 <span
-class="math inline">\(\varepsilon\in(0,1),\)</span> 有 <span
-class="math display">\[
-\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}=\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}+\int_\varepsilon^1\frac{\mathrm{d}t}{(1+t^4)^n}
-\]</span> 对于第二项, 由积分中值定理得 <span class="math display">\[
-\lim_{n\to\infty}\int_\varepsilon^{1}\frac{\mathrm{d}t}{(1+t^4)^n}=\lim_{n\to\infty}\frac{1}{(1+\xi_n^4)^n}=0,\xi_n\in(\varepsilon,1).
-\]</span></p>
-<blockquote>
-<p>不能直接用积分中值定理是因为若 <span
-class="math inline">\(\{\xi_n\}\)</span> 收敛至 <span
-class="math inline">\(0,\)</span> 那么上式就变为了 <span
-class="math inline">\(1^{\infty}\)</span> 的不定式.</p>
-</blockquote>
-<p>对于第一项, 当 <span class="math inline">\(n\)</span> 充分大时, 有
-<span class="math display">\[
-\left\vert \int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}\right\vert
-&lt;\varepsilon,
-\]</span> 于是 <span class="math display">\[
-\lim_{n\to\infty}\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}=0,
-\]</span> 这就证得了 <span class="math inline">\(\lim_{n\to\infty
-}u_n=0.\)</span> <span class="math inline">\(\square\)</span></p>
-<ol start="2" type="1">
-<li>证明级数 <span class="math inline">\(\displaystyle
-\sum_{n=1}^{\infty}(-1)^nu_n\)</span> 条件收敛.</li>
+<div class="markdown-them-math-block">$$\begin{aligned}\int_a^{a+T}g(x)\mathrm{d}x&amp;=\int_0^T g(x)\mathrm{d}x+\int_T^{a+T}g(x+T)\mathrm{d}{(x+T)}-\int_0^ag(x)\mathrm{d}x\\&amp;=\int_0^T g(x)\mathrm{d}x.\end{aligned}
+$$</div></blockquote>
+<p>2: 设</p>
+<div class="markdown-them-math-block">$$u_n=\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n},n\ge 1.
+$$</div><ol>
+<li>证明 <span class="markdown-them-math-inline">$\{u_n\}$</span> 收敛, 并求其极限.</li>
 </ol>
-<p><strong><em>PROOF</em></strong> <span
-class="math inline">\(\{u_n\}\)</span> 为正项数列且递减且极限为 <span
-class="math inline">\(0,\)</span> 于是由Leibniz判别法知其收敛. <span
-class="math inline">\(\square\)</span></p>
-<p>3)证明级数 <span class="math inline">\(\displaystyle
-\sum_{n=1}^{\infty}\frac{u_n}{n^p}\)</span> 在 <span
-class="math inline">\(p\ge 1\)</span> 时收敛, 并求 <span
-class="math inline">\(\displaystyle
-\sum_{n=1}^{\infty}\frac{u_n}{n}\)</span> 的值.</p>
-<p><strong><em>PROOF</em></strong> 由于 <span
-class="math inline">\(0&lt;u_n&lt; 1(n\ge 1),\)</span> 于是 <span
-class="math display">\[
-\sum_{n=1}^{\infty}\frac{u_n}{n^p}&lt;\frac{1}{n^p},
-\]</span> 后者为 <span class="math inline">\(p\)</span> 级数在 <span
-class="math inline">\(p&gt;1\)</span> 时收敛. 下面证明 <span
-class="math inline">\(p=1\)</span> 时的情况.</p>
-<p>利用分部积分可以求出递推公式: <span class="math display">\[
-u_{n+1}=\frac{4n-1}{4n}u_n+\frac{1}{2^n}
-\]</span> 得到 <span class="math display">\[
-\frac{u_n}{n}=4(u_n-u_{n+1})+\frac{1}{2^{n-2}}
-\]</span> 于是 <span class="math display">\[
-\sum_{n=1}^{\infty}\frac{u_n}{n}=4\sum_{n=1}^{\infty}(u_n-u_{n+1})+\sum_{n=1}^{\infty}\frac{1}{2^{n-2}}=4u_1+4.
-\]</span> <span class="math inline">\(u_1\)</span>
-是一个老生常谈的积分了, 令 <span
-class="math inline">\(\omega_k=\exp\mathrm{i}
-(2k-5)\pi/4,k=1,2,3,4,\)</span> 这是方程 <span
-class="math inline">\(x^4+1=0\)</span> 的四个根, 于是 <span
-class="math display">\[
-\begin{aligned}
+<p><em><strong>PROOF</strong></em> 由于 <span class="markdown-them-math-inline">$1/(1+t^4)&lt;1,$</span> 故 <span class="markdown-them-math-inline">$1/(1+t^4)^n&gt;1/(1+t^4)^{n+1},$</span> 因此 <span class="markdown-them-math-inline">$\{u_n\}$</span> 递减, 且</p>
+<div class="markdown-them-math-block">$$\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}&gt;0,
+$$</div><p>故 <span class="markdown-them-math-inline">$\{u_n\}$</span> 单调递减有下界, 收敛. 取任意 <span class="markdown-them-math-inline">$\varepsilon\in(0,1),$</span> 有</p>
+<div class="markdown-them-math-block">$$\int_0^1\frac{\mathrm{d}t}{(1+t^4)^n}=\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}+\int_\varepsilon^1\frac{\mathrm{d}t}{(1+t^4)^n}
+$$</div><p>对于第二项, 由积分中值定理得</p>
+<div class="markdown-them-math-block">$$\lim_{n\to\infty}\int_\varepsilon^{1}\frac{\mathrm{d}t}{(1+t^4)^n}=\lim_{n\to\infty}\frac{1}{(1+\xi_n^4)^n}=0,\xi_n\in(\varepsilon,1).
+$$</div><blockquote>
+<p>不能直接用积分中值定理是因为若 <span class="markdown-them-math-inline">$\{\xi_n\}$</span> 收敛至 <span class="markdown-them-math-inline">$0,$</span> 那么上式就变为了 <span class="markdown-them-math-inline">$1^{\infty}$</span> 的不定式.</p>
+</blockquote>
+<p>对于第一项, 当 <span class="markdown-them-math-inline">$n$</span> 充分大时, 有</p>
+<div class="markdown-them-math-block">$$\left\vert \int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}\right\vert &lt;\varepsilon,
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$\lim_{n\to\infty}\int_0^{\varepsilon}\frac{\mathrm{d}t}{(1+t^4)^n}=0,
+$$</div><p>这就证得了 <span class="markdown-them-math-inline">$\lim_{n\to\infty }u_n=0.$</span>  <span class="markdown-them-math-inline">$\square$</span></p>
+<ol start="2">
+<li>证明级数 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}(-1)^nu_n$</span> 条件收敛.</li>
+</ol>
+<p><em><strong>PROOF</strong></em> <span class="markdown-them-math-inline">$\{u_n\}$</span> 为正项数列且递减且极限为 <span class="markdown-them-math-inline">$0,$</span> 于是由Leibniz判别法知其收敛. <span class="markdown-them-math-inline">$\square$</span></p>
+<p>3)证明级数 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n^p}$</span> 在 <span class="markdown-them-math-inline">$p\ge 1$</span> 时收敛, 并求 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n}$</span> 的值.</p>
+<p><em><strong>PROOF</strong></em> 由于 <span class="markdown-them-math-inline">$0&lt;u_n&lt; 1(n\ge 1),$</span> 于是</p>
+<div class="markdown-them-math-block">$$\sum_{n=1}^{\infty}\frac{u_n}{n^p}&lt;\frac{1}{n^p},
+$$</div><p>后者为 <span class="markdown-them-math-inline">$p$</span> 级数在 <span class="markdown-them-math-inline">$p&gt;1$</span> 时收敛. 下面证明 <span class="markdown-them-math-inline">$p=1$</span> 时的情况.</p>
+<p>利用分部积分可以求出递推公式:</p>
+<div class="markdown-them-math-block">$$u_{n+1}=\frac{4n-1}{4n}u_n+\frac{1}{2^n}
+$$</div><p>得到</p>
+<div class="markdown-them-math-block">$$\frac{u_n}{n}=4(u_n-u_{n+1})+\frac{1}{2^{n-2}}
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$\sum_{n=1}^{\infty}\frac{u_n}{n}=4\sum_{n=1}^{\infty}(u_n-u_{n+1})+\sum_{n=1}^{\infty}\frac{1}{2^{n-2}}=4u_1+4.
+$$</div><p><span class="markdown-them-math-inline">$u_1$</span> 是一个老生常谈的积分了, 令 <span class="markdown-them-math-inline">$\omega_k=\exp\mathrm{i} (2k-5)\pi/4,k=1,2,3,4,$</span> 这是方程 <span class="markdown-them-math-inline">$x^4+1=0$</span> 的四个根, 于是</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 \int_0^1\frac{\mathrm{d}t}{1+t^4}
 &amp;=\int_0^1\frac{\mathrm{d}t}{(t-\omega_1)(t-\omega_2)(t-\omega_3)(t-\omega_4)}\\
 &amp;=\int_0^1\frac{\mathrm{d}t}{(t^2-\sqrt{2}t+1)(t^2+\sqrt{2}t+1)}\\
 &amp;=\frac{1}{2\sqrt{2}}\int_0^1\left(\frac{t+\sqrt{2}}{t^2+\sqrt{2}t+1}-\frac{t-\sqrt{2}}{t^2-\sqrt{2}t+1}\right)\mathrm{d}t\\
-&amp;=\left.\frac{1}{4\sqrt{2}}\ln\left\vert
-\frac{t^2+\sqrt{2}t+1}{t^2-\sqrt{2}t+1}\right\vert
-+\frac{1}{2\sqrt{2}}\arctan\frac{\sqrt{2}t}{1-t^2}\right\vert _0^1\\
+&amp;=\left.\frac{1}{4\sqrt{2}}\ln\left\vert \frac{t^2+\sqrt{2}t+1}{t^2-\sqrt{2}t+1}\right\vert +\frac{1}{2\sqrt{2}}\arctan\frac{\sqrt{2}t}{1-t^2}\right\vert _0^1\\
 &amp;=\frac{1}{4\sqrt{2}}\ln\frac{2+\sqrt{2}}{2-\sqrt{2}}+\frac{\pi}{4\sqrt{2}}
 \end{aligned}
-\]</span> 代入即得 <span class="math inline">\(\displaystyle
-\sum_{n=1}^{\infty}\frac{u_n}{n}.\)</span></p>
+$$</div><p>代入即得 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{u_n}{n}.$</span></p>
 <blockquote>
 <p>计算能力有待加强.</p>
 </blockquote>
@@ -486,303 +409,110 @@ class="math display">\[
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Jacobi-Determinant/" rel="tag"># Jacobi Determinant</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/09/10/calculus/Calculus-review-Day8/" rel="prev" title="Calculus review Day8">
-      <i class="fa fa-chevron-left"></i> Calculus review Day8
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/09/13/calculus/Calculus-review-Day10/" rel="next" title="Calculus review Day10">
-      Calculus review Day10 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/10/calculus/Calculus-review-Day8/" rel="prev" title="Calculus review Day8">
+                  <i class="fa fa-angle-left"></i> Calculus review Day8
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/13/calculus/Calculus-review-Day10/" rel="next" title="Calculus review Day10">
+                  Calculus review Day10 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
           </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">39</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
 
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa-thin fa-atom-simple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
     </span>
-      <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">165k</span>
-    <span class="post-meta-divider">|</span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">161k</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">2:30</span>
+    <span title="Reading time total">2:27</span>
+  </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+    </div>
+  </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  
-      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    window.MathJax = {
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
 
-    
+
+
+
+
 
   
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : true,
-      appId      : '5tA44WzshqSYTe1o3UZ69rbG-gzGzoHsz',
-      appKey     : 'mKQ1yQvoXZgY9Fhki3p08I8o',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>
