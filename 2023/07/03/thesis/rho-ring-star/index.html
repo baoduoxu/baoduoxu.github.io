@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Robust Ring-Star Problem Definition of Ring-Star Problem 对于混合图$G&#x3D;(V,E\cup A)$, 设$V&#x3D;[n]$, 顶点$1$表示depot, 无向边集$E&#x3D;\{(i,j)\in V^2:i&lt;j\}$, 有向边集$A&#x3D;V^2$. Ring-Star problem分为ring part和star part, 即需要构造一个包括下面">
+    <meta name="description" content="Robust Ring-Star Problem Definition of Ring-Star Problem 对于混合图\(G&#x3D;(V,E\cup A)\), 设\(V&#x3D;[n]\), 顶点\(1\)表示depot, 无向边集\(E&#x3D;\{(i,j)\in V^2:i&lt;j\}\), 有向边集\(A&#x3D;V^2\). Ring-Star problem分为ring part和star par">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rho-ring-star.md">
 <meta property="og:url" content="http://example.com/2023/07/03/thesis/rho-ring-star/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="Robust Ring-Star Problem Definition of Ring-Star Problem 对于混合图$G&#x3D;(V,E\cup A)$, 设$V&#x3D;[n]$, 顶点$1$表示depot, 无向边集$E&#x3D;\{(i,j)\in V^2:i&lt;j\}$, 有向边集$A&#x3D;V^2$. Ring-Star problem分为ring part和star part, 即需要构造一个包括下面">
+<meta property="og:description" content="Robust Ring-Star Problem Definition of Ring-Star Problem 对于混合图\(G&#x3D;(V,E\cup A)\), 设\(V&#x3D;[n]\), 顶点\(1\)表示depot, 无向边集\(E&#x3D;\{(i,j)\in V^2:i&lt;j\}\), 有向边集\(A&#x3D;V^2\). Ring-Star problem分为ring part和star par">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-03T15:18:39.000Z">
 <meta property="article:modified_time" content="2023-07-19T09:23:39.193Z">
@@ -142,7 +142,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#robust-ring-star%20problem"><span class="nav-number">1.</span> <span class="nav-text">Robust Ring-Star Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of%20ring-star%20problem"><span class="nav-number">1.1.</span> <span class="nav-text">Definition of Ring-Star Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robust-rsp"><span class="nav-number">1.2.</span> <span class="nav-text">Robust RSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ilp%E8%A1%A8%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">ILP表述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Notation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8benders-decomposition"><span class="nav-number">1.4.</span> <span class="nav-text">使用Benders Decomposition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">子问题的对偶问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">一个算法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#robust-ring-star-problem"><span class="nav-number">1.</span> <span class="nav-text">Robust Ring-Star Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-ring-star-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Definition of Ring-Star
+Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robust-rsp"><span class="nav-number">1.2.</span> <span class="nav-text">Robust RSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ilp%E8%A1%A8%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">ILP表述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Notation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8benders-decomposition"><span class="nav-number">1.4.</span> <span class="nav-text">使用Benders Decomposition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">子问题的对偶问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">一个算法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,7 +240,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.6k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -256,41 +257,132 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="robust-ring-star problem">Robust Ring-Star Problem</h1>
-<h2 id="definition-of ring-star problem">Definition of Ring-Star Problem</h2>
-<p>对于混合图<span class="markdown-them-math-inline">$G=(V,E\cup A)$</span>, 设<span class="markdown-them-math-inline">$V=[n]$</span>, 顶点<span class="markdown-them-math-inline">$1$</span>表示depot, 无向边集<span class="markdown-them-math-inline">$E=\{(i,j)\in V^2:i&lt;j\}$</span>, 有向边集<span class="markdown-them-math-inline">$A=V^2$</span>.</p>
-<p>Ring-Star problem分为ring part和star part, 即需要构造一个包括下面两部分的网络:</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="robust-ring-star-problem">Robust Ring-Star Problem</h1>
+<h2 id="definition-of-ring-star-problem">Definition of Ring-Star
+Problem</h2>
+<p>对于混合图<span class="math inline">\(G=(V,E\cup A)\)</span>, 设<span
+class="math inline">\(V=[n]\)</span>, 顶点<span
+class="math inline">\(1\)</span>表示depot, 无向边集<span
+class="math inline">\(E=\{(i,j)\in V^2:i&lt;j\}\)</span>, 有向边集<span
+class="math inline">\(A=V^2\)</span>.</p>
+<p>Ring-Star problem分为ring part和star part,
+即需要构造一个包括下面两部分的网络:</p>
 <ul>
-<li>ring part: 从 <span class="markdown-them-math-inline">$V$</span> 中选出一个子集 <span class="markdown-them-math-inline">$H$</span> 作为hub的集合, 用无向边连接选出的所有的hub构成一个cycle. 打开hub <span class="markdown-them-math-inline">$i$</span> 的代价为<span class="markdown-them-math-inline">$o_i\in\mathbb{R}_{+}$</span>; 连接hub <span class="markdown-them-math-inline">$i$</span> 和hub <span class="markdown-them-math-inline">$j$</span> 的代价为<span class="markdown-them-math-inline">$r_{ij}\in\mathbb{R}_+$</span>, 保证depot在<span class="markdown-them-math-inline">$H$</span>中.</li>
-<li>star part: 除了hub以外的顶点作为terminal, 记作 <span class="markdown-them-math-inline">$T=V\backslash H$</span>, 保证terminal必须恰好与 <span class="markdown-them-math-inline">$H$</span> 中的<strong>一个</strong>hub使用有向边相连(由terminal指向hub), 对于 <span class="markdown-them-math-inline">$t\in T,h\in H$</span>, 连接 <span class="markdown-them-math-inline">$t,h$</span> 的代价为<span class="markdown-them-math-inline">$s_{th}\in\mathbb{R}_+$</span>. 即构造星型拓扑.</li>
+<li>ring part: 从 <span class="math inline">\(V\)</span> 中选出一个子集
+<span class="math inline">\(H\)</span> 作为hub的集合,
+用无向边连接选出的所有的hub构成一个cycle. 打开hub <span
+class="math inline">\(i\)</span> 的代价为<span
+class="math inline">\(o_i\in\mathbb{R}_{+}\)</span>; 连接hub <span
+class="math inline">\(i\)</span> 和hub <span
+class="math inline">\(j\)</span> 的代价为<span
+class="math inline">\(r_{ij}\in\mathbb{R}_+\)</span>, 保证depot在<span
+class="math inline">\(H\)</span>中.</li>
+<li>star part: 除了hub以外的顶点作为terminal, 记作 <span
+class="math inline">\(T=V\backslash H\)</span>, 保证terminal必须恰好与
+<span class="math inline">\(H\)</span>
+中的<strong>一个</strong>hub使用有向边相连(由terminal指向hub), 对于
+<span class="math inline">\(t\in T,h\in H\)</span>, 连接 <span
+class="math inline">\(t,h\)</span> 的代价为<span
+class="math inline">\(s_{th}\in\mathbb{R}_+\)</span>.
+即构造星型拓扑.</li>
 </ul>
 <p>RSP的目的就是最小化构造Ring-Star网络的代价.</p>
-<p>上述定义中的“一个terminal必须恰好与一个hub连接”可以推广为 <span class="markdown-them-math-inline">$k$</span> 个, 表示 <span class="markdown-them-math-inline">$k$</span> edge-connected, 即每两个terminal之间恰有 <span class="markdown-them-math-inline">$k$</span> 条path.</p>
-<p>RSP是NP-hard的, 如果assignment cost <span class="markdown-them-math-inline">$\gg$</span> ring cost, 那么TSP将是RSP的一个特例.</p>
+<p>上述定义中的“一个terminal必须恰好与一个hub连接”可以推广为 <span
+class="math inline">\(k\)</span> 个, 表示 <span
+class="math inline">\(k\)</span> edge-connected,
+即每两个terminal之间恰有 <span class="math inline">\(k\)</span>
+条path.</p>
+<p>RSP是NP-hard的, 如果assignment cost <span
+class="math inline">\(\gg\)</span> ring cost,
+那么TSP将是RSP的一个特例.</p>
 <h2 id="robust-rsp">Robust RSP</h2>
-<p>Robust RSP记作<span class="markdown-them-math-inline">$\rho$</span>-RSP, 相比RSP增加一个输入<span class="markdown-them-math-inline">$\widetilde{V}\subseteq V$</span>表示如果<span class="markdown-them-math-inline">$v\in\widetilde{V}$</span> 被选中作为hub, 那么它是不稳定的, 即可能会fail, 于是为了保证网络的健壮性, 需要将不稳定的hub的neighbors相连.</p>
+<p>Robust RSP记作<span class="math inline">\(\rho\)</span>-RSP,
+相比RSP增加一个输入<span class="math inline">\(\widetilde{V}\subseteq
+V\)</span>表示如果<span class="math inline">\(v\in\widetilde{V}\)</span>
+被选中作为hub, 那么它是不稳定的, 即可能会fail, 于是为了保证网络的健壮性,
+需要将不稳定的hub的neighbors相连.</p>
 <h2 id="ilp表述">ILP表述</h2>
 <h3 id="notation">Notation</h3>
 <ul>
-<li><span class="markdown-them-math-inline">$r_{ij}$</span> 表示连接hub <span class="markdown-them-math-inline">$i,j$</span> 的花费</li>
-<li><span class="markdown-them-math-inline">$x_{ij}$</span> 用来描述不考虑hub的不稳定性时hub之间是否有边相连, 由于hub之间相连构成的子图是一个无向图, 因此约定 <span class="markdown-them-math-inline">$i&lt;j$</span>.</li>
-<li><span class="markdown-them-math-inline">$y_{ij}$</span> 表示是否将terminal <span class="markdown-them-math-inline">$i$</span> 连到hub <span class="markdown-them-math-inline">$j$</span> 上, 保证 <span class="markdown-them-math-inline">$i\ne j$</span>.</li>
-<li><span class="markdown-them-math-inline">$y_{ii}$</span> 为 <span class="markdown-them-math-inline">$0$</span> 是表示结点 <span class="markdown-them-math-inline">$i$</span> 为termianl, 为 <span class="markdown-them-math-inline">$1$</span> 表示结点 <span class="markdown-them-math-inline">$i$</span> 是 hub.</li>
-<li><span class="markdown-them-math-inline">$x_{ik}'$</span> 表示考虑hub的不稳定时, 若 <span class="markdown-them-math-inline">$\exists\tilde{v}\in\widetilde{V},\text{s.t. }\tilde{v}\in N(i)\cap N(k)$</span>, 则 <span class="markdown-them-math-inline">$x_{ik}=1$</span>, 否则为 <span class="markdown-them-math-inline">$0$</span>.</li>
+<li><span class="math inline">\(r_{ij}\)</span> 表示连接hub <span
+class="math inline">\(i,j\)</span> 的花费</li>
+<li><span class="math inline">\(x_{ij}\)</span>
+用来描述不考虑hub的不稳定性时hub之间是否有边相连,
+由于hub之间相连构成的子图是一个无向图, 因此约定 <span
+class="math inline">\(i&lt;j\)</span>.</li>
+<li><span class="math inline">\(y_{ij}\)</span> 表示是否将terminal <span
+class="math inline">\(i\)</span> 连到hub <span
+class="math inline">\(j\)</span> 上, 保证 <span
+class="math inline">\(i\ne j\)</span>.</li>
+<li><span class="math inline">\(y_{ii}\)</span> 为 <span
+class="math inline">\(0\)</span> 是表示结点 <span
+class="math inline">\(i\)</span> 为termianl, 为 <span
+class="math inline">\(1\)</span> 表示结点 <span
+class="math inline">\(i\)</span> 是 hub.</li>
+<li><span class="math inline">\(x_{ik}&#39;\)</span>
+表示考虑hub的不稳定时, 若 <span
+class="math inline">\(\exists\tilde{v}\in\widetilde{V},\text{s.t.
+}\tilde{v}\in N(i)\cap N(k)\)</span>, 则 <span
+class="math inline">\(x_{ik}=1\)</span>, 否则为 <span
+class="math inline">\(0\)</span>.</li>
 </ul>
-<p>下面是问题的ILP描述:</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
-&amp;\min \sum_{i\in V}\sum_{j\in V\land i&lt;j} r_{ij}(x_{ij}+x_{ij}')+\sum_{i\in V}o_iy_{ii}+\sum_{i\in V}\sum_{j\in V\backslash\{i\}}s_{ij}y_{ij}
+<p>下面是问题的ILP描述: <span class="math display">\[
+\begin{aligned}
+&amp;\min \sum_{i\in V}\sum_{j\in V\land i&lt;j}
+r_{ij}(x_{ij}+x_{ij}&#39;)+\sum_{i\in V}o_iy_{ii}+\sum_{i\in
+V}\sum_{j\in V\backslash\{i\}}s_{ij}y_{ij}
 \end{aligned}
-$$</div><p>下面一一叙述优化问题的约束条件:</p>
+\]</span> 下面一一叙述优化问题的约束条件:</p>
 <ul>
-<li>首先需要保证所有的hub恰好形成一个环, 于是每个hub的度数应恰好为 <span class="markdown-them-math-inline">$2$</span>, 于是对任意 <span class="markdown-them-math-inline">$i$</span>, 都有 <span class="markdown-them-math-inline">$\sum_{j\in V\land i&lt;j}x_{ij}+\sum_{j\in V\land i&gt;j}x_{ji}=2y_{ii}$</span></li>
-<li>保证最终的RS网络只有一个hub形成的环, 而不会出现孤立的环, 考虑subtour elimination, 对任意 <span class="markdown-them-math-inline">$V$</span> 的子集 <span class="markdown-them-math-inline">$S$</span>, 有 <span class="markdown-them-math-inline">$\sum_{i\in S}\sum_{j\in S\land i&lt;j}x_{ij}\le |S|-1$</span>, 但是如果所有的hub都在 <span class="markdown-them-math-inline">$S$</span> 里. 那么上述约束的和式可以取到 <span class="markdown-them-math-inline">$|S|$</span>, 考虑将不等式右边的 <span class="markdown-them-math-inline">$1$</span> 改为 <span class="markdown-them-math-inline">$\frac{1}{|V\backslash S|}\sum_{i\in V\backslash S}y_{ii}\in [0,1]$</span>, 于是得到最终的subtour elimination: <span class="markdown-them-math-inline">$\sum_{i\in S}\sum_{j\in S\land i&lt;j}x_{ij}\le |S|-\frac{1}{|V\backslash S|}\sum_{i\in V\backslash S}y_{ii}$</span>. 在实际问题中hub和terminal的数量应合理, 这里设置成 <span class="markdown-them-math-inline">$|S|\le| V|/2$</span>.</li>
-<li>保证每个terminal要么与一个稳定的hub连接, 要么与两个不稳定的hub连接, 于是对任意结点 <span class="markdown-them-math-inline">$i$</span> 都有 <span class="markdown-them-math-inline">$\sum_{j\in V\backslash{\widetilde{V}}\land i\ne j}y_{ij}+\frac{1}{2}\sum_{j\in\widetilde{V}\land i\ne j}y_{ij}=1-y_{ii}$</span>. 上个式子保证了如果结点 <span class="markdown-them-math-inline">$i$</span> 是hub则 <span class="markdown-them-math-inline">$y_{ii}=1$</span> 则对任意 <span class="markdown-them-math-inline">$j$</span> 都有 <span class="markdown-them-math-inline">$y_{ij}=0$</span>.</li>
-<li>由于最小的环需要有三个边, 且若存在不稳定的hub, 则最终的RS网络的hub形成的子图应至少有4条边, 于是设置一个 <span class="markdown-them-math-inline">$\sigma$</span>, 那么有 <span class="markdown-them-math-inline">$\sum_{i\in V}\sum_{j\in V\land i&lt;j}x_{ij}\ge \sigma+3,$</span> 其中 <span class="markdown-them-math-inline">$\sigma \ge y_{ii},\forall i\in \widetilde{V}$</span>.</li>
-<li>与同一个不稳定的hub相连的两个hub需要增加一条边来确保稳定性, 对 <span class="markdown-them-math-inline">$j\in\widetilde{V}$</span>, <span class="markdown-them-math-inline">$i\in V, k\in V, i&lt;j$</span>, 若 <span class="markdown-them-math-inline">$i,k$</span>都与 <span class="markdown-them-math-inline">$j$</span> 相连, 则应有 <span class="markdown-them-math-inline">$x_{ik}'=1$</span>, 于是 <span class="markdown-them-math-inline">$x_{ik}'\ge x_{ij}+x_{jk}-1$</span>.</li>
-<li>不需要将任何terminal或者hub连接terminal上, 于是 <span class="markdown-them-math-inline">$y_{ij}\le y_{jj},\forall i\ne j$</span>. 这保证了若 <span class="markdown-them-math-inline">$y_{jj}=0$</span> 即结点 <span class="markdown-them-math-inline">$j$</span> 为terminal, 则 <span class="markdown-them-math-inline">$y_{ij}=0$</span>.</li>
-<li>还有其他简单的约束, 包括将第一个点作为depot: <span class="markdown-them-math-inline">$y_{11}=1$</span>, 以及各个变量为01变量的约束.</li>
+<li>首先需要保证所有的hub恰好形成一个环, 于是每个hub的度数应恰好为 <span
+class="math inline">\(2\)</span>, 于是对任意 <span
+class="math inline">\(i\)</span>, 都有 <span
+class="math inline">\(\sum_{j\in V\land i&lt;j}x_{ij}+\sum_{j\in V\land
+i&gt;j}x_{ji}=2y_{ii}\)</span></li>
+<li>保证最终的RS网络只有一个hub形成的环, 而不会出现孤立的环, 考虑subtour
+elimination, 对任意 <span class="math inline">\(V\)</span> 的子集 <span
+class="math inline">\(S\)</span>, 有 <span
+class="math inline">\(\sum_{i\in S}\sum_{j\in S\land i&lt;j}x_{ij}\le
+|S|-1\)</span>, 但是如果所有的hub都在 <span
+class="math inline">\(S\)</span> 里. 那么上述约束的和式可以取到 <span
+class="math inline">\(|S|\)</span>, 考虑将不等式右边的 <span
+class="math inline">\(1\)</span> 改为 <span
+class="math inline">\(\frac{1}{|V\backslash S|}\sum_{i\in V\backslash
+S}y_{ii}\in [0,1]\)</span>, 于是得到最终的subtour elimination: <span
+class="math inline">\(\sum_{i\in S}\sum_{j\in S\land i&lt;j}x_{ij}\le
+|S|-\frac{1}{|V\backslash S|}\sum_{i\in V\backslash S}y_{ii}\)</span>.
+在实际问题中hub和terminal的数量应合理, 这里设置成 <span
+class="math inline">\(|S|\le| V|/2\)</span>.</li>
+<li>保证每个terminal要么与一个稳定的hub连接, 要么与两个不稳定的hub连接,
+于是对任意结点 <span class="math inline">\(i\)</span> 都有 <span
+class="math inline">\(\sum_{j\in V\backslash{\widetilde{V}}\land i\ne
+j}y_{ij}+\frac{1}{2}\sum_{j\in\widetilde{V}\land i\ne
+j}y_{ij}=1-y_{ii}\)</span>. 上个式子保证了如果结点 <span
+class="math inline">\(i\)</span> 是hub则 <span
+class="math inline">\(y_{ii}=1\)</span> 则对任意 <span
+class="math inline">\(j\)</span> 都有 <span
+class="math inline">\(y_{ij}=0\)</span>.</li>
+<li>由于最小的环需要有三个边, 且若存在不稳定的hub,
+则最终的RS网络的hub形成的子图应至少有4条边, 于是设置一个 <span
+class="math inline">\(\sigma\)</span>, 那么有 <span
+class="math inline">\(\sum_{i\in V}\sum_{j\in V\land i&lt;j}x_{ij}\ge
+\sigma+3,\)</span> 其中 <span class="math inline">\(\sigma \ge
+y_{ii},\forall i\in \widetilde{V}\)</span>.</li>
+<li>与同一个不稳定的hub相连的两个hub需要增加一条边来确保稳定性, 对 <span
+class="math inline">\(j\in\widetilde{V}\)</span>, <span
+class="math inline">\(i\in V, k\in V, i&lt;j\)</span>, 若 <span
+class="math inline">\(i,k\)</span>都与 <span
+class="math inline">\(j\)</span> 相连, 则应有 <span
+class="math inline">\(x_{ik}&#39;=1\)</span>, 于是 <span
+class="math inline">\(x_{ik}&#39;\ge x_{ij}+x_{jk}-1\)</span>.</li>
+<li>不需要将任何terminal或者hub连接terminal上, 于是 <span
+class="math inline">\(y_{ij}\le y_{jj},\forall i\ne j\)</span>.
+这保证了若 <span class="math inline">\(y_{jj}=0\)</span> 即结点 <span
+class="math inline">\(j\)</span> 为terminal, 则 <span
+class="math inline">\(y_{ij}=0\)</span>.</li>
+<li>还有其他简单的约束, 包括将第一个点作为depot: <span
+class="math inline">\(y_{11}=1\)</span>,
+以及各个变量为01变量的约束.</li>
 </ul>
 <h2 id="使用benders-decomposition">使用Benders Decomposition</h2>
 <h2 id="子问题的对偶问题">子问题的对偶问题</h2>
@@ -346,13 +438,13 @@ $$</div><p>下面一一叙述优化问题的约束条件:</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

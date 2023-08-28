@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="T2为2019年的真题.  1：设 $f(x)$ 在 $\mathbb{R}$ 上任意阶可导, 且 $\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,$ 同时存在非负实数 $C$ 使得 $\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$ 求证: $f(x)\equiv 0.$">
+    <meta name="description" content="T2为2019年的真题.  1：设 \(f(x)\) 在 \(\mathbb{R}\) 上任意阶可导, 且 \(\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,\) 同时存在非负实数 \(C\) 使得 \(\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,\) 求证: \(f(x)\equiv 0.\)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus review Day10">
 <meta property="og:url" content="http://example.com/2022/09/13/calculus/Calculus-review-Day10/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="T2为2019年的真题.  1：设 $f(x)$ 在 $\mathbb{R}$ 上任意阶可导, 且 $\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,$ 同时存在非负实数 $C$ 使得 $\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$ 求证: $f(x)\equiv 0.$">
+<meta property="og:description" content="T2为2019年的真题.  1：设 \(f(x)\) 在 \(\mathbb{R}\) 上任意阶可导, 且 \(\forall n\in\mathbb{N},f^{(n)}(0)&#x3D;0,\) 同时存在非负实数 \(C\) 使得 \(\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,\) 求证: \(f(x)\equiv 0.\)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-13T14:56:47.000Z">
 <meta property="article:modified_time" content="2022-10-25T02:30:30.241Z">
@@ -251,7 +251,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.8k</span>
+      <span>3k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -271,56 +271,150 @@
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>T2为2019年的真题.</p>
 </blockquote>
-<p>1：设 <span class="markdown-them-math-inline">$f(x)$</span> 在 <span class="markdown-them-math-inline">$\mathbb{R}$</span> 上任意阶可导, 且 <span class="markdown-them-math-inline">$\forall n\in\mathbb{N},f^{(n)}(0)=0,$</span> 同时存在非负实数 <span class="markdown-them-math-inline">$C$</span> 使得 <span class="markdown-them-math-inline">$\forall x\in\mathbb{R},|f^{(n)}(x)|\le C^nn!,$</span> 求证: <span class="markdown-them-math-inline">$f(x)\equiv 0.$</span></p>
+<p>1：设 <span class="math inline">\(f(x)\)</span> 在 <span
+class="math inline">\(\mathbb{R}\)</span> 上任意阶可导, 且 <span
+class="math inline">\(\forall n\in\mathbb{N},f^{(n)}(0)=0,\)</span>
+同时存在非负实数 <span class="math inline">\(C\)</span> 使得 <span
+class="math inline">\(\forall x\in\mathbb{R},|f^{(n)}(x)|\le
+C^nn!,\)</span> 求证: <span class="math inline">\(f(x)\equiv
+0.\)</span></p>
 <span id="more"></span>
-<p><em><strong>PROOF</strong></em> 一眼Taylor.</p>
-<p><span class="markdown-them-math-inline">$C=0$</span> 时显然成立.</p>
-<p><span class="markdown-them-math-inline">$C&gt;0$</span> 时, 在 <span class="markdown-them-math-inline">$0$</span> 处展开 <span class="markdown-them-math-inline">$f(x),$</span> 有</p>
-<div class="markdown-them-math-block">$$f(x)=\frac{f^{(n)}{(\xi)}}{n!}x^n,
-$$</div><p><span class="markdown-them-math-inline">$\xi$</span> 在 <span class="markdown-them-math-inline">$0,x$</span> 之间,  于是取绝对值利用题干条件的不等式有</p>
-<div class="markdown-them-math-block">$$|f(x) |\le C^n|x^n|,
-$$</div><p>要使 <span class="markdown-them-math-inline">$f(x)=0$</span> 不难想到夹逼, 于是我们要保证 <span class="markdown-them-math-inline">$n\to\infty$</span> 时 <span class="markdown-them-math-inline">$|(Cx)^n|\to0,$</span> 这是很容易做到的, 只需要令 <span class="markdown-them-math-inline">$x\in(-1/C,1/C),$</span> 即 <span class="markdown-them-math-inline">$f(x)\equiv 0$</span> 在 <span class="markdown-them-math-inline">$(-1/C,1/C)$</span> 上成立. 现在我们可以取 <span class="markdown-them-math-inline">$x_0\in(0,1/C),$</span> 在 <span class="markdown-them-math-inline">$x_0$</span> 处进行上述过程, 并重复进行下去, <span class="markdown-them-math-inline">$f(x)\equiv0$</span> 的区间便可以覆盖整个坐标轴, 便能证得我们要证的结论.</p>
-<p>2: 设 <span class="markdown-them-math-inline">$f(x)\in D[0,+\infty),$</span> <span class="markdown-them-math-inline">$f(0)=0,$</span> 且存在常数 <span class="markdown-them-math-inline">$A&gt;0$</span> 使得 <span class="markdown-them-math-inline">$|f'(x)|\le A|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,+\infty)$</span> 上恒成立, 证明在 <span class="markdown-them-math-inline">$(0,+\infty)$</span> 上有 <span class="markdown-them-math-inline">$f(x)\equiv 0.$</span></p>
-<p><em><strong>PROOF1</strong></em> 取 <span class="markdown-them-math-inline">$x&gt;0,$</span> 在 <span class="markdown-them-math-inline">$(0,x)$</span> 上由Lagrange中值定理有 <span class="markdown-them-math-inline">$f'(\xi_{1})(x-0)=f(x)-f(0)$</span> 即 <span class="markdown-them-math-inline">$f'(\xi_{1})x=f(x),$</span> 其中 <span class="markdown-them-math-inline">$\xi_{1}\in(0,x).$</span> 于是 <span class="markdown-them-math-inline">$|f(x)|=|f'(\xi_{1})|x\le Ax|f(\xi_1)|.$</span> 令 <span class="markdown-them-math-inline">$x=1/2A,$</span> 于是</p>
-<div class="markdown-them-math-block">$$|f(x)|\le\frac{1}{2}|f(\xi_1)|\le\frac{1}{2^2}|f(\xi_2)|\le \cdots\le\frac{1}{2^n}|f(\xi_n)|,
-$$</div><p>其中 <span class="markdown-them-math-inline">$0&lt;\xi_n&lt;\xi_{n-1}&lt;\cdots&lt;\xi_1&lt;x,$</span> 于是 <span class="markdown-them-math-inline">$|f(\xi_n)|$</span> 有界, 因此 <span class="markdown-them-math-inline">$n\to\infty$</span> 时, 有 <span class="markdown-them-math-inline">$|f(x)|\le 0,$</span> 即 <span class="markdown-them-math-inline">$f(x)=0$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上成立. 现在我们可以在区间 <span class="markdown-them-math-inline">$(1/2A,2/2A],(2/2A,3/2A],\cdots$</span> 上采用相同的证法, 证得 <span class="markdown-them-math-inline">$f(x)=0$</span> 在 <span class="markdown-them-math-inline">$[0,+\infty)$</span> 上成立. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong><em>PROOF</em></strong> 一眼Taylor.</p>
+<p><span class="math inline">\(C=0\)</span> 时显然成立.</p>
+<p><span class="math inline">\(C&gt;0\)</span> 时, 在 <span
+class="math inline">\(0\)</span> 处展开 <span
+class="math inline">\(f(x),\)</span> 有 <span class="math display">\[
+f(x)=\frac{f^{(n)}{(\xi)}}{n!}x^n,
+\]</span> <span class="math inline">\(\xi\)</span> 在 <span
+class="math inline">\(0,x\)</span> 之间,
+于是取绝对值利用题干条件的不等式有 <span class="math display">\[
+|f(x) |\le C^n|x^n|,
+\]</span> 要使 <span class="math inline">\(f(x)=0\)</span> 不难想到夹逼,
+于是我们要保证 <span class="math inline">\(n\to\infty\)</span> 时 <span
+class="math inline">\(|(Cx)^n|\to0,\)</span> 这是很容易做到的, 只需要令
+<span class="math inline">\(x\in(-1/C,1/C),\)</span> 即 <span
+class="math inline">\(f(x)\equiv 0\)</span> 在 <span
+class="math inline">\((-1/C,1/C)\)</span> 上成立. 现在我们可以取 <span
+class="math inline">\(x_0\in(0,1/C),\)</span> 在 <span
+class="math inline">\(x_0\)</span> 处进行上述过程, 并重复进行下去, <span
+class="math inline">\(f(x)\equiv0\)</span> 的区间便可以覆盖整个坐标轴,
+便能证得我们要证的结论.</p>
+<p>2: 设 <span class="math inline">\(f(x)\in D[0,+\infty),\)</span>
+<span class="math inline">\(f(0)=0,\)</span> 且存在常数 <span
+class="math inline">\(A&gt;0\)</span> 使得 <span
+class="math inline">\(|f&#39;(x)|\le A|f(x)|\)</span> 在 <span
+class="math inline">\([0,+\infty)\)</span> 上恒成立, 证明在 <span
+class="math inline">\((0,+\infty)\)</span> 上有 <span
+class="math inline">\(f(x)\equiv 0.\)</span></p>
+<p><strong><em>PROOF1</em></strong> 取 <span
+class="math inline">\(x&gt;0,\)</span> 在 <span
+class="math inline">\((0,x)\)</span> 上由Lagrange中值定理有 <span
+class="math inline">\(f&#39;(\xi_{1})(x-0)=f(x)-f(0)\)</span> 即 <span
+class="math inline">\(f&#39;(\xi_{1})x=f(x),\)</span> 其中 <span
+class="math inline">\(\xi_{1}\in(0,x).\)</span> 于是 <span
+class="math inline">\(|f(x)|=|f&#39;(\xi_{1})|x\le
+Ax|f(\xi_1)|.\)</span> 令 <span class="math inline">\(x=1/2A,\)</span>
+于是 <span class="math display">\[
+|f(x)|\le\frac{1}{2}|f(\xi_1)|\le\frac{1}{2^2}|f(\xi_2)|\le
+\cdots\le\frac{1}{2^n}|f(\xi_n)|,
+\]</span> 其中 <span
+class="math inline">\(0&lt;\xi_n&lt;\xi_{n-1}&lt;\cdots&lt;\xi_1&lt;x,\)</span>
+于是 <span class="math inline">\(|f(\xi_n)|\)</span> 有界, 因此 <span
+class="math inline">\(n\to\infty\)</span> 时, 有 <span
+class="math inline">\(|f(x)|\le 0,\)</span> 即 <span
+class="math inline">\(f(x)=0\)</span> 在 <span
+class="math inline">\([0,1/2A]\)</span> 上成立. 现在我们可以在区间 <span
+class="math inline">\((1/2A,2/2A],(2/2A,3/2A],\cdots\)</span>
+上采用相同的证法, 证得 <span class="math inline">\(f(x)=0\)</span> 在
+<span class="math inline">\([0,+\infty)\)</span> 上成立. <span
+class="math inline">\(\square\)</span></p>
 <blockquote>
 <p>函数一阶可导时常用Lagrange中值定理和Rolle定理.</p>
 </blockquote>
-<p><em><strong>PROOF2</strong></em></p>
-<p>在求出 <span class="markdown-them-math-inline">$|f(x)|\le 1/2|f(\xi_1)|$</span> 后也可采用下面的做法.</p>
-<p>设 <span class="markdown-them-math-inline">$|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上的最大值为 <span class="markdown-them-math-inline">$M,$</span> 对应的取值为 <span class="markdown-them-math-inline">$x_0,$</span></p>
-<div class="markdown-them-math-block">$$M=|f(x_0)|\le 1/2|f(\xi) |\le M/2,
-$$</div><p>即 <span class="markdown-them-math-inline">$M\le 0,$</span> 于是 <span class="markdown-them-math-inline">$M=0,$</span> <span class="markdown-them-math-inline">$|f(x)|$</span> 在 <span class="markdown-them-math-inline">$[0,1/2A]$</span> 上的最大值为 <span class="markdown-them-math-inline">$0,$</span> 即 <span class="markdown-them-math-inline">$f(x)\equiv 0,$</span> 在区间 <span class="markdown-them-math-inline">$(1/2A,2/2A],(2/2A,3/2A],\cdots$</span> 上采用相同的证法可以证得最终结论. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong><em>PROOF2</em></strong></p>
+<p>在求出 <span class="math inline">\(|f(x)|\le 1/2|f(\xi_1)|\)</span>
+后也可采用下面的做法.</p>
+<p>设 <span class="math inline">\(|f(x)|\)</span> 在 <span
+class="math inline">\([0,1/2A]\)</span> 上的最大值为 <span
+class="math inline">\(M,\)</span> 对应的取值为 <span
+class="math inline">\(x_0,\)</span> <span class="math display">\[
+M=|f(x_0)|\le 1/2|f(\xi) |\le M/2,
+\]</span> 即 <span class="math inline">\(M\le 0,\)</span> 于是 <span
+class="math inline">\(M=0,\)</span> <span
+class="math inline">\(|f(x)|\)</span> 在 <span
+class="math inline">\([0,1/2A]\)</span> 上的最大值为 <span
+class="math inline">\(0,\)</span> 即 <span
+class="math inline">\(f(x)\equiv 0,\)</span> 在区间 <span
+class="math inline">\((1/2A,2/2A],(2/2A,3/2A],\cdots\)</span>
+上采用相同的证法可以证得最终结论. <span
+class="math inline">\(\square\)</span></p>
 <blockquote>
-<p>T1, T2的相似之处是限制不等式上界中的其中一个变量的范围(T1是令 <span class="markdown-them-math-inline">$|x|&lt;1/C,$</span> T2是令 <span class="markdown-them-math-inline">$x=1/2A$</span> 或 <span class="markdown-them-math-inline">$x\le 1/2A$</span> ), 让我们可以用极限求出精确的上界.</p>
-<p>这提供了一种证明 <span class="markdown-them-math-inline">$X\equiv 0$</span> 的方法: 构造出 <span class="markdown-them-math-inline">$|X|&lt;a_n$</span> 或 <span class="markdown-them-math-inline">$|X|\le a_n$</span> 且 <span class="markdown-them-math-inline">$\{a_n\}$</span> 收敛于 <span class="markdown-them-math-inline">$0.$</span></p>
+<p>T1, T2的相似之处是限制不等式上界中的其中一个变量的范围(T1是令 <span
+class="math inline">\(|x|&lt;1/C,\)</span> T2是令 <span
+class="math inline">\(x=1/2A\)</span> 或 <span
+class="math inline">\(x\le 1/2A\)</span> ),
+让我们可以用极限求出精确的上界.</p>
+<p>这提供了一种证明 <span class="math inline">\(X\equiv 0\)</span>
+的方法: 构造出 <span class="math inline">\(|X|&lt;a_n\)</span> 或 <span
+class="math inline">\(|X|\le a_n\)</span> 且 <span
+class="math inline">\(\{a_n\}\)</span> 收敛于 <span
+class="math inline">\(0.\)</span></p>
 </blockquote>
-<p>3: 证明: <span class="markdown-them-math-inline">$\displaystyle f(x,y)=1+\int_0^x\int_0^y f(u,u)\mathrm{d} u\mathrm{d} v$</span> 在 <span class="markdown-them-math-inline">$[0,1]\times [0,1]$</span> 上至多有一个连续解.</p>
-<p><em><strong>PROOF</strong></em> 看到<em><strong>至多, 至少, 唯一</strong></em> 等字眼的时候, 经常要用反证法. 不妨该方程有两个解, 我们只需要证明这两个解相等即可. 设这两个解的差为 <span class="markdown-them-math-inline">$g(x),$</span> 便转化为证明 <span class="markdown-them-math-inline">$g(x)\equiv 0,$</span> 于是有</p>
-<div class="markdown-them-math-block">$$g(x,y)=\int_0^x\int_0^y g(u,u)\mathrm{d} u\mathrm{d} v
-$$</div><blockquote>
-<p>证明某个函数 <span class="markdown-them-math-inline">$\phi(x)\equiv0$</span> 常用的手段之一就是利用 <span class="markdown-them-math-inline">$\phi(x)=f(\phi(x))$</span> 的关系式进行迭代, 往往能得到 <span class="markdown-them-math-inline">$|\phi(x)|\le g(n,x),$</span> 且 <span class="markdown-them-math-inline">$\lim_{n\to\infty}g(n,x)=0.$</span></p>
-<p>上面这个问题的一元函数的版本是: 连续函数 <span class="markdown-them-math-inline">$\phi(x)$</span> 满足</p>
-<div class="markdown-them-math-block">$$\phi(x)=\int_0^x\phi(u)\mathrm{d} u,x\in[0,1],
-$$</div><p>证明在 <span class="markdown-them-math-inline">$[0,1]$</span> 上有 <span class="markdown-them-math-inline">$\phi(u)\equiv 0.$</span></p>
-<p><em><strong>PROOF</strong></em> 显然 <span class="markdown-them-math-inline">$\phi(x)$</span> 在 <span class="markdown-them-math-inline">$[0,1]$</span> 上有界, 设 <span class="markdown-them-math-inline">$|\phi(x)|$</span> 的最大值为 <span class="markdown-them-math-inline">$M,$</span> 于是对任意 <span class="markdown-them-math-inline">$x_1\in[0,1]$</span> 有</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>3: 证明: <span class="math inline">\(\displaystyle
+f(x,y)=1+\int_0^x\int_0^y f(u,u)\mathrm{d} u\mathrm{d} v\)</span> 在
+<span class="math inline">\([0,1]\times [0,1]\)</span>
+上至多有一个连续解.</p>
+<p><strong><em>PROOF</em></strong> 看到<strong><em>至多, 至少,
+唯一</em></strong> 等字眼的时候, 经常要用反证法. 不妨该方程有两个解,
+我们只需要证明这两个解相等即可. 设这两个解的差为 <span
+class="math inline">\(g(x),\)</span> 便转化为证明 <span
+class="math inline">\(g(x)\equiv 0,\)</span> 于是有 <span
+class="math display">\[
+g(x,y)=\int_0^x\int_0^y g(u,u)\mathrm{d} u\mathrm{d} v
+\]</span></p>
+<blockquote>
+<p>证明某个函数 <span class="math inline">\(\phi(x)\equiv0\)</span>
+常用的手段之一就是利用 <span
+class="math inline">\(\phi(x)=f(\phi(x))\)</span> 的关系式进行迭代,
+往往能得到 <span class="math inline">\(|\phi(x)|\le g(n,x),\)</span> 且
+<span class="math inline">\(\lim_{n\to\infty}g(n,x)=0.\)</span></p>
+<p>上面这个问题的一元函数的版本是: 连续函数 <span
+class="math inline">\(\phi(x)\)</span> 满足 <span
+class="math display">\[
+\phi(x)=\int_0^x\phi(u)\mathrm{d} u,x\in[0,1],
+\]</span> 证明在 <span class="math inline">\([0,1]\)</span> 上有 <span
+class="math inline">\(\phi(u)\equiv 0.\)</span></p>
+<p><strong><em>PROOF</em></strong> 显然 <span
+class="math inline">\(\phi(x)\)</span> 在 <span
+class="math inline">\([0,1]\)</span> 上有界, 设 <span
+class="math inline">\(|\phi(x)|\)</span> 的最大值为 <span
+class="math inline">\(M,\)</span> 于是对任意 <span
+class="math inline">\(x_1\in[0,1]\)</span> 有 <span
+class="math display">\[
+\begin{aligned}
 |\phi(x_1)|
 &amp;\le \int_0^{x_1}|\phi(x_2)|\mathrm{d} x_2\\
-&amp;\le\int_0^{x_1}\int_{0}^{x_2}|\phi(x_3) |\mathrm{d} x_3\mathrm{d} x_2\\
+&amp;\le\int_0^{x_1}\int_{0}^{x_2}|\phi(x_3) |\mathrm{d} x_3\mathrm{d}
+x_2\\
 &amp;\le \cdots\\
-&amp;\le\int_0^{x_1}\cdots\int_0^{x_{n}}|\phi(x_{n+1})|\mathrm{d} x_{n+1}\mathrm{d} x_{n}\cdots \mathrm{d} x_2\\
-&amp;\le M\int_0^{x_1}\cdots\int_0^{x_{n-1}}\mathrm{d} x_{n}\mathrm{d} x_{n-1}\cdots \mathrm{d} x_2\\
+&amp;\le\int_0^{x_1}\cdots\int_0^{x_{n}}|\phi(x_{n+1})|\mathrm{d}
+x_{n+1}\mathrm{d} x_{n}\cdots \mathrm{d} x_2\\
+&amp;\le M\int_0^{x_1}\cdots\int_0^{x_{n-1}}\mathrm{d} x_{n}\mathrm{d}
+x_{n-1}\cdots \mathrm{d} x_2\\
 &amp;=\frac{M x_1^n}{n!}
 \end{aligned}
-$$</div><p>不论 <span class="markdown-them-math-inline">$x_1$</span> 取何值总有 <span class="markdown-them-math-inline">$\lim_{n\to\infty}Mx_1^n/n!=0,$</span> 这就表明了 <span class="markdown-them-math-inline">$\phi(x)\equiv 0.$</span></p>
+\]</span> 不论 <span class="math inline">\(x_1\)</span> 取何值总有 <span
+class="math inline">\(\lim_{n\to\infty}Mx_1^n/n!=0,\)</span> 这就表明了
+<span class="math inline">\(\phi(x)\equiv 0.\)</span></p>
 </blockquote>
-<p>对于本题而言, 我们只需要像下面这样:</p>
-<div class="markdown-them-math-block">$$|g(x,y)|\le\iint_{D_1}\cdots \iint_{D_n} |g(u,v)|\mathrm{d} \sigma_n\cdots \mathrm{d} \sigma_1\le\iint_{D_1}\cdots \iint_{D_n} M\mathrm{d} \sigma_n\cdots \mathrm{d} \sigma_1
-$$</div><p>即可得到</p>
-<div class="markdown-them-math-block">$$g(x,y)\le M\frac{x^n}{n!}\frac{y^n}{n!},
-$$</div><p>这就证得了结论. <span class="markdown-them-math-inline">$\square$</span></p>
+<p>对于本题而言, 我们只需要像下面这样: <span class="math display">\[
+|g(x,y)|\le\iint_{D_1}\cdots \iint_{D_n} |g(u,v)|\mathrm{d}
+\sigma_n\cdots \mathrm{d} \sigma_1\le\iint_{D_1}\cdots \iint_{D_n}
+M\mathrm{d} \sigma_n\cdots \mathrm{d} \sigma_1
+\]</span> 即可得到 <span class="math display">\[
+g(x,y)\le M\frac{x^n}{n!}\frac{y^n}{n!},
+\]</span> 这就证得了结论. <span
+class="math inline">\(\square\)</span></p>
 <blockquote>
 <p>好多还是不会, 还是先看教程复习复习基础吧😭</p>
 </blockquote>
@@ -375,13 +469,13 @@ $$</div><p>这就证得了结论. <span class="markdown-them-math-inline">$\squa
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

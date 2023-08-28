@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本章主要讨论一维函数的最小化问题算法 $$\min f(x),x\in\mathbb{R}. $$一维搜索的重要性:   一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法.   一维搜索算法时高维搜索算法的一部分(用于决定步长).   定义1 (单峰函数) 若一维函数 $f:\mathbb{R}\to\mathbb{R}$ 在定义 $[a_0,b_0]$ 上有唯一局部极小值点 $x^{\as">
+    <meta name="description" content="本章主要讨论一维函数的最小化问题算法 \[ \min f(x),x\in\mathbb{R}. \] 一维搜索的重要性:  一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法. 一维搜索算法时高维搜索算法的一部分(用于决定步长).  定义1 (单峰函数) 若一维函数 \(f:\mathbb{R}\to\mathbb{R}\) 在定义 \([a_0,b_0]\) 上有唯一局部极小值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最优化（一）：一维搜索方法">
 <meta property="og:url" content="http://example.com/2022/10/07/OR/num-opt/one-dim/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="本章主要讨论一维函数的最小化问题算法 $$\min f(x),x\in\mathbb{R}. $$一维搜索的重要性:   一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法.   一维搜索算法时高维搜索算法的一部分(用于决定步长).   定义1 (单峰函数) 若一维函数 $f:\mathbb{R}\to\mathbb{R}$ 在定义 $[a_0,b_0]$ 上有唯一局部极小值点 $x^{\as">
+<meta property="og:description" content="本章主要讨论一维函数的最小化问题算法 \[ \min f(x),x\in\mathbb{R}. \] 一维搜索的重要性:  一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法. 一维搜索算法时高维搜索算法的一部分(用于决定步长).  定义1 (单峰函数) 若一维函数 \(f:\mathbb{R}\to\mathbb{R}\) 在定义 \([a_0,b_0]\) 上有唯一局部极小值">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-07T07:18:16.000Z">
 <meta property="article:modified_time" content="2022-10-23T03:45:32.672Z">
@@ -248,7 +248,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.4k</span>
+      <span>5.6k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -265,60 +265,162 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>本章主要讨论一维函数的最小化问题算法</p>
-<div class="markdown-them-math-block">$$\min f(x),x\in\mathbb{R}.
-$$</div><p>一维搜索的重要性:</p>
+    <div class="post-body" itemprop="articleBody"><p>本章主要讨论一维函数的最小化问题算法 <span class="math display">\[
+\min f(x),x\in\mathbb{R}.
+\]</span> 一维搜索的重要性:</p>
 <ul>
-<li>
-<p>一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法.</p>
-</li>
-<li>
-<p>一维搜索算法时高维搜索算法的一部分(用于决定步长).</p>
-</li>
+<li><p>一维搜索是高位搜索的特例, 一维搜索能启发高维搜索方法.</p></li>
+<li><p>一维搜索算法时高维搜索算法的一部分(用于决定步长).</p></li>
 </ul>
-<p><strong>定义1 (单峰函数)</strong> 若一维函数 <span class="markdown-them-math-inline">$f:\mathbb{R}\to\mathbb{R}$</span> 在定义 <span class="markdown-them-math-inline">$[a_0,b_0]$</span> 上有唯一局部极小值点 <span class="markdown-them-math-inline">$x^{\ast},$</span> 则 <span class="markdown-them-math-inline">$f(x)$</span> 在 <span class="markdown-them-math-inline">$f(x)$</span> 在 <span class="markdown-them-math-inline">$[a_0,b_0]$</span> 上是单峰函数(unimodal function).</p>
+<p><strong>定义1 (单峰函数)</strong> 若一维函数 <span
+class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> 在定义 <span
+class="math inline">\([a_0,b_0]\)</span> 上有唯一局部极小值点 <span
+class="math inline">\(x^{\ast},\)</span> 则 <span
+class="math inline">\(f(x)\)</span> 在 <span
+class="math inline">\(f(x)\)</span> 在 <span
+class="math inline">\([a_0,b_0]\)</span> 上是单峰函数(unimodal
+function).</p>
 <h2 id="黄金分割法">黄金分割法</h2>
 <p>黄金分割法用到的是单峰函数一个简单的性质:</p>
 <blockquote>
-<p>若选择 <span class="markdown-them-math-inline">$a_1,b_1$</span> 满足 <span class="markdown-them-math-inline">$a_0 &lt; a_1 &lt; b_1&lt; b_0,$</span> 且 <span class="markdown-them-math-inline">$f(a_1) &lt; f(b_1),$</span> 则 <span class="markdown-them-math-inline">$x^{\ast}\in[a_0,b_1]$</span> ; 若 <span class="markdown-them-math-inline">$f(a_1)&gt;f(b_1),$</span> 则 <span class="markdown-them-math-inline">$x^{\ast}\in[a_1,b_0].$</span> <span class="markdown-them-math-inline">$\square$</span></p>
+<p>若选择 <span class="math inline">\(a_1,b_1\)</span> 满足 <span
+class="math inline">\(a_0 &lt; a_1 &lt; b_1&lt; b_0,\)</span> 且 <span
+class="math inline">\(f(a_1) &lt; f(b_1),\)</span> 则 <span
+class="math inline">\(x^{\ast}\in[a_0,b_1]\)</span> ; 若 <span
+class="math inline">\(f(a_1)&gt;f(b_1),\)</span> 则 <span
+class="math inline">\(x^{\ast}\in[a_1,b_0].\)</span> <span
+class="math inline">\(\square\)</span></p>
 </blockquote>
-<p>这实际上就提供了一种简单的找出最小值的方法, 即在 <span class="markdown-them-math-inline">$[a_0,b_0]$</span> 中任意选择 <span class="markdown-them-math-inline">$a_1&lt;b_1,$</span> 比较 <span class="markdown-them-math-inline">$f(a_1),f(b_1),$</span> 利用上述性质更新区间, 在更新后的区间再选择 <span class="markdown-them-math-inline">$a_{2}&lt;b_2,$</span> 重复进行下去直到达到我们想要的精度(区间压缩到一定的长度).</p>
-<p>我们需要关注的是点的选择方式. 一种朴素的想法是等比压缩, 选择点后得到的左右两个区间与原区间的比值相等且恒定, 即若第 <span class="markdown-them-math-inline">$k(k\ge 1)$</span> 次更新后的区间为 <span class="markdown-them-math-inline">$[l_k,r_k],$</span> 则在第 <span class="markdown-them-math-inline">$k+1$</span> 次选择的点 <span class="markdown-them-math-inline">$a_{k+1},b_{k+1}$</span> 满足 <span class="markdown-them-math-inline">$l_k&lt;a_{k+1}&lt;b_{k+1}&lt;r_{k}$</span> 且</p>
-<div class="markdown-them-math-block">$$\frac{a_{k+1}-l_k}{r_k-l_k}=\frac{r_{k}-b_{k+1}}{r_k-l_k}=\rho,
-$$</div><p>用语言描述就是: <span class="markdown-them-math-inline">$b_{k+1}=区间右端点-比例 \times 区间长度,$</span>  <span class="markdown-them-math-inline">$a_{k+1}=区间左端点+比例\times区间长度.$</span></p>
-<p>那么根据性质极值点应该在区间 <span class="markdown-them-math-inline">$[l_{k},b_{k+1}]$</span> 或者区间 <span class="markdown-them-math-inline">$[a_{k+1},r_{k}]$</span> 中, 新的区间的长度是原来的区间的 <span class="markdown-them-math-inline">$1-\rho$</span> 倍, 故为等比压缩.</p>
-<p>这种方式每次需要计算两个点的函数值, 现欲减少运算量. 假设现在的新区间为 <span class="markdown-them-math-inline">$[l_k,b_{k+1}],$</span> 在该区间内上一步求出的 <span class="markdown-them-math-inline">$a_{k+1}$</span> 的函数值是已知的, 我们可以利用这一函数值. 即如果有合适的 <span class="markdown-them-math-inline">$\rho,$</span> 使得在选择 <span class="markdown-them-math-inline">$a_{k+2},b_{k+2}$</span> 时, 有 <span class="markdown-them-math-inline">$a_{k+2}=a_{k+1}$</span> 或者 <span class="markdown-them-math-inline">$b_{k+2}=a_{k+1},$</span> 那么我们每次只需要计算一个点. 经过计算, 当 <span class="markdown-them-math-inline">$a_{k+2}=a_{k+1}$</span> 时解得 <span class="markdown-them-math-inline">$\rho=0,1,$</span> 不符合题意舍去; 当 <span class="markdown-them-math-inline">$b_{k+2}=a_{k+1}$</span> 时有 <span class="markdown-them-math-inline">$\rho^2-3\rho+1=0,$</span> 解得 <span class="markdown-them-math-inline">$\rho=\frac{3-\sqrt{5}}{2},$</span> 且此时有 <span class="markdown-them-math-inline">$1-\rho=\frac{\sqrt{5}-1}{2}=\phi.$</span> 选择 <span class="markdown-them-math-inline">$\rho=\frac{3-\sqrt{5}}{2}$</span> 后, 每次迭代只需计算一次函数 <span class="markdown-them-math-inline">$f$</span> 的值. 此时能够使得短区间 (<span class="markdown-them-math-inline">$[l_k,b_{k+2}]$</span> 或 <span class="markdown-them-math-inline">$[a_{k+2},b_{k+1}]$</span>) 与长区间 <span class="markdown-them-math-inline">$([l_{k},b_{k+1}])$</span> 长度的比值等于长区间与整个区间 <span class="markdown-them-math-inline">$([l_k,r_k])$</span> 的比值, 这是黄金分割最经典的模型, 这也是其名字的由来.</p>
-<p>同理, 若新区间为 <span class="markdown-them-math-inline">$[a_{k+1},b_{k}],$</span> 令 <span class="markdown-them-math-inline">$a_{k+2}=b_{k+1}$</span> 或者 <span class="markdown-them-math-inline">$b_{k+2}=b_{k+1},$</span> 仍然能得到与上面相同的结果.</p>
-<p>进行 <span class="markdown-them-math-inline">$N$</span> 次后 <span class="markdown-them-math-inline">$x^{\ast}$</span> 所在的区间的长度变为原来的 <span class="markdown-them-math-inline">$(1-\rho)^N,$</span> 这是最终的压缩比例, 称为<strong>总压缩比</strong>.</p>
+<p>这实际上就提供了一种简单的找出最小值的方法, 即在 <span
+class="math inline">\([a_0,b_0]\)</span> 中任意选择 <span
+class="math inline">\(a_1&lt;b_1,\)</span> 比较 <span
+class="math inline">\(f(a_1),f(b_1),\)</span> 利用上述性质更新区间,
+在更新后的区间再选择 <span class="math inline">\(a_{2}&lt;b_2,\)</span>
+重复进行下去直到达到我们想要的精度(区间压缩到一定的长度).</p>
+<p>我们需要关注的是点的选择方式. 一种朴素的想法是等比压缩,
+选择点后得到的左右两个区间与原区间的比值相等且恒定, 即若第 <span
+class="math inline">\(k(k\ge 1)\)</span> 次更新后的区间为 <span
+class="math inline">\([l_k,r_k],\)</span> 则在第 <span
+class="math inline">\(k+1\)</span> 次选择的点 <span
+class="math inline">\(a_{k+1},b_{k+1}\)</span> 满足 <span
+class="math inline">\(l_k&lt;a_{k+1}&lt;b_{k+1}&lt;r_{k}\)</span> 且
+<span class="math display">\[
+\frac{a_{k+1}-l_k}{r_k-l_k}=\frac{r_{k}-b_{k+1}}{r_k-l_k}=\rho,
+\]</span> 用语言描述就是: <span
+class="math inline">\(b_{k+1}=区间右端点-比例 \times 区间长度,\)</span>
+<span
+class="math inline">\(a_{k+1}=区间左端点+比例\times区间长度.\)</span></p>
+<p>那么根据性质极值点应该在区间 <span
+class="math inline">\([l_{k},b_{k+1}]\)</span> 或者区间 <span
+class="math inline">\([a_{k+1},r_{k}]\)</span> 中,
+新的区间的长度是原来的区间的 <span class="math inline">\(1-\rho\)</span>
+倍, 故为等比压缩.</p>
+<p>这种方式每次需要计算两个点的函数值, 现欲减少运算量.
+假设现在的新区间为 <span class="math inline">\([l_k,b_{k+1}],\)</span>
+在该区间内上一步求出的 <span class="math inline">\(a_{k+1}\)</span>
+的函数值是已知的, 我们可以利用这一函数值. 即如果有合适的 <span
+class="math inline">\(\rho,\)</span> 使得在选择 <span
+class="math inline">\(a_{k+2},b_{k+2}\)</span> 时, 有 <span
+class="math inline">\(a_{k+2}=a_{k+1}\)</span> 或者 <span
+class="math inline">\(b_{k+2}=a_{k+1},\)</span>
+那么我们每次只需要计算一个点. 经过计算, 当 <span
+class="math inline">\(a_{k+2}=a_{k+1}\)</span> 时解得 <span
+class="math inline">\(\rho=0,1,\)</span> 不符合题意舍去; 当 <span
+class="math inline">\(b_{k+2}=a_{k+1}\)</span> 时有 <span
+class="math inline">\(\rho^2-3\rho+1=0,\)</span> 解得 <span
+class="math inline">\(\rho=\frac{3-\sqrt{5}}{2},\)</span> 且此时有 <span
+class="math inline">\(1-\rho=\frac{\sqrt{5}-1}{2}=\phi.\)</span> 选择
+<span class="math inline">\(\rho=\frac{3-\sqrt{5}}{2}\)</span> 后,
+每次迭代只需计算一次函数 <span class="math inline">\(f\)</span> 的值.
+此时能够使得短区间 (<span class="math inline">\([l_k,b_{k+2}]\)</span>
+或 <span class="math inline">\([a_{k+2},b_{k+1}]\)</span>) 与长区间
+<span class="math inline">\(([l_{k},b_{k+1}])\)</span>
+长度的比值等于长区间与整个区间 <span
+class="math inline">\(([l_k,r_k])\)</span> 的比值,
+这是黄金分割最经典的模型, 这也是其名字的由来.</p>
+<p>同理, 若新区间为 <span
+class="math inline">\([a_{k+1},b_{k}],\)</span> 令 <span
+class="math inline">\(a_{k+2}=b_{k+1}\)</span> 或者 <span
+class="math inline">\(b_{k+2}=b_{k+1},\)</span>
+仍然能得到与上面相同的结果.</p>
+<p>进行 <span class="math inline">\(N\)</span> 次后 <span
+class="math inline">\(x^{\ast}\)</span> 所在的区间的长度变为原来的 <span
+class="math inline">\((1-\rho)^N,\)</span> 这是最终的压缩比例,
+称为<strong>总压缩比</strong>.</p>
 <h4 id="python实现">Python实现</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> math.<span class="built_in">pow</span>(x,<span class="number">2</span>)+<span class="number">4</span>*math.cos(x)<span class="comment">#函数</span></span><br><span class="line"></span><br><span class="line">l=<span class="built_in">float</span>(<span class="built_in">input</span>())</span><br><span class="line">r=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#初始化区间</span></span><br><span class="line">rho=(<span class="number">3</span>-math.sqrt(<span class="number">5</span>))/<span class="number">2</span></span><br><span class="line">e=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#精度</span></span><br><span class="line">a=l</span><br><span class="line">b=r</span><br><span class="line">k=<span class="number">1</span> <span class="comment">#迭代次数</span></span><br><span class="line">a=l+(r-l)*rho</span><br><span class="line">b=r-(r-l)*rho</span><br><span class="line"><span class="keyword">while</span>(math.fabs(l-r)&gt;e):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Iterations:&quot;</span>,k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;a=%.4f&quot;</span> % a)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;b=%.4f&quot;</span> % b)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(a)=%.4f&quot;</span> % f(a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(b)=%.4f&quot;</span> % f(b))</span><br><span class="line">    <span class="keyword">if</span> f(a)&gt;f(b):</span><br><span class="line">        l=a</span><br><span class="line">        a=b</span><br><span class="line">        b=r-(r-l)*rho</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        r=b</span><br><span class="line">        b=a</span><br><span class="line">        a=l+(r-l)*rho</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The new section is&quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % l ,<span class="string">&quot;,&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % r,<span class="string">&quot;]&quot;</span>)</span><br><span class="line">    k+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>上面是目标函数为 <span class="markdown-them-math-inline">$f(x)=x^2+4\cos x$</span> 初始区间为 <span class="markdown-them-math-inline">$[1,2]$</span> 且精度 <span class="markdown-them-math-inline">$e=0.2$</span> 的例子，输出：</p>
+<p>上面是目标函数为 <span class="math inline">\(f(x)=x^2+4\cos
+x\)</span> 初始区间为 <span class="math inline">\([1,2]\)</span> 且精度
+<span class="math inline">\(e=0.2\)</span> 的例子，输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Iterations: 1</span><br><span class="line">a=1.3820</span><br><span class="line">b=1.6180</span><br><span class="line">f(a)=2.6607</span><br><span class="line">f(b)=2.4292</span><br><span class="line">The new section is [ 1.3820 , 2.0000 ]</span><br><span class="line">Iterations: 2</span><br><span class="line">a=1.6180</span><br><span class="line">b=1.7639</span><br><span class="line">f(a)=2.4292</span><br><span class="line">f(b)=2.3437</span><br><span class="line">The new section is [ 1.6180 , 2.0000 ]</span><br><span class="line">Iterations: 3</span><br><span class="line">a=1.7639</span><br><span class="line">b=1.8541</span><br><span class="line">f(a)=2.3437</span><br><span class="line">f(b)=2.3196</span><br><span class="line">The new section is [ 1.7639 , 2.0000 ]</span><br><span class="line">Iterations: 4</span><br><span class="line">a=1.8541</span><br><span class="line">b=1.9098</span><br><span class="line">f(a)=2.3196</span><br><span class="line">f(b)=2.3171</span><br><span class="line">The new section is [ 1.8541 , 2.0000 ]</span><br></pre></td></tr></table></figure>
 <h4 id="matlab实现">MATLAB实现</h4>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%从左到右依次为函数,变量,区间左端点,区间右端点,精度,返回极值点所在的区间</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[a,b]</span>=<span class="title">GoldenCut</span><span class="params">(f,var,left,right,eps)</span></span></span><br><span class="line">rho=(<span class="number">3</span>-<span class="built_in">sqrt</span>(<span class="number">5</span>))/<span class="number">2</span>;</span><br><span class="line">k=<span class="number">1</span>;</span><br><span class="line">L=right-left;</span><br><span class="line">a=left+L*rho;</span><br><span class="line">b=right-L*rho;</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">abs</span>(right-left)&gt;<span class="built_in">eps</span></span><br><span class="line">    f_a=subs(f,var,a);</span><br><span class="line">    f_b=subs(f,var,b);</span><br><span class="line">    <span class="keyword">if</span> f_a&gt;f_b</span><br><span class="line">        left=a;</span><br><span class="line">        a=b;</span><br><span class="line">        b=right-(right-left)*rho;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        right=b;</span><br><span class="line">        b=a;</span><br><span class="line">        a=left+(right-left)*rho;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    k=k+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">a=left;</span><br><span class="line">b=right;</span><br></pre></td></tr></table></figure>
 <h2 id="斐波那契法">斐波那契法</h2>
-<p>我们的目标是找到极小值点 <span class="markdown-them-math-inline">$x^{\ast},$</span> 在用算法逼近极小值点的时候, 精度越高越好, 这表现在我们利用算法求出的 <span class="markdown-them-math-inline">$x^{\ast}$</span> 所在的区间的长度上. 在黄金分割法中最终区间的长度为 <span class="markdown-them-math-inline">$(1-\rho)^N L,$</span> 其中 <span class="markdown-them-math-inline">$L$</span> 为初始区间长度, 于是为了改进算法我们希望降低总压缩比, 提高 <span class="markdown-them-math-inline">$x^{\ast}$</span> 的精度.</p>
-<p>在黄金分割法中我们令比例 <span class="markdown-them-math-inline">$\rho$</span> 恒定不变, 为了降低总压缩比, 现令每一次取点的 <span class="markdown-them-math-inline">$\rho$</span> 都不同, 记第 <span class="markdown-them-math-inline">$k$</span> 次取点的比例为 <span class="markdown-them-math-inline">$\rho_k,$</span> 区间长度为 <span class="markdown-them-math-inline">$L,$</span> 则有 <span class="markdown-them-math-inline">$\rho_{k}L=(1-\rho_{k+1})(1-\rho_k)L,$</span> 得到</p>
-<div class="markdown-them-math-block">$$\rho_{k+1}=1-\frac{\rho_k}{1-\rho_{k}},
-$$</div><p>假设进行了 <span class="markdown-them-math-inline">$N$</span> 次迭代, 那么总压缩比为 <span class="markdown-them-math-inline">$\prod_{1\le k\le N}(1-\rho_k),$</span> 我们想要解决的就是如下的优化问题:</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>我们的目标是找到极小值点 <span
+class="math inline">\(x^{\ast},\)</span> 在用算法逼近极小值点的时候,
+精度越高越好, 这表现在我们利用算法求出的 <span
+class="math inline">\(x^{\ast}\)</span> 所在的区间的长度上.
+在黄金分割法中最终区间的长度为 <span class="math inline">\((1-\rho)^N
+L,\)</span> 其中 <span class="math inline">\(L\)</span> 为初始区间长度,
+于是为了改进算法我们希望降低总压缩比, 提高 <span
+class="math inline">\(x^{\ast}\)</span> 的精度.</p>
+<p>在黄金分割法中我们令比例 <span class="math inline">\(\rho\)</span>
+恒定不变, 为了降低总压缩比, 现令每一次取点的 <span
+class="math inline">\(\rho\)</span> 都不同, 记第 <span
+class="math inline">\(k\)</span> 次取点的比例为 <span
+class="math inline">\(\rho_k,\)</span> 区间长度为 <span
+class="math inline">\(L,\)</span> 则有 <span
+class="math inline">\(\rho_{k}L=(1-\rho_{k+1})(1-\rho_k)L,\)</span> 得到
+<span class="math display">\[
+\rho_{k+1}=1-\frac{\rho_k}{1-\rho_{k}},
+\]</span> 假设进行了 <span class="math inline">\(N\)</span> 次迭代,
+那么总压缩比为 <span class="math inline">\(\prod_{1\le k\le
+N}(1-\rho_k),\)</span> 我们想要解决的就是如下的优化问题: <span
+class="math display">\[
+\begin{aligned}
 &amp;\min \prod_{1\le k\le N}(1-\rho_k)\\
 \text{s.t. }&amp;0\le \rho_k\le\frac{1}{2},k=1,\cdots,N\\
 &amp;\rho_{k+1}=1-\frac{\rho_k}{1-\rho_{k}},k=1,\cdots,N-1
 \end{aligned}
-$$</div><p>可以证明数列</p>
-<div class="markdown-them-math-block">$$\rho_k=1-\frac{F_{N+1-k}}{F_{N+2-k}},k=1,\cdots, N
-$$</div><p>是上述优化问题的最优解, 其中 <span class="markdown-them-math-inline">$\{F_n\}_{n\ge -1}$</span> 是斐波那契数列, 这样可以得到总压缩比为 <span class="markdown-them-math-inline">$1/F_{N+1}.$</span></p>
-<p>需要注意的是在第 <span class="markdown-them-math-inline">$N$</span> 次迭代时有 <span class="markdown-them-math-inline">$\rho_N=1-F_1/F_2=1/2,$</span> 这意味着第 <span class="markdown-them-math-inline">$N$</span> 次选择点时两个点会重合. 为了避免这一情况的发生, 在第 <span class="markdown-them-math-inline">$N$</span> 次选择点修正 <span class="markdown-them-math-inline">$\rho_N$</span> 为 <span class="markdown-them-math-inline">$1/2-\varepsilon,$</span> 其中 <span class="markdown-them-math-inline">$\varepsilon$</span> 是任意小的正数. 修正后的总压缩比为 <span class="markdown-them-math-inline">$(2\varepsilon+1)/F_N.$</span></p>
-<p>因为斐波那契数列相邻两项之比在 <span class="markdown-them-math-inline">$n\to\infty$</span> 的极限是 <span class="markdown-them-math-inline">$(\sqrt{5}-1)/2,$</span> 所以斐波那契法最终的压缩比实际上与黄金分割法变化不大. 因此黄金分割法比斐波那契法用得更多.</p>
+\]</span> 可以证明数列 <span class="math display">\[
+\rho_k=1-\frac{F_{N+1-k}}{F_{N+2-k}},k=1,\cdots, N
+\]</span> 是上述优化问题的最优解, 其中 <span
+class="math inline">\(\{F_n\}_{n\ge -1}\)</span> 是斐波那契数列,
+这样可以得到总压缩比为 <span
+class="math inline">\(1/F_{N+1}.\)</span></p>
+<p>需要注意的是在第 <span class="math inline">\(N\)</span> 次迭代时有
+<span class="math inline">\(\rho_N=1-F_1/F_2=1/2,\)</span> 这意味着第
+<span class="math inline">\(N\)</span> 次选择点时两个点会重合.
+为了避免这一情况的发生, 在第 <span class="math inline">\(N\)</span>
+次选择点修正 <span class="math inline">\(\rho_N\)</span> 为 <span
+class="math inline">\(1/2-\varepsilon,\)</span> 其中 <span
+class="math inline">\(\varepsilon\)</span> 是任意小的正数.
+修正后的总压缩比为 <span
+class="math inline">\((2\varepsilon+1)/F_N.\)</span></p>
+<p>因为斐波那契数列相邻两项之比在 <span
+class="math inline">\(n\to\infty\)</span> 的极限是 <span
+class="math inline">\((\sqrt{5}-1)/2,\)</span>
+所以斐波那契法最终的压缩比实际上与黄金分割法变化不大.
+因此黄金分割法比斐波那契法用得更多.</p>
 <h4 id="python实现-1">Python实现</h4>
-<p>确定 <span class="markdown-them-math-inline">$N$</span> 时使用的不等式为</p>
-<div class="markdown-them-math-block">$$\frac{2\varepsilon +1}{F_{N+1}}\le\frac{e}{r-l}\Rightarrow F_{N+1}\ge\frac{(2\varepsilon +1)(r-l)}{e}.
-$$</div><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> math.<span class="built_in">pow</span>(x,<span class="number">2</span>)+<span class="number">4</span>*math.cos(x)</span><br><span class="line"></span><br><span class="line">l=<span class="built_in">float</span>(<span class="built_in">input</span>())</span><br><span class="line">r=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#初始化区间</span></span><br><span class="line">e=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#精度</span></span><br><span class="line">epsilon=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#微扰</span></span><br><span class="line">F=[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">N=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>: <span class="comment">#确定迭代次数N</span></span><br><span class="line">    F.append(F[N]+F[N-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> F[N+<span class="number">1</span>]&gt;=(<span class="number">2</span>*epsilon+<span class="number">1</span>)*(r-l)/e:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    N+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;N=&quot;</span>,N)</span><br><span class="line">rho=<span class="number">1</span>-F[N]/F[N+<span class="number">1</span>]</span><br><span class="line">a=l+(r-l)*rho</span><br><span class="line">b=r-(r-l)*rho</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Iterations:&quot;</span>,i+<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;rho=%.4f&quot;</span> % rho)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;a=%.4f&quot;</span> % a)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;b=%.4f&quot;</span> % b)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(a)=%.4f&quot;</span> % g(a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(b)=%.4f&quot;</span> % g(b))</span><br><span class="line">    <span class="keyword">if</span> i==N-<span class="number">2</span>:<span class="comment">#下一次的rho</span></span><br><span class="line">        rho=<span class="number">0.5</span>-epsilon</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rho=<span class="number">1</span>-F[N-i-<span class="number">1</span>]/F[N-i]</span><br><span class="line">    <span class="keyword">if</span> g(a)&gt;g(b):</span><br><span class="line">        l=a</span><br><span class="line">        a=b</span><br><span class="line">        b=r-(r-l)*rho</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">        r=b</span><br><span class="line">        b=a</span><br><span class="line">        a=l+(r-l)*rho</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The new section is&quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % l ,<span class="string">&quot;,&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % r,<span class="string">&quot;]&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>仍然以目标函数 <span class="markdown-them-math-inline">$g(x)=x^2+4\cos x$</span> 初始区间为 <span class="markdown-them-math-inline">$[1,2]$</span> 且精度 <span class="markdown-them-math-inline">$e=0.2$</span> 为例，附加  <span class="markdown-them-math-inline">$\varepsilon=0.05,$</span> 经计算输出：</p>
+<p>确定 <span class="math inline">\(N\)</span> 时使用的不等式为 <span
+class="math display">\[
+\frac{2\varepsilon +1}{F_{N+1}}\le\frac{e}{r-l}\Rightarrow
+F_{N+1}\ge\frac{(2\varepsilon +1)(r-l)}{e}.
+\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> math.<span class="built_in">pow</span>(x,<span class="number">2</span>)+<span class="number">4</span>*math.cos(x)</span><br><span class="line"></span><br><span class="line">l=<span class="built_in">float</span>(<span class="built_in">input</span>())</span><br><span class="line">r=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#初始化区间</span></span><br><span class="line">e=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#精度</span></span><br><span class="line">epsilon=<span class="built_in">float</span>(<span class="built_in">input</span>()) <span class="comment">#微扰</span></span><br><span class="line">F=[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">N=<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>: <span class="comment">#确定迭代次数N</span></span><br><span class="line">    F.append(F[N]+F[N-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> F[N+<span class="number">1</span>]&gt;=(<span class="number">2</span>*epsilon+<span class="number">1</span>)*(r-l)/e:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    N+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;N=&quot;</span>,N)</span><br><span class="line">rho=<span class="number">1</span>-F[N]/F[N+<span class="number">1</span>]</span><br><span class="line">a=l+(r-l)*rho</span><br><span class="line">b=r-(r-l)*rho</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Iterations:&quot;</span>,i+<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;rho=%.4f&quot;</span> % rho)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;a=%.4f&quot;</span> % a)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;b=%.4f&quot;</span> % b)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(a)=%.4f&quot;</span> % g(a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f(b)=%.4f&quot;</span> % g(b))</span><br><span class="line">    <span class="keyword">if</span> i==N-<span class="number">2</span>:<span class="comment">#下一次的rho</span></span><br><span class="line">        rho=<span class="number">0.5</span>-epsilon</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rho=<span class="number">1</span>-F[N-i-<span class="number">1</span>]/F[N-i]</span><br><span class="line">    <span class="keyword">if</span> g(a)&gt;g(b):</span><br><span class="line">        l=a</span><br><span class="line">        a=b</span><br><span class="line">        b=r-(r-l)*rho</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">        r=b</span><br><span class="line">        b=a</span><br><span class="line">        a=l+(r-l)*rho</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The new section is&quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % l ,<span class="string">&quot;,&quot;</span>,<span class="string">&quot;%.4f&quot;</span> % r,<span class="string">&quot;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>仍然以目标函数 <span class="math inline">\(g(x)=x^2+4\cos x\)</span>
+初始区间为 <span class="math inline">\([1,2]\)</span> 且精度 <span
+class="math inline">\(e=0.2\)</span> 为例，附加 <span
+class="math inline">\(\varepsilon=0.05,\)</span> 经计算输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">N= 4</span><br><span class="line">Iterations: 1</span><br><span class="line">rho=0.3750</span><br><span class="line">a=1.3750</span><br><span class="line">b=1.6250</span><br><span class="line">f(a)=2.6688</span><br><span class="line">f(b)=2.4239</span><br><span class="line">The new section is [ 1.3750 , 2.0000 ]</span><br><span class="line">Iterations: 2</span><br><span class="line">rho=0.4000</span><br><span class="line">a=1.6250</span><br><span class="line">b=1.7500</span><br><span class="line">f(a)=2.4239</span><br><span class="line">f(b)=2.3495</span><br><span class="line">The new section is [ 1.6250 , 2.0000 ]</span><br><span class="line">Iterations: 3</span><br><span class="line">rho=0.3333</span><br><span class="line">a=1.7500</span><br><span class="line">b=1.8750</span><br><span class="line">f(a)=2.3495</span><br><span class="line">f(b)=2.3175</span><br><span class="line">The new section is [ 1.7500 , 2.0000 ]</span><br><span class="line">Iterations: 4</span><br><span class="line">rho=0.4500</span><br><span class="line">a=1.8750</span><br><span class="line">b=1.8875</span><br><span class="line">f(a)=2.3175</span><br><span class="line">f(b)=2.3169</span><br><span class="line">The new section is [ 1.8750 , 2.0000 ]</span><br></pre></td></tr></table></figure>
 <h2 id="二分法">二分法</h2>
-<p>二分法要求目标函数可导. 并根据极小值点的导数为零这一条件用二分法找出导函数的零点.实际上是零点存在性定理. 每次选择中点, 每次的压缩比为 <span class="markdown-them-math-inline">$1/2.$</span> 迭代 <span class="markdown-them-math-inline">$N$</span> 次的总压缩比为 <span class="markdown-them-math-inline">$(1/2)^N,$</span> 这比黄金分割法与斐波那契法的压缩比更优秀.</p>
+<p>二分法要求目标函数可导.
+并根据极小值点的导数为零这一条件用二分法找出导函数的零点.实际上是零点存在性定理.
+每次选择中点, 每次的压缩比为 <span class="math inline">\(1/2.\)</span>
+迭代 <span class="math inline">\(N\)</span> 次的总压缩比为 <span
+class="math inline">\((1/2)^N,\)</span>
+这比黄金分割法与斐波那契法的压缩比更优秀.</p>
 <h2 id="平方根倒数速算法">平方根倒数速算法</h2>
 <blockquote>
 <p>待补充.</p>
@@ -378,13 +480,13 @@ $$</div><figure class="highlight python"><table><tr><td class="gutter"><pre><spa
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

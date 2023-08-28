@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1: 数列 $\{a_n\}$ 满足 $a_1&#x3D;1,$ $a_{n+1}&#x3D;\frac{a_n}{(n+1)(a_n+1)},$ 求 $\displaystyle\lim_{n\to\infty}n!a_n.$">
+    <meta name="description" content="1: 数列 \(\{a_n\}\) 满足 \(a_1&#x3D;1,\) \(a_{n+1}&#x3D;\frac{a_n}{(n+1)(a_n+1)},\) 求 \(\displaystyle\lim_{n\to\infty}n!a_n.\)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus review Day8">
 <meta property="og:url" content="http://example.com/2022/09/10/calculus/Calculus-review-Day8/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="1: 数列 $\{a_n\}$ 满足 $a_1&#x3D;1,$ $a_{n+1}&#x3D;\frac{a_n}{(n+1)(a_n+1)},$ 求 $\displaystyle\lim_{n\to\infty}n!a_n.$">
+<meta property="og:description" content="1: 数列 \(\{a_n\}\) 满足 \(a_1&#x3D;1,\) \(a_{n+1}&#x3D;\frac{a_n}{(n+1)(a_n+1)},\) 求 \(\displaystyle\lim_{n\to\infty}n!a_n.\)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-10T03:45:18.000Z">
 <meta property="article:modified_time" content="2022-09-10T09:36:50.658Z">
@@ -246,7 +246,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.6k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -263,26 +263,43 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>1: 数列 <span class="markdown-them-math-inline">$\{a_n\}$</span> 满足 <span class="markdown-them-math-inline">$a_1=1,$</span> <span class="markdown-them-math-inline">$a_{n+1}=\frac{a_n}{(n+1)(a_n+1)},$</span> 求 <span class="markdown-them-math-inline">$\displaystyle\lim_{n\to\infty}n!a_n.$</span></p>
+    <div class="post-body" itemprop="articleBody"><p>1: 数列 <span class="math inline">\(\{a_n\}\)</span> 满足 <span
+class="math inline">\(a_1=1,\)</span> <span
+class="math inline">\(a_{n+1}=\frac{a_n}{(n+1)(a_n+1)},\)</span> 求
+<span
+class="math inline">\(\displaystyle\lim_{n\to\infty}n!a_n.\)</span></p>
 <span id="more"></span>
-<p><em><strong>SOL</strong></em> 递推关系式两边同时取倒数, 并令 <span class="markdown-them-math-inline">$b_n=1/a_n,$</span> 右边</p>
-<div class="markdown-them-math-block">$$b_{n+1}=(n+1)(b_n+1)\Rightarrow \frac{b_{n+1}}{(n+1)!}=\frac{b_n}{n!}+\frac{1}{n!}
-$$</div><p>于是</p>
-<div class="markdown-them-math-block">$$\frac{b_n}{n!}=\sum_{k=0}^{n-1}\frac{1}{k!}.
-$$</div><p>因此</p>
-<div class="markdown-them-math-block">$$\displaystyle\lim_{n\to\infty}n!a_n=\displaystyle\lim_{n\to\infty}n!/b_n=\lim_{n\to\infty}\frac{1}{\sum_{k=0}^n1/k!}=\frac{1}{\mathrm{e}}.
-$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong><em>SOL</em></strong> 递推关系式两边同时取倒数, 并令 <span
+class="math inline">\(b_n=1/a_n,\)</span> 右边 <span
+class="math display">\[
+b_{n+1}=(n+1)(b_n+1)\Rightarrow
+\frac{b_{n+1}}{(n+1)!}=\frac{b_n}{n!}+\frac{1}{n!}
+\]</span> 于是 <span class="math display">\[
+\frac{b_n}{n!}=\sum_{k=0}^{n-1}\frac{1}{k!}.
+\]</span> 因此 <span class="math display">\[
+\displaystyle\lim_{n\to\infty}n!a_n=\displaystyle\lim_{n\to\infty}n!/b_n=\lim_{n\to\infty}\frac{1}{\sum_{k=0}^n1/k!}=\frac{1}{\mathrm{e}}.
+\]</span> <span class="math inline">\(\square\)</span></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">这里</a>有两道类似的含有阶乘的求数列通项公式的题目, 在错位排列部分.</p>
+<p><a
+target="_blank" rel="noopener" href="https://baoduoxu.github.io/2022/08/26/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">这里</a>有两道类似的含有阶乘的求数列通项公式的题目,
+在错位排列部分.</p>
 </blockquote>
-<p>2: 设 <span class="markdown-them-math-inline">$A_n=\displaystyle \sum_{k=1}^{n}\frac{n}{n^2+k^2},$</span> 求 <span class="markdown-them-math-inline">$\displaystyle\lim_{n\to\infty}n(\pi/4-A_n).$</span></p>
-<p><em><strong>SOL</strong></em> 首先</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}A_n=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n\frac{1}{1+(k/n)^2}=\int_0^1\frac{\mathrm{d} x}{1+x^2}=\pi/4,
-$$</div><p>于是所求极限为 <span class="markdown-them-math-inline">$\infty\cdot0$</span> 的形式. 由于 <span class="markdown-them-math-inline">$\pi/4$</span> 不好直接处理, 我们将其转化为积分并放入和式中:</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>2: 设 <span class="math inline">\(A_n=\displaystyle
+\sum_{k=1}^{n}\frac{n}{n^2+k^2},\)</span> 求 <span
+class="math inline">\(\displaystyle\lim_{n\to\infty}n(\pi/4-A_n).\)</span></p>
+<p><strong><em>SOL</em></strong> 首先 <span class="math display">\[
+\lim_{n\to\infty}A_n=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n\frac{1}{1+(k/n)^2}=\int_0^1\frac{\mathrm{d}
+x}{1+x^2}=\pi/4,
+\]</span> 于是所求极限为 <span
+class="math inline">\(\infty\cdot0\)</span> 的形式. 由于 <span
+class="math inline">\(\pi/4\)</span> 不好直接处理,
+我们将其转化为积分并放入和式中: <span class="math display">\[
+\begin{aligned}
 \lim_{n\to\infty}n(\pi/4-A_n)
-&amp;=\lim_{n\to\infty}n\left(\int_0^1\frac{\mathrm{d} x}{1+x^2}-\sum_{k=1}^{n}\frac{n}{n^2+k^2}\right)\\
-&amp;=\lim_{n\to\infty}n\sum_{k=1}^n\left(\int_{(k-1)/n}^{k/n}\frac{\mathrm{d} x}{1+x^2}-\frac{n}{n^2+k^2}\right)\\
+&amp;=\lim_{n\to\infty}n\left(\int_0^1\frac{\mathrm{d}
+x}{1+x^2}-\sum_{k=1}^{n}\frac{n}{n^2+k^2}\right)\\
+&amp;=\lim_{n\to\infty}n\sum_{k=1}^n\left(\int_{(k-1)/n}^{k/n}\frac{\mathrm{d}
+x}{1+x^2}-\frac{n}{n^2+k^2}\right)\\
 &amp;=\lim_{n\to\infty}n\sum_{k=1}^n\left(\arctan\frac{k}{n}-\arctan\frac{k-1}{n}-\frac{n}{n^2+k^2}\right)\\
 &amp;=\lim_{n\to\infty}n\sum_{k=1}^n\left(\arctan\frac{\frac{k}{n}-\frac{k-1}{n}}{1+\frac{k(k-1)}{n^2}}-\frac{n}{n^2+k^2}\right)\\
 &amp;=\lim_{n\to\infty}n\sum_{k=1}^n\left(\arctan\frac{n}{n^2+k^2-k}-\frac{n}{n^2+k^2}\right)\\
@@ -293,24 +310,40 @@ $$</div><p>于是所求极限为 <span class="markdown-them-math-inline">$\infty
 &amp;=\int_0^1\frac{x}{(1+x^2)^2}\mathrm{d} x\\
 &amp;=\frac{1}{4}.
 \end{aligned}
-$$</div><blockquote>
+\]</span></p>
+<blockquote>
 <p>嗯, 主要是第一个等号不好想.</p>
 </blockquote>
-<p><span class="markdown-them-math-inline">$\square$</span></p>
-<p>3: 数列 <span class="markdown-them-math-inline">$\{x_n\}_{n\ge 0}$</span> 满足 <span class="markdown-them-math-inline">$x_0=1,x_{n+1}=\ln(1+x_n),$</span> 证明 <span class="markdown-them-math-inline">$\{x_n\}_{n\ge 0}$</span> 收敛并求 <span class="markdown-them-math-inline">$\displaystyle \lim_{n\to\infty}n x_n.$</span></p>
-<p><em><strong>SOL</strong></em></p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>3: 数列 <span class="math inline">\(\{x_n\}_{n\ge 0}\)</span> 满足
+<span class="math inline">\(x_0=1,x_{n+1}=\ln(1+x_n),\)</span> 证明
+<span class="math inline">\(\{x_n\}_{n\ge 0}\)</span> 收敛并求 <span
+class="math inline">\(\displaystyle \lim_{n\to\infty}n x_n.\)</span></p>
+<p><strong><em>SOL</em></strong></p>
 <blockquote>
 <p>趁机复习一下Stolz定理.</p>
-<p>已知序列 <span class="markdown-them-math-inline">$\{x_n\},\{y_n\},$</span> 若 <span class="markdown-them-math-inline">$\{y_n\}$</span> 严格递增且 <span class="markdown-them-math-inline">$\lim_{n\to\infty}y_n=\infty,$</span> 且有极限</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\frac{\Delta x_n}{\Delta y_n}=A,
-$$</div><p>其中 <span class="markdown-them-math-inline">$|A|\le \infty,$</span> 则</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\frac{x_n}{y_n}=\lim_{n\to\infty}\frac{\Delta x_n}{\Delta y_n}=A.
-$$</div><p>即离散版本的洛必达法则.</p>
+<p>已知序列 <span class="math inline">\(\{x_n\},\{y_n\},\)</span> 若
+<span class="math inline">\(\{y_n\}\)</span> 严格递增且 <span
+class="math inline">\(\lim_{n\to\infty}y_n=\infty,\)</span> 且有极限
+<span class="math display">\[
+\lim_{n\to\infty}\frac{\Delta x_n}{\Delta y_n}=A,
+\]</span> 其中 <span class="math inline">\(|A|\le \infty,\)</span> 则
+<span class="math display">\[
+\lim_{n\to\infty}\frac{x_n}{y_n}=\lim_{n\to\infty}\frac{\Delta
+x_n}{\Delta y_n}=A.
+\]</span> 即离散版本的洛必达法则.</p>
 </blockquote>
-<p>首先用归纳法可以证得 <span class="markdown-them-math-inline">$x_n&gt;0,$</span> 因此 <span class="markdown-them-math-inline">$x_{n+1}-x_n=\ln(1+x_n)-x_n&lt;0,$</span> <span class="markdown-them-math-inline">$\{x_n\}$</span> 递减有下界, 收敛, 且</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}x_{n+1}=a=\ln(1+a),
-$$</div><p>有唯一解 <span class="markdown-them-math-inline">$a=0.$</span> 于是序列 <span class="markdown-them-math-inline">$\{1/x_n\}$</span> 严格增加且 <span class="markdown-them-math-inline">$\lim_{n\to\infty}1/x_n=+\infty,$</span> 于是由Stolz定理得</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>首先用归纳法可以证得 <span class="math inline">\(x_n&gt;0,\)</span>
+因此 <span
+class="math inline">\(x_{n+1}-x_n=\ln(1+x_n)-x_n&lt;0,\)</span> <span
+class="math inline">\(\{x_n\}\)</span> 递减有下界, 收敛, 且 <span
+class="math display">\[
+\lim_{n\to\infty}x_{n+1}=a=\ln(1+a),
+\]</span> 有唯一解 <span class="math inline">\(a=0.\)</span> 于是序列
+<span class="math inline">\(\{1/x_n\}\)</span> 严格增加且 <span
+class="math inline">\(\lim_{n\to\infty}1/x_n=+\infty,\)</span>
+于是由Stolz定理得 <span class="math display">\[
+\begin{aligned}
 \lim_{n\to\infty}nx_n
 &amp;=\lim_{n\to\infty}\frac{n}{1/x_n}\\
 &amp;=\lim_{n\to\infty}\frac{n-(n-1)}{1/x_n-1/x_{n-1}}\\
@@ -319,7 +352,7 @@ $$</div><p>有唯一解 <span class="markdown-them-math-inline">$a=0.$</span> �
 &amp;=\lim_{x\to0^+}\frac{x^2}{(1/2)x^2}\\
 &amp;=2
 \end{aligned}
-$$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
+\]</span> <span class="math inline">\(\square\)</span></p>
 
     </div>
 
@@ -374,13 +407,13 @@ $$</div><p><span class="markdown-them-math-inline">$\square$</span></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

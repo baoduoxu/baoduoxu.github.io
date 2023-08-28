@@ -29,12 +29,10 @@
 <meta property="og:site_name" content="XBD">
 <meta property="og:description" content="求解组合优化问题的分支算法介绍, 以 SAT 和 最大独立集问题为介绍.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png">
 <meta property="article:published_time" content="2023-08-17T08:43:56.000Z">
 <meta property="article:modified_time" content="2023-08-28T14:50:00.992Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png">
 
 
 <link rel="canonical" href="http://example.com/2023/08/17/seminar/august2023/exact-algorithm-branching/">
@@ -144,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">basic concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#upper-bound%20analysis"><span class="nav-number">2.</span> <span class="nav-text">upper bound analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#$k$-sat"><span class="nav-number">3.</span> <span class="nav-text">$k$-SAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#$k$-sat-%E7%9A%84%E4%B8%80%E4%B8%AA%20branch%20%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">$k$-SAT 的一个 branch 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#$2$-sat"><span class="nav-number">3.2.</span> <span class="nav-text">$2$-SAT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">最大独立集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-branching"><span class="nav-number">4.1.</span> <span class="nav-text">一个简单的 branching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%A4%8D%E6%9D%82%E7%9A%84-branching"><span class="nav-number">4.2.</span> <span class="nav-text">一个复杂的 branching</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">basic concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#upper-bound-analysis"><span class="nav-number">2.</span> <span class="nav-text">upper bound analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k-sat"><span class="nav-number">3.</span> <span class="nav-text">\(k\)-SAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#k-sat-%E7%9A%84%E4%B8%80%E4%B8%AA-branch-%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">\(k\)-SAT 的一个 branch 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sat"><span class="nav-number">3.2.</span> <span class="nav-text">\(2\)-SAT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">最大独立集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-branching"><span class="nav-number">4.1.</span> <span class="nav-text">一个简单的 branching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%A4%8D%E6%9D%82%E7%9A%84-branching"><span class="nav-number">4.2.</span> <span class="nav-text">一个复杂的 branching</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -250,7 +248,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3k</span>
+      <span>3.2k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -270,74 +268,182 @@
     <div class="post-body" itemprop="articleBody"><h1 id="basic-concepts">basic concepts</h1>
 <p>branch 有两条规则:</p>
 <ul>
-<li><em><strong>reduction rule</strong></em>. 用来简化问题或者停止算法.</li>
-<li><em><strong>branching rule</strong></em>. 通过递归地求解更小的问题的实例来解决一个问题.</li>
+<li><strong><em>reduction rule</em></strong>.
+用来简化问题或者停止算法.</li>
+<li><strong><em>branching rule</em></strong>.
+通过递归地求解更小的问题的实例来解决一个问题.</li>
 </ul>
-<p>因此设计一个 branch 算法很大程度上是设计 reduction 和 branching rule.</p>
-<h1 id="upper-bound analysis">upper bound analysis</h1>
+<p>因此设计一个 branch 算法很大程度上是设计 reduction 和 branching
+rule.</p>
+<h1 id="upper-bound-analysis">upper bound analysis</h1>
 <p>要分析 branching 算法需要一些假设:</p>
 <ul>
 <li>polynomial time.</li>
 <li>Simplifying produces simpler problem.</li>
 </ul>
-<p>在上面的假设下, 复杂度为 搜索树结点 <span class="markdown-them-math-inline">$\times$</span> 一个多项式.</p>
-<p>研究 branch 算法时, 问题的输入参数往往不是输入的长度, 而是一个可以描述问题规模的很自然的参数, 比如图的结点数, 称这样的参数为问题的 <em><strong>instance</strong></em>.</p>
-<p>设 <span class="markdown-them-math-inline">$T(n)$</span> 是 instance 数目为 <span class="markdown-them-math-inline">$n$</span> 的一个问题的分支树的叶子节点个数. 给定一个 branching 规则 <span class="markdown-them-math-inline">$b$</span>, 设 <span class="markdown-them-math-inline">$r\ge 2$</span>, <span class="markdown-them-math-inline">$t_i&gt;0,i\in [r]$</span>, 规则 <span class="markdown-them-math-inline">$b$</span> 将当前的 instance 分成了 <span class="markdown-them-math-inline">$r$</span> 个子问题且每个子问题的 instance 数量至多为 <span class="markdown-them-math-inline">$n-t_i,i=1,\cdots,r,n\ge \max_{1\le i\le r}t_i$</span>, 那么称向量 <span class="markdown-them-math-inline">$\mathbf{b}=(t_1,\cdots,t_r)$</span> 称为 branching vector. 根据树的递归结构, 	有</p>
-<div class="markdown-them-math-block">$$T(n)\le \sum_{i=1}^rT(n-t_i)
-$$</div><p>这是一个线性递推不等式, 考虑用特征方程来解, 等式 <span class="markdown-them-math-inline">$T^*(n)=\sum_{i=1}^rT^*(n-t_i)$</span> 的特征方程为 <span class="markdown-them-math-inline">$x^n-x^{n-t_1}-\cdots-x^{n-t_r}=0$</span>,  而显然有 <span class="markdown-them-math-inline">$T(n)\le T^*(n)$</span>, <span class="markdown-them-math-inline">$T^*(n)$</span> 为特征方程的所有根的 <span class="markdown-them-math-inline">$n$</span> 次幂的线性组合, 可以写成 <span class="markdown-them-math-inline">$T^*(n)=O^*(\alpha^n),\alpha$</span> 为方程的最大正根, 这就意味着 <span class="markdown-them-math-inline">$T(n)=O^*(\alpha^n)$</span>.</p>
-<p>将对于 branching vector <span class="markdown-them-math-inline">$(t_1,\cdots,t_r)$</span>, 定义 <span class="markdown-them-math-inline">$\tau(t_1,\cdots,t_r)=\alpha$</span>. 有如下性质:</p>
+<p>在上面的假设下, 复杂度为 搜索树结点 <span
+class="math inline">\(\times\)</span> 一个多项式.</p>
+<p>研究 branch 算法时, 问题的输入参数往往不是输入的长度,
+而是一个可以描述问题规模的很自然的参数, 比如图的结点数,
+称这样的参数为问题的 <strong><em>instance</em></strong>.</p>
+<p>设 <span class="math inline">\(T(n)\)</span> 是 instance 数目为 <span
+class="math inline">\(n\)</span> 的一个问题的分支树的叶子节点个数.
+给定一个 branching 规则 <span class="math inline">\(b\)</span>, 设 <span
+class="math inline">\(r\ge 2\)</span>, <span
+class="math inline">\(t_i&gt;0,i\in [r]\)</span>, 规则 <span
+class="math inline">\(b\)</span> 将当前的 instance 分成了 <span
+class="math inline">\(r\)</span> 个子问题且每个子问题的 instance
+数量至多为 <span class="math inline">\(n-t_i,i=1,\cdots,r,n\ge
+\max_{1\le i\le r}t_i\)</span>, 那么称向量 <span
+class="math inline">\(\mathbf{b}=(t_1,\cdots,t_r)\)</span> 称为
+branching vector. 根据树的递归结构, 有 <span class="math display">\[
+T(n)\le \sum_{i=1}^rT(n-t_i)
+\]</span> 这是一个线性递推不等式, 考虑用特征方程来解, 等式 <span
+class="math inline">\(T^*(n)=\sum_{i=1}^rT^*(n-t_i)\)</span>
+的特征方程为 <span
+class="math inline">\(x^n-x^{n-t_1}-\cdots-x^{n-t_r}=0\)</span>,
+而显然有 <span class="math inline">\(T(n)\le T^*(n)\)</span>, <span
+class="math inline">\(T^*(n)\)</span> 为特征方程的所有根的 <span
+class="math inline">\(n\)</span> 次幂的线性组合, 可以写成 <span
+class="math inline">\(T^*(n)=O^*(\alpha^n),\alpha\)</span>
+为方程的最大正根, 这就意味着 <span
+class="math inline">\(T(n)=O^*(\alpha^n)\)</span>.</p>
+<p>将对于 branching vector <span
+class="math inline">\((t_1,\cdots,t_r)\)</span>, 定义 <span
+class="math inline">\(\tau(t_1,\cdots,t_r)=\alpha\)</span>.
+有如下性质:</p>
 <ul>
-<li><span class="markdown-them-math-inline">$\tau(t_1,\cdots,t_r)=\tau(t_{\pi(1)},\cdots,t_{\pi(r)})$</span>, 其中 <span class="markdown-them-math-inline">$\pi$</span> 为 <span class="markdown-them-math-inline">$1,\cdots,r$</span> 的任意排列.</li>
-<li><span class="markdown-them-math-inline">$\tau(t_1,\cdots)&lt;\tau(t_1',\cdots), t_1&gt;t_1'$</span>.</li>
+<li><span
+class="math inline">\(\tau(t_1,\cdots,t_r)=\tau(t_{\pi(1)},\cdots,t_{\pi(r)})\)</span>,
+其中 <span class="math inline">\(\pi\)</span> 为 <span
+class="math inline">\(1,\cdots,r\)</span> 的任意排列.</li>
+<li><span
+class="math inline">\(\tau(t_1,\cdots)&lt;\tau(t_1&#39;,\cdots),
+t_1&gt;t_1&#39;\)</span>.</li>
 <li></li>
 </ul>
-<h1 id="$k$-sat"><span class="markdown-them-math-inline">$k$</span>-SAT</h1>
-<p>令变量集合 <span class="markdown-them-math-inline">$X=\{x_1,\cdots,x_n\}\land x_i\in\{0,1\},$</span> 有下面的概念:</p>
+<h1 id="k-sat"><span class="math inline">\(k\)</span>-SAT</h1>
+<p>令变量集合 <span class="math inline">\(X=\{x_1,\cdots,x_n\}\land
+x_i\in\{0,1\},\)</span> 有下面的概念:</p>
 <ul>
-<li><em><strong>literal</strong></em> <span class="markdown-them-math-inline">$x\in X$</span> 以及 <span class="markdown-them-math-inline">$\bar{x}$</span> 被称为 literal, 与 <span class="markdown-them-math-inline">$X$</span> 有关的 literal 的集合记作 <span class="markdown-them-math-inline">$L(X)=\{x_1,\bar{x}_1,\cdots,x_n,\bar{x}_n\}$</span>.</li>
-<li><em><strong>clause</strong></em> 一个 clause <span class="markdown-them-math-inline">$c$</span> 是若干 literal 的 disjunction <span class="markdown-them-math-inline">$c=\ell_1\lor \cdots\lor \ell_t,\ell_i\in L(X)$</span>. 要求一个 clause 不含有<strong>两个相同的 literal</strong> 或者 <strong>一个 literal 和它的非</strong>. 用集合 <span class="markdown-them-math-inline">$\{\ell_1,\cdots,\ell_t\}$</span> 来表示一个 clause.</li>
-<li><em><strong>CNF formula</strong></em> 是若干 clause 的conjunction <span class="markdown-them-math-inline">$F=c_1\land \cdots\land c_m$</span>, 用集合 <span class="markdown-them-math-inline">$\{c_1,\cdots,c_m\}$</span> 来表示一个 CNF formula. 若 <span class="markdown-them-math-inline">$F$</span>  的每个 clause 都含有至多 <span class="markdown-them-math-inline">$k$</span> 个 literal, 则称其为 <span class="markdown-them-math-inline">$k$</span>-CNF formula. 如果 CNF formula <span class="markdown-them-math-inline">$F'$</span> 满足 <span class="markdown-them-math-inline">$F'$</span> 的每个 clause 都是 <span class="markdown-them-math-inline">$F$</span> 的每个 clause 的子集, 则称 <span class="markdown-them-math-inline">$F'$</span> 是 <span class="markdown-them-math-inline">$F$</span> 的 subformula.</li>
+<li><strong><em>literal</em></strong> <span class="math inline">\(x\in
+X\)</span> 以及 <span class="math inline">\(\bar{x}\)</span> 被称为
+literal, 与 <span class="math inline">\(X\)</span> 有关的 literal
+的集合记作 <span
+class="math inline">\(L(X)=\{x_1,\bar{x}_1,\cdots,x_n,\bar{x}_n\}\)</span>.</li>
+<li><strong><em>clause</em></strong> 一个 clause <span
+class="math inline">\(c\)</span> 是若干 literal 的 disjunction <span
+class="math inline">\(c=\ell_1\lor \cdots\lor \ell_t,\ell_i\in
+L(X)\)</span>. 要求一个 clause 不含有<strong>两个相同的 literal</strong>
+或者 <strong>一个 literal 和它的非</strong>. 用集合 <span
+class="math inline">\(\{\ell_1,\cdots,\ell_t\}\)</span> 来表示一个
+clause.</li>
+<li><strong><em>CNF formula</em></strong> 是若干 clause 的conjunction
+<span class="math inline">\(F=c_1\land \cdots\land c_m\)</span>, 用集合
+<span class="math inline">\(\{c_1,\cdots,c_m\}\)</span> 来表示一个 CNF
+formula. 若 <span class="math inline">\(F\)</span> 的每个 clause
+都含有至多 <span class="math inline">\(k\)</span> 个 literal, 则称其为
+<span class="math inline">\(k\)</span>-CNF formula. 如果 CNF formula
+<span class="math inline">\(F&#39;\)</span> 满足 <span
+class="math inline">\(F&#39;\)</span> 的每个 clause 都是 <span
+class="math inline">\(F\)</span> 的每个 clause 的子集, 则称 <span
+class="math inline">\(F&#39;\)</span> 是 <span
+class="math inline">\(F\)</span> 的 subformula.</li>
 </ul>
-<p>称 CNF formula <span class="markdown-them-math-inline">$F$</span> 是 satisfiable 的当且仅当存在对 <span class="markdown-them-math-inline">$F$</span> 的 literal 的合法赋值使得 <span class="markdown-them-math-inline">$F=1$</span>. 以此定义 SAT 和 <span class="markdown-them-math-inline">$k$</span>-SAT 问题:</p>
+<p>称 CNF formula <span class="math inline">\(F\)</span> 是 satisfiable
+的当且仅当存在对 <span class="math inline">\(F\)</span> 的 literal
+的合法赋值使得 <span class="math inline">\(F=1\)</span>. 以此定义 SAT 和
+<span class="math inline">\(k\)</span>-SAT 问题:</p>
 <ul>
-<li><em>Satisfiability Problem</em>. 给定一个含有 <span class="markdown-them-math-inline">$n$</span> 个变量和 <span class="markdown-them-math-inline">$m$</span> 个 clause 的的 CNF formula <span class="markdown-them-math-inline">$F$</span>, 要求判断是否能找到对变量的合法赋值(对每个变量赋值得到 <span class="markdown-them-math-inline">$F$</span> 的一个结果的过程称为 <em>truth assignment</em>)使 <span class="markdown-them-math-inline">$F=1$</span>.</li>
-<li><span class="markdown-them-math-inline">$k$</span><em>-Satisfiability Problem</em>. 在 SAT 的基础上, 要求 <span class="markdown-them-math-inline">$F$</span> 是 <span class="markdown-them-math-inline">$k$</span>-CNF formula.</li>
+<li><em>Satisfiability Problem</em>. 给定一个含有 <span
+class="math inline">\(n\)</span> 个变量和 <span
+class="math inline">\(m\)</span> 个 clause 的的 CNF formula <span
+class="math inline">\(F\)</span>,
+要求判断是否能找到对变量的合法赋值(对每个变量赋值得到 <span
+class="math inline">\(F\)</span> 的一个结果的过程称为 <em>truth
+assignment</em>)使 <span class="math inline">\(F=1\)</span>.</li>
+<li><span class="math inline">\(k\)</span><em>-Satisfiability
+Problem</em>. 在 SAT 的基础上, 要求 <span
+class="math inline">\(F\)</span> 是 <span
+class="math inline">\(k\)</span>-CNF formula.</li>
 </ul>
-<h2 id="$k$-sat-的一个 branch 算法"><span class="markdown-them-math-inline">$k$</span>-SAT 的一个 branch 算法</h2>
-<p>考虑到对于 <span class="markdown-them-math-inline">$F$</span> 的任意 clause <span class="markdown-them-math-inline">$c=\ell_1\lor \cdots\lor \ell_q$</span>, 当 <span class="markdown-them-math-inline">$\ell_i=1$</span> 时便有 <span class="markdown-them-math-inline">$c=1$</span>, 同时可以得到 <span class="markdown-them-math-inline">$F'$</span>, 其中 <span class="markdown-them-math-inline">$F'$</span> 相比 <span class="markdown-them-math-inline">$F$</span> 少了一个变量 . 以这种方式作为分支规则, 可以得到 <span class="markdown-them-math-inline">$q$</span> 个 subformula:</p>
+<h2 id="k-sat-的一个-branch-算法"><span
+class="math inline">\(k\)</span>-SAT 的一个 branch 算法</h2>
+<p>考虑到对于 <span class="math inline">\(F\)</span> 的任意 clause <span
+class="math inline">\(c=\ell_1\lor \cdots\lor \ell_q\)</span>, 当 <span
+class="math inline">\(\ell_i=1\)</span> 时便有 <span
+class="math inline">\(c=1\)</span>, 同时可以得到 <span
+class="math inline">\(F&#39;\)</span>, 其中 <span
+class="math inline">\(F&#39;\)</span> 相比 <span
+class="math inline">\(F\)</span> 少了一个变量 . 以这种方式作为分支规则,
+可以得到 <span class="math inline">\(q\)</span> 个 subformula:</p>
 <ul>
-<li><span class="markdown-them-math-inline">$F_1:\ell_1=1$</span></li>
-<li><span class="markdown-them-math-inline">$F_2:\ell_1=0,\ell_2=1$</span></li>
-<li><span class="markdown-them-math-inline">$F_3:\ell_1=0,\ell_2=0,\ell_3=1$</span></li>
-<li><span class="markdown-them-math-inline">$\cdots$</span></li>
-<li><span class="markdown-them-math-inline">$F_q:\ell_1=0,\ell_2=0,\cdots,\ell_q=1$</span></li>
+<li><span class="math inline">\(F_1:\ell_1=1\)</span></li>
+<li><span class="math inline">\(F_2:\ell_1=0,\ell_2=1\)</span></li>
+<li><span
+class="math inline">\(F_3:\ell_1=0,\ell_2=0,\ell_3=1\)</span></li>
+<li><span class="math inline">\(\cdots\)</span></li>
+<li><span
+class="math inline">\(F_q:\ell_1=0,\ell_2=0,\cdots,\ell_q=1\)</span></li>
 </ul>
-<p>于是若 <span class="markdown-them-math-inline">$F_1,\cdots,F_q$</span> 之中至少要有一个是可满足的, 便可得到 <span class="markdown-them-math-inline">$F$</span> 是可满足的.</p>
+<p>于是若 <span class="math inline">\(F_1,\cdots,F_q\)</span>
+之中至少要有一个是可满足的, 便可得到 <span
+class="math inline">\(F\)</span> 是可满足的.</p>
 <h3 id="复杂度分析">复杂度分析</h3>
-<p>由于 <span class="markdown-them-math-inline">$F$</span> 有 <span class="markdown-them-math-inline">$n$</span> 个变量即 <span class="markdown-them-math-inline">$n$</span> 个instance, 于是经过赋值, <span class="markdown-them-math-inline">$F_i$</span> 有 <span class="markdown-them-math-inline">$n-i$</span> 个 instances, 其 branching vector 为 <span class="markdown-them-math-inline">$(1,\cdots,q)$</span>, 对应的特征方程为 <span class="markdown-them-math-inline">$x^{n}-x^{n-1}-\cdots-x^{n-q}=0$</span>, 利用等比数列求和化简得 <span class="markdown-them-math-inline">$x^{q+1}-2x^{q}+1=0$</span>.</p>
-<h2 id="$2$-sat"><span class="markdown-them-math-inline">$2$</span>-SAT</h2>
-<p><span class="markdown-them-math-inline">$2$</span>-SAT 可以在线性时间内解决. <span class="markdown-them-math-inline">$k\ge 3$</span> 时 <span class="markdown-them-math-inline">$k$</span>-SAT 是 <span class="markdown-them-math-inline">$\mathsf{NPC}$</span> 的.</p>
+<p>由于 <span class="math inline">\(F\)</span> 有 <span
+class="math inline">\(n\)</span> 个变量即 <span
+class="math inline">\(n\)</span> 个instance, 于是经过赋值, <span
+class="math inline">\(F_i\)</span> 有 <span
+class="math inline">\(n-i\)</span> 个 instances, 其 branching vector 为
+<span class="math inline">\((1,\cdots,q)\)</span>, 对应的特征方程为
+<span class="math inline">\(x^{n}-x^{n-1}-\cdots-x^{n-q}=0\)</span>,
+利用等比数列求和化简得 <span
+class="math inline">\(x^{q+1}-2x^{q}+1=0\)</span>.</p>
+<h2 id="sat"><span class="math inline">\(2\)</span>-SAT</h2>
+<p><span class="math inline">\(2\)</span>-SAT 可以在线性时间内解决.
+<span class="math inline">\(k\ge 3\)</span> 时 <span
+class="math inline">\(k\)</span>-SAT 是 <span
+class="math inline">\(\mathsf{NPC}\)</span> 的.</p>
 <h1 id="最大独立集">最大独立集</h1>
 <h2 id="一个简单的-branching">一个简单的 branching</h2>
 <p>独立集一些简单的结论:</p>
 <ul>
-<li>若 <span class="markdown-them-math-inline">$v\in I$</span>, 则 <span class="markdown-them-math-inline">$N(v)\cap I=\emptyset$</span>.</li>
-<li>若 <span class="markdown-them-math-inline">$I$</span> 是 MIS, 则对于 <span class="markdown-them-math-inline">$v\not\in I$</span>, <span class="markdown-them-math-inline">$N(v)$</span> 中至少有一个点在 <span class="markdown-them-math-inline">$I$</span> 中即 <span class="markdown-them-math-inline">$|N(v)\cap I|\ge 1$</span>, 如若不然, <span class="markdown-them-math-inline">$I\cup\{v\}$</span> 可称为新的独立集.</li>
-<li>对于每一个 <span class="markdown-them-math-inline">$v\in V$</span> 和MIS <span class="markdown-them-math-inline">$I$</span>, 存在一个 <span class="markdown-them-math-inline">$y\in N[v]$</span> 使得 <span class="markdown-them-math-inline">$y\in I$</span> 但 <span class="markdown-them-math-inline">$N(y)\cap I=\emptyset$</span>.</li>
+<li>若 <span class="math inline">\(v\in I\)</span>, 则 <span
+class="math inline">\(N(v)\cap I=\emptyset\)</span>.</li>
+<li>若 <span class="math inline">\(I\)</span> 是 MIS, 则对于 <span
+class="math inline">\(v\not\in I\)</span>, <span
+class="math inline">\(N(v)\)</span> 中至少有一个点在 <span
+class="math inline">\(I\)</span> 中即 <span
+class="math inline">\(|N(v)\cap I|\ge 1\)</span>, 如若不然, <span
+class="math inline">\(I\cup\{v\}\)</span> 可称为新的独立集.</li>
+<li>对于每一个 <span class="math inline">\(v\in V\)</span> 和MIS <span
+class="math inline">\(I\)</span>, 存在一个 <span
+class="math inline">\(y\in N[v]\)</span> 使得 <span
+class="math inline">\(y\in I\)</span> 但 <span
+class="math inline">\(N(y)\cap I=\emptyset\)</span>.</li>
 </ul>
 <blockquote>
 <p>第三条怎么和第一条重复了?</p>
 </blockquote>
-<p>下面是递推关系式:</p>
-<div class="markdown-them-math-block">$$\alpha(G)= 
+<p>下面是递推关系式: <span class="math display">\[
+\alpha(G)=
 \begin{cases}
 0,&amp; V=\emptyset\\
-\displaystyle 1+\max_{y\in N[v],v=\arg\min_{u\in V(G)}\deg (u)}\alpha(G\backslash\ N[y]),&amp;\text{otherwise}
+\displaystyle 1+\max_{y\in N[v],v=\arg\min_{u\in V(G)}\deg
+(u)}\alpha(G\backslash\ N[y]),&amp;\text{otherwise}
 \end{cases}
-$$</div><p>对于度数最小的点, 在 <span class="markdown-them-math-inline">$y$</span> 和 <span class="markdown-them-math-inline">$N(v)$</span> 中选择一个, 然后再把选择的点及其邻域删去, 选择的要求是, 要保证剩下的图的独立集最大.</p>
-<p>复杂度为 <span class="markdown-them-math-inline">$O^*(s^{n/s}),s=\min_{v\in V}\deg(v)+1$</span>, <span class="markdown-them-math-inline">$s=3$</span> 时为<span class="markdown-them-math-inline">$O^*(3^{n/3})$</span> 是最大值. 这个复杂度分析并不 trivial, 先贴在下面:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png" alt=""></p>
-<p>对于 branching 类型的算法, 分析其复杂度的相当于分析它分支树的大小.</p>
+\]</span> 对于度数最小的点, 在 <span class="math inline">\(y\)</span> 和
+<span class="math inline">\(N(v)\)</span> 中选择一个,
+然后再把选择的点及其邻域删去, 选择的要求是,
+要保证剩下的图的独立集最大.</p>
+<p>复杂度为 <span class="math inline">\(O^*(s^{n/s}),s=\min_{v\in
+V}\deg(v)+1\)</span>, <span class="math inline">\(s=3\)</span> 时为<span
+class="math inline">\(O^*(3^{n/3})\)</span> 是最大值. 这个复杂度分析并不
+trivial, 先贴在下面:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png" /></p>
+<p>对于 branching 类型的算法,
+分析其复杂度的相当于分析它分支树的大小.</p>
 <h2 id="一个复杂的-branching">一个复杂的 branching</h2>
 
     </div>
@@ -390,13 +496,13 @@ $$</div><p>对于度数最小的点, 在 <span class="markdown-them-math-inline"
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

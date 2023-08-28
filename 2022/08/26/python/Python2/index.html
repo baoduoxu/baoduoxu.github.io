@@ -22,20 +22,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="什么是面向对象 面向对象编程（Object-oriented Programming，简称OOP），指一种封装代码的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。">
+    <meta name="description" content="什么是面向对象 面向对象编程（Object-oriented Programming，简称OOP），指一种封装代码的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python入门(2):类和对象">
 <meta property="og:url" content="http://example.com/2022/08/26/python/Python2/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="什么是面向对象 面向对象编程（Object-oriented Programming，简称OOP），指一种封装代码的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。">
+<meta property="og:description" content="什么是面向对象 面向对象编程（Object-oriented Programming，简称OOP），指一种封装代码的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png">
 <meta property="article:published_time" content="2022-08-26T03:16:20.833Z">
 <meta property="article:modified_time" content="2023-07-01T14:01:12.551Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png">
 
 
 <link rel="canonical" href="http://example.com/2022/08/26/python/Python2/">
@@ -145,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">什么是面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">相关术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">类的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%60__init__()%60-%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">__init__() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%60self%60-%E5%8F%82%E6%95%B0%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.3.</span> <span class="nav-text">self 参数基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%60self%60-%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">self 用法详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.</span> <span class="nav-text">类变量与实例变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">类方法、静态方法和实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%A2%9E%E5%8A%A0%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.1.</span> <span class="nav-text">动态增加实例方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">父类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B1%BB"><span class="nav-number">3.2.</span> <span class="nav-text">子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">3.3.</span> <span class="nav-text">多继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建迭代器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99"><span class="nav-number">6.</span> <span class="nav-text">一些报错</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">什么是面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">相关术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">类的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init__-%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">__init__() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#self-%E5%8F%82%E6%95%B0%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.3.</span> <span class="nav-text">self 参数基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#self-%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">self 用法详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.</span> <span class="nav-text">类变量与实例变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">类方法、静态方法和实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%A2%9E%E5%8A%A0%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.1.</span> <span class="nav-text">动态增加实例方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">父类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B1%BB"><span class="nav-number">3.2.</span> <span class="nav-text">子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">3.3.</span> <span class="nav-text">多继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建迭代器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99"><span class="nav-number">6.</span> <span class="nav-text">一些报错</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -269,14 +267,16 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="什么是面向对象">什么是面向对象</h2>
-<p>面向对象编程（Object-oriented Programming，简称OOP），指一种<strong>封装代码</strong>的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。</p>
+<p>面向对象编程（Object-oriented
+Programming，简称OOP），指一种<strong>封装代码</strong>的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。</p>
 <span id="more"></span>
 <h3 id="相关术语">相关术语</h3>
 <ul>
 <li><strong>类</strong>：类是一个模板，是一个宽泛的概念，通过它可以创造出无数具体的实例。比如物种可以看作是类。</li>
 <li><strong>对象</strong>：对象是类的具体化。类不能直接使用，它是一个“蓝图”。</li>
 <li><strong>属性</strong>：类中所有的变量称为属性。我们可以认为它是某些性质。</li>
-<li><strong>方法</strong>：类中的所有函数通称为方法。和函数不同的是，类中的函数需要至少一个参数 <code>self</code> 。函数无法单独使用，只能和类的对象一起使用。</li>
+<li><strong>方法</strong>：类中的所有函数通称为方法。和函数不同的是，类中的函数需要至少一个参数
+<code>self</code> 。函数无法单独使用，只能和类的对象一起使用。</li>
 </ul>
 <p>实际上，Python的所有变量都是对象，都具有对应的属性以及方法。</p>
 <h2 id="类和对象">类和对象</h2>
@@ -287,68 +287,82 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class ClassName:</span><br><span class="line">    <span class="keyword">def</span> ...</span><br><span class="line">    <span class="comment">#Code#</span></span><br><span class="line">    </span><br><span class="line">object1=ClassName(Parameters)<span class="comment">#类的实例化，可赋值给一个变量</span></span><br></pre></td></tr></table></figure>
 <p>比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myclass</span>:</span><br><span class="line">	x=<span class="number">5</span></span><br><span class="line">p1=myclass()</span><br><span class="line"><span class="built_in">print</span>(p1.x)<span class="comment">#输出5</span></span><br></pre></td></tr></table></figure>
-<p>Python允许空类的存在，和分支、循环和函数一样，空类中要使用关键字 <code>pass</code> 来防止报错。</p>
-<h3 id="`__init__()`-方法"><code>__init__()</code> 方法</h3>
-<p>在类中可以手动添加一个 <code>__init__()</code> 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>__init__()</code> 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。注意 <code>__init__</code> 有四个下划线。</p>
+<p>Python允许空类的存在，和分支、循环和函数一样，空类中要使用关键字
+<code>pass</code> 来防止报错。</p>
+<h3 id="init__-方法"><code>__init__()</code> 方法</h3>
+<p>在类中可以手动添加一个 <code>__init__()</code>
+方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>__init__()</code>
+方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。注意
+<code>__init__</code> 有四个下划线。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>+self.name)</span><br><span class="line">p1=student(<span class="string">&quot;A&quot;</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
 <p>如果上面的 <code>_init_()</code> 方法没有任何参数，像下面这样：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;involking construction method&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
 <p>运行后会报错：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.__init__() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
-<p>而只要加上 <code>self</code> 参数就可以正常输出 <code>involking construction method</code> ，这表明在创建对象 <code>p1</code> 时Python解释器会自动调用 <code>_init_()</code> 方法并且给其传入一个参数。（传入的是什么？）</p>
-<p>当使用其他方法时，比如上面例子中的 <code>myfunc()</code> ，如果 <code>myfunc()</code> 的定义没有参数，那么运行后会报错：</p>
+<p>而只要加上 <code>self</code> 参数就可以正常输出
+<code>involking construction method</code> ，这表明在创建对象
+<code>p1</code> 时Python解释器会自动调用 <code>_init_()</code>
+方法并且给其传入一个参数。（传入的是什么？）</p>
+<p>当使用其他方法时，比如上面例子中的 <code>myfunc()</code> ，如果
+<code>myfunc()</code> 的定义没有参数，那么运行后会报错：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.myfunc() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
 <p>这表明对于类中的除了构造方法的其他的每一个方法，使用它们的时候Python解释器都会自动给它们传入一个参数。</p>
-<h3 id="`self`-参数基本介绍"><code>self</code> 参数基本介绍</h3>
-<p>上面的 <code>self</code> 参数是对类的当前实例的引用，用于访问该类的变量。它不一定要命名为 <code>self</code>，但是它<strong>必须是类中任意函数的首个参数</strong>。不同的函数这一个参数可以不一样，比如上面的例子中，我们可以把 <code>_init_()</code> 函数的第一个参数改为 <code>abc</code> ，而把 <code>myfunc</code> 函数中的第一个参数改为 <code>xyz</code>.</p>
-<h3 id="`self`-用法详解"><code>self</code> 用法详解</h3>
-<p>上面提到 <code>self</code> 参数不一定要命名为 <code>self</code>，可以随便命名，其实常命名为 <code>self</code> 时约定俗成的一种习惯，并且它的名称self已经指明了这个参数的意义，赋予了程序更好的可读性。</p>
-<p>同一个类可以产生多个对象，当某个对象调用类方法时，该对象会把自身的引用作为第一个参数自动传给该方法，换句话说，<strong>Python会自动绑定类方法的第一个参数指向该调用方法的对象</strong>。<code>self</code> 参数保证了每个对象<strong>只能调用自己的</strong>类变量和类方法。</p>
-<p><code>self</code> 表示实际调用该方法的对象，无论是构造方法还是普通的类方法，实际是谁调用的它们，第一个参数 <code>self</code> 就代表了谁。</p>
+<h3 id="self-参数基本介绍"><code>self</code> 参数基本介绍</h3>
+<p>上面的 <code>self</code>
+参数是对类的当前实例的引用，用于访问该类的变量。它不一定要命名为
+<code>self</code>，但是它<strong>必须是类中任意函数的首个参数</strong>。不同的函数这一个参数可以不一样，比如上面的例子中，我们可以把
+<code>_init_()</code> 函数的第一个参数改为 <code>abc</code> ，而把
+<code>myfunc</code> 函数中的第一个参数改为 <code>xyz</code>.</p>
+<h3 id="self-用法详解"><code>self</code> 用法详解</h3>
+<p>上面提到 <code>self</code> 参数不一定要命名为
+<code>self</code>，可以随便命名，其实常命名为 <code>self</code>
+时约定俗成的一种习惯，并且它的名称self已经指明了这个参数的意义，赋予了程序更好的可读性。</p>
+<p>同一个类可以产生多个对象，当某个对象调用类方法时，该对象会把自身的引用作为第一个参数自动传给该方法，换句话说，<strong>Python会自动绑定类方法的第一个参数指向该调用方法的对象</strong>。<code>self</code>
+参数保证了每个对象<strong>只能调用自己的</strong>类变量和类方法。</p>
+<p><code>self</code>
+表示实际调用该方法的对象，无论是构造方法还是普通的类方法，实际是谁调用的它们，第一个参数
+<code>self</code> 就代表了谁。</p>
 <blockquote>
 <p><code>self</code> 参数其实相当于C++中的 <code>this</code> 指针。</p>
 </blockquote>
-<p>如果用 <code>print</code> 函数输出 <code>self</code>，会输出该对象在计算机中存储的位置：</p>
+<p>如果用 <code>print</code> 函数输出
+<code>self</code>，会输出该对象在计算机中存储的位置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;__main__.student object at 0x0000021C8EA0B670&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="类变量与实例变量">类变量与实例变量</h3>
 <p>采用的例子：</p>
 <ul>
-<li>
-<p>类体中、所有函数之外的范围内定义的变量叫做<strong>类属性或类变量</strong></p>
+<li><p>类体中、所有函数之外的范围内定义的变量叫做<strong>类属性或类变量</strong></p>
 <p>类变量被所有类的实例化对象所共有。可以直接用类名或者类化对象调用类变量，同时也可以使用类名调用类变量来修改它的值，<strong>不能通过类对象修改类变量的值</strong>，因为通过类对象“修改类变量”并不是在修改它，而是定义新的<strong>实例变量</strong>。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stu1=student()</span><br><span class="line">stu1.age=<span class="number">3</span><span class="comment">#这里本质上是给stu1对象添加了新的实例变量age</span></span><br><span class="line">stu2=student()</span><br><span class="line"><span class="built_in">print</span>(stu2.age)<span class="comment">#上面将stu1的age修改为3， 但是其他的类对象的age仍然是1</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line">stu1.gender=<span class="string">&quot;male&quot;</span><span class="comment">#添加实例变量，这个实例变量独属于stu1对象，其他对象无法调用</span></span><br></pre></td></tr></table></figure>
 <p>通过类名修改类变量的值，会影响到所有的类对象。</p>
-<p><strong>不推荐使用类对象来调用类变量</strong>，因为实例变量与类变量可以重名，此时无法使用类对象调用类变量而只能调用实例变量。</p>
-</li>
-<li>
-<p>类体中，所有函数内部，以 <code>self.变量名1=变量名2/值</code> 的方式定义的变量就做<strong>实例属性或实例变量</strong>。</p>
+<p><strong>不推荐使用类对象来调用类变量</strong>，因为实例变量与类变量可以重名，此时无法使用类对象调用类变量而只能调用实例变量。</p></li>
+<li><p>类体中，所有函数内部，以 <code>self.变量名1=变量名2/值</code>
+的方式定义的变量就做<strong>实例属性或实例变量</strong>。</p>
 <p>与类变量不同的是，实例变量<strong>不能通过类名调用</strong>，只能通过实例化对象调用。类对象只有调用了某方法，才能拥有该方法的实例变量，比如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stu=student()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#会报错，输出下面的语句</span></span><br><span class="line"><span class="comment">#AttributeError: &#x27;student&#x27; object has no attribute &#x27;para&#x27;</span></span><br><span class="line">stu.myfunc()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#上面的语句调用过myfunc()方法后可以输出0</span></span><br></pre></td></tr></table></figure>
-<p>修改某个类对象的实例变量之后，不会影响其他的类对象，也不会影响与之重名的类变量。</p>
-</li>
-<li>
-<p>类体中、所有函数内部以 <code>para_name=value</code> 的方式定义的变量称为<strong>局部变量</strong>。和C/C++一样，局部变量只能在函数内部使用。</p>
-</li>
+<p>修改某个类对象的实例变量之后，不会影响其他的类对象，也不会影响与之重名的类变量。</p></li>
+<li><p>类体中、所有函数内部以 <code>para_name=value</code>
+的方式定义的变量称为<strong>局部变量</strong>。和C/C++一样，局部变量只能在函数内部使用。</p></li>
 </ul>
 <p>删除用 <code>del</code> 关键字。</p>
-<h3 id="类方法、静态方法和实例方法">类方法、静态方法和实例方法</h3>
-<p>最简单的区分方式：<strong><em>使用</em> <code>@classmethod</code> <em>修饰的方法为类方法，采用</em> <code>@staticmethod</code> <em>修饰的方法为静态方法，其余方法为实例方法。</em></strong></p>
+<h3 id="类方法静态方法和实例方法">类方法、静态方法和实例方法</h3>
+<p>最简单的区分方式：<strong><em>使用</em> <code>@classmethod</code>
+<em>修饰的方法为类方法，采用</em> <code>@staticmethod</code>
+<em>修饰的方法为静态方法，其余方法为实例方法。</em></strong></p>
 <p>实际编程中几乎用不到类方法和静态方法。</p>
 <ul>
-<li>
-<p><strong>实例方法</strong>：通常情况下，在类中定义的方法默认为实例方法，类的构造方法也是实例方法，但是它稍微特殊一些。</p>
-<p>实例方法必须要包含 <code>self</code> 参数来绑定调用此方法的类对象。</p>
-<p><em><strong>两种调用方法</strong></em>，类名调用实例方法和类对象调用：</p>
+<li><p><strong>实例方法</strong>：通常情况下，在类中定义的方法默认为实例方法，类的构造方法也是实例方法，但是它稍微特殊一些。</p>
+<p>实例方法必须要包含 <code>self</code>
+参数来绑定调用此方法的类对象。</p>
+<p><strong><em>两种调用方法</em></strong>，类名调用实例方法和类对象调用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方法一</span></span><br><span class="line">student.myfunc(stu1)<span class="comment">#需要手动传值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方法二</span></span><br><span class="line">stu1.myfunc()</span><br></pre></td></tr></table></figure>
 <p>注意：用类名调用实例方法使Python并不会自动给self参数传值，需要手动传值（除非没有self参数），且传值的内容没有限制，比如下面传入了字符串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.myfunc(<span class="string">&quot;zhangsan&quot;</span>)<span class="comment">#传入张三</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>类方法</strong>：前面用 <code>@classmethod</code> 修饰，必须包含 <code>cls</code> 参数（当然也可以不命名为 <code>cls</code>），用类名直接调用即可。</p>
-</li>
-<li>
-<p><strong>静态方法</strong>：前面用 <code>@staticmethod</code> 修饰，类名与类对象都可调用。</p>
-</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.myfunc(<span class="string">&quot;zhangsan&quot;</span>)<span class="comment">#传入张三</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>类方法</strong>：前面用 <code>@classmethod</code>
+修饰，必须包含 <code>cls</code> 参数（当然也可以不命名为
+<code>cls</code>），用类名直接调用即可。</p></li>
+<li><p><strong>静态方法</strong>：前面用 <code>@staticmethod</code>
+修饰，类名与类对象都可调用。</p></li>
 </ul>
 <h4 id="动态增加实例方法">动态增加实例方法</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>():<span class="comment">#定义一个函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method!&quot;</span>)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1()<span class="comment">#调用后成功输出Add new method!</span></span><br></pre></td></tr></table></figure>
@@ -357,7 +371,9 @@
 </blockquote>
 <p>如果我们定义的新方法有参数 <code>self</code> ，比如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1(p1,<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里要把p1作为参数手动传给self</span></span><br><span class="line"><span class="comment">#或者用lambda匿名函数</span></span><br><span class="line">p1.method2=<span class="keyword">lambda</span> self:<span class="built_in">print</span>(<span class="string">&quot;Add another method!&quot;</span>)</span><br><span class="line">p1.method2(p1)</span><br></pre></td></tr></table></figure>
-<p>借助 <code>types</code> 模块下的 <code>MethodType</code>，我们可以直接将 <code>self</code> 参数与对象绑定，再使用方法时便无需给手动给 <code>self</code> 传参：</p>
+<p>借助 <code>types</code> 模块下的
+<code>MethodType</code>，我们可以直接将 <code>self</code>
+参数与对象绑定，再使用方法时便无需给手动给 <code>self</code> 传参：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">p1.method1=MethodType(method,p1)</span><br><span class="line"></span><br><span class="line">p1.method1(<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里无需写参数p1</span></span><br></pre></td></tr></table></figure>
 <h2 id="继承">继承</h2>
 <p>继承机制经常用于创建和现有类功能类似的新类。通过继承机制，可以轻松实现类的重复使用，避免了代码的复制粘贴。</p>
@@ -368,18 +384,16 @@
 <p>根据上面的父类，创建子类：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    <span class="comment">#添加属性#</span></span><br><span class="line">    <span class="comment">#添加方法#</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>
-<p>如果相比父类不做任何更改，在上面添加 <code>pass</code> 即可，此时子类继承了父类的所有属性与方法。</p>
-</li>
-<li>
-<p>如果父类的某个方法的功能不能满足需求，可以在子类重写方法（方法名要与父类的该方法相同，类属性也有类似的操作），用新方法覆盖父类的方后，子类将不再继承父类的方法（或属性）：</p>
+<li><p>如果相比父类不做任何更改，在上面添加 <code>pass</code>
+即可，此时子类继承了父类的所有属性与方法。</p></li>
+<li><p>如果父类的某个方法的功能不能满足需求，可以在子类重写方法（方法名要与父类的该方法相同，类属性也有类似的操作），用新方法覆盖父类的方后，子类将不再继承父类的方法（或属性）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,fname,lname</span>):</span><br><span class="line">    	<span class="comment">#添加属性#</span></span><br><span class="line">    <span class="comment">#添加方法#</span></span><br><span class="line">    <span class="comment">#添加属性与添加方法的方式与前面介绍的相同#</span></span><br></pre></td></tr></table></figure>
-<p>当子类中的某个方法覆盖了父类中同名的方法时，可以通过 <code>父类名.方法名(参数)</code> 来调用父类的这个方法。</p>
+<p>当子类中的某个方法覆盖了父类中同名的方法时，可以通过
+<code>父类名.方法名(参数)</code> 来调用父类的这个方法。</p>
 <p>如果还想继承，可以采用下面的方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,fname,lname</span>):</span><br><span class="line">    	Person.__init__(self,fname,lname)<span class="comment">#父类名.方法名(属性名)</span></span><br></pre></td></tr></table></figure>
 <p>用 <code>super()</code> 函数可以让子类继承父类的所有属性与方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,fname,lname</span>):</span><br><span class="line">    	<span class="built_in">super</span>().__init__(fname,lname)<span class="comment">#和上面不同，这里无需加参数self，这样做可以不用使用父类名</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">Person</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,fname,lname</span>):</span><br><span class="line">    	<span class="built_in">super</span>().__init__(fname,lname)<span class="comment">#和上面不同，这里无需加参数self，这样做可以不用使用父类名</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="多继承">多继承</h3>
 <p>单继承：子类有且只能由一个父类。Python和C++都支持多继承。</p>
@@ -390,24 +404,31 @@
 <p>字符串、列表、元组、字典和集合都是<strong>可迭代的对象</strong>，我们可以从中获取<strong>迭代器</strong>。</p>
 <p><code>iter()</code> 方法返回一个迭代器：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">&quot;1234567&quot;</span></span><br><span class="line">it=<span class="built_in">iter</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(it)<span class="comment">#输出迭代器对象的地址:</span></span><br><span class="line"><span class="comment">#&lt;str_iterator object at 0x0000028B1455BFA0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(it))<span class="comment">#输出it的数据类型:</span></span><br><span class="line"><span class="comment">#&lt;class &#x27;str_iterator&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>next()</code> 方法返回容器内的下一个元素，两个参数，第一个参数为迭代器，第二个参数可以不设置，其作用是在没有此参数且没有下一个元素的时候抛出 <code>StopIteration</code> 异常; 设置第二个参数时会返回该参数（称为默认值default）：</p>
+<p><code>next()</code>
+方法返回容器内的下一个元素，两个参数，第一个参数为迭代器，第二个参数可以不设置，其作用是在没有此参数且没有下一个元素的时候抛出
+<code>StopIteration</code> 异常;
+设置第二个参数时会返回该参数（称为默认值default）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#接上</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    x=<span class="built_in">next</span>(it,<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="string">&#x27;a&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment">#输出 1 2 3 4 5 6 7 a (字符之间实际为换行)</span></span><br></pre></td></tr></table></figure>
 <h4 id="创建迭代器">创建迭代器</h4>
-<p>可迭代的对象必须要含有 <code>__iter__()</code> 方法和 <code>__next__</code> 方法：</p>
+<p>可迭代的对象必须要含有 <code>__iter__()</code> 方法和
+<code>__next__</code> 方法：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Numbers</span>:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        <span class="keyword">if</span> self.a&lt;<span class="number">20</span>:</span><br><span class="line">            self.a+=<span class="number">1</span></span><br><span class="line">            x=self.a</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            raise StopIteration</span><br><span class="line"></span><br><span class="line">num=<span class="built_in">Numbers</span>()</span><br><span class="line">it=<span class="built_in">iter</span>(num)</span><br><span class="line"><span class="keyword">for</span> i in <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">next</span>(it,<span class="string">&quot;a&quot;</span>))</span><br></pre></td></tr></table></figure>
 <h2 id="正则表达式">正则表达式</h2>
 <h2 id="一些报错">一些报错</h2>
 <p>不想再单独写一篇文章记录了，随手记下来吧。</p>
 <p>1：频繁报错下面内容，常常在复制粘贴别处代码后出现：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Inconsistent use of tabs and spaces in indentationPylance</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png" alt=""></p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png" /></p>
 <p>混用了Tab键和Space键的缩进（表面看上去毫无问题啊，就算删掉全部换成Tab也还是会报错……不知道具体原因是什么）</p>
 <p>两种解决方法：</p>
 <p>1）前面缩进正常的部分的前面的空格复制粘贴到报错的部分。</p>
 <p>2）全选Shift+Tab，再把需要Tab的地方进行缩进。（有点麻烦</p>
 <p>2:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;int&#x27; object is not callable</span><br></pre></td></tr></table></figure>
-<p>上面的报错内容一般是函数名和变量名重复了。需要注意的是，若函数名为 <code>f</code> 而变量名为 <code>F</code> (即相同字母的大小写)，也有可能报上述错误。</p>
+<p>上面的报错内容一般是函数名和变量名重复了。需要注意的是，若函数名为
+<code>f</code> 而变量名为 <code>F</code>
+(即相同字母的大小写)，也有可能报上述错误。</p>
 
     </div>
 
@@ -462,13 +483,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

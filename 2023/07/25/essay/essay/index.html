@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="P2949 优先队列priority_queue默认大根堆, 如果要实现小根堆: 1priority_queue&lt;int,vector&lt;int&gt;, greater&lt;int&gt;&gt;q; 优先队列的元素为 pair&lt;int,int&gt; 时, 入队的排序依据为第一个元素. 结构体入队时, 通过重载实现比较方式: 1234567typedef struct _fo">
+    <meta name="description" content="P2949 优先队列priority_queue默认大根堆, 如果要实现小根堆: 1priority_queue&lt;int,vector&lt;int&gt;, greater&lt;int&gt;&gt;q; 优先队列的元素为 pair&lt;int,int&gt; 时, 入队的排序依据为第一个元素. 结构体入队时, 通过重载实现比较方式: 1234567typedef stru">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些做题记录">
 <meta property="og:url" content="http://example.com/2023/07/25/essay/essay/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="P2949 优先队列priority_queue默认大根堆, 如果要实现小根堆: 1priority_queue&lt;int,vector&lt;int&gt;, greater&lt;int&gt;&gt;q; 优先队列的元素为 pair&lt;int,int&gt; 时, 入队的排序依据为第一个元素. 结构体入队时, 通过重载实现比较方式: 1234567typedef struct _fo">
+<meta property="og:description" content="P2949 优先队列priority_queue默认大根堆, 如果要实现小根堆: 1priority_queue&lt;int,vector&lt;int&gt;, greater&lt;int&gt;&gt;q; 优先队列的元素为 pair&lt;int,int&gt; 时, 入队的排序依据为第一个元素. 结构体入队时, 通过重载实现比较方式: 1234567typedef stru">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-25T12:18:59.000Z">
 <meta property="article:modified_time" content="2023-08-16T15:39:57.626Z">
@@ -239,7 +239,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.5k</span>
+      <span>2.6k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -257,26 +257,47 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="p2949">P2949</h1>
-<p>优先队列<code>priority_queue</code>默认大根堆, 如果要实现小根堆:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt;q;</span><br></pre></td></tr></table></figure>
-<p>优先队列的元素为 <code>pair&lt;int,int&gt;</code> 时, 入队的排序依据为第一个元素.</p>
+<p>优先队列<code>priority_queue</code>默认大根堆, 如果要实现小根堆:
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt;q;</span><br></pre></td></tr></table></figure></p>
+<p>优先队列的元素为 <code>pair&lt;int,int&gt;</code> 时,
+入队的排序依据为第一个元素.</p>
 <p>结构体入队时, 通过重载实现比较方式:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_foo</span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="keyword">friend</span> <span class="type">bool</span> <span class="keyword">operator</span> &gt; (_foo x,_foo y)&#123; <span class="comment">// 一般不重载 &lt;</span></span><br><span class="line">        <span class="keyword">return</span> x.b &lt; y.b; <span class="comment">// 符号相同为大根堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;foo;</span><br><span class="line">priority_queue&lt;foo&gt;q; <span class="comment">// 小根堆</span></span><br></pre></td></tr></table></figure>
 <h1 id="loj10001">LOJ10001</h1>
-<p><a target="_blank" rel="noopener" href="https://loj.ac/p/10001">https://loj.ac/p/10001</a></p>
-<p>暴力可过, 先假设每个点都种即 <code>ans=n</code>, 然后从头到尾扫描一遍, 如果不种不违反约束条件(不会导致某个区间的树不够)就 <code>ans--</code>, <span class="markdown-them-math-inline">$O(nh)$</span>.</p>
-<p>更快的方法是差分约束, 考虑前缀和, 约束条件可以转化为 <span class="markdown-them-math-inline">$S_{e_j}-S_{b_j -1}\ge t_j$</span> 的形式. (没学过, 有时间再学)</p>
+<p>https://loj.ac/p/10001</p>
+<p>暴力可过, 先假设每个点都种即 <code>ans=n</code>,
+然后从头到尾扫描一遍, 如果不种不违反约束条件(不会导致某个区间的树不够)就
+<code>ans--</code>, <span class="math inline">\(O(nh)\)</span>.</p>
+<p>更快的方法是差分约束, 考虑前缀和, 约束条件可以转化为 <span
+class="math inline">\(S_{e_j}-S_{b_j -1}\ge t_j\)</span> 的形式.
+(没学过, 有时间再学)</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://loj.ac/p/10001</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">5e3</span>,maxn2=<span class="number">3e4</span>;</span><br><span class="line"><span class="type">int</span> sug[maxn+<span class="number">5</span>][<span class="number">3</span>];</span><br><span class="line"><span class="type">int</span> num[maxn+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,h,ans=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;h;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;h;i++)&#123;</span><br><span class="line">        cin&gt;&gt;sug[i][<span class="number">0</span>]&gt;&gt;sug[i][<span class="number">1</span>]&gt;&gt;sug[i][<span class="number">2</span>];</span><br><span class="line">        num[i]=sug[i][<span class="number">1</span>]-sug[i][<span class="number">0</span>]+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ans=n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        <span class="type">int</span> flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;h;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k&gt;=sug[i][<span class="number">0</span>]&amp;&amp;k&lt;=sug[i][<span class="number">1</span>]&amp;&amp;num[i]==sug[i][<span class="number">2</span>])&#123;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">            ans--;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;h;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(k&gt;=sug[i][<span class="number">0</span>]&amp;&amp;k&lt;=sug[i][<span class="number">1</span>])&#123;</span><br><span class="line">                    num[i]--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="loj10002">LOJ10002</h1>
-<p>首先考虑每个圆能够覆盖的区间, 用勾股定理将问题转化为从若干区间中选择最少的能覆盖给定区间的区间. 接着按照右端点排序, 从左到右进行覆盖, 记录当前能覆盖到的区间的右端点 <code>crt</code>, 在剩下的区间中选择左端点小于 <code>crt</code> 的且右端点最大的区间即可, 当不存在这样的区间或者最大的区间右端点小于 <code>L</code> 时输出 <code>-1</code>.</p>
+<p>首先考虑每个圆能够覆盖的区间,
+用勾股定理将问题转化为从若干区间中选择最少的能覆盖给定区间的区间.
+接着按照右端点排序, 从左到右进行覆盖, 记录当前能覆盖到的区间的右端点
+<code>crt</code>, 在剩下的区间中选择左端点小于 <code>crt</code>
+的且右端点最大的区间即可, 当不存在这样的区间或者最大的区间右端点小于
+<code>L</code> 时输出 <code>-1</code>.</p>
 <p>注意涉及到比较和运算的变量都要设置为浮点型.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> crt=<span class="number">0</span>;<span class="comment">// 覆盖到的区间的右端点</span></span><br><span class="line"><span class="type">int</span> flag=<span class="number">0</span>; </span><br><span class="line"><span class="keyword">if</span>(arr[<span class="number">0</span>].r&lt;L)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (crt&lt;L)&#123;</span><br><span class="line">        flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!isv[i]&amp;&amp;arr[i].l&lt;crt)&#123;</span><br><span class="line">                isv[i]=<span class="number">1</span>;</span><br><span class="line">                ans++;</span><br><span class="line">                crt=arr[i].r;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag)&#123; <span class="comment">// 不存在左端点小于crt的线段</span></span><br><span class="line">            cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">            is_out=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!is_out)</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="p2158">P2158</h1>
-<p>找到满足 <span class="markdown-them-math-inline">$2\le x &lt; y \le n-1\land \gcd(x,y)=1$</span> 的 <span class="markdown-them-math-inline">$(x,y)$</span> 的对数, 最后结果乘2加上 <span class="markdown-them-math-inline">$3$</span> 即可, 显然是转化为欧拉函数的前缀和, 最终答案为</p>
-<div class="markdown-them-math-block">$$\mathtt{ans}=2\sum_{i=2}^{n-1}\varphi(n)+3
-$$</div><p>用线性筛求积性函数即可, <span class="markdown-them-math-inline">$O(n)$</span>. 当 <span class="markdown-them-math-inline">$p_j\mid i$</span> 时, 设 <span class="markdown-them-math-inline">$i=kp_j^{a} $</span>, <span class="markdown-them-math-inline">$\varphi(ip_j)=\varphi(kp_j^{a+1})=\varphi(k)(p_j^{a+1}-p_j^a)=\varphi(kp_{j}^a)p_j=\varphi(i)p_j$</span>.</p>
+<p>找到满足 <span class="math inline">\(2\le x &lt; y \le n-1\land
+\gcd(x,y)=1\)</span> 的 <span class="math inline">\((x,y)\)</span>
+的对数, 最后结果乘2加上 <span class="math inline">\(3\)</span> 即可,
+显然是转化为欧拉函数的前缀和, 最终答案为</p>
+<p><span class="math display">\[
+\mathtt{ans}=2\sum_{i=2}^{n-1}\varphi(n)+3
+\]</span></p>
+<p>用线性筛求积性函数即可, <span class="math inline">\(O(n)\)</span>. 当
+<span class="math inline">\(p_j\mid i\)</span> 时, 设 $i=kp_j^{a} $,
+<span
+class="math inline">\(\varphi(ip_j)=\varphi(kp_j^{a+1})=\varphi(k)(p_j^{a+1}-p_j^a)=\varphi(kp_{j}^a)p_j=\varphi(i)p_j\)</span>.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> phi[N],p[N],isv[N],cnt=<span class="number">0</span>,n;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Euler</span><span class="params">()</span></span>&#123;</span><br><span class="line">    isv[<span class="number">1</span>]=phi[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!isv[i])&#123;</span><br><span class="line">            p[++cnt]=i; <span class="comment">//记录素数</span></span><br><span class="line">            phi[i]=i<span class="number">-1</span>; <span class="comment">// 欧拉函数的性质</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;i*p[j]&lt;=n;j++)&#123;</span><br><span class="line">            isv[i*p[j]]=<span class="number">1</span>; <span class="comment">// 筛掉</span></span><br><span class="line">            <span class="keyword">if</span>(i%p[j]!=<span class="number">0</span>)&#123;</span><br><span class="line">                phi[i*p[j]]=phi[i]*phi[p[j]]; <span class="comment">// 如果i和p[j]互质</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                phi[i*p[j]]=phi[i]*p[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>好像也可以用莫比乌斯反演求 <span class="markdown-them-math-inline">$\displaystyle \sum_{i=1}^{n-1}\sum_{j=1}^{n-1}[\gcd(i,j)=1]$</span>, <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2522">这里</a>是个更一般的题. 不会做.</p>
+<p>好像也可以用莫比乌斯反演求 <span class="math inline">\(\displaystyle
+\sum_{i=1}^{n-1}\sum_{j=1}^{n-1}[\gcd(i,j)=1]\)</span>, <a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2522">这里</a>是个更一般的题.
+不会做.</p>
 
     </div>
 
@@ -328,13 +349,13 @@ $$</div><p>用线性筛求积性函数即可, <span class="markdown-them-math-in
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">161k</span>
+    <span title="Word count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:27</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
