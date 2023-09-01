@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,19 +22,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="TSP上界 考虑欧氏平面上的完全图 \(G&#x3D;(V,E),|V|&#x3D;n\), 此时边权为正且满足三角不等式. 设最优环游为 \(H^*\), 启发式算法产生的解记作 \(H\), 边权 \(c:E\to\mathbb{R}_+\). 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 \(c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\fra">
+    <meta name="description" content="TSP上界 考虑欧氏平面上的完全图 $G&#x3D;(V,E),|V|&#x3D;n$, 此时边权为正且满足三角不等式. 设最优环游为 $H^*$, 启发式算法产生的解记作 $H$, 边权 $c:E\to\mathbb{R}_+$. 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 $c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Heuristic Algorithms for TSP">
 <meta property="og:url" content="http://example.com/2023/07/20/CO/TSP/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="TSP上界 考虑欧氏平面上的完全图 \(G&#x3D;(V,E),|V|&#x3D;n\), 此时边权为正且满足三角不等式. 设最优环游为 \(H^*\), 启发式算法产生的解记作 \(H\), 边权 \(c:E\to\mathbb{R}_+\). 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 \(c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\fra">
+<meta property="og:description" content="TSP上界 考虑欧氏平面上的完全图 $G&#x3D;(V,E),|V|&#x3D;n$, 此时边权为正且满足三角不等式. 设最优环游为 $H^*$, 启发式算法产生的解记作 $H$, 边权 $c:E\to\mathbb{R}_+$. 最近邻法 从起点开始, 每次选择距离当前点最近的点即可. 满足 $c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142038469.png">
 <meta property="article:published_time" content="2023-07-20T02:40:04.000Z">
 <meta property="article:modified_time" content="2023-08-14T13:16:30.626Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142038469.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png">
 
 
 <link rel="canonical" href="http://example.com/2023/07/20/CO/TSP/">
@@ -144,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E4%B8%8A%E7%95%8C"><span class="nav-number">1.</span> <span class="nav-text">TSP上界</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E8%BF%91%E9%82%BB%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">最近邻法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">插入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#christofides-%E5%90%AF%E5%8F%91%E5%BC%8F%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">Christofides 启发式方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.4.</span> <span class="nav-text">\(k\)-交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lin-kernighan"><span class="nav-number">1.5.</span> <span class="nav-text">Lin-Kernighan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E4%B8%8B%E7%95%8C"><span class="nav-number">2.</span> <span class="nav-text">TSP下界</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#held-karp-bound"><span class="nav-number">2.1.</span> <span class="nav-text">Held-Karp bound</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8B%E7%95%8C%E6%8A%80%E6%9C%AF"><span class="nav-number">2.2.</span> <span class="nav-text">线性规划下界技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E7%9A%84%E4%B8%80%E4%B8%AAdp%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">TSP的一个DP算法</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E4%B8%8A%E7%95%8C"><span class="nav-number">1.</span> <span class="nav-text">TSP上界</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E8%BF%91%E9%82%BB%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">最近邻法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">插入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#christofides-%E5%90%AF%E5%8F%91%E5%BC%8F%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">Christofides 启发式方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#$k$-%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.4.</span> <span class="nav-text">$k$-交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lin-kernighan"><span class="nav-number">1.5.</span> <span class="nav-text">Lin-Kernighan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E4%B8%8B%E7%95%8C"><span class="nav-number">2.</span> <span class="nav-text">TSP下界</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#held-karp-bound"><span class="nav-number">2.1.</span> <span class="nav-text">Held-Karp bound</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8B%E7%95%8C%E6%8A%80%E6%9C%AF"><span class="nav-number">2.2.</span> <span class="nav-text">线性规划下界技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tsp%E7%9A%84%E4%B8%80%E4%B8%AAdp%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">TSP的一个DP算法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -157,13 +158,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -173,6 +174,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -250,7 +259,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>4.4k</span>
+      <span>4.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -268,231 +277,57 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="tsp上界">TSP上界</h1>
-<p>考虑欧氏平面上的完全图 <span
-class="math inline">\(G=(V,E),|V|=n\)</span>,
-此时边权为正且满足三角不等式. 设最优环游为 <span
-class="math inline">\(H^*\)</span>, 启发式算法产生的解记作 <span
-class="math inline">\(H\)</span>, 边权 <span
-class="math inline">\(c:E\to\mathbb{R}_+\)</span>.</p>
+<p>考虑欧氏平面上的完全图 <span class="markdown-them-math-inline">$G=(V,E),|V|=n$</span>, 此时边权为正且满足三角不等式. 设最优环游为 <span class="markdown-them-math-inline">$H^*$</span>, 启发式算法产生的解记作 <span class="markdown-them-math-inline">$H$</span>, 边权 <span class="markdown-them-math-inline">$c:E\to\mathbb{R}_+$</span>.</p>
 <h2 id="最近邻法">最近邻法</h2>
-<p>从起点开始, 每次选择距离当前点最近的点即可. 满足 <span
-class="math inline">\(c(H)\le
-\frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\rceil
-c(H^*)\)</span>, 粗略点就是 <span
-class="math inline">\(c(H)/c(H^*)=O(\log n)\)</span>.</p>
-<p>如果图不满足三角不等式,
-那么最近邻法产生的环游与最优环游的比值可以任意大.</p>
+<p>从起点开始, 每次选择距离当前点最近的点即可. 满足 <span class="markdown-them-math-inline">$c(H)\le \frac{1}{3}\left\lceil\log_2(n+1)+\frac{4}{9}\right\rceil c(H^*)$</span>, 粗略点就是 <span class="markdown-them-math-inline">$c(H)/c(H^*)=O(\log n)$</span>.</p>
+<p>如果图不满足三角不等式, 那么最近邻法产生的环游与最优环游的比值可以任意大.</p>
 <h2 id="插入法">插入法</h2>
 <h2 id="christofides-启发式方法">Christofides 启发式方法</h2>
-<p>需要用到最小生成树 <span class="math inline">\(T\)</span>, 记 <span
-class="math inline">\(W\)</span> 为 <span
-class="math inline">\(T\)</span> 中度数为奇数的顶点的集合, 在 <span
-class="math inline">\(T\)</span> 中, 由握手定理可得 <span
-class="math inline">\(\sum_{v\in W}\deg(v)\)</span> 为偶数, 于是必然有
-<span class="math inline">\(|W|\)</span> 为偶数, 因此诱导子图 <span
-class="math inline">\(G[W]\)</span> 存在最小费用完美匹配 <span
-class="math inline">\(M\)</span>, 令 <span
-class="math inline">\(J=E(T)\cup M\)</span>,
-在这里边集的并要求保留重复元素, 即允许出现重边, 这样得到子图 <span
-class="math inline">\(G&#39;=(V,J)=T\cup (W,M)\)</span>, 显然 <span
-class="math inline">\(G&#39;\)</span> 中所有点的度数均为偶数,
-因为将完美匹配并入最小生成树 <span class="math inline">\(T\)</span>
-中时未改变偶数度顶点的度数, 给每个奇数度顶点的度数加上了一, 于是 <span
-class="math inline">\(G&#39;\)</span> 中存在欧拉圈, 设欧拉圈为 <span
-class="math inline">\(v_0,\cdots,v_0\)</span>,
-在欧拉圈的基础上构造TSP环游: 置 <span
-class="math inline">\(H:=\emptyset\)</span>, 按照欧拉圈的顺序逐边向
-<span class="math inline">\(H\)</span> 中添加边, 若在 <span
-class="math inline">\(v_{i}\)</span> 时 <span
-class="math inline">\(v_{i+1},\cdots,v_{j}(j\ge i+1)\)</span>
-已经被访问过且 <span class="math inline">\(v_{j+1}\)</span> 未被访问过,
-则置 <span class="math inline">\(H:=H\cup
-\{v_{i},v_{j+1}\}\)</span>(即跳过已经被访问过的点),
-直到所有顶点都被访问.</p>
-<p><strong>定理1</strong> Christofides 启发式方法得到的环游满足 <span
-class="math inline">\(c(H)/c(H^*)\le 3/2\)</span>.</p>
-<p><strong><em>PROOF</em></strong> 由于环游 <span
-class="math inline">\(H\)</span> 是在 <span
-class="math inline">\(G&#39;=T\cup (W,M)\)</span> 上进行改进得到的,
-只需要证明 <span class="math inline">\(c(E(G&#39;))\le
-1.5c(H^*)\)</span> 即可, 分别考虑最小生成树和完美匹配的边权. 首先一定有
-<span class="math inline">\(c(E(T))\le c(H^*)\)</span>, 如若不然, 去掉
-<span class="math inline">\(H^*\)</span>
-的一条边得到的生成树便可成为新的最小生成树; 对于 <span
-class="math inline">\(W\)</span>, 按照顶点在 <span
-class="math inline">\(H^*\)</span> 的顺序将 <span
-class="math inline">\(W\)</span> 中的点画成一个圈 <span
-class="math inline">\(C\)</span>, 由三角不等式可得 <span
-class="math inline">\(c(C)\le c(H^*)\)</span>, 且圈 <span
-class="math inline">\(C\)</span> 可以被划分为 <span
-class="math inline">\(G[W]\)</span> 的两个完美匹配 <span
-class="math inline">\(M_1,M_2\)</span>, 显然最小费用完美匹配 <span
-class="math inline">\(M\)</span> 满足 <span
-class="math inline">\(c(M)\le \min \{c(M_1),c(M_2)\}\le
-\frac{c(M_1)+c(M_2)}{2}=c(C)/2\le c(H^*)/2\)</span>. 因此 <span
-class="math inline">\(c(H)\le c(J)=c(E(T))+c(M)\le 1.5c(H^*)\)</span>.
-<span class="math inline">\(\blacksquare\)</span></p>
-<p>这个 <span class="math inline">\(1.5\)</span> 不能再继续减小了.</p>
+<p>需要用到最小生成树 <span class="markdown-them-math-inline">$T$</span>, 记 <span class="markdown-them-math-inline">$W$</span> 为 <span class="markdown-them-math-inline">$T$</span> 中度数为奇数的顶点的集合, 在 <span class="markdown-them-math-inline">$T$</span> 中, 由握手定理可得 <span class="markdown-them-math-inline">$\sum_{v\in W}\deg(v)$</span> 为偶数, 于是必然有 <span class="markdown-them-math-inline">$|W|$</span> 为偶数, 因此诱导子图 <span class="markdown-them-math-inline">$G[W]$</span> 存在最小费用完美匹配 <span class="markdown-them-math-inline">$M$</span>, 令 <span class="markdown-them-math-inline">$J=E(T)\cup M$</span>, 在这里边集的并要求保留重复元素, 即允许出现重边, 这样得到子图 <span class="markdown-them-math-inline">$G'=(V,J)=T\cup (W,M)$</span>, 显然 <span class="markdown-them-math-inline">$G'$</span> 中所有点的度数均为偶数, 因为将完美匹配并入最小生成树 <span class="markdown-them-math-inline">$T$</span> 中时未改变偶数度顶点的度数, 给每个奇数度顶点的度数加上了一, 于是 <span class="markdown-them-math-inline">$G'$</span> 中存在欧拉圈, 设欧拉圈为 <span class="markdown-them-math-inline">$v_0,\cdots,v_0$</span>, 在欧拉圈的基础上构造TSP环游: 置 <span class="markdown-them-math-inline">$H:=\emptyset$</span>, 按照欧拉圈的顺序逐边向 <span class="markdown-them-math-inline">$H$</span> 中添加边, 若在 <span class="markdown-them-math-inline">$v_{i}$</span> 时 <span class="markdown-them-math-inline">$v_{i+1},\cdots,v_{j}(j\ge i+1)$</span> 已经被访问过且 <span class="markdown-them-math-inline">$v_{j+1}$</span> 未被访问过, 则置 <span class="markdown-them-math-inline">$H:=H\cup \{v_{i},v_{j+1}\}$</span>(即跳过已经被访问过的点), 直到所有顶点都被访问.</p>
+<p><strong>定理1</strong> Christofides 启发式方法得到的环游满足 <span class="markdown-them-math-inline">$c(H)/c(H^*)\le 3/2$</span>.</p>
+<p><em><strong>PROOF</strong></em> 由于环游 <span class="markdown-them-math-inline">$H$</span> 是在 <span class="markdown-them-math-inline">$G'=T\cup (W,M)$</span> 上进行改进得到的, 只需要证明 <span class="markdown-them-math-inline">$c(E(G'))\le 1.5c(H^*)$</span> 即可, 分别考虑最小生成树和完美匹配的边权. 首先一定有 <span class="markdown-them-math-inline">$c(E(T))\le c(H^*)$</span>, 如若不然, 去掉 <span class="markdown-them-math-inline">$H^*$</span> 的一条边得到的生成树便可成为新的最小生成树; 对于 <span class="markdown-them-math-inline">$W$</span>, 按照顶点在 <span class="markdown-them-math-inline">$H^*$</span> 的顺序将 <span class="markdown-them-math-inline">$W$</span> 中的点画成一个圈 <span class="markdown-them-math-inline">$C$</span>, 由三角不等式可得 <span class="markdown-them-math-inline">$c(C)\le c(H^*)$</span>, 且圈 <span class="markdown-them-math-inline">$C$</span> 可以被划分为 <span class="markdown-them-math-inline">$G[W]$</span> 的两个完美匹配 <span class="markdown-them-math-inline">$M_1,M_2$</span>, 显然最小费用完美匹配 <span class="markdown-them-math-inline">$M$</span> 满足 <span class="markdown-them-math-inline">$c(M)\le \min \{c(M_1),c(M_2)\}\le \frac{c(M_1)+c(M_2)}{2}=c(C)/2\le c(H^*)/2$</span>. 因此 <span class="markdown-them-math-inline">$c(H)\le c(J)=c(E(T))+c(M)\le 1.5c(H^*)$</span>. <span class="markdown-them-math-inline">$\blacksquare$</span></p>
+<p>这个 <span class="markdown-them-math-inline">$1.5$</span> 不能再继续减小了.</p>
 <blockquote>
-<p>还有一种更简单的用到最小生成树的启发式算法:
-先序遍历最小生成树得到的环游可以作为一个启发式的解, 此时满足 <span
-class="math inline">\(c(H)/c(H^*)\le 2\)</span>.</p>
+<p>还有一种更简单的用到最小生成树的启发式算法: 先序遍历最小生成树得到的环游可以作为一个启发式的解, 此时满足 <span class="markdown-them-math-inline">$c(H)/c(H^*)\le 2$</span>.</p>
 </blockquote>
-<h2 id="k-交换"><span class="math inline">\(k\)</span>-交换</h2>
+<h2 id="$k$-交换"><span class="markdown-them-math-inline">$k$</span>-交换</h2>
 <p>常用的是2-opt和3-opt.</p>
-<p><span class="math inline">\(k\)</span>-opt用于改进已有的环游,
-比如Chrisrofides产生的环游 <span class="math inline">\(H\)</span>. <span
-class="math inline">\(2\)</span>-opt 是对 <span
-class="math inline">\(H\)</span> 的不相邻的两条边做交换操作, 更详细地说,
-是将这两条边删去得到两条路径 <span
-class="math inline">\(H_1,H_2\)</span>, 通过一种唯一的方法将 <span
-class="math inline">\(H_1,H_2\)</span> 组合成一条新的环游 <span
-class="math inline">\(H&#39;\)</span>, 若 <span
-class="math inline">\(c(H&#39;)&lt; c(H)\)</span>, 那我们就认为 <span
-class="math inline">\(H&#39;\)</span> 是更优的选择.
-最终可以达到一个最优的状态, 即不能再通过2-交换得到更优的环游.
-3-交换是类似的操作, 删边-重新组合. 当 <span
-class="math inline">\(k&gt;3\)</span> 时,
-删边重新组合成新的环游的方法数呈指数级上升, 一般不采用.</p>
-<p>遗憾的是虽然可以在 <span class="math inline">\(O(|V|^2)\)</span>
-内验证一条环游是否是2-opt的,
-但是有可能需要指数次交换才能将任意一条环游变为2-opt的.</p>
+<p><span class="markdown-them-math-inline">$k$</span>-opt用于改进已有的环游, 比如Chrisrofides产生的环游 <span class="markdown-them-math-inline">$H$</span>. <span class="markdown-them-math-inline">$2$</span>-opt 是对 <span class="markdown-them-math-inline">$H$</span> 的不相邻的两条边做交换操作, 更详细地说, 是将这两条边删去得到两条路径 <span class="markdown-them-math-inline">$H_1,H_2$</span>, 通过一种唯一的方法将 <span class="markdown-them-math-inline">$H_1,H_2$</span> 组合成一条新的环游 <span class="markdown-them-math-inline">$H'$</span>, 若 <span class="markdown-them-math-inline">$c(H')&lt; c(H)$</span>, 那我们就认为 <span class="markdown-them-math-inline">$H'$</span> 是更优的选择. 最终可以达到一个最优的状态, 即不能再通过2-交换得到更优的环游. 3-交换是类似的操作, 删边-重新组合. 当 <span class="markdown-them-math-inline">$k&gt;3$</span> 时, 删边重新组合成新的环游的方法数呈指数级上升, 一般不采用.</p>
+<p>遗憾的是虽然可以在 <span class="markdown-them-math-inline">$O(|V|^2)$</span> 内验证一条环游是否是2-opt的, 但是有可能需要指数次交换才能将任意一条环游变为2-opt的.</p>
 <h2 id="lin-kernighan">Lin-Kernighan</h2>
-<p>Lin-Kernighan启发式方法简称为LKH,
-是目前最高效的TSP启发式算法之一。</p>
-<p>首先需要定义 <span
-class="math inline">\(\delta\)</span>-path相关的概念. <span
-class="math inline">\(\delta\)</span>-path是一条path满足path的终点是路径上的某个点,
-也就是说 <span class="math inline">\(\delta\)</span>-path中含有一个圈,
-如下图的 <span class="math inline">\(P\)</span> 所示, 其中 <span
-class="math inline">\(w\)</span> 为该路径的终点(当然也在路径中出现过),
-<span class="math inline">\(r\)</span> 为 <span
-class="math inline">\(w\)</span> 紧跟着的点.</p>
-<p>可以通过一个 <span class="math inline">\(\delta\)</span>-path
-构造一个TSP环游, 构造规则为: 将路径终点所在的路径中的</p>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png" /></p>
-<p>LKH算法的核心思想就是不断通过删边与加边构造费用越来越小的 <span
-class="math inline">\(\delta\)</span>-path.</p>
-<p><a
-target="_blank" rel="noopener" href="https://stemlounge.com/animated-algorithms-for-the-traveling-salesman-problem/">11
-Animated Algorithms for the Traveling Salesman Problem
-(stemlounge.com)</a></p>
+<p>Lin-Kernighan启发式方法简称为LKH, 是目前最高效的TSP启发式算法之一。</p>
+<p>首先需要定义 <span class="markdown-them-math-inline">$\delta$</span>-path相关的概念. <span class="markdown-them-math-inline">$\delta$</span>-path是一条path满足path的终点是路径上的某个点, 也就是说 <span class="markdown-them-math-inline">$\delta$</span>-path中含有一个圈, 如下图的 <span class="markdown-them-math-inline">$P$</span> 所示, 其中 <span class="markdown-them-math-inline">$w$</span> 为该路径的终点(当然也在路径中出现过), <span class="markdown-them-math-inline">$r$</span> 为 <span class="markdown-them-math-inline">$w$</span> 紧跟着的点.</p>
+<p>可以通过一个 <span class="markdown-them-math-inline">$\delta$</span>-path 构造一个TSP环游, 构造规则为: 将路径终点所在的路径中的</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230721201048.png" alt=""></p>
+<p>LKH算法的核心思想就是不断通过删边与加边构造费用越来越小的 <span class="markdown-them-math-inline">$\delta$</span>-path.</p>
+<p><a target="_blank" rel="noopener" href="https://stemlounge.com/animated-algorithms-for-the-traveling-salesman-problem/">11 Animated Algorithms for the Traveling Salesman Problem (stemlounge.com)</a></p>
 <h1 id="tsp下界">TSP下界</h1>
 <h2 id="held-karp-bound">Held-Karp bound</h2>
-<p>对于任意一个环游 <span class="math inline">\(H\subset E\)</span>,
-一个相当 trivial 的下界可以由下面的方式找到:</p>
-<p>对于 <span class="math inline">\(v_1\in V\)</span>, 设 <span
-class="math inline">\(e,f\)</span> 是以 <span
-class="math inline">\(v_1\)</span> 为端点的两条不同的边, 令 <span
-class="math inline">\(P=T\backslash\{e,f\}\)</span>, 那么就有 <span
-class="math inline">\(c(H)=c(P)+c_e+c_f\)</span>, 倘若有 <span
-class="math display">\[
-\begin{cases}
+<p>对于任意一个环游 <span class="markdown-them-math-inline">$H\subset E$</span>, 一个相当 trivial 的下界可以由下面的方式找到:</p>
+<p>对于 <span class="markdown-them-math-inline">$v_1\in V$</span>, 设 <span class="markdown-them-math-inline">$e,f$</span> 是以 <span class="markdown-them-math-inline">$v_1$</span> 为端点的两条不同的边, 令 <span class="markdown-them-math-inline">$P=T\backslash\{e,f\}$</span>, 那么就有 <span class="markdown-them-math-inline">$c(H)=c(P)+c_e+c_f$</span>, 倘若有</p>
+<div class="markdown-them-math-block">$$\begin{cases}
 A\le c_e+c_f\\
 B\le c(P)
 \end{cases}
-\]</span> 那么 <span class="math inline">\(A+B\)</span> 自然就是环游
-<span class="math inline">\(H\)</span> 费用的一个下界.</p>
-<p>那么该如何找到这样的 <span class="math inline">\(A,B\)</span> 呢?
-<span class="math inline">\(A\)</span> 是相当好找的, 找到费用最小的以
-<span class="math inline">\(v_1\)</span> 为端点的两条边即可. 对于 <span
-class="math inline">\(B\)</span>, 首先 <span
-class="math inline">\(P\)</span> 是 <span
-class="math inline">\(G\backslash\{v_1\}\)</span> 的一棵生成树, 那么显然
-<span class="math inline">\(G\backslash\{v_1\}\)</span>
-的最小生成树的费用可以作为下界 <span class="math inline">\(B\)</span>,
-上面这样的 <span class="math inline">\(A+B\)</span> 称为 <strong>1-tree
-bound</strong>.</p>
+$$</div><p>那么 <span class="markdown-them-math-inline">$A+B$</span> 自然就是环游 <span class="markdown-them-math-inline">$H$</span> 费用的一个下界.</p>
+<p>那么该如何找到这样的 <span class="markdown-them-math-inline">$A,B$</span> 呢? <span class="markdown-them-math-inline">$A$</span> 是相当好找的, 找到费用最小的以 <span class="markdown-them-math-inline">$v_1$</span> 为端点的两条边即可. 对于 <span class="markdown-them-math-inline">$B$</span>,  首先 <span class="markdown-them-math-inline">$P$</span> 是 <span class="markdown-them-math-inline">$G\backslash\{v_1\}$</span> 的一棵生成树, 那么显然 <span class="markdown-them-math-inline">$G\backslash\{v_1\}$</span> 的最小生成树的费用可以作为下界 <span class="markdown-them-math-inline">$B$</span>, 上面这样的 <span class="markdown-them-math-inline">$A+B$</span> 称为 <strong>1-tree bound</strong>.</p>
 <blockquote>
-<p>为何不直接用 <span class="math inline">\(G\)</span>
-的最小生成树的费用来作为下界呢? 上面的方法是否可以获得更紧的下界呢?</p>
+<p>为何不直接用 <span class="markdown-them-math-inline">$G$</span> 的最小生成树的费用来作为下界呢? 上面的方法是否可以获得更紧的下界呢?</p>
 </blockquote>
-<p>这个界还可以改善, 比如下面的例子中的 1-tree bound 是 <span
-class="math inline">\(0\)</span>, 这是一个相当平凡的值,
-出现这种原因是因为有三条边权为 <span class="math inline">\(0\)</span>
-的点与点 <span class="math inline">\(u\)</span> 相连,
-这意味着这三条边在最小生成树中一定会出现, 为了改善这种情况,
-可以考虑修改边权而不改变最优环游的位置(当然其实我们不关注修改后的最优环游,
-关注的是修改后的 1-tree bound). 可以将以 <span
-class="math inline">\(u\)</span> 为端点的边的权重都加 <span
-class="math inline">\(10\)</span>, 那么下界将变为 <span
-class="math inline">\(30\)</span> 而最优环游并不发生变化.</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142038469.png" style="zoom:50%;" /></p>
+<p>这个界还可以改善, 比如下面的例子中的 1-tree bound 是 <span class="markdown-them-math-inline">$0$</span>, 这是一个相当平凡的值, 出现这种原因是因为有三条边权为 <span class="markdown-them-math-inline">$0$</span> 的点与点 <span class="markdown-them-math-inline">$u$</span> 相连, 这意味着这三条边在最小生成树中一定会出现, 为了改善这种情况, 可以考虑修改边权而不改变最优环游的位置(当然其实我们不关注修改后的最优环游, 关注的是修改后的 1-tree bound). 可以将以 <span class="markdown-them-math-inline">$u$</span> 为端点的边的权重都加 <span class="markdown-them-math-inline">$10$</span>, 那么下界将变为 <span class="markdown-them-math-inline">$30$</span> 而最优环游并不发生变化.</p>
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142038469.png" style="zoom:50%;" />
 <p>下面形式化地叙述 Held-Karp bound 的计算过程:</p>
-<p><strong>定理1 (Held-Karp bound)</strong> 设原始费用函数为 <span
-class="math inline">\(c: E\to\mathbb{R_{\ge 0}}\)</span>, 对于任意 <span
-class="math inline">\(v\in V\)</span> 和 <span
-class="math inline">\(\mathbf{y}=(\cdots,y_v,\cdots)\in\mathbb{R}^{|V|}\)</span>
-, 给顶点 <span class="math inline">\(v\)</span> 分配一个实数 <span
-class="math inline">\(y_v\)</span>, 将以顶点 <span
-class="math inline">\(v\)</span> 为顶点的边的费用都减少 <span
-class="math inline">\(y_v\)</span>, 得到一个新的费用函数为 <span
-class="math inline">\(c&#39;\)</span>(即对任意 <span
-class="math inline">\((u,v)\in E,c&#39;(u,v)=c(u,v)-y_u-y_v\)</span>) ,
-令 <span class="math inline">\(C\)</span> 为 <span
-class="math inline">\(G\)</span> 关于费用 <span
-class="math inline">\(c&#39;\)</span> 的一个 1-tree bound, 那么 <span
-class="math inline">\(2\sum_{v\in V}y_v+C\)</span> 是 <span
-class="math inline">\(G\)</span> 关于费用 <span
-class="math inline">\(c\)</span> 的最优环游的费用的下界. <span
-class="math inline">\(\square\)</span></p>
-<p>如何寻找合适的 <span class="math inline">\(\mathbf{y}\)</span>? Held
-和 Karp 给出了一个迭代策略: 设 <span
-class="math inline">\(y_{v}^{(k)}\)</span> 表示第 <span
-class="math inline">\(k\)</span> 轮迭代赋予的值, 首先初始化 <span
-class="math inline">\(\mathbf{y}^{(0)}\)</span> 同时得到一棵初始的
-1-tree bound 对应的子图 <span class="math inline">\(T_0\)</span>, 接着设
-<span class="math inline">\(d_{T_k}(v)\)</span> 表示 <span
-class="math inline">\(T_k\)</span> 中顶点 <span
-class="math inline">\(v\)</span> 的度数, 那么 <span
-class="math inline">\(y_v^{(k+1)}=y_v^{(k)}+t(2-d_T(v))\)</span>,
-其中实数 <span class="math inline">\(t\)</span> 为一个固定的步长.
-步长也可以做启发式的更改, 迭代公式可以写为 <span
-class="math inline">\(y_v^{(k+1)}=y_v^{(k)}+t_k(2-d_{T_k}(v))\)</span>,
-其中 <span class="math display">\[
-t_k=\frac{\alpha_k(U-L_{\text{H-K}}^{(k)})}{\sum_{v\in V}
-(2-d_{T_k}(v))^2}
-\]</span> 其中 <span class="math inline">\(U\)</span> 是一个 TSP 上界,
-可以由前述的启发式算法得到, <span
-class="math inline">\(L_{\text{H-K}}^{(k)}\)</span> 是当前的 Held-Karp
-bound, <span class="math inline">\(\alpha_k\)</span> 是一个在 <span
-class="math inline">\((0,2]\)</span> 的实数, 可以令 <span
-class="math inline">\(\alpha_0=2\)</span> 并使序列以固定的步长减少,
-这个数取决于顶点数目以及我们愿意花费的时间.</p>
-<p>可以证明固定步长的迭代会收敛到一个最优 Held-Karp 界对应的 <span
-class="math inline">\(\mathbf{y}\)</span>,
-但这个收敛时间可能是指数级别的, 同时并不是每次迭代获得的 <span
-class="math inline">\(\mathbf{y}\)</span> 都改善当前的 Held-Karp 界,
-可能会获得更糟糕的界.</p>
+<p><strong>定理1 (Held-Karp bound)</strong> 设原始费用函数为 <span class="markdown-them-math-inline">$c: E\to\mathbb{R_{\ge 0}}$</span>, 对于任意 <span class="markdown-them-math-inline">$v\in V$</span> 和 <span class="markdown-them-math-inline">$\mathbf{y}=(\cdots,y_v,\cdots)\in\mathbb{R}^{|V|}$</span> , 给顶点 <span class="markdown-them-math-inline">$v$</span> 分配一个实数 <span class="markdown-them-math-inline">$y_v$</span>, 将以顶点 <span class="markdown-them-math-inline">$v$</span> 为顶点的边的费用都减少 <span class="markdown-them-math-inline">$y_v$</span>, 得到一个新的费用函数为 <span class="markdown-them-math-inline">$c'$</span>(即对任意 <span class="markdown-them-math-inline">$(u,v)\in E,c'(u,v)=c(u,v)-y_u-y_v$</span>) , 令 <span class="markdown-them-math-inline">$C$</span> 为 <span class="markdown-them-math-inline">$G$</span> 关于费用 <span class="markdown-them-math-inline">$c'$</span> 的一个 1-tree bound, 那么 <span class="markdown-them-math-inline">$2\sum_{v\in V}y_v+C$</span> 是 <span class="markdown-them-math-inline">$G$</span> 关于费用 <span class="markdown-them-math-inline">$c$</span> 的最优环游的费用的下界. <span class="markdown-them-math-inline">$\square$</span></p>
+<p>如何寻找合适的 <span class="markdown-them-math-inline">$\mathbf{y}$</span>? Held 和 Karp 给出了一个迭代策略: 设 <span class="markdown-them-math-inline">$y_{v}^{(k)}$</span> 表示第 <span class="markdown-them-math-inline">$k$</span> 轮迭代赋予的值, 首先初始化 <span class="markdown-them-math-inline">$\mathbf{y}^{(0)}$</span> 同时得到一棵初始的 1-tree bound 对应的子图 <span class="markdown-them-math-inline">$T_0$</span>, 接着设 <span class="markdown-them-math-inline">$d_{T_k}(v)$</span> 表示 <span class="markdown-them-math-inline">$T_k$</span> 中顶点 <span class="markdown-them-math-inline">$v$</span> 的度数, 那么 <span class="markdown-them-math-inline">$y_v^{(k+1)}=y_v^{(k)}+t(2-d_T(v))$</span>, 其中实数 <span class="markdown-them-math-inline">$t$</span> 为一个固定的步长.  步长也可以做启发式的更改, 迭代公式可以写为 <span class="markdown-them-math-inline">$y_v^{(k+1)}=y_v^{(k)}+t_k(2-d_{T_k}(v))$</span>, 其中</p>
+<div class="markdown-them-math-block">$$t_k=\frac{\alpha_k(U-L_{\text{H-K}}^{(k)})}{\sum_{v\in V} (2-d_{T_k}(v))^2}
+$$</div><p>其中 <span class="markdown-them-math-inline">$U$</span> 是一个 TSP 上界, 可以由前述的启发式算法得到, <span class="markdown-them-math-inline">$L_{\text{H-K}}^{(k)}$</span> 是当前的 Held-Karp bound, <span class="markdown-them-math-inline">$\alpha_k$</span> 是一个在 <span class="markdown-them-math-inline">$(0,2]$</span> 的实数, 可以令 <span class="markdown-them-math-inline">$\alpha_0=2$</span> 并使序列以固定的步长减少, 这个数取决于顶点数目以及我们愿意花费的时间.</p>
+<p>可以证明固定步长的迭代会收敛到一个最优 Held-Karp 界对应的 <span class="markdown-them-math-inline">$\mathbf{y}$</span>, 但这个收敛时间可能是指数级别的, 同时并不是每次迭代获得的 <span class="markdown-them-math-inline">$\mathbf{y}$</span> 都改善当前的 Held-Karp 界, 可能会获得更糟糕的界.</p>
 <p>可以使用线性规划获得与 Held-Karp bound 完全等价的bound.</p>
 <h2 id="线性规划下界技术">线性规划下界技术</h2>
 <h1 id="tsp的一个dp算法">TSP的一个DP算法</h1>
-<p>设 <span class="math inline">\(V=\{c_1,\cdots,c_n\}\)</span>,
-考虑到环游中起点的任意性, 以 <span class="math inline">\(c_1\)</span>
-为起点. 对非空集合 <span class="math inline">\(S\subset
-\{c_2,\cdots,c_n\}\land c_i\in S\)</span>, 设 <span
-class="math inline">\(f(S,c_i)\)</span> 表示以 <span
-class="math inline">\(c_1\)</span> 为起点 <span
-class="math inline">\(c_i\)</span> 为终点且经过 <span
-class="math inline">\(S\)</span> 中所有点的最短路径, 首先 <span
-class="math inline">\(|S|=1\)</span> 时 <span
-class="math inline">\(f(S,c_i)=f(\{c_i\},c_i)=d(c_1,c_i)\)</span>; 当
-<span class="math inline">\(|S|&gt;1\)</span> 时, 只需枚举 <span
-class="math inline">\(c_i\)</span> 的前置结点 <span
-class="math inline">\(c_j(j\ne i)\)</span>, 此时终止于 <span
-class="math inline">\(c_j\)</span> 的最短路径对应的 <span
-class="math inline">\(f\)</span> 可以表示为 <span
-class="math inline">\(f(S\backslash\{c_i\},c_j)\)</span>, 那么就有 <span
-class="math display">\[
-f(S,c_i)=\min_{c_j\in
-S\backslash\{c_i\}}f(S\backslash\{c_i\},c_j)+d(c_j,c_i)
-\]</span> 最终最优环游为 <span class="math inline">\(\min_{2\le i\le
-n}f(\{c_2,\cdots,c_n\},c_i)+d(c_i,c_1)\)</span>. 这个动态规划的复杂度为
-<span
-class="math inline">\(\sum_{k=1}^{n-1}O\left(\binom{n}{k}k^2\right)=O(n^22^n)=O^*(2^n)\)</span>,
-<span class="math inline">\(O^*(b^n)=O(b^np(n))\)</span>其中 <span
-class="math inline">\(p(n)\)</span> 为多项式.</p>
+<p>设 <span class="markdown-them-math-inline">$V=\{c_1,\cdots,c_n\}$</span>, 考虑到环游中起点的任意性, 以 <span class="markdown-them-math-inline">$c_1$</span> 为起点. 对非空集合 <span class="markdown-them-math-inline">$S\subset \{c_2,\cdots,c_n\}\land c_i\in S$</span>, 设 <span class="markdown-them-math-inline">$f(S,c_i)$</span> 表示以 <span class="markdown-them-math-inline">$c_1$</span> 为起点 <span class="markdown-them-math-inline">$c_i$</span> 为终点且经过 <span class="markdown-them-math-inline">$S$</span> 中所有点的最短路径, 首先 <span class="markdown-them-math-inline">$|S|=1$</span> 时 <span class="markdown-them-math-inline">$f(S,c_i)=f(\{c_i\},c_i)=d(c_1,c_i)$</span>; 当 <span class="markdown-them-math-inline">$|S|&gt;1$</span> 时, 只需枚举 <span class="markdown-them-math-inline">$c_i$</span> 的前置结点 <span class="markdown-them-math-inline">$c_j(j\ne i)$</span>, 此时终止于 <span class="markdown-them-math-inline">$c_j$</span> 的最短路径对应的 <span class="markdown-them-math-inline">$f$</span> 可以表示为 <span class="markdown-them-math-inline">$f(S\backslash\{c_i\},c_j)$</span>, 那么就有</p>
+<div class="markdown-them-math-block">$$f(S,c_i)=\min_{c_j\in S\backslash\{c_i\}}f(S\backslash\{c_i\},c_j)+d(c_j,c_i)
+$$</div><p>最终最优环游为 <span class="markdown-them-math-inline">$\min_{2\le i\le n}f(\{c_2,\cdots,c_n\},c_i)+d(c_i,c_1)$</span>. 这个动态规划的复杂度为 <span class="markdown-them-math-inline">$\sum_{k=1}^{n-1}O\left(\binom{n}{k}k^2\right)=O(n^22^n)=O^*(2^n)$</span>, <span class="markdown-them-math-inline">$O^*(b^n)=O(b^np(n))$</span>其中 <span class="markdown-them-math-inline">$p(n)$</span> 为多项式.</p>
 
     </div>
 
@@ -544,13 +379,13 @@ class="math inline">\(p(n)\)</span> 为多项式.</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

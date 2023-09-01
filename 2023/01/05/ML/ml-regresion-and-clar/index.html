@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="这部分与数理统计中的多元线性回归（最小二乘法），一些优化迭代算法以及简单的矩阵微分有重叠，比较简单，主要引入了一些概念，不过也是新瓶装旧酒，没什么新的东西。 术语与记号含义 \(x\) 为输入变量或特征(features), \(y\) 为输出变量. 训练集(training set): \(\mathcal{T}&#x3D;\{(x^{(i)},y^{(i)}):i&#x3D;1,\cdots,m \">
+    <meta name="description" content="机器学习基础。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习（1）：回归与分类">
 <meta property="og:url" content="http://example.com/2023/01/05/ML/ml-regresion-and-clar/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="这部分与数理统计中的多元线性回归（最小二乘法），一些优化迭代算法以及简单的矩阵微分有重叠，比较简单，主要引入了一些概念，不过也是新瓶装旧酒，没什么新的东西。 术语与记号含义 \(x\) 为输入变量或特征(features), \(y\) 为输出变量. 训练集(training set): \(\mathcal{T}&#x3D;\{(x^{(i)},y^{(i)}):i&#x3D;1,\cdots,m \">
+<meta property="og:description" content="机器学习基础。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-05T09:56:10.000Z">
-<meta property="article:modified_time" content="2023-07-30T15:04:16.425Z">
+<meta property="article:modified_time" content="2023-08-28T15:36:59.563Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -142,9 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD%E4%B8%8E%E8%AE%B0%E5%8F%B7%E5%90%AB%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">术语与记号含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%8F%B7%E5%8C%BA%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">和概率论中的记号区分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">借助最速下降法求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dsgd"><span class="nav-number">2.2.</span> <span class="nav-text">随机梯度下降SGD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92locally-weighted-regression"><span class="nav-number">2.3.</span> <span class="nav-text">局部加权回归(locally
-weighted regression)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E4%B8%8E-logistic-%E5%9B%9E%E5%BD%92"><span class="nav-number">3.</span> <span class="nav-text">分类与 logistic 回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8Bglm"><span class="nav-number">4.</span> <span class="nav-text">广义线性模型(GLM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E5%81%87%E8%AE%BE"><span class="nav-number">4.1.</span> <span class="nav-text">三个假设</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%95%B0%E6%97%8F%E5%88%86%E5%B8%83"><span class="nav-number">4.1.1.</span> <span class="nav-text">为什么是指数族分布?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%9F%E6%9C%9B"><span class="nav-number">4.1.2.</span> <span class="nav-text">代价函数为什么是期望?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="nav-number">4.1.3.</span> <span class="nav-text">为什么是线性关系?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98-softmax-regression"><span class="nav-number">4.2.</span> <span class="nav-text">借助广义线性模型解决多分类问题:
-softmax regression</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD%E4%B8%8E%E8%AE%B0%E5%8F%B7%E5%90%AB%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">术语与记号含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%8F%B7%E5%8C%BA%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">和概率论中的记号区分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">2.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">借助最速下降法求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dsgd"><span class="nav-number">2.2.</span> <span class="nav-text">随机梯度下降SGD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92(locally-weighted%20regression)"><span class="nav-number">2.3.</span> <span class="nav-text">局部加权回归(locally weighted regression)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B(glm)"><span class="nav-number">3.</span> <span class="nav-text">广义线性模型(GLM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E5%81%87%E8%AE%BE"><span class="nav-number">3.1.</span> <span class="nav-text">三个假设</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%95%B0%E6%97%8F%E5%88%86%E5%B8%83?"><span class="nav-number">3.1.1.</span> <span class="nav-text">为什么是指数族分布?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%9F%E6%9C%9B?"><span class="nav-number">3.1.2.</span> <span class="nav-text">代价函数为什么是期望?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB?"><span class="nav-number">3.1.3.</span> <span class="nav-text">为什么是线性关系?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98:-softmax%20regression"><span class="nav-number">3.2.</span> <span class="nav-text">借助广义线性模型解决多分类问题: softmax regression</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -157,13 +155,13 @@ softmax regression</span></a></li></ol></li></ol></div>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -173,6 +171,14 @@ softmax regression</span></a></li></ol></li></ol></div>
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -231,7 +237,7 @@ softmax regression</span></a></li></ol></li></ol></div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 23:04:16" itemprop="dateModified" datetime="2023-07-30T23:04:16+08:00">2023-07-30</time>
+      <time title="Modified: 2023-08-28 23:36:59" itemprop="dateModified" datetime="2023-08-28T23:36:59+08:00">2023-08-28</time>
     </span>
 
   
@@ -266,496 +272,232 @@ softmax regression</span></a></li></ol></li></ol></div>
 $$ -->
 <p>这部分与数理统计中的多元线性回归（最小二乘法），一些优化迭代算法以及简单的矩阵微分有重叠，比较简单，主要引入了一些概念，不过也是新瓶装旧酒，没什么新的东西。</p>
 <h2 id="术语与记号含义">术语与记号含义</h2>
-<p><span class="math inline">\(x\)</span> 为输入变量或特征(features),
-<span class="math inline">\(y\)</span> 为输出变量.</p>
-<p>训练集(training set): <span
-class="math inline">\(\mathcal{T}=\{(x^{(i)},y^{(i)}):i=1,\cdots,m
-\},\)</span> 输入集 <span class="math inline">\(\cal X,\)</span> 输出集
-<span class="math inline">\(\cal Y.\)</span></p>
-<p>监督学习(supervised learning)问题实际上是: 给定训练集,
-通过学习得到映射 <span class="math inline">\(h:\cal X\to Y,\)</span>
-使得 <span class="math inline">\(h(x)\)</span> 能够很好地对 <span
-class="math inline">\(y\)</span> 进行预测, <span
-class="math inline">\(h\)</span> 又被称为假设(hypothesis).</p>
-<p>如果 <span class="math inline">\(Y\)</span> 是连续集/不可列, 那么确定
-<span class="math inline">\(h\)</span>
-的过程称为<strong>回归</strong>(regression)问题; 如果 <span
-class="math inline">\(Y\)</span> 是离散集/可列, 那么确定 <span
-class="math inline">\(h\)</span>
-的过程称为<strong>分类</strong>(classification)问题.
-本部分将解决线性回归问题与二元分类问题.</p>
+<p><span class="markdown-them-math-inline">$x$</span> 为输入变量或特征(features), <span class="markdown-them-math-inline">$y$</span> 为输出变量.</p>
+<p>训练集(training set): <span class="markdown-them-math-inline">$\mathcal{T}=\{(x^{(i)},y^{(i)}):i=1,\cdots,m \},$</span> 输入集 <span class="markdown-them-math-inline">$\cal X,$</span> 输出集 <span class="markdown-them-math-inline">$\cal Y.$</span></p>
+<p>监督学习(supervised learning)问题实际上是: 给定训练集, 通过学习得到映射 <span class="markdown-them-math-inline">$h:\cal X\to Y,$</span> 使得 <span class="markdown-them-math-inline">$h(x)$</span> 能够很好地对 <span class="markdown-them-math-inline">$y$</span> 进行预测, <span class="markdown-them-math-inline">$h$</span> 又被称为假设(hypothesis).</p>
+<p>如果 <span class="markdown-them-math-inline">$Y$</span> 是连续集/不可列, 那么确定 <span class="markdown-them-math-inline">$h$</span> 的过程称为<strong>回归</strong>(regression)问题; 如果 <span class="markdown-them-math-inline">$Y$</span> 是离散集/可列, 那么确定 <span class="markdown-them-math-inline">$h$</span> 的过程称为<strong>分类</strong>(classification)问题. 本部分将解决线性回归问题与二元分类问题.</p>
 <blockquote>
 <p>训练集实际上就是样本的集合捏</p>
 </blockquote>
-<p>自然对数用 <span class="math inline">\(\log\)</span> 而不是 <span
-class="math inline">\(\ln.\)</span></p>
+<p>自然对数用 <span class="markdown-them-math-inline">$\log$</span> 而不是 <span class="markdown-them-math-inline">$\ln.$</span></p>
 <h3 id="和概率论中的记号区分">和概率论中的记号区分</h3>
 <p>这部分会出现很多概率论中的东西, 一些记号做如下修改:</p>
 <ul>
-<li>密度函数用 <span class="math inline">\(p(x;\theta)\)</span> 而不是
-<span class="math inline">\(f(x;\theta)\)</span></li>
-<li>01分布/伯努利分布 <span class="math inline">\(B(1,p)\)</span> 的参数
-<span class="math inline">\(p\)</span> 写成 <span
-class="math inline">\(\phi,\)</span> 为了与概率密度做区分,
-伯努利分布记作 <span
-class="math inline">\(\mathrm{Bernoulli}(\phi),\)</span> 太长了,
-还是用二项分布的记号简记为 <span
-class="math inline">\(B(1,\phi)\)</span> 吧.</li>
-<li>随机变量不再用大写字母, 当说某个依赖于参数的随机变量服从某个分布时,
-参数写明, 以正态分布为例, 写成 <span class="math inline">\(x;\theta\sim
-N(\mu,\sigma^2),\)</span> 如果是条件分布, 比如在随机变量 <span
-class="math inline">\(x\)</span> 已知的条件下 <span
-class="math inline">\(y\)</span> 服从正态分布, 则写成 <span
-class="math inline">\(y|x;\theta\sim N(\mu,\sigma^2).\)</span></li>
+<li>密度函数用 <span class="markdown-them-math-inline">$p(x;\theta)$</span> 而不是 <span class="markdown-them-math-inline">$f(x;\theta)$</span></li>
+<li>01分布/伯努利分布 <span class="markdown-them-math-inline">$B(1,p)$</span> 的参数 <span class="markdown-them-math-inline">$p$</span> 写成 <span class="markdown-them-math-inline">$\phi,$</span> 为了与概率密度做区分, 伯努利分布记作 <span class="markdown-them-math-inline">$\mathrm{Bernoulli}(\phi),$</span> 太长了, 还是用二项分布的记号简记为 <span class="markdown-them-math-inline">$B(1,\phi)$</span> 吧.</li>
+<li>随机变量不再用大写字母, 当说某个依赖于参数的随机变量服从某个分布时, 参数写明, 以正态分布为例, 写成 <span class="markdown-them-math-inline">$x;\theta\sim N(\mu,\sigma^2),$</span> 如果是条件分布, 比如在随机变量 <span class="markdown-them-math-inline">$x$</span> 已知的条件下 <span class="markdown-them-math-inline">$y$</span> 服从正态分布, 则写成 <span class="markdown-them-math-inline">$y|x;\theta\sim N(\mu,\sigma^2).$</span></li>
 </ul>
 <h2 id="线性回归">线性回归</h2>
-<p>线性函数的形式较为简单且性质较好, 是我们常常研究的对象, 此时 <span
-class="math inline">\(h(x)\)</span> 具有 <span
-class="math inline">\(h_{\theta}(x)=\theta_0+\theta_1x_1+\cdots+\theta_nx_n\)</span>
-的形式, 就像<a href="">多元线性回归</a>那样, 为了简便令 <span
-class="math inline">\(x=(x_0,x_1,\cdots,x_n)\in\mathbb{R}^{n+1},x_0=1,\theta=(\theta_0,\cdots,\theta_n)\in\mathbb{R}^{n+1},\)</span>
-于是就有 <span class="math display">\[
-h_{\theta}(x)=\theta^Tx
-\]</span> 对于给定 <span class="math inline">\(\cal T,\)</span> 要确定
-<span class="math inline">\(\theta,\)</span>
-采用的方法和多元线性回归基本一致,
-在这里是选择使<strong>代价函数</strong>(cost function)值最小的参数 <span
-class="math inline">\(\theta,\)</span> 即下面的优化问题 <span
-class="math display">\[
-\begin{aligned}
+<p>线性函数的形式较为简单且性质较好, 是我们常常研究的对象, 此时 <span class="markdown-them-math-inline">$h(x)$</span> 具有 <span class="markdown-them-math-inline">$h_{\theta}(x)=\theta_0+\theta_1x_1+\cdots+\theta_nx_n$</span> 的形式, 就像<a href="">多元线性回归</a>那样, 为了简便令 <span class="markdown-them-math-inline">$x=(x_0,x_1,\cdots,x_n)\in\mathbb{R}^{n+1},x_0=1,\theta=(\theta_0,\cdots,\theta_n)\in\mathbb{R}^{n+1},$</span> 于是就有</p>
+<div class="markdown-them-math-block">$$h_{\theta}(x)=\theta^Tx
+$$</div><p>对于给定 <span class="markdown-them-math-inline">$\cal T,$</span> 要确定 <span class="markdown-them-math-inline">$\theta,$</span> 采用的方法和多元线性回归基本一致, 在这里是选择使<strong>代价函数</strong>(cost function)值最小的参数 <span class="markdown-them-math-inline">$\theta,$</span> 即下面的优化问题</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 &amp;\min J(\theta)=\frac{1}{2}\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})^2\\
-\text{s.t. }&amp;\theta\in\mathbb{R}^{n+1}
+\text{s.t. }&amp;\theta\in\mathbb{R}^{n+1} 
 \end{aligned}
-\]</span></p>
-<blockquote>
-<p>在多元线性回归部分, <span class="math inline">\(Q(\theta)\)</span>
-并无系数 <span class="math inline">\(1/2,\)</span> 这里加上 <span
-class="math inline">\(1/2\)</span> , 可以在求导的时候系数不出现 <span
-class="math inline">\(2,\)</span> 并无大碍.</p>
+$$</div><blockquote>
+<p>在多元线性回归部分, <span class="markdown-them-math-inline">$Q(\theta)$</span> 并无系数 <span class="markdown-them-math-inline">$1/2,$</span> 这里加上 <span class="markdown-them-math-inline">$1/2$</span> , 可以在求导的时候系数不出现 <span class="markdown-them-math-inline">$2,$</span> 并无大碍.</p>
 </blockquote>
-<p>多元线性回归部分已经给出了该问题的闭式解(又称为normal equations):
-<span
-class="math inline">\(\theta=(X^TX)^{-1}X^T\boldsymbol{y},\)</span>
-这里的 <span class="math inline">\(X,\boldsymbol{y}\)</span>
-与多元线性回归的 <span class="math inline">\(X,Y\)</span> 含义基本一致,
-表达也相同, 注意大小写即可. 在多元线性回归部分同样给出了<a
-href="">为什么最小二乘法采用平方而不是四次方之类的</a>原因.
-这部分不再赘述, 下面介绍用优化算法求解上述优化问题的做法.</p>
+<p>多元线性回归部分已经给出了该问题的闭式解(又称为normal equations): <span class="markdown-them-math-inline">$\theta=(X^TX)^{-1}X^T\boldsymbol{y},$</span> 这里的 <span class="markdown-them-math-inline">$X,\boldsymbol{y}$</span> 与多元线性回归的 <span class="markdown-them-math-inline">$X,Y$</span> 含义基本一致, 表达也相同, 注意大小写即可. 在多元线性回归部分同样给出了<a href="">为什么最小二乘法采用平方而不是四次方之类的</a>原因. 这部分不再赘述, 下面介绍用优化算法求解上述优化问题的做法.</p>
 <h3 id="借助最速下降法求解">借助最速下降法求解</h3>
-<p>根据<a href="">最速下降法</a>的迭代公式: <span
-class="math display">\[
-\begin{aligned}
+<p>根据<a href="">最速下降法</a>的迭代公式:</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 &amp;x_{k+1}=x_k-\alpha_kg_k\\
 &amp;g_k=\nabla f(x)\\
 &amp;\alpha_k=\arg\min_{\alpha&gt;0}f(x_k-\alpha g_k)
 \end{aligned}
-\]</span> 在这里, 迭代过程中要执行赋值语句 <span class="math display">\[
-\theta_j:=\theta_j-\alpha \frac{\partial J}{\partial \theta_j},\forall
-j=0,\cdots,n
-\]</span> 其中步长 <span class="math inline">\(\alpha\)</span>
-又被称为学习率(learning rate), 且 <span class="math display">\[
-\begin{aligned}
+$$</div><p>在这里, 迭代过程中要执行赋值语句</p>
+<div class="markdown-them-math-block">$$\theta_j:=\theta_j-\alpha \frac{\partial J}{\partial \theta_j},\forall j=0,\cdots,n
+$$</div><p>其中步长 <span class="markdown-them-math-inline">$\alpha$</span> 又被称为学习率(learning rate), 且</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 \frac{\partial J}{\partial \theta_j}
-&amp;=\frac{\partial }{\partial
-\theta_j}\frac{1}{2}\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})^2\\
+&amp;=\frac{\partial }{\partial \theta_j}\frac{1}{2}\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})^2\\
 &amp;=\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})x_{j}^{(i)}
 \end{aligned}
-\]</span> 于是迭代公式为 <span class="math display">\[
-\boxed{\theta_j:=\theta_j-\alpha\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})x_{j}^{(i)},\forall
-j=0,\cdots,n}
-\]</span></p>
-<blockquote>
+$$</div><p>于是迭代公式为</p>
+<div class="markdown-them-math-block">$$\boxed{\theta_j:=\theta_j-\alpha\sum_{i=1}^m(\theta^Tx^{(i)}-y^{(i)})x_{j}^{(i)},\forall j=0,\cdots,n}
+$$</div><blockquote>
 <p>CS229的notes里给出的是固定步长而不是最优步长.</p>
 </blockquote>
 <h3 id="随机梯度下降sgd">随机梯度下降SGD</h3>
-<p>上面这种梯度下降法又被称为batch gradient descent,
-每次迭代都需要遍历整个训练集 <span class="math inline">\(\cal
-T,\)</span> 当 <span class="math inline">\(\#\cal T=m\)</span>
-不太大时这种方法是行之有效的且收敛的, 但是 <span
-class="math inline">\(m\)</span> 太大的时候这种方式显然代价太高,
-此时随机算法就有更大的优势. 随机梯度下降(stochastic gradient descent,
-SGD)每次只</p>
-<h3 id="局部加权回归locally-weighted-regression">局部加权回归(locally
-weighted regression)</h3>
-<p>局部加权回归的思想是, 在求 <span
-class="math inline">\(h_{\theta}(x)\)</span> 时更关注 <span
-class="math inline">\(x\)</span> 附近的训练样本,
-即让这部分在代价函数中的占比更大, 而远离 <span
-class="math inline">\(x\)</span> 的那部分训练样本占比变小一些,
-于是给每一项增加权重 <span class="math inline">\(w^{(i)},\)</span>
-代价函数修改为 <span class="math display">\[
-J(\theta)=\sum_{i=1}^mw^{(i)}(y^{(i)}-\theta^Tx^{(i)})^2
-\]</span> 其中 <span class="math display">\[
-w^{(i)}=\exp\left(-\frac{\|x^{(i)}-x\|^2}{2\tau^2} \right),
-\]</span> 是 <span class="math inline">\(x\)</span> 的函数, 保证在确定
-<span class="math inline">\(h_{\theta}(x)\)</span>
-的时候将重点放在要预测的值得附近. 容易看出 <span
-class="math inline">\(\|x^{(i)}-x\|\to 0\)</span> 时 <span
-class="math inline">\(w^{(i)}\to 1,\)</span> 而 <span
-class="math inline">\(\|x^{(i)}-x\|\to \infty\)</span> 时 <span
-class="math inline">\(w^{(i)}\to 0,\)</span>
-这权重的设置符合我们的预期.</p>
+<p>上面这种梯度下降法又被称为batch gradient descent, 每次迭代都需要遍历整个训练集 <span class="markdown-them-math-inline">$\cal T,$</span> 当 <span class="markdown-them-math-inline">$\#\cal T=m$</span> 不太大时这种方法是行之有效的且收敛的, 但是 <span class="markdown-them-math-inline">$m$</span> 太大的时候这种方式显然代价太高, 此时随机算法就有更大的优势. 随机梯度下降(stochastic gradient descent, SGD)每次只</p>
+<h3 id="局部加权回归(locally-weighted regression)">局部加权回归(locally weighted regression)</h3>
+<p>局部加权回归的思想是, 在求 <span class="markdown-them-math-inline">$h_{\theta}(x)$</span> 时更关注 <span class="markdown-them-math-inline">$x$</span> 附近的训练样本, 即让这部分在代价函数中的占比更大, 而远离 <span class="markdown-them-math-inline">$x$</span> 的那部分训练样本占比变小一些, 于是给每一项增加权重 <span class="markdown-them-math-inline">$w^{(i)},$</span> 代价函数修改为</p>
+<div class="markdown-them-math-block">$$J(\theta)=\sum_{i=1}^mw^{(i)}(y^{(i)}-\theta^Tx^{(i)})^2
+$$</div><p>其中</p>
+<div class="markdown-them-math-block">$$w^{(i)}=\exp\left(-\frac{\|x^{(i)}-x\|^2}{2\tau^2} \right),
+$$</div><p>是 <span class="markdown-them-math-inline">$x$</span> 的函数, 保证在确定 <span class="markdown-them-math-inline">$h_{\theta}(x)$</span> 的时候将重点放在要预测的值得附近. 容易看出 <span class="markdown-them-math-inline">$\|x^{(i)}-x\|\to 0$</span> 时 <span class="markdown-them-math-inline">$w^{(i)}\to 1,$</span> 而 <span class="markdown-them-math-inline">$\|x^{(i)}-x\|\to \infty$</span> 时 <span class="markdown-them-math-inline">$w^{(i)}\to 0,$</span> 这权重的设置符合我们的预期.</p>
 <blockquote>
-<p><span class="math inline">\(w^{(i)}\)</span>
-的形式很像正态分布的概率密度(不过两者并无直接关系), 参数 <span
-class="math inline">\(\tau\)</span> 被称为bandwidth参数,
-大小会影响权重的分布导致过拟合 (overfit) 或你和不足 (underfit),
-具体如何影响的细节见习题.</p>
-<p><span class="math inline">\(w^{(i)}\)</span> 的另一种形式是 <span
-class="math display">\[
-w^{(i)}=\exp\left(-\frac{1}{2}(x^{(i)}-x)^T\Sigma^{-1}(x^{(i)}-x)
-\right),
-\]</span> 其中 <span class="math inline">\(\Sigma \in
-\mathbb{R}^{(n+1)\times (n+1)}\)</span> 是可逆矩阵.</p>
+<p><span class="markdown-them-math-inline">$w^{(i)}$</span> 的形式很像正态分布的概率密度(不过两者并无直接关系), 参数 <span class="markdown-them-math-inline">$\tau$</span> 被称为bandwidth参数, 大小会影响权重的分布导致过拟合 (overfit) 或你和不足 (underfit), 具体如何影响的细节见习题.</p>
+<p><span class="markdown-them-math-inline">$w^{(i)}$</span> 的另一种形式是</p>
+<div class="markdown-them-math-block">$$$$</div></blockquote>
+<p>w^{(i)}=\exp\left(-\frac{1}{2}(x^{(i)}-x)^T\Sigma^{-1}(x^{(i)}-x) \right),</p>
+<div class="markdown-them-math-block">$$&gt; 其中 $\Sigma \in \mathbb{R}^{(n+1)\times (n+1)}$ 是可逆矩阵.
+
+**参数学习算法(parametric learning algorithm)与非参数学习(non-parametric learning algorithm)**: 
+
+- 
+- 
+
+## 分类与 logistic 回归
+
+分类问题中最简单的一种就是 $\# Y=2$ 即二元分类的情形, 此时 $Y$ 可以表示为 $\{0,1\},\{+,-\}$ 等等集合, $0$ 被称为 negtive class, $1$ 被称为 positive class.
+
+离散的问题往往不是那么好处理, 于是我们希望将二元分类问题转化为连续的问题并用回归的方式来解决. 单位阶跃函数 $y=\delta(x)$ 满足值为 $0,1$ 但不好处理, 一个方案是选择其他形状与其相似的连续函数并采用四舍五入的处理, sigmond 函数 $\displaystyle g(z)=\frac{1}{1+\mathrm{e}^{-z}}\in(0,1)$ 是一个很好的选择, 同时我们想利用线性回归得到的 $\theta^Tx\in\mathbb{R},$ 毕竟 sigmond 函数只有在 $z&gt;0$ 时 $&gt;0.5,$ $z&lt;0$ 时 $&lt;0.5,$ $y$ 与 $x$ 显然不会满足这种关系, 于是可以可以构造代价函数为
+$$</div><p>h_{\theta}(x)=g(\theta^Tx)=\frac{1}{1+\mathrm{e}^{-\theta^Tx}}</p>
+<div class="markdown-them-math-block">$$下面根据代价函数确定参数 $\theta.$ 
+
+由于最小二乘法与 MLE 在求解参数 $\theta$ 时是一脉相承的, 因此在这里我们将使用 MLE 确定参数 $\theta$ (毕竟最小二乘法仅仅适用于线性回归), 需要构造概率密度. 由于 $h_{\theta}(x)\in(0,1),$ 不妨设 $P(y=1|x;\theta)=h_{\theta}(x),$ 则 $P(y=0|x;\theta)=1-h_{\theta}(x).$ 
+
+&gt; 这里采用了条件概率的记号 $P(y=1|x;\theta),$ 因为 $y$ 的值是依赖于 $x$ 的, 而其中使用了分号 $;$ 而不是逗号, 是因为 $\theta$ 是参数而非随机变量, 如果使用逗号的话, 写在 $|$ 的后面就认为 $\theta$ 也是随机变量了.
+
+为了在计算过程的简便, 将这两种情况合并, 可以将 $y$ 的条件概率密度 $p(y|x;\theta)=h_{\theta}(x)^{y}(1-h_{\theta}(x))^{1-y},$ 于是在训练集样本相互独立的条件下, 似然函数
+$$</div><p>L(\theta)=\prod_{i=1}^m h_{\theta}(x^{(i)})^{y^{(i)}}(1-h_{\theta}(x^{(i)}))^{1-y^{(i)}}</p>
+<div class="markdown-them-math-block">$$为了便于求导取对数: 
+$$</div><p>\begin{aligned}<br>
+\ell(\theta)<br>
+&amp;=\log L(\theta)\<br>
+&amp;=\sum_{i=1}^m -(1-y^{(i)})\theta^Tx^{(i)}-\log(1+\mathrm{e}^{-\theta^T x^{(i)}})<br>
+\end{aligned}</p>
+<div class="markdown-them-math-block">$$ $\theta$ 满足
+$$</div><p>\frac{\partial }{\partial \theta}\ell(\theta)=0</p>
+<div class="markdown-them-math-block">$$考虑每一个 $\theta_j,$ 有
+$$</div><p>\begin{aligned}<br>
+\frac{\partial }{\partial \theta_j}\ell(\theta)<br>
+&amp;=\sum_{i=1}^m \left[-(1-y^{(i)})x_j^{(i)}-\frac{-\mathrm{e}^{-\theta^T x^{(i)}}}{1+\mathrm{e}^{-\theta^T x^{(i)}}}x_j^{(i)}\right] \<br>
+&amp;=\sum_{i=1}^m \left[-(1-y^{(i)})+\left(1-\frac{1}{1+\mathrm{e}^{-\theta^T x^{(i)}}}\right) \right]x_j^{(i)}\<br>
+&amp;=\sum_{i=1}^m(y^{(i)}-h_{\theta}(x^{(i)}))x_j^{(i)}<br>
+\end{aligned}<br>
+$$</p>
+<blockquote>
+<p>如果能注意到 <span class="markdown-them-math-inline">$g(z)$</span> 满足 <span class="markdown-them-math-inline">$g'(z)=g(z)(1-g(z))$</span> 的话, 用链式法则求 <span class="markdown-them-math-inline">$\frac{\partial }{\partial \theta_j}\ell(\theta)$</span> 不失为更好的选择.</p>
 </blockquote>
-<p><strong>参数学习算法(parametric learning
-algorithm)与非参数学习(non-parametric learning algorithm)</strong>:</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-<h2 id="分类与-logistic-回归">分类与 logistic 回归</h2>
-<p>分类问题中最简单的一种就是 <span class="math inline">\(\#
-Y=2\)</span> 即二元分类的情形, 此时 <span
-class="math inline">\(Y\)</span> 可以表示为 <span
-class="math inline">\(\{0,1\},\{+,-\}\)</span> 等等集合, <span
-class="math inline">\(0\)</span> 被称为 negtive class, <span
-class="math inline">\(1\)</span> 被称为 positive class.</p>
-<p>离散的问题往往不是那么好处理,
-于是我们希望将二元分类问题转化为连续的问题并用回归的方式来解决.
-单位阶跃函数 <span class="math inline">\(y=\delta(x)\)</span> 满足值为
-<span class="math inline">\(0,1\)</span> 但不好处理,
-一个方案是选择其他形状与其相似的连续函数并采用四舍五入的处理, sigmond
-函数 <span class="math inline">\(\displaystyle
-g(z)=\frac{1}{1+\mathrm{e}^{-z}}\in(0,1)\)</span> 是一个很好的选择,
-同时我们想利用线性回归得到的 <span
-class="math inline">\(\theta^Tx\in\mathbb{R},\)</span> 毕竟 sigmond
-函数只有在 <span class="math inline">\(z&gt;0\)</span> 时 <span
-class="math inline">\(&gt;0.5,\)</span> <span
-class="math inline">\(z&lt;0\)</span> 时 <span
-class="math inline">\(&lt;0.5,\)</span> <span
-class="math inline">\(y\)</span> 与 <span
-class="math inline">\(x\)</span> 显然不会满足这种关系,
-于是可以可以构造代价函数为 <span class="math display">\[
-h_{\theta}(x)=g(\theta^Tx)=\frac{1}{1+\mathrm{e}^{-\theta^Tx}}
-\]</span> 下面根据代价函数确定参数 <span
-class="math inline">\(\theta.\)</span></p>
-<p>由于最小二乘法与 MLE 在求解参数 <span
-class="math inline">\(\theta\)</span> 时是一脉相承的,
-因此在这里我们将使用 MLE 确定参数 <span
-class="math inline">\(\theta\)</span>
-(毕竟最小二乘法仅仅适用于线性回归), 需要构造概率密度. 由于 <span
-class="math inline">\(h_{\theta}(x)\in(0,1),\)</span> 不妨设 <span
-class="math inline">\(P(y=1|x;\theta)=h_{\theta}(x),\)</span> 则 <span
-class="math inline">\(P(y=0|x;\theta)=1-h_{\theta}(x).\)</span></p>
-<blockquote>
-<p>这里采用了条件概率的记号 <span
-class="math inline">\(P(y=1|x;\theta),\)</span> 因为 <span
-class="math inline">\(y\)</span> 的值是依赖于 <span
-class="math inline">\(x\)</span> 的, 而其中使用了分号 <span
-class="math inline">\(;\)</span> 而不是逗号, 是因为 <span
-class="math inline">\(\theta\)</span> 是参数而非随机变量,
-如果使用逗号的话, 写在 <span class="math inline">\(|\)</span>
-的后面就认为 <span class="math inline">\(\theta\)</span>
-也是随机变量了.</p>
-</blockquote>
-<p>为了在计算过程的简便, 将这两种情况合并, 可以将 <span
-class="math inline">\(y\)</span> 的条件概率密度 <span
-class="math inline">\(p(y|x;\theta)=h_{\theta}(x)^{y}(1-h_{\theta}(x))^{1-y},\)</span>
-于是在训练集样本相互独立的条件下, 似然函数 <span class="math display">\[
-L(\theta)=\prod_{i=1}^m
-h_{\theta}(x^{(i)})^{y^{(i)}}(1-h_{\theta}(x^{(i)}))^{1-y^{(i)}}
-\]</span> 为了便于求导取对数: <span class="math display">\[
-\begin{aligned}
-\ell(\theta)
-&amp;=\log L(\theta)\\
-&amp;=\sum_{i=1}^m
--(1-y^{(i)})\theta^Tx^{(i)}-\log(1+\mathrm{e}^{-\theta^T x^{(i)}})
-\end{aligned}
-\]</span> <span class="math inline">\(\theta\)</span> 满足 <span
-class="math display">\[
-\frac{\partial }{\partial \theta}\ell(\theta)=0
-\]</span> 考虑每一个 <span class="math inline">\(\theta_j,\)</span> 有
-<span class="math display">\[
-\begin{aligned}
-\frac{\partial }{\partial \theta_j}\ell(\theta)
-&amp;=\sum_{i=1}^m
-\left[-(1-y^{(i)})x_j^{(i)}-\frac{-\mathrm{e}^{-\theta^T
-x^{(i)}}}{1+\mathrm{e}^{-\theta^T x^{(i)}}}x_j^{(i)}\right] \\
-&amp;=\sum_{i=1}^m
-\left[-(1-y^{(i)})+\left(1-\frac{1}{1+\mathrm{e}^{-\theta^T
-x^{(i)}}}\right) \right]x_j^{(i)}\\
-&amp;=\sum_{i=1}^m(y^{(i)}-h_{\theta}(x^{(i)}))x_j^{(i)}
-\end{aligned}
-\]</span></p>
-<blockquote>
-<p>如果能注意到 <span class="math inline">\(g(z)\)</span> 满足 <span
-class="math inline">\(g&#39;(z)=g(z)(1-g(z))\)</span> 的话, 用链式法则求
-<span class="math inline">\(\frac{\partial }{\partial
-\theta_j}\ell(\theta)\)</span> 不失为更好的选择.</p>
-</blockquote>
-<p>这导函数的零点显然是无法用初等函数显式表达出来, 于是可以考虑用<a
-href="">最速下降法</a>或<a href="">牛顿法</a>, 迭代过程中更新公式分别为
-<span class="math display">\[
-\theta_j:=\theta_j+\alpha\sum_{i=1}^m(y^{(i)}-h_{\theta}(x^{(i)}))x_j^{(i)}
-\]</span></p>
-<blockquote>
-<p>注意这里是 <span class="math inline">\(+,\)</span>
-因为是求最大值的优化问题: <span class="math display">\[
-\begin{aligned}
+<p>这导函数的零点显然是无法用初等函数显式表达出来, 于是可以考虑用<a href="">最速下降法</a>或<a href="">牛顿法</a>, 迭代过程中更新公式分别为</p>
+<div class="markdown-them-math-block">$$\theta_j:=\theta_j+\alpha\sum_{i=1}^m(y^{(i)}-h_{\theta}(x^{(i)}))x_j^{(i)}
+$$</div><blockquote>
+<p>注意这里是 <span class="markdown-them-math-inline">$+,$</span> 因为是求最大值的优化问题:</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 &amp;\max \ell(\theta)\\
 \text{s.t. }&amp; \theta \in\mathbb{R}^{n+1}
 \end{aligned}
-\]</span> 应沿梯度方向迭代而不是负梯度方向.</p>
+$$</div><p>应沿梯度方向迭代而不是负梯度方向.</p>
 </blockquote>
-<p>将这与线性回归的最速下降法迭代公式作比较,
-可以很惊讶地发现两者的形式是完全吻合的.</p>
-<p>牛顿法: <span class="math display">\[
-\theta:=\theta-\nabla^2\ell(\theta)^{-1}g
-\]</span> 其中 <span class="math inline">\(g=\nabla
-\ell(\theta),\)</span> 这里采用的是最原始的牛顿法而不是修正牛顿法.</p>
+<p>将这与线性回归的最速下降法迭代公式作比较, 可以很惊讶地发现两者的形式是完全吻合的.</p>
+<p>牛顿法:</p>
+<div class="markdown-them-math-block">$$\theta:=\theta-\nabla^2\ell(\theta)^{-1}g
+$$</div><p>其中 <span class="markdown-them-math-inline">$g=\nabla \ell(\theta),$</span> 这里采用的是最原始的牛顿法而不是修正牛顿法.</p>
 <blockquote>
-<p>通过构造的概率密度得到的 <span
-class="math inline">\(\ell(\theta)\)</span> 具有非常好的性质, 它在 <span
-class="math inline">\(\mathbb{R}^n\)</span> 是凸的,
-因此无需再考虑最速下降法或牛顿法会陷入局部最优解的情况了,
-因为凸优化问题的局部最优解一定是全局最优解.</p>
+<p>通过构造的概率密度得到的 <span class="markdown-them-math-inline">$\ell(\theta)$</span> 具有非常好的性质, 它在 <span class="markdown-them-math-inline">$\mathbb{R}^n$</span> 是凸的, 因此无需再考虑最速下降法或牛顿法会陷入局部最优解的情况了, 因为凸优化问题的局部最优解一定是全局最优解.</p>
 </blockquote>
-<h2 id="广义线性模型glm">广义线性模型(GLM)</h2>
-<p>不管是线性回归还是 logistics 回归, 它们都隶属于概率论中的回归分析,
-也就是说 <span class="math inline">\(y\)</span> 总是一个随机变量,
-依赖于自变量 <span class="math inline">\(x\)</span> 和参数 <span
-class="math inline">\(\theta\)</span> 以及随机误差 <span
-class="math inline">\(e,\)</span> 若假定 <span
-class="math inline">\(e\sim N(0,\sigma^2),\)</span> 那么 <span
-class="math inline">\(y|x;\theta\sim N(\mu,\sigma^2),\)</span> 其中
-<span class="math inline">\(\mu=h_{\theta}(x);\)</span> 对于分类问题,
-比如二元分类问题, <span class="math inline">\(y|x;\theta\sim
-B(1,\phi).\)</span> 在广义线性模型中, <span
-class="math inline">\(y\)</span> 的分布不再局限于上面两种形式,
-最常见的是指数类型的分布, 这类分布满足概率密度为: <span
-class="math display">\[
-p(y;\eta)=b(y)\mathrm{e}^{\eta^TT(y)-a(\eta)}
-\]</span> 叫做<strong>指数分布族(Exponential family)</strong>, 其中参数
-<span class="math inline">\(\eta\)</span> 称为自然参数 (natural
-parameter/canonical parameter), <span
-class="math inline">\(b(y),T(y)\)</span> 都是 <span
-class="math inline">\(y\)</span> 的函数, <span
-class="math inline">\(T(y)\)</span> 被称为充分统计量(sufficient
-statistic), 对于常见的分布, 一般有 <span
-class="math inline">\(T(y)=y\)</span> ; <span
-class="math inline">\(a(\eta)\)</span> 是 <span
-class="math inline">\(\eta\)</span> 的函数, 它的主要作用是保证 <span
-class="math display">\[
-\int_{\mathbb{R}^n}p(y;\eta)\mathrm{d} y=1\text{ or }\sum p(y;\eta)=1
-\]</span> 使其符合概率密度应满足的特点.</p>
+<h2 id="广义线性模型(glm)">广义线性模型(GLM)</h2>
+<p>不管是线性回归还是 logistics 回归, 它们都隶属于概率论中的回归分析, 也就是说 <span class="markdown-them-math-inline">$y$</span> 总是一个随机变量, 依赖于自变量 <span class="markdown-them-math-inline">$x$</span> 和参数 <span class="markdown-them-math-inline">$\theta$</span> 以及随机误差 <span class="markdown-them-math-inline">$e,$</span> 若假定 <span class="markdown-them-math-inline">$e\sim N(0,\sigma^2),$</span> 那么 <span class="markdown-them-math-inline">$y|x;\theta\sim N(\mu,\sigma^2),$</span> 其中 <span class="markdown-them-math-inline">$\mu=h_{\theta}(x);$</span> 对于分类问题, 比如二元分类问题, <span class="markdown-them-math-inline">$y|x;\theta\sim B(1,\phi).$</span> 在广义线性模型中, <span class="markdown-them-math-inline">$y$</span> 的分布不再局限于上面两种形式, 最常见的是指数类型的分布, 这类分布满足概率密度为:</p>
+<div class="markdown-them-math-block">$$p(y;\eta)=b(y)\mathrm{e}^{\eta^TT(y)-a(\eta)}
+$$</div><p>叫做<strong>指数分布族(Exponential family)</strong>, 其中参数 <span class="markdown-them-math-inline">$\eta$</span> 称为自然参数 (natural parameter/canonical parameter), <span class="markdown-them-math-inline">$b(y),T(y)$</span> 都是 <span class="markdown-them-math-inline">$y$</span> 的函数, <span class="markdown-them-math-inline">$T(y)$</span> 被称为充分统计量(sufficient statistic), 对于常见的分布, 一般有 <span class="markdown-them-math-inline">$T(y)=y$</span> ; <span class="markdown-them-math-inline">$a(\eta)$</span> 是 <span class="markdown-them-math-inline">$\eta$</span> 的函数, 它的主要作用是保证</p>
+<div class="markdown-them-math-block">$$\int_{\mathbb{R}^n}p(y;\eta)\mathrm{d} y=1\text{ or }\sum p(y;\eta)=1
+$$</div><p>使其符合概率密度应满足的特点.</p>
 <p>显然, 伯努利分布和正态分布都是指数类型的分布, 下面将说明这一点.</p>
 <p><strong>伯努利分布</strong>:</p>
-<p>设 <span class="math inline">\(y;\phi\sim
-B(1,\phi),y\in\{0,1\},\)</span> 则 <span class="math display">\[
-\begin{aligned}
+<p>设 <span class="markdown-them-math-inline">$y;\phi\sim B(1,\phi),y\in\{0,1\},$</span> 则</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 p(y;\phi)
 &amp;=\phi^y(1-\phi)^{(1-y)}\\
 &amp;=(\exp y\log \phi)\cdot(\exp(1-y)\log(1-\phi))\\
 &amp;=\exp \left(y\log\frac{\phi}{1-\phi}+\log(1-\phi)\right)
 \end{aligned}
-\]</span> 显然就有 <span class="math inline">\(b(y)=1,T(y)=t,\)</span>
-且 <span class="math display">\[
-\eta=\log\frac{\phi}{1-\phi}\Rightarrow
-\phi=\frac{1}{1+\mathrm{e}^{-\eta}}
-\]</span> 于是 <span
-class="math inline">\(a(\eta)=-\log(1-\phi)=\log\frac{\mathrm{e}^{-\eta}}{1+\mathrm{e}^{-\eta}}=-\log(1+\mathrm{e}^{\eta}).\)</span></p>
+$$</div><p>显然就有 <span class="markdown-them-math-inline">$b(y)=1,T(y)=t,$</span> 且</p>
+<div class="markdown-them-math-block">$$\eta=\log\frac{\phi}{1-\phi}\Rightarrow \phi=\frac{1}{1+\mathrm{e}^{-\eta}}
+$$</div><p>于是 <span class="markdown-them-math-inline">$a(\eta)=-\log(1-\phi)=\log\frac{\mathrm{e}^{-\eta}}{1+\mathrm{e}^{-\eta}}=-\log(1+\mathrm{e}^{\eta}).$</span></p>
 <p><strong>正态分布</strong>:</p>
-<p>设 <span class="math inline">\(y;\mu,\sigma^2\sim
-N(\mu,\sigma^2),\)</span> 则 <span class="math display">\[
-\begin{aligned}
+<p>设 <span class="markdown-them-math-inline">$y;\mu,\sigma^2\sim N(\mu,\sigma^2),$</span> 则</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 p(y;\mu,\sigma^2)
 &amp;=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{(y-\mu)^2}{2\sigma^2}}\\
 \end{aligned}
-\]</span> 需要注意的是, 在回归分析时我们并没有用到 <span
-class="math inline">\(\sigma^2,\)</span> 这意味着 <span
-class="math inline">\(\sigma^2\)</span> 对于我们构造代价函数 <span
-class="math inline">\(h_{\theta}(x)\)</span> 以及最终确定参数 <span
-class="math inline">\(\theta\)</span> 并无影响, 因此它可以是任意的,
-为了计算简便, 可以令 <span class="math inline">\(\sigma=1,\)</span></p>
+$$</div><p>需要注意的是, 在回归分析时我们并没有用到 <span class="markdown-them-math-inline">$\sigma^2,$</span> 这意味着 <span class="markdown-them-math-inline">$\sigma^2$</span> 对于我们构造代价函数 <span class="markdown-them-math-inline">$h_{\theta}(x)$</span> 以及最终确定参数 <span class="markdown-them-math-inline">$\theta$</span> 并无影响, 因此它可以是任意的, 为了计算简便, 可以令 <span class="markdown-them-math-inline">$\sigma=1,$</span></p>
 <blockquote>
-<p>事实上也可以将 <span class="math inline">\(\sigma^2\)</span>
-考虑在内, 不过就需要更一般的指数类型的分布的概率密度: <span
-class="math display">\[
-p(y;\eta)=b(y)\mathrm{e}^{}
-\]</span></p>
-</blockquote>
+<p>事实上也可以将 <span class="markdown-them-math-inline">$\sigma^2$</span> 考虑在内, 不过就需要更一般的指数类型的分布的概率密度:</p>
+<div class="markdown-them-math-block">$$p(y;\eta)=b(y)\mathrm{e}^{}
+$$</div></blockquote>
 <h3 id="三个假设">三个假设</h3>
-<p>对于回归问题和分类问题, 我们想根据自变量 <span
-class="math inline">\(x\)</span> 预测随机变量 <span
-class="math inline">\(y\)</span> 的值, 为了得到广义线性模型,
-做出下面的三个假设:</p>
+<p>对于回归问题和分类问题, 我们想根据自变量 <span class="markdown-them-math-inline">$x$</span> 预测随机变量 <span class="markdown-them-math-inline">$y$</span> 的值, 为了得到广义线性模型, 做出下面的三个假设:</p>
 <ul>
-<li><span class="math inline">\(y|x;\theta\sim EF(\eta),\)</span> 其中
-<span class="math inline">\(EF(\eta)\)</span> 为自然参数为 <span
-class="math inline">\(\eta\)</span> 的指数族分布.</li>
-<li><span class="math inline">\(\mathbb{E}(y|x)=h(x).\)</span></li>
-<li>自然参数 <span class="math inline">\(\eta\)</span> 与自变量 <span
-class="math inline">\(x\)</span> 满足线性关系: <span
-class="math inline">\(\eta=\theta^Tx.\)</span></li>
+<li><span class="markdown-them-math-inline">$y|x;\theta\sim EF(\eta),$</span> 其中 <span class="markdown-them-math-inline">$EF(\eta)$</span> 为自然参数为 <span class="markdown-them-math-inline">$\eta$</span> 的指数族分布.</li>
+<li><span class="markdown-them-math-inline">$\mathbb{E}(y|x)=h(x).$</span></li>
+<li>自然参数 <span class="markdown-them-math-inline">$\eta$</span> 与自变量 <span class="markdown-them-math-inline">$x$</span> 满足线性关系: <span class="markdown-them-math-inline">$\eta=\theta^Tx.$</span></li>
 </ul>
 <p>这三个假设看起来很突兀, 下面一一做解释:</p>
-<h4 id="为什么是指数族分布">为什么是指数族分布?</h4>
-<p>我们假设 <span class="math inline">\(y|x;\theta\)</span>
-服从指数族分布主要有两个原因:</p>
-<ol type="1">
-<li><p>指数分布具有良好的性质, 若随机变量 <span
-class="math inline">\(Y\sim EF(\eta),\)</span> 则 <span
-class="math inline">\(Y\)</span> 的期望与方差的形式非常简洁,
-我们现在来计算一下.</p>
-<p><strong>期望</strong>: 注意到 <span
-class="math inline">\(\frac{\partial \log p(y;\eta)}{\partial
-\eta}=y-\nabla a(\eta),\)</span> 于是定义随机变量 <span
-class="math inline">\(X=Y-\nabla a(\eta),\)</span> 于是 <span
-class="math inline">\(\mathbb{E}(X)=\mathbb{E}(Y)-\nabla
-a(\eta),\)</span> 且根据<a href="">随机变量函数的期望</a>, 有 <span
-class="math display">\[
-\begin{aligned}
+<h4 id="为什么是指数族分布?">为什么是指数族分布?</h4>
+<p>我们假设 <span class="markdown-them-math-inline">$y|x;\theta$</span> 服从指数族分布主要有两个原因:</p>
+<ol>
+<li>
+<p>指数分布具有良好的性质, 若随机变量 <span class="markdown-them-math-inline">$Y\sim EF(\eta),$</span> 则 <span class="markdown-them-math-inline">$Y$</span> 的期望与方差的形式非常简洁, 我们现在来计算一下.</p>
+<p><strong>期望</strong>: 注意到 <span class="markdown-them-math-inline">$\frac{\partial \log p(y;\eta)}{\partial \eta}=y-\nabla a(\eta),$</span> 于是定义随机变量 <span class="markdown-them-math-inline">$X=Y-\nabla a(\eta),$</span> 于是 <span class="markdown-them-math-inline">$\mathbb{E}(X)=\mathbb{E}(Y)-\nabla a(\eta),$</span> 且根据<a href="">随机变量函数的期望</a>, 有</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 \mathbb{E}(X)
 &amp;=\int (y-\nabla a(\eta))p(y;\eta)\mathrm{d} y\\
-&amp;=\int \left(\frac{\partial}{\partial \eta}\log p\right)p\mathrm{d}
-y\\
+&amp;=\int \left(\frac{\partial}{\partial \eta}\log p\right)p\mathrm{d} y\\
 &amp;=\int\frac{1}{p}\frac{\partial p}{\partial \eta}p\mathrm{d} y\\
 &amp;=\int \frac{\partial}{\partial \eta}p\mathrm{d} y\\
 &amp;=\frac{\partial}{\partial \eta}\int p\mathrm{d} y\\
 &amp;=\frac{\partial}{\partial \eta}1=0
 \end{aligned}
-\]</span> 这就意味着 <span
-class="math inline">\(\mathbb{E}(X)=\mathbb{E}(Y)-\nabla
-a(\eta)=0,\)</span> 即 <span
-class="math inline">\(\boxed{\mathbb{E}(Y)=\nabla a(\eta)}.\)</span></p>
+$$</div><p>这就意味着 <span class="markdown-them-math-inline">$\mathbb{E}(X)=\mathbb{E}(Y)-\nabla a(\eta)=0,$</span> 即 <span class="markdown-them-math-inline">$\boxed{\mathbb{E}(Y)=\nabla a(\eta)}.$</span></p>
 <blockquote>
-<p>上面交换积分和求导的次序原则上需要证明一致收敛之类的, 在这里不是重点,
-就略去了, 同时用到了概率密度 <span
-class="math inline">\(p(y;\eta)\)</span> 的规范性. 若 <span
-class="math inline">\(y\in\mathbb{R}^n,\)</span> 则上面的积分都是在整个
-<span class="math inline">\(\mathbb{R}^n\)</span> 上进行的.
-这里的期望算子 <span class="math inline">\(\mathbb{E}:\mathbb{R}^n \to
-\mathbb{R}^n,\)</span> 即对多维随机变量的每一维求期望. 梯度 <span
-class="math inline">\(\nabla f(x)\)</span> 按理来说是列向量即 <span
-class="math inline">\(\frac{\partial f}{\partial x}=\nabla
-f(x)^T,\)</span> 这里为了方便就不区分 <span
-class="math inline">\(\frac{\partial f}{\partial x}\)</span> 与 <span
-class="math inline">\(\nabla f(x)\)</span> 的区别了.</p>
-<p>上面的 "注意到" 好像有点突兀, 也可以从其他角度来求,
-但关键还是要想到对 <span class="math inline">\(\eta\)</span>
-求导以及交换积分和求导次序, 因为 <span class="math display">\[
-\frac{\partial p}{\partial \eta}=p(y-\nabla a(\eta))
-\]</span> 这时候出现了 <span class="math inline">\(py,\)</span>
-积分后就是期望了, 而且剩下一项刚好是概率密度, 积分后就为 <span
-class="math inline">\(1\)</span> 了.</p>
+<p>上面交换积分和求导的次序原则上需要证明一致收敛之类的, 在这里不是重点, 就略去了, 同时用到了概率密度 <span class="markdown-them-math-inline">$p(y;\eta)$</span> 的规范性. 若 <span class="markdown-them-math-inline">$y\in\mathbb{R}^n,$</span> 则上面的积分都是在整个 <span class="markdown-them-math-inline">$\mathbb{R}^n$</span> 上进行的. 这里的期望算子 <span class="markdown-them-math-inline">$\mathbb{E}:\mathbb{R}^n \to \mathbb{R}^n,$</span> 即对多维随机变量的每一维求期望. 梯度 <span class="markdown-them-math-inline">$\nabla f(x)$</span> 按理来说是列向量即 <span class="markdown-them-math-inline">$\frac{\partial f}{\partial x}=\nabla f(x)^T,$</span> 这里为了方便就不区分 <span class="markdown-them-math-inline">$\frac{\partial f}{\partial x}$</span> 与 <span class="markdown-them-math-inline">$\nabla f(x)$</span> 的区别了.</p>
+<p>上面的 “注意到” 好像有点突兀, 也可以从其他角度来求, 但关键还是要想到对 <span class="markdown-them-math-inline">$\eta$</span> 求导以及交换积分和求导次序, 因为</p>
+<div class="markdown-them-math-block">$$\frac{\partial p}{\partial \eta}=p(y-\nabla a(\eta))
+$$</div><p>这时候出现了 <span class="markdown-them-math-inline">$py,$</span> 积分后就是期望了, 而且剩下一项刚好是概率密度, 积分后就为 <span class="markdown-them-math-inline">$1$</span> 了.</p>
 </blockquote>
-<p><strong>方差</strong>: <span class="math display">\[
-\mathbb{D} (X)=\nabla^2 a(\eta)
-\]</span> 即函数 <span class="math inline">\(a(\eta)\)</span>
-的黑塞矩阵.</p></li>
-<li><p>常见的大多数分布都属于指数分布族.
-比如上面提到过的正态分布与伯努利分布, 以及指数分布, 二项分布, 多项分布,
-泊松分布, <span class="math inline">\(\Gamma\)</span> 分布, <span
-class="math inline">\(\beta\)</span> 分布等等, 都属于指数分布族,
-而这些分布又可以刻画大多数问题, 所以假定 <span
-class="math inline">\(y\)</span> 服从指数族分布是有一定道理的.</p>
-<p><a href="">这里</a>补充了 <span class="math inline">\(\Gamma\)</span>
-分布和 <span class="math inline">\(\beta\)</span> 分布,
-以及对其他分布属于指数分布族的验证.</p></li>
+<p><strong>方差</strong>:</p>
+<div class="markdown-them-math-block">$$\mathbb{D} (X)=\nabla^2 a(\eta)
+$$</div><p>即函数 <span class="markdown-them-math-inline">$a(\eta)$</span> 的黑塞矩阵.</p>
+</li>
+<li>
+<p>常见的大多数分布都属于指数分布族. 比如上面提到过的正态分布与伯努利分布, 以及指数分布, 二项分布, 多项分布, 泊松分布, <span class="markdown-them-math-inline">$\Gamma$</span> 分布, <span class="markdown-them-math-inline">$\beta$</span> 分布等等, 都属于指数分布族, 而这些分布又可以刻画大多数问题, 所以假定 <span class="markdown-them-math-inline">$y$</span> 服从指数族分布是有一定道理的.</p>
+<p><a href="">这里</a>补充了 <span class="markdown-them-math-inline">$\Gamma$</span> 分布和 <span class="markdown-them-math-inline">$\beta$</span> 分布, 以及对其他分布属于指数分布族的验证.</p>
+</li>
 </ol>
-<h4 id="代价函数为什么是期望">代价函数为什么是期望?</h4>
-<p>这里确定 <span class="math inline">\(h(x)\)</span>
-的过程与回归分析并无二致, 关于连续型随机变量 <span
-class="math inline">\(\mathbb{E}(Y|X_1,\cdots,X_n)=f(x_1,\cdots,x_n)\)</span>
-的解释, 见<a href="">回归分析</a>, 实际上就是对随机误差期望为 <span
-class="math inline">\(0\)</span> 的假定,
-也可以借助参数估计的无偏性来理解.</p>
+<h4 id="代价函数为什么是期望?">代价函数为什么是期望?</h4>
+<p>这里确定 <span class="markdown-them-math-inline">$h(x)$</span> 的过程与回归分析并无二致, 关于连续型随机变量 <span class="markdown-them-math-inline">$\mathbb{E}(Y|X_1,\cdots,X_n)=f(x_1,\cdots,x_n)$</span> 的解释, 见<a href="">回归分析</a>, 实际上就是对随机误差期望为 <span class="markdown-them-math-inline">$0$</span> 的假定, 也可以借助参数估计的无偏性来理解.</p>
 <p>离散型随机变量与连续型随机变量有一点不同</p>
-<h4 id="为什么是线性关系">为什么是线性关系?</h4>
-<p>线性关系的假定可以看作是一种约定俗成,
-这大概是因为因为线性关系具有诸多良好的性质, 就像局部加权回归那样,
-如果只关注预测值附近的样本的话, 线性近似带来的误差并不是很大.
-更精确的拟合所提高的精度相比计算的代价可能并不那么诱人.</p>
+<h4 id="为什么是线性关系?">为什么是线性关系?</h4>
+<p>线性关系的假定可以看作是一种约定俗成, 这大概是因为因为线性关系具有诸多良好的性质, 就像局部加权回归那样, 如果只关注预测值附近的样本的话, 线性近似带来的误差并不是很大. 更精确的拟合所提高的精度相比计算的代价可能并不那么诱人.</p>
 <blockquote>
 <p>反正是我瞎说的捏</p>
 </blockquote>
-<h3
-id="借助广义线性模型解决多分类问题-softmax-regression">借助广义线性模型解决多分类问题:
-softmax regression</h3>
-<p>说了那么多理论和计算, 该看个例子了. 在前面解决了二元分类,
-现在我们来看如何用 GLM 解决多分类问题. 多分类问题中, <span
-class="math inline">\(\mathcal{Y}=\{1,2,\cdots,k\},\)</span> 表示有
-<span class="math inline">\(k\)</span> 类. 在给定 <span
-class="math inline">\(x\)</span> 的条件下, 设 <span
-class="math inline">\(P(y=i|x;\phi)=\phi_i,\)</span> 其中 <span
-class="math inline">\(\phi=(\phi_1,\cdots,\phi_k)\)</span>
-的每一维都是概率, 满足 <span class="math inline">\(\sum_{i=1}^k
-\phi_i=1.\)</span></p>
+<h3 id="借助广义线性模型解决多分类问题:-softmax regression">借助广义线性模型解决多分类问题: softmax regression</h3>
+<p>说了那么多理论和计算, 该看个例子了. 在前面解决了二元分类, 现在我们来看如何用 GLM 解决多分类问题. 多分类问题中, <span class="markdown-them-math-inline">$\mathcal{Y}=\{1,2,\cdots,k\},$</span> 表示有 <span class="markdown-them-math-inline">$k$</span> 类. 在给定 <span class="markdown-them-math-inline">$x$</span> 的条件下, 设 <span class="markdown-them-math-inline">$P(y=i|x;\phi)=\phi_i,$</span> 其中 <span class="markdown-them-math-inline">$\phi=(\phi_1,\cdots,\phi_k)$</span> 的每一维都是概率, 满足 <span class="markdown-them-math-inline">$\sum_{i=1}^k \phi_i=1.$</span></p>
 <blockquote>
-<p>对于命题 <span class="math inline">\(q,\)</span> 记号 <span
-class="math inline">\([]:\{\text{true, false}\}\to \{0,1\}\)</span>
-表示若 <span class="math inline">\(q\)</span> 为真则 <span
-class="math inline">\([q]=1,\)</span> 若 <span
-class="math inline">\(p\)</span> 为假则 <span
-class="math inline">\([q]=0.\)</span> 比如 <span
-class="math inline">\([1=0]=0.\)</span>
-(为什么这也要煞有介事地写个映射)</p>
+<p>对于命题 <span class="markdown-them-math-inline">$q,$</span> 记号 <span class="markdown-them-math-inline">$[]:\{\text{true, false}\}\to \{0,1\}$</span> 表示若 <span class="markdown-them-math-inline">$q$</span> 为真则 <span class="markdown-them-math-inline">$[q]=1,$</span> 若 <span class="markdown-them-math-inline">$p$</span> 为假则 <span class="markdown-them-math-inline">$[q]=0.$</span> 比如 <span class="markdown-them-math-inline">$[1=0]=0.$</span> (为什么这也要煞有介事地写个映射)</p>
 </blockquote>
-<p>于是概率密度可以写成: <span class="math display">\[
-\begin{aligned}
+<p>于是概率密度可以写成:</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 p(y;\phi)
 &amp;=\prod_{i=1}^k\phi_i^{[y=i]}\\
 &amp;=\exp \sum_{i=1}^k [y=i]\log \phi_i
 \end{aligned}
-\]</span> 将其与指数族分布的概率密度对照, 则有 <span
-class="math inline">\(\eta=(\log\phi_1,\cdots,\log\phi_k)^T,\)</span>
-<span class="math inline">\(T(y)=([y=1],\cdots,[y=k])^T,\)</span> <span
-class="math inline">\(b(y)=1,\)</span> 然后就发现出问题了, 此时 <span
-class="math inline">\(a(\eta)=0,\)</span> 那代价函数就恒为 <span
-class="math inline">\(0\)</span> 了, 显然不对.</p>
-<p>问题出在哪里了呢? 因为 <span
-class="math inline">\(\phi_1,\cdots,\phi_k\)</span> 满足了 <span
-class="math inline">\(\sum_{i=1}^k\phi_i=1,\)</span> 所以这 <span
-class="math inline">\(k\)</span> 个参数有一个多余的, 于是用 <span
-class="math inline">\(1-\sum_{i=1}^{k-1}\phi_i\)</span> 替换掉 <span
-class="math inline">\(\phi_k,\)</span> 那么自然参数就满足 <span
-class="math inline">\(\eta\in \mathbb{R}^{k-1}\)</span> 而不是 <span
-class="math inline">\(\mathbb{R}^k\)</span> 了,
-不过下面的运算过程为了简便仍然用 <span
-class="math inline">\(\phi_k\)</span> , 现在置 <span
-class="math inline">\(\phi=(\phi_1,\cdots,\phi_{k-1}),\)</span> 则 <span
-class="math display">\[
-\begin{aligned}
+$$</div><p>将其与指数族分布的概率密度对照, 则有 <span class="markdown-them-math-inline">$\eta=(\log\phi_1,\cdots,\log\phi_k)^T,$</span> <span class="markdown-them-math-inline">$T(y)=([y=1],\cdots,[y=k])^T,$</span> <span class="markdown-them-math-inline">$b(y)=1,$</span> 然后就发现出问题了, 此时 <span class="markdown-them-math-inline">$a(\eta)=0,$</span> 那代价函数就恒为 <span class="markdown-them-math-inline">$0$</span> 了, 显然不对.</p>
+<p>问题出在哪里了呢? 因为 <span class="markdown-them-math-inline">$\phi_1,\cdots,\phi_k$</span> 满足了 <span class="markdown-them-math-inline">$\sum_{i=1}^k\phi_i=1,$</span> 所以这 <span class="markdown-them-math-inline">$k$</span> 个参数有一个多余的, 于是用 <span class="markdown-them-math-inline">$1-\sum_{i=1}^{k-1}\phi_i$</span> 替换掉 <span class="markdown-them-math-inline">$\phi_k,$</span> 那么自然参数就满足 <span class="markdown-them-math-inline">$\eta\in \mathbb{R}^{k-1}$</span> 而不是 <span class="markdown-them-math-inline">$\mathbb{R}^k$</span> 了, 不过下面的运算过程为了简便仍然用 <span class="markdown-them-math-inline">$\phi_k$</span> , 现在置 <span class="markdown-them-math-inline">$\phi=(\phi_1,\cdots,\phi_{k-1}),$</span> 则</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 p(y;\phi)
 &amp;=\exp \sum_{i=1}^k [y=i]\log \phi_i\\
 &amp;=\exp \sum_{i=1}^{k-1}[y=i]\log\phi_i+[y=k]\log \phi_k\\
-&amp;=\exp
-\sum_{i=1}^{k-1}[y=i]\log\phi_i+\log\phi_k\sum_{\ell=1}^{k}[y=\ell]-\log\phi_k
-\sum_{\ell=1}^{k-1}[y=\ell]\\
+&amp;=\exp \sum_{i=1}^{k-1}[y=i]\log\phi_i+\log\phi_k\sum_{\ell=1}^{k}[y=\ell]-\log\phi_k \sum_{\ell=1}^{k-1}[y=\ell]\\
 &amp;=\exp\sum_{i=1}^{k-1}[y=i]\log\frac{\phi_i}{\phi_k}+\log\phi_k
 \end{aligned}
-\]</span> 于是就有 <span class="math inline">\(\eta
-=(\log\phi_1/\phi_k,\cdots,\phi_{k-1}/\phi_k)^T,T(y)=([y=1],\cdots,[y=k-1])^T,b(y)=1,\)</span>
-以及 <span class="math display">\[
-a(\eta)=-\log\phi_k=-\log\left(1-\sum_{i=j}^{k-1}\phi_j \right)
-\]</span> 为了求出 <span class="math inline">\(h(x)=\nabla
-a(\eta),\)</span> 先求出 <span class="math inline">\(\eta\)</span> 与
-<span class="math inline">\(\phi\)</span> 之间的关系, 这相当于是解方程:
-<span class="math display">\[
-\begin{cases}
+$$</div><p>于是就有 <span class="markdown-them-math-inline">$\eta =(\log\phi_1/\phi_k,\cdots,\phi_{k-1}/\phi_k)^T,T(y)=([y=1],\cdots,[y=k-1])^T,b(y)=1,$</span> 以及</p>
+<div class="markdown-them-math-block">$$a(\eta)=-\log\phi_k=-\log\left(1-\sum_{i=j}^{k-1}\phi_j \right)
+$$</div><p>为了求出 <span class="markdown-them-math-inline">$h(x)=\nabla a(\eta),$</span> 先求出 <span class="markdown-them-math-inline">$\eta$</span> 与 <span class="markdown-them-math-inline">$\phi$</span> 之间的关系, 这相当于是解方程:</p>
+<div class="markdown-them-math-block">$$\begin{cases}
 \phi_i=\phi_k\mathrm{e}^{\eta_i},i=1,\cdots,k-1\\
 \displaystyle \phi_k=1-\sum_{i=1}^{k-1}\phi_i
 \end{cases}
-\]</span> 解出 <span class="math display">\[
-\phi_k=\frac{1}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_i}}
-\]</span> 于是 <span class="math display">\[
-a(\eta)=-\log\phi_k=\log \left(1+\sum_{i=1}^{k-1}e^{\eta_i}\right)
-\]</span> 且 <span class="math inline">\(\eta_i=\theta_i^Tx,\)</span>
-其中 <span class="math inline">\(\theta_i\in\mathbb{R}^{n+1},\)</span>
-于是</p>
-<p><span class="math display">\[
-h(x)=\nabla a(\eta)=
+$$</div><p>解出</p>
+<div class="markdown-them-math-block">$$\phi_k=\frac{1}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_i}}
+$$</div><p>于是</p>
+<div class="markdown-them-math-block">$$a(\eta)=-\log\phi_k=\log \left(1+\sum_{i=1}^{k-1}e^{\eta_i}\right)
+$$</div><p>且 <span class="markdown-them-math-inline">$\eta_i=\theta_i^Tx,$</span> 其中 <span class="markdown-them-math-inline">$\theta_i\in\mathbb{R}^{n+1},$</span> 于是</p>
+<div class="markdown-them-math-block">$$h(x)=\nabla a(\eta)=
 \begin{bmatrix}
 \frac{\mathrm{e}^{\eta_1}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_i}}\\
 \frac{\mathrm{e}^{\eta_2}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\eta_i}}\\
@@ -768,15 +510,7 @@ h(x)=\nabla a(\eta)=
 \vdots\\
 \frac{\mathrm{e}^{\theta_{k-1}^Tx}}{1+\sum_{i=1}^{k-1}\mathrm{e}^{\theta_i^Tx}}
 \end{bmatrix}
-\]</span></p>
-<p>这是一个 <span class="math inline">\(k-1\)</span> 维向量, 其中第
-<span class="math inline">\(i\)</span> 维是参数 <span
-class="math inline">\(P(y=i|x;\phi)=\phi_i\)</span> 的预测值,
-利用所有维度可以求出 <span
-class="math inline">\(P(y=k|x;\phi)=\phi_k\)</span> 的预测值.
-如果想要求出最佳参数, 采用 MLE 并利用梯度法和牛顿法进行求解即可,
-似然函数为 <span
-class="math inline">\(\prod_{i=1}^{k}P(y=i|x;\phi).\)</span></p>
+$$</div><p>这是一个 <span class="markdown-them-math-inline">$k-1$</span> 维向量, 其中第 <span class="markdown-them-math-inline">$i$</span> 维是参数 <span class="markdown-them-math-inline">$P(y=i|x;\phi)=\phi_i$</span> 的预测值, 利用所有维度可以求出 <span class="markdown-them-math-inline">$P(y=k|x;\phi)=\phi_k$</span> 的预测值. 如果想要求出最佳参数, 采用 MLE 并利用梯度法和牛顿法进行求解即可, 似然函数为 <span class="markdown-them-math-inline">$\prod_{i=1}^{k}P(y=i|x;\phi).$</span></p>
 
     </div>
 
@@ -828,13 +562,13 @@ class="math inline">\(\prod_{i=1}^{k}P(y=i|x;\phi).\)</span></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

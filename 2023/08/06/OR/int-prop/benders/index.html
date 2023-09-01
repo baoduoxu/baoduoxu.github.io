@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="解决混合整数规划问题 \(Z&#x3D;\max\{cx+hy:Fx+Gy\le d,x\in X\subset \mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}\), 可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization 的形式: \[ \begin{aligned} \max ~&amp;cx+\phi(x)\\ \text{s.t.">
+    <meta name="description" content="列生成技术。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Benders&#39; Algorithm">
 <meta property="og:url" content="http://example.com/2023/08/06/OR/int-prop/benders/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="解决混合整数规划问题 \(Z&#x3D;\max\{cx+hy:Fx+Gy\le d,x\in X\subset \mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}\), 可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization 的形式: \[ \begin{aligned} \max ~&amp;cx+\phi(x)\\ \text{s.t.">
+<meta property="og:description" content="列生成技术。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-06T03:10:53.000Z">
-<meta property="article:modified_time" content="2023-08-08T08:53:54.142Z">
+<meta property="article:modified_time" content="2023-08-28T15:37:29.408Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -154,13 +154,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -170,6 +170,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -228,7 +236,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-08 16:53:54" itemprop="dateModified" datetime="2023-08-08T16:53:54+08:00">2023-08-08</time>
+      <time title="Modified: 2023-08-28 23:37:29" itemprop="dateModified" datetime="2023-08-28T23:37:29+08:00">2023-08-28</time>
     </span>
 
   
@@ -238,7 +246,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>938</span>
+      <span>914</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -255,47 +263,31 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>解决混合整数规划问题 <span
-class="math inline">\(Z=\max\{cx+hy:Fx+Gy\le d,x\in X\subset
-\mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}\)</span>,
-可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization
-的形式: <span class="math display">\[
-\begin{aligned}
+    <div class="post-body" itemprop="articleBody"><p>解决混合整数规划问题 <span class="markdown-them-math-inline">$Z=\max\{cx+hy:Fx+Gy\le d,x\in X\subset \mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}$</span>, 可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization 的形式:</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 \max ~&amp;cx+\phi(x)\\
 \text{s.t. }&amp;x\in X\\
 &amp;\phi(x)=\max\{hy:gy\le d-Fx,y\in\mathbb{R}^p_+\}
 \end{aligned}
-\]</span> 上面是先把 <span class="math inline">\(x\)</span>
-作为参数求解一个线性规划问题, 再求解剩下的子问题.</p>
+$$</div><p>上面是先把 <span class="markdown-them-math-inline">$x$</span> 作为参数求解一个线性规划问题, 再求解剩下的子问题.</p>
 <blockquote>
 <p>如何证明这两种写法的等价性?</p>
 <p>感觉好像不太对, 更像是一种启发式规则.</p>
 <p>好吧不算很简单，需要好好看一下怎么搞。</p>
 </blockquote>
-<p>假设 <span class="math inline">\(\phi(x)\)</span> 是有界的, 那么由
-Farkas 引理可知 <span class="math inline">\(\phi(x)\)</span> 是 feasible
-的 <span class="math inline">\(\iff\)</span> <span
-class="math inline">\(v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T\)</span>, 其中
-<span class="math inline">\(\{v^{(t)}\}_{t=1}^T\)</span> 是凸集 <span
-class="math inline">\(U=\{u\in\mathbb{R}_+^m:uG\ge h\}\)</span>
-的极方向(extreme ray).</p>
-<p>若求解 <span class="math inline">\(\phi(x)\)</span> 的线性规划是
-feasible 的, 那么 <span class="math display">\[
-\phi(x)=\min_{1\le s\le S}u^{(s)}(d-Fx)
-\]</span> 其中 <span class="math inline">\(\{u^{(s)}\}_{s=1}^S\)</span>
-是 <span class="math inline">\(U\)</span> 的极点, 这可以改写为 <span
-class="math display">\[
-\phi(x)=\max_{\eta\le u^{(s)}(d-Fx)\atop1\le s\le S}\eta
-\]</span> 将离散问题转化为了一个连续的线性规划问题, 那么就可以将 <span
-class="math inline">\(Z\)</span> 写成 <span class="math display">\[
-\begin{aligned}
+<p>假设 <span class="markdown-them-math-inline">$\phi(x)$</span> 是有界的, 那么由 Farkas 引理可知 <span class="markdown-them-math-inline">$\phi(x)$</span> 是 feasible 的 <span class="markdown-them-math-inline">$\iff$</span> <span class="markdown-them-math-inline">$v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T$</span>, 其中 <span class="markdown-them-math-inline">$\{v^{(t)}\}_{t=1}^T$</span> 是凸集 <span class="markdown-them-math-inline">$U=\{u\in\mathbb{R}_+^m:uG\ge h\}$</span> 的极方向(extreme ray).</p>
+<p>若求解 <span class="markdown-them-math-inline">$\phi(x)$</span> 的线性规划是 feasible 的, 那么</p>
+<div class="markdown-them-math-block">$$\phi(x)=\min_{1\le s\le S}u^{(s)}(d-Fx)
+$$</div><p>其中 <span class="markdown-them-math-inline">$\{u^{(s)}\}_{s=1}^S$</span> 是 <span class="markdown-them-math-inline">$U$</span> 的极点, 这可以改写为</p>
+<div class="markdown-them-math-block">$$\phi(x)=\max_{\eta\le u^{(s)}(d-Fx)\atop1\le s\le S}\eta
+$$</div><p>将离散问题转化为了一个连续的线性规划问题, 那么就可以将 <span class="markdown-them-math-inline">$Z$</span> 写成</p>
+<div class="markdown-them-math-block">$$\begin{aligned}
 Z=\max ~&amp;cx+\eta\\
 \text{s.t. }&amp;x\in X,\eta\in\mathbb{R}\\
 &amp;v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T\\
 &amp;u^{(s)}(d-Fx)\ge \eta,s=1,\cdots, S
 \end{aligned}
-\]</span> 这个问题约束的个数是指数级别的, 解决该问题最好的方法是
-branch-and-cut.</p>
+$$</div><p>这个问题约束的个数是指数级别的, 解决该问题最好的方法是 branch-and-cut.</p>
 
     </div>
 
@@ -347,13 +339,13 @@ branch-and-cut.</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

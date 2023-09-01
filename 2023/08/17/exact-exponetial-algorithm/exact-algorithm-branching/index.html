@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="求解组合优化问题的分支算法介绍, 以 SAT 和 最大独立集问题为例子.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精确算法 BRANCHING">
+<meta property="og:url" content="http://example.com/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="求解组合优化问题的分支算法介绍, 以 SAT 和 最大独立集问题为例子.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308301452429.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308311827747.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309011131090.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309011130349.png">
+<meta property="article:published_time" content="2023-08-17T08:43:56.000Z">
+<meta property="article:modified_time" content="2023-09-01T09:45:31.230Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308301452429.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching/","path":"2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching/","title":"精确算法 BRANCHING"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>精确算法 BRANCHING | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#upper-bound%20analysis"><span class="nav-number">2.</span> <span class="nav-text">Upper Bound Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#addition-of%20branching%20vectors"><span class="nav-number">2.1.</span> <span class="nav-text">Addition of Branching Vectors</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#$k$-sat"><span class="nav-number">3.</span> <span class="nav-text">$k$-SAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#$k$-sat-%E7%9A%84%E4%B8%80%E4%B8%AA%20branch%20%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">$k$-SAT 的一个 branch 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-autark%20%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">3.2.</span> <span class="nav-text">基于 autark 的改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">最大独立集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-branching"><span class="nav-number">4.1.</span> <span class="nav-text">一个简单的 branching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%A4%8D%E6%9D%82%E7%9A%84-branching"><span class="nav-number">4.2.</span> <span class="nav-text">一个复杂的 branching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">4.2.1.</span> <span class="nav-text">具体的算法</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="精确算法 BRANCHING | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          精确算法 BRANCHING
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-17 16:43:56" itemprop="dateCreated datePublished" datetime="2023-08-17T16:43:56+08:00">2023-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-01 17:45:31" itemprop="dateModified" datetime="2023-09-01T17:45:31+08:00">2023-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Exact-Exponetial-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponetial Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="basic-concepts">Basic Concepts</h1>
+<p>branch 有两条规则:</p>
+<ul>
+<li><em><strong>reduction rule</strong></em>. 用来简化问题或者停止算法.</li>
+<li><em><strong>branching rule</strong></em>. 通过递归地求解更小的问题的实例来解决一个问题.</li>
+</ul>
+<p>因此设计一个 branch 算法很大程度上是设计 reduction 和 branching rule.</p>
+<h1 id="upper-bound analysis">Upper Bound Analysis</h1>
+<p>要分析 branching 算法需要一些假设:</p>
+<ul>
+<li>polynomial time.</li>
+<li>Simplifying produces simpler problem.</li>
+</ul>
+<p>在上面的假设下, 复杂度为 搜索树结点 <span class="markdown-them-math-inline">$\times$</span> 一个多项式.</p>
+<p>研究 branch 算法时, 问题的输入参数往往不是输入的长度, 而是一个可以描述问题规模的很自然的参数, 比如图的结点数, 称这样的参数为问题的 <em><strong>instance</strong></em>.</p>
+<p>设 <span class="markdown-them-math-inline">$T(n)$</span> 是 instance 数目为 <span class="markdown-them-math-inline">$n$</span> 的一个问题的分支树的叶子节点个数. 给定一个 branching 规则 <span class="markdown-them-math-inline">$b$</span>, 设 <span class="markdown-them-math-inline">$r\ge 2$</span>, <span class="markdown-them-math-inline">$t_i&gt;0,i\in [r]$</span>, 规则 <span class="markdown-them-math-inline">$b$</span> 将当前的 instance 分成了 <span class="markdown-them-math-inline">$r$</span> 个子问题且每个子问题的 instance 数量至多为 <span class="markdown-them-math-inline">$n-t_i,i=1,\cdots,r,n\ge \max_{1\le i\le r}t_i$</span>, 那么称向量 <span class="markdown-them-math-inline">$\mathbf{b}=(t_1,\cdots,t_r)$</span> 称为 branching vector. 根据树的递归结构, 有</p>
+<div class="markdown-them-math-block">$$T(n)\le \sum_{i=1}^rT(n-t_i)
+$$</div><p>这是一个线性递推不等式, 考虑用特征方程来解, 等式 <span class="markdown-them-math-inline">$T^*(n)=\sum_{i=1}^rT^*(n-t_i)$</span> 的特征方程为 <span class="markdown-them-math-inline">$x^n-x^{n-t_1}-\cdots-x^{n-t_r}=0$</span>,  而显然有 <span class="markdown-them-math-inline">$T(n)\le T^*(n)$</span>, <span class="markdown-them-math-inline">$T^*(n)$</span> 为特征方程的所有根的 <span class="markdown-them-math-inline">$n$</span> 次幂的线性组合(系数为 <span class="markdown-them-math-inline">$n$</span> 的多项式), 可以写成 <span class="markdown-them-math-inline">$T^*(n)=O^*(\alpha^n),\alpha$</span> 为方程的<strong>唯一正根</strong>, 称作 <span class="markdown-them-math-inline">$\mathbf{b}$</span> 的 branching factor, 这就意味着 <span class="markdown-them-math-inline">$T(n)=O^*(\alpha^n)$</span>.</p>
+<blockquote>
+<p>书上写的是 unique positive real root, 个人感觉应该是最大正根.</p>
+</blockquote>
+<p>对于 branching vector <span class="markdown-them-math-inline">$(t_1,\cdots,t_r)$</span>, 定义其 branching factor 为 <span class="markdown-them-math-inline">$\tau(t_1,\cdots,t_r)=\alpha$</span>. 有如下性质:</p>
+<ul>
+<li><span class="markdown-them-math-inline">$\tau(t_1,\cdots,t_r)=\tau(t_{\pi(1)},\cdots,t_{\pi(r)})$</span>, 其中 <span class="markdown-them-math-inline">$\pi$</span> 为 <span class="markdown-them-math-inline">$1,\cdots,r$</span> 的任意排列.</li>
+<li><span class="markdown-them-math-inline">$\tau(t_1,\cdots)&lt;\tau(t_1',\cdots), t_1&gt;t_1'$</span>.</li>
+<li><span class="markdown-them-math-inline">$\tau(k,k)\le \tau(i,j),i+j=2k$</span>.</li>
+<li><span class="markdown-them-math-inline">$\tau(i,j)&gt;\tau(i+\varepsilon,j-\varepsilon),0&lt;i&lt;j \land 0&lt;\varepsilon&lt;(j-i)/2$</span>.</li>
+</ul>
+<h2 id="addition-of branching vectors">Addition of Branching Vectors</h2>
+<p>设有两个分支规则 <span class="markdown-them-math-inline">$b_1,b_2$</span>, branching vector 分别为 <span class="markdown-them-math-inline">$(t_1,t_2),(t_1',t_2')$</span>, 且 <span class="markdown-them-math-inline">$b_1$</span> 的 <span class="markdown-them-math-inline">$t_1$</span> 分支恰好符合实施 <span class="markdown-them-math-inline">$b_2$</span> 分支规则的条件, 那么可以把这两次分支并在一起, 得到新的 branching vector <span class="markdown-them-math-inline">$(t_1+t_1',t_1+t_2',t_2)$</span>, 有时候会减少 branching factor.</p>
+<h1 id="$k$-sat"><span class="markdown-them-math-inline">$k$</span>-SAT</h1>
+<p>令变量集合 <span class="markdown-them-math-inline">$X=\{x_1,\cdots,x_n\}\land x_i\in\{0,1\},$</span> 有下面的概念:</p>
+<ul>
+<li><em><strong>literal</strong></em> <span class="markdown-them-math-inline">$x\in X$</span> 以及 <span class="markdown-them-math-inline">$\bar{x}$</span> 被称为 literal, 与 <span class="markdown-them-math-inline">$X$</span> 有关的 literal 的集合记作 <span class="markdown-them-math-inline">$L(X)=\{x_1,\bar{x}_1,\cdots,x_n,\bar{x}_n\}$</span>.</li>
+<li><em><strong>clause</strong></em> 一个 clause <span class="markdown-them-math-inline">$c$</span> 是若干 literal 的 disjunction <span class="markdown-them-math-inline">$c=\ell_1\lor \cdots\lor \ell_t,\ell_i\in L(X)$</span>. 要求一个 clause 不含有<strong>两个相同的 literal</strong> 或者 <strong>一个 literal 和它的非</strong>. 用集合 <span class="markdown-them-math-inline">$\{\ell_1,\cdots,\ell_t\}$</span> 来表示一个 clause.</li>
+<li><em><strong>CNF formula</strong></em> 是若干 clause 的conjunction <span class="markdown-them-math-inline">$F=c_1\land \cdots\land c_m$</span>, 用集合 <span class="markdown-them-math-inline">$\{c_1,\cdots,c_m\}$</span> 来表示一个 CNF formula. 若 <span class="markdown-them-math-inline">$F$</span>  的每个 clause 都含有至多 <span class="markdown-them-math-inline">$k$</span> 个 literal, 则称其为 <span class="markdown-them-math-inline">$k$</span>-CNF formula. 如果 CNF formula <span class="markdown-them-math-inline">$F'$</span> 满足 <span class="markdown-them-math-inline">$F'$</span> 的每个 clause 都是 <span class="markdown-them-math-inline">$F$</span> 的每个 clause 的子集, 则称 <span class="markdown-them-math-inline">$F'$</span> 是 <span class="markdown-them-math-inline">$F$</span> 的 subformula.</li>
+</ul>
+<p>称 CNF formula <span class="markdown-them-math-inline">$F$</span> 是 satisfiable 的当且仅当存在对 <span class="markdown-them-math-inline">$F$</span> 的 literal 的合法赋值使得 <span class="markdown-them-math-inline">$F=1$</span>. 以此定义 SAT 和 <span class="markdown-them-math-inline">$k$</span>-SAT 问题:</p>
+<ul>
+<li><em>Satisfiability Problem</em>. 给定一个含有 <span class="markdown-them-math-inline">$n$</span> 个变量和 <span class="markdown-them-math-inline">$m$</span> 个 clause 的的 CNF formula <span class="markdown-them-math-inline">$F$</span>, 要求判断是否能找到对变量的合法赋值(对每个变量赋值得到 <span class="markdown-them-math-inline">$F$</span> 的一个结果的过程称为 <em>truth assignment</em>)使 <span class="markdown-them-math-inline">$F=1$</span>.</li>
+<li><span class="markdown-them-math-inline">$k$</span><em>-Satisfiability Problem</em>. 在 SAT 的基础上, 要求 <span class="markdown-them-math-inline">$F$</span> 是 <span class="markdown-them-math-inline">$k$</span>-CNF formula.</li>
+</ul>
+<h2 id="$k$-sat-的一个 branch 算法"><span class="markdown-them-math-inline">$k$</span>-SAT 的一个 branch 算法</h2>
+<p>考虑到对于 <span class="markdown-them-math-inline">$F$</span> 的任意 clause <span class="markdown-them-math-inline">$c=\ell_1\lor \cdots\lor \ell_q$</span>, 当 <span class="markdown-them-math-inline">$\ell_i=1$</span> 时便有 <span class="markdown-them-math-inline">$c=1$</span>, 同时可以得到 <span class="markdown-them-math-inline">$F'$</span>, 其中 <span class="markdown-them-math-inline">$F'$</span> 相比 <span class="markdown-them-math-inline">$F$</span> 少了一个变量 . 以这种方式作为分支规则, 可以得到 <span class="markdown-them-math-inline">$q$</span> 个 subformula:</p>
+<ul>
+<li><span class="markdown-them-math-inline">$F_1:\ell_1=1$</span></li>
+<li><span class="markdown-them-math-inline">$F_2:\ell_1=0,\ell_2=1$</span></li>
+<li><span class="markdown-them-math-inline">$F_3:\ell_1=0,\ell_2=0,\ell_3=1$</span></li>
+<li><span class="markdown-them-math-inline">$\cdots$</span></li>
+<li><span class="markdown-them-math-inline">$F_q:\ell_1=0,\ell_2=0,\cdots,\ell_q=1$</span></li>
+</ul>
+<p>于是若 <span class="markdown-them-math-inline">$F_1,\cdots,F_q$</span> 之中至少要有一个是可满足的, 便可得到 <span class="markdown-them-math-inline">$F$</span> 是可满足的.</p>
+<h3 id="复杂度分析">复杂度分析</h3>
+<p>由于 <span class="markdown-them-math-inline">$F$</span> 有 <span class="markdown-them-math-inline">$n$</span> 个变量即 <span class="markdown-them-math-inline">$n$</span> 个instance, 于是经过赋值, <span class="markdown-them-math-inline">$F_i$</span> 有 <span class="markdown-them-math-inline">$n-i$</span> 个 instances, 其 branching vector 为 <span class="markdown-them-math-inline">$(1,\cdots,q)$</span>, 对应的特征方程为 <span class="markdown-them-math-inline">$x^{n}-x^{n-1}-\cdots-x^{n-q}=0$</span>, 利用等比数列求和化简得 <span class="markdown-them-math-inline">$x^{q+1}-2x^{q}+1=0$</span>, 设其 branching factor 为 <span class="markdown-them-math-inline">$\beta_q$</span>, 序列 <span class="markdown-them-math-inline">$\{\beta_q\}_{q\ge 1}$</span> 是单调递增的 , 那么上述 branch 算法的复杂度为 <span class="markdown-them-math-inline">$O^*(\beta_q^n)$</span>, 且 <span class="markdown-them-math-inline">$q\le k$</span> , 故复杂度上界为 <span class="markdown-them-math-inline">$O^*(\beta_k^n)$</span>. 这个复杂度不算很优秀, 因为对于有线性时间复杂度的 2-SAT 而言, branch 算法得到的复杂度为 <span class="markdown-them-math-inline">$O(1.6181^n)$</span>.</p>
+<h2 id="基于-autark 的改进">基于 autark 的改进</h2>
+<p>第一个改进的技巧是每次选择最小的 clause 做分支, 这通过复杂度 <span class="markdown-them-math-inline">$O^*(\beta_q^n)$</span> 就能体现出来.</p>
+<p>同时还能注意到一个事实: 若 <span class="markdown-them-math-inline">$k$</span>-CNF formula <span class="markdown-them-math-inline">$F$</span> 存在 <span class="markdown-them-math-inline">$|c|=k-1$</span> 的 clause <span class="markdown-them-math-inline">$c$</span>, 那么在 <span class="markdown-them-math-inline">$c$</span> 上做分支, 那么复杂度为 <span class="markdown-them-math-inline">$O^*(\beta_{k-1}^n)$</span>, 此时对于 2-SAT 变为 <span class="markdown-them-math-inline">$O^*(1)$</span>, 已经是多项式复杂度了.</p>
+<p>若 <span class="markdown-them-math-inline">$c$</span> 都满足 <span class="markdown-them-math-inline">$|c|=k$</span>, 考虑通过下面的称作 autark 的技巧做进一步改进:</p>
+<p>定义 partial truth assignment 是对部分变量的赋值, 如果这样的赋值可以满足 <span class="markdown-them-math-inline">$F$</span> 的一个 subformula <span class="markdown-them-math-inline">$F'$</span> (<span class="markdown-them-math-inline">$F'$</span> 还要满足 <span class="markdown-them-math-inline">$F'$</span> 与 <span class="markdown-them-math-inline">$F\backslash F'$</span> 没有相同的变量) , 就称这个赋值为 autark, <span class="markdown-them-math-inline">$F'$</span> 称为autark subset.</p>
+<blockquote>
+<p>举个例子, 对于</p>
+<div class="markdown-them-math-block">$$F=(x_1\lor x_2\lor \bar{x}_3)\land(\bar{x}_1\lor \bar{x}_2)\land(\bar{x}_2\lor \bar{x}_3\lor x_4)\land(x_3\lor \bar{x}_4)
+$$</div><p><span class="markdown-them-math-inline">$x_1=1,x_2=0$</span> 是一个对部分变量的赋值同时也是一个 autark, 它使 <span class="markdown-them-math-inline">$F'=(x_1\lor x_2)\land(\bar{x}_1\lor \bar{x}_2)\land(\bar{x}_2)$</span> 得到满足, 且赋值过后得到的 subformula 为 <span class="markdown-them-math-inline">$F''=x_3\lor \bar{x}_4$</span>, 只需再判断 <span class="markdown-them-math-inline">$F''$</span> 是否是可满足的, 便可得到 <span class="markdown-them-math-inline">$F$</span> 是否是可满足的.</p>
+<p>autarky 即 autarchy 本身是“自给自足”的含义.</p>
+</blockquote>
+<p>在前述的简单分支规则的基础上, 设 <span class="markdown-them-math-inline">$F$</span> 经过一个赋值后得到的 subformula 为 <span class="markdown-them-math-inline">$F''$</span>, 有下面两种情况:</p>
+<ul>
+<li>若该赋值为 autark, 那么 <span class="markdown-them-math-inline">$F$</span> 可满足当且仅当 <span class="markdown-them-math-inline">$F''$</span> 可满足, 因此递归地解决 <span class="markdown-them-math-inline">$F''$</span> 的可满足性即可.</li>
+<li>若该赋值不是 autark, 那么存在一个被赋值的 literal <span class="markdown-them-math-inline">$\ell_i=0$</span>, 它出现在某一个 clause <span class="markdown-them-math-inline">$c'$</span> 中, 在赋值之后, 一定有 <span class="markdown-them-math-inline">$|c'|\le k-1$</span>, 那么直接在赋值之后的 <span class="markdown-them-math-inline">$c'$</span> 上做分支即可(事实上还是在最小的 clause 上做分支).</li>
+</ul>
+<blockquote>
+<p>在上面的例子中, <span class="markdown-them-math-inline">$x_1=0,x_2=1$</span> 不是一个 autark, 那么 <span class="markdown-them-math-inline">$\bar{x}_2$</span> 是一个值为 <span class="markdown-them-math-inline">$0$</span> 的literal, 它出现在 clause <span class="markdown-them-math-inline">$\bar{x}_2\lor \bar{x}_3\lor x_4$</span> 中, 赋值之后, 该 clause 变成了 <span class="markdown-them-math-inline">$\bar{x}_3\lor x_4$</span>, 大小从 <span class="markdown-them-math-inline">$3$</span> 变成了 <span class="markdown-them-math-inline">$2$</span>.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308301452429.png" alt=""></p>
+<p>在这个改进的基础上, 3-SAT 的复杂度为 <span class="markdown-them-math-inline">$O^*(1.6181^n)$</span>.</p>
+<h1 id="最大独立集">最大独立集</h1>
+<h2 id="一个简单的-branching">一个简单的 branching</h2>
+<p>独立集一些简单的结论:</p>
+<ul>
+<li>若 <span class="markdown-them-math-inline">$v\in I$</span>, 则 <span class="markdown-them-math-inline">$N(v)\cap I=\emptyset$</span>.</li>
+<li>若 <span class="markdown-them-math-inline">$I$</span> 是 MIS, 则对于 <span class="markdown-them-math-inline">$v\not\in I$</span>, <span class="markdown-them-math-inline">$N(v)$</span> 中至少有一个点在 <span class="markdown-them-math-inline">$I$</span> 中即 <span class="markdown-them-math-inline">$|N(v)\cap I|\ge 1$</span>, 如若不然, <span class="markdown-them-math-inline">$I\cup\{v\}$</span> 可成为新的独立集.</li>
+</ul>
+<p>这些结论实际上是在说, 想得到最大独立集, 对任意点 <span class="markdown-them-math-inline">$v$</span> , 只能在它的闭邻域 <span class="markdown-them-math-inline">$N[v]$</span> 中选择一个点.</p>
+<p>下面是递推关系式:</p>
+<div class="markdown-them-math-block">$$\alpha(G)= 
+\begin{cases}
+0,&amp; V=\emptyset\\
+\displaystyle 1+\max_{y\in N[v],v=\arg\min_{u\in V(G)}\deg (u)}\alpha(G\backslash\ N[y]),&amp;\text{otherwise}
+\end{cases}
+$$</div><p>对于度数最小的点, 在 <span class="markdown-them-math-inline">$y$</span> 和 <span class="markdown-them-math-inline">$N(v)$</span> 中选择一个, 然后再把选择的点及其邻域删去, 选择的要求是, 要保证剩下的图的独立集最大.</p>
+<p>复杂度为 <span class="markdown-them-math-inline">$O^*(s^{n/s}),s=\min_{v\in V}\deg(v)+1$</span>, <span class="markdown-them-math-inline">$s=3$</span> 时为<span class="markdown-them-math-inline">$O^*(3^{n/3})$</span> 是最大值. 这个复杂度分析并不 trivial, 先贴在下面:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730170842.png" alt=""></p>
+<h2 id="一个复杂的-branching">一个复杂的 branching</h2>
+<p>这个 branching 算法基于下面的引理.</p>
+<p><strong>Lemma 1 (domination rule)</strong> 设 <span class="markdown-them-math-inline">$\{v,w\}\in E\land N[v]\subset N[w]$</span> , 则 <span class="markdown-them-math-inline">$\alpha(G)=\alpha(G\backslash w)$</span>. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><em><strong>PROOF</strong></em> 相当于证明 <span class="markdown-them-math-inline">$G$</span> 存在不包括 <span class="markdown-them-math-inline">$w$</span> 的最大独立集. 设某个最大独立集 <span class="markdown-them-math-inline">$I$</span> 满足 <span class="markdown-them-math-inline">$w\in I$</span>, 那么 <span class="markdown-them-math-inline">$N(w)\cap I=\emptyset$</span> 即 <span class="markdown-them-math-inline">$N(v)\cap I=\emptyset$</span>.  由于 <span class="markdown-them-math-inline">$v$</span> 与 <span class="markdown-them-math-inline">$w$</span> 相邻, 因此可以将 <span class="markdown-them-math-inline">$w$</span> 替换成 <span class="markdown-them-math-inline">$v$</span> 而不违反独立集需要满足的要求, 那么 <span class="markdown-them-math-inline">$(I\backslash \{w\})\cup \{v\}$</span> 是一个不包括 <span class="markdown-them-math-inline">$w$</span> 的最大独立集. <span class="markdown-them-math-inline">$\blacksquare$</span></p>
+<p><strong>Lemma 2 (standard branching)</strong> 求解最大独立集时, 要么选择 <span class="markdown-them-math-inline">$v$</span> 舍弃其邻域, 要么直接舍弃 <span class="markdown-them-math-inline">$v$</span>, 于是 <span class="markdown-them-math-inline">$\alpha(G)=\max\{1+\alpha(G\backslash N[v]),\alpha(G\backslash v)\}$</span>. 它的 branching vector 为 <span class="markdown-them-math-inline">$(d(v)+1,1)$</span>.</p>
+<p><strong>Lemma 3</strong> 对于 <span class="markdown-them-math-inline">$v\in V$</span>, 若 <span class="markdown-them-math-inline">$G$</span> 的<strong>所有</strong>最大独立集都不含 <span class="markdown-them-math-inline">$v$</span>, 那么 <span class="markdown-them-math-inline">$G$</span> 的<strong>每一个</strong>最大独立集都至少含有 <span class="markdown-them-math-inline">$N(v)$</span> 中的两个顶点. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><em><strong>PROOF</strong></em> 假设存在一个最大独立集 <span class="markdown-them-math-inline">$I$</span> 使得 <span class="markdown-them-math-inline">$|I\cap N(v)|\le 1$</span>, 分为两种情况:</p>
+<ul>
+<li><span class="markdown-them-math-inline">$I$</span> 不含有 <span class="markdown-them-math-inline">$N[v]$</span> 中的任何点, 此时 <span class="markdown-them-math-inline">$I\cup \{v\}$</span> 可以成为新的最大独立集, 矛盾.</li>
+<li><span class="markdown-them-math-inline">$I$</span> 仅含有 <span class="markdown-them-math-inline">$N(v)$</span> 中的一个顶点, 此时设 <span class="markdown-them-math-inline">$I\cap N(v)=\{w\}$</span>, 于是 <span class="markdown-them-math-inline">$I\backslash\{w\}$</span> 不含有  <span class="markdown-them-math-inline">$N(v)$</span> 中的顶点也不含有 <span class="markdown-them-math-inline">$N(w)$</span> 中的顶点, 于是 <span class="markdown-them-math-inline">$(I\backslash\{w\})\cup \{v\}$</span> 也是一个最大独立集, 这与所有最大独立集都不含有 <span class="markdown-them-math-inline">$v$</span> 相矛盾.</li>
+</ul>
+<p><span class="markdown-them-math-inline">$\blacksquare$</span></p>
+<p>定义 <span class="markdown-them-math-inline">$N^2(v)$</span> 表示 <span class="markdown-them-math-inline">$v$</span> 的邻居的邻居的集合(不包括 <span class="markdown-them-math-inline">$N[v]$</span> 中的点), 若 <span class="markdown-them-math-inline">$w\in N^2(v)$</span> 满足 <span class="markdown-them-math-inline">$N(v)\backslash N(w)$</span> 是团, 则称 <span class="markdown-them-math-inline">$w$</span> 为 <span class="markdown-them-math-inline">$v$</span> 的 mirror. 设 <span class="markdown-them-math-inline">$M(v)$</span> 是 <span class="markdown-them-math-inline">$v$</span> 在 <span class="markdown-them-math-inline">$G$</span> 中的所有的 mirror 点的集合. 定义 <span class="markdown-them-math-inline">$N^2[v]=N[v]\cup N^2(v)$</span>.</p>
+<p><strong>Lemma 4 (mirror branching)</strong>  <span class="markdown-them-math-inline">$\alpha(G)=\max\{1+\alpha(G\backslash N[v]),\alpha(G\backslash(M(v)\cup \{v\}))\}$</span>. <span class="markdown-them-math-inline">$\square$</span></p>
+<p><em><strong>PROOF</strong></em> 如果 <span class="markdown-them-math-inline">$G$</span> 存在一个包括 <span class="markdown-them-math-inline">$v$</span> 的最大独立集, 那么 <span class="markdown-them-math-inline">$\alpha(G)=1+\alpha(G\backslash N[v])$</span> 则命题为真; 反之若所有最大独立集都不包括 <span class="markdown-them-math-inline">$v$</span>, 那么由引理 3 可得所有最大独立集都包括 <span class="markdown-them-math-inline">$N(v)$</span> 中的至少两个顶点, 设某个 mirror 为 <span class="markdown-them-math-inline">$w$</span>, 由 mirror 的定义知 <span class="markdown-them-math-inline">$N(v)\backslash N(w)$</span> 为 clique, 而一个 clique 中至多有一个点在最大独立集中, 于是 <span class="markdown-them-math-inline">$N(w)$</span> 中的点至少有一个在所有的最大独立集中, 这意味所有的最大独立集都不可能包含 <span class="markdown-them-math-inline">$w$</span>, 因此可以丢弃掉 <span class="markdown-them-math-inline">$v$</span> 的所有 mirror <span class="markdown-them-math-inline">$M(v)$</span> 而不影响最大独立集的大小. <span class="markdown-them-math-inline">$\blacksquare$</span></p>
+<p><strong>Lemma 5 (simplicial rule)</strong> 设 <span class="markdown-them-math-inline">$N[v]$</span> 是一个 clique, 则 <span class="markdown-them-math-inline">$\alpha(G)=1+\alpha(G\backslash N[v])$</span>.</p>
+<p><strong>Lemma 6 (seperator branching)</strong> 设 <span class="markdown-them-math-inline">$S\subset V$</span> 是 <span class="markdown-them-math-inline">$G$</span> 的 (small) seperator 且 <span class="markdown-them-math-inline">$\mathcal{I}(S)$</span> 是 <span class="markdown-them-math-inline">$S$</span> 的所有子集中为 <span class="markdown-them-math-inline">$G$</span> 的独立集的那些子集的集合, 那么</p>
+<div class="markdown-them-math-block">$$\alpha(G)=\max_{A\in \mathcal{I}(S)}|A|+\alpha(G\backslash (S\cup N[A]))
+$$</div><p>seperator 的定义是 <span class="markdown-them-math-inline">$G\backslash S$</span> 不连通.</p>
+<p><em><strong>PROOF</strong></em> 这个公式还算好理解, 就是将图分为两部分分别计算两部分的最大独立集(其中有一部分比较小, 在这里是 <span class="markdown-them-math-inline">$S$</span>, 可以快速处理出最大独立集) <span class="markdown-them-math-inline">$S,G'$</span>, 其中 <span class="markdown-them-math-inline">$G'$</span> 为 <span class="markdown-them-math-inline">$G\backslash S$</span> 再去除掉 <span class="markdown-them-math-inline">$S$</span> 中最大独立集的邻接点的子图防止直接算 <span class="markdown-them-math-inline">$S,G\backslash S$</span> 的最大独立集时出现冲突, 枚举 <span class="markdown-them-math-inline">$G[S]$</span> 所有的最大独立集即可.</p>
+<blockquote>
+<p>只对较小的 <span class="markdown-them-math-inline">$S$</span> 应用 Lemma 6, 防止分支数目过多, 在本算法中会确保 <span class="markdown-them-math-inline">$|S|\le 2$</span>.</p>
+</blockquote>
+<p><strong>Lemma 7</strong> 对于不连通的图 <span class="markdown-them-math-inline">$G$</span>, 设 <span class="markdown-them-math-inline">$C$</span> 是它的连通分量, 则 <span class="markdown-them-math-inline">$\alpha(G)=\alpha(G[C])+\alpha(G\backslash C)$</span>.</p>
+<blockquote>
+<p>也许设所有连通分量的集合为 <span class="markdown-them-math-inline">$\cal C$</span>, 可以写成下面的公式</p>
+<div class="markdown-them-math-block">$$\alpha(G)=\sum_{C\in \mathcal{C}}\alpha(G[C])
+$$</div></blockquote>
+<h3 id="具体的算法">具体的算法</h3>
+<p>当 <span class="markdown-them-math-inline">$\delta(G)\le 3$</span> 时每次选择度数最小的结点 <span class="markdown-them-math-inline">$v$</span> 做 branch, 当 <span class="markdown-them-math-inline">$\Delta(G)\ge 6$</span> 时每次选择度数最大的结点 <span class="markdown-them-math-inline">$v$</span> 做 branch, 有如下分类讨论:</p>
+<ul>
+<li>
+<p><span class="markdown-them-math-inline">$d(v)=0$</span> 或 <span class="markdown-them-math-inline">$d(v)=1$</span> 时, 直接选 <span class="markdown-them-math-inline">$v$</span>, 并递归地求解 <span class="markdown-them-math-inline">$G\backslash N[v]$</span> 的最大独立集.</p>
+</li>
+<li>
+<p><span class="markdown-them-math-inline">$d(v)=2$</span> 时, 设 <span class="markdown-them-math-inline">$v$</span> 的邻接顶点为 <span class="markdown-them-math-inline">$u_1,u_2$</span></p>
+<ul>
+<li>
+<p>若 <span class="markdown-them-math-inline">$u_1,u_2$</span> 相邻则 <span class="markdown-them-math-inline">$N[v]$</span> 是一个 clique, 则 <span class="markdown-them-math-inline">$\alpha(G)=1+\alpha(G\backslash N[v])$</span> 递归求 <span class="markdown-them-math-inline">$\alpha(G\backslash N[v])$</span>. (Lemma 5)</p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$u_1,u_2$</span> 不相邻:</p>
+<p><em>(i)</em> 若 <span class="markdown-them-math-inline">$|N^2(v)|=1$</span>, 则应用 seperator branching,</p>
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308311827747.png" alt="|N^2(v)|=1的情况" style="zoom:50%;" />
+<p>其中 <span class="markdown-them-math-inline">$G'$</span> 是除了 <span class="markdown-them-math-inline">$v,u_1,u_2,w$</span> 以外剩下的子图, 那么此时的 seperator <span class="markdown-them-math-inline">$S=N^2(v)=\{w\}$</span>, 于是 <span class="markdown-them-math-inline">$\mathcal{I}(S)=\{\emptyset,\{w\}\}$</span>, 那么</p>
+<div class="markdown-them-math-block">$$\alpha(G)=\max \{\alpha(G\backslash \{w\}),1+\alpha(G\backslash (\{w\}\cup N[w]))\}
+$$</div><p>移除 <span class="markdown-them-math-inline">$w$</span> 后左边的图十分简单, 因此 <span class="markdown-them-math-inline">$\alpha(G\backslash \{w\})=2+\alpha(G\backslash N^2[v])$</span>, 以及 <span class="markdown-them-math-inline">$1+\alpha(G\backslash (\{w\}\cup N[w]))=2+\alpha(G\backslash (N^2[v]\cup N[w]))$</span>, 那么 branching vector 为 <span class="markdown-them-math-inline">$(|N^2[v]\cup N[w]|,|N^2[v]|)$</span>, 这至少是 <span class="markdown-them-math-inline">$(5,4)$</span>.</p>
+<p><em>(2)</em> 若 <span class="markdown-them-math-inline">$|N^2(v)|\ge 2$</span>, 则应用 mirror branching. 若丢弃 <span class="markdown-them-math-inline">$v$</span> 则所有最大独立集都不会包括 <span class="markdown-them-math-inline">$v$</span>, 那么 <span class="markdown-them-math-inline">$v$</span> 的两个邻接顶点 <span class="markdown-them-math-inline">$u_1,u_2$</span> 都要被选择(引理3)并递归求解 <span class="markdown-them-math-inline">$\alpha(G\backslash N[v])$</span>; 如果选择 <span class="markdown-them-math-inline">$v$</span>, 则需要丢弃 <span class="markdown-them-math-inline">$u_1,u_2$</span> 和所有的 mirror, 递归求解 <span class="markdown-them-math-inline">$\alpha(G\backslash M(v)\cup\{v,u_1,u_2\})=\alpha(G\backslash N^2[v])$</span>.  因此 branching factor 为 <span class="markdown-them-math-inline">$(|N[v]|,|N^2[v]|)$</span>, 至少是 <span class="markdown-them-math-inline">$(3,5)$</span>. 此时上界是 <span class="markdown-them-math-inline">$\tau(5,3)&lt;1.1939$</span>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="markdown-them-math-inline">$d(v)=3$</span> 时, 设 <span class="markdown-them-math-inline">$v$</span> 的邻接顶点为 <span class="markdown-them-math-inline">$u_1,u_2,u_3$</span>, 则</p>
+<ul>
+<li>
+<p>若 <span class="markdown-them-math-inline">$N(v)$</span> 是一个独立集, 假设 <span class="markdown-them-math-inline">$u_i$</span> 都有在 <span class="markdown-them-math-inline">$N^2(v)$</span> 中的邻接顶点,  如若不然, 应用 domination rule 可以删掉 <span class="markdown-them-math-inline">$u_i$</span>, 这样就退化为了 <span class="markdown-them-math-inline">$d(v)=2$</span> 的情况. 若 <span class="markdown-them-math-inline">$w\in N^2(v)$</span> 与 <span class="markdown-them-math-inline">$N(v)$</span> 中的至少两个点相连, 则 <span class="markdown-them-math-inline">$N(v)\backslash N(w)$</span> 有一个或两个顶点, 一定是 clique, 也就是说这样的 <span class="markdown-them-math-inline">$w$</span> 为 mirror.</p>
+<p><span class="markdown-them-math-inline">$\it 1.$</span> 若 <span class="markdown-them-math-inline">$v$</span> 有 mirror 则直接 mirror branching, branching factor 为 <span class="markdown-them-math-inline">$\tau([|N[v]|,|\{v\}\cup M(v)|)$</span>, 至少为 <span class="markdown-them-math-inline">$\tau(4,2)&lt;1.2721$</span> ;</p>
+<p><span class="markdown-them-math-inline">$\it 2.$</span> 若 <span class="markdown-them-math-inline">$v$</span> 没有 mirror, <span class="markdown-them-math-inline">$N^2(v)$</span> 中的每一个点都恰与 <span class="markdown-them-math-inline">$N(v)$</span> 中的<strong>一个</strong>顶点相连, 同时 <span class="markdown-them-math-inline">$G$</span> 中的每个结点的度数都至少是 <span class="markdown-them-math-inline">$3$</span>, 那么 <span class="markdown-them-math-inline">$u_i$</span> 至少与 <span class="markdown-them-math-inline">$N^2(v)$</span> 的两个点相连. 直接做分支:</p>
+<ul>
+<li>选 <span class="markdown-them-math-inline">$v$</span> 丢 <span class="markdown-them-math-inline">$N(v)$</span>, 至少丢 <span class="markdown-them-math-inline">$4$</span> 个点</li>
+<li>丢 <span class="markdown-them-math-inline">$v$</span> 选 <span class="markdown-them-math-inline">$N(v)$</span> 中的至少两个点, 即 <span class="markdown-them-math-inline">$110,101,011,111$</span> (分别代表 <span class="markdown-them-math-inline">$u_1,u_2,u_3$</span> ), 为了方便将 <span class="markdown-them-math-inline">$111$</span> 并入某个情况, 减少一个分支. 有两个分支至少丢弃了 <span class="markdown-them-math-inline">$8$</span> 个点, 有一个分支至少丢了 <span class="markdown-them-math-inline">$7$</span> 个点.</li>
+</ul>
+<p>那么 branch factor 为 <span class="markdown-them-math-inline">$\tau(4,7,8,8)$</span>.</p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$G[N(v)]$</span> 有 <span class="markdown-them-math-inline">$1$</span> 或 <span class="markdown-them-math-inline">$2$</span> 条边:</p>
+<ul>
+<li><span class="markdown-them-math-inline">$1$</span> 条边. 不妨设 <span class="markdown-them-math-inline">$\{u_1,u_2\}\in E$</span>, 那么 <span class="markdown-them-math-inline">$u_3$</span> 至少连了 <span class="markdown-them-math-inline">$N^2(v)$</span> 中的两个点, 且 <span class="markdown-them-math-inline">$G[\{v,u_1,u_2\}]$</span> 是一个 clique, 于是 <span class="markdown-them-math-inline">$N^2(v)$</span> 中与 <span class="markdown-them-math-inline">$u_3$</span> 相连的点都是 <span class="markdown-them-math-inline">$v$</span> 的 mirror, 至少两个, 实施 mirror branching, 故 <span class="markdown-them-math-inline">$|N[v]|=4,|M(v)\cup \{v\}|\ge 3$</span>, <span class="markdown-them-math-inline">$\tau (4,3)&lt;1.2208$</span>.</li>
+<li><span class="markdown-them-math-inline">$2$</span> 条边. 不妨在上面的基础上设 <span class="markdown-them-math-inline">$\{u_2,u_3\}\in E$</span>, 那么很容易验证 <span class="markdown-them-math-inline">$u_1,u_3$</span> 所有的在 <span class="markdown-them-math-inline">$N^2(v)$</span> 中的邻居都是 <span class="markdown-them-math-inline">$v$</span> 的 mirror, 于是实施 mirror branching, 在丢弃 <span class="markdown-them-math-inline">$v$</span> 和所有的 mirror 点之后, <span class="markdown-them-math-inline">$d(u_1)=d(u_3)=1$</span>, 根据 <span class="markdown-them-math-inline">$d(v)=1$</span> 的情况可以直接选 <span class="markdown-them-math-inline">$u_1,u_3$</span> , 故 factor 至少为 <span class="markdown-them-math-inline">$\tau(4,5)&lt;1.1674$</span>.</li>
+</ul>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$N[v]$</span> 是个 clique (3条边), 直接 simplicial rule.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="markdown-them-math-inline">$\Delta(G)\ge 6$</span> 时, 直接选最大的点 branch 就可, <span class="markdown-them-math-inline">$\tau(7,1)&lt;1.2554$</span>.</p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$G$</span> 是 <span class="markdown-them-math-inline">$4$</span> 或 <span class="markdown-them-math-inline">$5$</span>-regular (每个点的度数都为 4 或 5 ) , 选任意点做分支, 但是不考虑它对时间复杂度的影响. 因为对任意正则图做分支只会增加分支树上叶子节点的数目.</p>
+</li>
+<li>
+<p>若 <span class="markdown-them-math-inline">$\Delta(G)=5\land \delta (G)=4$</span>, 一定存在 <span class="markdown-them-math-inline">$d(v)=5\land d(w)=4\land\{v,w\}\in E$</span>, 直接对 <span class="markdown-them-math-inline">$v$</span> 实施 mirror branching, 有 mirror 的话就是 <span class="markdown-them-math-inline">$\tau(2,6)$</span>, 没有 mirror 的话就是 <span class="markdown-them-math-inline">$\tau(1,6)&lt;1.2852$</span>, 这个是最劣情况, 显然有点太大了. 考虑用 Addition of Branching Vectors 做改良. 由于选 <span class="markdown-them-math-inline">$v$</span> 或丢弃 <span class="markdown-them-math-inline">$v$</span> 之后 <span class="markdown-them-math-inline">$d(w)=3$</span>, 于是在 <span class="markdown-them-math-inline">$v$</span> 上做 branch 之后分支 <span class="markdown-them-math-inline">$1$</span> 就可以立刻在 <span class="markdown-them-math-inline">$w$</span> 上做 branch, 此时相当于要把 <span class="markdown-them-math-inline">$(4,2)$</span> 或者 <span class="markdown-them-math-inline">$(4,7,8,8)$</span> 加到 <span class="markdown-them-math-inline">$(1,6)$</span> 上, 得到 <span class="markdown-them-math-inline">$\tau(5,3,6)&lt;1.2786$</span> 或 <span class="markdown-them-math-inline">$(5,8,9,9,6)&lt;1.2548$</span>.</p>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309011131090.png" style="zoom:50%;" />
+<p>最终得到的复杂度为 <span class="markdown-them-math-inline">$O^*(1.2786^n)$</span>, 算法描述就是下面这个样子:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309011130349.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0890540117300950">Exact algorithms for maximum independent set - ScienceDirect</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/15/math/graph/graph-matching/" rel="prev" title="图匹配">
+                  <i class="fa fa-angle-left"></i> 图匹配
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/17/math-modelling/shanshu-cup/" rel="next" title="数学建模记录">
+                  数学建模记录 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">170k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:35</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

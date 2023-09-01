@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,27 +22,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="执行下面的命令即可: 1sudo chown -R username path 比如: 1sudo chown -R xubaoduo &#x2F;home&#x2F;xubaoduo&#x2F;project Reference https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;66496890&#x2F;vs-code-nopermissions-filesystemerror-error-eacce">
+    <meta name="description" content="记录各个计算机技术学习的时候碰到的一些问题, 包括但不限于课程和子集折腾的东西.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VScode连接WSL2后无权限修改">
+<meta property="og:title" content="碰到的一些简单的问题">
 <meta property="og:url" content="http://example.com/2023/07/31/essay/vscode-wsl-permission/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="执行下面的命令即可: 1sudo chown -R username path 比如: 1sudo chown -R xubaoduo &#x2F;home&#x2F;xubaoduo&#x2F;project Reference https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;66496890&#x2F;vs-code-nopermissions-filesystemerror-error-eacce">
+<meta property="og:description" content="记录各个计算机技术学习的时候碰到的一些问题, 包括但不限于课程和子集折腾的东西.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png">
 <meta property="article:published_time" content="2023-07-31T04:05:41.390Z">
-<meta property="article:modified_time" content="2023-08-10T15:21:57.273Z">
+<meta property="article:modified_time" content="2023-08-31T02:45:46.319Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png">
 
 
 <link rel="canonical" href="http://example.com/2023/07/31/essay/vscode-wsl-permission/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/07/31/essay/vscode-wsl-permission/","path":"2023/07/31/essay/vscode-wsl-permission/","title":"VScode连接WSL2后无权限修改"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/07/31/essay/vscode-wsl-permission/","path":"2023/07/31/essay/vscode-wsl-permission/","title":"碰到的一些简单的问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>VScode连接WSL2后无权限修改 | XBD</title>
+<title>碰到的一些简单的问题 | XBD</title>
   
 
 
@@ -142,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wsl2%E5%AE%89%E8%A3%85docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">WSL2安装Docker遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference-1"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number"></span> <span class="nav-text">git 常见命令</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vscode%E8%BF%9E%E6%8E%A5-wsl2%20%E6%97%A0%E6%9D%83%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">VSCode连接 WSL2 无权访问文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#**reference**"><span class="nav-number">1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wsl2%E5%AE%89%E8%A3%85docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">WSL2安装Docker遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">2.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">git 常见命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generate-new%20token%20for%20picgo"><span class="nav-number">4.</span> <span class="nav-text">Generate new token for PicGo</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,13 +157,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -171,6 +173,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -206,12 +216,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="VScode连接WSL2后无权限修改 | XBD">
+      <meta itemprop="name" content="碰到的一些简单的问题 | XBD">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          VScode连接WSL2后无权限修改
+          碰到的一些简单的问题
         </h1>
 
         <div class="post-meta-container">
@@ -229,7 +239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-10 23:21:57" itemprop="dateModified" datetime="2023-08-10T23:21:57+08:00">2023-08-10</time>
+      <time title="Modified: 2023-08-31 10:45:46" itemprop="dateModified" datetime="2023-08-31T10:45:46+08:00">2023-08-31</time>
     </span>
 
   
@@ -239,7 +249,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>647</span>
+      <span>764</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -256,31 +266,33 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>执行下面的命令即可:</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="vscode连接-wsl2 无权访问文件">VSCode连接 WSL2 无权访问文件</h1>
+<p>执行下面的命令即可:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username path</span><br></pre></td></tr></table></figure>
 <p>比如:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R xubaoduo /home/xubaoduo/project</span><br></pre></td></tr></table></figure>
-<h2 id="reference"><strong>Reference</strong></h2>
-<p><a
-target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied">https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied</a></p>
+<h2 id="**reference**"><strong>Reference</strong></h2>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied">https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied</a></p>
 <h1 id="wsl2安装docker遇到的问题">WSL2安装Docker遇到的问题</h1>
 <p>在官网下载运行安装打开后出现下面的情况:</p>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png" /></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png" alt=""></p>
 <p>以管理员权限运行cmd后, 输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path - C:\Windows\system32</span><br></pre></td></tr></table></figure>
 <p>再打开就解决了.</p>
-<p>在WSL2的CLI中输入 <code>docker --veriosn</code> 后提示 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The command &#x27;docker&#x27; could not be found in this WSL 2 distro.</span><br><span class="line">We recommend to activate the WSL integration in Docker Desktop settings.</span><br><span class="line"></span><br><span class="line">For details about using Docker Desktop with WSL 2, visit:</span><br><span class="line"></span><br><span class="line">https://docs.docker.com/go/wsl2/</span><br></pre></td></tr></table></figure>
-只需要运行下面两句安装即可:</p>
+<p>在WSL2的CLI中输入 <code>docker --veriosn</code> 后提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The command &#x27;docker&#x27; could not be found in this WSL 2 distro.</span><br><span class="line">We recommend to activate the WSL integration in Docker Desktop settings.</span><br><span class="line"></span><br><span class="line">For details about using Docker Desktop with WSL 2, visit:</span><br><span class="line"></span><br><span class="line">https://docs.docker.com/go/wsl2/</span><br></pre></td></tr></table></figure>
+<p>只需要运行下面两句安装即可:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install docker.io</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>微软商店的 Windows Terminal 确实挺好看的.</p>
 </blockquote>
-<h2 id="reference-1">Reference</h2>
+<h2 id="reference">Reference</h2>
 <p>ChatGPT以及StackOverflow.</p>
 <h1 id="git-常见命令">git 常见命令</h1>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/note/56524">这里。</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="generate-new token for picgo">Generate new token for PicGo</h1>
+<p>主页的  <code>Settings</code> 中, 选择最下方的 <code>Developer settings</code>, 在 <code>Personal access token</code> 中就能找到.</p>
+<p>看来一个月就过期有点频繁.</p>
 
     </div>
 
@@ -332,13 +344,13 @@ src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/20230731171
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

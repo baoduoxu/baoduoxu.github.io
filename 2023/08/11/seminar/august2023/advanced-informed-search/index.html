@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:  Search Information. 主要是 branch 的方式. Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, \(\rm A^*, IDA^*,SMA^*\) 等, 具体内容在这篇文章中有介绍. Bound Techniques. 包括 upper bound 和 lower b">
+    <meta name="description" content="当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:  Search Information. 主要是 branch 的方式. Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, $\rm A^*, IDA^*,SMA^*$ 等, 具体内容在这篇文章中有介绍. Bound Techniques. 包括 upper bound 和 lower bound,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Advanced Informed Search">
 <meta property="og:url" content="http://example.com/2023/08/11/seminar/august2023/advanced-informed-search/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:  Search Information. 主要是 branch 的方式. Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, \(\rm A^*, IDA^*,SMA^*\) 等, 具体内容在这篇文章中有介绍. Bound Techniques. 包括 upper bound 和 lower b">
+<meta property="og:description" content="当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:  Search Information. 主要是 branch 的方式. Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, $\rm A^*, IDA^*,SMA^*$ 等, 具体内容在这篇文章中有介绍. Bound Techniques. 包括 upper bound 和 lower bound,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-11T07:07:14.000Z">
 <meta property="article:modified_time" content="2023-08-14T12:28:52.913Z">
@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -171,6 +171,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -239,7 +247,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>984</span>
+      <span>944</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -257,50 +265,20 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:</p>
-<ol type="1">
+<ol>
 <li>Search Information. 主要是 branch 的方式.</li>
-<li>Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, <span
-class="math inline">\(\rm A^*, IDA^*,SMA^*\)</span> 等, 具体内容在<a
-target="_blank" rel="noopener" href="https://baoduoxu.github.io/2023/07/29/seminar/july2023/search-strategy/">这篇文章</a>中有介绍.</li>
-<li>Bound Techniques. 包括 upper bound 和 lower bound,
-一般是通过弱化/加强条件,
-放缩松弛(线性规划技术)以及启发式等方法来获取原问题解的上下界,
-这些解本身可以直接使用, 也可以用作搜索过程中的剪枝.</li>
+<li>Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, <span class="markdown-them-math-inline">$\rm A^*, IDA^*,SMA^*$</span> 等, 具体内容在<a target="_blank" rel="noopener" href="https://baoduoxu.github.io/2023/07/29/seminar/july2023/search-strategy/">这篇文章</a>中有介绍.</li>
+<li>Bound Techniques. 包括 upper bound 和 lower bound, 一般是通过弱化/加强条件, 放缩松弛(线性规划技术)以及启发式等方法来获取原问题解的上下界, 这些解本身可以直接使用, 也可以用作搜索过程中的剪枝.</li>
 <li>Decomposition Techniques.</li>
 <li>Techniques for deciding which question to branch on.</li>
-<li>Techniques for indentifying and solving tractable subproblems at
-each node.</li>
-<li>Random restart techniques. 当搜索花费了相当长的时间时,
-可以随机选择一个问题来 branching 继而重新尝试搜索. 一般没什么用处.</li>
-<li>Caching Techniques. 存储一些子问题,
-如果在后续的搜索过程中再次遇到这些子问题就直接取其解而不需要再求解.
-一般的规则是: 存储经常碰到的子问题; 存储需要耗费了大量搜索代价的子问题;
-存储可以被快速检索到的子问题.</li>
+<li>Techniques for indentifying and solving tractable subproblems at each node.</li>
+<li>Random restart techniques. 当搜索花费了相当长的时间时, 可以随机选择一个问题来 branching 继而重新尝试搜索. 一般没什么用处.</li>
+<li>Caching Techniques. 存储一些子问题, 如果在后续的搜索过程中再次遇到这些子问题就直接取其解而不需要再求解. 一般的规则是: 存储经常碰到的子问题; 存储需要耗费了大量搜索代价的子问题; 存储可以被快速检索到的子问题.</li>
 </ol>
 <p>值的详细介绍的是 1, 3, 4, 5, 6.</p>
-<p>下面以 Winner determination problem(WDP) 为例子来进行介绍,
-这个问题表述如下:</p>
-<p>给定商品集 <span class="math inline">\(M=[m]\)</span> 和 bid 集合
-<span class="math inline">\(\mathcal{B}=\{B_1,\cdots,B_n\}\)</span>,
-其中第 <span class="math inline">\(j\)</span> 个竞标 bid <span
-class="math inline">\(B_j\)</span> 为二元组 <span
-class="math inline">\((S_j,p_j)\)</span>, <span
-class="math inline">\(S_j\subset M\)</span> 是商品的集合, <span
-class="math inline">\(p_j\)</span> 为价格, 表示第 <span
-class="math inline">\(j\)</span> 个 bid 出价 <span
-class="math inline">\(p_j\)</span> 来拍卖 <span
-class="math inline">\(B_j\)</span> 中的所有商品. WDP
-要求选择最优的竞标集使得商品拍卖的总价格最大.</p>
-<p>这实际上是一个带权独立集的问题, 即将 <span
-class="math inline">\(S_j\)</span> 作为无向图 <span
-class="math inline">\(G=(V,E)\)</span> 的顶点 <span
-class="math inline">\(v_j\)</span>, 则 <span
-class="math inline">\(|V|=n\)</span>, 每个顶点有点权 <span
-class="math inline">\(p_j\)</span>, 若商品 <span
-class="math inline">\(i\)</span> 满足 <span class="math inline">\(i\in
-S_j\land i\in S_k\)</span> 则 <span class="math inline">\((v_j,v_k)\in
-E\)</span>, 那么 WDP 就是求 <span class="math inline">\(G\)</span>
-的最大权独立集.</p>
+<p>下面以 Winner determination problem(WDP) 为例子来进行介绍, 这个问题表述如下:</p>
+<p>给定商品集 <span class="markdown-them-math-inline">$M=[m]$</span> 和 bid 集合 <span class="markdown-them-math-inline">$\mathcal{B}=\{B_1,\cdots,B_n\}$</span>, 其中第 <span class="markdown-them-math-inline">$j$</span> 个竞标 bid <span class="markdown-them-math-inline">$B_j$</span> 为二元组 <span class="markdown-them-math-inline">$(S_j,p_j)$</span>, <span class="markdown-them-math-inline">$S_j\subset M$</span> 是商品的集合, <span class="markdown-them-math-inline">$p_j$</span> 为价格, 表示第 <span class="markdown-them-math-inline">$j$</span> 个 bid 出价 <span class="markdown-them-math-inline">$p_j$</span> 来拍卖 <span class="markdown-them-math-inline">$B_j$</span> 中的所有商品. WDP 要求选择最优的竞标集使得商品拍卖的总价格最大.</p>
+<p>这实际上是一个带权独立集的问题, 即将 <span class="markdown-them-math-inline">$S_j$</span> 作为无向图 <span class="markdown-them-math-inline">$G=(V,E)$</span> 的顶点 <span class="markdown-them-math-inline">$v_j$</span>, 则 <span class="markdown-them-math-inline">$|V|=n$</span>, 每个顶点有点权 <span class="markdown-them-math-inline">$p_j$</span>, 若商品 <span class="markdown-them-math-inline">$i$</span> 满足 <span class="markdown-them-math-inline">$i\in S_j\land i\in S_k$</span> 则 <span class="markdown-them-math-inline">$(v_j,v_k)\in E$</span>, 那么 WDP 就是求 <span class="markdown-them-math-inline">$G$</span> 的最大权独立集.</p>
 <h1 id="branch">Branch</h1>
 
     </div>
@@ -353,13 +331,13 @@ E\)</span>, 那么 WDP 就是求 <span class="math inline">\(G\)</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

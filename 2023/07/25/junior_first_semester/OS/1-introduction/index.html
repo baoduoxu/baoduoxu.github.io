@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreria:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,27 +22,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="希望能坚持。  xv6-book course 概述 操作系统通过接口向用户提供服务. Kernel: 一个为正在运行的程序提供服务的特殊的程序. 一台计算机只有一个内核. 正在运行的程序称为进程(process), 进程有包含指令、数据和堆栈的内存. 堆栈: 组织程序的过程调用. 进程调用内核服务时, 它会调用一个系统调用(system call), 系统调用是指操">
+    <meta name="description" content="概述, 课程要求等.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OS intro">
+<meta property="og:title" content="操作系统概述">
 <meta property="og:url" content="http://example.com/2023/07/25/junior_first_semester/OS/1-introduction/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="希望能坚持。  xv6-book course 概述 操作系统通过接口向用户提供服务. Kernel: 一个为正在运行的程序提供服务的特殊的程序. 一台计算机只有一个内核. 正在运行的程序称为进程(process), 进程有包含指令、数据和堆栈的内存. 堆栈: 组织程序的过程调用. 进程调用内核服务时, 它会调用一个系统调用(system call), 系统调用是指操">
+<meta property="og:description" content="概述, 课程要求等.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308291031258.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308291033840.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308311103888.png">
 <meta property="article:published_time" content="2023-07-25T03:18:46.323Z">
-<meta property="article:modified_time" content="2023-07-31T03:38:36.525Z">
+<meta property="article:modified_time" content="2023-08-31T06:30:45.587Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308291031258.jpg">
 
 
 <link rel="canonical" href="http://example.com/2023/07/25/junior_first_semester/OS/1-introduction/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/07/25/junior_first_semester/OS/1-introduction/","path":"2023/07/25/junior_first_semester/OS/1-introduction/","title":"OS intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/07/25/junior_first_semester/OS/1-introduction/","path":"2023/07/25/junior_first_semester/OS/1-introduction/","title":"操作系统概述"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>OS intro | XBD</title>
+<title>操作系统概述 | XBD</title>
   
 
 
@@ -142,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 进程和内存</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">课程要求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">课程主要内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">2.2.</span> <span class="nav-text">发展历史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A1"><span class="nav-number">4.</span> <span class="nav-text">作业1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%86%85%E5%AD%98"><span class="nav-number">4.1.</span> <span class="nav-text">1.1 进程和内存</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,13 +159,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -171,6 +175,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -206,12 +218,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="OS intro | XBD">
+      <meta itemprop="name" content="操作系统概述 | XBD">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          OS intro
+          操作系统概述
         </h1>
 
         <div class="post-meta-container">
@@ -229,7 +241,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-31 11:38:36" itemprop="dateModified" datetime="2023-07-31T11:38:36+08:00">2023-07-31</time>
+      <time title="Modified: 2023-08-31 14:30:45" itemprop="dateModified" datetime="2023-08-31T14:30:45+08:00">2023-08-31</time>
     </span>
 
   
@@ -239,14 +251,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.4k</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -260,123 +272,246 @@
 <p>希望能坚持。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="http://xv6.dgs.zone/">xv6-book</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/">course</a></p>
+<p><a target="_blank" rel="noopener" href="https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/">course</a></p>
+<h1 id="课程要求">课程要求</h1>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308291031258.jpg" alt="课时构成"></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308291033840.jpg" alt="成绩组成"></p>
+<h2 id="课程主要内容">课程主要内容</h2>
+<ol>
+<li>操作系统概述</li>
+<li>进程管理</li>
+<li>存储管理</li>
+<li>设备管理</li>
+<li>文件管理</li>
+</ol>
 <h1 id="概述">概述</h1>
+<p>操作系统的三个目标：</p>
+<ul>
+<li>方便: 使计算机更容易使用.</li>
+<li>有效: 以更有效的方式使用计算机系统资源.</li>
+<li>扩展能力: 在不妨碍服务的前提下, 有效地开发, 测试和引入新的系统功能.</li>
+</ul>
+<p>它提供了下面的服务:</p>
+<ul>
+<li>程序开发</li>
+<li>程序运行</li>
+<li>I/O 设备访问</li>
+<li>文件访问控制</li>
+<li>系统访问</li>
+<li>错误检测和响应</li>
+<li>记账</li>
+</ul>
+<p>三种重要接口是 ISA, ABI, API.</p>
+<p>由于计算机可以看作是一组资源, 因此操作系统可以看作是资源管理器, 控制计算机的基本功能, 但是是一种不同寻常的控制:</p>
+<ul>
+<li>操作系统是由处理器执行的一段程序或者一组程序</li>
+<li>操作系统经常<strong>会<em>释放</em>控制</strong>, 而且<strong>必须依赖处理器 (processor) 才能恢复控制</strong>. 操作系统控制处理器使用其他系统资源, 并控制其他程序的执行时机. 其实就是不同程序对处理器的占用调度分配.</li>
+</ul>
+<p>因此 OS 需要完成的资源管理包括:</p>
+<ul>
+<li>
+<p><strong>内存</strong>的分配管理</p>
+</li>
+<li>
+<p><strong>I/O</strong>的访问控制</p>
+</li>
+<li>
+<p>对<strong>文件</strong>的访问控制和使用</p>
+</li>
+<li>
+<p>对<strong>处理器</strong>的分配</p>
+</li>
+</ul>
 <p>操作系统通过接口向用户提供服务.</p>
-<p>Kernel: 一个为正在运行的程序提供服务的特殊的程序.
-一台计算机只有一个内核.</p>
-<p>正在运行的程序称为进程(process),
-进程有包含指令、数据和堆栈的内存.</p>
+<h2 id="可扩展性">可扩展性</h2>
+<p>操作系统因下面的特性而不断发展:</p>
+<ul>
+<li>硬件升级和新型硬件的出现</li>
+<li>新服务</li>
+<li>纠错: 引入<strong>补丁</strong>(patch)纠错. ( patch 本身也会引入新的错误 )</li>
+</ul>
+<h2 id="发展历史">发展历史</h2>
+<p>监控程序的功能:</p>
+<p>作业的自动续接</p>
+<ul>
+<li>内存保护</li>
+<li>定时器</li>
+<li>特权指令</li>
+<li>中断</li>
+</ul>
+<p>两种运行模式:</p>
+<ul>
+<li>用户模式: 不允许执行特权指令</li>
+<li>内核模式: 可执行特权指令以及访问受保护的内存区域.</li>
+</ul>
+<blockquote>
+<p>1: 为什么要有两种运行模式(user mode 和  kernel mode)?</p>
+<p>答: 为了安全性/错误隔离/性能优化.</p>
+<p>如何知道当前是哪种模式?</p>
+<p>答: 通过特殊的处理器状态标志(存在寄存器中)以及硬件机制来判断. 类似的有状态字寄存器PSW.</p>
+</blockquote>
+<p>batch processing 指的是一批作业要能自动处理完成, 也就是完成一个作业之后要能够自动续接.</p>
+<p>简单批处理系统通过串行处理, 是 <strong>读-执行指令-写</strong> 的串行序列(处理器必须等待I/O完成后才能继续处理), 实际利用的时间只有执行指令的时间, 其他时间都在等I/O, 而执行指令的速度非常快, 导致系统利用率非常低.</p>
+<p>多道批处理(batch processing)系统就是<strong>并发</strong>处理, 处理器在空闲时间去执行其他指令. 这其中比较重要的硬件是I/O中断和DMA. 除此之外, 由于需要并行处理, 因此需要将待执行的若干作业存储起来, 需要<strong>内存管理</strong>, 也需要设计合适的<strong>调度算法</strong>(作业调度程序负责).</p>
+<blockquote>
+<p>1: 并发和并行的区别:</p>
+<ul>
+<li>并发指的是在<strong>一段时间</strong>内可以同时执行若干作业.</li>
+<li>并行指的是某一时刻可以同时执行.</li>
+</ul>
+<p>并行可以看作是并发的子集.</p>
+<p>2: 为什么在多道批处理中需要有中断和DMA的支持?</p>
+<ul>
+<li>中断: 当I/O完成后操作系统会正在进行I/O操作的进程发出I/O中断, 处理器被中断, 操作系统接管对处理器的控制权.</li>
+<li>DMA: 由于作业存在存储器中, 因此需要频繁地直接访问存储器, 而DMA可以<strong>允许外设直接访问系统内存</strong>, 不需要CPU接入, 可以大大提高数据传输的效率.</li>
+</ul>
+<p>计组没学好是这样的😭</p>
+</blockquote>
+<p><strong>分时系统</strong>:</p>
+<ul>
+<li>采用多道程序设计技术处理多个交互作业</li>
+<li>多个用户共享处理器时间</li>
+<li>多个用户可以通过终端同时访问系统(操作系统控制<strong>用户程序</strong>在很短的时间内<strong>交替</strong>执行)</li>
+<li>时间片技术.</li>
+</ul>
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308311103888.png" style="zoom: 50%;" />
+<blockquote>
+<p>分时与多道的联系是什么? 分时是在多道的基础上设计的, 都是为了提高处理器利用率.</p>
+</blockquote>
+<h1 id="进程">进程</h1>
+<p>1: 什么是进程?</p>
+<ul>
+<li>一个<strong>正在执行</strong>的程序.</li>
+<li>计算机中<strong>正在运行</strong>的程序的一个<strong>实体</strong></li>
+<li>可分配给处理器并由处理器执行的一个实体</li>
+<li>由 一个单一顺序线程, 一个当前状态, 一组相关系统资源 所<strong>表征</strong>的活动单元. 表征是什么意思? 活动单元又是什么意思?</li>
+</ul>
+<p>可以看到进程是一个动态的概念.</p>
+<blockquote>
+<ol>
+<li>
+<p>什么是线程?</p>
+<p>答: 线程是计算机程序中的一种执行单元，它是进程的一部分。一个进程可以包含多个线程，每个线程独立执行特定的任务。与进程不同的是，线程共享相同的内存空间，可以直接访问进程的资源和数据。</p>
+</li>
+<li>
+<p>什么叫做表征? 什么叫做活动单元?</p>
+<p>答: 表征就是表示的意思.</p>
+</li>
+</ol>
+</blockquote>
+<p>2: 为什么要有进程? (实际上是类似于数据库中事务的特性)</p>
+<ul>
+<li>不正确的同步</li>
+<li>失败的互斥</li>
+<li>不确定的程序操作</li>
+<li>死锁</li>
+</ul>
+<p>3: 进程的组成.</p>
+<p>线程是什么?</p>
+<p>什么是进程挂起?</p>
+<h1 id="作业1">作业1</h1>
+<p>1.归纳整理操作系统的基本功能。</p>
+<p>2.论述批处理、分时和实时三种操作系统的基本特征。</p>
+<p>3.为什么会有进程？分析理解进程的概念、上下文的含义。</p>
+<p>4.论述现代操作系统的特征。</p>
+<p>5.解释单体内核和微内核的区别。</p>
+<p>6.进程调度程序、时钟中断处理程序和命令解释程序在哪种模式下执行？</p>
+<p>7.分析系统调用时的模式切换过程？</p>
+<p>Kernel: 一个为正在运行的程序提供服务的特殊的程序. 一台计算机只有一个内核.</p>
+<p>正在运行的程序称为进程(process), 进程有包含指令、数据和堆栈的内存.</p>
 <p>堆栈: 组织程序的过程调用.</p>
-<p>进程调用内核服务时, 它会调用一个<strong>系统调用</strong>(system
-call),
-系统调用是指操作系统提供给应用程序的一组接口，用于访问操作系统的功能和资源.
-它允许应用程序通过调用特殊的函数或指令请求操作系统来执行某些任务.</p>
-<p>shell 是一个普通的用户程序, 不是内核的一部分,
-从用户那里读取命令并执行.</p>
-<p>内核提供的系统调用集合是用户程序看到的接口, 下面是 xv6 kernel
-所有的系统调用.</p>
+<p>进程调用内核服务时, 它会调用一个<strong>系统调用</strong>(system call), 系统调用是指操作系统提供给应用程序的一组接口，用于访问操作系统的功能和资源. 它允许应用程序通过调用特殊的函数或指令请求操作系统来执行某些任务.</p>
+<p>shell 是一个普通的用户程序, 不是内核的一部分, 从用户那里读取命令并执行.</p>
+<p>内核提供的系统调用集合是用户程序看到的接口, 下面是 xv6 kernel 所有的系统调用.</p>
 <table>
-<colgroup>
-<col style="width: 39%" />
-<col style="width: 60%" />
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th><strong>系统调用</strong></th>
 <th><strong>描述</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>int fork()</code></td>
 <td>创建一个进程，返回子进程(已有的进程创建的进程)的PID(进程标识符)</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int exit(int status)</code></td>
-<td>终止当前进程(并释放资源,
-比如内存和打开的文件)，并将状态报告给wait()函数。无返回, 通常0表示成功,
-1表示失败</td>
+<td>终止当前进程(并释放资源, 比如内存和打开的文件)，并将状态报告给wait()函数。无返回, 通常0表示成功, 1表示失败</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int wait(int *status)</code></td>
-<td>等待一个子进程退出; 将退出状态存入*status; 返回子进程PID;
-如果调用者没有子进程, 立刻返回 <code>-1</code>,
-若不关注子进程的退出状态, 可以直接 <code>wait((int *)0)</code>.</td>
+<td>等待一个子进程退出; 将退出状态存入*status; 返回子进程PID; 如果调用者没有子进程, 立刻返回 <code>-1</code>, 若不关注子进程的退出状态, 可以直接 <code>wait((int *)0)</code>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int kill(int pid)</code></td>
-<td>终止对应PID的进程，返回 <span
-class="math inline">\(0\)</span>，或返回 <span
-class="math inline">\(-1\)</span> 表示错误</td>
+<td>终止对应PID的进程，返回 <span class="markdown-them-math-inline">$0$</span>，或返回 <span class="markdown-them-math-inline">$-1$</span> 表示错误</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int getpid()</code></td>
 <td>返回当前进程的PID</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int sleep(int n)</code></td>
-<td>暂停 <span class="math inline">\(n\)</span> 个时钟节拍</td>
+<td>暂停 <span class="markdown-them-math-inline">$n$</span> 个时钟节拍</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int exec(char *file, char *argv[])</code></td>
 <td>加载一个文件并使用参数执行它; 只有在出错时才返回</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>char *sbrk(int n)</code></td>
-<td>给进程的内存增加 <span class="math inline">\(n\)</span>
-字节。返回新内存的起始地址</td>
+<td>给进程的内存增加 <span class="markdown-them-math-inline">$n$</span> 字节。返回新内存的起始地址</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int open(char *file, int flags)</code></td>
 <td>打开一个文件；flags表示read/write；返回一个fd（文件描述符）</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int write(int fd, char *buf, int n)</code></td>
 <td>从buf 写n 个字节到文件描述符fd; 返回n</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int read(int fd, char *buf, int n)</code></td>
 <td>将n 个字节读入buf；返回读取的字节数；如果文件结束，返回0</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int close(int fd)</code></td>
 <td>释放打开的文件fd</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int dup(int fd)</code></td>
 <td>返回一个新的文件描述符，指向与fd 相同的文件</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int pipe(int p[])</code></td>
 <td>创建一个管道，把read/write文件描述符放在p[0]和p[1]中</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int chdir(char *dir)</code></td>
 <td>改变当前的工作目录</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int mkdir(char *dir)</code></td>
 <td>创建一个新目录</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int mknod(char *file, int, int)</code></td>
 <td>创建一个设备文件</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int fstat(int fd, struct stat *st)</code></td>
 <td>将打开文件fd的信息放入*st</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int stat(char *file, struct stat *st)</code></td>
 <td>将指定名称的文件信息放入*st</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>int link(char *file1, char *file2)</code></td>
 <td>为文件file1创建另一个名称(file2)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>int unlink(char *file)</code></td>
 <td>删除一个文件</td>
 </tr>
@@ -385,11 +520,8 @@ class="math inline">\(-1\)</span> 表示错误</td>
 <blockquote>
 <p>call 和 invoke 的区别?</p>
 </blockquote>
-<h2 id="进程和内存">1.1 进程和内存</h2>
-<p>一个进程使用系统调用 <code>fork</code> 来创建一个新的进程,
-新的进程称为子进程, 其内存内容与调用它的进程(称为父进程)相同.
-在父进程中, <code>fork</code> 返回子进程的PID, 在子进程中,
-<code>fork</code> 返回零.</p>
+<h2 id="11-进程和内存">1.1 进程和内存</h2>
+<p>一个进程使用系统调用 <code>fork</code> 来创建一个新的进程, 新的进程称为子进程, 其内存内容与调用它的进程(称为父进程)相同. 在父进程中, <code>fork</code> 返回子进程的PID, 在子进程中, <code>fork</code> 返回零.</p>
 
     </div>
 
@@ -441,13 +573,13 @@ class="math inline">\(-1\)</span> 表示错误</td>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">167k</span>
+    <span title="Word count total">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
