@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,20 +22,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="一个well-defined的搜索问题包括下面的组成部分：  初始状态 操作算子: 用于状态转换 目标 路径代价函数  即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解, 解的质量, 时空复">
+    <meta name="description" content="一个well-defined的搜索问题包括下面的组成部分：  初始状态 操作算子: 用于状态转换 目标 路径代价函数  即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搜索策略">
 <meta property="og:url" content="http://example.com/2023/07/29/seminar/july2023/search-strategy/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="一个well-defined的搜索问题包括下面的组成部分：  初始状态 操作算子: 用于状态转换 目标 路径代价函数  即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解, 解的质量, 时空复">
+<meta property="og:description" content="一个well-defined的搜索问题包括下面的组成部分：  初始状态 操作算子: 用于状态转换 目标 路径代价函数  即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730160830.png">
 <meta property="article:published_time" content="2023-07-29T12:46:39.000Z">
 <meta property="article:modified_time" content="2023-07-30T08:26:28.402Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png">
 
 
 <link rel="canonical" href="http://example.com/2023/07/29/seminar/july2023/search-strategy/">
@@ -145,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">1.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bfs%E5%92%8Cdfs%E7%9A%84%E4%B8%80%E4%BA%9B%E5%80%BC%E5%BE%97%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">2.</span> <span class="nav-text">BFS和DFS的一些值得注意的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#$%5Cmathrm%7Ba%7D%5E%7B%5Cast%7D$-%E5%92%8C%20$%5Cmathrm%7Bida%7D%5E%7B%5Cast%7D$"><span class="nav-number">3.</span> <span class="nav-text">$\mathrm{A}^{\ast}$ 和 $\mathrm{IDA}^{\ast}$</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">1.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bfs%E5%92%8Cdfs%E7%9A%84%E4%B8%80%E4%BA%9B%E5%80%BC%E5%BE%97%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">2.</span> <span class="nav-text">BFS和DFS的一些值得注意的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathrmaast-%E5%92%8C-mathrmidaast"><span class="nav-number">3.</span> <span class="nav-text">\(\mathrm{A}^{\ast}\) 和 \(\mathrm{IDA}^{\ast}\)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -158,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -250,14 +247,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.7k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -274,40 +271,143 @@
 <li>目标</li>
 <li>路径代价函数</li>
 </ul>
-<p>即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解, 解的质量, 时空复杂度.</p>
+<p>即从初始状态出发, 扫描操作算子集,
+选取适当的操作算子作用在初始状态上得到新的状态,
+新的状态满足目标时终止搜索, 反之以新的状态作为当前状态;
+如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点.
+在搜索过程中, 我们关注能否找到解, 解的质量, 时空复杂度.</p>
 <p>根据搜索方向, 搜索策略可以分为正向搜索和逆向搜索:</p>
 <ul>
 <li>正向搜索: 实际上就是上面所叙述的搜索过程.</li>
-<li>逆向搜索: 当操作算子可逆时, 可以从目标出发, 寻找<strong>能产生该目标的操作算子</strong>以及<strong>产生该操作算子需要的条件</strong>. 按照该策略不断进行, 直到找到问题给定的条件即可.</li>
+<li>逆向搜索: 当操作算子可逆时, 可以从目标出发,
+寻找<strong>能产生该目标的操作算子</strong>以及<strong>产生该操作算子需要的条件</strong>.
+按照该策略不断进行, 直到找到问题给定的条件即可.</li>
 </ul>
-<p>根据搜索过程中是否用与问题有关的信息分为盲目搜索和启发式搜索, 启发式搜索可以看作是一种基于经验的贪心策略.</p>
+<p>根据搜索过程中是否用与问题有关的信息分为盲目搜索和启发式搜索,
+启发式搜索可以看作是一种基于经验的贪心策略.</p>
 <h1 id="回溯">回溯</h1>
-<p>回溯策略就是从初始状态出发, 不断试探寻找可行的路径, 如果遇到了<strong>不可解点</strong>时就回溯到距离最近的父节点, 判断其是否还有其他子节点未被扩展.</p>
+<p>回溯策略就是从初始状态出发, 不断试探寻找可行的路径,
+如果遇到了<strong>不可解点</strong>时就回溯到距离最近的父节点,
+判断其是否还有其他子节点未被扩展.</p>
 <blockquote>
 <p>回溯等同于DFS吗?</p>
-<p>如果考虑严格定义的话, DFS本身是在图这一抽象出来的结构上使用的算法; 而回溯则是在拥有上述特征的问题中使用的(或者说, 回溯是搜索问题的特征空间映射得到的的树结构上的DFS), 两者的使用场景其实不太一样. 不过在实际使用的时候, 对DFS和回溯这两个名词其实并没有做明显的区分, 在措辞表达方面可能DFS用得更多一些; 除此之外, 再深究一下回溯定义中的&quot;遇到了不可解点就回溯&quot;这一策略, 这实际上是一种剪枝, 即可以认为回溯相比一般的DFS多了剪枝. 反正没有必要做区分.</p>
+<p>如果考虑严格定义的话, DFS本身是在图这一抽象出来的结构上使用的算法;
+而回溯则是在拥有上述特征的问题中使用的(或者说,
+回溯是搜索问题的特征空间映射得到的的树结构上的DFS),
+两者的使用场景其实不太一样. 不过在实际使用的时候,
+对DFS和回溯这两个名词其实并没有做明显的区分,
+在措辞表达方面可能DFS用得更多一些; 除此之外,
+再深究一下回溯定义中的"遇到了不可解点就回溯"这一策略,
+这实际上是一种剪枝, 即可以认为回溯相比一般的DFS多了剪枝.
+反正没有必要做区分.</p>
 </blockquote>
 <h1 id="bfs和dfs的一些值得注意的地方">BFS和DFS的一些值得注意的地方</h1>
-<p>1: BFS一定能找到最优解而DFS不一定. 这很好理解, 如果问题对应的搜索树不是有限的, 那么DFS将一直搜下去, 但显然一层一层搜索的BFS一定可以找到最优解.</p>
-<p>2: 一个搜索问题必须具备某种特征才能使用BFS求解. 设 <span class="markdown-them-math-inline">$g(N)$</span> 表示从起点到节点 <span class="markdown-them-math-inline">$N$</span> 的代价(就是文章最开始的<strong>路径代价函数</strong>), 其中 <span class="markdown-them-math-inline">$N$</span> 在搜索树中的层数是 <span class="markdown-them-math-inline">$d$</span> , 那么某个问题能使用BFS求解当且仅当 <strong><span class="markdown-them-math-inline">$g$</span> 关于 <span class="markdown-them-math-inline">$d$</span> 是递增的</strong>. 比较经典的例子是Dijkstra算法无法在有负权环的图上应用, 因为Dijkstra算法本质上就是BFS, 若出现了负权环, 那么就可以在负权环上一直搜索下去(搜索深度增加)而代价始终不增, 也就没有最优解了.</p>
-<p>3: DFS的一些改进. 主要是迭代加深搜索, 这个很容易想到, 可能在做题的时候就不经意间使用了: 设定一个深度限制, 记录当前深度, 每迭代一次当前深度加一, 当达到限制还没有找到最优解时便回溯.</p>
-<h1 id="$\mathrm{a}^{\ast}$-和 $\mathrm{ida}^{\ast}$"><span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 和 <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span></h1>
-<p>启发式搜索本质上是基于经验或直觉在每一步选择操作算子时都选择较优的, 达到缩小状态空间的目的. 由于严重依赖经验或直觉, 因此启发式算法往往只能得到次优解 , 甚至一无所获.</p>
-<p>对于待搜索节点 <span class="markdown-them-math-inline">$n$</span> , 定义它的估价函数 <span class="markdown-them-math-inline">$f(n)$</span> 表示它的&quot;有希望&quot;程度, 那么在搜索时就优先搜索有希望程度更大的的状态; 当然 <span class="markdown-them-math-inline">$f(n)$</span> 也可以是&quot;没希望程度&quot;, 那么就优先搜索没希望程度更小的状态, 此时搜索的过程相当于最小化 <span class="markdown-them-math-inline">$f(n)$</span> 的过程, 这与机器学习中的 loss function 是一样的, 或者说, <span class="markdown-them-math-inline">$f(n)$</span> 本身就是一个 loss function. 实现这种算法往往要使用优先队列. Dijkstra 算法是一个典型的符合该搜索过程的算法, 有时候会把上面的算法称为 A 算法. 搜索过程中碰到重复结点的处理手段类似于 Dijkstra 算法.</p>
-<p>对不同的问题 <span class="markdown-them-math-inline">$f(n)$</span> 的结构不尽相同, 但都可以写成 <span class="markdown-them-math-inline">$f(n)=g(n)+h(n)$</span> 的形式, 其中 <span class="markdown-them-math-inline">$g(n)$</span> 表示从起点到结点 <span class="markdown-them-math-inline">$n$</span> 搜索所耗费的实际代价, 它衡量了状态在搜索图/树中的深度, <span class="markdown-them-math-inline">$h(n)$</span> 为从结点 <span class="markdown-them-math-inline">$n$</span> 到目标状态的最佳路径的<strong>估计代价</strong>. <span class="markdown-them-math-inline">$g(n)$</span> 在搜索的过程中很容易就能确定, <span class="markdown-them-math-inline">$h(n)$</span> 需要根据题目的具体信息来设计, 不同方案会带来显著不同的效果. <span class="markdown-them-math-inline">$g(n)$</span> 和 <span class="markdown-them-math-inline">$h(n)$</span> 的大小决定了搜索过程中盲目搜索和基于经验的搜索所占的比例, <span class="markdown-them-math-inline">$g(n)\gg h(n)$</span> 时有利于搜索的完备性但状态空间比较大时代价会很高; <span class="markdown-them-math-inline">$h(n)\gg g(n)$</span> 时对于比较复杂的问题往往只能得到次优解但效率会有显著提升.</p>
-<p>用 Dijkstra 算法求解最短路时 <span class="markdown-them-math-inline">$h(n)=0$</span>, 此时必然能找到最优解.</p>
-<p>不能保证 A 算法能得到最优解, 能否加上一些条件使其必定能得到最优解呢? <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法是这样的算法. 设 <span class="markdown-them-math-inline">$h^{\ast}(n)$</span> 表示结点 <span class="markdown-them-math-inline">$n$</span> 到目标状态的最优路径的代价, 若对所有节点 <span class="markdown-them-math-inline">$n$</span> 都有 <span class="markdown-them-math-inline">$h(n)\le h^{\ast}(n)$</span> 则 A 算法必定能在有限步搜索到最优的解, 这时它称为 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法.</p>
-<p>值得注意的是 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法仍然是一类算法, 不同的启发策略仍然有优劣, 那么需要一些标准:</p>
+<p>1: BFS一定能找到最优解而DFS不一定. 这很好理解,
+如果问题对应的搜索树不是有限的, 那么DFS将一直搜下去,
+但显然一层一层搜索的BFS一定可以找到最优解.</p>
+<p>2: 一个搜索问题必须具备某种特征才能使用BFS求解. 设 <span
+class="math inline">\(g(N)\)</span> 表示从起点到节点 <span
+class="math inline">\(N\)</span>
+的代价(就是文章最开始的<strong>路径代价函数</strong>), 其中 <span
+class="math inline">\(N\)</span> 在搜索树中的层数是 <span
+class="math inline">\(d\)</span> , 那么某个问题能使用BFS求解当且仅当
+<strong><span class="math inline">\(g\)</span> 关于 <span
+class="math inline">\(d\)</span> 是递增的</strong>.
+比较经典的例子是Dijkstra算法无法在有负权环的图上应用,
+因为Dijkstra算法本质上就是BFS, 若出现了负权环,
+那么就可以在负权环上一直搜索下去(搜索深度增加)而代价始终不增,
+也就没有最优解了.</p>
+<p>3: DFS的一些改进. 主要是迭代加深搜索, 这个很容易想到,
+可能在做题的时候就不经意间使用了: 设定一个深度限制, 记录当前深度,
+每迭代一次当前深度加一, 当达到限制还没有找到最优解时便回溯.</p>
+<h1 id="mathrmaast-和-mathrmidaast"><span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 和 <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span></h1>
+<p>启发式搜索本质上是基于经验或直觉在每一步选择操作算子时都选择较优的,
+达到缩小状态空间的目的. 由于严重依赖经验或直觉,
+因此启发式算法往往只能得到次优解 , 甚至一无所获.</p>
+<p>对于待搜索节点 <span class="math inline">\(n\)</span> ,
+定义它的估价函数 <span class="math inline">\(f(n)\)</span>
+表示它的"有希望"程度, 那么在搜索时就优先搜索有希望程度更大的的状态; 当然
+<span class="math inline">\(f(n)\)</span> 也可以是"没希望程度",
+那么就优先搜索没希望程度更小的状态, 此时搜索的过程相当于最小化 <span
+class="math inline">\(f(n)\)</span> 的过程, 这与机器学习中的 loss
+function 是一样的, 或者说, <span class="math inline">\(f(n)\)</span>
+本身就是一个 loss function. 实现这种算法往往要使用优先队列. Dijkstra
+算法是一个典型的符合该搜索过程的算法, 有时候会把上面的算法称为 A 算法.
+搜索过程中碰到重复结点的处理手段类似于 Dijkstra 算法.</p>
+<p>对不同的问题 <span class="math inline">\(f(n)\)</span>
+的结构不尽相同, 但都可以写成 <span
+class="math inline">\(f(n)=g(n)+h(n)\)</span> 的形式, 其中 <span
+class="math inline">\(g(n)\)</span> 表示从起点到结点 <span
+class="math inline">\(n\)</span> 搜索所耗费的实际代价,
+它衡量了状态在搜索图/树中的深度, <span
+class="math inline">\(h(n)\)</span> 为从结点 <span
+class="math inline">\(n\)</span>
+到目标状态的最佳路径的<strong>估计代价</strong>. <span
+class="math inline">\(g(n)\)</span> 在搜索的过程中很容易就能确定, <span
+class="math inline">\(h(n)\)</span> 需要根据题目的具体信息来设计,
+不同方案会带来显著不同的效果. <span class="math inline">\(g(n)\)</span>
+和 <span class="math inline">\(h(n)\)</span>
+的大小决定了搜索过程中盲目搜索和基于经验的搜索所占的比例, <span
+class="math inline">\(g(n)\gg h(n)\)</span>
+时有利于搜索的完备性但状态空间比较大时代价会很高; <span
+class="math inline">\(h(n)\gg g(n)\)</span>
+时对于比较复杂的问题往往只能得到次优解但效率会有显著提升.</p>
+<p>用 Dijkstra 算法求解最短路时 <span
+class="math inline">\(h(n)=0\)</span>, 此时必然能找到最优解.</p>
+<p>不能保证 A 算法能得到最优解, 能否加上一些条件使其必定能得到最优解呢?
+<span class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法是这样的算法.
+设 <span class="math inline">\(h^{\ast}(n)\)</span> 表示结点 <span
+class="math inline">\(n\)</span> 到目标状态的最优路径的代价,
+若对所有节点 <span class="math inline">\(n\)</span> 都有 <span
+class="math inline">\(h(n)\le h^{\ast}(n)\)</span> 则 A
+算法必定能在有限步搜索到最优的解, 这时它称为 <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法.</p>
+<p>值得注意的是 <span class="math inline">\(\mathrm{A}^{\ast}\)</span>
+算法仍然是一类算法, 不同的启发策略仍然有优劣, 那么需要一些标准:</p>
 <ul>
-<li>完备性:  算法是否能在有限步能搜索到最优解. 所有的 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法都满足.</li>
-<li>单调性: 启发函数 <span class="markdown-them-math-inline">$h$</span> 满足(1) 当 <span class="markdown-them-math-inline">$n_i$</span> 是 <span class="markdown-them-math-inline">$n_j$</span> 的子节点时有 <span class="markdown-them-math-inline">$h(n_i)-h(n_j)\le \mathrm{cost}(n_j,n_i)$</span>; (2) <span class="markdown-them-math-inline">$h(n_{\mathrm{goal}})=0$</span>.</li>
-<li>信息性.  当 <span class="markdown-them-math-inline">$h_2(n)\ge h_1(n)$</span> 恒成立时称启发策略 <span class="markdown-them-math-inline">$h_2$</span> 相比 <span class="markdown-them-math-inline">$h_1$</span> 具有更多的信息性.  <span class="markdown-them-math-inline">$h$</span> 越大相当于用了题目中的更多信息来使得状态空间更小, 当然更多的信息性带来的计算代价可能会与减小状态空间所带来的益处抵消.</li>
+<li>完备性: 算法是否能在有限步能搜索到最优解. 所有的 <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法都满足.</li>
+<li>单调性: 启发函数 <span class="math inline">\(h\)</span> 满足(1) 当
+<span class="math inline">\(n_i\)</span> 是 <span
+class="math inline">\(n_j\)</span> 的子节点时有 <span
+class="math inline">\(h(n_i)-h(n_j)\le \mathrm{cost}(n_j,n_i)\)</span>;
+(2) <span class="math inline">\(h(n_{\mathrm{goal}})=0\)</span>.</li>
+<li>信息性. 当 <span class="math inline">\(h_2(n)\ge h_1(n)\)</span>
+恒成立时称启发策略 <span class="math inline">\(h_2\)</span> 相比 <span
+class="math inline">\(h_1\)</span> 具有更多的信息性. <span
+class="math inline">\(h\)</span>
+越大相当于用了题目中的更多信息来使得状态空间更小,
+当然更多的信息性带来的计算代价可能会与减小状态空间所带来的益处抵消.</li>
 </ul>
-<p><span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法完备性的证明:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png" alt=""></p>
-<p>类似于迭代加深搜索, 可以提出 Iterative-deepening <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 即 <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span>. 不同于迭代加深搜索的深度限制, <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span> 给 <span class="markdown-them-math-inline">$f$</span> 设置了一个限制 <span class="markdown-them-math-inline">$f'$</span>, <span class="markdown-them-math-inline">$f'$</span> 初始化为 <span class="markdown-them-math-inline">$f(\mathrm{root})$</span>, 即初始状态(根结点) 对应的估价函数值; 接着不断地以 <span class="markdown-them-math-inline">$f'$</span> 作为限制进行DFS, 找到最优解则返回最优解, 否则返回所有满足 <span class="markdown-them-math-inline">$f(n)&gt;f'$</span> 的 <span class="markdown-them-math-inline">$f(n)$</span> 的最小值, 或者说搜索终止边界处的结点的估价函数值中的最小值, 依次更新 <span class="markdown-them-math-inline">$f'$</span>, 下面是伪代码:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730160830.png" alt=""></p>
-<p>在 <span class="markdown-them-math-inline">$\mathrm{IAD}^{\ast}$</span> 的基础上对使用的内存做改进可以得到 <span class="markdown-them-math-inline">$\mathrm{SMA}^{\ast}$</span>, 基本思路是遗忘掉一些结点, 同时需要用到其他结点的估价函数值来更新当前结点的估价函数值.</p>
+<p><span class="math inline">\(\mathrm{A}^{\ast}\)</span>
+算法完备性的证明:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png" /></p>
+<p>类似于迭代加深搜索, 可以提出 Iterative-deepening <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 即 <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span>.
+不同于迭代加深搜索的深度限制, <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span> 给 <span
+class="math inline">\(f\)</span> 设置了一个限制 <span
+class="math inline">\(f&#39;\)</span>, <span
+class="math inline">\(f&#39;\)</span> 初始化为 <span
+class="math inline">\(f(\mathrm{root})\)</span>, 即初始状态(根结点)
+对应的估价函数值; 接着不断地以 <span
+class="math inline">\(f&#39;\)</span> 作为限制进行DFS,
+找到最优解则返回最优解, 否则返回所有满足 <span
+class="math inline">\(f(n)&gt;f&#39;\)</span> 的 <span
+class="math inline">\(f(n)\)</span> 的最小值,
+或者说搜索终止边界处的结点的估价函数值中的最小值, 依次更新 <span
+class="math inline">\(f&#39;\)</span>, 下面是伪代码:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730160830.png" /></p>
+<p>在 <span class="math inline">\(\mathrm{IAD}^{\ast}\)</span>
+的基础上对使用的内存做改进可以得到 <span
+class="math inline">\(\mathrm{SMA}^{\ast}\)</span>,
+基本思路是遗忘掉一些结点,
+同时需要用到其他结点的估价函数值来更新当前结点的估价函数值.</p>
 
     </div>
 
@@ -359,13 +459,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

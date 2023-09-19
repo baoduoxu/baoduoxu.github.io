@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,20 +22,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="染色 染色问题的暴力复杂度为 $O(n^n)$. 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 $X\subset V$,  记 $f(X)&#x3D;\chi(G[X])$, $G[X]$ 的最大独立集集合为 $\mathcal{I}_X$, 那么就有下面的递推 $$f(X) &#x3D; \">
+    <meta name="description" content="染色 染色问题的暴力复杂度为 \(O(n^n)\). 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 \(X\subset V\), 记 \(f(X)&#x3D;\chi(G[X])\), \(G[X]\) 的最大独立集集合为 \(\mathcal{I}_X\), 那么就有下面的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="精确算法 DYNAMIC PROGRAMMING">
 <meta property="og:url" content="http://example.com/2023/07/29/exact-exponetial-algorithm/exact-algorithm-dynamic-programming/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="染色 染色问题的暴力复杂度为 $O(n^n)$. 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 $X\subset V$,  记 $f(X)&#x3D;\chi(G[X])$, $G[X]$ 的最大独立集集合为 $\mathcal{I}_X$, 那么就有下面的递推 $$f(X) &#x3D; \">
+<meta property="og:description" content="染色 染色问题的暴力复杂度为 \(O(n^n)\). 由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 \(X\subset V\), 记 \(f(X)&#x3D;\chi(G[X])\), \(G[X]\) 的最大独立集集合为 \(\mathcal{I}_X\), 那么就有下面的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png">
 <meta property="article:published_time" content="2023-07-29T12:44:09.000Z">
-<meta property="article:modified_time" content="2023-08-30T07:11:53.947Z">
+<meta property="article:modified_time" content="2023-09-06T09:23:00.643Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png">
 
 
 <link rel="canonical" href="http://example.com/2023/07/29/exact-exponetial-algorithm/exact-algorithm-dynamic-programming/">
@@ -158,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -240,7 +237,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-30 15:11:53" itemprop="dateModified" datetime="2023-08-30T15:11:53+08:00">2023-08-30</time>
+      <time title="Modified: 2023-09-06 17:23:00" itemprop="dateModified" datetime="2023-09-06T17:23:00+08:00">2023-09-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,7 +245,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Exact-Exponetial-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponetial Algorithm</span></a>
+          <a href="/categories/Exact-Exponential-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponential Algorithm</span></a>
         </span>
     </span>
 
@@ -259,7 +256,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.4k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -277,31 +274,93 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="染色">染色</h1>
-<p>染色问题的暴力复杂度为 <span class="markdown-them-math-inline">$O(n^n)$</span>.</p>
-<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 <span class="markdown-them-math-inline">$X\subset V$</span>,  记 <span class="markdown-them-math-inline">$f(X)=\chi(G[X])$</span>, <span class="markdown-them-math-inline">$G[X]$</span> 的最大独立集集合为 <span class="markdown-them-math-inline">$\mathcal{I}_X$</span>, 那么就有下面的递推</p>
-<div class="markdown-them-math-block">$$f(X)
+<p>染色问题的暴力复杂度为 <span
+class="math inline">\(O(n^n)\)</span>.</p>
+<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质,
+在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集),
+对于 <span class="math inline">\(X\subset V\)</span>, 记 <span
+class="math inline">\(f(X)=\chi(G[X])\)</span>, <span
+class="math inline">\(G[X]\)</span> 的最大独立集集合为 <span
+class="math inline">\(\mathcal{I}_X\)</span>, 那么就有下面的递推 <span
+class="math display">\[
+f(X)
 =
 \begin{cases}
 0,&amp;X=\emptyset\\
-\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash I),&amp;\text{otherwise}.
+\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash
+I),&amp;\text{otherwise}.
 \end{cases}
-$$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</span>.</p>
-<p>这个 DP 算法的复杂度为 <span class="markdown-them-math-inline">$O^*((1+\sqrt[3]{3})^n)$</span>, 证明需要用到最大独立集的 branching 算法的时间复杂度.</p>
+\]</span> 可以断言 <span
+class="math inline">\(\chi(G)=f(V)\)</span>.</p>
+<p>这个 DP 算法的复杂度为 <span
+class="math inline">\(O^*((1+\sqrt[3]{3})^n)\)</span>,
+证明需要用到最大独立集的 branching 算法的时间复杂度.</p>
 <p>先把证明贴到下面:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" alt=""></p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" /></p>
 <h1 id="集合覆盖">集合覆盖</h1>
 <h1 id="最小支配集">最小支配集</h1>
-<p>首先叙述最小支配集问题与集合覆盖问题 <span class="markdown-them-math-inline">$(\cal U,S)$</span> 的关系: 令 <span class="markdown-them-math-inline">$\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V \}$</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span class="markdown-them-math-inline">$u$</span> 被 <span class="markdown-them-math-inline">$v$</span> 支配当且仅当 <span class="markdown-them-math-inline">$u\in N(v)$</span>, 那么 <span class="markdown-them-math-inline">$N[v]$</span> 是所有被 <span class="markdown-them-math-inline">$v$</span> 支配的点的集合, 因此对于 <span class="markdown-them-math-inline">$D\subset V$</span>, <span class="markdown-them-math-inline">$D$</span> 是最小支配集当且仅当 <span class="markdown-them-math-inline">$\{N[v]:v\in D\}$</span> 能够覆盖 <span class="markdown-them-math-inline">$\{N[v]:v\in V\}$</span>.</p>
-<p>对于一般的图 <span class="markdown-them-math-inline">$G$</span> 而言, 存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{n-|I|})$</span>, 其中 <span class="markdown-them-math-inline">$I$</span> 为最大独立集, 特别地, 对于二分图而言 <span class="markdown-them-math-inline">$|I|=n/2$</span>, 时间复杂度为 <span class="markdown-them-math-inline">$O^*(2^{n/2})$</span>. 下面叙述这个算法.</p>
-<p>设 <span class="markdown-them-math-inline">$J=V\backslash I$</span>, 首先 <span class="markdown-them-math-inline">$J$</span> 一定是支配集, 考虑反证法, 假设存在 <span class="markdown-them-math-inline">$v\in I$</span> 且 <span class="markdown-them-math-inline">$v$</span> 没有被 <span class="markdown-them-math-inline">$J$</span> 支配, 那么 <span class="markdown-them-math-inline">$v$</span> 不与 <span class="markdown-them-math-inline">$J$</span> 中的点相邻, 而 <span class="markdown-them-math-inline">$v$</span> 又不与 <span class="markdown-them-math-inline">$I$</span> 中的相邻, 那么 <span class="markdown-them-math-inline">$v$</span> 就是一个孤立的点, 而我们只考虑连通图.</p>
-<p>考虑枚举 <span class="markdown-them-math-inline">$V$</span> 的子集 <span class="markdown-them-math-inline">$D$</span> 在 <span class="markdown-them-math-inline">$J$</span> 上的投影来寻找最小支配集, 令 <span class="markdown-them-math-inline">$J_D=J\cap D$</span>, 逐步向 <span class="markdown-them-math-inline">$J_D$</span> 中添加 <span class="markdown-them-math-inline">$I$</span> 中的顶点, 可以得到支配集. ?</p>
-<p>对于每个 <span class="markdown-them-math-inline">$J_D\subset J$</span>, 令 <span class="markdown-them-math-inline">$|D|=\min\{|D'|:D'\text{ is a dominating set}\land J\cap D'=J_D\}$</span>, 那么就有<span class="markdown-them-math-inline">$\gamma(G)=\min_{J_D\subset J}|D|$</span>.</p>
-<p>令 <span class="markdown-them-math-inline">$I_D=I\backslash N(J_D)$</span>, 表示最大独立集 <span class="markdown-them-math-inline">$I$</span> 中没有被 <span class="markdown-them-math-inline">$J_D$</span> 支配的部分, 再令 <span class="markdown-them-math-inline">$J_X=J\backslash(N(J_D)\cup N(I_D))$</span> 表示 <span class="markdown-them-math-inline">$J$</span> 中没有被 <span class="markdown-them-math-inline">$J_D\cup I_D$</span> 支配的部分, 那么通过置 <span class="markdown-them-math-inline">$\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in I\backslash I_D \}$</span>, 便可将原问题转化成一个新的规模稍小一些的集合覆盖问题, 这个集合覆盖问题可以在 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{|J_X|})$</span> 内解决, 那么总的时间复杂度为 <span class="markdown-them-math-inline">$O(3^{n-|I|})$</span>.</p>
+<p>首先叙述最小支配集问题与集合覆盖问题 <span
+class="math inline">\((\cal U,S)\)</span> 的关系: 令 <span
+class="math inline">\(\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V
+\}\)</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span
+class="math inline">\(u\)</span> 被 <span
+class="math inline">\(v\)</span> 支配当且仅当 <span
+class="math inline">\(u\in N(v)\)</span>, 那么 <span
+class="math inline">\(N[v]\)</span> 是所有被 <span
+class="math inline">\(v\)</span> 支配的点的集合, 因此对于 <span
+class="math inline">\(D\subset V\)</span>, <span
+class="math inline">\(D\)</span> 是最小支配集当且仅当 <span
+class="math inline">\(\{N[v]:v\in D\}\)</span> 能够覆盖 <span
+class="math inline">\(\{N[v]:v\in V\}\)</span>.</p>
+<p>对于一般的图 <span class="math inline">\(G\)</span> 而言,
+存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span
+class="math inline">\(O(n^{O(1)}2^{n-|I|})\)</span>, 其中 <span
+class="math inline">\(I\)</span> 为最大独立集, 特别地, 对于二分图而言
+<span class="math inline">\(|I|=n/2\)</span>, 时间复杂度为 <span
+class="math inline">\(O^*(2^{n/2})\)</span>. 下面叙述这个算法.</p>
+<p>设 <span class="math inline">\(J=V\backslash I\)</span>, 首先 <span
+class="math inline">\(J\)</span> 一定是支配集, 考虑反证法, 假设存在
+<span class="math inline">\(v\in I\)</span> 且 <span
+class="math inline">\(v\)</span> 没有被 <span
+class="math inline">\(J\)</span> 支配, 那么 <span
+class="math inline">\(v\)</span> 不与 <span
+class="math inline">\(J\)</span> 中的点相邻, 而 <span
+class="math inline">\(v\)</span> 又不与 <span
+class="math inline">\(I\)</span> 中的相邻, 那么 <span
+class="math inline">\(v\)</span> 就是一个孤立的点,
+而我们只考虑连通图.</p>
+<p>考虑枚举 <span class="math inline">\(V\)</span> 的子集 <span
+class="math inline">\(D\)</span> 在 <span
+class="math inline">\(J\)</span> 上的投影来寻找最小支配集, 令 <span
+class="math inline">\(J_D=J\cap D\)</span>, 逐步向 <span
+class="math inline">\(J_D\)</span> 中添加 <span
+class="math inline">\(I\)</span> 中的顶点, 可以得到支配集. ?</p>
+<p>对于每个 <span class="math inline">\(J_D\subset J\)</span>, 令 <span
+class="math inline">\(|D|=\min\{|D&#39;|:D&#39;\text{ is a dominating
+set}\land J\cap D&#39;=J_D\}\)</span>, 那么就有<span
+class="math inline">\(\gamma(G)=\min_{J_D\subset J}|D|\)</span>.</p>
+<p>令 <span class="math inline">\(I_D=I\backslash N(J_D)\)</span>,
+表示最大独立集 <span class="math inline">\(I\)</span> 中没有被 <span
+class="math inline">\(J_D\)</span> 支配的部分, 再令 <span
+class="math inline">\(J_X=J\backslash(N(J_D)\cup N(I_D))\)</span> 表示
+<span class="math inline">\(J\)</span> 中没有被 <span
+class="math inline">\(J_D\cup I_D\)</span> 支配的部分, 那么通过置 <span
+class="math inline">\(\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in
+I\backslash I_D \}\)</span>,
+便可将原问题转化成一个新的规模稍小一些的集合覆盖问题,
+这个集合覆盖问题可以在 <span
+class="math inline">\(O(n^{O(1)}2^{|J_X|})\)</span> 内解决,
+那么总的时间复杂度为 <span
+class="math inline">\(O(3^{n-|I|})\)</span>.</p>
 <blockquote>
 <p>看不懂. 先放弃了. 以后有时间再看吧. /kk</p>
 </blockquote>
-<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span class="markdown-them-math-inline">$O^*(3^{n-|I|})$</span> 降到 <span class="markdown-them-math-inline">$O^*(2^{n-|I|})$</span> 的过程.</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" alt=""></p>
+<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span
+class="math inline">\(O^*(3^{n-|I|})\)</span> 降到 <span
+class="math inline">\(O^*(2^{n-|I|})\)</span> 的过程.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" /></p>
 
     </div>
 
@@ -353,13 +412,13 @@ $$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

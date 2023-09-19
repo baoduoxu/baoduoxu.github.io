@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一种强大的分析 branching 算法的时间复杂度的工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精确算法 MEASURE AND CONQUER">
+<meta property="og:url" content="http://example.com/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="一种强大的分析 branching 算法的时间复杂度的工具。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-04T01:12:37.813Z">
+<meta property="article:modified_time" content="2023-09-18T03:14:40.523Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/","path":"2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/","title":"精确算法 MEASURE AND CONQUER"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>精确算法 MEASURE AND CONQUER | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maximum-independent-set"><span class="nav-number">1.</span> <span class="nav-text">Maximum Independent Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98%E5%AE%9E%E4%BE%8B%E5%B9%B6%E4%BD%BF%E7%94%A8mc%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">重新设计问题实例并使用M&amp;C分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feedback-vertex-set"><span class="nav-number">2.</span> <span class="nav-text">Feedback Vertex Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fvs-%E7%9A%84%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">FVS 的一个算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%BC%95%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">前置定义与引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">详细算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preprocessing"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Preprocessing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-procedure"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Main Procedure</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dominating-set"><span class="nav-number">3.</span> <span class="nav-text">Dominating Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lower-bound-analysis"><span class="nav-number">4.</span> <span class="nav-text">Lower Bound Analysis</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="精确算法 MEASURE AND CONQUER | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          精确算法 MEASURE AND CONQUER
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-04 09:12:37" itemprop="dateCreated datePublished" datetime="2023-09-04T09:12:37+08:00">2023-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-18 11:14:40" itemprop="dateModified" datetime="2023-09-18T11:14:40+08:00">2023-09-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Exact-Exponential-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponential Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在 <a
+target="_blank" rel="noopener" href="https://baoduoxu.github.io/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching">BRANCHING</a>
+中, 给出的分析时间复杂度的方法只能得到较为粗略的上界, 而 MEASURE AND
+CONQUER (简称为 M&amp;C) 能够求出更紧的界.</p>
+<p>设问题 <span class="math inline">\(P\)</span> 的 instance 为 <span
+class="math inline">\(I_P\)</span>, <span
+class="math inline">\(I_P\)</span> 的 measure 为 <span
+class="math inline">\(M(I_P)\)</span>.</p>
+<p>M&amp;C 更注重于 <strong>measure</strong> 的选择, 而不是创造
+branching 和 reduction rules. 一个 measure 需要满足下面的条件:</p>
+<ul>
+<li>设 <span class="math inline">\(P&#39;\)</span> 是 <span
+class="math inline">\(P\)</span> 通过 reduction 得到的子问题, 则 <span
+class="math inline">\(M(I_{P&#39;})&lt;M(I_P)\)</span>.</li>
+<li>对任意instance <span class="math inline">\(I\)</span>, <span
+class="math inline">\(M(I)\ge 0\)</span>.</li>
+<li>input 的 measure 以 <span
+class="math inline">\(f(\text{natural}~\text{parameter  of  input})\)</span>
+为上界.</li>
+</ul>
+<p>更复杂的 measure 可以给时间复杂度提供更好的上界.</p>
+<h1 id="maximum-independent-set">Maximum Independent Set</h1>
+<p>将以下面的算法为例来分析其复杂度. 基于 <a
+target="_blank" rel="noopener" href="https://baoduoxu.github.io/2023/08/17/exact-exponetial-algorithm/exact-algorithm-branching">BRANCHING</a>
+中的各个引理, 下面的算法正确性显然, 其中 <span
+class="math inline">\(\Delta(G)\le 2\)</span> 甚至 <span
+class="math inline">\(G\)</span> 为树时多项式地求 <span
+class="math inline">\(G\)</span> 的最大独立集是已知的事实.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041941626.png" /></p>
+<p>上述算法中唯一的分支在 (3), 此时 branching vector 为 <span
+class="math inline">\((d(v)+1,1)\)</span> 至少为 <span
+class="math inline">\((4,1)\)</span>, 则 <span
+class="math inline">\(\tau(4,1)&lt;1.3803\)</span>, 得到了 <span
+class="math inline">\(O(1.3803^n)\)</span> 的时间复杂度,
+但这只是一个最坏情况的上界.</p>
+<blockquote>
+<p>求解树的最大独立集的多项式时间算法: 由于树的叶子结点度数总为 <span
+class="math inline">\(1\)</span>, 因此设 <span
+class="math inline">\(T\)</span> 的叶子集合为 <span
+class="math inline">\(L(T)\)</span>, 那么 <span
+class="math inline">\(\alpha(T)=|L(T)|+\alpha(G\backslash
+N[L(T)])\)</span>, 可以 <span class="math inline">\(O(n)\)</span>
+地求出树的最大独立集 (最坏情况是 <span class="math inline">\(T\)</span>
+为链的情形).</p>
+</blockquote>
+<h2
+id="重新设计问题实例并使用mc分析">重新设计问题实例并使用M&amp;C分析</h2>
+<p>首先已经知道 branching 的运行时间以<strong>多项式<span
+class="math inline">\(\times\)</span>搜索树的叶子结点数</strong>为界,
+而叶子节点完全由分支规则 (3) 产生, 因此 branch 是(在运行时间上) “costly”
+的, reduction 是“cheap” 的也就是说度数大于等于3的点是 “costly” 的,
+度数不超过2的的点是 “cheap” 的, 为其分别定义权重 <span
+class="math inline">\(1\)</span> 和 <span
+class="math inline">\(0\)</span>.</p>
+<p>因此定义图 <span class="math inline">\(G&#39;\)</span> (的 instance)
+的 measure 为 <span class="math inline">\(k_1(G&#39;)=n_{\ge 3}\)</span>
+表示 <span class="math inline">\(G&#39;\)</span> 中度数至少为 3
+的点的个数.</p>
+<blockquote>
+<p>事实上是所有结点的权重和. 前述 instance 为 <span
+class="math inline">\(n\)</span> 的情况相当于每个点的权重都为 <span
+class="math inline">\(1\)</span>.</p>
+</blockquote>
+<p>分析和 <span class="math inline">\(k_1\)</span> 有关的 branching
+vectors, 在下面也会把 <span class="math inline">\(k_1\)</span> 称为
+weight of instance.</p>
+<blockquote>
+<p>"和 <span class="math inline">\(k_1\)</span> 有关"的含义: 在前面以
+<span class="math inline">\(G\)</span> 的结点数 <span
+class="math inline">\(n\)</span> 为问题的 instance, 分支后得到的子问题的
+instance 为 <span class="math inline">\(n-t_1,\cdots,n-t_r\)</span>,
+在这里将 <span class="math inline">\(k_1\)</span> 作为问题的 instance,
+那么得到的子问题的 instance 为 <span
+class="math inline">\(k_1-t_1,\cdots,k_1-t_r\)</span>, branching vector
+的写法并不改变.</p>
+</blockquote>
+<p>首先需要分析的是, branching rule (3) 是如何具体改变 <span
+class="math inline">\(k_1\)</span> 的:</p>
+<ul>
+<li><p>当丢弃 <span class="math inline">\(v\)</span> 时, 对于 <span
+class="math inline">\(w\in N(v)\land d_{G&#39;}(w)=3\)</span>, <span
+class="math inline">\(w\)</span> 的权也会从 <span
+class="math inline">\(1\)</span> 变为 <span
+class="math inline">\(0\)</span>, 因此 instance 的 measure 减少 <span
+class="math inline">\(1+\#\{w:\{v,w\}\in E,d_{G&#39;}(w)=3\}\)</span>,
+至少为 <span class="math inline">\(1\)</span>.</p></li>
+<li><p>当选择 <span class="math inline">\(v\)</span> 时, <span
+class="math inline">\(N^2_{G&#39;}(v)\)</span> 中的点的权重可能会改变.
+很不幸的是如果 <span class="math inline">\(v\)</span> 的存在度数为 2
+的邻接点或者全部的邻接点度数都为 2, 那么选择 <span
+class="math inline">\(v\)</span> 造成的删点有可能不会影响 <span
+class="math inline">\(k_1\)</span> 的大小(只删去了度数为 <span
+class="math inline">\(0\)</span> 的点), 这就意味着 branching vector 为
+<span class="math inline">\((1,1)\)</span>, <span
+class="math inline">\(\tau(1,1)=2\)</span>, 并没有达到目的.</p></li>
+</ul>
+<p>显然 <span class="math inline">\(k_1\)</span> 并不是一个好的 measure,
+需要重新设计.</p>
+<p>问题在于度数为 2 的结点. 度数为 0 或 1 的结点可以被立刻由 reduction
+移除掉, 度数至少为 3 的结点会进行 branch, 只有度数为 2 的结点留在图中,
+因此应该有三种权重. 这很好修改, 令 <span
+class="math inline">\(w_2\in[0,1]\)</span> 表示结点度数为 2 的权重,
+那么设计 measure <span class="math inline">\(k_2(G&#39;)\)</span> <span
+class="math display">\[
+k_2(G&#39;)=w_2n_{2}+n_{\ge 3}
+\]</span> 我们不关心 <span class="math inline">\(w_2\)</span>
+取何值时可以得到最好的结果 (通过更细致的分析和算力可以做到),
+只需要知道改变 measure 可以得到一个更好的界即可, 这就是 M&amp;C
+的基本思想.</p>
+<p><strong>定理 1</strong> 当 <span
+class="math inline">\(w_2=0.5\)</span> 时, 以 <span
+class="math inline">\(k_2\)</span> 为 measure 进行 M&amp;C 可以得到算法
+mis3 的运行时间为 <span
+class="math inline">\(\mathcal{O}(1.3248^n)\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<hr />
+<h1 id="feedback-vertex-set">Feedback Vertex Set</h1>
+<p>Feedback Vertex Set 简称为 FVS.</p>
+<p>给定图 <span class="math inline">\(G=(V,E)\)</span>, 若 <span
+class="math inline">\(W\subset V\)</span> 满足 <span
+class="math inline">\(G\backslash W\)</span> 不含有 cycle ( <span
+class="math inline">\(G\backslash W\)</span> 为森林), 则称 <span
+class="math inline">\(W\)</span> 为 FVS. FVS 问题目的是找到最小的 FVS,
+即<strong>删去最少数目的点使原图成为树/森林.</strong></p>
+<h2 id="fvs-的一个算法">FVS 的一个算法</h2>
+<h3 id="前置定义与引理">前置定义与引理</h3>
+<p>称点集 <span class="math inline">\(F\subset V\)</span> 是无环的如果
+<span class="math inline">\(G[F]\)</span> 是森林, 那么最大无环集 <span
+class="math inline">\(F\)</span> 与最小 FVS <span
+class="math inline">\(W\)</span> 是 <span
+class="math inline">\(V\)</span> 的一个划分, 所以<strong>求最小 FVS
+等价于求最大无环集</strong>.</p>
+<p>现在定义对 <span class="math inline">\(G[F]\)</span> 的非平凡连通分量
+<span class="math inline">\(T\)</span>
+的<strong>收缩(contract)</strong>操作 (<strong>非平凡</strong>的含义是树
+<span class="math inline">\(T\)</span> 的结点数至少为 2):</p>
+<ul>
+<li><span class="math inline">\(\mathrm{compress}(T\to t)\)</span>
+表示将 <span class="math inline">\(T\)</span> 收缩为结点 <span
+class="math inline">\(t\)</span>, 保留与 <span
+class="math inline">\(t\)</span> 相连的所有的边, 并删去缩点后与 <span
+class="math inline">\(t\)</span> <strong>有重边</strong>相连的结点.</li>
+</ul>
+<p>对于无环集 <span class="math inline">\(F\)</span> 定义 <span
+class="math inline">\(\mathcal{M}_G(F)\)</span> 是 <span
+class="math inline">\(G\)</span> 的所有以 <span
+class="math inline">\(F\)</span> 为子集的最大无环集 (对于 <span
+class="math inline">\(F&#39;\in \mathcal{M}_G(F)\)</span>, <span
+class="math inline">\(F\subset F&#39;\)</span> 且 <span
+class="math inline">\(F&#39;\)</span> 是最大无环集). 置 <span
+class="math inline">\(\mathcal{M}:=\mathcal{M}(\emptyset)\)</span>, 那么
+FVS 问题转化为求 <span class="math inline">\(\mathcal{M}\)</span>
+的一个元素, 一个更一般的问题是对任意 <span
+class="math inline">\(F\)</span> 找到 <span
+class="math inline">\(\mathcal{M}(F)\)</span> 的一个元素.</p>
+<p>收缩操作的目的是对图进行简化而不影响最大无环集, 且收缩操作必然可以将
+<span class="math inline">\(F\)</span> 变为独立集,
+那么收缩之后问题就转化为<strong>给定独立集 <span
+class="math inline">\(F\)</span> 求 <span
+class="math inline">\(G\)</span> 包含 <span
+class="math inline">\(F\)</span> 的最大无环集</strong>,
+这会降低问题的求解难度.</p>
+<p>现在需要论证最大无环集 <span class="math inline">\(X\)</span>
+收缩得到的独立集 <span class="math inline">\(X&#39;\)</span>
+是收缩后的图的最大无环集(如果给收缩定义一个逆操作“展开”, 也要论述 <span
+class="math inline">\(X&#39;\)</span> 展开后得到的 <span
+class="math inline">\(X\)</span> 是原图的最大无环集, 当然,
+不关注展开之后的图是什么样子的, 毕竟收缩是丢失信息的),
+表述为下面的引理:</p>
+<p><strong>Lemma 1</strong> 设 <span class="math inline">\(F\)</span>
+是无环集且 <span class="math inline">\(T\)</span> 是 <span
+class="math inline">\(G[F]\)</span> 的非平凡连通分量, 令 <span
+class="math inline">\(G&#39;\)</span> 是 <span
+class="math inline">\(G\)</span> 做 <span
+class="math inline">\(\mathrm{compress}(T\to t)\)</span> 操作后得到的图,
+那么 <span class="math display">\[
+X\in \mathcal{M}_G(F)\iff (X-T)\cup \{t\}\in
+\mathcal{M}_{G&#39;}((F-T)\cup\{t\})
+\]</span> <strong><em>PROOF</em></strong> 这个证明全部依托于反证法,
+且证了一个方向之后另一个方向就是相似的方法.</p>
+<p>当 <span class="math inline">\(X\in \mathcal{M}_G(F)\)</span> 时,
+需要证明的是: <span class="math inline">\((X-T)\cup \{t\}\)</span> 是
+<span class="math inline">\(G&#39;\)</span> 的最大无环集, 且 <span
+class="math inline">\((F-T)\cup\{t\}\subset (X-T)\cup\{t\}\)</span>,
+后面是显然的, 因为 <span class="math inline">\(F\subset X\)</span>.</p>
+<p>首先若收缩后 <span class="math inline">\(t\)</span> 与 <span
+class="math inline">\(v\)</span> 有重边相连, 则 <span
+class="math inline">\(T\cup\{v\}\)</span> 就含有环, 这意味着 <span
+class="math inline">\(v\not\in X\)</span>, 于是收缩删除的点不会包括
+<span class="math inline">\(X-T\)</span> 中的点, 于是 <span
+class="math inline">\((X-T)\cup \{t\}\)</span> 是 <span
+class="math inline">\(G&#39;\)</span> 的顶点集的子集.</p>
+<p><span class="math inline">\(\it {(1)}\)</span> 证明 <span
+class="math inline">\((X-T)\cup \{t\}\)</span> 是无环的. 令 <span
+class="math inline">\(X&#39;=(X-T)\cup\{t\}\)</span>, 假设 <span
+class="math inline">\(X&#39;\)</span> 有环 <span
+class="math inline">\(C&#39;\)</span>, 由于 <span
+class="math inline">\(X-T\)</span> 是无环的, 那么 <span
+class="math inline">\(t\)</span> 在环 <span
+class="math inline">\(C&#39;\)</span> 中, 可以将 <span
+class="math inline">\(C&#39;\)</span> 写成 <span
+class="math inline">\([u_1,\cdots,u_2]\cup\{t\}\)</span> 的形式, 其中
+<span class="math inline">\(t\)</span> 与 <span
+class="math inline">\(u_1,u_2\)</span> 相邻且 <span
+class="math inline">\([u_1,\cdots,u_2]\)</span> 是 <span
+class="math inline">\(X-T\)</span> 中的一条路径. 现在再展开 <span
+class="math inline">\(t\)</span>, 那么 <span
+class="math inline">\(T\)</span> 中有 <span
+class="math inline">\(v_1,v_2\)</span> 使得 <span
+class="math inline">\(v_1\)</span> 与 <span
+class="math inline">\(u_1\)</span> 相邻, <span
+class="math inline">\(v_2\)</span> 与 <span
+class="math inline">\(u_2\)</span> 相邻, 且 <span
+class="math inline">\(v_1,v_2\)</span> 之间有路径 <span
+class="math inline">\([v_1,\cdots,v_2]\)</span>, 这意味着在 <span
+class="math inline">\(G\)</span> 中 <span
+class="math inline">\([u_1,\cdots,u_2]\cup [v_2,\cdots,v_1]\)</span>
+是一个环, 这个环是 <span class="math inline">\(G[X]\)</span> 的子图,
+显然与 <span class="math inline">\(X\)</span> 的无环性相悖.</p>
+<blockquote>
+<p>通过假设有环, 构造出一个环为 <span
+class="math inline">\(G[X]\)</span> 的子图以得到矛盾.</p>
+</blockquote>
+<p><span class="math inline">\(\it (2)\)</span> 证明 <span
+class="math inline">\((X-T)\cup \{t\}\)</span> 是最大的. 假设 <span
+class="math inline">\(G&#39;\)</span> 存在 <span
+class="math inline">\(Y&#39;\)</span> 使得 <span
+class="math inline">\(|Y&#39;|&gt;|X&#39;|\)</span>, 那么在 <span
+class="math inline">\(G\)</span> 中 <span
+class="math inline">\((Y&#39;-\{t\})\cup T\)</span> 就是一个比 <span
+class="math inline">\(X\)</span> 更大的无环集, 这与 <span
+class="math inline">\(X\)</span> 的最大性质相悖. <span
+class="math inline">\(\square\)</span></p>
+<p>因此当我们在求 <span class="math inline">\(G\)</span> 的包含 <span
+class="math inline">\(F\)</span> 的最大无环集时, 总可以假定 <span
+class="math inline">\(F\)</span> 是独立集, 如若不然, 收缩即可.</p>
+<p>下面的引理是后续分支算法的 branching rules 的主要依据.</p>
+<p><strong>Lemma 2</strong> 设 <span class="math inline">\(F\)</span> 是
+<span class="math inline">\(G\)</span> 的一个独立集, 且 <span
+class="math inline">\(v\not\in F\)</span> 恰与 <span
+class="math inline">\(F\)</span> 中的一个顶点 <span
+class="math inline">\(t\)</span> 相邻, 则存在 <span
+class="math inline">\(X\in\mathcal{M}(F)\)</span> 使得 <span
+class="math inline">\(v\)</span> 或者 <span
+class="math inline">\(N(v)-\{t\}\)</span> 中的两个顶点在 <span
+class="math inline">\(X\)</span> 中.</p>
+<p><strong><em>PROOF</em></strong> 分类讨论一下即可, 首先假设 <span
+class="math inline">\(N(v)-\{t\}\)</span> 中没有点在 <span
+class="math inline">\(X\)</span> 中(它们也不在 <span
+class="math inline">\(F\)</span> 中), 则 <span
+class="math inline">\(M_{G\backslash (N(v)-\{t\})}(F)=M_G(F)\)</span>,
+且 <span class="math inline">\(G\backslash (N(v)-\{t\})\)</span> 中
+<span class="math inline">\(d(v)=1\)</span>, 那么 <span
+class="math inline">\(X\cup \{v\}\)</span> 也是无环的同时是 <span
+class="math inline">\(G\)</span> 的最大无环集, 这与 <span
+class="math inline">\(X\)</span> 的最大性矛盾, 因此 <span
+class="math inline">\(N(v)-\{t\}\)</span> 中至少有一个点在 <span
+class="math inline">\(X\)</span> 中, 有两种情况:</p>
+<ul>
+<li>当 <span class="math inline">\(N(v)-\{t\}\)</span> 中有两个点在
+<span class="math inline">\(X\)</span> 中时, 引理成立;</li>
+<li>当仅有一个 <span class="math inline">\(z\in N(v)-\{t\}\)</span> 满足
+<span class="math inline">\(z\in X\)</span> 时, 首先 <span
+class="math inline">\(X\cup \{v\}\not\in M_G(F)\)</span>, 那么 <span
+class="math inline">\(G[X\cup \{v\}]\)</span> 有环, 且 <span
+class="math inline">\(G[X\cup \{v\}]\)</span> 中 <span
+class="math inline">\(d(v)\le 2\)</span>, 则 <span
+class="math inline">\(G[X\cup \{v\}]\)</span> 中所有的环都包括 <span
+class="math inline">\(z\)</span>, 这就意味着 <span
+class="math inline">\((X-\{z\})\cup \{v\}\)</span> 是无环的,
+它的大小等于 <span class="math inline">\(X\)</span> , 命题得证.</li>
+</ul>
+<p><span class="math inline">\(\square\)</span></p>
+<p>下面再给三个新定义.</p>
+<ul>
+<li><strong>active vertex</strong>: 算法执行过程中的一个顶点 <span
+class="math inline">\(t\in F\)</span>.</li>
+</ul>
+<p>令 <span class="math inline">\(K=F-\{t\}\)</span>, <span
+class="math inline">\(t\in F\)</span> 为 active vertex, 再令 <span
+class="math inline">\(v\in N(t)\)</span>, 由于 <span
+class="math inline">\(F\)</span> 是独立集, 则 <span
+class="math inline">\(v\not\in F\)</span>, 那么 <span
+class="math inline">\(K\cup \{v\}\)</span>
+中<strong>可能</strong>存在非平凡连通分量, 令 <span
+class="math inline">\(G&#39;\)</span> 为 <span
+class="math inline">\(G\)</span> 执行 <span
+class="math inline">\(\mathrm{compress}(K\cup\{v\}\to u)\)</span>
+之后得到的图.</p>
+<ul>
+<li><strong>generalized neighbor</strong>: 如果在 <span
+class="math inline">\(G&#39;\)</span> 中 <span
+class="math inline">\(w\in N(u)\)</span> 则称 <span
+class="math inline">\(G\)</span> 中的 <span class="math inline">\(w\in
+V-\{t\}\)</span> 为 <span class="math inline">\(v\)</span> 的
+generalized neighbor, <span class="math inline">\(u,v,G,G&#39;\)</span>
+的含义如上.</li>
+<li><strong>generalized degree</strong>: 在 <span
+class="math inline">\(G\)</span> 中, <span
+class="math inline">\(v\)</span> 的 generalized neighbor 的个数称作
+generalized degree, 记作 <span
+class="math inline">\(\mathrm{gd}(v)\)</span>.</li>
+</ul>
+<p>对于 generalized neighbor, 只有两种情况:</p>
+<p>1: 若 <span class="math inline">\(v\)</span> 不与 <span
+class="math inline">\(F\)</span> 中除 <span
+class="math inline">\(t\)</span> 外的任何点相邻, 则 <span
+class="math inline">\(K\cup\{v\}\)</span> 仍然是独立集,
+那么无需执行收缩操作, <span class="math inline">\(v\)</span> 的
+generalized neighbor 就是它的 neighbor,</p>
+<p>2: 若 <span class="math inline">\(v\)</span> 与 <span
+class="math inline">\(t&#39;\in F(t&#39;\ne t)\)</span> 相邻, 则 <span
+class="math inline">\(K\cup\{v\}\)</span> 中存在非平凡连通分量 <span
+class="math inline">\(\{v,t&#39;\}\)</span>, 将 <span
+class="math inline">\(\{v,t&#39;\}\)</span> 收缩为 <span
+class="math inline">\(u\)</span> 之后, <span
+class="math inline">\(N(u)=N(v)\cup N(t&#39;)-\{v,t&#39;\}\)</span>,
+也就是说 <span class="math inline">\(N(v)\cup
+N(t&#39;)-\{v,t&#39;,t\}\)</span> 为 <span
+class="math inline">\(v\)</span> 的 generalized neighbor 的集合.</p>
+<blockquote>
+<p>这里 <span class="math inline">\(t&#39;\)</span> 也可以是多个点,
+也就是 <span class="math inline">\(K\cup\{v\}\)</span>
+中的非平凡连通分量是形如 <span class="math inline">\(K_{1,n}\)</span>
+的图.</p>
+</blockquote>
+<h3 id="详细算法流程">详细算法流程</h3>
+<p>设 <span class="math inline">\(\mathrm{mif}(G,F)=|X|,X\in
+\mathcal{M}_{G}(F)\)</span>, 给出下面的 branch 算法, 分为 preprocessing
+和 main procedure.</p>
+<h4 id="preprocessing">Preprocessing</h4>
+<p><span class="math inline">\(\it 1.\)</span> 若 <span
+class="math inline">\(G\)</span> 不连通, 设其连通分量分别为 <span
+class="math inline">\(G_1,\cdots,G_k,\)</span> 则 <span
+class="math display">\[
+\mathrm{mif}(G,F)=\sum_{1\le i\le k}\mathrm{mif}(G_i,F_i),F_i=V(G_i)\cap
+F
+\]</span> <span class="math inline">\(\it 2.\)</span> 若 <span
+class="math inline">\(F\)</span> 不是独立集, 则对其非平凡连通分量 <span
+class="math inline">\(T\)</span> 做 <span
+class="math inline">\(\mathrm{compress}(T\to v_T)\)</span> 操作得到
+<span class="math inline">\(G&#39;,F&#39;\)</span>, 满足 <span
+class="math display">\[
+\mathrm{mif}(G,F)=\mathrm{mif}(G&#39;,F&#39;)+|T|-1
+\]</span> 如果 <span class="math inline">\(T\)</span> 中存在 active
+vertex 则 <span class="math inline">\(v_T\)</span> 将为 active
+vertex.</p>
+<h4 id="main-procedure">Main Procedure</h4>
+<p>预处理部分保证了下面的 <span class="math inline">\(G\)</span>
+是连通的且 <span class="math inline">\(F\)</span> 是 <span
+class="math inline">\(G\)</span> 的独立集.</p>
+<p><span class="math inline">\(\it 1.\)</span> 若 <span
+class="math inline">\(F=V\)</span>, 显然 <span
+class="math inline">\(\mathcal{M}_G(F)=\{V\}\)</span>, <span
+class="math inline">\(\mathrm{mif}(G,F)=|V|\)</span>.</p>
+<p><span class="math inline">\(\it 2.\)</span> 若 <span
+class="math inline">\(F=\emptyset\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\Delta(G)\le 1\)</span>. 则 <span
+class="math inline">\(G\)</span> 中不存在环, 于是 <span
+class="math inline">\(\mathrm{mif}(G,F)=|V|\)</span>.</p></li>
+<li><p><span class="math inline">\(\Delta(G)\ge 2\)</span>, 选择 <span
+class="math inline">\(t\)</span> 满足 <span
+class="math inline">\(d(t)\ge 2\)</span>, 在 <span
+class="math inline">\(t\)</span> 上做分支, 要么选 <span
+class="math inline">\(t\)</span>, 要么不选 <span
+class="math inline">\(t\)</span>, 则 <span class="math display">\[
+\mathrm{mif}(G,F)=\max\{\mathrm{mif}(G,F\cup\{t\}),\mathrm{mif}(G-\{t\},F)
+\}
+\]</span></p></li>
+</ul>
+<p><span class="math inline">\(\it 3.\)</span> 如果 <span
+class="math inline">\(F\)</span> 中没有 active vertex, 则任意选定 active
+vertex <span class="math inline">\(t\)</span>, 后文中的 <span
+class="math inline">\(t\)</span> 都指本步骤选择的 active vertex.</p>
+<p><span class="math inline">\(\it 4.\)</span> 对于 <span
+class="math inline">\(v\in N(t)\)</span>, 若</p>
+<ul>
+<li><p><span class="math inline">\(\mathrm{gd}(v)\le 1\)</span>,
+则直接把 <span class="math inline">\(v\)</span> 加到 <span
+class="math inline">\(F\)</span> 中即 <span
+class="math inline">\(\mathrm{mif}(G,F)=\mathrm{mif}(G,F\cup\{v\})\)</span>;</p></li>
+<li><p><span class="math inline">\(\mathrm{gd}(v)\ge 3\)</span>, 要么选
+<span class="math inline">\(v\)</span> 要么丢掉 <span
+class="math inline">\(v\)</span>, <span class="math display">\[
+\mathrm{mif}(G,F)=\max\{\mathrm{mif}(G,F\cup\{v\}),\mathrm{mif}(G-\{v\},F)\}
+\]</span></p></li>
+<li><p><span class="math inline">\(\mathrm{gd}(v)=2\)</span>, 设 <span
+class="math inline">\(v\)</span> 的 generalized neighbor 为 <span
+class="math inline">\(w_1,w_2\)</span>, 由 Lemma 2 可得 <span
+class="math display">\[
+\mathrm{mif}(G,F)=\max\{\mathrm{mif}(G,F\cup\{v\}),\mathrm{mif}(G-\{v\},F\cup\{w_1,w_2\})\}
+\]</span> 如果选择 <span class="math inline">\(w_1,w_2\)</span>
+导致了环的存在, 直接忽略掉该分支即可.</p></li>
+</ul>
+<blockquote>
+<p>最 trivial 的分支规则 <span class="math display">\[
+\mathrm{mif}(G,F)=\max\{\mathrm{mif}(G,F\cup\{t\}),\mathrm{mif}(G-\{t\},F)
+\}
+\]</span> 的正确性显然,
+上面算法中的4的第一三条的正确性需要再详细说明一下:</p>
+</blockquote>
+<p><strong>Theorem 1</strong> FVS 问题可以在 <span
+class="math inline">\(O(1.8899^n)\)</span> 的时间内解决.</p>
+<p><strong><em>PROOF</em></strong> <span
+class="math inline">\(\square\)</span></p>
+<p>In undirected graphs of maximum <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Degree_(graph_theory)">degree</a>
+three, the feedback vertex set problem can be solved in <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Polynomial_time">polynomial
+time</a>, by transforming it into an instance of the <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Matroid_parity_problem">matroid
+parity problem</a> for <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Linear_matroid">linear
+matroids</a>.</p>
+<h1 id="dominating-set">Dominating Set</h1>
+<h1 id="lower-bound-analysis">Lower Bound Analysis</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/31/junior_first_semester/statistical-learning/cnn/" rel="prev" title="常见的神经网络">
+                  <i class="fa fa-angle-left"></i> 常见的神经网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/15/essay/git-jupyter-notebook/" rel="next" title="使用 git 管理 jupyter notebook">
+                  使用 git 管理 jupyter notebook <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">206k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">3:07</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

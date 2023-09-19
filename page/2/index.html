@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -186,6 +186,354 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/11/seminar/august2023/advanced-informed-search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/11/seminar/august2023/advanced-informed-search/" class="post-title-link" itemprop="url">Advanced Informed Search</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 15:07:14" itemprop="dateCreated datePublished" datetime="2023-08-11T15:07:14+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-08-14 20:28:52" itemprop="dateModified" datetime="2023-08-14T20:28:52+08:00">2023-08-14</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>984</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>当我们想要用搜索解决一个问题时, 通常有下述手段可以使用:</p>
+<ol type="1">
+<li>Search Information. 主要是 branch 的方式.</li>
+<li>Search Strategy. 主要是搜索的方式, 包括 回溯, DFS, BFS, <span
+class="math inline">\(\rm A^*, IDA^*,SMA^*\)</span> 等, 具体内容在<a
+target="_blank" rel="noopener" href="https://baoduoxu.github.io/2023/07/29/seminar/july2023/search-strategy/">这篇文章</a>中有介绍.</li>
+<li>Bound Techniques. 包括 upper bound 和 lower bound,
+一般是通过弱化/加强条件,
+放缩松弛(线性规划技术)以及启发式等方法来获取原问题解的上下界,
+这些解本身可以直接使用, 也可以用作搜索过程中的剪枝.</li>
+<li>Decomposition Techniques.</li>
+<li>Techniques for deciding which question to branch on.</li>
+<li>Techniques for indentifying and solving tractable subproblems at
+each node.</li>
+<li>Random restart techniques. 当搜索花费了相当长的时间时,
+可以随机选择一个问题来 branching 继而重新尝试搜索. 一般没什么用处.</li>
+<li>Caching Techniques. 存储一些子问题,
+如果在后续的搜索过程中再次遇到这些子问题就直接取其解而不需要再求解.
+一般的规则是: 存储经常碰到的子问题; 存储需要耗费了大量搜索代价的子问题;
+存储可以被快速检索到的子问题.</li>
+</ol>
+<p>值的详细介绍的是 1, 3, 4, 5, 6.</p>
+<p>下面以 Winner determination problem(WDP) 为例子来进行介绍,
+这个问题表述如下:</p>
+<p>给定商品集 <span class="math inline">\(M=[m]\)</span> 和 bid 集合
+<span class="math inline">\(\mathcal{B}=\{B_1,\cdots,B_n\}\)</span>,
+其中第 <span class="math inline">\(j\)</span> 个竞标 bid <span
+class="math inline">\(B_j\)</span> 为二元组 <span
+class="math inline">\((S_j,p_j)\)</span>, <span
+class="math inline">\(S_j\subset M\)</span> 是商品的集合, <span
+class="math inline">\(p_j\)</span> 为价格, 表示第 <span
+class="math inline">\(j\)</span> 个 bid 出价 <span
+class="math inline">\(p_j\)</span> 来拍卖 <span
+class="math inline">\(B_j\)</span> 中的所有商品. WDP
+要求选择最优的竞标集使得商品拍卖的总价格最大.</p>
+<p>这实际上是一个带权独立集的问题, 即将 <span
+class="math inline">\(S_j\)</span> 作为无向图 <span
+class="math inline">\(G=(V,E)\)</span> 的顶点 <span
+class="math inline">\(v_j\)</span>, 则 <span
+class="math inline">\(|V|=n\)</span>, 每个顶点有点权 <span
+class="math inline">\(p_j\)</span>, 若商品 <span
+class="math inline">\(i\)</span> 满足 <span class="math inline">\(i\in
+S_j\land i\in S_k\)</span> 则 <span class="math inline">\((v_j,v_k)\in
+E\)</span>, 那么 WDP 就是求 <span class="math inline">\(G\)</span>
+的最大权独立集.</p>
+<h1 id="branch">Branch</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/11/CO/algorithm-complexity-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/11/CO/algorithm-complexity-theory/" class="post-title-link" itemprop="url">算法复杂性理论入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 11:30:41" itemprop="dateCreated datePublished" datetime="2023-08-11T11:30:41+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-01 15:33:04" itemprop="dateModified" datetime="2023-09-01T15:33:04+08:00">2023-09-01</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>440</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>记所有字母的集合为 <span class="math inline">\(\Sigma\)</span>,
+若干字母组合成为字符串 <span class="math inline">\(s\)</span>, 记 <span
+class="math inline">\(\Sigma^*\)</span> 为所有字符串的集合, <span
+class="math inline">\(\emptyset_{s}\)</span> 为空串, 语言 <span
+class="math inline">\(L\)</span> 为字符串的集合, <span
+class="math inline">\(\emptyset_L\)</span> 为空语言, 且 <span
+class="math inline">\(L\subset \Sigma^*\)</span>.</p>
+<p>记作 <span class="math inline">\(\mathcal{C}\)</span> 是 legitimate
+problems 的集合, <span class="math inline">\(\mathcal{C}_A\)</span>
+表示简单的问题的集合, <span class="math inline">\(\mathcal{C}_B\)</span>
+表示困难的问题的集合. 在一对 leg 问题中, 可以定义难度关系,
+这可以引出下面的 reduction lemma:</p>
+<p>对于问题 <span class="math inline">\(P,Q\)</span>, 若 <span
+class="math inline">\(Q\in \mathcal{C}_A\)</span> 且 <span
+class="math inline">\(P\)</span> 不难于 <span
+class="math inline">\(Q\)</span>, 则 <span class="math inline">\(Q\in
+\mathcal{C}_A\)</span>; 若 <span class="math inline">\(P\in
+\mathcal{C}_B\)</span> 且 <span class="math inline">\(P\)</span> 难于
+<span class="math inline">\(Q\)</span>, 则 <span
+class="math inline">\(P\in \mathcal{C}_B\)</span>.</p>
+<h1 id="mathsfp-和-mathsfnp"><span
+class="math inline">\(\mathsf{P}\)</span> 和 <span
+class="math inline">\(\mathsf{NP}\)</span></h1>
+<h1 id="图灵机">图灵机</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/06/essay/thought1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/06/essay/thought1/" class="post-title-link" itemprop="url">一点想法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-06 23:23:18" itemprop="dateCreated datePublished" datetime="2023-08-06T23:23:18+08:00">2023-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-08-28 23:33:58" itemprop="dateModified" datetime="2023-08-28T23:33:58+08:00">2023-08-28</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>37</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          什么都学不会。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/06/essay/thought1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -241,7 +589,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>914</span>
+      <span>938</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -339,7 +687,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.3k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -357,78 +705,235 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解.</p>
-<p>相比搜索问题, CSP 的 <strong>状态(state)</strong> 是由变量 <span class="markdown-them-math-inline">$X_i$</span> 及其定义域 <span class="markdown-them-math-inline">$D_i$</span> 定义的, <strong>目标状态(goal test)</strong> 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝.</p>
-<p>变量分为离散变量和连续变量, 离散变量的取值可以是有限集(比如 boolean)或者无限集(比如整数集或字符串). 通过约束的变量个数对约束进行分类, 包括 unary, binary以及 higher-order. 下面会更多地介绍 binary-CSP, 因为此时可以很容易地用图来描述变量之间的关系.</p>
-<p>作为搜索问题的子集, 解决 CSP 的最简单的方式当然是 DFS, 或者说回溯(backtracking), 此时不关注变量赋值的顺序, 即认为变量赋值这一操作是可交换的.</p>
-<p>设变量 <span class="markdown-them-math-inline">$X$</span> 的值域为 <span class="markdown-them-math-inline">$D_X$</span>, 初始情况下默认 <span class="markdown-them-math-inline">$|D_X|=d$</span>. 以地图染色为例子, 设 <span class="markdown-them-math-inline">$D=\{\rm red, blue, yellow\}$</span>, 相邻的两块地图颜色需要不同, 下面是原图和抽象出来的 graph.</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101032224.png" style="zoom:50%;" />
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101031614.png" style="zoom:50%;" />
+          <p>CSP 是 Constraint Satisfaction Problem 的缩写,
+目的是找到符合约束条件的一组解.</p>
+<p>相比搜索问题, CSP 的 <strong>状态(state)</strong> 是由变量 <span
+class="math inline">\(X_i\)</span> 及其定义域 <span
+class="math inline">\(D_i\)</span> 定义的, <strong>目标状态(goal
+test)</strong> 是一组约束, 这些约束确定了变量的取值组合.
+主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小,
+即做剪枝.</p>
+<p>变量分为离散变量和连续变量, 离散变量的取值可以是有限集(比如
+boolean)或者无限集(比如整数集或字符串).
+通过约束的变量个数对约束进行分类, 包括 unary, binary以及 higher-order.
+下面会更多地介绍 binary-CSP,
+因为此时可以很容易地用图来描述变量之间的关系.</p>
+<p>作为搜索问题的子集, 解决 CSP 的最简单的方式当然是 DFS,
+或者说回溯(backtracking), 此时不关注变量赋值的顺序,
+即认为变量赋值这一操作是可交换的.</p>
+<p>设变量 <span class="math inline">\(X\)</span> 的值域为 <span
+class="math inline">\(D_X\)</span>, 初始情况下默认 <span
+class="math inline">\(|D_X|=d\)</span>. 以地图染色为例子, 设 <span
+class="math inline">\(D=\{\rm red, blue, yellow\}\)</span>,
+相邻的两块地图颜色需要不同, 下面是原图和抽象出来的 graph.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101032224.png" style="zoom:50%;" /></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101031614.png" style="zoom:50%;" /></p>
 <h1 id="提高回溯的效率">提高回溯的效率</h1>
-<p>搜索过程中需要枚举不同的变量以及变量不同的取值, 枚举的顺序实际上对效率有较大的影响, 对于下个状态选择哪个变量赋值, 给选择的变量赋哪个值, 以及能否更早地剪枝以避免不必要的搜索, 采用以下策略.</p>
+<p>搜索过程中需要枚举不同的变量以及变量不同的取值,
+枚举的顺序实际上对效率有较大的影响, 对于下个状态选择哪个变量赋值,
+给选择的变量赋哪个值, 以及能否更早地剪枝以避免不必要的搜索,
+采用以下策略.</p>
 <p>对于变量:</p>
 <ul>
-<li>Most constrained variable. 即选择&quot;被约束得最厉害的&quot;那个变量, 或者说合法(指不违反约束)取值数目最小的变量. 比如下图在涂过绿色之后, 城市 SA 只剩蓝色这一种选择, 那么优先给 SA 涂上蓝色.</li>
+<li>Most constrained variable. 即选择"被约束得最厉害的"那个变量,
+或者说合法(指不违反约束)取值数目最小的变量. 比如下图在涂过绿色之后, 城市
+SA 只剩蓝色这一种选择, 那么优先给 SA 涂上蓝色.</li>
 </ul>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101035585.png" style="zoom:50%;" />
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101035585.png" style="zoom:50%;" /></p>
 <ul>
-<li>Most constraining variable. 选择变量之后, 剩下的变量&quot;被约束得最厉害&quot;, 即使剩下的变量的合法取值变得最少. 这样做的是因为所有的变量都必须被赋值, 可以更早地搜索到不成立的情形. 比如在初始状态, 城市 SA 是最好的选择, 因为 SA 的颜色确定之后, WA, NT, Q, NSW, V 的合法取值均减一, 是减少的最多的.</li>
+<li>Most constraining variable. 选择变量之后,
+剩下的变量"被约束得最厉害", 即使剩下的变量的合法取值变得最少.
+这样做的是因为所有的变量都必须被赋值, 可以更早地搜索到不成立的情形.
+比如在初始状态, 城市 SA 是最好的选择, 因为 SA 的颜色确定之后, WA, NT, Q,
+NSW, V 的合法取值均减一, 是减少的最多的.</li>
 </ul>
 <p>对于变量的取值:</p>
 <ul>
-<li>Least constraining value. 选择的值对剩余变量的合法取值的减少应该最小. 这样做可以减少对变量取值的尝试, 减少不必要的分支. 比如下面的情况, 应优先给 Q 涂红色而不是蓝色, 否则会导致 SA 没有合法的颜色可选.</li>
+<li>Least constraining value.
+选择的值对剩余变量的合法取值的减少应该最小.
+这样做可以减少对变量取值的尝试, 减少不必要的分支. 比如下面的情况,
+应优先给 Q 涂红色而不是蓝色, 否则会导致 SA 没有合法的颜色可选.</li>
 </ul>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101038831.png" style="zoom:50%;" />
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101038831.png" style="zoom:50%;" /></p>
 <h1 id="forward-checking">Forward Checking</h1>
-<p>Forward Checking 是一种进一步减少搜索树规模的技术, 在给某个变量赋值之后, 在进行下一步搜索之前, 可以根据约束先一步减少未赋值变量合法取值的数量, 这称为<strong>一次 check</strong>, 若 check 以后出现了仅剩一种取值的变量 <span class="markdown-them-math-inline">$X$</span> , 那么可以根据 <span class="markdown-them-math-inline">$X$</span> 这唯一的取值继续根据约束减少剩余变量的合法取值的数量, 这称为<strong>传播(propagation)</strong>.</p>
-<p>需要注意 forward checking propagation 并不能提前检测到不成立的情形, 当传播完毕后, 搜索还需要继续进行才能确定是否要终止这一分支的搜索.</p>
+<p>Forward Checking 是一种进一步减少搜索树规模的技术,
+在给某个变量赋值之后, 在进行下一步搜索之前,
+可以根据约束先一步减少未赋值变量合法取值的数量, 这称为<strong>一次
+check</strong>, 若 check 以后出现了仅剩一种取值的变量 <span
+class="math inline">\(X\)</span> , 那么可以根据 <span
+class="math inline">\(X\)</span>
+这唯一的取值继续根据约束减少剩余变量的合法取值的数量,
+这称为<strong>传播(propagation)</strong>.</p>
+<p>需要注意 forward checking propagation 并不能提前检测到不成立的情形,
+当传播完毕后, 搜索还需要继续进行才能确定是否要终止这一分支的搜索.</p>
 <h1 id="arc-consistency">Arc Consistency</h1>
-<p><strong>弧一致性检验</strong>主要是在 binary-CSP 中应用, 对于一个 binary-CSP, 以变量为顶点, 约束为弧, 构造有向图 <span class="markdown-them-math-inline">$G=(V,E)$</span>, 这里 <span class="markdown-them-math-inline">$|V|$</span> 相当于变量数, <span class="markdown-them-math-inline">$|E|$</span> 相当于约束数. 对于其中的两个变量 <span class="markdown-them-math-inline">$X,Y$</span>, 若 <span class="markdown-them-math-inline">$X,Y$</span> 出现在同一约束中则 <span class="markdown-them-math-inline">$(X,Y)\in E\land (Y,X)\in E$</span>, 那么弧 <span class="markdown-them-math-inline">$(X,Y)$</span> 是一致的当且仅当对于任意 <span class="markdown-them-math-inline">$x\in D_X$</span> 都存在合法的 <span class="markdown-them-math-inline">$y\in D_Y$</span> 可以取到, 如果某个 <span class="markdown-them-math-inline">$x$</span> 使得所有 <span class="markdown-them-math-inline">$y\in D_Y$</span> 都不能取到, 那么这个 <span class="markdown-them-math-inline">$x$</span> 就没必要再选了, 可以直接删去, 此时 <span class="markdown-them-math-inline">$X$</span> 的取值丢失了一个值后, 需要重新检查 <span class="markdown-them-math-inline">$X$</span> 的邻居 . 当存在不一致的弧时, 就说明当前状态已经不满足约束, 是一个失败的状态, 算法 AC-3 可以用来找到一个状态是否存在不一致的弧.</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308091255691.png" alt=""></p>
-<p>这个算法维护一个队列存弧, 每次取队首元素 <span class="markdown-them-math-inline">$(X_i,X_j)$</span> 判断根据当前状态是否可以修改 <span class="markdown-them-math-inline">$X_i$</span> 的取值 <span class="markdown-them-math-inline">$D_i$</span>, 如果修改了且 <span class="markdown-them-math-inline">$X_i$</span> 不存在合法取值就意味着找到了不一致的弧, 否则就要重新check <span class="markdown-them-math-inline">$X_i$</span> 与其邻居的弧一致性, 因此就将弧 <span class="markdown-them-math-inline">$(X_k,X_i)(X_k\in N(X_i)\backslash\{X_j\})$</span> 加到队列中. 根据当前状态以及弧 <span class="markdown-them-math-inline">$(X_i,X_j)$</span> 修改 <span class="markdown-them-math-inline">$X_i$</span> 的取值, 只需要删去 <span class="markdown-them-math-inline">$x\in D_i$</span> 满足 <span class="markdown-them-math-inline">$\forall y\in D_j,(x,y)$</span> 都不满足约束, 如果不存在这样的 <span class="markdown-them-math-inline">$x$</span>, 则不做任何修改.</p>
-<p>对于任意两个变量, 检查它们的弧一致性需要枚举两个变量的所有取值, 这一步骤的复杂度为 <span class="markdown-them-math-inline">$O(d^2)$</span>, 于是 AC-3算法的复杂度为 <span class="markdown-them-math-inline">$O(|E|d^3)$</span>.</p>
-<p>相比 forward checking, arc consistency 可以更早地检测到当前分支的失败; 同时AC-3算法无法发现所有的不一致的弧, 比如下图的情况:</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101043893.png" style="zoom:50%;" />
-<p>这显然是一种不合法的情况, 不管怎么取值都会有两个相邻的取到相邻的颜色, 但是弧一致性检验只能两两之间检验.</p>
-<h1 id="$k$-consistency"><span class="markdown-them-math-inline">$k$</span>-consistency</h1>
-<p>如果一个 CSP 问题, 对于它的任意 <span class="markdown-them-math-inline">$k-1$</span> 个变量任意地合法赋值, 第 <span class="markdown-them-math-inline">$k$</span> 个变量都存在合法的值可以被赋予, 那么就称该 CSP 问题是 <span class="markdown-them-math-inline">$k$</span>-consistent 的. 显然 <span class="markdown-them-math-inline">$1$</span>-consisteny 是 node consistency, <span class="markdown-them-math-inline">$2$</span>-consistency 是 arc consistency.</p>
+<p><strong>弧一致性检验</strong>主要是在 binary-CSP 中应用, 对于一个
+binary-CSP, 以变量为顶点, 约束为弧, 构造有向图 <span
+class="math inline">\(G=(V,E)\)</span>, 这里 <span
+class="math inline">\(|V|\)</span> 相当于变量数, <span
+class="math inline">\(|E|\)</span> 相当于约束数. 对于其中的两个变量
+<span class="math inline">\(X,Y\)</span>, 若 <span
+class="math inline">\(X,Y\)</span> 出现在同一约束中则 <span
+class="math inline">\((X,Y)\in E\land (Y,X)\in E\)</span>, 那么弧 <span
+class="math inline">\((X,Y)\)</span> 是一致的当且仅当对于任意 <span
+class="math inline">\(x\in D_X\)</span> 都存在合法的 <span
+class="math inline">\(y\in D_Y\)</span> 可以取到, 如果某个 <span
+class="math inline">\(x\)</span> 使得所有 <span
+class="math inline">\(y\in D_Y\)</span> 都不能取到, 那么这个 <span
+class="math inline">\(x\)</span> 就没必要再选了, 可以直接删去, 此时
+<span class="math inline">\(X\)</span> 的取值丢失了一个值后,
+需要重新检查 <span class="math inline">\(X\)</span> 的邻居 .
+当存在不一致的弧时, 就说明当前状态已经不满足约束, 是一个失败的状态, 算法
+AC-3 可以用来找到一个状态是否存在不一致的弧.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308091255691.png" /></p>
+<p>这个算法维护一个队列存弧, 每次取队首元素 <span
+class="math inline">\((X_i,X_j)\)</span> 判断根据当前状态是否可以修改
+<span class="math inline">\(X_i\)</span> 的取值 <span
+class="math inline">\(D_i\)</span>, 如果修改了且 <span
+class="math inline">\(X_i\)</span>
+不存在合法取值就意味着找到了不一致的弧, 否则就要重新check <span
+class="math inline">\(X_i\)</span> 与其邻居的弧一致性, 因此就将弧 <span
+class="math inline">\((X_k,X_i)(X_k\in N(X_i)\backslash\{X_j\})\)</span>
+加到队列中. 根据当前状态以及弧 <span
+class="math inline">\((X_i,X_j)\)</span> 修改 <span
+class="math inline">\(X_i\)</span> 的取值, 只需要删去 <span
+class="math inline">\(x\in D_i\)</span> 满足 <span
+class="math inline">\(\forall y\in D_j,(x,y)\)</span> 都不满足约束,
+如果不存在这样的 <span class="math inline">\(x\)</span>,
+则不做任何修改.</p>
+<p>对于任意两个变量, 检查它们的弧一致性需要枚举两个变量的所有取值,
+这一步骤的复杂度为 <span class="math inline">\(O(d^2)\)</span>, 于是
+AC-3算法的复杂度为 <span class="math inline">\(O(|E|d^3)\)</span>.</p>
+<p>相比 forward checking, arc consistency
+可以更早地检测到当前分支的失败; 同时AC-3算法无法发现所有的不一致的弧,
+比如下图的情况:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101043893.png" style="zoom:50%;" /></p>
+<p>这显然是一种不合法的情况, 不管怎么取值都会有两个相邻的取到相邻的颜色,
+但是弧一致性检验只能两两之间检验.</p>
+<h1 id="k-consistency"><span
+class="math inline">\(k\)</span>-consistency</h1>
+<p>如果一个 CSP 问题, 对于它的任意 <span
+class="math inline">\(k-1\)</span> 个变量任意地合法赋值, 第 <span
+class="math inline">\(k\)</span> 个变量都存在合法的值可以被赋予,
+那么就称该 CSP 问题是 <span class="math inline">\(k\)</span>-consistent
+的. 显然 <span class="math inline">\(1\)</span>-consisteny 是 node
+consistency, <span class="math inline">\(2\)</span>-consistency 是 arc
+consistency.</p>
 <h1 id="tree-structured-csps">Tree-structured CSPs</h1>
-<p>当上文的 binary-CSP 对应的图 <span class="markdown-them-math-inline">$G$</span> 是一棵树, 那么该 CSP 可以在 <span class="markdown-them-math-inline">$O(nd^2)$</span> 的时间内解决, 而一般的 CSP 的最坏时间复杂度为 <span class="markdown-them-math-inline">$O(d^n)$</span>. 这是一个 DP 算法:</p>
-<p>随机选择一个结点作为根节点, 按照拓扑排序得到一个节点序列<strong>保证父节点在子节点</strong>之前, 接着倒序遍历得到的序列, 对 <span class="markdown-them-math-inline">$(\mathrm{fa}(x),x)$</span> 进行弧一致性检验, 删去一些值, 那么再正序遍历, 给每一个结点 <span class="markdown-them-math-inline">$x$</span> 赋一个与其父节点 <span class="markdown-them-math-inline">$\mathrm{fa}(x)$</span> 的值相容的值即可, 这是一定可以做到的, 因为前面做过弧一致性检验后保证了对于父节点的任意一个取值, 子结点至少有一个合法取值.</p>
-<p>由于大部分图不是树形结构, 但是对于比较接近树结构的图, 我们可以在图中找到最少的点(这是NPC的), 删去这些点之后使得剩下的子图成为一颗树(比如删去城市 SA), 那么就可以用上面的算法来解决, 对于删去的点直接枚举每个点的所有取值即可, 设删去的点的数目为 <span class="markdown-them-math-inline">$c$</span>, 那么复杂度为 <span class="markdown-them-math-inline">$O(d^c(n-c)d^2)$</span>, 我们希望 <span class="markdown-them-math-inline">$c$</span> 比较小.</p>
+<p>当上文的 binary-CSP 对应的图 <span class="math inline">\(G\)</span>
+是一棵树, 那么该 CSP 可以在 <span class="math inline">\(O(nd^2)\)</span>
+的时间内解决, 而一般的 CSP 的最坏时间复杂度为 <span
+class="math inline">\(O(d^n)\)</span>. 这是一个 DP 算法:</p>
+<p>随机选择一个结点作为根节点,
+按照拓扑排序得到一个节点序列<strong>保证父节点在子节点</strong>之前,
+接着倒序遍历得到的序列, 对 <span
+class="math inline">\((\mathrm{fa}(x),x)\)</span> 进行弧一致性检验,
+删去一些值, 那么再正序遍历, 给每一个结点 <span
+class="math inline">\(x\)</span> 赋一个与其父节点 <span
+class="math inline">\(\mathrm{fa}(x)\)</span> 的值相容的值即可,
+这是一定可以做到的,
+因为前面做过弧一致性检验后保证了对于父节点的任意一个取值,
+子结点至少有一个合法取值.</p>
+<p>由于大部分图不是树形结构, 但是对于比较接近树结构的图,
+我们可以在图中找到最少的点(这是NPC的),
+删去这些点之后使得剩下的子图成为一颗树(比如删去城市 SA),
+那么就可以用上面的算法来解决, 对于删去的点直接枚举每个点的所有取值即可,
+设删去的点的数目为 <span class="math inline">\(c\)</span>, 那么复杂度为
+<span class="math inline">\(O(d^c(n-c)d^2)\)</span>, 我们希望 <span
+class="math inline">\(c\)</span> 比较小.</p>
 <h2 id="tree-decomposition">Tree decomposition</h2>
-<p>为了使用 tree-structured CSPs 的复杂度较低的算法, 除了上面的删点手段, 还可以使用 Tree decomposition, 即组合若干相邻节点称为一个&quot;大结点&quot;(meganode), 如下图所示, 同一个结点可以在不同的&quot;大节点&quot;中出现, 使 meganode 之间成为一棵树, 且要保证其赋值的一致性.</p>
-<p>定义树宽为 <span class="markdown-them-math-inline">$w= \max |\mathrm{meganode}|-1$</span>, 当树宽为 <span class="markdown-them-math-inline">$1$</span> 时原图为树.</p>
-<p>在 <span class="markdown-them-math-inline">$G$</span> 中, 若已知 <span class="markdown-them-math-inline">$\deg(v)$</span>, 则在 tree decomposition 得到的树中, <span class="markdown-them-math-inline">$v$</span> 所在的 meganode 的数量为 <span class="markdown-them-math-inline">$\deg(v)-1$</span> 且这些 megenode 恰好可以连成一条 path.</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101210596.png" style="zoom: 50%;" />
+<p>为了使用 tree-structured CSPs 的复杂度较低的算法, 除了上面的删点手段,
+还可以使用 Tree decomposition,
+即组合若干相邻节点称为一个"大结点"(meganode), 如下图所示,
+同一个结点可以在不同的"大节点"中出现, 使 meganode 之间成为一棵树,
+且要保证其赋值的一致性.</p>
+<p>定义树宽为 <span class="math inline">\(w= \max
+|\mathrm{meganode}|-1\)</span>, 当树宽为 <span
+class="math inline">\(1\)</span> 时原图为树.</p>
+<p>在 <span class="math inline">\(G\)</span> 中, 若已知 <span
+class="math inline">\(\deg(v)\)</span>, 则在 tree decomposition
+得到的树中, <span class="math inline">\(v\)</span> 所在的 meganode
+的数量为 <span class="math inline">\(\deg(v)-1\)</span> 且这些 megenode
+恰好可以连成一条 path.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101210596.png" style="zoom: 50%;" /></p>
 <p>下面是另一个例子:</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142052499.png" style="zoom:50%;" />
-<p>处理的时候先处理每个 meganode, 再使用 tree-structured CSPs 的算法处理整棵树即可. 那么复杂度为 <span class="markdown-them-math-inline">$O(nd^{w+1})$</span>, 对任意图, 找到它的最小树宽的问题是 NPC 的, 可以用启发式算法找到一个相对小的.</p>
-<h1 id="local-search for csps">Local Search for CSPs</h1>
-<p>对于一个 CSP, 可以随机给一种赋值方案, 这大概率会有违反约束的情况, local search 指的是通过不断调整不同变量的值来消除违反约束的部分, 最后得到一个可行解.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142052499.png" style="zoom:50%;" /></p>
+<p>处理的时候先处理每个 meganode, 再使用 tree-structured CSPs
+的算法处理整棵树即可. 那么复杂度为 <span
+class="math inline">\(O(nd^{w+1})\)</span>, 对任意图,
+找到它的最小树宽的问题是 NPC 的, 可以用启发式算法找到一个相对小的.</p>
+<h1 id="local-search-for-csps">Local Search for CSPs</h1>
+<p>对于一个 CSP, 可以随机给一种赋值方案, 这大概率会有违反约束的情况,
+local search 指的是通过不断调整不同变量的值来消除违反约束的部分,
+最后得到一个可行解.</p>
 <h1 id="习题">习题</h1>
-<p><strong>6.4</strong> Give precise formulations for each of the following as constraint satisfaction problems:</p>
-<p>a. Rectilinear floor-planning: find non-overlapping places in a large rectangle for a number of smaller rectangles.</p>
-<p>b. Class scheduling: There is a fixed number of professors and classrooms, a list of classes to be offered, and a list of possible time slots for classes. Each professor has a set of classes that he or she can teach.</p>
-<p>c. Hamiltonian tour: given a network of cities connected by roads, choose an order to visit all cities in a country without repeating any.</p>
+<p><strong>6.4</strong> Give precise formulations for each of the
+following as constraint satisfaction problems:</p>
+<ol type="a">
+<li><p>Rectilinear floor-planning: find non-overlapping places in a
+large rectangle for a number of smaller rectangles.</p></li>
+<li><p>Class scheduling: There is a fixed number of professors and
+classrooms, a list of classes to be offered, and a list of possible time
+slots for classes. Each professor has a set of classes that he or she
+can teach.</p></li>
+<li><p>Hamiltonian tour: given a network of cities connected by roads,
+choose an order to visit all cities in a country without repeating
+any.</p></li>
+</ol>
 <blockquote>
-<p>Find a permutation of <span class="markdown-them-math-inline">$\{1,\cdots,n\}$</span> such that <span class="markdown-them-math-inline">$\forall j\ne k,v_{i_j}\in N(v_{i_k})$</span>.</p>
+<p>Find a permutation of <span
+class="math inline">\(\{1,\cdots,n\}\)</span> such that <span
+class="math inline">\(\forall j\ne k,v_{i_j}\in N(v_{i_k})\)</span>.</p>
 </blockquote>
-<p><strong>6.6</strong> Show how a single ternary constraint such as “<span class="markdown-them-math-inline">$A + B = C$</span>” can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. (Hint: Consider a new variable that takes on values that are pairs of other values, and consider constraints such as “X is the first element of the pair Y .”) Next, show how constraints with more than three variables can be treated similarly. Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.</p>
+<p><strong>6.6</strong> Show how a single ternary constraint such as
+“<span class="math inline">\(A + B = C\)</span>” can be turned into
+three binary constraints by using an auxiliary variable. You may assume
+finite domains. (Hint: Consider a new variable that takes on values that
+are pairs of other values, and consider constraints such as “X is the
+first element of the pair Y .”) Next, show how constraints with more
+than three variables can be treated similarly. Finally, show how unary
+constraints can be eliminated by altering the domains of variables. This
+completes the demonstration that any CSP can be transformed into a CSP
+with only binary constraints.</p>
 <blockquote>
 <p>这个问题最终要求证明任意的 CSP 问题都可以转化为 binary-CSP 问题.</p>
-<p>根据 hint, 令 <span class="markdown-them-math-inline">$X=(A,B)\in D^2$</span>, 那么约束 <span class="markdown-them-math-inline">$A+B=C$</span> 可以转化为如下的三个 binary constraint:</p>
-<div class="markdown-them-math-block">$$\begin{cases}
+<p>根据 hint, 令 <span class="math inline">\(X=(A,B)\in D^2\)</span>,
+那么约束 <span class="math inline">\(A+B=C\)</span> 可以转化为如下的三个
+binary constraint: <span class="math display">\[
+\begin{cases}
 \langle X,(1,1)\rangle=C\\
 A \text{ is the first element of }X\\
 B \text{ is the second element of }X
 \end{cases}
-$$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-inline">$f(X_1,\cdots,X_n)=0$</span>, 当表达式为线性或者二次型时还能采用上述方法, 但是如果约束比较复杂, 还能怎么办呢?</p>
+\]</span> 对于更多变量的约束, 比如 <span
+class="math inline">\(f(X_1,\cdots,X_n)=0\)</span>,
+当表达式为线性或者二次型时还能采用上述方法, 但是如果约束比较复杂,
+还能怎么办呢?</p>
 </blockquote>
-<p><strong>6.13</strong> AC-3 puts back on the queue every arc <span class="markdown-them-math-inline">$(X_k, X_i)$</span> whenever any value is deleted from the domain of <span class="markdown-them-math-inline">$X_i$</span>, even if each value of <span class="markdown-them-math-inline">$X_k$</span> is consistent with several remaining values of <span class="markdown-them-math-inline">$X_i$</span>. Suppose that, for every arc <span class="markdown-them-math-inline">$(X_k, X_i)$</span>, we keep track of the number of remaining values of <span class="markdown-them-math-inline">$X_i$</span> that are consistent with each value of <span class="markdown-them-math-inline">$X_k$</span>. Explain how to update these numbers efficiently and hence show that arc consistency can be enforced in total time <span class="markdown-them-math-inline">$O(n^2d^2)$</span>.</p>
-<p><strong>6.14</strong> The TREE-CSP-SOLVER (Figure 6.10) makes arcs consistent starting at the leaves and working backwards towards the root. Why does it do that? What would happen if it went in the opposite direction?</p>
+<p><strong>6.13</strong> AC-3 puts back on the queue every arc <span
+class="math inline">\((X_k, X_i)\)</span> whenever any value is deleted
+from the domain of <span class="math inline">\(X_i\)</span>, even if
+each value of <span class="math inline">\(X_k\)</span> is consistent
+with several remaining values of <span
+class="math inline">\(X_i\)</span>. Suppose that, for every arc <span
+class="math inline">\((X_k, X_i)\)</span>, we keep track of the number
+of remaining values of <span class="math inline">\(X_i\)</span> that are
+consistent with each value of <span class="math inline">\(X_k\)</span>.
+Explain how to update these numbers efficiently and hence show that arc
+consistency can be enforced in total time <span
+class="math inline">\(O(n^2d^2)\)</span>.</p>
+<p><strong>6.14</strong> The TREE-CSP-SOLVER (Figure 6.10) makes arcs
+consistent starting at the leaves and working backwards towards the
+root. Why does it do that? What would happen if it went in the opposite
+direction?</p>
 <blockquote>
-<p>弧一致性检验要求当某个结点的合法取值被删去之后要 recheck 其邻居, 对于树形结构的 CSP, 每次删去的都是父节点的取值, 倒序遍历时, 父节点的祖先还没有被更新过, 可以在遍历的过程中一次更新, 而其儿子不需要再更新; 如果正序遍历, 那么删去某个父节点的值后, 还要再检查该父节点的父亲结点, 这个检查有可能会继续传播直到根节点, 造成了大量的开销. 因此倒序遍历保证了每个结点只 check 了一次.</p>
+<p>弧一致性检验要求当某个结点的合法取值被删去之后要 recheck 其邻居,
+对于树形结构的 CSP, 每次删去的都是父节点的取值, 倒序遍历时,
+父节点的祖先还没有被更新过, 可以在遍历的过程中一次更新,
+而其儿子不需要再更新; 如果正序遍历, 那么删去某个父节点的值后,
+还要再检查该父节点的父亲结点, 这个检查有可能会继续传播直到根节点,
+造成了大量的开销. 因此倒序遍历保证了每个结点只 check 了一次.</p>
 </blockquote>
 
       
@@ -474,7 +979,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/31/essay/vscode-wsl-permission/" class="post-title-link" itemprop="url">碰到的一些简单的问题</a>
+          <a href="/2023/07/31/essay/vscode-wsl-permission/" class="post-title-link" itemprop="url">WSL2 相关</a>
         </h2>
 
         <div class="post-meta-container">
@@ -492,7 +997,16 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-31 10:45:46" itemprop="dateModified" datetime="2023-08-31T10:45:46+08:00">2023-08-31</time>
+      <time title="Modified: 2023-09-15 13:15:07" itemprop="dateModified" datetime="2023-09-15T13:15:07+08:00">2023-09-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0%E5%BD%95%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">随手记录的问题</span></a>
+        </span>
     </span>
 
   
@@ -520,7 +1034,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
     
     
     <div class="post-body" itemprop="articleBody">
-          记录各个计算机技术学习的时候碰到的一些问题, 包括但不限于课程和子集折腾的东西.
+          记录各个计算机技术学习的时候碰到的一些问题, 包括但不限于课程和自己折腾的东西.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/07/31/essay/vscode-wsl-permission/#more" rel="contents">
@@ -613,6 +1127,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
     
     <div class="post-body" itemprop="articleBody">
           
+
       
     </div>
 
@@ -684,14 +1199,14 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.7k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -709,40 +1224,143 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
 <li>目标</li>
 <li>路径代价函数</li>
 </ul>
-<p>即从初始状态出发, 扫描操作算子集, 选取适当的操作算子作用在初始状态上得到新的状态, 新的状态满足目标时终止搜索, 反之以新的状态作为当前状态; 如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点. 在搜索过程中, 我们关注能否找到解, 解的质量, 时空复杂度.</p>
+<p>即从初始状态出发, 扫描操作算子集,
+选取适当的操作算子作用在初始状态上得到新的状态,
+新的状态满足目标时终止搜索, 反之以新的状态作为当前状态;
+如果最终还需要搜索路径, 那么就在搜索的时候维护搜索树中每个状态的父节点.
+在搜索过程中, 我们关注能否找到解, 解的质量, 时空复杂度.</p>
 <p>根据搜索方向, 搜索策略可以分为正向搜索和逆向搜索:</p>
 <ul>
 <li>正向搜索: 实际上就是上面所叙述的搜索过程.</li>
-<li>逆向搜索: 当操作算子可逆时, 可以从目标出发, 寻找<strong>能产生该目标的操作算子</strong>以及<strong>产生该操作算子需要的条件</strong>. 按照该策略不断进行, 直到找到问题给定的条件即可.</li>
+<li>逆向搜索: 当操作算子可逆时, 可以从目标出发,
+寻找<strong>能产生该目标的操作算子</strong>以及<strong>产生该操作算子需要的条件</strong>.
+按照该策略不断进行, 直到找到问题给定的条件即可.</li>
 </ul>
-<p>根据搜索过程中是否用与问题有关的信息分为盲目搜索和启发式搜索, 启发式搜索可以看作是一种基于经验的贪心策略.</p>
+<p>根据搜索过程中是否用与问题有关的信息分为盲目搜索和启发式搜索,
+启发式搜索可以看作是一种基于经验的贪心策略.</p>
 <h1 id="回溯">回溯</h1>
-<p>回溯策略就是从初始状态出发, 不断试探寻找可行的路径, 如果遇到了<strong>不可解点</strong>时就回溯到距离最近的父节点, 判断其是否还有其他子节点未被扩展.</p>
+<p>回溯策略就是从初始状态出发, 不断试探寻找可行的路径,
+如果遇到了<strong>不可解点</strong>时就回溯到距离最近的父节点,
+判断其是否还有其他子节点未被扩展.</p>
 <blockquote>
 <p>回溯等同于DFS吗?</p>
-<p>如果考虑严格定义的话, DFS本身是在图这一抽象出来的结构上使用的算法; 而回溯则是在拥有上述特征的问题中使用的(或者说, 回溯是搜索问题的特征空间映射得到的的树结构上的DFS), 两者的使用场景其实不太一样. 不过在实际使用的时候, 对DFS和回溯这两个名词其实并没有做明显的区分, 在措辞表达方面可能DFS用得更多一些; 除此之外, 再深究一下回溯定义中的&quot;遇到了不可解点就回溯&quot;这一策略, 这实际上是一种剪枝, 即可以认为回溯相比一般的DFS多了剪枝. 反正没有必要做区分.</p>
+<p>如果考虑严格定义的话, DFS本身是在图这一抽象出来的结构上使用的算法;
+而回溯则是在拥有上述特征的问题中使用的(或者说,
+回溯是搜索问题的特征空间映射得到的的树结构上的DFS),
+两者的使用场景其实不太一样. 不过在实际使用的时候,
+对DFS和回溯这两个名词其实并没有做明显的区分,
+在措辞表达方面可能DFS用得更多一些; 除此之外,
+再深究一下回溯定义中的"遇到了不可解点就回溯"这一策略,
+这实际上是一种剪枝, 即可以认为回溯相比一般的DFS多了剪枝.
+反正没有必要做区分.</p>
 </blockquote>
 <h1 id="bfs和dfs的一些值得注意的地方">BFS和DFS的一些值得注意的地方</h1>
-<p>1: BFS一定能找到最优解而DFS不一定. 这很好理解, 如果问题对应的搜索树不是有限的, 那么DFS将一直搜下去, 但显然一层一层搜索的BFS一定可以找到最优解.</p>
-<p>2: 一个搜索问题必须具备某种特征才能使用BFS求解. 设 <span class="markdown-them-math-inline">$g(N)$</span> 表示从起点到节点 <span class="markdown-them-math-inline">$N$</span> 的代价(就是文章最开始的<strong>路径代价函数</strong>), 其中 <span class="markdown-them-math-inline">$N$</span> 在搜索树中的层数是 <span class="markdown-them-math-inline">$d$</span> , 那么某个问题能使用BFS求解当且仅当 <strong><span class="markdown-them-math-inline">$g$</span> 关于 <span class="markdown-them-math-inline">$d$</span> 是递增的</strong>. 比较经典的例子是Dijkstra算法无法在有负权环的图上应用, 因为Dijkstra算法本质上就是BFS, 若出现了负权环, 那么就可以在负权环上一直搜索下去(搜索深度增加)而代价始终不增, 也就没有最优解了.</p>
-<p>3: DFS的一些改进. 主要是迭代加深搜索, 这个很容易想到, 可能在做题的时候就不经意间使用了: 设定一个深度限制, 记录当前深度, 每迭代一次当前深度加一, 当达到限制还没有找到最优解时便回溯.</p>
-<h1 id="$\mathrm{a}^{\ast}$-和 $\mathrm{ida}^{\ast}$"><span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 和 <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span></h1>
-<p>启发式搜索本质上是基于经验或直觉在每一步选择操作算子时都选择较优的, 达到缩小状态空间的目的. 由于严重依赖经验或直觉, 因此启发式算法往往只能得到次优解 , 甚至一无所获.</p>
-<p>对于待搜索节点 <span class="markdown-them-math-inline">$n$</span> , 定义它的估价函数 <span class="markdown-them-math-inline">$f(n)$</span> 表示它的&quot;有希望&quot;程度, 那么在搜索时就优先搜索有希望程度更大的的状态; 当然 <span class="markdown-them-math-inline">$f(n)$</span> 也可以是&quot;没希望程度&quot;, 那么就优先搜索没希望程度更小的状态, 此时搜索的过程相当于最小化 <span class="markdown-them-math-inline">$f(n)$</span> 的过程, 这与机器学习中的 loss function 是一样的, 或者说, <span class="markdown-them-math-inline">$f(n)$</span> 本身就是一个 loss function. 实现这种算法往往要使用优先队列. Dijkstra 算法是一个典型的符合该搜索过程的算法, 有时候会把上面的算法称为 A 算法. 搜索过程中碰到重复结点的处理手段类似于 Dijkstra 算法.</p>
-<p>对不同的问题 <span class="markdown-them-math-inline">$f(n)$</span> 的结构不尽相同, 但都可以写成 <span class="markdown-them-math-inline">$f(n)=g(n)+h(n)$</span> 的形式, 其中 <span class="markdown-them-math-inline">$g(n)$</span> 表示从起点到结点 <span class="markdown-them-math-inline">$n$</span> 搜索所耗费的实际代价, 它衡量了状态在搜索图/树中的深度, <span class="markdown-them-math-inline">$h(n)$</span> 为从结点 <span class="markdown-them-math-inline">$n$</span> 到目标状态的最佳路径的<strong>估计代价</strong>. <span class="markdown-them-math-inline">$g(n)$</span> 在搜索的过程中很容易就能确定, <span class="markdown-them-math-inline">$h(n)$</span> 需要根据题目的具体信息来设计, 不同方案会带来显著不同的效果. <span class="markdown-them-math-inline">$g(n)$</span> 和 <span class="markdown-them-math-inline">$h(n)$</span> 的大小决定了搜索过程中盲目搜索和基于经验的搜索所占的比例, <span class="markdown-them-math-inline">$g(n)\gg h(n)$</span> 时有利于搜索的完备性但状态空间比较大时代价会很高; <span class="markdown-them-math-inline">$h(n)\gg g(n)$</span> 时对于比较复杂的问题往往只能得到次优解但效率会有显著提升.</p>
-<p>用 Dijkstra 算法求解最短路时 <span class="markdown-them-math-inline">$h(n)=0$</span>, 此时必然能找到最优解.</p>
-<p>不能保证 A 算法能得到最优解, 能否加上一些条件使其必定能得到最优解呢? <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法是这样的算法. 设 <span class="markdown-them-math-inline">$h^{\ast}(n)$</span> 表示结点 <span class="markdown-them-math-inline">$n$</span> 到目标状态的最优路径的代价, 若对所有节点 <span class="markdown-them-math-inline">$n$</span> 都有 <span class="markdown-them-math-inline">$h(n)\le h^{\ast}(n)$</span> 则 A 算法必定能在有限步搜索到最优的解, 这时它称为 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法.</p>
-<p>值得注意的是 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法仍然是一类算法, 不同的启发策略仍然有优劣, 那么需要一些标准:</p>
+<p>1: BFS一定能找到最优解而DFS不一定. 这很好理解,
+如果问题对应的搜索树不是有限的, 那么DFS将一直搜下去,
+但显然一层一层搜索的BFS一定可以找到最优解.</p>
+<p>2: 一个搜索问题必须具备某种特征才能使用BFS求解. 设 <span
+class="math inline">\(g(N)\)</span> 表示从起点到节点 <span
+class="math inline">\(N\)</span>
+的代价(就是文章最开始的<strong>路径代价函数</strong>), 其中 <span
+class="math inline">\(N\)</span> 在搜索树中的层数是 <span
+class="math inline">\(d\)</span> , 那么某个问题能使用BFS求解当且仅当
+<strong><span class="math inline">\(g\)</span> 关于 <span
+class="math inline">\(d\)</span> 是递增的</strong>.
+比较经典的例子是Dijkstra算法无法在有负权环的图上应用,
+因为Dijkstra算法本质上就是BFS, 若出现了负权环,
+那么就可以在负权环上一直搜索下去(搜索深度增加)而代价始终不增,
+也就没有最优解了.</p>
+<p>3: DFS的一些改进. 主要是迭代加深搜索, 这个很容易想到,
+可能在做题的时候就不经意间使用了: 设定一个深度限制, 记录当前深度,
+每迭代一次当前深度加一, 当达到限制还没有找到最优解时便回溯.</p>
+<h1 id="mathrmaast-和-mathrmidaast"><span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 和 <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span></h1>
+<p>启发式搜索本质上是基于经验或直觉在每一步选择操作算子时都选择较优的,
+达到缩小状态空间的目的. 由于严重依赖经验或直觉,
+因此启发式算法往往只能得到次优解 , 甚至一无所获.</p>
+<p>对于待搜索节点 <span class="math inline">\(n\)</span> ,
+定义它的估价函数 <span class="math inline">\(f(n)\)</span>
+表示它的"有希望"程度, 那么在搜索时就优先搜索有希望程度更大的的状态; 当然
+<span class="math inline">\(f(n)\)</span> 也可以是"没希望程度",
+那么就优先搜索没希望程度更小的状态, 此时搜索的过程相当于最小化 <span
+class="math inline">\(f(n)\)</span> 的过程, 这与机器学习中的 loss
+function 是一样的, 或者说, <span class="math inline">\(f(n)\)</span>
+本身就是一个 loss function. 实现这种算法往往要使用优先队列. Dijkstra
+算法是一个典型的符合该搜索过程的算法, 有时候会把上面的算法称为 A 算法.
+搜索过程中碰到重复结点的处理手段类似于 Dijkstra 算法.</p>
+<p>对不同的问题 <span class="math inline">\(f(n)\)</span>
+的结构不尽相同, 但都可以写成 <span
+class="math inline">\(f(n)=g(n)+h(n)\)</span> 的形式, 其中 <span
+class="math inline">\(g(n)\)</span> 表示从起点到结点 <span
+class="math inline">\(n\)</span> 搜索所耗费的实际代价,
+它衡量了状态在搜索图/树中的深度, <span
+class="math inline">\(h(n)\)</span> 为从结点 <span
+class="math inline">\(n\)</span>
+到目标状态的最佳路径的<strong>估计代价</strong>. <span
+class="math inline">\(g(n)\)</span> 在搜索的过程中很容易就能确定, <span
+class="math inline">\(h(n)\)</span> 需要根据题目的具体信息来设计,
+不同方案会带来显著不同的效果. <span class="math inline">\(g(n)\)</span>
+和 <span class="math inline">\(h(n)\)</span>
+的大小决定了搜索过程中盲目搜索和基于经验的搜索所占的比例, <span
+class="math inline">\(g(n)\gg h(n)\)</span>
+时有利于搜索的完备性但状态空间比较大时代价会很高; <span
+class="math inline">\(h(n)\gg g(n)\)</span>
+时对于比较复杂的问题往往只能得到次优解但效率会有显著提升.</p>
+<p>用 Dijkstra 算法求解最短路时 <span
+class="math inline">\(h(n)=0\)</span>, 此时必然能找到最优解.</p>
+<p>不能保证 A 算法能得到最优解, 能否加上一些条件使其必定能得到最优解呢?
+<span class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法是这样的算法.
+设 <span class="math inline">\(h^{\ast}(n)\)</span> 表示结点 <span
+class="math inline">\(n\)</span> 到目标状态的最优路径的代价,
+若对所有节点 <span class="math inline">\(n\)</span> 都有 <span
+class="math inline">\(h(n)\le h^{\ast}(n)\)</span> 则 A
+算法必定能在有限步搜索到最优的解, 这时它称为 <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法.</p>
+<p>值得注意的是 <span class="math inline">\(\mathrm{A}^{\ast}\)</span>
+算法仍然是一类算法, 不同的启发策略仍然有优劣, 那么需要一些标准:</p>
 <ul>
-<li>完备性:  算法是否能在有限步能搜索到最优解. 所有的 <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法都满足.</li>
-<li>单调性: 启发函数 <span class="markdown-them-math-inline">$h$</span> 满足(1) 当 <span class="markdown-them-math-inline">$n_i$</span> 是 <span class="markdown-them-math-inline">$n_j$</span> 的子节点时有 <span class="markdown-them-math-inline">$h(n_i)-h(n_j)\le \mathrm{cost}(n_j,n_i)$</span>; (2) <span class="markdown-them-math-inline">$h(n_{\mathrm{goal}})=0$</span>.</li>
-<li>信息性.  当 <span class="markdown-them-math-inline">$h_2(n)\ge h_1(n)$</span> 恒成立时称启发策略 <span class="markdown-them-math-inline">$h_2$</span> 相比 <span class="markdown-them-math-inline">$h_1$</span> 具有更多的信息性.  <span class="markdown-them-math-inline">$h$</span> 越大相当于用了题目中的更多信息来使得状态空间更小, 当然更多的信息性带来的计算代价可能会与减小状态空间所带来的益处抵消.</li>
+<li>完备性: 算法是否能在有限步能搜索到最优解. 所有的 <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 算法都满足.</li>
+<li>单调性: 启发函数 <span class="math inline">\(h\)</span> 满足(1) 当
+<span class="math inline">\(n_i\)</span> 是 <span
+class="math inline">\(n_j\)</span> 的子节点时有 <span
+class="math inline">\(h(n_i)-h(n_j)\le \mathrm{cost}(n_j,n_i)\)</span>;
+(2) <span class="math inline">\(h(n_{\mathrm{goal}})=0\)</span>.</li>
+<li>信息性. 当 <span class="math inline">\(h_2(n)\ge h_1(n)\)</span>
+恒成立时称启发策略 <span class="math inline">\(h_2\)</span> 相比 <span
+class="math inline">\(h_1\)</span> 具有更多的信息性. <span
+class="math inline">\(h\)</span>
+越大相当于用了题目中的更多信息来使得状态空间更小,
+当然更多的信息性带来的计算代价可能会与减小状态空间所带来的益处抵消.</li>
 </ul>
-<p><span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 算法完备性的证明:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png" alt=""></p>
-<p>类似于迭代加深搜索, 可以提出 Iterative-deepening <span class="markdown-them-math-inline">$\mathrm{A}^{\ast}$</span> 即 <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span>. 不同于迭代加深搜索的深度限制, <span class="markdown-them-math-inline">$\mathrm{IDA}^{\ast}$</span> 给 <span class="markdown-them-math-inline">$f$</span> 设置了一个限制 <span class="markdown-them-math-inline">$f'$</span>, <span class="markdown-them-math-inline">$f'$</span> 初始化为 <span class="markdown-them-math-inline">$f(\mathrm{root})$</span>, 即初始状态(根结点) 对应的估价函数值; 接着不断地以 <span class="markdown-them-math-inline">$f'$</span> 作为限制进行DFS, 找到最优解则返回最优解, 否则返回所有满足 <span class="markdown-them-math-inline">$f(n)&gt;f'$</span> 的 <span class="markdown-them-math-inline">$f(n)$</span> 的最小值, 或者说搜索终止边界处的结点的估价函数值中的最小值, 依次更新 <span class="markdown-them-math-inline">$f'$</span>, 下面是伪代码:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730160830.png" alt=""></p>
-<p>在 <span class="markdown-them-math-inline">$\mathrm{IAD}^{\ast}$</span> 的基础上对使用的内存做改进可以得到 <span class="markdown-them-math-inline">$\mathrm{SMA}^{\ast}$</span>, 基本思路是遗忘掉一些结点, 同时需要用到其他结点的估价函数值来更新当前结点的估价函数值.</p>
+<p><span class="math inline">\(\mathrm{A}^{\ast}\)</span>
+算法完备性的证明:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730120653.png" /></p>
+<p>类似于迭代加深搜索, 可以提出 Iterative-deepening <span
+class="math inline">\(\mathrm{A}^{\ast}\)</span> 即 <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span>.
+不同于迭代加深搜索的深度限制, <span
+class="math inline">\(\mathrm{IDA}^{\ast}\)</span> 给 <span
+class="math inline">\(f\)</span> 设置了一个限制 <span
+class="math inline">\(f&#39;\)</span>, <span
+class="math inline">\(f&#39;\)</span> 初始化为 <span
+class="math inline">\(f(\mathrm{root})\)</span>, 即初始状态(根结点)
+对应的估价函数值; 接着不断地以 <span
+class="math inline">\(f&#39;\)</span> 作为限制进行DFS,
+找到最优解则返回最优解, 否则返回所有满足 <span
+class="math inline">\(f(n)&gt;f&#39;\)</span> 的 <span
+class="math inline">\(f(n)\)</span> 的最小值,
+或者说搜索终止边界处的结点的估价函数值中的最小值, 依次更新 <span
+class="math inline">\(f&#39;\)</span>, 下面是伪代码:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/20230730160830.png" /></p>
+<p>在 <span class="math inline">\(\mathrm{IAD}^{\ast}\)</span>
+的基础上对使用的内存做改进可以得到 <span
+class="math inline">\(\mathrm{SMA}^{\ast}\)</span>,
+基本思路是遗忘掉一些结点,
+同时需要用到其他结点的估价函数值来更新当前结点的估价函数值.</p>
 
       
     </div>
@@ -805,7 +1423,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-30 15:11:53" itemprop="dateModified" datetime="2023-08-30T15:11:53+08:00">2023-08-30</time>
+      <time title="Modified: 2023-09-06 17:23:00" itemprop="dateModified" datetime="2023-09-06T17:23:00+08:00">2023-09-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -813,7 +1431,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Exact-Exponetial-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponetial Algorithm</span></a>
+          <a href="/categories/Exact-Exponential-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Exact Exponential Algorithm</span></a>
         </span>
     </span>
 
@@ -824,7 +1442,7 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.4k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -843,31 +1461,93 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="染色">染色</h1>
-<p>染色问题的暴力复杂度为 <span class="markdown-them-math-inline">$O(n^n)$</span>.</p>
-<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质, 在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集), 对于 <span class="markdown-them-math-inline">$X\subset V$</span>,  记 <span class="markdown-them-math-inline">$f(X)=\chi(G[X])$</span>, <span class="markdown-them-math-inline">$G[X]$</span> 的最大独立集集合为 <span class="markdown-them-math-inline">$\mathcal{I}_X$</span>, 那么就有下面的递推</p>
-<div class="markdown-them-math-block">$$f(X)
+<p>染色问题的暴力复杂度为 <span
+class="math inline">\(O(n^n)\)</span>.</p>
+<p>由于染色问题要求相邻两点颜色不同, 可以考虑借助独立集的性质,
+在给定的图上加上一些互不相邻的点后色数恰好加一(或者说染色后每一种颜色的顶点集合都是一个独立集),
+对于 <span class="math inline">\(X\subset V\)</span>, 记 <span
+class="math inline">\(f(X)=\chi(G[X])\)</span>, <span
+class="math inline">\(G[X]\)</span> 的最大独立集集合为 <span
+class="math inline">\(\mathcal{I}_X\)</span>, 那么就有下面的递推 <span
+class="math display">\[
+f(X)
 =
 \begin{cases}
 0,&amp;X=\emptyset\\
-\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash I),&amp;\text{otherwise}.
+\displaystyle 1+\min_{I\in \mathcal{I}_X} f(X\backslash
+I),&amp;\text{otherwise}.
 \end{cases}
-$$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</span>.</p>
-<p>这个 DP 算法的复杂度为 <span class="markdown-them-math-inline">$O^*((1+\sqrt[3]{3})^n)$</span>, 证明需要用到最大独立集的 branching 算法的时间复杂度.</p>
+\]</span> 可以断言 <span
+class="math inline">\(\chi(G)=f(V)\)</span>.</p>
+<p>这个 DP 算法的复杂度为 <span
+class="math inline">\(O^*((1+\sqrt[3]{3})^n)\)</span>,
+证明需要用到最大独立集的 branching 算法的时间复杂度.</p>
 <p>先把证明贴到下面:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" alt=""></p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1690711871888.png" /></p>
 <h1 id="集合覆盖">集合覆盖</h1>
 <h1 id="最小支配集">最小支配集</h1>
-<p>首先叙述最小支配集问题与集合覆盖问题 <span class="markdown-them-math-inline">$(\cal U,S)$</span> 的关系: 令 <span class="markdown-them-math-inline">$\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V \}$</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span class="markdown-them-math-inline">$u$</span> 被 <span class="markdown-them-math-inline">$v$</span> 支配当且仅当 <span class="markdown-them-math-inline">$u\in N(v)$</span>, 那么 <span class="markdown-them-math-inline">$N[v]$</span> 是所有被 <span class="markdown-them-math-inline">$v$</span> 支配的点的集合, 因此对于 <span class="markdown-them-math-inline">$D\subset V$</span>, <span class="markdown-them-math-inline">$D$</span> 是最小支配集当且仅当 <span class="markdown-them-math-inline">$\{N[v]:v\in D\}$</span> 能够覆盖 <span class="markdown-them-math-inline">$\{N[v]:v\in V\}$</span>.</p>
-<p>对于一般的图 <span class="markdown-them-math-inline">$G$</span> 而言, 存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{n-|I|})$</span>, 其中 <span class="markdown-them-math-inline">$I$</span> 为最大独立集, 特别地, 对于二分图而言 <span class="markdown-them-math-inline">$|I|=n/2$</span>, 时间复杂度为 <span class="markdown-them-math-inline">$O^*(2^{n/2})$</span>. 下面叙述这个算法.</p>
-<p>设 <span class="markdown-them-math-inline">$J=V\backslash I$</span>, 首先 <span class="markdown-them-math-inline">$J$</span> 一定是支配集, 考虑反证法, 假设存在 <span class="markdown-them-math-inline">$v\in I$</span> 且 <span class="markdown-them-math-inline">$v$</span> 没有被 <span class="markdown-them-math-inline">$J$</span> 支配, 那么 <span class="markdown-them-math-inline">$v$</span> 不与 <span class="markdown-them-math-inline">$J$</span> 中的点相邻, 而 <span class="markdown-them-math-inline">$v$</span> 又不与 <span class="markdown-them-math-inline">$I$</span> 中的相邻, 那么 <span class="markdown-them-math-inline">$v$</span> 就是一个孤立的点, 而我们只考虑连通图.</p>
-<p>考虑枚举 <span class="markdown-them-math-inline">$V$</span> 的子集 <span class="markdown-them-math-inline">$D$</span> 在 <span class="markdown-them-math-inline">$J$</span> 上的投影来寻找最小支配集, 令 <span class="markdown-them-math-inline">$J_D=J\cap D$</span>, 逐步向 <span class="markdown-them-math-inline">$J_D$</span> 中添加 <span class="markdown-them-math-inline">$I$</span> 中的顶点, 可以得到支配集. ?</p>
-<p>对于每个 <span class="markdown-them-math-inline">$J_D\subset J$</span>, 令 <span class="markdown-them-math-inline">$|D|=\min\{|D'|:D'\text{ is a dominating set}\land J\cap D'=J_D\}$</span>, 那么就有<span class="markdown-them-math-inline">$\gamma(G)=\min_{J_D\subset J}|D|$</span>.</p>
-<p>令 <span class="markdown-them-math-inline">$I_D=I\backslash N(J_D)$</span>, 表示最大独立集 <span class="markdown-them-math-inline">$I$</span> 中没有被 <span class="markdown-them-math-inline">$J_D$</span> 支配的部分, 再令 <span class="markdown-them-math-inline">$J_X=J\backslash(N(J_D)\cup N(I_D))$</span> 表示 <span class="markdown-them-math-inline">$J$</span> 中没有被 <span class="markdown-them-math-inline">$J_D\cup I_D$</span> 支配的部分, 那么通过置 <span class="markdown-them-math-inline">$\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in I\backslash I_D \}$</span>, 便可将原问题转化成一个新的规模稍小一些的集合覆盖问题, 这个集合覆盖问题可以在 <span class="markdown-them-math-inline">$O(n^{O(1)}2^{|J_X|})$</span> 内解决, 那么总的时间复杂度为 <span class="markdown-them-math-inline">$O(3^{n-|I|})$</span>.</p>
+<p>首先叙述最小支配集问题与集合覆盖问题 <span
+class="math inline">\((\cal U,S)\)</span> 的关系: 令 <span
+class="math inline">\(\mathcal{U}=V, \mathcal{S}=\{N[v]:v\in V
+\}\)</span>, 可以将求解最小支配集的问题转化为集合覆盖问题. 称 <span
+class="math inline">\(u\)</span> 被 <span
+class="math inline">\(v\)</span> 支配当且仅当 <span
+class="math inline">\(u\in N(v)\)</span>, 那么 <span
+class="math inline">\(N[v]\)</span> 是所有被 <span
+class="math inline">\(v\)</span> 支配的点的集合, 因此对于 <span
+class="math inline">\(D\subset V\)</span>, <span
+class="math inline">\(D\)</span> 是最小支配集当且仅当 <span
+class="math inline">\(\{N[v]:v\in D\}\)</span> 能够覆盖 <span
+class="math inline">\(\{N[v]:v\in V\}\)</span>.</p>
+<p>对于一般的图 <span class="math inline">\(G\)</span> 而言,
+存在一个求解其最小支配集的动态规划算法, 时间复杂度为 <span
+class="math inline">\(O(n^{O(1)}2^{n-|I|})\)</span>, 其中 <span
+class="math inline">\(I\)</span> 为最大独立集, 特别地, 对于二分图而言
+<span class="math inline">\(|I|=n/2\)</span>, 时间复杂度为 <span
+class="math inline">\(O^*(2^{n/2})\)</span>. 下面叙述这个算法.</p>
+<p>设 <span class="math inline">\(J=V\backslash I\)</span>, 首先 <span
+class="math inline">\(J\)</span> 一定是支配集, 考虑反证法, 假设存在
+<span class="math inline">\(v\in I\)</span> 且 <span
+class="math inline">\(v\)</span> 没有被 <span
+class="math inline">\(J\)</span> 支配, 那么 <span
+class="math inline">\(v\)</span> 不与 <span
+class="math inline">\(J\)</span> 中的点相邻, 而 <span
+class="math inline">\(v\)</span> 又不与 <span
+class="math inline">\(I\)</span> 中的相邻, 那么 <span
+class="math inline">\(v\)</span> 就是一个孤立的点,
+而我们只考虑连通图.</p>
+<p>考虑枚举 <span class="math inline">\(V\)</span> 的子集 <span
+class="math inline">\(D\)</span> 在 <span
+class="math inline">\(J\)</span> 上的投影来寻找最小支配集, 令 <span
+class="math inline">\(J_D=J\cap D\)</span>, 逐步向 <span
+class="math inline">\(J_D\)</span> 中添加 <span
+class="math inline">\(I\)</span> 中的顶点, 可以得到支配集. ?</p>
+<p>对于每个 <span class="math inline">\(J_D\subset J\)</span>, 令 <span
+class="math inline">\(|D|=\min\{|D&#39;|:D&#39;\text{ is a dominating
+set}\land J\cap D&#39;=J_D\}\)</span>, 那么就有<span
+class="math inline">\(\gamma(G)=\min_{J_D\subset J}|D|\)</span>.</p>
+<p>令 <span class="math inline">\(I_D=I\backslash N(J_D)\)</span>,
+表示最大独立集 <span class="math inline">\(I\)</span> 中没有被 <span
+class="math inline">\(J_D\)</span> 支配的部分, 再令 <span
+class="math inline">\(J_X=J\backslash(N(J_D)\cup N(I_D))\)</span> 表示
+<span class="math inline">\(J\)</span> 中没有被 <span
+class="math inline">\(J_D\cup I_D\)</span> 支配的部分, 那么通过置 <span
+class="math inline">\(\mathcal{U}=J_X,\mathcal{S}=\{N[v]:v\in
+I\backslash I_D \}\)</span>,
+便可将原问题转化成一个新的规模稍小一些的集合覆盖问题,
+这个集合覆盖问题可以在 <span
+class="math inline">\(O(n^{O(1)}2^{|J_X|})\)</span> 内解决,
+那么总的时间复杂度为 <span
+class="math inline">\(O(3^{n-|I|})\)</span>.</p>
 <blockquote>
 <p>看不懂. 先放弃了. 以后有时间再看吧. /kk</p>
 </blockquote>
-<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span class="markdown-them-math-inline">$O^*(3^{n-|I|})$</span> 降到 <span class="markdown-them-math-inline">$O^*(2^{n-|I|})$</span> 的过程.</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" alt=""></p>
+<p>剩下是设计一个新的动态规划算法将时间复杂度从 <span
+class="math inline">\(O^*(3^{n-|I|})\)</span> 降到 <span
+class="math inline">\(O^*(2^{n-|I|})\)</span> 的过程.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308031143234.png" /></p>
 
       
     </div>
@@ -949,7 +1629,7 @@ $$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>981</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -967,302 +1647,73 @@ $$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>对典型的图论问题的描述做一下汇总, 仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 <span class="markdown-them-math-inline">$G=(V,E)$</span> 的基础上描述的, 默认为无向图.</p>
-<p>1: <strong>匹配</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个匹配 <span class="markdown-them-math-inline">$M$</span> 是 <span class="markdown-them-math-inline">$E$</span> 的子集, 满足 <span class="markdown-them-math-inline">$M$</span> 中的任意两条边都没有公共的顶点. <strong>最大匹配问题</strong>要求找到满足最大的满足条件的 <span class="markdown-them-math-inline">$M$</span>.</p>
-<p>2: <strong>覆盖</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的一个覆盖 <span class="markdown-them-math-inline">$R$</span> 是顶点 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$E$</span> 中的任意一条边中的某个端点在 <span class="markdown-them-math-inline">$R$</span> 中. 最小覆盖问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$R$</span>.</p>
-<p>3: <strong>集合覆盖(Set Cover)</strong>. 对于给定的集合 <span class="markdown-them-math-inline">$U$</span> 和集合<span class="markdown-them-math-inline">$\mathcal{S}\subset \mathcal{P}(U)$</span>, 若 <span class="markdown-them-math-inline">$\mathcal{S}'\subset \mathcal{S}$</span> 满足 <span class="markdown-them-math-inline">$\bigcup_{S\subset \mathcal{S}'}S=U$</span>, 则称 <span class="markdown-them-math-inline">$\mathcal{S}'$</span> 覆盖集合 <span class="markdown-them-math-inline">$U$</span>. 最小集合覆盖(MSC)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$\mathcal{S}'$</span>.</p>
-<p>4: <strong>独立集(Independent Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的独立集 <span class="markdown-them-math-inline">$I$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$I$</span> 中的任意一对顶点都不相邻. 最大独立集(MIS)问题要求找到最大的满足条件的 <span class="markdown-them-math-inline">$I$</span>, 同时将最大的 <span class="markdown-them-math-inline">$|I|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的独立数 <span class="markdown-them-math-inline">$\alpha(G)$</span>.</p>
-<p>5: <strong>支配集(Dominant Set)</strong>. 图 <span class="markdown-them-math-inline">$G$</span> 的支配集 <span class="markdown-them-math-inline">$D$</span> 是顶点集 <span class="markdown-them-math-inline">$V$</span> 的子集, 满足 <span class="markdown-them-math-inline">$V$</span> 可以被划分为 <span class="markdown-them-math-inline">$D$</span> 和 <span class="markdown-them-math-inline">$N(D)=\bigcup_{v\in D}N(v)$</span>. 最小支配集(MDS)问题要求找到最小的满足条件的 <span class="markdown-them-math-inline">$D$</span>, 同时将最小的 <span class="markdown-them-math-inline">$|D|$</span> 记作图 <span class="markdown-them-math-inline">$G$</span> 的支配数 <span class="markdown-them-math-inline">$\gamma(G)$</span>.</p>
-<p>6: <strong>染色(Graph Coloring)</strong>. 无向图 <span class="markdown-them-math-inline">$G$</span> 的 <span class="markdown-them-math-inline">$k$</span>-coloring <span class="markdown-them-math-inline">$c:V\to [k]$</span> 满足 <span class="markdown-them-math-inline">$\forall\{u,v\}\in E,c(u)\ne c(v)$</span>, 即使用 <span class="markdown-them-math-inline">$k$</span> 种颜色给图 <span class="markdown-them-math-inline">$G$</span> 的每个顶点都分配一种颜色, 使得相邻顶点的颜色都不相同. 最小的能给 <span class="markdown-them-math-inline">$G$</span> 进行上述染色过程的 <span class="markdown-them-math-inline">$k$</span> 称为图 <span class="markdown-them-math-inline">$G$</span> 的色数, 记作 <span class="markdown-them-math-inline">$\chi(G)$</span>, <span class="markdown-them-math-inline">$c:V\to [\chi(G)]$</span> 称为最优染色(optimal coloring). 染色问题要求找到图 <span class="markdown-them-math-inline">$G$</span> 的色数 <span class="markdown-them-math-inline">$\chi(G)$</span> 或者更进一步地, 最优的染色方案 <span class="markdown-them-math-inline">$c$</span>.</p>
+          <p>对典型的图论问题的描述做一下汇总,
+仅仅介绍问题的基本描述和问题之间的联系, 下面所有问题都是在图 <span
+class="math inline">\(G=(V,E)\)</span> 的基础上描述的, 默认为无向图.</p>
+<p>1: <strong>匹配</strong>. 图 <span class="math inline">\(G\)</span>
+的一个匹配 <span class="math inline">\(M\)</span> 是 <span
+class="math inline">\(E\)</span> 的子集, 满足 <span
+class="math inline">\(M\)</span> 中的任意两条边都没有公共的顶点.
+<strong>最大匹配问题</strong>要求找到满足最大的满足条件的 <span
+class="math inline">\(M\)</span>.</p>
+<p>2: <strong>覆盖</strong>. 图 <span class="math inline">\(G\)</span>
+的一个覆盖 <span class="math inline">\(R\)</span> 是顶点 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(E\)</span> 中的任意一条边中的某个端点在 <span
+class="math inline">\(R\)</span> 中.
+最小覆盖问题要求找到最小的满足条件的 <span
+class="math inline">\(R\)</span>.</p>
+<p>3: <strong>集合覆盖(Set Cover)</strong>. 对于给定的集合 <span
+class="math inline">\(U\)</span> 和集合<span
+class="math inline">\(\mathcal{S}\subset \mathcal{P}(U)\)</span>, 若
+<span class="math inline">\(\mathcal{S}&#39;\subset \mathcal{S}\)</span>
+满足 <span class="math inline">\(\bigcup_{S\subset
+\mathcal{S}&#39;}S=U\)</span>, 则称 <span
+class="math inline">\(\mathcal{S}&#39;\)</span> 覆盖集合 <span
+class="math inline">\(U\)</span>.
+最小集合覆盖(MSC)问题要求找到最小的满足条件的 <span
+class="math inline">\(\mathcal{S}&#39;\)</span>.</p>
+<p>4: <strong>独立集(Independent Set)</strong>. 图 <span
+class="math inline">\(G\)</span> 的独立集 <span
+class="math inline">\(I\)</span> 是顶点集 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(I\)</span> 中的任意一对顶点都不相邻.
+最大独立集(MIS)问题要求找到最大的满足条件的 <span
+class="math inline">\(I\)</span>, 同时将最大的 <span
+class="math inline">\(|I|\)</span> 记作图 <span
+class="math inline">\(G\)</span> 的独立数 <span
+class="math inline">\(\alpha(G)\)</span>.</p>
+<p>5: <strong>支配集(Dominant Set)</strong>. 图 <span
+class="math inline">\(G\)</span> 的支配集 <span
+class="math inline">\(D\)</span> 是顶点集 <span
+class="math inline">\(V\)</span> 的子集, 满足 <span
+class="math inline">\(V\)</span> 可以被划分为 <span
+class="math inline">\(D\)</span> 和 <span
+class="math inline">\(N(D)=\bigcup_{v\in D}N(v)\)</span>.
+最小支配集(MDS)问题要求找到最小的满足条件的 <span
+class="math inline">\(D\)</span>, 同时将最小的 <span
+class="math inline">\(|D|\)</span> 记作图 <span
+class="math inline">\(G\)</span> 的支配数 <span
+class="math inline">\(\gamma(G)\)</span>.</p>
+<p>6: <strong>染色(Graph Coloring)</strong>. 无向图 <span
+class="math inline">\(G\)</span> 的 <span
+class="math inline">\(k\)</span>-coloring <span
+class="math inline">\(c:V\to [k]\)</span> 满足 <span
+class="math inline">\(\forall\{u,v\}\in E,c(u)\ne c(v)\)</span>, 即使用
+<span class="math inline">\(k\)</span> 种颜色给图 <span
+class="math inline">\(G\)</span> 的每个顶点都分配一种颜色,
+使得相邻顶点的颜色都不相同. 最小的能给 <span
+class="math inline">\(G\)</span> 进行上述染色过程的 <span
+class="math inline">\(k\)</span> 称为图 <span
+class="math inline">\(G\)</span> 的色数, 记作 <span
+class="math inline">\(\chi(G)\)</span>, <span
+class="math inline">\(c:V\to [\chi(G)]\)</span> 称为最优染色(optimal
+coloring). 染色问题要求找到图 <span class="math inline">\(G\)</span>
+的色数 <span class="math inline">\(\chi(G)\)</span> 或者更进一步地,
+最优的染色方案 <span class="math inline">\(c\)</span>.</p>
 <p>7: 最优树(最短路, 最小生成树, Steiner Tree)</p>
 <p>8: 网络流(最大流, 最小费用流, 最小割)</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/25/essay/essay/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XBD">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/25/essay/essay/" class="post-title-link" itemprop="url">一些做题记录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-07-25 20:18:59" itemprop="dateCreated datePublished" datetime="2023-07-25T20:18:59+08:00">2023-07-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-28 23:33:44" itemprop="dateModified" datetime="2023-08-28T23:33:44+08:00">2023-08-28</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          主要是洛谷和LOJ。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/25/essay/essay/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/25/junior_first_semester/OS/1-introduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XBD">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/25/junior_first_semester/OS/1-introduction/" class="post-title-link" itemprop="url">操作系统概述</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-07-25 11:18:46" itemprop="dateCreated datePublished" datetime="2023-07-25T11:18:46+08:00">2023-07-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-31 14:30:45" itemprop="dateModified" datetime="2023-08-31T14:30:45+08:00">2023-08-31</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>3.1k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>3 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          概述, 课程要求等.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/25/junior_first_semester/OS/1-introduction/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/25/OR/int-prop/lagrangian-duality/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Baoduo Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XBD">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XBD">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/25/OR/int-prop/lagrangian-duality/" class="post-title-link" itemprop="url">拉格朗日对偶</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-07-25 11:10:45" itemprop="dateCreated datePublished" datetime="2023-07-25T11:10:45+08:00">2023-07-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-03 11:52:19" itemprop="dateModified" datetime="2023-08-03T11:52:19+08:00">2023-08-03</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>0</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
       
     </div>
 
@@ -1303,13 +1754,13 @@ $$</div><p>可以断言 <span class="markdown-them-math-inline">$\chi(G)=f(V)$</
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

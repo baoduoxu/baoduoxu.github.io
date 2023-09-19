@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">简单形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%BC%BA%E5%BD%A2%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">加强形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#$%5Cmathrm%7Bramsey%7D$-%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">$\mathrm{Ramsey}$ 定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">简单形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%BC%BA%E5%BD%A2%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">加强形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathrmramsey-%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">\(\mathrm{Ramsey}\) 定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -260,14 +260,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>4.6k</span>
+      <span>5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>4 mins.</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -277,62 +277,268 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>鸽巢原理又称为 <span class="markdown-them-math-inline">$\rm Dirichlet$</span> 抽屉原理，它的描述十分简单，却能推出一些不那么显然的结论。</p>
+    <div class="post-body" itemprop="articleBody"><p>鸽巢原理又称为 <span class="math inline">\(\rm Dirichlet\)</span>
+抽屉原理，它的描述十分简单，却能推出一些不那么显然的结论。</p>
 <h2 id="简单形式">简单形式</h2>
-<p><strong>定理1</strong> 把 <span class="markdown-them-math-inline">$n+1$</span> 个物体放入 <span class="markdown-them-math-inline">$n$</span> 个盒子中，至少有一个盒子包含两个或两个以上的物体。</p>
-<p><em><strong>PROOF</strong></em> 考虑反证法。假设所有盒子的物体都不超过 <span class="markdown-them-math-inline">$1$</span> 个，那么总的物体数量就 <span class="markdown-them-math-inline">$\le n,$</span> 这显然与条件矛盾，于是原命题成立。 <span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong>定理1</strong> 把 <span class="math inline">\(n+1\)</span>
+个物体放入 <span class="math inline">\(n\)</span>
+个盒子中，至少有一个盒子包含两个或两个以上的物体。</p>
+<p><strong><em>PROOF</em></strong>
+考虑反证法。假设所有盒子的物体都不超过 <span
+class="math inline">\(1\)</span> 个，那么总的物体数量就 <span
+class="math inline">\(\le n,\)</span> 这显然与条件矛盾，于是原命题成立。
+<span class="math inline">\(\square\)</span></p>
 <!--more-->
 <p>对于鸽巢原理而言，我们只能用它来断定有盒子里面有两个或两个以上的物体，而对于寻找这样的盒子则无任何帮助。下面是与鸽巢原理相关的两个简单的定理。</p>
-<p><strong>定理2</strong> 把 <span class="markdown-them-math-inline">$n$</span> 个物体放入 <span class="markdown-them-math-inline">$n$</span> 个盒子里并保证没有盒子是空的或者没有盒子被放入了多余 <span class="markdown-them-math-inline">$1$</span> 个的物体，那么每个盒子里恰好有一个物体。</p>
+<p><strong>定理2</strong> 把 <span class="math inline">\(n\)</span>
+个物体放入 <span class="math inline">\(n\)</span>
+个盒子里并保证没有盒子是空的或者没有盒子被放入了多余 <span
+class="math inline">\(1\)</span>
+个的物体，那么每个盒子里恰好有一个物体。</p>
 <p>鸽巢原理的形式较为显然，我们看一些例子。</p>
-<p><strong>例1</strong> 给定 <span class="markdown-them-math-inline">$m$</span> 个整数 <span class="markdown-them-math-inline">$a_1,a_2,\cdots,a_m,$</span> 证明存在满足 <span class="markdown-them-math-inline">$0\le k&lt;l\le m$</span> 的整数 <span class="markdown-them-math-inline">$k,l$</span> 使得 <span class="markdown-them-math-inline">$m\mid (a_{k+1}+a_{k+2}+\cdots+a_{l}).$</span></p>
-<p><em><strong>PROOF</strong></em> 考察下面 <span class="markdown-them-math-inline">$m$</span> 个和式：</p>
-<div class="markdown-them-math-block">$$a_1,a_1+a_2,\cdots,a_1+a_2+\cdots+a_m,
-$$</div><p>若其中某个和能整除 <span class="markdown-them-math-inline">$m,$</span> 那么结论成立；假设这 <span class="markdown-them-math-inline">$m$</span> 个数和不整除 <span class="markdown-them-math-inline">$m,$</span> 那么由鸽巢原理（余数最多有 <span class="markdown-them-math-inline">$m-1$</span> 种而一共有 <span class="markdown-them-math-inline">$m$</span> 个数 ）知存在 <span class="markdown-them-math-inline">$0&lt;k&lt;l\le m$</span> 使得</p>
-<div class="markdown-them-math-block">$$a_1+a_2+\cdots+a_k\equiv a_1+a_2+\cdots+a_l(\bmod m),
-$$</div><p>这就表明了存在 <span class="markdown-them-math-inline">$0&lt;k&lt;l\le m$</span> 使得</p>
-<div class="markdown-them-math-block">$$m\mid\left(a_1+a_2+\cdots+a_l-(a_1+a_2+\cdots+a_k)\right)\Rightarrow m\mid (a_{k+1}+\cdots+a_{l}),
-$$</div><p>综合两种情况结论得证。<span class="markdown-them-math-inline">$\square$</span></p>
-<p><strong>例2</strong> 某人有 <span class="markdown-them-math-inline">$11$</span> 周的时间备战一场比赛，他决定每天至少练习一次，但是为了不使自己过于疲劳他还决定任意连续的 <span class="markdown-them-math-inline">$7$</span> 天内练习次数不能超过 <span class="markdown-them-math-inline">$12$</span> 次。证明存在连续的若干天，在这些天里这个人恰好练习了 <span class="markdown-them-math-inline">$21$</span> 次。</p>
-<p><em><strong>PROOF</strong></em> 设 <span class="markdown-them-math-inline">$a_n$</span> 是他从第一天到第 <span class="markdown-them-math-inline">$n$</span> 天这 <span class="markdown-them-math-inline">$n$</span> 天练习的总次数，由于每天至少练习一次，因此数列 <span class="markdown-them-math-inline">$\{a_n\}_{n=1}^{77}$</span> 严格单调递增。由于任意连续的 <span class="markdown-them-math-inline">$7$</span> 天内练习次数不能超过 <span class="markdown-them-math-inline">$12$</span> 次，因此 <span class="markdown-them-math-inline">$1\le a_1&lt;\cdots&lt;a_{77}\le 12\times11=132.$</span> 于是 <span class="markdown-them-math-inline">$22\le a_1+21&lt;\cdots&lt;a_{77}+21\le 132+21=153.$</span> 那么对于下面这不大于 <span class="markdown-them-math-inline">$153$</span> 的 <span class="markdown-them-math-inline">$154$</span> 个数：</p>
-<div class="markdown-them-math-block">$$a_1,a_2,\cdots,a_{77},a_1+21,a_2+21,\cdots,a_{77}+21
-$$</div><p>由鸽巢原理知其中至少有两个数相等，而 <span class="markdown-them-math-inline">$a_i(1\le i\le 77)$</span> 之间互不相等，<span class="markdown-them-math-inline">$a_j+21(1\le j\le 77)$</span> 之间也互不相等，于是存在 <span class="markdown-them-math-inline">$1\le j&lt;i\le 77$</span> 使得 <span class="markdown-them-math-inline">$a_i=a_j+22,$</span> 因此在第 <span class="markdown-them-math-inline">$j+1$</span> 天到第 <span class="markdown-them-math-inline">$i$</span> 天内，这个人练习次数恰好为 <span class="markdown-them-math-inline">$21.$</span> <span class="markdown-them-math-inline">$\square$</span></p>
-<p><strong>例3</strong> 从整数 <span class="markdown-them-math-inline">$1,2,\cdots,2n$</span> 中选出 <span class="markdown-them-math-inline">$n+1$</span> 个整数，证明在所选的整数中存在 <span class="markdown-them-math-inline">$p,q$</span> 使得 <span class="markdown-them-math-inline">$p\mid q.$</span></p>
-<p><em><strong>PROOF</strong></em> 这个问题可以转化为：从 <span class="markdown-them-math-inline">$n$</span> 对夫妻中选出 <span class="markdown-them-math-inline">$n+1$</span> 个人，这 <span class="markdown-them-math-inline">$n+1$</span> 个人中至少有一对为夫妻，而这由鸽巢原理知显然成立（若再煞有介事的证明一下的话，可以这样：将这 <span class="markdown-them-math-inline">$n$</span> 对夫妻与 <span class="markdown-them-math-inline">$n$</span> 个盒子对应，再把取出的 <span class="markdown-them-math-inline">$n+1$</span> 个人放到对应的盒子里，显然有一个盒子有两个人，这两个人是夫妻）。于是在这些整数中，可以把 <span class="markdown-them-math-inline">$k,2k(1\le k\le n)$</span> 看作一对夫妻，于是原命题显然成立。<span class="markdown-them-math-inline">$\square$</span></p>
-<p>另一种证明方法：这 <span class="markdown-them-math-inline">$2n$</span> 个整数都可以写成 <span class="markdown-them-math-inline">$2^{k}\times a(k\ge 0)$</span> 的形式，显然 <span class="markdown-them-math-inline">$a$</span> 一定是奇数且 <span class="markdown-them-math-inline">$a\le 2n-1,$</span> 也即一共有 <span class="markdown-them-math-inline">$n$</span> 个奇数，那么由鸽巢原理知取出的 <span class="markdown-them-math-inline">$n+1$</span> 个整数中一定有两个数的 <span class="markdown-them-math-inline">$a$</span> 是相等的，设这两个数为 <span class="markdown-them-math-inline">$2^s\times a,2^{t}\times a(s\ne t),$</span> 显然两者其中一个可以整除另一个。<span class="markdown-them-math-inline">$\square$</span></p>
-<p><strong>例4</strong> 证明 <span class="markdown-them-math-inline">$a/b(a,b\in\mathbb{N}_+,\gcd(a,b)=1)$</span> 总可以写成十进制循环小数。</p>
-<p><em><strong>PROOF</strong></em> 只需要考虑 <span class="markdown-them-math-inline">$a&lt;b$</span> 的情况（<span class="markdown-them-math-inline">$a\ge b$</span> 时化为真分数即可）。把 <span class="markdown-them-math-inline">$a/b$</span> 写成十进制小数的过程实际上为下面的带余除法：</p>
-<div class="markdown-them-math-block">$$10a=q_1b+r_1\\
+<p><strong>例1</strong> 给定 <span class="math inline">\(m\)</span>
+个整数 <span class="math inline">\(a_1,a_2,\cdots,a_m,\)</span>
+证明存在满足 <span class="math inline">\(0\le k&lt;l\le m\)</span>
+的整数 <span class="math inline">\(k,l\)</span> 使得 <span
+class="math inline">\(m\mid (a_{k+1}+a_{k+2}+\cdots+a_{l}).\)</span></p>
+<p><strong><em>PROOF</em></strong> 考察下面 <span
+class="math inline">\(m\)</span> 个和式： <span class="math display">\[
+a_1,a_1+a_2,\cdots,a_1+a_2+\cdots+a_m,
+\]</span> 若其中某个和能整除 <span class="math inline">\(m,\)</span>
+那么结论成立；假设这 <span class="math inline">\(m\)</span> 个数和不整除
+<span class="math inline">\(m,\)</span> 那么由鸽巢原理（余数最多有 <span
+class="math inline">\(m-1\)</span> 种而一共有 <span
+class="math inline">\(m\)</span> 个数 ）知存在 <span
+class="math inline">\(0&lt;k&lt;l\le m\)</span> 使得 <span
+class="math display">\[
+a_1+a_2+\cdots+a_k\equiv a_1+a_2+\cdots+a_l(\bmod m),
+\]</span> 这就表明了存在 <span class="math inline">\(0&lt;k&lt;l\le
+m\)</span> 使得 <span class="math display">\[
+m\mid\left(a_1+a_2+\cdots+a_l-(a_1+a_2+\cdots+a_k)\right)\Rightarrow
+m\mid (a_{k+1}+\cdots+a_{l}),
+\]</span> 综合两种情况结论得证。<span
+class="math inline">\(\square\)</span></p>
+<p><strong>例2</strong> 某人有 <span class="math inline">\(11\)</span>
+周的时间备战一场比赛，他决定每天至少练习一次，但是为了不使自己过于疲劳他还决定任意连续的
+<span class="math inline">\(7\)</span> 天内练习次数不能超过 <span
+class="math inline">\(12\)</span>
+次。证明存在连续的若干天，在这些天里这个人恰好练习了 <span
+class="math inline">\(21\)</span> 次。</p>
+<p><strong><em>PROOF</em></strong> 设 <span
+class="math inline">\(a_n\)</span> 是他从第一天到第 <span
+class="math inline">\(n\)</span> 天这 <span
+class="math inline">\(n\)</span>
+天练习的总次数，由于每天至少练习一次，因此数列 <span
+class="math inline">\(\{a_n\}_{n=1}^{77}\)</span>
+严格单调递增。由于任意连续的 <span class="math inline">\(7\)</span>
+天内练习次数不能超过 <span class="math inline">\(12\)</span> 次，因此
+<span class="math inline">\(1\le a_1&lt;\cdots&lt;a_{77}\le
+12\times11=132.\)</span> 于是 <span class="math inline">\(22\le
+a_1+21&lt;\cdots&lt;a_{77}+21\le 132+21=153.\)</span>
+那么对于下面这不大于 <span class="math inline">\(153\)</span> 的 <span
+class="math inline">\(154\)</span> 个数： <span class="math display">\[
+a_1,a_2,\cdots,a_{77},a_1+21,a_2+21,\cdots,a_{77}+21
+\]</span> 由鸽巢原理知其中至少有两个数相等，而 <span
+class="math inline">\(a_i(1\le i\le 77)\)</span> 之间互不相等，<span
+class="math inline">\(a_j+21(1\le j\le 77)\)</span>
+之间也互不相等，于是存在 <span class="math inline">\(1\le j&lt;i\le
+77\)</span> 使得 <span class="math inline">\(a_i=a_j+22,\)</span>
+因此在第 <span class="math inline">\(j+1\)</span> 天到第 <span
+class="math inline">\(i\)</span> 天内，这个人练习次数恰好为 <span
+class="math inline">\(21.\)</span> <span
+class="math inline">\(\square\)</span></p>
+<p><strong>例3</strong> 从整数 <span
+class="math inline">\(1,2,\cdots,2n\)</span> 中选出 <span
+class="math inline">\(n+1\)</span> 个整数，证明在所选的整数中存在 <span
+class="math inline">\(p,q\)</span> 使得 <span
+class="math inline">\(p\mid q.\)</span></p>
+<p><strong><em>PROOF</em></strong> 这个问题可以转化为：从 <span
+class="math inline">\(n\)</span> 对夫妻中选出 <span
+class="math inline">\(n+1\)</span> 个人，这 <span
+class="math inline">\(n+1\)</span>
+个人中至少有一对为夫妻，而这由鸽巢原理知显然成立（若再煞有介事的证明一下的话，可以这样：将这
+<span class="math inline">\(n\)</span> 对夫妻与 <span
+class="math inline">\(n\)</span> 个盒子对应，再把取出的 <span
+class="math inline">\(n+1\)</span>
+个人放到对应的盒子里，显然有一个盒子有两个人，这两个人是夫妻）。于是在这些整数中，可以把
+<span class="math inline">\(k,2k(1\le k\le n)\)</span>
+看作一对夫妻，于是原命题显然成立。<span
+class="math inline">\(\square\)</span></p>
+<p>另一种证明方法：这 <span class="math inline">\(2n\)</span>
+个整数都可以写成 <span class="math inline">\(2^{k}\times a(k\ge
+0)\)</span> 的形式，显然 <span class="math inline">\(a\)</span>
+一定是奇数且 <span class="math inline">\(a\le 2n-1,\)</span> 也即一共有
+<span class="math inline">\(n\)</span> 个奇数，那么由鸽巢原理知取出的
+<span class="math inline">\(n+1\)</span> 个整数中一定有两个数的 <span
+class="math inline">\(a\)</span> 是相等的，设这两个数为 <span
+class="math inline">\(2^s\times a,2^{t}\times a(s\ne t),\)</span>
+显然两者其中一个可以整除另一个。<span
+class="math inline">\(\square\)</span></p>
+<p><strong>例4</strong> 证明 <span
+class="math inline">\(a/b(a,b\in\mathbb{N}_+,\gcd(a,b)=1)\)</span>
+总可以写成十进制循环小数。</p>
+<p><strong><em>PROOF</em></strong> 只需要考虑 <span
+class="math inline">\(a&lt;b\)</span> 的情况（<span
+class="math inline">\(a\ge b\)</span> 时化为真分数即可）。把 <span
+class="math inline">\(a/b\)</span>
+写成十进制小数的过程实际上为下面的带余除法： <span
+class="math display">\[
+10a=q_1b+r_1\\
 10r_1=q_2b+r_2\\
 10r_2=q_3b+r_3\\
 \cdots
-$$</div><p>其中 <span class="markdown-them-math-inline">$0\le q_k\le 9,$</span> 得到的小数是 <span class="markdown-them-math-inline">$0.q_1q_2q_3\cdots$</span> 下面证明从某个 <span class="markdown-them-math-inline">$m$</span> 开始，<span class="markdown-them-math-inline">$\{q_n\}_{n=m}^{\infty}$</span> 为循环数列。由于余数 <span class="markdown-them-math-inline">$r_k$</span> 满足 <span class="markdown-them-math-inline">$0\le r_k&lt;b,$</span> 则由鸽巢原理知在 <span class="markdown-them-math-inline">$r_1,r_2,\cdots,r_{b+1}$</span> 中存在 <span class="markdown-them-math-inline">$1\le s&lt;t\le b+1$</span> 使得 <span class="markdown-them-math-inline">$r_s=r_t,$</span> 于是 <span class="markdown-them-math-inline">$r_{s+1}=10r_s\bmod b=10r_{t}\bmod b=r_{t+1},$</span> 这表明了 <span class="markdown-them-math-inline">$\forall \ell\ge 0,$</span> 都有 <span class="markdown-them-math-inline">$r_{\ell+s}=r_{\ell+t}=r_{\ell+s+t-s}\Rightarrow \forall n\ge s,r_{n}=r_{n+T},T=t-s$</span> 因此 <span class="markdown-them-math-inline">$\{r_n\}_{n=s}^{\infty}$</span> 是周期为 <span class="markdown-them-math-inline">$T$</span> 的循环数列，且 <span class="markdown-them-math-inline">$\forall n\ge s,q_{n+1+T}=(10r_{n+T}-r_{n+1+T})/b=(10r_n-r_{n+1})/b=q_{n+1},$</span> 于是 <span class="markdown-them-math-inline">$\{q_n\}_{n=s+1}^{\infty}$</span> 也为周期为 <span class="markdown-them-math-inline">$T$</span> 的循环数列，这就证得了 <span class="markdown-them-math-inline">$a/b$</span> 总可以写成十进制循环小数。<span class="markdown-them-math-inline">$\square$</span></p>
+\]</span> 其中 <span class="math inline">\(0\le q_k\le 9,\)</span>
+得到的小数是 <span class="math inline">\(0.q_1q_2q_3\cdots\)</span>
+下面证明从某个 <span class="math inline">\(m\)</span> 开始，<span
+class="math inline">\(\{q_n\}_{n=m}^{\infty}\)</span>
+为循环数列。由于余数 <span class="math inline">\(r_k\)</span> 满足 <span
+class="math inline">\(0\le r_k&lt;b,\)</span> 则由鸽巢原理知在 <span
+class="math inline">\(r_1,r_2,\cdots,r_{b+1}\)</span> 中存在 <span
+class="math inline">\(1\le s&lt;t\le b+1\)</span> 使得 <span
+class="math inline">\(r_s=r_t,\)</span> 于是 <span
+class="math inline">\(r_{s+1}=10r_s\bmod b=10r_{t}\bmod
+b=r_{t+1},\)</span> 这表明了 <span class="math inline">\(\forall \ell\ge
+0,\)</span> 都有 <span
+class="math inline">\(r_{\ell+s}=r_{\ell+t}=r_{\ell+s+t-s}\Rightarrow
+\forall n\ge s,r_{n}=r_{n+T},T=t-s\)</span> 因此 <span
+class="math inline">\(\{r_n\}_{n=s}^{\infty}\)</span> 是周期为 <span
+class="math inline">\(T\)</span> 的循环数列，且 <span
+class="math inline">\(\forall n\ge
+s,q_{n+1+T}=(10r_{n+T}-r_{n+1+T})/b=(10r_n-r_{n+1})/b=q_{n+1},\)</span>
+于是 <span class="math inline">\(\{q_n\}_{n=s+1}^{\infty}\)</span>
+也为周期为 <span class="math inline">\(T\)</span> 的循环数列，这就证得了
+<span class="math inline">\(a/b\)</span> 总可以写成十进制循环小数。<span
+class="math inline">\(\square\)</span></p>
 <h2 id="加强形式">加强形式</h2>
-<p><strong>定理3</strong> 设 <span class="markdown-them-math-inline">$q_1,q_2,\cdots,q_n$</span> 是正整数，若将 <span class="markdown-them-math-inline">$q_1+q_1+\cdots+q_n-n+1$</span> 个物体放入 <span class="markdown-them-math-inline">$n$</span> 个盒子中，那么对于所有的条件 <span class="markdown-them-math-inline">$k(k=1,2,\cdots,n):$</span> 第 <span class="markdown-them-math-inline">$k$</span> 个盒子至少存在 <span class="markdown-them-math-inline">$q_k$</span> 个物体，它们之中至少有一个成立。</p>
-<p><em><strong>PROOF</strong></em> 仍然考虑反证法。假设对每个 <span class="markdown-them-math-inline">$k(1\le k\le n),$</span> 第 <span class="markdown-them-math-inline">$k$</span> 个盒子含有的物体数目小于 <span class="markdown-them-math-inline">$q_k,$</span> 那么所有物体数便不超过 <span class="markdown-them-math-inline">$q_1-1+q_2-1+\cdots+q_n-1=q_1+\cdots+q_n-n,$</span> 这与题设条件矛盾，于是原命题成立。<span class="markdown-them-math-inline">$\square$</span></p>
-<p>令 <span class="markdown-them-math-inline">$q_1=q_2=\cdots=q_n=2$</span> 即可得到简单形式的鸽巢原理。</p>
-<p><strong>推论1</strong> 若把 <span class="markdown-them-math-inline">$n(r-1)+1$</span> 个物体放入 <span class="markdown-them-math-inline">$n$</span> 个盒子中，那么至少存在一个盒子，它里面至少有 <span class="markdown-them-math-inline">$r$</span> 个物体。</p>
-<p><em><strong>PROOF</strong></em>  <span class="markdown-them-math-inline">$q_1=q_2=\cdots=q_n=r-1$</span> 即得。<span class="markdown-them-math-inline">$\square$</span></p>
-<p>换种表述方式：若 <span class="markdown-them-math-inline">$n$</span> 个非负整数的平均数大于 <span class="markdown-them-math-inline">$r-1,$</span> 那么至少有一个整数大于 <span class="markdown-them-math-inline">$r-1.$</span></p>
-<p><strong>例6</strong> 证明实数序列 <span class="markdown-them-math-inline">$\{a_k\}_{1\le k\le n^2+1}$</span> 要么含有长度为 <span class="markdown-them-math-inline">$n+1$</span> 的递增子列，要么含有长度为 <span class="markdown-them-math-inline">$n+1$</span> 的递减子列。</p>
-<p><em><strong>PROOF</strong></em> 假设它不含有长度为 <span class="markdown-them-math-inline">$n+1$</span> 的递增子列，我们来证明它存在长度为 <span class="markdown-them-math-inline">$n+1$</span> 的递减子列。对任意 <span class="markdown-them-math-inline">$k=1,2,\cdots,n^2+1,$</span> 设 <span class="markdown-them-math-inline">$l_k$</span> 是从 <span class="markdown-them-math-inline">$a_k$</span> 开始的最长的递增子列的长度，则在假设的条件下有 <span class="markdown-them-math-inline">$1\le l_k\le n,$</span> 数列 <span class="markdown-them-math-inline">$\{l_k\}_{1\le k\le n^2+1}$</span> 共有 <span class="markdown-them-math-inline">$n^2+1$</span> 项，于是由推论 <span class="markdown-them-math-inline">$1$</span> 知道存在 <span class="markdown-them-math-inline">$n+1$</span> 个数 <span class="markdown-them-math-inline">$1\le i_1&lt;i_2&lt;\cdots&lt;i_{n+1}\le n^2+1$</span> 使得 <span class="markdown-them-math-inline">$l_{i_1}=l_{i_2}=\cdots=l_{i_{n+1}},$</span> 下面我们证明 <span class="markdown-them-math-inline">$a_{i_1}\ge a_{i_2}\ge \cdots\ge a_{i_{n+1}}.$</span> 考虑反证法，假设存在某个 <span class="markdown-them-math-inline">$j(1\le j\le n)$</span> 使得 <span class="markdown-them-math-inline">$a_{i_j}&lt;a_{i_NaN},$</span> 那么以 <span class="markdown-them-math-inline">$a_{i_j}$</span> 开始的最长的自增子列的长度 <span class="markdown-them-math-inline">$l_{i_j}=l_{i_{j+1}}+1&gt;l_{i_{j+1}},$</span> 这与 <span class="markdown-them-math-inline">$l_{i_j}=l_{i_{j+1}}$</span> 矛盾，于是 <span class="markdown-them-math-inline">$a_{i_1}\ge a_{i_2}\ge \cdots\ge a_{i_{n+1}},$</span> 因此子序列 <span class="markdown-them-math-inline">$\{a_{i_j}\}_{1\le j\le n+1}$</span> 就是我们要找的长度为 <span class="markdown-them-math-inline">$n+1$</span> 的递减子列。而另一种情况同理。<span class="markdown-them-math-inline">$\square$</span></p>
-<h2 id="$\mathrm{ramsey}$-定理"><span class="markdown-them-math-inline">$\mathrm{Ramsey}$</span> 定理</h2>
+<p><strong>定理3</strong> 设 <span
+class="math inline">\(q_1,q_2,\cdots,q_n\)</span> 是正整数，若将 <span
+class="math inline">\(q_1+q_1+\cdots+q_n-n+1\)</span> 个物体放入 <span
+class="math inline">\(n\)</span> 个盒子中，那么对于所有的条件 <span
+class="math inline">\(k(k=1,2,\cdots,n):\)</span> 第 <span
+class="math inline">\(k\)</span> 个盒子至少存在 <span
+class="math inline">\(q_k\)</span> 个物体，它们之中至少有一个成立。</p>
+<p><strong><em>PROOF</em></strong> 仍然考虑反证法。假设对每个 <span
+class="math inline">\(k(1\le k\le n),\)</span> 第 <span
+class="math inline">\(k\)</span> 个盒子含有的物体数目小于 <span
+class="math inline">\(q_k,\)</span> 那么所有物体数便不超过 <span
+class="math inline">\(q_1-1+q_2-1+\cdots+q_n-1=q_1+\cdots+q_n-n,\)</span>
+这与题设条件矛盾，于是原命题成立。<span
+class="math inline">\(\square\)</span></p>
+<p>令 <span class="math inline">\(q_1=q_2=\cdots=q_n=2\)</span>
+即可得到简单形式的鸽巢原理。</p>
+<p><strong>推论1</strong> 若把 <span
+class="math inline">\(n(r-1)+1\)</span> 个物体放入 <span
+class="math inline">\(n\)</span>
+个盒子中，那么至少存在一个盒子，它里面至少有 <span
+class="math inline">\(r\)</span> 个物体。</p>
+<p><strong><em>PROOF</em></strong> <span
+class="math inline">\(q_1=q_2=\cdots=q_n=r-1\)</span> 即得。<span
+class="math inline">\(\square\)</span></p>
+<p>换种表述方式：若 <span class="math inline">\(n\)</span>
+个非负整数的平均数大于 <span class="math inline">\(r-1,\)</span>
+那么至少有一个整数大于 <span class="math inline">\(r-1.\)</span></p>
+<p><strong>例6</strong> 证明实数序列 <span
+class="math inline">\(\{a_k\}_{1\le k\le n^2+1}\)</span> 要么含有长度为
+<span class="math inline">\(n+1\)</span> 的递增子列，要么含有长度为
+<span class="math inline">\(n+1\)</span> 的递减子列。</p>
+<p><strong><em>PROOF</em></strong> 假设它不含有长度为 <span
+class="math inline">\(n+1\)</span> 的递增子列，我们来证明它存在长度为
+<span class="math inline">\(n+1\)</span> 的递减子列。对任意 <span
+class="math inline">\(k=1,2,\cdots,n^2+1,\)</span> 设 <span
+class="math inline">\(l_k\)</span> 是从 <span
+class="math inline">\(a_k\)</span>
+开始的最长的递增子列的长度，则在假设的条件下有 <span
+class="math inline">\(1\le l_k\le n,\)</span> 数列 <span
+class="math inline">\(\{l_k\}_{1\le k\le n^2+1}\)</span> 共有 <span
+class="math inline">\(n^2+1\)</span> 项，于是由推论 <span
+class="math inline">\(1\)</span> 知道存在 <span
+class="math inline">\(n+1\)</span> 个数 <span class="math inline">\(1\le
+i_1&lt;i_2&lt;\cdots&lt;i_{n+1}\le n^2+1\)</span> 使得 <span
+class="math inline">\(l_{i_1}=l_{i_2}=\cdots=l_{i_{n+1}},\)</span>
+下面我们证明 <span class="math inline">\(a_{i_1}\ge a_{i_2}\ge \cdots\ge
+a_{i_{n+1}}.\)</span> 考虑反证法，假设存在某个 <span
+class="math inline">\(j(1\le j\le n)\)</span> 使得 <span
+class="math inline">\(a_{i_j}&lt;a_{i_NaN},\)</span>
+那么以 <span class="math inline">\(a_{i_j}\)</span>
+开始的最长的自增子列的长度 <span
+class="math inline">\(l_{i_j}=l_{i_{j+1}}+1&gt;l_{i_{j+1}},\)</span>
+这与 <span class="math inline">\(l_{i_j}=l_{i_{j+1}}\)</span> 矛盾，于是
+<span class="math inline">\(a_{i_1}\ge a_{i_2}\ge \cdots\ge
+a_{i_{n+1}},\)</span> 因此子序列 <span
+class="math inline">\(\{a_{i_j}\}_{1\le j\le n+1}\)</span>
+就是我们要找的长度为 <span class="math inline">\(n+1\)</span>
+的递减子列。而另一种情况同理。<span
+class="math inline">\(\square\)</span></p>
+<h2 id="mathrmramsey-定理"><span
+class="math inline">\(\mathrm{Ramsey}\)</span> 定理</h2>
 <p>这是鸽巢原理的一个扩展。</p>
-<p><strong>定理4 （<span class="markdown-them-math-inline">$\mathrm{Ramsey}$</span> 定理）</strong> 给定 <span class="markdown-them-math-inline">$m,n\ge 2,$</span> 则存在一个无向完全图 <span class="markdown-them-math-inline">$K_p,$</span> 使得在给 <span class="markdown-them-math-inline">$K_p$</span> 的各边用红色和蓝色进行着色后，能找到一个一个 <span class="markdown-them-math-inline">$K_m$</span> 子图或一个 <span class="markdown-them-math-inline">$K_n$</span> 子图，这个子图的所有边同时为蓝色或红色，这简记为 <span class="markdown-them-math-inline">$K_p\to K_m,K_n.$</span></p>
-<p>在给出这个定理的证明之前，我们先证明 <span class="markdown-them-math-inline">$K_6\to K_3,K_3$</span> 的情形。</p>
-<p><em><strong>PROOF</strong></em> 在涂过色的 <span class="markdown-them-math-inline">$K_6$</span> 中取一顶点 <span class="markdown-them-math-inline">$v_0,$</span> 由鸽巢原理知与 <span class="markdown-them-math-inline">$v_0$</span> 相连的 <span class="markdown-them-math-inline">$5$</span> 条边中，至少有 <span class="markdown-them-math-inline">$3$</span> 条边是同一种颜色，不妨设边 <span class="markdown-them-math-inline">$\{v_0,v_1\},\{v_0,v_2\},\{v_0,v_3\}$</span> 是红色（蓝色同理），若 <span class="markdown-them-math-inline">$\{v_1,v_2\},\{v_2,v_3\},\{v_1,v_3\}$</span> 存在红色的边，不妨设为 <span class="markdown-them-math-inline">$\{v_1,v_2\},$</span> 那么以 <span class="markdown-them-math-inline">$v_0,v_1,v_2$</span> 为顶点的 <span class="markdown-them-math-inline">$K_3$</span> 的所有边都为红色；若边 <span class="markdown-them-math-inline">$\{v_1,v_2\},\{v_2,v_3\},\{v_1,v_3\}$</span> 都为蓝色，那么以 <span class="markdown-them-math-inline">$v_1,v_2,v_3$</span> 为顶点的 <span class="markdown-them-math-inline">$K_3$</span> 的所有边都为蓝色。这两种情况就表明了存在三边同色的 <span class="markdown-them-math-inline">$K_3$</span> 子图。<span class="markdown-them-math-inline">$\square$</span></p>
-<p><span class="markdown-them-math-inline">$K_6\to K_3,K_3$</span> 描述得更通俗一点就是：在认识关系为双向的前提下（这确保了关系图是无向的），六个人中一定存在三个人互不认识或存在三个人互相认识。</p>
-<p>下面我们来证明 <span class="markdown-them-math-inline">$\rm Ramsey$</span> 定理。</p>
-<p><em><strong>PROOF</strong></em> 考虑对变量 <span class="markdown-them-math-inline">$m,n$</span> 使用双重归纳法。</p>
-<p>首先证明 <span class="markdown-them-math-inline">$r(2,n)$</span> 与 <span class="markdown-them-math-inline">$r(m,2)$</span> 存在。</p>
-<p><span class="markdown-them-math-inline">$\square$</span></p>
-<p><span class="markdown-them-math-inline">$\rm Ramsey$</span> 定理中，使 <span class="markdown-them-math-inline">$K_p\to K_m,K_n$</span> 成立的最小的数 <span class="markdown-them-math-inline">$p$</span> 称作 <span class="markdown-them-math-inline">$\rm Ramsey$</span> 数，记作 <span class="markdown-them-math-inline">$r(m,n).$</span>  在上述证明过程中，我们得到了 <span class="markdown-them-math-inline">$r(m,n)\le r(m-1,n)+r(m,n-1).$</span></p>
+<p><strong>定理4 （<span class="math inline">\(\mathrm{Ramsey}\)</span>
+定理）</strong> 给定 <span class="math inline">\(m,n\ge 2,\)</span>
+则存在一个无向完全图 <span class="math inline">\(K_p,\)</span> 使得在给
+<span class="math inline">\(K_p\)</span>
+的各边用红色和蓝色进行着色后，能找到一个一个 <span
+class="math inline">\(K_m\)</span> 子图或一个 <span
+class="math inline">\(K_n\)</span>
+子图，这个子图的所有边同时为蓝色或红色，这简记为 <span
+class="math inline">\(K_p\to K_m,K_n.\)</span></p>
+<p>在给出这个定理的证明之前，我们先证明 <span
+class="math inline">\(K_6\to K_3,K_3\)</span> 的情形。</p>
+<p><strong><em>PROOF</em></strong> 在涂过色的 <span
+class="math inline">\(K_6\)</span> 中取一顶点 <span
+class="math inline">\(v_0,\)</span> 由鸽巢原理知与 <span
+class="math inline">\(v_0\)</span> 相连的 <span
+class="math inline">\(5\)</span> 条边中，至少有 <span
+class="math inline">\(3\)</span> 条边是同一种颜色，不妨设边 <span
+class="math inline">\(\{v_0,v_1\},\{v_0,v_2\},\{v_0,v_3\}\)</span>
+是红色（蓝色同理），若 <span
+class="math inline">\(\{v_1,v_2\},\{v_2,v_3\},\{v_1,v_3\}\)</span>
+存在红色的边，不妨设为 <span class="math inline">\(\{v_1,v_2\},\)</span>
+那么以 <span class="math inline">\(v_0,v_1,v_2\)</span> 为顶点的 <span
+class="math inline">\(K_3\)</span> 的所有边都为红色；若边 <span
+class="math inline">\(\{v_1,v_2\},\{v_2,v_3\},\{v_1,v_3\}\)</span>
+都为蓝色，那么以 <span class="math inline">\(v_1,v_2,v_3\)</span>
+为顶点的 <span class="math inline">\(K_3\)</span>
+的所有边都为蓝色。这两种情况就表明了存在三边同色的 <span
+class="math inline">\(K_3\)</span> 子图。<span
+class="math inline">\(\square\)</span></p>
+<p><span class="math inline">\(K_6\to K_3,K_3\)</span>
+描述得更通俗一点就是：在认识关系为双向的前提下（这确保了关系图是无向的），六个人中一定存在三个人互不认识或存在三个人互相认识。</p>
+<p>下面我们来证明 <span class="math inline">\(\rm Ramsey\)</span>
+定理。</p>
+<p><strong><em>PROOF</em></strong> 考虑对变量 <span
+class="math inline">\(m,n\)</span> 使用双重归纳法。</p>
+<p>首先证明 <span class="math inline">\(r(2,n)\)</span> 与 <span
+class="math inline">\(r(m,2)\)</span> 存在。</p>
+<p><span class="math inline">\(\square\)</span></p>
+<p><span class="math inline">\(\rm Ramsey\)</span> 定理中，使 <span
+class="math inline">\(K_p\to K_m,K_n\)</span> 成立的最小的数 <span
+class="math inline">\(p\)</span> 称作 <span class="math inline">\(\rm
+Ramsey\)</span> 数，记作 <span class="math inline">\(r(m,n).\)</span>
+在上述证明过程中，我们得到了 <span class="math inline">\(r(m,n)\le
+r(m-1,n)+r(m,n-1).\)</span></p>
 <h2 id="练习">练习</h2>
-<p>1：证明：若从集合 <span class="markdown-them-math-inline">$\{1,2,\cdots,kn\}(k\in\mathbb{N}_+)$</span> 中选择 <span class="markdown-them-math-inline">$n+1$</span> 个整数，那么总存在两个整数，它们之间最多差 <span class="markdown-them-math-inline">$k-1.$</span></p>
-<p>2：证明对任意给定的 <span class="markdown-them-math-inline">$52$</span> 个整数，存在两个整数使得两者的和或差可以被 <span class="markdown-them-math-inline">$100$</span> 整除。</p>
-<p>3：若从 <span class="markdown-them-math-inline">$1,2,\cdots,200$</span> 中选择 <span class="markdown-them-math-inline">$100$</span> 个整数，且所选的这些整数中有一个小于 <span class="markdown-them-math-inline">$16,$</span> 那么在这些整数中存在 <span class="markdown-them-math-inline">$p,q$</span> 使得 <span class="markdown-them-math-inline">$p\mid q.$</span></p>
-<p>4：证明对任意 <span class="markdown-them-math-inline">$n+1$</span> 个整数 <span class="markdown-them-math-inline">$a_1,a_2,\cdots,a_{n+1},$</span> 存在两个整数 <span class="markdown-them-math-inline">$a_i,a_j(i\ne j)$</span> 使得 <span class="markdown-them-math-inline">$n\mid (a_i-a_j).$</span></p>
-<p>5：在边长为 <span class="markdown-them-math-inline">$2$</span> 的正方形内任意选 <span class="markdown-them-math-inline">$5$</span> 个点，证明存在两个点，它们之间的距离至多为 <span class="markdown-them-math-inline">$\sqrt{2}.$</span></p>
+<p>1：证明：若从集合 <span
+class="math inline">\(\{1,2,\cdots,kn\}(k\in\mathbb{N}_+)\)</span>
+中选择 <span class="math inline">\(n+1\)</span>
+个整数，那么总存在两个整数，它们之间最多差 <span
+class="math inline">\(k-1.\)</span></p>
+<p>2：证明对任意给定的 <span class="math inline">\(52\)</span>
+个整数，存在两个整数使得两者的和或差可以被 <span
+class="math inline">\(100\)</span> 整除。</p>
+<p>3：若从 <span class="math inline">\(1,2,\cdots,200\)</span> 中选择
+<span class="math inline">\(100\)</span>
+个整数，且所选的这些整数中有一个小于 <span
+class="math inline">\(16,\)</span> 那么在这些整数中存在 <span
+class="math inline">\(p,q\)</span> 使得 <span
+class="math inline">\(p\mid q.\)</span></p>
+<p>4：证明对任意 <span class="math inline">\(n+1\)</span> 个整数 <span
+class="math inline">\(a_1,a_2,\cdots,a_{n+1},\)</span> 存在两个整数
+<span class="math inline">\(a_i,a_j(i\ne j)\)</span> 使得 <span
+class="math inline">\(n\mid (a_i-a_j).\)</span></p>
+<p>5：在边长为 <span class="math inline">\(2\)</span> 的正方形内任意选
+<span class="math inline">\(5\)</span>
+个点，证明存在两个点，它们之间的距离至多为 <span
+class="math inline">\(\sqrt{2}.\)</span></p>
 
     </div>
 
@@ -384,13 +590,13 @@ $$</div><p>其中 <span class="markdown-them-math-inline">$0\le q_k\le 9,$</span
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1: 判断级数 $\displaystyle \sum_{n&#x3D;1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0$ 的敛散性.">
+    <meta name="description" content="1: 判断级数 \(\displaystyle \sum_{n&#x3D;1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0\) 的敛散性.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus review Day7">
 <meta property="og:url" content="http://example.com/2022/09/09/calculus/Calculus-review-Day7/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="1: 判断级数 $\displaystyle \sum_{n&#x3D;1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0$ 的敛散性.">
+<meta property="og:description" content="1: 判断级数 \(\displaystyle \sum_{n&#x3D;1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0\) 的敛散性.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-09T15:17:03.000Z">
 <meta property="article:modified_time" content="2022-09-10T03:47:00.851Z">
@@ -154,18 +154,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -276,32 +276,68 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>1: 判断级数 <span class="markdown-them-math-inline">$\displaystyle \sum_{n=1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0$</span> 的敛散性.</p>
+    <div class="post-body" itemprop="articleBody"><p>1: 判断级数 <span class="math inline">\(\displaystyle
+\sum_{n=1}^{\infty}\frac{(-1)^n}{\sqrt{kn}+(-1)^n},k&gt;0\)</span>
+的敛散性.</p>
 <span id="more"></span>
-<p><em><strong>SOL</strong></em> 考虑有理化:</p>
-<div class="markdown-them-math-block">$$\frac{(-1)^n}{\sqrt{kn}+(-1)^n}=\frac{(-1)^n\sqrt{kn}-1}{kn-1}=\frac{(-1)^n\sqrt{kn}}{kn-1}-\frac{1}{kn-1}
-$$</div><p>第二项与调和级数敛散性相同, 发散, 故原级数发散.<span class="markdown-them-math-inline">$\square$</span></p>
-<p>2: 设 <span class="markdown-them-math-inline">$f(x)\in C[a,b]\land f(x)\ge 0,$</span>  <span class="markdown-them-math-inline">$f(x)$</span> 严格递增, 且存在 <span class="markdown-them-math-inline">$x_n\in[a,b]$</span> 使得</p>
-<div class="markdown-them-math-block">$$[f(x_n)]^n=\frac{1}{b-a}\int_a^b[f(x)]^n\mathrm{d} x,
-$$</div><p>求 <span class="markdown-them-math-inline">$\displaystyle \lim_{n\to\infty}x_n.$</span></p>
-<p><em><strong>SOL</strong></em> 我们只需要证明</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=\max_{x\in[a,b]} f(x)
-$$</div><p>即可, 并且很容易发现这是</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\sqrt[n]{\sum_{i}x_i^n}=\max_{i}|x_i|
-$$</div><p>的连续版本, 不过我们证明时并不采用定积分定义. 设 <span class="markdown-them-math-inline">$M=\max_{x\in[a,b]}f(x).$</span></p>
-<p>首先,</p>
-<div class="markdown-them-math-block">$$\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}\le \sqrt[n]{M^n(b-a)}= M\sqrt[n]{b-a}.
-$$</div><p>不难想到应该用夹逼定理, 记 <span class="markdown-them-math-inline">$\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=I_n,$</span> 设 <span class="markdown-them-math-inline">$f(x_0)=M(x_0\in[a,b])$</span> (这由介值定理显然成立),  <span class="markdown-them-math-inline">$\forall \varepsilon&gt;0,$</span>  存在 <span class="markdown-them-math-inline">$\delta&gt;0,$</span> 当 <span class="markdown-them-math-inline">$x\in[x_0-\delta,x_0+\delta]\subset[a,b]$</span> 时有 <span class="markdown-them-math-inline">$|f(x)-M|&lt;\varepsilon$</span> 即 <span class="markdown-them-math-inline">$f(x)&gt;M-\varepsilon.$</span> 于是</p>
-<div class="markdown-them-math-block">$$I_n&gt;\sqrt[n]{\int_{x_0-\delta}^{x_0+\delta} [f(x)]^n\mathrm{d} x}&gt;(M-\varepsilon)\sqrt[n]{2\delta},
-$$</div><p>显然 <span class="markdown-them-math-inline">$\lim_{n\to\infty}\sqrt[n]{b-a}=\lim_{n\to\infty}\sqrt[n]{2\delta}=1,$</span> 于是 <span class="markdown-them-math-inline">$\forall \varepsilon_1,\varepsilon_2&gt;0,$</span>当 <span class="markdown-them-math-inline">$n$</span> 充分大时有</p>
-<div class="markdown-them-math-block">$$M-\varepsilon(1-\varepsilon_1)=(M-\varepsilon)(1-\varepsilon_1)&lt;I_n&lt;(M+\varepsilon)(1+\varepsilon_2)=M+\varepsilon(1+\varepsilon_2)
-$$</div><p>记 <span class="markdown-them-math-inline">$\varepsilon_0=\max\{\varepsilon(1-\varepsilon_1),\varepsilon(1+\varepsilon_2)\},$</span> 于是</p>
-<div class="markdown-them-math-block">$$|I_n-M|&lt;\varepsilon_0,
-$$</div><p>这就表明了</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}=\max_{x\in[a,b]} f(x).
-$$</div><p>于是</p>
-<div class="markdown-them-math-block">$$\lim_{n\to\infty}f(x_n)=f\left(\lim_{n\to\infty}x_n \right) =\max_{x\in[a,b]}f(x),
-$$</div><p><span class="markdown-them-math-inline">$f(x)$</span> 的非负性保证了开方后值的唯一性, 单调性保证了 <span class="markdown-them-math-inline">$\max_{x\in[a,b]}f(x)=f(b),$</span> 以及 <span class="markdown-them-math-inline">$\lim_{n\to\infty}x_n=b.$</span> <span class="markdown-them-math-inline">$\square$</span></p>
+<p><strong><em>SOL</em></strong> 考虑有理化: <span
+class="math display">\[
+\frac{(-1)^n}{\sqrt{kn}+(-1)^n}=\frac{(-1)^n\sqrt{kn}-1}{kn-1}=\frac{(-1)^n\sqrt{kn}}{kn-1}-\frac{1}{kn-1}
+\]</span> 第二项与调和级数敛散性相同, 发散, 故原级数发散.<span
+class="math inline">\(\square\)</span></p>
+<p>2: 设 <span class="math inline">\(f(x)\in C[a,b]\land f(x)\ge
+0,\)</span> <span class="math inline">\(f(x)\)</span> 严格递增, 且存在
+<span class="math inline">\(x_n\in[a,b]\)</span> 使得 <span
+class="math display">\[
+[f(x_n)]^n=\frac{1}{b-a}\int_a^b[f(x)]^n\mathrm{d} x,
+\]</span> 求 <span class="math inline">\(\displaystyle
+\lim_{n\to\infty}x_n.\)</span></p>
+<p><strong><em>SOL</em></strong> 我们只需要证明 <span
+class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d}
+x}=\max_{x\in[a,b]} f(x)
+\]</span> 即可, 并且很容易发现这是 <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{\sum_{i}x_i^n}=\max_{i}|x_i|
+\]</span> 的连续版本, 不过我们证明时并不采用定积分定义. 设 <span
+class="math inline">\(M=\max_{x\in[a,b]}f(x).\)</span></p>
+<p>首先, <span class="math display">\[
+\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d} x}\le \sqrt[n]{M^n(b-a)}=
+M\sqrt[n]{b-a}.
+\]</span> 不难想到应该用夹逼定理, 记 <span
+class="math inline">\(\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d}
+x}=I_n,\)</span> 设 <span
+class="math inline">\(f(x_0)=M(x_0\in[a,b])\)</span>
+(这由介值定理显然成立), <span class="math inline">\(\forall
+\varepsilon&gt;0,\)</span> 存在 <span
+class="math inline">\(\delta&gt;0,\)</span> 当 <span
+class="math inline">\(x\in[x_0-\delta,x_0+\delta]\subset[a,b]\)</span>
+时有 <span class="math inline">\(|f(x)-M|&lt;\varepsilon\)</span> 即
+<span class="math inline">\(f(x)&gt;M-\varepsilon.\)</span> 于是 <span
+class="math display">\[
+I_n&gt;\sqrt[n]{\int_{x_0-\delta}^{x_0+\delta} [f(x)]^n\mathrm{d}
+x}&gt;(M-\varepsilon)\sqrt[n]{2\delta},
+\]</span> 显然 <span
+class="math inline">\(\lim_{n\to\infty}\sqrt[n]{b-a}=\lim_{n\to\infty}\sqrt[n]{2\delta}=1,\)</span>
+于是 <span class="math inline">\(\forall
+\varepsilon_1,\varepsilon_2&gt;0,\)</span>当 <span
+class="math inline">\(n\)</span> 充分大时有 <span
+class="math display">\[
+M-\varepsilon(1-\varepsilon_1)=(M-\varepsilon)(1-\varepsilon_1)&lt;I_n&lt;(M+\varepsilon)(1+\varepsilon_2)=M+\varepsilon(1+\varepsilon_2)
+\]</span> 记 <span
+class="math inline">\(\varepsilon_0=\max\{\varepsilon(1-\varepsilon_1),\varepsilon(1+\varepsilon_2)\},\)</span>
+于是 <span class="math display">\[
+|I_n-M|&lt;\varepsilon_0,
+\]</span> 这就表明了 <span class="math display">\[
+\lim_{n\to\infty}\sqrt[n]{\int_a^b [f(x)]^n\mathrm{d}
+x}=\max_{x\in[a,b]} f(x).
+\]</span> 于是 <span class="math display">\[
+\lim_{n\to\infty}f(x_n)=f\left(\lim_{n\to\infty}x_n \right)
+=\max_{x\in[a,b]}f(x),
+\]</span> <span class="math inline">\(f(x)\)</span>
+的非负性保证了开方后值的唯一性, 单调性保证了 <span
+class="math inline">\(\max_{x\in[a,b]}f(x)=f(b),\)</span> 以及 <span
+class="math inline">\(\lim_{n\to\infty}x_n=b.\)</span> <span
+class="math inline">\(\square\)</span></p>
 
     </div>
 
@@ -353,13 +389,13 @@ $$</div><p><span class="markdown-them-math-inline">$f(x)$</span> 的非负性保
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -154,18 +154,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -246,7 +246,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>914</span>
+      <span>938</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -263,31 +263,47 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>解决混合整数规划问题 <span class="markdown-them-math-inline">$Z=\max\{cx+hy:Fx+Gy\le d,x\in X\subset \mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}$</span>, 可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization 的形式:</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+    <div class="post-body" itemprop="articleBody"><p>解决混合整数规划问题 <span
+class="math inline">\(Z=\max\{cx+hy:Fx+Gy\le d,x\in X\subset
+\mathbb{Z}^n_+,y\in\mathbb{R}_+^p\}\)</span>,
+可以人为地规定变量优化的顺序, 将其写成类似于 bilevel optimization
+的形式: <span class="math display">\[
+\begin{aligned}
 \max ~&amp;cx+\phi(x)\\
 \text{s.t. }&amp;x\in X\\
 &amp;\phi(x)=\max\{hy:gy\le d-Fx,y\in\mathbb{R}^p_+\}
 \end{aligned}
-$$</div><p>上面是先把 <span class="markdown-them-math-inline">$x$</span> 作为参数求解一个线性规划问题, 再求解剩下的子问题.</p>
+\]</span> 上面是先把 <span class="math inline">\(x\)</span>
+作为参数求解一个线性规划问题, 再求解剩下的子问题.</p>
 <blockquote>
 <p>如何证明这两种写法的等价性?</p>
 <p>感觉好像不太对, 更像是一种启发式规则.</p>
 <p>好吧不算很简单，需要好好看一下怎么搞。</p>
 </blockquote>
-<p>假设 <span class="markdown-them-math-inline">$\phi(x)$</span> 是有界的, 那么由 Farkas 引理可知 <span class="markdown-them-math-inline">$\phi(x)$</span> 是 feasible 的 <span class="markdown-them-math-inline">$\iff$</span> <span class="markdown-them-math-inline">$v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T$</span>, 其中 <span class="markdown-them-math-inline">$\{v^{(t)}\}_{t=1}^T$</span> 是凸集 <span class="markdown-them-math-inline">$U=\{u\in\mathbb{R}_+^m:uG\ge h\}$</span> 的极方向(extreme ray).</p>
-<p>若求解 <span class="markdown-them-math-inline">$\phi(x)$</span> 的线性规划是 feasible 的, 那么</p>
-<div class="markdown-them-math-block">$$\phi(x)=\min_{1\le s\le S}u^{(s)}(d-Fx)
-$$</div><p>其中 <span class="markdown-them-math-inline">$\{u^{(s)}\}_{s=1}^S$</span> 是 <span class="markdown-them-math-inline">$U$</span> 的极点, 这可以改写为</p>
-<div class="markdown-them-math-block">$$\phi(x)=\max_{\eta\le u^{(s)}(d-Fx)\atop1\le s\le S}\eta
-$$</div><p>将离散问题转化为了一个连续的线性规划问题, 那么就可以将 <span class="markdown-them-math-inline">$Z$</span> 写成</p>
-<div class="markdown-them-math-block">$$\begin{aligned}
+<p>假设 <span class="math inline">\(\phi(x)\)</span> 是有界的, 那么由
+Farkas 引理可知 <span class="math inline">\(\phi(x)\)</span> 是 feasible
+的 <span class="math inline">\(\iff\)</span> <span
+class="math inline">\(v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T\)</span>, 其中
+<span class="math inline">\(\{v^{(t)}\}_{t=1}^T\)</span> 是凸集 <span
+class="math inline">\(U=\{u\in\mathbb{R}_+^m:uG\ge h\}\)</span>
+的极方向(extreme ray).</p>
+<p>若求解 <span class="math inline">\(\phi(x)\)</span> 的线性规划是
+feasible 的, 那么 <span class="math display">\[
+\phi(x)=\min_{1\le s\le S}u^{(s)}(d-Fx)
+\]</span> 其中 <span class="math inline">\(\{u^{(s)}\}_{s=1}^S\)</span>
+是 <span class="math inline">\(U\)</span> 的极点, 这可以改写为 <span
+class="math display">\[
+\phi(x)=\max_{\eta\le u^{(s)}(d-Fx)\atop1\le s\le S}\eta
+\]</span> 将离散问题转化为了一个连续的线性规划问题, 那么就可以将 <span
+class="math inline">\(Z\)</span> 写成 <span class="math display">\[
+\begin{aligned}
 Z=\max ~&amp;cx+\eta\\
 \text{s.t. }&amp;x\in X,\eta\in\mathbb{R}\\
 &amp;v^{(t)}(d-Fx)\ge 0,t=1,\cdots,T\\
 &amp;u^{(s)}(d-Fx)\ge \eta,s=1,\cdots, S
 \end{aligned}
-$$</div><p>这个问题约束的个数是指数级别的, 解决该问题最好的方法是 branch-and-cut.</p>
+\]</span> 这个问题约束的个数是指数级别的, 解决该问题最好的方法是
+branch-and-cut.</p>
 
     </div>
 
@@ -339,13 +355,13 @@ $$</div><p>这个问题约束的个数是指数级别的, 解决该问题最好�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

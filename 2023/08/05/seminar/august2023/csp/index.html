@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,18 +22,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解. 相比搜索问题, CSP 的 状态(state) 是由变量 $X_i$ 及其定义域 $D_i$ 定义的, 目标状态(goal test) 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝. 变量分为离散变量和连续变">
+    <meta name="description" content="CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解. 相比搜索问题, CSP 的 状态(state) 是由变量 \(X_i\) 及其定义域 \(D_i\) 定义的, 目标状态(goal test) 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝. 变量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSP">
 <meta property="og:url" content="http://example.com/2023/08/05/seminar/august2023/csp/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解. 相比搜索问题, CSP 的 状态(state) 是由变量 $X_i$ 及其定义域 $D_i$ 定义的, 目标状态(goal test) 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝. 变量分为离散变量和连续变">
+<meta property="og:description" content="CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解. 相比搜索问题, CSP 的 状态(state) 是由变量 \(X_i\) 及其定义域 \(D_i\) 定义的, 目标状态(goal test) 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝. 变量">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101032224.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101031614.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101035585.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101038831.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308091255691.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101043893.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101210596.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142052499.png">
@@ -151,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E9%AB%98%E5%9B%9E%E6%BA%AF%E7%9A%84%E6%95%88%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">提高回溯的效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forward-checking"><span class="nav-number">2.</span> <span class="nav-text">Forward Checking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arc-consistency"><span class="nav-number">3.</span> <span class="nav-text">Arc Consistency</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#$k$-consistency"><span class="nav-number">4.</span> <span class="nav-text">$k$-consistency</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-structured-csps"><span class="nav-number">5.</span> <span class="nav-text">Tree-structured CSPs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tree-decomposition"><span class="nav-number">5.1.</span> <span class="nav-text">Tree decomposition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#local-search%20for%20csps"><span class="nav-number">6.</span> <span class="nav-text">Local Search for CSPs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">习题</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E9%AB%98%E5%9B%9E%E6%BA%AF%E7%9A%84%E6%95%88%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">提高回溯的效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forward-checking"><span class="nav-number">2.</span> <span class="nav-text">Forward Checking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arc-consistency"><span class="nav-number">3.</span> <span class="nav-text">Arc Consistency</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k-consistency"><span class="nav-number">4.</span> <span class="nav-text">\(k\)-consistency</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-structured-csps"><span class="nav-number">5.</span> <span class="nav-text">Tree-structured CSPs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tree-decomposition"><span class="nav-number">5.1.</span> <span class="nav-text">Tree decomposition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#local-search-for-csps"><span class="nav-number">6.</span> <span class="nav-text">Local Search for CSPs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">习题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,18 +163,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -256,7 +255,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.3k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -273,78 +272,235 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>CSP 是 Constraint Satisfaction Problem 的缩写, 目的是找到符合约束条件的一组解.</p>
-<p>相比搜索问题, CSP 的 <strong>状态(state)</strong> 是由变量 <span class="markdown-them-math-inline">$X_i$</span> 及其定义域 <span class="markdown-them-math-inline">$D_i$</span> 定义的, <strong>目标状态(goal test)</strong> 是一组约束, 这些约束确定了变量的取值组合. 主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小, 即做剪枝.</p>
-<p>变量分为离散变量和连续变量, 离散变量的取值可以是有限集(比如 boolean)或者无限集(比如整数集或字符串). 通过约束的变量个数对约束进行分类, 包括 unary, binary以及 higher-order. 下面会更多地介绍 binary-CSP, 因为此时可以很容易地用图来描述变量之间的关系.</p>
-<p>作为搜索问题的子集, 解决 CSP 的最简单的方式当然是 DFS, 或者说回溯(backtracking), 此时不关注变量赋值的顺序, 即认为变量赋值这一操作是可交换的.</p>
-<p>设变量 <span class="markdown-them-math-inline">$X$</span> 的值域为 <span class="markdown-them-math-inline">$D_X$</span>, 初始情况下默认 <span class="markdown-them-math-inline">$|D_X|=d$</span>. 以地图染色为例子, 设 <span class="markdown-them-math-inline">$D=\{\rm red, blue, yellow\}$</span>, 相邻的两块地图颜色需要不同, 下面是原图和抽象出来的 graph.</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101032224.png" style="zoom:50%;" />
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101031614.png" style="zoom:50%;" />
+    <div class="post-body" itemprop="articleBody"><p>CSP 是 Constraint Satisfaction Problem 的缩写,
+目的是找到符合约束条件的一组解.</p>
+<p>相比搜索问题, CSP 的 <strong>状态(state)</strong> 是由变量 <span
+class="math inline">\(X_i\)</span> 及其定义域 <span
+class="math inline">\(D_i\)</span> 定义的, <strong>目标状态(goal
+test)</strong> 是一组约束, 这些约束确定了变量的取值组合.
+主要思想通过寻找违反约束的变量或值组合来减少搜索空间的大小,
+即做剪枝.</p>
+<p>变量分为离散变量和连续变量, 离散变量的取值可以是有限集(比如
+boolean)或者无限集(比如整数集或字符串).
+通过约束的变量个数对约束进行分类, 包括 unary, binary以及 higher-order.
+下面会更多地介绍 binary-CSP,
+因为此时可以很容易地用图来描述变量之间的关系.</p>
+<p>作为搜索问题的子集, 解决 CSP 的最简单的方式当然是 DFS,
+或者说回溯(backtracking), 此时不关注变量赋值的顺序,
+即认为变量赋值这一操作是可交换的.</p>
+<p>设变量 <span class="math inline">\(X\)</span> 的值域为 <span
+class="math inline">\(D_X\)</span>, 初始情况下默认 <span
+class="math inline">\(|D_X|=d\)</span>. 以地图染色为例子, 设 <span
+class="math inline">\(D=\{\rm red, blue, yellow\}\)</span>,
+相邻的两块地图颜色需要不同, 下面是原图和抽象出来的 graph.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101032224.png" style="zoom:50%;" /></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101031614.png" style="zoom:50%;" /></p>
 <h1 id="提高回溯的效率">提高回溯的效率</h1>
-<p>搜索过程中需要枚举不同的变量以及变量不同的取值, 枚举的顺序实际上对效率有较大的影响, 对于下个状态选择哪个变量赋值, 给选择的变量赋哪个值, 以及能否更早地剪枝以避免不必要的搜索, 采用以下策略.</p>
+<p>搜索过程中需要枚举不同的变量以及变量不同的取值,
+枚举的顺序实际上对效率有较大的影响, 对于下个状态选择哪个变量赋值,
+给选择的变量赋哪个值, 以及能否更早地剪枝以避免不必要的搜索,
+采用以下策略.</p>
 <p>对于变量:</p>
 <ul>
-<li>Most constrained variable. 即选择&quot;被约束得最厉害的&quot;那个变量, 或者说合法(指不违反约束)取值数目最小的变量. 比如下图在涂过绿色之后, 城市 SA 只剩蓝色这一种选择, 那么优先给 SA 涂上蓝色.</li>
+<li>Most constrained variable. 即选择"被约束得最厉害的"那个变量,
+或者说合法(指不违反约束)取值数目最小的变量. 比如下图在涂过绿色之后, 城市
+SA 只剩蓝色这一种选择, 那么优先给 SA 涂上蓝色.</li>
 </ul>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101035585.png" style="zoom:50%;" />
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101035585.png" style="zoom:50%;" /></p>
 <ul>
-<li>Most constraining variable. 选择变量之后, 剩下的变量&quot;被约束得最厉害&quot;, 即使剩下的变量的合法取值变得最少. 这样做的是因为所有的变量都必须被赋值, 可以更早地搜索到不成立的情形. 比如在初始状态, 城市 SA 是最好的选择, 因为 SA 的颜色确定之后, WA, NT, Q, NSW, V 的合法取值均减一, 是减少的最多的.</li>
+<li>Most constraining variable. 选择变量之后,
+剩下的变量"被约束得最厉害", 即使剩下的变量的合法取值变得最少.
+这样做的是因为所有的变量都必须被赋值, 可以更早地搜索到不成立的情形.
+比如在初始状态, 城市 SA 是最好的选择, 因为 SA 的颜色确定之后, WA, NT, Q,
+NSW, V 的合法取值均减一, 是减少的最多的.</li>
 </ul>
 <p>对于变量的取值:</p>
 <ul>
-<li>Least constraining value. 选择的值对剩余变量的合法取值的减少应该最小. 这样做可以减少对变量取值的尝试, 减少不必要的分支. 比如下面的情况, 应优先给 Q 涂红色而不是蓝色, 否则会导致 SA 没有合法的颜色可选.</li>
+<li>Least constraining value.
+选择的值对剩余变量的合法取值的减少应该最小.
+这样做可以减少对变量取值的尝试, 减少不必要的分支. 比如下面的情况,
+应优先给 Q 涂红色而不是蓝色, 否则会导致 SA 没有合法的颜色可选.</li>
 </ul>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101038831.png" style="zoom:50%;" />
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101038831.png" style="zoom:50%;" /></p>
 <h1 id="forward-checking">Forward Checking</h1>
-<p>Forward Checking 是一种进一步减少搜索树规模的技术, 在给某个变量赋值之后, 在进行下一步搜索之前, 可以根据约束先一步减少未赋值变量合法取值的数量, 这称为<strong>一次 check</strong>, 若 check 以后出现了仅剩一种取值的变量 <span class="markdown-them-math-inline">$X$</span> , 那么可以根据 <span class="markdown-them-math-inline">$X$</span> 这唯一的取值继续根据约束减少剩余变量的合法取值的数量, 这称为<strong>传播(propagation)</strong>.</p>
-<p>需要注意 forward checking propagation 并不能提前检测到不成立的情形, 当传播完毕后, 搜索还需要继续进行才能确定是否要终止这一分支的搜索.</p>
+<p>Forward Checking 是一种进一步减少搜索树规模的技术,
+在给某个变量赋值之后, 在进行下一步搜索之前,
+可以根据约束先一步减少未赋值变量合法取值的数量, 这称为<strong>一次
+check</strong>, 若 check 以后出现了仅剩一种取值的变量 <span
+class="math inline">\(X\)</span> , 那么可以根据 <span
+class="math inline">\(X\)</span>
+这唯一的取值继续根据约束减少剩余变量的合法取值的数量,
+这称为<strong>传播(propagation)</strong>.</p>
+<p>需要注意 forward checking propagation 并不能提前检测到不成立的情形,
+当传播完毕后, 搜索还需要继续进行才能确定是否要终止这一分支的搜索.</p>
 <h1 id="arc-consistency">Arc Consistency</h1>
-<p><strong>弧一致性检验</strong>主要是在 binary-CSP 中应用, 对于一个 binary-CSP, 以变量为顶点, 约束为弧, 构造有向图 <span class="markdown-them-math-inline">$G=(V,E)$</span>, 这里 <span class="markdown-them-math-inline">$|V|$</span> 相当于变量数, <span class="markdown-them-math-inline">$|E|$</span> 相当于约束数. 对于其中的两个变量 <span class="markdown-them-math-inline">$X,Y$</span>, 若 <span class="markdown-them-math-inline">$X,Y$</span> 出现在同一约束中则 <span class="markdown-them-math-inline">$(X,Y)\in E\land (Y,X)\in E$</span>, 那么弧 <span class="markdown-them-math-inline">$(X,Y)$</span> 是一致的当且仅当对于任意 <span class="markdown-them-math-inline">$x\in D_X$</span> 都存在合法的 <span class="markdown-them-math-inline">$y\in D_Y$</span> 可以取到, 如果某个 <span class="markdown-them-math-inline">$x$</span> 使得所有 <span class="markdown-them-math-inline">$y\in D_Y$</span> 都不能取到, 那么这个 <span class="markdown-them-math-inline">$x$</span> 就没必要再选了, 可以直接删去, 此时 <span class="markdown-them-math-inline">$X$</span> 的取值丢失了一个值后, 需要重新检查 <span class="markdown-them-math-inline">$X$</span> 的邻居 . 当存在不一致的弧时, 就说明当前状态已经不满足约束, 是一个失败的状态, 算法 AC-3 可以用来找到一个状态是否存在不一致的弧.</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308091255691.png" alt=""></p>
-<p>这个算法维护一个队列存弧, 每次取队首元素 <span class="markdown-them-math-inline">$(X_i,X_j)$</span> 判断根据当前状态是否可以修改 <span class="markdown-them-math-inline">$X_i$</span> 的取值 <span class="markdown-them-math-inline">$D_i$</span>, 如果修改了且 <span class="markdown-them-math-inline">$X_i$</span> 不存在合法取值就意味着找到了不一致的弧, 否则就要重新check <span class="markdown-them-math-inline">$X_i$</span> 与其邻居的弧一致性, 因此就将弧 <span class="markdown-them-math-inline">$(X_k,X_i)(X_k\in N(X_i)\backslash\{X_j\})$</span> 加到队列中. 根据当前状态以及弧 <span class="markdown-them-math-inline">$(X_i,X_j)$</span> 修改 <span class="markdown-them-math-inline">$X_i$</span> 的取值, 只需要删去 <span class="markdown-them-math-inline">$x\in D_i$</span> 满足 <span class="markdown-them-math-inline">$\forall y\in D_j,(x,y)$</span> 都不满足约束, 如果不存在这样的 <span class="markdown-them-math-inline">$x$</span>, 则不做任何修改.</p>
-<p>对于任意两个变量, 检查它们的弧一致性需要枚举两个变量的所有取值, 这一步骤的复杂度为 <span class="markdown-them-math-inline">$O(d^2)$</span>, 于是 AC-3算法的复杂度为 <span class="markdown-them-math-inline">$O(|E|d^3)$</span>.</p>
-<p>相比 forward checking, arc consistency 可以更早地检测到当前分支的失败; 同时AC-3算法无法发现所有的不一致的弧, 比如下图的情况:</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101043893.png" style="zoom:50%;" />
-<p>这显然是一种不合法的情况, 不管怎么取值都会有两个相邻的取到相邻的颜色, 但是弧一致性检验只能两两之间检验.</p>
-<h1 id="$k$-consistency"><span class="markdown-them-math-inline">$k$</span>-consistency</h1>
-<p>如果一个 CSP 问题, 对于它的任意 <span class="markdown-them-math-inline">$k-1$</span> 个变量任意地合法赋值, 第 <span class="markdown-them-math-inline">$k$</span> 个变量都存在合法的值可以被赋予, 那么就称该 CSP 问题是 <span class="markdown-them-math-inline">$k$</span>-consistent 的. 显然 <span class="markdown-them-math-inline">$1$</span>-consisteny 是 node consistency, <span class="markdown-them-math-inline">$2$</span>-consistency 是 arc consistency.</p>
+<p><strong>弧一致性检验</strong>主要是在 binary-CSP 中应用, 对于一个
+binary-CSP, 以变量为顶点, 约束为弧, 构造有向图 <span
+class="math inline">\(G=(V,E)\)</span>, 这里 <span
+class="math inline">\(|V|\)</span> 相当于变量数, <span
+class="math inline">\(|E|\)</span> 相当于约束数. 对于其中的两个变量
+<span class="math inline">\(X,Y\)</span>, 若 <span
+class="math inline">\(X,Y\)</span> 出现在同一约束中则 <span
+class="math inline">\((X,Y)\in E\land (Y,X)\in E\)</span>, 那么弧 <span
+class="math inline">\((X,Y)\)</span> 是一致的当且仅当对于任意 <span
+class="math inline">\(x\in D_X\)</span> 都存在合法的 <span
+class="math inline">\(y\in D_Y\)</span> 可以取到, 如果某个 <span
+class="math inline">\(x\)</span> 使得所有 <span
+class="math inline">\(y\in D_Y\)</span> 都不能取到, 那么这个 <span
+class="math inline">\(x\)</span> 就没必要再选了, 可以直接删去, 此时
+<span class="math inline">\(X\)</span> 的取值丢失了一个值后,
+需要重新检查 <span class="math inline">\(X\)</span> 的邻居 .
+当存在不一致的弧时, 就说明当前状态已经不满足约束, 是一个失败的状态, 算法
+AC-3 可以用来找到一个状态是否存在不一致的弧.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308091255691.png" /></p>
+<p>这个算法维护一个队列存弧, 每次取队首元素 <span
+class="math inline">\((X_i,X_j)\)</span> 判断根据当前状态是否可以修改
+<span class="math inline">\(X_i\)</span> 的取值 <span
+class="math inline">\(D_i\)</span>, 如果修改了且 <span
+class="math inline">\(X_i\)</span>
+不存在合法取值就意味着找到了不一致的弧, 否则就要重新check <span
+class="math inline">\(X_i\)</span> 与其邻居的弧一致性, 因此就将弧 <span
+class="math inline">\((X_k,X_i)(X_k\in N(X_i)\backslash\{X_j\})\)</span>
+加到队列中. 根据当前状态以及弧 <span
+class="math inline">\((X_i,X_j)\)</span> 修改 <span
+class="math inline">\(X_i\)</span> 的取值, 只需要删去 <span
+class="math inline">\(x\in D_i\)</span> 满足 <span
+class="math inline">\(\forall y\in D_j,(x,y)\)</span> 都不满足约束,
+如果不存在这样的 <span class="math inline">\(x\)</span>,
+则不做任何修改.</p>
+<p>对于任意两个变量, 检查它们的弧一致性需要枚举两个变量的所有取值,
+这一步骤的复杂度为 <span class="math inline">\(O(d^2)\)</span>, 于是
+AC-3算法的复杂度为 <span class="math inline">\(O(|E|d^3)\)</span>.</p>
+<p>相比 forward checking, arc consistency
+可以更早地检测到当前分支的失败; 同时AC-3算法无法发现所有的不一致的弧,
+比如下图的情况:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101043893.png" style="zoom:50%;" /></p>
+<p>这显然是一种不合法的情况, 不管怎么取值都会有两个相邻的取到相邻的颜色,
+但是弧一致性检验只能两两之间检验.</p>
+<h1 id="k-consistency"><span
+class="math inline">\(k\)</span>-consistency</h1>
+<p>如果一个 CSP 问题, 对于它的任意 <span
+class="math inline">\(k-1\)</span> 个变量任意地合法赋值, 第 <span
+class="math inline">\(k\)</span> 个变量都存在合法的值可以被赋予,
+那么就称该 CSP 问题是 <span class="math inline">\(k\)</span>-consistent
+的. 显然 <span class="math inline">\(1\)</span>-consisteny 是 node
+consistency, <span class="math inline">\(2\)</span>-consistency 是 arc
+consistency.</p>
 <h1 id="tree-structured-csps">Tree-structured CSPs</h1>
-<p>当上文的 binary-CSP 对应的图 <span class="markdown-them-math-inline">$G$</span> 是一棵树, 那么该 CSP 可以在 <span class="markdown-them-math-inline">$O(nd^2)$</span> 的时间内解决, 而一般的 CSP 的最坏时间复杂度为 <span class="markdown-them-math-inline">$O(d^n)$</span>. 这是一个 DP 算法:</p>
-<p>随机选择一个结点作为根节点, 按照拓扑排序得到一个节点序列<strong>保证父节点在子节点</strong>之前, 接着倒序遍历得到的序列, 对 <span class="markdown-them-math-inline">$(\mathrm{fa}(x),x)$</span> 进行弧一致性检验, 删去一些值, 那么再正序遍历, 给每一个结点 <span class="markdown-them-math-inline">$x$</span> 赋一个与其父节点 <span class="markdown-them-math-inline">$\mathrm{fa}(x)$</span> 的值相容的值即可, 这是一定可以做到的, 因为前面做过弧一致性检验后保证了对于父节点的任意一个取值, 子结点至少有一个合法取值.</p>
-<p>由于大部分图不是树形结构, 但是对于比较接近树结构的图, 我们可以在图中找到最少的点(这是NPC的), 删去这些点之后使得剩下的子图成为一颗树(比如删去城市 SA), 那么就可以用上面的算法来解决, 对于删去的点直接枚举每个点的所有取值即可, 设删去的点的数目为 <span class="markdown-them-math-inline">$c$</span>, 那么复杂度为 <span class="markdown-them-math-inline">$O(d^c(n-c)d^2)$</span>, 我们希望 <span class="markdown-them-math-inline">$c$</span> 比较小.</p>
+<p>当上文的 binary-CSP 对应的图 <span class="math inline">\(G\)</span>
+是一棵树, 那么该 CSP 可以在 <span class="math inline">\(O(nd^2)\)</span>
+的时间内解决, 而一般的 CSP 的最坏时间复杂度为 <span
+class="math inline">\(O(d^n)\)</span>. 这是一个 DP 算法:</p>
+<p>随机选择一个结点作为根节点,
+按照拓扑排序得到一个节点序列<strong>保证父节点在子节点</strong>之前,
+接着倒序遍历得到的序列, 对 <span
+class="math inline">\((\mathrm{fa}(x),x)\)</span> 进行弧一致性检验,
+删去一些值, 那么再正序遍历, 给每一个结点 <span
+class="math inline">\(x\)</span> 赋一个与其父节点 <span
+class="math inline">\(\mathrm{fa}(x)\)</span> 的值相容的值即可,
+这是一定可以做到的,
+因为前面做过弧一致性检验后保证了对于父节点的任意一个取值,
+子结点至少有一个合法取值.</p>
+<p>由于大部分图不是树形结构, 但是对于比较接近树结构的图,
+我们可以在图中找到最少的点(这是NPC的),
+删去这些点之后使得剩下的子图成为一颗树(比如删去城市 SA),
+那么就可以用上面的算法来解决, 对于删去的点直接枚举每个点的所有取值即可,
+设删去的点的数目为 <span class="math inline">\(c\)</span>, 那么复杂度为
+<span class="math inline">\(O(d^c(n-c)d^2)\)</span>, 我们希望 <span
+class="math inline">\(c\)</span> 比较小.</p>
 <h2 id="tree-decomposition">Tree decomposition</h2>
-<p>为了使用 tree-structured CSPs 的复杂度较低的算法, 除了上面的删点手段, 还可以使用 Tree decomposition, 即组合若干相邻节点称为一个&quot;大结点&quot;(meganode), 如下图所示, 同一个结点可以在不同的&quot;大节点&quot;中出现, 使 meganode 之间成为一棵树, 且要保证其赋值的一致性.</p>
-<p>定义树宽为 <span class="markdown-them-math-inline">$w= \max |\mathrm{meganode}|-1$</span>, 当树宽为 <span class="markdown-them-math-inline">$1$</span> 时原图为树.</p>
-<p>在 <span class="markdown-them-math-inline">$G$</span> 中, 若已知 <span class="markdown-them-math-inline">$\deg(v)$</span>, 则在 tree decomposition 得到的树中, <span class="markdown-them-math-inline">$v$</span> 所在的 meganode 的数量为 <span class="markdown-them-math-inline">$\deg(v)-1$</span> 且这些 megenode 恰好可以连成一条 path.</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101210596.png" style="zoom: 50%;" />
+<p>为了使用 tree-structured CSPs 的复杂度较低的算法, 除了上面的删点手段,
+还可以使用 Tree decomposition,
+即组合若干相邻节点称为一个"大结点"(meganode), 如下图所示,
+同一个结点可以在不同的"大节点"中出现, 使 meganode 之间成为一棵树,
+且要保证其赋值的一致性.</p>
+<p>定义树宽为 <span class="math inline">\(w= \max
+|\mathrm{meganode}|-1\)</span>, 当树宽为 <span
+class="math inline">\(1\)</span> 时原图为树.</p>
+<p>在 <span class="math inline">\(G\)</span> 中, 若已知 <span
+class="math inline">\(\deg(v)\)</span>, 则在 tree decomposition
+得到的树中, <span class="math inline">\(v\)</span> 所在的 meganode
+的数量为 <span class="math inline">\(\deg(v)-1\)</span> 且这些 megenode
+恰好可以连成一条 path.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308101210596.png" style="zoom: 50%;" /></p>
 <p>下面是另一个例子:</p>
-<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142052499.png" style="zoom:50%;" />
-<p>处理的时候先处理每个 meganode, 再使用 tree-structured CSPs 的算法处理整棵树即可. 那么复杂度为 <span class="markdown-them-math-inline">$O(nd^{w+1})$</span>, 对任意图, 找到它的最小树宽的问题是 NPC 的, 可以用启发式算法找到一个相对小的.</p>
-<h1 id="local-search for csps">Local Search for CSPs</h1>
-<p>对于一个 CSP, 可以随机给一种赋值方案, 这大概率会有违反约束的情况, local search 指的是通过不断调整不同变量的值来消除违反约束的部分, 最后得到一个可行解.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308142052499.png" style="zoom:50%;" /></p>
+<p>处理的时候先处理每个 meganode, 再使用 tree-structured CSPs
+的算法处理整棵树即可. 那么复杂度为 <span
+class="math inline">\(O(nd^{w+1})\)</span>, 对任意图,
+找到它的最小树宽的问题是 NPC 的, 可以用启发式算法找到一个相对小的.</p>
+<h1 id="local-search-for-csps">Local Search for CSPs</h1>
+<p>对于一个 CSP, 可以随机给一种赋值方案, 这大概率会有违反约束的情况,
+local search 指的是通过不断调整不同变量的值来消除违反约束的部分,
+最后得到一个可行解.</p>
 <h1 id="习题">习题</h1>
-<p><strong>6.4</strong> Give precise formulations for each of the following as constraint satisfaction problems:</p>
-<p>a. Rectilinear floor-planning: find non-overlapping places in a large rectangle for a number of smaller rectangles.</p>
-<p>b. Class scheduling: There is a fixed number of professors and classrooms, a list of classes to be offered, and a list of possible time slots for classes. Each professor has a set of classes that he or she can teach.</p>
-<p>c. Hamiltonian tour: given a network of cities connected by roads, choose an order to visit all cities in a country without repeating any.</p>
+<p><strong>6.4</strong> Give precise formulations for each of the
+following as constraint satisfaction problems:</p>
+<ol type="a">
+<li><p>Rectilinear floor-planning: find non-overlapping places in a
+large rectangle for a number of smaller rectangles.</p></li>
+<li><p>Class scheduling: There is a fixed number of professors and
+classrooms, a list of classes to be offered, and a list of possible time
+slots for classes. Each professor has a set of classes that he or she
+can teach.</p></li>
+<li><p>Hamiltonian tour: given a network of cities connected by roads,
+choose an order to visit all cities in a country without repeating
+any.</p></li>
+</ol>
 <blockquote>
-<p>Find a permutation of <span class="markdown-them-math-inline">$\{1,\cdots,n\}$</span> such that <span class="markdown-them-math-inline">$\forall j\ne k,v_{i_j}\in N(v_{i_k})$</span>.</p>
+<p>Find a permutation of <span
+class="math inline">\(\{1,\cdots,n\}\)</span> such that <span
+class="math inline">\(\forall j\ne k,v_{i_j}\in N(v_{i_k})\)</span>.</p>
 </blockquote>
-<p><strong>6.6</strong> Show how a single ternary constraint such as “<span class="markdown-them-math-inline">$A + B = C$</span>” can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. (Hint: Consider a new variable that takes on values that are pairs of other values, and consider constraints such as “X is the first element of the pair Y .”) Next, show how constraints with more than three variables can be treated similarly. Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.</p>
+<p><strong>6.6</strong> Show how a single ternary constraint such as
+“<span class="math inline">\(A + B = C\)</span>” can be turned into
+three binary constraints by using an auxiliary variable. You may assume
+finite domains. (Hint: Consider a new variable that takes on values that
+are pairs of other values, and consider constraints such as “X is the
+first element of the pair Y .”) Next, show how constraints with more
+than three variables can be treated similarly. Finally, show how unary
+constraints can be eliminated by altering the domains of variables. This
+completes the demonstration that any CSP can be transformed into a CSP
+with only binary constraints.</p>
 <blockquote>
 <p>这个问题最终要求证明任意的 CSP 问题都可以转化为 binary-CSP 问题.</p>
-<p>根据 hint, 令 <span class="markdown-them-math-inline">$X=(A,B)\in D^2$</span>, 那么约束 <span class="markdown-them-math-inline">$A+B=C$</span> 可以转化为如下的三个 binary constraint:</p>
-<div class="markdown-them-math-block">$$\begin{cases}
+<p>根据 hint, 令 <span class="math inline">\(X=(A,B)\in D^2\)</span>,
+那么约束 <span class="math inline">\(A+B=C\)</span> 可以转化为如下的三个
+binary constraint: <span class="math display">\[
+\begin{cases}
 \langle X,(1,1)\rangle=C\\
 A \text{ is the first element of }X\\
 B \text{ is the second element of }X
 \end{cases}
-$$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-inline">$f(X_1,\cdots,X_n)=0$</span>, 当表达式为线性或者二次型时还能采用上述方法, 但是如果约束比较复杂, 还能怎么办呢?</p>
+\]</span> 对于更多变量的约束, 比如 <span
+class="math inline">\(f(X_1,\cdots,X_n)=0\)</span>,
+当表达式为线性或者二次型时还能采用上述方法, 但是如果约束比较复杂,
+还能怎么办呢?</p>
 </blockquote>
-<p><strong>6.13</strong> AC-3 puts back on the queue every arc <span class="markdown-them-math-inline">$(X_k, X_i)$</span> whenever any value is deleted from the domain of <span class="markdown-them-math-inline">$X_i$</span>, even if each value of <span class="markdown-them-math-inline">$X_k$</span> is consistent with several remaining values of <span class="markdown-them-math-inline">$X_i$</span>. Suppose that, for every arc <span class="markdown-them-math-inline">$(X_k, X_i)$</span>, we keep track of the number of remaining values of <span class="markdown-them-math-inline">$X_i$</span> that are consistent with each value of <span class="markdown-them-math-inline">$X_k$</span>. Explain how to update these numbers efficiently and hence show that arc consistency can be enforced in total time <span class="markdown-them-math-inline">$O(n^2d^2)$</span>.</p>
-<p><strong>6.14</strong> The TREE-CSP-SOLVER (Figure 6.10) makes arcs consistent starting at the leaves and working backwards towards the root. Why does it do that? What would happen if it went in the opposite direction?</p>
+<p><strong>6.13</strong> AC-3 puts back on the queue every arc <span
+class="math inline">\((X_k, X_i)\)</span> whenever any value is deleted
+from the domain of <span class="math inline">\(X_i\)</span>, even if
+each value of <span class="math inline">\(X_k\)</span> is consistent
+with several remaining values of <span
+class="math inline">\(X_i\)</span>. Suppose that, for every arc <span
+class="math inline">\((X_k, X_i)\)</span>, we keep track of the number
+of remaining values of <span class="math inline">\(X_i\)</span> that are
+consistent with each value of <span class="math inline">\(X_k\)</span>.
+Explain how to update these numbers efficiently and hence show that arc
+consistency can be enforced in total time <span
+class="math inline">\(O(n^2d^2)\)</span>.</p>
+<p><strong>6.14</strong> The TREE-CSP-SOLVER (Figure 6.10) makes arcs
+consistent starting at the leaves and working backwards towards the
+root. Why does it do that? What would happen if it went in the opposite
+direction?</p>
 <blockquote>
-<p>弧一致性检验要求当某个结点的合法取值被删去之后要 recheck 其邻居, 对于树形结构的 CSP, 每次删去的都是父节点的取值, 倒序遍历时, 父节点的祖先还没有被更新过, 可以在遍历的过程中一次更新, 而其儿子不需要再更新; 如果正序遍历, 那么删去某个父节点的值后, 还要再检查该父节点的父亲结点, 这个检查有可能会继续传播直到根节点, 造成了大量的开销. 因此倒序遍历保证了每个结点只 check 了一次.</p>
+<p>弧一致性检验要求当某个结点的合法取值被删去之后要 recheck 其邻居,
+对于树形结构的 CSP, 每次删去的都是父节点的取值, 倒序遍历时,
+父节点的祖先还没有被更新过, 可以在遍历的过程中一次更新,
+而其儿子不需要再更新; 如果正序遍历, 那么删去某个父节点的值后,
+还要再检查该父节点的父亲结点, 这个检查有可能会继续传播直到根节点,
+造成了大量的开销. 因此倒序遍历保证了每个结点只 check 了一次.</p>
 </blockquote>
 
     </div>
@@ -359,8 +515,8 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/07/31/essay/vscode-wsl-permission/" rel="prev" title="碰到的一些简单的问题">
-                  <i class="fa fa-angle-left"></i> 碰到的一些简单的问题
+                <a href="/2023/07/31/essay/vscode-wsl-permission/" rel="prev" title="WSL2 相关">
+                  <i class="fa fa-angle-left"></i> WSL2 相关
                 </a>
             </div>
             <div class="post-nav-item">
@@ -397,13 +553,13 @@ $$</div><p>对于更多变量的约束, 比如 <span class="markdown-them-math-i
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

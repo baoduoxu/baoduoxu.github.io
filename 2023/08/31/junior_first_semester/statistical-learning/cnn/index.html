@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300italic,400,400italic,700,700italic%7CJetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -22,27 +22,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="对卷积神经网络的一些概述和代码写法。">
+    <meta name="description" content="常见的一些神经网络, 包括 CNN, RNN, Transformer 及其变体.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络">
+<meta property="og:title" content="常见的神经网络">
 <meta property="og:url" content="http://example.com/2023/08/31/junior_first_semester/statistical-learning/cnn/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="对卷积神经网络的一些概述和代码写法。">
+<meta property="og:description" content="常见的一些神经网络, 包括 CNN, RNN, Transformer 及其变体.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041758123.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181559086.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309061405066.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309060926273.png">
 <meta property="article:published_time" content="2023-08-31T06:58:48.056Z">
-<meta property="article:modified_time" content="2023-08-31T13:41:52.012Z">
+<meta property="article:modified_time" content="2023-09-19T11:12:41.256Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif">
 
 
 <link rel="canonical" href="http://example.com/2023/08/31/junior_first_semester/statistical-learning/cnn/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/31/junior_first_semester/statistical-learning/cnn/","path":"2023/08/31/junior_first_semester/statistical-learning/cnn/","title":"卷积神经网络"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/31/junior_first_semester/statistical-learning/cnn/","path":"2023/08/31/junior_first_semester/statistical-learning/cnn/","title":"常见的神经网络"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>卷积神经网络 | XBD</title>
+<title>常见的神经网络 | XBD</title>
   
 
 
@@ -142,7 +148,13 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络结构的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.</span> <span class="nav-text">卷积操作为什么可以提取特征</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gradient-vanish-and-explosion"><span class="nav-number">1.</span> <span class="nav-text">Gradient Vanish and
+Explosion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cnn"><span class="nav-number">2.</span> <span class="nav-text">CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#convolution-convolutional-kernel"><span class="nav-number">2.1.</span> <span class="nav-text">Convolution &amp;
+Convolutional Kernel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#times-1-kernel"><span class="nav-number">2.1.1.</span> <span class="nav-text">\(1\times 1\)
+kernel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">为什么卷积操作可以提取特征?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max-pooling"><span class="nav-number">2.2.</span> <span class="nav-text">Max Pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-whole-cnn"><span class="nav-number">2.3.</span> <span class="nav-text">The Whole CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cnn-with-pytorch"><span class="nav-number">2.4.</span> <span class="nav-text">CNN with Pytorch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resnet"><span class="nav-number">3.</span> <span class="nav-text">ResNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rnn"><span class="nav-number">4.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-rnn"><span class="nav-number">4.1.</span> <span class="nav-text">Why RNN?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-rnn"><span class="nav-number">4.2.</span> <span class="nav-text">The Structure of RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#different-types-of-rnn"><span class="nav-number">4.3.</span> <span class="nav-text">Different Types of RNN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lstm"><span class="nav-number">5.</span> <span class="nav-text">LSTM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-lstm"><span class="nav-number">5.1.</span> <span class="nav-text">Why LSTM?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-lstm"><span class="nav-number">5.2.</span> <span class="nav-text">The Structure of LSTM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gru"><span class="nav-number">6.</span> <span class="nav-text">GRU</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-gru"><span class="nav-number">6.1.</span> <span class="nav-text">Why GRU?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-gru"><span class="nav-number">6.2.</span> <span class="nav-text">The Structure of GRU</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-rnn-%E5%8F%8A%E5%85%B6%E5%8F%98%E7%A7%8D%E4%B8%AD%E9%87%87%E7%94%A8%E4%BA%86%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0-tanh"><span class="nav-number">7.</span> <span class="nav-text">为什么 RNN
+及其变种中采用了激活函数 \(\tanh\)
+?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transformer"><span class="nav-number">8.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#self-attention"><span class="nav-number">8.1.</span> <span class="nav-text">self-attention</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#self-attention-for-speech-image-and-graph"><span class="nav-number">8.1.1.</span> <span class="nav-text">self-attention for
+speech, image and graph</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#restromer"><span class="nav-number">9.</span> <span class="nav-text">Restromer</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,18 +167,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -214,12 +226,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="卷积神经网络 | XBD">
+      <meta itemprop="name" content="常见的神经网络 | XBD">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          卷积神经网络
+          常见的神经网络
         </h1>
 
         <div class="post-meta-container">
@@ -229,9 +241,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-08-31 14:58:48 / Modified: 21:41:52" itemprop="dateCreated datePublished" datetime="2023-08-31T14:58:48+08:00">2023-08-31</time>
+      <time title="Created: 2023-08-31 14:58:48" itemprop="dateCreated datePublished" datetime="2023-08-31T14:58:48+08:00">2023-08-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-19 19:12:41" itemprop="dateModified" datetime="2023-09-19T19:12:41+08:00">2023-09-19</time>
     </span>
 
   
@@ -241,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>34</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -258,9 +276,332 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="卷积神经网络结构的作用">卷积神经网络结构的作用</h1>
-<h2 id="卷积操作为什么可以提取特征">卷积操作为什么可以提取特征</h2>
-<p>图像的特征是什么？s</p>
+    <div class="post-body" itemprop="articleBody"><!-- 本课程的内容：
+
+- 复习传统机器学习算法
+- 统计学习理论高级内容: 《统计学习方法》第 9, 10, 11, 15, 16, 19, 20, 21 章的内容.
+- 神经网络的概述, 各种特点和注意事项
+- CV: CNN, ResNet
+- NLP: Transformer 和 Attention, Bert
+- GNN
+- GAN
+- RL
+- XGBoost
+
+# 神经网络常见的优化器
+
+
+## 不同优化器的可视化表现
+
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif" style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041758123.gif" style="zoom:50%;" />
+
+## SGD, BGD, MBGD
+
+
+
+## 动量算法: Nesterov Accelerated Gradient 
+
+
+
+## 自适应学习率算法
+
+### Adagrad
+
+### Adadelta
+
+### RMSprop
+
+### Adam
+
+### Adamax
+
+### Nadam -->
+<h1 id="gradient-vanish-and-explosion">Gradient Vanish and
+Explosion</h1>
+<h1 id="cnn">CNN</h1>
+<p>图像可以看作是一个 <span class="math inline">\(H\times W\)</span>
+的矩阵, 每个元素都是图像的一个像素, 表示图像上的一个点.
+考虑到图像的通道, 是一个 <span class="math inline">\(H\times W\times
+C\)</span> 的三维张量, 其中 <span class="math inline">\(H,W\)</span>
+为图片的长与宽, <span class="math inline">\(C\)</span> 为图像的通道数,
+对于彩色图像而言, <span class="math inline">\(C=3\)</span>, 即 RGB
+(红绿蓝), 每个像素的每个通道的数值都是 <span
+class="math inline">\([0,255]\)</span> 之间的一个整数.</p>
+<p>灰度图像只有一个通道, 每个像素的值表示灰度级别, 也是 <span
+class="math inline">\([0,255]\)</span> 之间的一个整数.</p>
+<blockquote>
+<p>图像的通道指的是图像中颜色信息的分量.</p>
+</blockquote>
+<h2 id="convolution-convolutional-kernel">Convolution &amp;
+Convolutional Kernel</h2>
+<p>卷积核和图像的格式保持一致, 具有<strong>长,
+宽和通道数</strong>的概念, 且卷积核的通道数与输入数据的通道数需要相等.
+常使用的卷积核的尺寸为 <span class="math inline">\(3\times
+3,5\times5,7\times7\)</span>.</p>
+<p>在将卷积核与图像做卷积操作之前, 需要确定两个参数:</p>
+<p>1: padding (填充). 即在原始图像周围填充一圈 0,
+得到一张尺寸更大的图片. 这样做是因为卷积操作会缩小原图尺寸,
+进行填充后可以保证原图尺寸不变.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181559086.png" alt="padding=1的情形" style="zoom:50%;" /></p>
+<p>2: stride (步长).
+步长表示卷积核在图像上滑动的过程中两个卷积核之间的距离,
+同样会影响卷积后的图像大小, 上图是 stride=2的情形.</p>
+<p>确定 padding 为 <span class="math inline">\(p\)</span> 且 stride 为
+<span class="math inline">\(s\)</span> 后, 卷积核的尺寸为 <span
+class="math inline">\(h_{\mathrm{k}}\times w_{\mathrm{k}}\times
+c_{\mathrm{in}}\)</span>, 卷积操作输出的图片的尺寸为 <span
+class="math display">\[
+\begin{aligned}
+h_{\mathrm{out}}=\frac{h_{\mathrm{in}}-h_{\mathrm{k}}+2p}{s}+1
+\newline{}
+w_{\mathrm{out}}=\frac{w_{\mathrm{in}}-w_{\mathrm{k}}+2p}{s}+1
+\end{aligned}
+\]</span> 输出通道 <span class="math inline">\(c_{\mathrm{out}}\)</span>
+<strong>取决于卷积核的个数</strong>, 因为<strong>每一个 kernel
+将图片的3个通道压缩为了一个通道</strong>, 将做过卷积操作得到的图像称为
+Feature Maps.</p>
+<blockquote>
+<p>卷积核的三个通道分别与图像的三个通道做卷积,
+得到三个矩阵(或者说得到一张通道数为3的新图片),
+将三个矩阵对应位置的元素<strong>加起来</strong>得到了通道数为1的feature
+map, 除此之外, 卷积操作也会有 bias 的存在, 即最终结果再加上 bias.</p>
+</blockquote>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181555971.png"
+alt="How to Calculate Convolutional Layer Size" />
+<figcaption aria-hidden="true">How to Calculate Convolutional Layer
+Size</figcaption>
+</figure>
+<h3 id="times-1-kernel"><span class="math inline">\(1\times 1\)</span>
+kernel</h3>
+<p>相当于 fc ?</p>
+<h3 id="为什么卷积操作可以提取特征">为什么卷积操作可以提取特征?</h3>
+<p>卷积操作能够提取的特征包括 边缘/纹理/颜色/形状 等.</p>
+<p>怎么做到的呢? 有没有什么本质上的原因?</p>
+<h2 id="max-pooling">Max Pooling</h2>
+<p>池化操作就是将卷积后的图的尺寸进一步缩小并保留原有特征. 思想很简单,
+类似于卷积核的滑动, 将固定大小的池化窗口以一定的 stride 滑动,
+每个窗口内取最大值作为输出, 得到一个新的图像.</p>
+<p>除了 max pooling 还有 average pooling, 但是 max pooling
+使用的更多.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181626904.png"
+alt="Max Pooling" />
+<figcaption aria-hidden="true">Max Pooling</figcaption>
+</figure>
+<h2 id="the-whole-cnn">The Whole CNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181628800.png"
+alt="整个CNN的结构" />
+<figcaption aria-hidden="true">整个CNN的结构</figcaption>
+</figure>
+<p>原始图片可以经过多次卷积和池化, 当卷积和池化操作完成后,
+图片的尺寸大幅度减小, 此时直接将图片 flatten
+展平为向量作为全连接层的输入即可.</p>
+<p>整个 CNN 在做的就是, 在尽可能保留图像的特征的前提下,
+尽可能使图像的尺寸减少, 即<strong>特征提取</strong>, 略去冗余无用的信息,
+以减少网络的参数的数量, 减少训练时间并降低过拟合的程度.</p>
+<p>CNN 学习的参数包括卷积核的权重和全连接层的权重, 除此之外可能还有一些
+bias(也是卷积操作过程中或者全连接层的).</p>
+<h2 id="cnn-with-pytorch">CNN with Pytorch</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Net</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Net, self).__init__() </span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv3 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv4 = nn.Conv2d(<span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv5 = nn.Conv2d(<span class="number">64</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv6 = nn.Conv2d(<span class="number">128</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">128</span> * <span class="number">4</span> * <span class="number">4</span>, <span class="number">512</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">512</span>, <span class="number">256</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">256</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = F.relu(self.conv1(x))</span><br><span class="line">        x = F.relu(self.conv2(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = F.relu(self.conv3(x))</span><br><span class="line">        x = F.relu(self.conv4(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = F.relu(self.conv5(x))</span><br><span class="line">        x = F.relu(self.conv6(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">128</span> * <span class="number">4</span> * <span class="number">4</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.dropout(x, p=<span class="number">0.5</span>)</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = F.dropout(x, p=<span class="number">0.5</span>)</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h1 id="resnet">ResNet</h1>
+<hr />
+<h1 id="rnn">RNN</h1>
+<p>Recurrent Neural Network.</p>
+<h2 id="why-rnn">Why RNN?</h2>
+<p>考虑到语言中词汇序列的<strong>时序关系</strong>以及<strong>上下文</strong>,
+RNN 能够顾及到前面的输入和后面的输入的关系,
+同时也能模拟人脑的记忆功能.</p>
+<h2 id="the-structure-of-rnn">The Structure of RNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191506125.png"
+alt="RNN结构" />
+<figcaption aria-hidden="true">RNN结构</figcaption>
+</figure>
+<p>本质上是一个简单的有一层隐藏层的全连接神经网络. 设输入向量为 <span
+class="math inline">\(x\)</span>, 隐藏层向量为 <span
+class="math inline">\(h\)</span>, 输出向量为 <span
+class="math inline">\(o\)</span>, 输入层和隐藏层的参数矩阵为 <span
+class="math inline">\(U\)</span>, 激活函数为 <span
+class="math inline">\(f\)</span>, 隐藏层和输出层的参数矩阵为 <span
+class="math inline">\(W\)</span>, 激活函数为 <span
+class="math inline">\(g\)</span>.</p>
+<p>考虑到序列模型, 可以让 <span class="math inline">\(h\)</span>
+不只取决于 <span class="math inline">\(x\)</span>,
+还与上一个<strong>时刻</strong>的 <span class="math inline">\(h\)</span>
+有关, 那么这样输入层/隐藏层/输出层都是时间的序列: <span
+class="math inline">\(\{x_t\},\{h_t\},\{o_t\}\)</span>,
+设两个时刻之间的隐藏层向量 <span
+class="math inline">\(h_{t-1},h_t\)</span> 的参数矩阵为 <span
+class="math inline">\(V\)</span>, 那么 <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp;h_t=f(Ux_t+Vh_{t-1})\newline{}
+&amp;o_t=g(Wh_t)
+\end{aligned}
+}
+\]</span></p>
+<p>未考虑 bias.</p>
+<h2 id="different-types-of-rnn">Different Types of RNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191518635.png"
+alt="根据输入与输出的数量不同, RNN的不同种类" />
+<figcaption aria-hidden="true">根据输入与输出的数量不同,
+RNN的不同种类</figcaption>
+</figure>
+<p>不同种类的 RNN 被设计来完成不同的任务:</p>
+<ul>
+<li>one2one: 应该不能把这个看作 RNN, 就是普通的神经网络</li>
+<li>one2many: 根据一个输入生成句子, 比如输入图片给图片做描述等.</li>
+<li>many2one: 根据句子输出一个 label, 比如情感分析.</li>
+<li>many2many 位置不对应: 翻译.</li>
+<li>many2many 位置一一对应: 将视频的每个帧输出label.</li>
+</ul>
+<h1 id="lstm">LSTM</h1>
+<p>Long Short Term Memory.</p>
+<h2 id="why-lstm">Why LSTM?</h2>
+<p>因为 RNN 缺点: 梯度消失或梯度爆炸导致无法处理处理长序列,
+或者是相距很远的上下文对应关系.</p>
+<p>LSTM 的思想就是选择性记忆, 而不像 RNN 那样不论有没有用都去记忆.</p>
+<h2 id="the-structure-of-lstm">The Structure of LSTM</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191602076.png"
+alt="RNN和LSTM的对比" />
+<figcaption aria-hidden="true">RNN和LSTM的对比</figcaption>
+</figure>
+<p>LSTM 采用了门电路的思想, 设计了 forget gate, input gate 和 output
+gate用来控制 input value, memory value 和 output value. 使用 sigmoid
+将数值控制在 <span class="math inline">\((0,1)\)</span> 之间,
+对应了门的开闭状态.</p>
+<p>每个 cell 中, <span class="math inline">\(\times\)</span>
+表示将两个向量做 <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadamard_product_(matrices)">Hadamard
+product</a>, 用符号 <span class="math inline">\(\odot\)</span> 表示,
+<span class="math inline">\(+\)</span> 表示将两个向量做相加操作.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191609779.png"
+alt="LSTM cell 结构" />
+<figcaption aria-hidden="true">LSTM cell 结构</figcaption>
+</figure>
+<p>根据数据的流向, 很容易就能够写出公式: <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp; f_t=\sigma(U^fx_t+V^fh_{t-1})\text{ forget gate}\newline{}
+&amp; i_t=\sigma(U^ix_t+V^ih_{t-1})\text{ input gate}\newline{}
+&amp; o_t=\sigma(U^ix_t+V^ih_{t-1})\text{ output gate}\newline{}
+&amp; \tilde{C}_t=\tanh(U^gx_t+V^gh_{t-1})\newline{}
+&amp; C_t=f_t\odot C_{t-1}+i_t\odot \tilde{C}_t\newline{}
+&amp; h_t=o_t\odot \tanh(C_t)
+\end{aligned}
+}
+\]</span> 未考虑 bias.</p>
+<h1 id="gru">GRU</h1>
+<p>Gate Recurrent Unit.</p>
+<h2 id="why-gru">Why GRU?</h2>
+<p>LSTM 的 cell 引入了三个门, 参数量比较大, GRU 在 LSTM
+的基础上进行了简化, 只设计了两个门, update gate 和 reset gate.</p>
+<h2 id="the-structure-of-gru">The Structure of GRU</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191652320.png"
+alt="LSTM 与 GRU 对比" />
+<figcaption aria-hidden="true">LSTM 与 GRU 对比</figcaption>
+</figure>
+<p>The difference between LSTM and GRU:</p>
+<ol type="1">
+<li><p>GRU does not possess any internal memory, they don’t have an
+output gate that is present in LSTM</p></li>
+<li><p>In LSTM the input gate and target gate are coupled by an update
+gate, and in GRU reset gate is applied directly to the previous hidden
+state</p></li>
+<li><p>In LSTM the responsibility of reset gate is taken by the two
+gates i.e., input and target</p></li>
+</ol>
+<p>下面是更清晰的结构:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191704057.png" /></p>
+<p>根据数据流向写出下面的公式: <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp; r_t=\sigma(U^rx_t+V^rh_{t-1})\newline{}
+&amp; z_t=\sigma(U^zx_t+V^zh_{t-1})\newline{}
+&amp; \hat{h}_t=\tanh(U^h x_t+(V^hh_{t-1})\odot r_t)\newline{}
+&amp; h_t=(1-z_t)\odot h_{t-1}+z_t\odot \hat{h}_t
+\end{aligned}
+}
+\]</span> 关于权重矩阵 <span class="math inline">\(V^h\)</span>, wiki
+上的版本为 <span class="math inline">\(V^h(h_{t-1}\odot r_t)\)</span>,
+还有版本是, 上文求 <span
+class="math inline">\(r_t,z_t,\hat{h}_t\)</span> 的过程中,
+用的不是相加操作而是拼接操作, 如下所示:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191747716.png" /></p>
+<h1 id="为什么-rnn-及其变种中采用了激活函数-tanh">为什么 RNN
+及其变种中采用了激活函数 <span class="math inline">\(\tanh\)</span>
+?</h1>
+<p><span class="math inline">\(\tanh\)</span> 的二阶导不为零的区间较大,
+改善了梯度消失的问题, 收敛快, 且计算开销小.</p>
+<p><strong>Ref</strong> <a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40761185/what-is-the-intuition-of-using-tanh-in-lstm">machine
+learning - What is the intuition of using tanh in LSTM? - Stack
+Overflow</a></p>
+<hr />
+<h1 id="transformer">Transformer</h1>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309061405066.png" alt="Transformer结构图" style="zoom: 33%;" />
+<span class="math display">\[
+\boxed{\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V}
+\]</span></p>
+<hr />
+<p>神经网络的输入总是一个向量, 对于不同形式的“自然语言”,
+可以通过如下处理来使其变为向量:</p>
+<ul>
+<li><p>声音: 使用<strong>可重叠的滑窗</strong>在一段声音中不断滑动,
+获取若干元素形成一个向量, 比如可以让 25ms 为一个帧, 每两个帧的开始时间隔
+10ms.</p>
+<p>问题: 每个滑窗内的声音信号是如何变成向量的一个元素的?</p></li>
+<li><p>文本数据.</p>
+<p><span class="math inline">\(\it (1)\)</span> 使用 <strong>one-hot
+encoding (独热编码)</strong>, 设有 <span
+class="math inline">\(n\)</span> 个单词, 则用向量 <span
+class="math inline">\([0,\cdots,0,\underbrace{1}_{第i个},0,\cdots,0]\)</span>
+表示第 <span class="math inline">\(i\)</span> 个单词. 这种方法比较简单,
+但是缺点很明显: <strong>维度灾难</strong>(当单词数目非常多的时候,
+向量的维度就会非常大,
+数据形成的矩阵相当稀疏)和<strong>语义鸿沟</strong>(不同单词之间没有显著的差异,
+无法进行相似度计算).</p>
+<p><span class="math inline">\(\it (2)\)</span> <strong>Word Embedding
+(词嵌入)</strong>: 将每个单词或词组映射为低维空间上的向量,
+对于语义相近的单词, 可以通过距离来衡量其相似程度, 两种主流的 word
+embedding 算法是 word2vec 和 GloVe. 如下图所示:</p></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309060926273.png" style="zoom: 50%;" /></p>
+<p>使用滑窗的缺点是无法顾及整体, 也就是可能无法考虑到上下文的影响,
+因此引入 self-attention.</p>
+<h2 id="self-attention">self-attention</h2>
+<p>每个向量得到 query, key, value.</p>
+<blockquote>
+<p>太难了, 看不懂</p>
+</blockquote>
+<h3 id="self-attention-for-speech-image-and-graph">self-attention for
+speech, image and graph</h3>
+<hr />
+<h1 id="restromer">Restromer</h1>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181718897.png"
+alt="Architecture of Restormer" />
+<figcaption aria-hidden="true">Architecture of Restormer</figcaption>
+</figure>
 
     </div>
 
@@ -279,6 +620,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/" rel="next" title="精确算法 MEASURE AND CONQUER">
+                  精确算法 MEASURE AND CONQUER <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -309,13 +653,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">170k</span>
+    <span title="Word count total">206k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">3:07</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
