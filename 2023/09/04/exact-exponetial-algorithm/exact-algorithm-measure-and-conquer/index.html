@@ -30,7 +30,7 @@
 <meta property="og:description" content="一种强大的分析 branching 算法的时间复杂度的工具。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-04T01:12:37.813Z">
-<meta property="article:modified_time" content="2023-09-18T03:14:40.523Z">
+<meta property="article:modified_time" content="2023-10-07T07:58:04.137Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -142,7 +142,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maximum-independent-set"><span class="nav-number">1.</span> <span class="nav-text">Maximum Independent Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98%E5%AE%9E%E4%BE%8B%E5%B9%B6%E4%BD%BF%E7%94%A8mc%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">重新设计问题实例并使用M&amp;C分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feedback-vertex-set"><span class="nav-number">2.</span> <span class="nav-text">Feedback Vertex Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fvs-%E7%9A%84%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">FVS 的一个算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%BC%95%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">前置定义与引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">详细算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preprocessing"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Preprocessing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-procedure"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Main Procedure</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dominating-set"><span class="nav-number">3.</span> <span class="nav-text">Dominating Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lower-bound-analysis"><span class="nav-number">4.</span> <span class="nav-text">Lower Bound Analysis</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maximum-independent-set"><span class="nav-number">1.</span> <span class="nav-text">Maximum Independent Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98%E5%AE%9E%E4%BE%8B%E5%B9%B6%E4%BD%BF%E7%94%A8mc%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">重新设计问题实例并使用M&amp;C分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mc-%E7%9A%84%E4%B8%80%E8%88%AC%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.</span> <span class="nav-text">M&amp;C 的一般策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feedback-vertex-set"><span class="nav-number">2.</span> <span class="nav-text">Feedback Vertex Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fvs-%E7%9A%84%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">FVS 的一个算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%BC%95%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">前置定义与引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%9A%84-branching-%E6%80%9D%E6%83%B3"><span class="nav-number">2.1.2.</span> <span class="nav-text">朴素的 branching 思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-more-complicated-one"><span class="nav-number">2.2.</span> <span class="nav-text">A more complicated one</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">详细算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preprocessing"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">Preprocessing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-procedure"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">Main Procedure</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dominating-set-set-cover"><span class="nav-number">3.</span> <span class="nav-text">Dominating Set &amp; Set Cover</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9-mc-%E5%88%86%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">借助 M&amp;C 分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lower-bound-analysis"><span class="nav-number">4.</span> <span class="nav-text">Lower Bound Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-%E4%BD%BF%E7%94%A8-mc-%E5%88%86%E6%9E%90%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8A%E7%95%8C%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.</span> <span class="nav-text">总结: 使用 M&amp;C
+分析时间复杂度上界的一般步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exercise"><span class="nav-number">6.</span> <span class="nav-text">Exercise</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -237,7 +238,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-18 11:14:40" itemprop="dateModified" datetime="2023-09-18T11:14:40+08:00">2023-09-18</time>
+      <time title="Modified: 2023-10-07 15:58:04" itemprop="dateModified" datetime="2023-10-07T15:58:04+08:00">2023-10-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,14 +257,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>7.3k</span>
+      <span>13k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>7 mins.</span>
+      <span>11 mins.</span>
     </span>
 </div>
 
@@ -365,7 +366,7 @@ class="math inline">\(N^2_{G&#39;}(v)\)</span> 中的点的权重可能会改变
 很不幸的是如果 <span class="math inline">\(v\)</span> 的存在度数为 2
 的邻接点或者全部的邻接点度数都为 2, 那么选择 <span
 class="math inline">\(v\)</span> 造成的删点有可能不会影响 <span
-class="math inline">\(k_1\)</span> 的大小(只删去了度数为 <span
+class="math inline">\(k_1\)</span> 的大小(只删去了权重为 <span
 class="math inline">\(0\)</span> 的点), 这就意味着 branching vector 为
 <span class="math inline">\((1,1)\)</span>, <span
 class="math inline">\(\tau(1,1)=2\)</span>, 并没有达到目的.</p></li>
@@ -389,6 +390,11 @@ class="math inline">\(k_2\)</span> 为 measure 进行 M&amp;C 可以得到算法
 mis3 的运行时间为 <span
 class="math inline">\(\mathcal{O}(1.3248^n)\)</span>. <span
 class="math inline">\(\square\)</span></p>
+<p><strong><em>PROOF</em></strong></p>
+<h2 id="mc-的一般策略">M&amp;C 的一般策略</h2>
+<p>就像上述例子一样, 在用 M&amp;C
+时设计问题实例的方法就是给问题中不同性质的成分赋不同的权,
+后文中几乎所有的复杂度分析都是用这种方法.</p>
 <hr />
 <h1 id="feedback-vertex-set">Feedback Vertex Set</h1>
 <p>Feedback Vertex Set 简称为 FVS.</p>
@@ -406,6 +412,27 @@ class="math inline">\(F\)</span> 与最小 FVS <span
 class="math inline">\(W\)</span> 是 <span
 class="math inline">\(V\)</span> 的一个划分, 所以<strong>求最小 FVS
 等价于求最大无环集</strong>.</p>
+<h3 id="朴素的-branching-思想">朴素的 branching 思想</h3>
+<p>在算法的某个过程中, 假如得到了一个无环集 <span
+class="math inline">\(F\)</span>, 那么很自然地就会考虑 <span
+class="math inline">\(N(F)\)</span> 中的点能否添加到 <span
+class="math inline">\(F\)</span> 中, 这便是一个分支规则, 对于 <span
+class="math inline">\(v\in N(F)\)</span>, 设 <span
+class="math inline">\(v\)</span> 与 <span
+class="math inline">\(F\)</span> 中的 <span
+class="math inline">\(t\)</span> 相邻:</p>
+<ul>
+<li>直接删去 <span class="math inline">\(v\)</span></li>
+<li>选择 <span class="math inline">\(v\)</span>, 并删去 <span
+class="math inline">\(N(v)\)</span> 中的所有满足下面条件的 <span
+class="math inline">\(u\)</span>: 对于 <span class="math inline">\(w\in
+N(u)\cap F\)</span>, <span class="math inline">\(w\in
+N(t)\)</span>.</li>
+</ul>
+<p>对于这种分支规则, 一个很好的 measure 是 <span
+class="math inline">\(\left\vert{V\backslash F}\right\vert\)</span>,
+在这个 maesure 下, ?</p>
+<h2 id="a-more-complicated-one">A more complicated one</h2>
 <p>现在定义对 <span class="math inline">\(G[F]\)</span> 的非平凡连通分量
 <span class="math inline">\(T\)</span>
 的<strong>收缩(contract)</strong>操作 (<strong>非平凡</strong>的含义是树
@@ -582,8 +609,10 @@ class="math inline">\(\mathrm{gd}(v)\)</span>.</li>
 class="math inline">\(F\)</span> 中除 <span
 class="math inline">\(t\)</span> 外的任何点相邻, 则 <span
 class="math inline">\(K\cup\{v\}\)</span> 仍然是独立集,
-那么无需执行收缩操作, <span class="math inline">\(v\)</span> 的
-generalized neighbor 就是它的 neighbor,</p>
+那么无需执行收缩操作(或者说执行收缩操作不改变 <span
+class="math inline">\(G\)</span> ), <span
+class="math inline">\(v\)</span> 的 generalized neighbor 就是它的
+neighbor.</p>
 <p>2: 若 <span class="math inline">\(v\)</span> 与 <span
 class="math inline">\(t&#39;\in F(t&#39;\ne t)\)</span> 相邻, 则 <span
 class="math inline">\(K\cup\{v\}\)</span> 中存在非平凡连通分量 <span
@@ -674,12 +703,70 @@ class="math display">\[
 \mathrm{mif}(G,F)=\max\{\mathrm{mif}(G,F\cup\{t\}),\mathrm{mif}(G-\{t\},F)
 \}
 \]</span> 的正确性显然,
-上面算法中的4的第一三条的正确性需要再详细说明一下:</p>
+上面算法中的4的第一三条的正确性需要再说明一下:</p>
+<p>执行 <span class="math inline">\(\mathrm{compress}(K\cup\{v\}\to
+u)\)</span> 操作后, 在 <span class="math inline">\(G&#39;\)</span> 中
+<span class="math inline">\(u\)</span> 将恰与 <span
+class="math inline">\(F&#39;\)</span> 中的一个顶点 <span
+class="math inline">\(t\)</span> 相邻, 此时在 <span
+class="math inline">\(G&#39;\)</span> 中, 对于 <span
+class="math inline">\(X&#39; \in \mathcal{M}_G&#39;(F&#39;)\)</span>,
+要么 <span class="math inline">\(u\in X&#39;\)</span>, 要么 <span
+class="math inline">\(N(u)-\{t\}\)</span> 中的两个点在 <span
+class="math inline">\(X&#39;\)</span> 中, 而 <span
+class="math inline">\(u\)</span> 本身是由 <span
+class="math inline">\(F\)</span> 中的一些点和 <span
+class="math inline">\(v\)</span> 收缩而来, <span
+class="math inline">\(u\)</span> 的 neighbor <span
+class="math inline">\(w_1,w_2\)</span> 是 <span
+class="math inline">\(v\)</span> 的generalize neighbor, 那么在 <span
+class="math inline">\(G\)</span> 中以及 <span
+class="math inline">\(X\in\mathcal{M}_G(F)\)</span>, 一定有 <span
+class="math inline">\(v\in X\)</span> 或者 <span
+class="math inline">\(w_1,w_2\in X\)</span>, 这分别对应了 <span
+class="math inline">\(\mathrm{gd}(v)\le 1\)</span> 和 <span
+class="math inline">\(\mathrm{gd}(v)=2\)</span> 的情形.</p>
 </blockquote>
 <p><strong>Theorem 1</strong> FVS 问题可以在 <span
 class="math inline">\(O(1.8899^n)\)</span> 的时间内解决.</p>
-<p><strong><em>PROOF</em></strong> <span
-class="math inline">\(\square\)</span></p>
+<p><strong><em>PROOF</em></strong> 设计 measure 为 <span
+class="math display">\[
+\mu(G,F)=\left\vert{V\backslash
+F}\right\vert+c\left\vert{V\backslash(F\cup N(t))}\right\vert
+\]</span> 其中 <span class="math inline">\(t\)</span> 为 active vertex.
+这实际上是 <span class="math inline">\(F\)</span> 中的点权为 <span
+class="math inline">\(0\)</span>, <span
+class="math inline">\(N(t)\)</span> 中的点的点权为 <span
+class="math inline">\(1\)</span>, 剩余的点的点权为 <span
+class="math inline">\(1+c\)</span>, 且 <span
+class="math inline">\(\mu(G,F)\le (1+c)n\)</span>, 若在 measure 为 <span
+class="math inline">\(\mu\)</span> 的条件下得到了复杂度上界为 <span
+class="math inline">\(O^*(\beta^\mu)\)</span>,
+那么可以得到最终的运行时间为 <span
+class="math inline">\(O^*(\beta^{(1+c)n})\)</span>.
+接下来考虑三个分支规则的 branching vector.</p>
+<p>对于 2 的第 2条, <span class="math inline">\(F=\emptyset\)</span>,
+那么所有的点的权重为 <span class="math inline">\(c+1\)</span>,
+若直接丢弃 <span class="math inline">\(t\)</span>, 总权重减少 <span
+class="math inline">\(1+c\)</span>, 若选择 <span
+class="math inline">\(t\)</span>, <span class="math inline">\(t\)</span>
+将成为 active vertex, 那么 <span class="math inline">\(t\)</span>
+的权重将变为 <span class="math inline">\(0\)</span>, <span
+class="math inline">\(N(t)\)</span> 中的两个顶点的权重将减为 <span
+class="math inline">\(1\)</span>, 总权减少了 <span
+class="math inline">\(1+3c\)</span>, 因此 branching vector 为 <span
+class="math inline">\((1+c,1+3c)\)</span>.</p>
+<p>对于 4 的第 2 条, <span class="math inline">\((1,1+3c)\)</span></p>
+<p>对于 4 的第 3 条, <span
+class="math inline">\((3-i+ic,3+ic),i\in\{0,1,2\}\)</span>, 其中 <span
+class="math inline">\(i\)</span> 表示 <span
+class="math inline">\(v\)</span> 的 generalized</p>
+<p>neighbor 中的权重为 <span class="math inline">\(1+c\)</span>
+的点的个数.</p>
+<p>通过搜索得到 <span class="math inline">\(\max_{0\le c\le
+1}\beta_c&lt;1.51089,c^*=0.565\)</span>, 则 <span
+class="math inline">\(T(n)=O(1.51089^{(1+c)n})=O(1.8899^n)\)</span>.</p>
+<p><span class="math inline">\(\square\)</span></p>
 <p>In undirected graphs of maximum <a
 target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Degree_(graph_theory)">degree</a>
 three, the feedback vertex set problem can be solved in <a
@@ -689,8 +776,169 @@ target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Matroid_parit
 parity problem</a> for <a
 target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Linear_matroid">linear
 matroids</a>.</p>
-<h1 id="dominating-set">Dominating Set</h1>
+<h1 id="dominating-set-set-cover">Dominating Set &amp; Set Cover</h1>
+<p>对于 MSC <span class="math inline">\((U,\mathcal{S})\)</span> 的 set
+cover <span class="math inline">\(\mathcal{S}&#39;\)</span>, 会说 <span
+class="math inline">\(\mathcal{S}&#39;\)</span> 是 <span
+class="math inline">\(\mathcal{S}\)</span> 的集合覆盖. 令 <span
+class="math inline">\(U=V,\mathcal{S}=\{N[v]:v\in V\}\)</span>, 将求解
+MDS 转化为求解 MSC, 即<span class="math inline">\(D\)</span> 是 <span
+class="math inline">\(G\)</span> 的支配集当且仅当 <span
+class="math inline">\(\{N[v]:v\in D\}\)</span> 是 <span
+class="math inline">\(\{N[v]:v\in V\}\)</span> 的集合覆盖.</p>
+<p>定义 <span class="math inline">\(u\in U\)</span> 的频率为 <span
+class="math inline">\(f(u)=\#\{S\in\mathcal{S}:u\in S\}\)</span>, 即
+<span class="math inline">\(\mathcal{S}\)</span> 中含有 <span
+class="math inline">\(u\)</span> 的集合 <span
+class="math inline">\(S\)</span> 的个数.</p>
+<p>两个比较显然的用来 reduction 的引理.</p>
+<p>Lemma 1 若 <span class="math inline">\(R,S\in\mathcal{S}\)</span>
+满足 <span class="math inline">\(S\subseteq R\)</span>, 则存在一个不包含
+<span class="math inline">\(S\)</span> 的 MSC.</p>
+<p>Lemma 2 若某个 <span class="math inline">\(u\in U\)</span>
+满足仅有唯一的 <span class="math inline">\(S\in\mathcal{S}\)</span> 使得
+<span class="math inline">\(u\in S\)</span>, 那么所有的 set cover 都包含
+<span class="math inline">\(S\)</span>.</p>
+<p>定义 <span
+class="math inline">\(\mathrm{del}(S,\mathcal{S})=\{Z:Z=R\backslash
+S,Z\ne \emptyset,R\in \mathcal{S}\}\)</span>, 即将 <span
+class="math inline">\(\mathcal{S}\)</span> 中的每个集合 <span
+class="math inline">\(R\)</span> 删去 <span
+class="math inline">\(S\)</span> 中的元素.</p>
+<p>Algorithm <span
+class="math inline">\(\mathrm{msc}(\mathcal{S})\)</span></p>
+<p>1: 若 <span
+class="math inline">\(\left\vert{\mathcal{S}}\right\vert=0\)</span> 则
+<span class="math inline">\(\mathrm{msc}(\mathcal{S})=0\)</span></p>
+<p>2: 若存在 <span class="math inline">\(S,R\in\mathcal{S}\land
+S\subseteq R\)</span>, 则 <span
+class="math inline">\(\mathrm{msc}(\mathcal{S})=\mathrm{msc}(\mathcal{S}\backslash
+\{S\})\)</span></p>
+<p>3: 若某个 <span class="math inline">\(u\in U\)</span> 满足 <span
+class="math inline">\(f(u)=1\)</span> 且 <span
+class="math inline">\(u\in S\)</span>, 则 <span
+class="math inline">\(\mathrm{msc}(\mathcal{S})=1+\mathrm{msc}(\mathrm{del}(S,\mathcal{S}))\)</span>.</p>
+<p>4: 选择 <span class="math inline">\(\mathcal{S}\)</span>
+中基数最大的集合 <span class="math inline">\(S\)</span>, 若 <span
+class="math inline">\(\left\vert{S}\right\vert=2\)</span>,
+则在多项式时间内求解 <span
+class="math inline">\(\mathrm{msc}(\mathcal{S})\)</span>; 若 <span
+class="math inline">\(\left\vert{S}\right\vert\ge 3\)</span>, 则 <span
+class="math inline">\(S\)</span> 要么在 MSC 中, 要么不在, 有分支 <span
+class="math display">\[
+\mathrm{msc}(\mathcal{S})=\min\{\mathrm{msc}(\mathcal{S}\backslash\{S\}),1+\mathrm{msc}(\mathrm{del(S,\mathcal{S})})\}
+\]</span> 定义 <span
+class="math inline">\(U(\mathcal{S})=\bigcup_{S\in\mathcal{S}}S\)</span>,
+对于 MSC 的实例 <span class="math inline">\(\mathcal{S}&#39;\)</span>,
+定义其 measure 为 <span
+class="math inline">\(k(\mathcal{S}&#39;)=\left\vert{\mathcal{S}&#39;}\right\vert+\left\vert{U(\mathcal{S}&#39;)}\right\vert\)</span>,
+那么分支规则的 branching factor 为 <span
+class="math inline">\(\alpha=\tau(1,4)&lt;1.3803\)</span>, 因为选择
+<span class="math inline">\(S(\left\vert{S}\right\vert\ge 3)\)</span>
+之后 <span class="math inline">\(U(\mathcal{S})\)</span>
+中的元素至少减少 3 个, 于是用该算法求解 MDS 的复杂度为 <span
+class="math inline">\(O^*(\alpha^{\left\vert{\mathcal{S}}\right\vert+\left\vert{U}\right\vert})=O^*((\alpha^2)^n)=O^*(1.9052^n)\)</span>.</p>
+<p>事实上, 设计一个好的 measure 后, 对于同一个算法,
+可以得到更好的复杂度上界为 <span
+class="math inline">\(O^*(1.5259^n)\)</span>.</p>
+<h2 id="借助-mc-分析">借助 M&amp;C 分析</h2>
+<p>注意到前述的分支规则是不断删掉 <span
+class="math inline">\(\mathcal{S}\)</span> 中的集合,
+并且每次是选择基数最大的集合, 这样的选择是合理的, 因为这样可以将 <span
+class="math inline">\(U\)</span> 中尽可能多的元素的频率减少 <span
+class="math inline">\(1\)</span>, 当频率减少到 <span
+class="math inline">\(1\)</span> 时便可以使用 reduction
+而无需再分支.</p>
+<p>除此之外移除 <span class="math inline">\(U\)</span>
+中频率较高的元素可以让 <span class="math inline">\(\mathcal{S}\)</span>
+中更多的元素的基数减少 <span class="math inline">\(1\)</span>, 当 <span
+class="math inline">\(S\in \mathcal{S}\)</span> 的基数减少到 <span
+class="math inline">\(1\)</span> 的时候, 很容易就能判断是否要选择 <span
+class="math inline">\(S\)</span> 而无需再分支.</p>
+<p>当选择一个集合 <span class="math inline">\(S\)</span> 时, <span
+class="math inline">\(S\)</span> 中所有的元素的频率都会减少至 <span
+class="math inline">\(0\)</span>.</p>
+<p>因此显然可以赋予不同频率的元素 <span class="math inline">\(u\in
+U\)</span> 和不同基数的集合 <span
+class="math inline">\(S\in\mathcal{S}\)</span> 不同的权重,
+且偏好出现频率高的元素和基数大的集合, 于是令 <span
+class="math inline">\(n_i=\#\{S\in\mathcal{S}:\left\vert{S}\right\vert=i\}\)</span>,
+<span class="math inline">\(m_j=\#\{u\in U:f(u)=j\}\)</span>,</p>
+<p>设计 measure <span class="math display">\[
+k(\mathcal{S})=\sum_{i\ge 1}w_in_i+\sum_{j\ge 1}v_jm_j
+\]</span> 其中 <span class="math inline">\(w_i,v_j\in[0,1]\)</span>
+表示权重, 且 <span class="math inline">\(\{w_i\}_{i\ge 1},\{v_j\}_{j\ge
+1}\)</span> 都是递增的(这符合前面分析的直觉), 且 <span
+class="math inline">\(k(\mathcal{S})\le
+\left\vert{\mathcal{S}}\right\vert+\left\vert{U}\right\vert\)</span>.</p>
+<p>为了便于分析具体的复杂度上界, 对权重做如下的赋值:</p>
+<ul>
+<li><span class="math inline">\(w_1=v_1=0\)</span>, 这是因为对于频率为 1
+的元素或者是基数为 1 的子集无需再做分支</li>
+<li><span class="math inline">\(w_i=v_i=1,i\ge 6\)</span>.</li>
+</ul>
+<p>并假定 <span class="math inline">\(\Delta w_i\ge \Delta w_{i+1}\ge
+0,i\ge 2\)</span>, 其中 <span class="math inline">\(\Delta
+w_i=w_i-w_{i-1}\)</span> 为 <span class="math inline">\(\{w_i\}\)</span>
+的差分, 这个不等式衡量了序列 <span
+class="math inline">\(\{w_i\}\)</span> 的增长速度, 是逐渐减缓的,
+这个假定是基于经验得到的, 同时它也确实能简化分析.</p>
+<p>求两个分支的 <span class="math inline">\(\Delta k\)</span>.</p>
+<p>删去 <span class="math inline">\(S\)</span> 的分支:</p>
+<p>分别考虑频率和基数的减少量. 删去 <span
+class="math inline">\(S\)</span> 使基数为 <span
+class="math inline">\(\left\vert{S}\right\vert\)</span> 的集合数目减少了
+1, 对 measure 的减少为 <span
+class="math inline">\(w_{\left\vert{S}\right\vert}\)</span>; 删去 <span
+class="math inline">\(S\)</span> 使 <span
+class="math inline">\(S\)</span> 中每个元素 <span
+class="math inline">\(u\)</span> 的频率都从 <span
+class="math inline">\(f(u)\)</span> 减少到了 <span
+class="math inline">\(f(u)-1\)</span>, 那么 measure 总共减少了 <span
+class="math display">\[
+\sum_{u\in S}\Delta v_{f(u)}
+\]</span> 注意假定中 <span class="math inline">\(v_i=1,i\ge
+6,v_1=0\)</span>, 因此 <span class="math inline">\(\Delta v_i=0,i\ge
+7\)</span>, 于是令 <span class="math inline">\(r_i=\#\{u\in
+S:f(u)=i\}\)</span>, 表示 <span class="math inline">\(S\)</span>
+中频率为 <span class="math inline">\(i\)</span> 的元素的个数, 那么有
+<span class="math inline">\(r_i\)</span> 个元素的频率将从 <span
+class="math inline">\(i\)</span> 降为 <span
+class="math inline">\(i-1\)</span>, 于是 <span class="math display">\[
+\sum_{u\in S}\Delta v_{f(u)}=\sum_{i\ge 2} r_i\Delta v_i=\sum_{i=2}^6
+r_i\Delta v_i
+\]</span> 然而仅仅考虑这两部分还不够, 删去 <span
+class="math inline">\(S\)</span> 之后会导致出现频率为 <span
+class="math inline">\(1\)</span> 的元素, 那么可以直接进行 reduction,
+问题的 size 还会继续缩小, 于是还要再考虑 <span
+class="math inline">\(r_2\)</span> 的值.</p>
+<p>设 <span class="math inline">\(R_1,\cdots,R_h\in\mathcal{S},1\le h\le
+r_2\)</span> 表示不等于 <span class="math inline">\(S\)</span>
+且至少含有一个 <span class="math inline">\(S\)</span> 中的频率为 2
+的元素的集合, 删去 <span class="math inline">\(S\)</span> 之后,
+就必然要选 <span class="math inline">\(R_1,\cdots,R_h\)</span>, 设 <span
+class="math inline">\(r_{2,i}=\#\{u\in R_i\cap S:f(u)=2\}\)</span>, 表示
+<span class="math inline">\(R_i\)</span> 中的 <span
+class="math inline">\(S\)</span> 中的频率为 2 的元素的个数, 选择 <span
+class="math inline">\(R_i\)</span> 将问题的 size 减少了 <span
+class="math inline">\(w_{\left\vert{R_i}\right\vert}\)</span>, 同时</p>
 <h1 id="lower-bound-analysis">Lower Bound Analysis</h1>
+<p>分析下界的一般方法是构造一个实例,
+该实例的复杂度作为整个问题最坏情况复杂度的下界.</p>
+<p>最大独立集: 构造 <span
+class="math inline">\(G_n=([n],E_n),E_n=\{\{i,j\}\subseteq
+[n]:\left\vert{i-j}\le 3\right\vert\}\)</span>.</p>
+<p><span
+class="math inline">\(\Theta(\alpha^n),\alpha=\tau(1,4)\)</span>.</p>
+<p>MDS: 构造 <span
+class="math inline">\(G_n=(V_n,E_n),V_n=\{a_i,b_i,c_i:1\le i\le
+n\}\)</span>, <span class="math inline">\(G_n\)</span> 是若干三角形的并,
+如下所示</p>
+<p><span
+class="math inline">\(\Omega(2^{n/3})=\Omega(1.2599^n)\)</span>.</p>
+<h1 id="总结-使用-mc-分析时间复杂度上界的一般步骤">总结: 使用 M&amp;C
+分析时间复杂度上界的一般步骤</h1>
+<h1 id="exercise">Exercise</h1>
 
     </div>
 
@@ -742,13 +990,13 @@ matroids</a>.</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">206k</span>
+    <span title="Word count total">244k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:07</span>
+    <span title="Reading time total">3:42</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
