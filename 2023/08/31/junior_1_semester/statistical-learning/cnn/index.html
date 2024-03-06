@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="常见的一些神经网络, 包括 CNN, RNN, Transformer, GCN 及其变体.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见的神经网络">
+<meta property="og:url" content="http://example.com/2023/08/31/junior_1_semester/statistical-learning/cnn/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="常见的一些神经网络, 包括 CNN, RNN, Transformer, GCN 及其变体.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041758123.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181559086.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309061405066.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151049578.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151049288.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309060926273.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171734323.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171738823.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171649690.png">
+<meta property="article:published_time" content="2023-08-31T06:58:48.056Z">
+<meta property="article:modified_time" content="2024-01-08T12:54:17.243Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif">
+
+
+<link rel="canonical" href="http://example.com/2023/08/31/junior_1_semester/statistical-learning/cnn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/31/junior_1_semester/statistical-learning/cnn/","path":"2023/08/31/junior_1_semester/statistical-learning/cnn/","title":"常见的神经网络"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>常见的神经网络 | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gradient-vanish-and-explosion"><span class="nav-number">1.</span> <span class="nav-text">Gradient Vanish and
+Explosion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cnn"><span class="nav-number">2.</span> <span class="nav-text">CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#convolution-convolutional-kernel"><span class="nav-number">2.1.</span> <span class="nav-text">Convolution &amp;
+Convolutional Kernel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#times-1-kernel"><span class="nav-number">2.1.1.</span> <span class="nav-text">\(1\times 1\)
+kernel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">为什么卷积操作可以提取特征?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max-pooling"><span class="nav-number">2.2.</span> <span class="nav-text">Max Pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-whole-cnn"><span class="nav-number">2.3.</span> <span class="nav-text">The Whole CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cnn-with-pytorch"><span class="nav-number">2.4.</span> <span class="nav-text">CNN with Pytorch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resnet"><span class="nav-number">3.</span> <span class="nav-text">ResNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rnn"><span class="nav-number">4.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-rnn"><span class="nav-number">4.1.</span> <span class="nav-text">Why RNN?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-rnn"><span class="nav-number">4.2.</span> <span class="nav-text">The Structure of RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#different-types-of-rnn"><span class="nav-number">4.3.</span> <span class="nav-text">Different Types of RNN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lstm"><span class="nav-number">5.</span> <span class="nav-text">LSTM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-lstm"><span class="nav-number">5.1.</span> <span class="nav-text">Why LSTM?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-lstm"><span class="nav-number">5.2.</span> <span class="nav-text">The Structure of LSTM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gru"><span class="nav-number">6.</span> <span class="nav-text">GRU</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-gru"><span class="nav-number">6.1.</span> <span class="nav-text">Why GRU?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-structure-of-gru"><span class="nav-number">6.2.</span> <span class="nav-text">The Structure of GRU</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-rnn-%E5%8F%8A%E5%85%B6%E5%8F%98%E7%A7%8D%E4%B8%AD%E9%87%87%E7%94%A8%E4%BA%86%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0-tanh"><span class="nav-number">7.</span> <span class="nav-text">为什么 RNN
+及其变种中采用了激活函数 \(\tanh\)
+?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transformer"><span class="nav-number">8.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#self-attention-and-multi-head-attention"><span class="nav-number">8.1.</span> <span class="nav-text">Self-Attention and
+Multi-head Attention</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#positional-embedding"><span class="nav-number">8.1.1.</span> <span class="nav-text">Positional Embedding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vision-transformer-vit"><span class="nav-number">9.</span> <span class="nav-text">Vision Transformer (ViT)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#restromer"><span class="nav-number">10.</span> <span class="nav-text">Restromer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swin-transformer"><span class="nav-number">11.</span> <span class="nav-text">Swin Transformer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uformer"><span class="nav-number">12.</span> <span class="nav-text">Uformer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#markov-chain"><span class="nav-number">13.</span> <span class="nav-text">Markov Chain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hidden-markov-model"><span class="nav-number">14.</span> <span class="nav-text">Hidden Markov Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gcn"><span class="nav-number">15.</span> <span class="nav-text">GCN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dgideep-graph-infomax"><span class="nav-number">16.</span> <span class="nav-text">DGI(Deep Graph Infomax)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/31/junior_1_semester/statistical-learning/cnn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="常见的神经网络 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常见的神经网络
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-31 14:58:48" itemprop="dateCreated datePublished" datetime="2023-08-31T14:58:48+08:00">2023-08-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-01-08 20:54:17" itemprop="dateModified" datetime="2024-01-08T20:54:17+08:00">2024-01-08</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><!-- 本课程的内容：
+
+- 复习传统机器学习算法
+- 统计学习理论高级内容: 《统计学习方法》第 9, 10, 11, 15, 16, 19, 20, 21 章的内容.
+- 神经网络的概述, 各种特点和注意事项
+- CV: CNN, ResNet
+- NLP: Transformer 和 Attention, Bert
+- GNN
+- GAN
+- RL
+- XGBoost
+
+# 神经网络常见的优化器
+
+
+## 不同优化器的可视化表现
+
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041757448.gif" style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309041758123.gif" style="zoom:50%;" />
+
+## SGD, BGD, MBGD
+
+
+
+## 动量算法: Nesterov Accelerated Gradient 
+
+
+
+## 自适应学习率算法
+
+### Adagrad
+
+### Adadelta
+
+### RMSprop
+
+### Adam
+
+### Adamax
+
+### Nadam -->
+<h1 id="gradient-vanish-and-explosion">Gradient Vanish and
+Explosion</h1>
+<h1 id="cnn">CNN</h1>
+<p>图像可以看作是一个 <span class="math inline">\(H\times W\)</span>
+的矩阵, 每个元素都是图像的一个像素, 表示图像上的一个点.
+考虑到图像的通道, 是一个 <span class="math inline">\(H\times W\times
+C\)</span> 的三维张量, 其中 <span class="math inline">\(H,W\)</span>
+为图片的长与宽, <span class="math inline">\(C\)</span> 为图像的通道数,
+对于彩色图像而言, <span class="math inline">\(C=3\)</span>, 即 RGB
+(红绿蓝), 每个像素的每个通道的数值都是 <span
+class="math inline">\([0,255]\)</span> 之间的一个整数.</p>
+<p>灰度图像只有一个通道, 每个像素的值表示灰度级别, 也是 <span
+class="math inline">\([0,255]\)</span> 之间的一个整数.</p>
+<blockquote>
+<p>图像的通道指的是图像中颜色信息的分量.</p>
+</blockquote>
+<h2 id="convolution-convolutional-kernel">Convolution &amp;
+Convolutional Kernel</h2>
+<p>卷积核和图像的格式保持一致, 具有<strong>长,
+宽和通道数</strong>的概念, 且卷积核的通道数与输入数据的通道数需要相等.
+常使用的卷积核的尺寸为 <span class="math inline">\(3\times
+3,5\times5,7\times7\)</span>.</p>
+<p>在将卷积核与图像做卷积操作之前, 需要确定两个参数:</p>
+<p>1: padding (填充). 即在原始图像周围填充一圈 0,
+得到一张尺寸更大的图片. 这样做是因为卷积操作会缩小原图尺寸,
+进行填充后可以保证原图尺寸不变.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181559086.png" alt="padding=1的情形" style="zoom:50%;" /></p>
+<p>2: stride (步长).
+步长表示卷积核在图像上滑动的过程中两个卷积核之间的距离,
+同样会影响卷积后的图像大小, 上图是 stride=2的情形.</p>
+<p>确定 padding 为 <span class="math inline">\(p\)</span> 且 stride 为
+<span class="math inline">\(s\)</span> 后, 卷积核的尺寸为 <span
+class="math inline">\(h_{\mathrm{k}}\times w_{\mathrm{k}}\times
+c_{\mathrm{in}}\)</span>, 卷积操作输出的图片的尺寸为 <span
+class="math display">\[
+\begin{aligned}
+h_{\mathrm{out}}=\frac{h_{\mathrm{in}}-h_{\mathrm{k}}+2p}{s}+1
+\newline{}
+w_{\mathrm{out}}=\frac{w_{\mathrm{in}}-w_{\mathrm{k}}+2p}{s}+1
+\end{aligned}
+\]</span> 输出通道 <span class="math inline">\(c_{\mathrm{out}}\)</span>
+<strong>取决于卷积核的个数</strong>, 因为<strong>每一个 kernel
+将图片的3个通道压缩为了一个通道</strong>, 将做过卷积操作得到的图像称为
+Feature Maps.</p>
+<blockquote>
+<p>卷积核的三个通道分别与图像的三个通道做卷积,
+得到三个矩阵(或者说得到一张通道数为3的新图片),
+将三个矩阵对应位置的元素<strong>加起来</strong>得到了通道数为1的feature
+map, 除此之外, 卷积操作也会有 bias 的存在, 即最终结果再加上 bias.</p>
+</blockquote>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181555971.png"
+alt="How to Calculate Convolutional Layer Size" />
+<figcaption aria-hidden="true">How to Calculate Convolutional Layer
+Size</figcaption>
+</figure>
+<h3 id="times-1-kernel"><span class="math inline">\(1\times 1\)</span>
+kernel</h3>
+<p>相当于 fc, 可以在通道上进行降维.</p>
+<h3 id="为什么卷积操作可以提取特征">为什么卷积操作可以提取特征?</h3>
+<p>卷积操作能够提取的特征包括 边缘/纹理/颜色/形状 等.</p>
+<p>怎么做到的呢? 有没有什么本质上的原因?</p>
+<h2 id="max-pooling">Max Pooling</h2>
+<p>池化操作就是将卷积后的图的尺寸进一步缩小并保留原有特征. 思想很简单,
+类似于卷积核的滑动, 将固定大小的池化窗口以一定的 stride 滑动,
+每个窗口内取最大值作为输出, 得到一个新的图像.</p>
+<p>除了 max pooling 还有 average pooling, 但是 max pooling
+使用的更多.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181626904.png"
+alt="Max Pooling" />
+<figcaption aria-hidden="true">Max Pooling</figcaption>
+</figure>
+<h2 id="the-whole-cnn">The Whole CNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181628800.png"
+alt="整个CNN的结构" />
+<figcaption aria-hidden="true">整个CNN的结构</figcaption>
+</figure>
+<p>原始图片可以经过多次卷积和池化, 当卷积和池化操作完成后,
+图片的尺寸大幅度减小, 此时直接将图片 flatten
+展平为向量作为全连接层的输入即可.</p>
+<p>整个 CNN 在做的就是, 在尽可能保留图像的特征的前提下,
+尽可能使图像的尺寸减少, 即<strong>特征提取</strong>, 略去冗余无用的信息,
+以减少网络的参数的数量, 减少训练时间并降低过拟合的程度.</p>
+<p>CNN 学习的参数包括卷积核的权重和全连接层的权重, 除此之外可能还有一些
+bias(也是卷积操作过程中或者全连接层的).</p>
+<h2 id="cnn-with-pytorch">CNN with Pytorch</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Net</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Net, self).__init__() </span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv3 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv4 = nn.Conv2d(<span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv5 = nn.Conv2d(<span class="number">64</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv6 = nn.Conv2d(<span class="number">128</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">128</span> * <span class="number">4</span> * <span class="number">4</span>, <span class="number">512</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">512</span>, <span class="number">256</span>)</span><br><span class="line">        self.fc3 = nn.Linear(<span class="number">256</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = F.relu(self.conv1(x))</span><br><span class="line">        x = F.relu(self.conv2(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = F.relu(self.conv3(x))</span><br><span class="line">        x = F.relu(self.conv4(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = F.relu(self.conv5(x))</span><br><span class="line">        x = F.relu(self.conv6(x))</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">128</span> * <span class="number">4</span> * <span class="number">4</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.dropout(x, p=<span class="number">0.5</span>)</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = F.dropout(x, p=<span class="number">0.5</span>)</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h1 id="resnet">ResNet</h1>
+<hr />
+<h1 id="rnn">RNN</h1>
+<p>Recurrent Neural Network.</p>
+<h2 id="why-rnn">Why RNN?</h2>
+<p>考虑到语言中词汇序列的<strong>时序关系</strong>以及<strong>上下文</strong>,
+RNN 能够顾及到前面的输入和后面的输入的关系,
+同时也能模拟人脑的记忆功能.</p>
+<h2 id="the-structure-of-rnn">The Structure of RNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191506125.png"
+alt="RNN结构" />
+<figcaption aria-hidden="true">RNN结构</figcaption>
+</figure>
+<p>本质上是一个简单的有一层隐藏层的全连接神经网络. 设输入向量为 <span
+class="math inline">\(x\)</span>, 隐藏层向量为 <span
+class="math inline">\(h\)</span>, 输出向量为 <span
+class="math inline">\(o\)</span>, 输入层和隐藏层的参数矩阵为 <span
+class="math inline">\(U\)</span>, 激活函数为 <span
+class="math inline">\(f\)</span>, 隐藏层和输出层的参数矩阵为 <span
+class="math inline">\(W\)</span>, 激活函数为 <span
+class="math inline">\(g\)</span>.</p>
+<p>考虑到序列模型, 可以让 <span class="math inline">\(h\)</span>
+不只取决于 <span class="math inline">\(x\)</span>,
+还与上一个<strong>时刻</strong>的 <span class="math inline">\(h\)</span>
+有关, 那么这样输入层/隐藏层/输出层都是时间的序列: <span
+class="math inline">\(\{x_t\},\{h_t\},\{o_t\}\)</span>,
+设两个时刻之间的隐藏层向量 <span
+class="math inline">\(h_{t-1},h_t\)</span> 的参数矩阵为 <span
+class="math inline">\(V\)</span>, 那么 <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp;h_t=f(Ux_t+Vh_{t-1})\newline{}
+&amp;o_t=g(Wh_t)
+\end{aligned}
+}
+\]</span></p>
+<p>未考虑 bias.</p>
+<h2 id="different-types-of-rnn">Different Types of RNN</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191518635.png"
+alt="根据输入与输出的数量不同, RNN的不同种类" />
+<figcaption aria-hidden="true">根据输入与输出的数量不同,
+RNN的不同种类</figcaption>
+</figure>
+<p>不同种类的 RNN 被设计来完成不同的任务:</p>
+<ul>
+<li>one2one: 应该不能把这个看作 RNN, 就是普通的神经网络</li>
+<li>one2many: 根据一个输入生成句子, 比如输入图片给图片做描述等.</li>
+<li>many2one: 根据句子输出一个 label, 比如情感分析.</li>
+<li>many2many 位置不对应: 翻译.</li>
+<li>many2many 位置一一对应: 将视频的每个帧输出label.</li>
+</ul>
+<h1 id="lstm">LSTM</h1>
+<p>Long Short Term Memory.</p>
+<h2 id="why-lstm">Why LSTM?</h2>
+<p>因为 RNN 缺点: 梯度消失或梯度爆炸导致无法处理处理长序列,
+或者是相距很远的上下文对应关系.</p>
+<p>LSTM 的思想就是选择性记忆, 而不像 RNN 那样不论有没有用都去记忆.</p>
+<h2 id="the-structure-of-lstm">The Structure of LSTM</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191602076.png"
+alt="RNN和LSTM的对比" />
+<figcaption aria-hidden="true">RNN和LSTM的对比</figcaption>
+</figure>
+<p>LSTM 采用了门电路的思想, 设计了 forget gate, input gate 和 output
+gate用来控制 input value, memory value 和 output value. 使用 sigmoid
+将数值控制在 <span class="math inline">\((0,1)\)</span> 之间,
+对应了门的开闭状态.</p>
+<p>每个 cell 中, <span class="math inline">\(\times\)</span>
+表示将两个向量做 <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadamard_product_(matrices)">Hadamard
+product</a>, 用符号 <span class="math inline">\(\odot\)</span> 表示,
+<span class="math inline">\(+\)</span> 表示将两个向量做相加操作.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191609779.png"
+alt="LSTM cell 结构" />
+<figcaption aria-hidden="true">LSTM cell 结构</figcaption>
+</figure>
+<p>根据数据的流向, 很容易就能够写出公式: <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp; f_t=\sigma(U^fx_t+V^fh_{t-1})\text{ forget gate}\newline{}
+&amp; i_t=\sigma(U^ix_t+V^ih_{t-1})\text{ input gate}\newline{}
+&amp; o_t=\sigma(U^ix_t+V^ih_{t-1})\text{ output gate}\newline{}
+&amp; \tilde{C}_t=\tanh(U^gx_t+V^gh_{t-1})\newline{}
+&amp; C_t=f_t\odot C_{t-1}+i_t\odot \tilde{C}_t\newline{}
+&amp; h_t=o_t\odot \tanh(C_t)
+\end{aligned}
+}
+\]</span> 未考虑 bias.</p>
+<h1 id="gru">GRU</h1>
+<p>Gate Recurrent Unit.</p>
+<h2 id="why-gru">Why GRU?</h2>
+<p>LSTM 的 cell 引入了三个门, 参数量比较大, GRU 在 LSTM
+的基础上进行了简化, 只设计了两个门, update gate 和 reset gate.</p>
+<h2 id="the-structure-of-gru">The Structure of GRU</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191652320.png"
+alt="LSTM 与 GRU 对比" />
+<figcaption aria-hidden="true">LSTM 与 GRU 对比</figcaption>
+</figure>
+<p>The difference between LSTM and GRU:</p>
+<ol type="1">
+<li><p>GRU does not possess any internal memory, they don’t have an
+output gate that is present in LSTM</p></li>
+<li><p>In LSTM the input gate and target gate are coupled by an update
+gate, and in GRU reset gate is applied directly to the previous hidden
+state</p></li>
+<li><p>In LSTM the responsibility of reset gate is taken by the two
+gates i.e., input and target</p></li>
+</ol>
+<p>下面是更清晰的结构:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191704057.png" /></p>
+<p>根据数据流向写出下面的公式: <span class="math display">\[
+\boxed{
+\begin{aligned}
+&amp; r_t=\sigma(U^rx_t+V^rh_{t-1})\newline{}
+&amp; z_t=\sigma(U^zx_t+V^zh_{t-1})\newline{}
+&amp; \hat{h}_t=\tanh(U^h x_t+(V^hh_{t-1})\odot r_t)\newline{}
+&amp; h_t=(1-z_t)\odot h_{t-1}+z_t\odot \hat{h}_t
+\end{aligned}
+}
+\]</span> 关于权重矩阵 <span class="math inline">\(V^h\)</span>, wiki
+上的版本为 <span class="math inline">\(V^h(h_{t-1}\odot r_t)\)</span>,
+还有版本是, 上文求 <span
+class="math inline">\(r_t,z_t,\hat{h}_t\)</span> 的过程中,
+用的不是相加操作而是拼接操作, 如下所示:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309191747716.png" /></p>
+<h1 id="为什么-rnn-及其变种中采用了激活函数-tanh">为什么 RNN
+及其变种中采用了激活函数 <span class="math inline">\(\tanh\)</span>
+?</h1>
+<p><span class="math inline">\(\tanh\)</span> 的二阶导不为零的区间较大,
+改善了梯度消失的问题, 收敛快, 且计算开销小.</p>
+<p><strong>Ref</strong> <a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40761185/what-is-the-intuition-of-using-tanh-in-lstm">machine
+learning - What is the intuition of using tanh in LSTM? - Stack
+Overflow</a></p>
+<hr />
+<h1 id="transformer">Transformer</h1>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309061405066.png" alt="Transformer结构图" style="zoom: 33%;" />
+<span class="math display">\[
+\boxed{\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V}
+\]</span></p>
+<p>Transformer 是 encoder-decoder 架构, 包括 6个 encoding blocks 以及 6
+个 decoder blocks.</p>
+<p>每一个 encoder block 由 Multi-Head Attention 与 Feed Forward
+(前馈神经网络) 模块组成, 即 <span class="math display">\[
+\text{Multi-Head-Attention}(Q,K,V)\xrightarrow{\mathrm{output}~Z}\mathrm{FFN}(Z)\\{}
+\to\text{Output of the encoder block}
+\]</span> 其中 FFN 是一个两层的有 ReLU 激活函数的 MLP, 即 <span
+class="math inline">\(\mathrm{FFN}(Z)=\max(0,ZW_1+b_1)W_2+b_2\)</span>.</p>
+<p>在 decoder block 中有两个 attention 模块, 分别为处理 target 的
+Multi-Head Attention 以及共同处理 encoder 和 decoder 的 Encoder-Decoder
+Attention, 如下图所示:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151125244.png" /></p>
+<p>即先由 <span class="math inline">\(X_{\mathrm{target}}\)</span>
+输入到 Multi-Head Attention 中得到的输出 <span
+class="math inline">\(Q^Z\)</span> 作为 Encoder-Decoder Attention 的
+Query 矩阵 <span class="math inline">\(Q\)</span>, 再从经过 6 层 encoder
+的输出 <span class="math inline">\(X_{\text{6-enc}}\)</span> 中得到
+Encoder-Decoder Attention 输入需要的 Value 和 Key 矩阵 <span
+class="math inline">\(V,K\)</span>.</p>
+<p>需要注意的是, 不论是 encoder 还是 decoder, 都有残差连接出现,
+一般是在每个 MSA 块或者是 FFN 块后用残差连接, 从Transformer 中的 <span
+class="math inline">\(\boxed{\text{Add &amp; Norm}}\)</span>
+中就能看出来.</p>
+<h2 id="self-attention-and-multi-head-attention">Self-Attention and
+Multi-head Attention</h2>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151049578.png" alt="Self-Attention" style="zoom: 50%;" /></p>
+<p>对于输入 <span class="math inline">\(X\)</span>, self-attention
+模块首先需要三个权重参数(线性变换) <span
+class="math inline">\(W^Q,W^K,W^V\)</span>, 作用在 <span
+class="math inline">\(X\)</span> 上得到三个矩阵 <span
+class="math inline">\(Q,K,V\)</span> 为 <span
+class="math inline">\(Q=XW^Q,K=XW^K,V=XW^V\)</span> 作为 self-attention
+模块的输入, 这一步可以看作是在捕捉 <span
+class="math inline">\(X\)</span> 的全局信息. 设 self-attention
+模块的输出为 <span class="math inline">\(\mathrm{head}\)</span>,
+称为一个"头", 按照上图的流程, 则有 <span class="math display">\[
+\mathrm{head}=\mathrm{Attention}(Q,K,V)=\mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\]</span></p>
+<p>其中除以 <span class="math inline">\(\sqrt{d_k}\)</span> 就是图片中的
+Scale 部分, Mask 部分是 optional 的.</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151049288.png" alt="Multi-head Attention" style="zoom:50%;" /></p>
+<p>Multi-Head Attention 就是将多个 self-attention 并行地组合在一起,
+但是将 <span class="math inline">\(Q,K,V\)</span> 输入到每个
+self-attention 模块之前需要先做一次线性变换, 然后得到多个输出 <span
+class="math inline">\(\mathrm{head}_1,\cdots,\mathrm{head}_n\)</span>,
+然后 <span
+class="math inline">\(\mathrm{head}=\mathrm{concat}(\mathrm{head}_1,\cdots,\mathrm{head}_h)\)</span>,
+注意该拼接是在空间上的拼接, 不是 channel 上的拼接,
+拼接之后再做线性变换恢复 <span
+class="math inline">\(\mathrm{head}\)</span> 的形状, 那么 <span
+class="math display">\[
+\text{Multi-Head-Attention}(Q,K,V)=\mathrm{concat}(\mathrm{head}_1,\cdots,\mathrm{head}_h)W^O
+\]</span> 其中 <span
+class="math inline">\(\mathrm{head}_i=\mathrm{Attention}(QW_i^Q,KW_i^K,VW_i^V)\)</span>,
+<span class="math inline">\(W^O\)</span> 为输出时的权重矩阵.</p>
+<p>Multi-Head-Self-Attention 简称 MSA.</p>
+<hr />
+<p>神经网络的输入总是一个向量, 对于不同形式的“自然语言”,
+可以通过如下处理来使其变为向量:</p>
+<ul>
+<li><p>声音: 使用<strong>可重叠的滑窗</strong>在一段声音中不断滑动,
+获取若干元素形成一个向量, 比如可以让 25ms 为一个帧, 每两个帧的开始时间隔
+10ms.</p>
+<p>问题: 每个滑窗内的声音信号是如何变成向量的一个元素的?</p></li>
+<li><p>文本数据.</p>
+<p><span class="math inline">\(\it (1)\)</span> 使用 <strong>one-hot
+encoding (独热编码)</strong>, 设有 <span
+class="math inline">\(n\)</span> 个单词, 则用向量 <span
+class="math inline">\([0,\cdots,0,\underbrace{1}_{第i个},0,\cdots,0]\)</span>
+表示第 <span class="math inline">\(i\)</span> 个单词. 这种方法比较简单,
+但是缺点很明显: <strong>维度灾难</strong>(当单词数目非常多的时候,
+向量的维度就会非常大,
+数据形成的矩阵相当稀疏)和<strong>语义鸿沟</strong>(不同单词之间没有显著的差异,
+无法进行相似度计算).</p>
+<p><span class="math inline">\(\it (2)\)</span> <strong>Word Embedding
+(词嵌入)</strong>: 将每个单词或词组映射为低维空间上的向量,
+对于语义相近的单词, 可以通过距离来衡量其相似程度, 两种主流的 word
+embedding 算法是 word2vec 和 GloVe. 如下图所示:</p></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309060926273.png" style="zoom: 50%;" /></p>
+<p>使用滑窗的缺点是无法顾及整体, 也就是可能无法考虑到上下文的影响,
+因此引入 self-attention.</p>
+<h3 id="positional-embedding">Positional Embedding</h3>
+<p><span class="math display">\[
+\mathrm{PE}(\mathrm{pos},2i)=\sin\left(\frac{\mathrm{pos}}{10000^{2i/d_{\mathrm{model}}}}\right)
+\]</span></p>
+<p><span class="math display">\[
+\mathrm{PE}(\mathrm{pos},2i+1)=\cos\left(\frac{\mathrm{pos}}{10000^{2i/d_{\mathrm{model}}}}\right)
+\]</span></p>
+<hr />
+<h1 id="vision-transformer-vit">Vision Transformer (ViT)</h1>
+<blockquote>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39478403/article/details/118704747">这篇文章</a>对
+ViT 介绍得十分详细. (好吧看评论区好像就是翻译了原文)</p>
+</blockquote>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311151327956.png" /></p>
+<p>ViT 的结构如上, 只用了 Transformer 的 Encoder 部分,
+主要需要设计的实际上是如何将图片编码为序列, 网络的核心部分与 Transformer
+的 Encoder 部分并无大的改动.</p>
+<p>设输入图片的尺寸为 <span class="math inline">\((C,H,W)\)</span>,
+将其分成固定大小的 patch, 设每个 patch 的尺寸为 <span
+class="math inline">\((P,P)\)</span>, 并将每个 patch 都展平, 得到形状为
+<span class="math inline">\((N,P^2C)\)</span> 的序列, 序列的长度为 <span
+class="math inline">\(N=HW/P^2\)</span>, 是 ViT 的有效输入序列长度.
+接着再进行 Linear Projection of Flattened Patches, 这一步是将维度为
+<span class="math inline">\(P^2C\)</span> 的向量映射为更低的维度.</p>
+<p>上面这一过程称为 Patch Embedding, 除此之外还需要 Positional
+Embedding, 用来保留输入的图像的 patches 之间的空间位置信息. <span
+class="math display">\[
+\begin{aligned}
+\mathbf{z}_0 &amp; =\left[\mathbf{x}_{\text {class }} ; \mathbf{x}_p^1
+\mathbf{E} ; \mathbf{x}_p^2 \mathbf{E} ; \cdots ; \mathbf{x}_p^N
+\mathbf{E}\right]+\mathbf{E}_{\mathrm{pos}}, &amp; &amp; \mathbf{E} \in
+\mathbb{R}^{\left(P^2 \cdot C\right) \times D},
+\mathbf{E}_{\mathrm{pos}} \in \mathbb{R}^{(N+1) \times D} \\
+\mathbf{z}_{\ell}^{\prime} &amp;
+=\operatorname{MSA}\left(\operatorname{LN}\left(\mathbf{z}_{\ell-1}\right)\right)+\mathbf{z}_{\ell-1},
+&amp; &amp; \ell=1 \ldots L \\
+\mathbf{z}_{\ell} &amp;
+=\operatorname{MLP}\left(\operatorname{LN}\left(\mathbf{z}_{\ell}^{\prime}\right)\right)+\mathbf{z}_{\ell}^{\prime},
+&amp; &amp; \ell=1 \ldots L \\
+\mathbf{y} &amp; =\operatorname{LN}\left(\mathbf{z}_L^0\right) &amp;
+&amp;
+\end{aligned}
+\]</span> 上述公式中:</p>
+<ul>
+<li>得到的 <span class="math inline">\(\mathbf{z}_0\)</span>
+就是将图像分成 patch 展平进行 embedding 并且加上了 positional embedding
+vector <span class="math inline">\(\mathbf{E}_{\mathrm{pos}}\)</span>,
+<span class="math inline">\(\mathbf{E}\)</span> 对每个 patch
+展平后的向量进行线性变换得到 <span class="math inline">\(D\)</span>
+维的向量.</li>
+<li>经过嵌入后, <span
+class="math inline">\(\mathbf{z}_{\ell}&#39;\)</span>
+是依次对序列中的每个向量进行自注意力, 同时加上残差连接, 且要先对 <span
+class="math inline">\(\mathbf{z}_{\ell-1}\)</span> 进行 Layer
+Normalization.</li>
+<li>经过自注意力后, 再输入到 MLP 中 (两层加激活函数 GELU),
+同时也要加上残差连接.</li>
+<li>最后进行Layer Normalization得到最终的输出.</li>
+</ul>
+<h1 id="restromer">Restromer</h1>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309181718897.png"
+alt="Architecture of Restormer" />
+<figcaption aria-hidden="true">Architecture of Restormer</figcaption>
+</figure>
+<h1 id="swin-transformer">Swin Transformer</h1>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311152134555.png" /></p>
+<p>Swin Transformer 是一种包含滑窗操作, 具有层级设计的架构.</p>
+<p>如上图所示, Swin T 包括 4 个 stage, 除了第一个 stage 是由 Linear
+Embedding 和 Swin-T Block 组成的之外, 后三个 stage 都是由 <span
+class="math inline">\(\mathrm{Patch~Merging}\to\mathrm{Swin~Transformer~Block}\)</span>
+组成的.</p>
+<p>最初, 形状为 <span class="math inline">\((3,H,W)\)</span>
+的图片输入后先经过 Patch Partition 分窗(以分成 16
+个窗口为例)在通道上拼接得到形状为 <span
+class="math inline">\((H/4,W/4,48)\)</span> 的 feature map. 在 stage 1
+通过 Linear Embedding 做线性变换调整通道数为 <span
+class="math inline">\(C\)</span>, 此后每通过一个 stage, Patch Merging
+起到下采样的作用使得 feature map
+的通道数加倍而图像尺寸缩小为原来的一半.</p>
+<p>Swin Tansformer 的核心设计就是 Swin-T Block, 而每一个这样的 Block
+中的核心设计是 W-MSA 和 SW-MSA. Swin-T Block 的计算如下: <span
+class="math display">\[
+\begin{aligned}
+&amp;
+\hat{\mathbf{z}}^l=\mathrm{W}-\operatorname{MSA}\left(\operatorname{LN}\left(\mathbf{z}^{l-1}\right)\right)+\mathbf{z}^{l-1},
+\\
+&amp;
+\mathbf{z}^l=\operatorname{MLP}\left(\operatorname{LN}\left(\hat{\mathbf{z}}^l\right)\right)+\hat{\mathbf{z}}^l,
+\\
+&amp;
+\hat{\mathbf{z}}^{l+1}=\operatorname{SW-MSA}\left(\operatorname{LN}\left(\mathbf{z}^l\right)\right)+\mathbf{z}^l,
+\\
+&amp;
+\mathbf{z}^{l+1}=\operatorname{MLP}\left(\operatorname{LN}\left(\hat{\mathbf{z}}^{l+1}\right)\right)+\hat{\mathbf{z}}^{l+1},
+\end{aligned}
+\]</span> 其中 <span class="math inline">\(\hat{\mathbf{z}}^l\)</span>
+表示第 <span class="math inline">\(l\)</span> 个块的 (S)W-MSA
+模块的输出的 feature, <span class="math inline">\(\mathbf{z}^l\)</span>
+表示第 <span class="math inline">\(l\)</span> 个块的 MLP 模块的输出的
+feature, 其中仍然有跳跃连接.</p>
+<p>W-MSA 指 Window-based Multi-head Self Attention.
+不同于标准Transformer的全局自注意力，我们在非重叠局部窗口执行自注意力，这种方式可以有效降低计算量.
+对于形状为 <span class="math inline">\((C,H,W)\)</span> 的输入 <span
+class="math inline">\(\mathbf{X}\)</span>, 将其分为 <span
+class="math inline">\(N=HW/M^2\)</span> 个大小为 <span
+class="math inline">\(M\times M\)</span> 的互不重叠的 window,
+并对其进行展平得到形状为 <span class="math inline">\((C,M^2)\)</span> 的
+<span class="math inline">\(\mathbf{X}^{(i)}\)</span>, 第 <span
+class="math inline">\(k\)</span> 个头的自注意力就是分别对每一个 window
+展平后的向量进行 self-attention 再 concat 在一起, 即 <span
+class="math display">\[
+\begin{aligned}\mathbf{Y}^{(i)}_k&amp;=\mathrm{Attention}(\mathbf{X}^{(i)}W_k^Q,\mathbf{X}^{(i)}W_k^K,\mathbf{X}^{(i)}W_k^V),i=1,\cdots,N\\\hat{\mathbf{X}}_k&amp;=\mathrm{concat}(\mathbf{Y}^{(1)}_k,\cdots,\mathbf{Y}^{(N)}_k)\end{aligned}
+\]</span> SW-MSA 在 W-MSA 分窗的基础之上对窗口进行了左右和上下平移,
+如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171734323.png" style="zoom: 25%;" /></p>
+<p>此时总的 window 数目大小实际上会增多, 增加了计算成本, 在实际代码中,
+是通过对 feature map 移位, 并给 Attention 设置 mask 来间接实现的,
+这时移位后 window 数和未 shift 时的窗口数相等且计算结果等价,
+如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171738823.png" style="zoom: 25%;" /></p>
+<h1 id="uformer">Uformer</h1>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311152135807.png" /></p>
+<p>Uformer 是形如 UNet 的结构 (U-shaped Structures),
+即将输入的图片不断地进行下采样得到比较小的 feature map,
+再不断地进行上采样恢复到原图尺寸的网络架构,
+上采样阶段和下采样阶段分别包括 <span class="math inline">\(K\)</span> 个
+encoder stage 和 <span class="math inline">\(K\)</span> 个 decoder
+stage.</p>
+<p>对于 Uformer 而言, 给定形状为 <span
+class="math inline">\((C,H,W)\)</span> 的输入的退化图像 <span
+class="math inline">\(\mathbf{I}\)</span>, 首先进行 Input Projection,
+这一步时使用 <span class="math inline">\(3\times3\)</span> 卷积外加
+Leaky ReLU 激活函数提取底层特征 <span
+class="math inline">\(\mathbf{X}_0\)</span> 且形状不变. 每一个 encoder
+stage 都是形如下面的结构: <span class="math display">\[
+\boxed{\text{LeWin Blocks}\to\text{Down-Sampling}}
+\]</span> Down-Sampling 部分首先展平得到 2D 格式的 feature map, 接着用
+<span class="math inline">\(4\times4\)</span> 且步长为 2
+的卷积层对通道加倍. 经过第 <span class="math inline">\(l\)</span> 个
+stage 得到的 feature map <span
+class="math inline">\(\mathbf{X}_l\)</span> 的形状为 <span
+class="math inline">\((2^lC,H/2^l,W/2^l)\)</span>.</p>
+<p>encoder 的末尾也即 decoder 的开始部分是若干 LeWin Blocks, 称之为
+bottleneck stage, 接着是 <span class="math inline">\(K\)</span> 个
+decoder stage, 每一个 decoder stage 都是形如下面的结构: <span
+class="math display">\[
+\boxed{\text{Up-Sampling}\to \text{LeWin Blocks}}
+\]</span> 其中 Up-Sampling 使用了 <span class="math inline">\(2\times
+2\)</span> 步长为 2 的反卷积缩小通道放大 feature map 的尺寸. 经过 <span
+class="math inline">\(K\)</span> 个 decoder stage 之后, 展平特征 reshape
+成 2D 的 feature map, 再通过 Output Projection 即 <span
+class="math inline">\(3\times 3\)</span> 卷积得到形状为 <span
+class="math inline">\((3,H,W)\)</span> 的残差卷积 <span
+class="math inline">\(\mathbf{R}\)</span>.</p>
+<p>最终图像的重建通过 <span
+class="math inline">\(\mathbf{I}&#39;=\mathbf{I}+\mathbf{R}\)</span>
+得到, 训练过程通过 Charbonnier 损失函数 <span
+class="math inline">\(\ell(\mathbf{I}&#39;,\hat{\mathbf{I}})=\sqrt{\left\Vert{\mathbf{I}&#39;-\hat{\mathbf{I}}}\right\Vert^2+\epsilon^2}\)</span>,
+其中 <span class="math inline">\(\epsilon=10^{-3}\)</span>
+在整个训练过程为常数.</p>
+<p>LeWin Blocks 是由若干个
+LeWin(<strong>L</strong>ocally-<strong>e</strong>nhanced
+<strong>Win</strong>dow) Transformer block 组成的, LeWin Transformer
+Block 的计算表示为 <span class="math display">\[
+\begin{aligned}
+\mathbf{X}&#39;_l&amp;=\text{W-MSA}(\mathrm{LN}(\mathbf{X}_{l-1}))+\mathbf{X}_{l-1}\\
+\mathbf{X}_l&amp;=\mathrm{LeFF}(\mathrm{LN}(\mathbf{X}_{l}&#39;))+\mathbf{X}_l&#39;
+\end{aligned}
+\]</span> 其中 <span class="math inline">\(\mathbf{X}_{l-1}\)</span>
+表示第 <span class="math inline">\(l-1\)</span> 个 LeWin Transformer
+Block 输出的 feature map. LeWin Transformer Block 包括了两个核心的设计
+W-MSA 和 LeFF, 且 <span class="math inline">\(\mathbf{X}_{l-1}\)</span>
+在经过这 W-MSA 和 LeFF 时都引入了跳跃连接.</p>
+<p>Uformer 中的 W-MSA 与 Swin Transformer 的计算如出一辙,
+同时这里的注意力计算仍然采用了 Swin Tansformer 中的相对位置编码,
+增加了一个偏置矩阵 <span class="math inline">\(\mathbf{B}\)</span>, 即
+<span class="math display">\[
+\mathrm{Attention}(Q,K,V)=\mathrm{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}+\mathbf{B}\right)V
+\]</span> LeFF 指 Locally-enhanced Feed-Forward NetWork,
+结构如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202311171649690.png" style="zoom:50%;" /></p>
+<p>首先采用线性投影层即 <span class="math inline">\(1\times 1\)</span>
+卷积提升每个 token 的维度(即增加通道数), 然后通过 Token2Img 将每个 token
+reshape 为 2D 图片进行 <span class="math inline">\(3\times 3\)</span>
+深度卷积捕捉局部信息, 再通过 Img2Token 展平为 token, 最后再用一个 <span
+class="math inline">\(1\times 1\)</span> 卷积减小通道数,
+整个流程使用的激活函数都是 GELU.</p>
+<p>在每个 decoder-stage 中的 LeWin Blocks 中增加了 Multi-Scale
+Restoration Modulator, 每一个 Modulator 都是可学习的参数, 充当每个形状为
+<span class="math inline">\((C,M,M)\)</span> 的 window
+在做自注意力之前的一个偏置项, 也就是说 Modulator 是一个形状为 <span
+class="math inline">\((C,M,M)\)</span> 的张量.</p>
+<h1 id="markov-chain">Markov Chain</h1>
+<h1 id="hidden-markov-model">Hidden Markov Model</h1>
+<hr />
+<h1 id="gcn">GCN</h1>
+<h1 id="dgideep-graph-infomax">DGI(Deep Graph Infomax)</h1>
+<ol type="1">
+<li><span
+class="math inline">\((\tilde{\mathbf{X}},\tilde{\mathbf{A}})=\mathcal{C}(\mathbf,\mathbf{A})\)</span>.</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/30/junior_1_semester/knowledge-representation/introduction/" rel="prev" title="知识表示与推理 课程概述">
+                  <i class="fa fa-angle-left"></i> 知识表示与推理 课程概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/04/exact-exponetial-algorithm/exact-algorithm-measure-and-conquer/" rel="next" title="精确算法 MEASURE AND CONQUER">
+                  精确算法 MEASURE AND CONQUER <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">286k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">4:20</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Abstract Algebra.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="群论基础">
+<meta property="og:url" content="http://example.com/2024/02/25/math/group_theory/group/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="Abstract Algebra.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-25T08:48:07.899Z">
+<meta property="article:modified_time" content="2024-03-04T02:53:43.976Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/02/25/math/group_theory/group/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/02/25/math/group_theory/group/","path":"2024/02/25/math/group_theory/group/","title":"群论基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>群论基础 | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%90%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">子群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BE%A4"><span class="nav-number">3.</span> <span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%AD%90%E7%BE%A4-%E5%95%86%E7%BE%A4%E5%92%8C%E5%90%8C%E6%80%81%E5%AE%9A%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">正规子群, 商群和同态定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E7%BE%A4"><span class="nav-number">5.</span> <span class="nav-text">置换群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%A4%E5%9C%A8%E9%9B%86%E5%90%88%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">群在集合上的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sylow-%E5%AE%9A%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">Sylow 定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#burnside-%E5%BC%95%E7%90%86%E5%92%8C-polya-%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">Burnside 引理和 Polya
+计数定理</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/25/math/group_theory/group/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="群论基础 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          群论基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-25 16:48:07" itemprop="dateCreated datePublished" datetime="2024-02-25T16:48:07+08:00">2024-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-04 10:53:43" itemprop="dateModified" datetime="2024-03-04T10:53:43+08:00">2024-03-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>3.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="基本概念">基本概念</h1>
+<ol type="1">
+<li>设 <span class="math inline">\((G,\cdot),(G&#39;,\circ)\)</span>
+是两个群, 若 <span class="math inline">\(f:G\to G&#39;\)</span> 满足
+<span class="math inline">\(f(a\cdot b)=f(a)\circ f(b),a,b\in
+G\)</span>, 则称 <span class="math inline">\(f\)</span> 为 <span
+class="math inline">\(G\)</span> 到 <span
+class="math inline">\(G&#39;\)</span> 的同态. <span
+class="math inline">\(f\)</span> 为单射或满射时称为单同态或满同态, <span
+class="math inline">\(f\)</span> 为双射时称两群同构, 记作 <span
+class="math inline">\(f:G~\widetilde{\rightarrow}~G&#39;\)</span> 或
+<span class="math inline">\(G\cong G&#39;\)</span>.</li>
+<li><span class="math inline">\(\mathrm{Aut}(G)\)</span> 表示 <span
+class="math inline">\(G\)</span> 的自同构全体, <span
+class="math inline">\(\mathrm{Aut}(G)\)</span> 与合成运算构成群,
+幺元为恒等映射.</li>
+</ol>
+<h1 id="子群">子群</h1>
+<p><span class="math inline">\((G,\cdot)\)</span> 为群, <span
+class="math inline">\(A\subseteq G\)</span> 且 <span
+class="math inline">\((A,\cdot)\)</span> 为群, 则称 <span
+class="math inline">\(A\)</span> 为 <span
+class="math inline">\(G\)</span> 的子群, 记作 <span
+class="math inline">\(A\le G\)</span>. 记 <span
+class="math inline">\(aA=\{ax|x\in A\}, Aa=\{xa|a\in A\}\)</span>, <span
+class="math inline">\(A^{-1}=\{a^{-1}|a\in A\},AB=\{ab|a\in A,b\in
+B\}\)</span>.</p>
+<p>在 <span class="math inline">\(G\)</span> 上定义关系 <span
+class="math inline">\(g\sim h\iff gh^{-1}\in A,A\le G\)</span>,
+这是一个等价关系, 显然与元素 <span class="math inline">\(g\)</span>
+等价的所有元素的集合为 <span class="math inline">\(Ag\)</span>, 这称为
+<span class="math inline">\(g\)</span> 的右陪集, 据此有对 <span
+class="math inline">\(G\)</span> 的右陪集分解: <span
+class="math display">\[
+G=\bigcup _{g\in R}Ag
+\]</span> 这是一个划分, 记 <span class="math inline">\(|R|
+=[G:A]\)</span>, 叫做 <span class="math inline">\(A\)</span> 对于 <span
+class="math inline">\(G\)</span> 的<strong>指数</strong>.
+可以类似定义左陪集分解, 这两种分解在 <span
+class="math inline">\(G\)</span> 中有相同的指数.</p>
+<p><strong>定理1</strong> (Lagrange 定理) <span
+class="math inline">\(G\)</span> 是有限群, <span
+class="math inline">\(A\le G\)</span>, 则 <span
+class="math inline">\(|G| =|A|\cdot [G:A]\)</span>.</p>
+<p>满足 <span class="math inline">\(g^n=1,g\in G\)</span> 的最小正整数
+<span class="math inline">\(n\)</span> 称为 <span
+class="math inline">\(g\)</span> 的阶, 有限群的元素的阶是有限的, 事实上,
+有限群 <span class="math inline">\(G\)</span> 的每个元素的阶都是 <span
+class="math inline">\(|G|\)</span> 的因子, 这是因为 <span
+class="math inline">\(\{1,g,g^2,\cdots,g^{n-1}\}\)</span> 构成 <span
+class="math inline">\(G\)</span> 的一个子群, 由 Lagrange
+定理可直接导出这一结论.</p>
+<p><strong>定理2</strong> 最小的非 Abel 群的阶为 <span
+class="math inline">\(6\)</span>.</p>
+<blockquote>
+<p>逐一验证 <span class="math inline">\(1,2,3,4,5\)</span> 阶群均为 Abel
+群.</p>
+</blockquote>
+<p>设 <span class="math inline">\(A,B\subseteq G\)</span>, 若存在 <span
+class="math inline">\(g\in G\)</span> 使得 <span
+class="math inline">\(g^{-1}Ag=B\)</span>, 则称 <span
+class="math inline">\(A,B\)</span> 共轭. 对于 <span
+class="math inline">\(G\)</span> 的子集而言, 共轭是等价关系, 特别地,
+对于 <span class="math inline">\(G\)</span> 的子群, 共轭也是等价关系,
+每个等价类叫做共轭类, <span class="math inline">\(g^{-1}ag\)</span> 称为
+<span class="math inline">\(a\)</span> 的<strong>共轭元素</strong>.</p>
+<p>对于 <span class="math inline">\(G\)</span> 的子集 <span
+class="math inline">\(M\)</span>, 定义 <span
+class="math inline">\(M\)</span> 的<strong>正规化子</strong>为子群 <span
+class="math inline">\(N_{G}(M)=\{g\in G:g^{-1}Mg=M \}\)</span>, <span
+class="math inline">\(M\)</span> 的<strong>中心化子</strong>为子群 <span
+class="math inline">\(C_{G}(M)=\{g\in G:g^{-1}ag=1,\forall a\in
+M\}\)</span>. 与 <span class="math inline">\(M\)</span>
+共轭的子集的个数为 <span class="math inline">\([G:N_{G}(M)]\)</span>,
+与元素 <span class="math inline">\(a\)</span> 共轭的元素的个数为 <span
+class="math inline">\([G:C_{G}(M)]\)</span>.</p>
+<p><strong>定理3</strong> 设 <span class="math inline">\(p\)</span>
+为素数, <span class="math inline">\(p^2\)</span> 阶群是 Abel 群.</p>
+<h1 id="循环群">循环群</h1>
+<p><span class="math inline">\(S\)</span> 是群 <span
+class="math inline">\(G\)</span> 的子集, 包含 <span
+class="math inline">\(S\)</span> 的 <span
+class="math inline">\(G\)</span> 的最小子群 <span
+class="math inline">\(A\)</span> 称为由 <span
+class="math inline">\(S\)</span> 生成的子群, 记作 <span
+class="math inline">\(A=\langle{S}\rangle\)</span>, 由群的定义有 <span
+class="math display">\[
+\langle{S}\rangle=\{a_1\cdots a_m:m\ge 0,a_i\in S\cup S^{-1}\}
+\]</span> 若 <span class="math inline">\(G=\langle{S}\rangle\)</span> 称
+<span class="math inline">\(S\)</span> 为 <span
+class="math inline">\(G\)</span> 的一个生成元系, <span
+class="math inline">\(S\)</span> 中的元素称为 <span
+class="math inline">\(G\)</span> 的生成元, <span
+class="math inline">\(S\)</span> 是有限集时称 <span
+class="math inline">\(G\)</span> 为<strong>有限生成群</strong>; 若 <span
+class="math inline">\(G=\langle{a}\rangle\)</span> 则称 <span
+class="math inline">\(G\)</span> 为<strong>循环群</strong>.</p>
+<p><strong>定理4</strong> 无限循环群同构于 <span
+class="math inline">\((\mathbb{Z},+)\)</span>, <span
+class="math inline">\(n\)</span> 阶循环群同构于 <span
+class="math inline">\(\mathbb{Z}_n=\{x\bmod n:x\in
+\mathbb{Z}\}\)</span>.</p>
+<p>循环群的子群都是循环群, 对于 <span class="math inline">\(n\)</span>
+的每一个正因子 <span class="math inline">\(t\)</span>, <span
+class="math inline">\(G=\langle{a}\rangle\)</span> 恰好有一个 <span
+class="math inline">\(t\)</span> 阶子群 <span
+class="math inline">\(\langle{a^{n/t}}\rangle\)</span> 为循环群, 这是
+Lagrange 定理在循环群情况下的逆.</p>
+<p><span class="math inline">\(\mathrm{Aut}(\langle{a}\rangle)\)</span>
+同构于 <span class="math inline">\(\mathbb{Z}_n\)</span>
+中乘法可逆元构成的乘法群 <span
+class="math inline">\(\mathbb{Z}_n^*\)</span>, 且阶为 <span
+class="math inline">\(\varphi(n)\)</span>.</p>
+<h1 id="正规子群-商群和同态定理">正规子群, 商群和同态定理</h1>
+<p>群 <span class="math inline">\(G\)</span> 的子群 <span
+class="math inline">\(N\)</span> 称为 <span
+class="math inline">\(G\)</span> 的正规子群, 如果 <span
+class="math inline">\(\forall g\in G\)</span> 都有 <span
+class="math inline">\(g^{-1}Ng=N\)</span>, 表示为 <span
+class="math inline">\(N\lhd G\)</span>, 且 <span
+class="math inline">\(N\lhd G\iff \forall g\in G,gN=Ng\iff
+N_G(N)=G\)</span> <span class="math inline">\(\iff\)</span> <span
+class="math inline">\(G\)</span> 对 <span
+class="math inline">\(N\)</span> 的每个右陪集均为左陪集.</p>
+<blockquote>
+<p>正规子群提出的动机是, 对于 <span class="math inline">\(G\)</span>
+的右陪集分解 <span class="math inline">\(G=\bigcup_{a\in R}Na\)</span>,
+想赋予集合 <span class="math inline">\(\overline{G}=\{Na:a\in
+R\}\)</span> 以群的结构, 也就是需要定义一个二元运算, 直觉是 <span
+class="math inline">\((Na)(Nb)=Nab\)</span>, 通过推演发现这要求 <span
+class="math inline">\(N\)</span> 是 <span
+class="math inline">\(G\)</span> 的自共轭子群, 也就是所谓的正规子群.</p>
+</blockquote>
+<p>定义 <span class="math inline">\(\overline{G}=G/N\)</span> 称为 <span
+class="math inline">\(G\)</span> 对正规子群 <span
+class="math inline">\(N\)</span> 的商群, 且 <span
+class="math inline">\(|G/N|=|[G:N]| = |G|/|N|\)</span>.</p>
+<p><strong>定理5</strong> (同态基本定理) 设 <span
+class="math inline">\(f:G\to G&#39;\)</span> 是群同态, 则</p>
+<ul>
+<li><span class="math inline">\(\mathrm{Im}f=f(G)\le
+G&#39;\)</span></li>
+<li><span class="math inline">\(\mathrm{Ker}f=f^{-1}(1)=\{g\in
+G:f(g)=1\}\lhd G\)</span></li>
+<li>有群同构 <span
+class="math inline">\(G/\mathrm{Ker}f\cong\mathrm{Im}f\)</span>,
+对应的映射 <span class="math inline">\(\overline{f}\)</span> 满足对
+<span class="math inline">\(\overline{g}\in G/\mathrm{Ker}f,g\in
+G\)</span>, <span
+class="math inline">\(\overline{f}(\overline{g})=f(g)\)</span>.</li>
+</ul>
+<h1 id="置换群">置换群</h1>
+<p>置换的定义是集合 <span class="math inline">\(\Sigma\)</span>
+到自身上的每一个双射, 令 <span
+class="math inline">\(\left\vert{\Sigma}\right\vert=n\)</span>, 设 <span
+class="math inline">\(S(\Sigma)\)</span> 是 <span
+class="math inline">\(\Sigma\)</span> 上全体置换组成的集合, 则 <span
+class="math inline">\(S(\Sigma)\)</span> 是 <span
+class="math inline">\(n!\)</span> 阶群称为<strong>对称群</strong>, <span
+class="math inline">\(S(\Sigma)\)</span>
+的每一个子群均为<strong>置换群</strong>. 对不同的 <span
+class="math inline">\(\Sigma,\Sigma&#39;\land |\Sigma| =
+|\Sigma&#39;|=n\)</span>, 显然 <span
+class="math inline">\(S(\Sigma)\cong S(\Sigma&#39;)\)</span>,
+那么可以定义 <span class="math inline">\(n\)</span> 元集合上的对称群
+<span class="math inline">\(S_n\)</span>.</p>
+<p>一个置换可以写成若干<strong>轮换</strong>的乘积, 这里轮换指的是, 置换
+<span class="math inline">\(\pi\)</span> 将 <span
+class="math inline">\((a_{i_2},a_{i_3},\cdots,a_{i_t},a_{i_{1}})\)</span>
+变成 <span
+class="math inline">\((a_{i_1},a_{i_2},\cdots,a_{i_t})\)</span>,
+这叫做长为 <span class="math inline">\(t\)</span> 的轮换. 长为 <span
+class="math inline">\(1\)</span> 的置换略去不写. 长为 <span
+class="math inline">\(2\)</span> 的轮换叫做对换,
+每个轮换可以表示成一些对换之积, 因此每个置换也可以表示成一些对换之积,
+若一个置换写成对换之积后对换的个数为偶数则成为<strong>偶置换</strong>,
+反之称为<strong>奇置换</strong>. 令 <span
+class="math inline">\(\{1,-1\}\)</span> 为二元乘法群, 映射 <span
+class="math inline">\(f:S_n\to\{1,-1\}\)</span> 是群同态, 且由于 <span
+class="math inline">\(n\ge 2\)</span> 时 <span
+class="math inline">\(f(I)=1,f((a_1,a_2))=-1\)</span> 知其为满同态, 且
+<span class="math inline">\(\mathrm{Ker}f\)</span> 是全体偶置换的集合,
+记作 <span class="math inline">\(A_n=\mathrm{Ker}f\)</span>, 称为 <span
+class="math inline">\(n\)</span> 元集合上的交错群, 显然 <span
+class="math inline">\(A_n\lhd S_n\)</span>, 且 <span
+class="math inline">\(|S_n/A_n| = 2\)</span>.</p>
+<p><span
+class="math inline">\(S_n=\langle{\{(12),(13),\cdots,(1n)\}}\rangle,n\ge
+2\)</span>, <span class="math inline">\(A_n(n\ge 3)\)</span>
+的一个生成元系是全体长为 <span class="math inline">\(3\)</span>
+的轮换.</p>
+<p>定义置换 <span class="math inline">\(\sigma\in S_n\)</span> 的型为
+<span class="math inline">\(1^{\lambda_1}\cdots n^{\lambda_n}\)</span>,
+表示长为 <span class="math inline">\(r\)</span> 的轮换一共有 <span
+class="math inline">\(\lambda_r\)</span> 个, 则 <span
+class="math inline">\(S_n\)</span>
+中的两个置换共轭的充要条件是它们有相同的型. 比如 <span
+class="math inline">\(S_4\)</span> 的所有共轭元素类为 <span
+class="math inline">\([1^4],[1^32^1],[1^13^1],[2^2],[4^1]\)</span>.</p>
+<p>称 <span class="math inline">\(G\)</span> 为单群, 如果 <span
+class="math inline">\(G\ne \{1\}\)</span> 且其正规子群只有 <span
+class="math inline">\(\{1\},G\)</span>. 当 <span
+class="math inline">\(n\ge 5\)</span> 时, <span
+class="math inline">\(A_n\)</span> 是单群, 从而 <span
+class="math inline">\(A_n\)</span> 是 <span
+class="math inline">\(S_n\)</span>
+的<strong>唯一非平凡正规子群</strong>.</p>
+<h1 id="群在集合上的作用">群在集合上的作用</h1>
+<p>研究群的一个基本手段是同态基本定理,
+另一个手段就是研究群在集合上的作用.</p>
+<h1 id="sylow-定理">Sylow 定理</h1>
+<h1 id="burnside-引理和-polya-计数定理">Burnside 引理和 Polya
+计数定理</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/25/parallel_computing/basic_models/" rel="prev" title="Simple Parallel Models and Algorithm">
+                  <i class="fa fa-angle-left"></i> Simple Parallel Models and Algorithm
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/02/28/junior_1_semester/cv/" rel="next" title="计算机视觉与模式识别">
+                  计算机视觉与模式识别 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">286k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">4:20</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

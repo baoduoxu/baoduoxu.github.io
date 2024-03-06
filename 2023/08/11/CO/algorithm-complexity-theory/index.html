@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="记所有字母的集合为 \(\Sigma\), 若干字母组合成为字符串 \(s\), 记 \(\Sigma^*\) 为所有字符串的集合, \(\emptyset_{s}\) 为空串, 语言 \(L\) 为字符串的集合, \(\emptyset_L\) 为空语言, 且 \(L\subset \Sigma^*\). 记作 \(\mathcal{C}\) 是 legitimate problems 的">
+    <meta name="description" content="Something about the theory of computation.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法复杂性理论入门">
+<meta property="og:title" content="Automata and Language">
 <meta property="og:url" content="http://example.com/2023/08/11/CO/algorithm-complexity-theory/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="记所有字母的集合为 \(\Sigma\), 若干字母组合成为字符串 \(s\), 记 \(\Sigma^*\) 为所有字符串的集合, \(\emptyset_{s}\) 为空串, 语言 \(L\) 为字符串的集合, \(\emptyset_L\) 为空语言, 且 \(L\subset \Sigma^*\). 记作 \(\mathcal{C}\) 是 legitimate problems 的">
+<meta property="og:description" content="Something about the theory of computation.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-11T03:30:41.000Z">
-<meta property="article:modified_time" content="2023-09-01T07:33:04.556Z">
+<meta property="article:modified_time" content="2024-03-06T06:37:22.562Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -39,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/11/CO/algorithm-complexity-theory/","path":"2023/08/11/CO/algorithm-complexity-theory/","title":"算法复杂性理论入门"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/11/CO/algorithm-complexity-theory/","path":"2023/08/11/CO/algorithm-complexity-theory/","title":"Automata and Language"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>算法复杂性理论入门 | XBD</title>
+<title>Automata and Language | XBD</title>
   
 
 
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfp-%E5%92%8C-mathsfnp"><span class="nav-number">1.</span> <span class="nav-text">\(\mathsf{P}\) 和 \(\mathsf{NP}\)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">图灵机</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E5%92%8C%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">串和语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">有穷自动机的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">非确定性有穷自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfa-%E5%92%8C-dfa-%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7"><span class="nav-number">2.3.</span> <span class="nav-text">NFA 和 DFA 的等价性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">图灵机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfp-%E5%92%8C-mathsfnp"><span class="nav-number">4.</span> <span class="nav-text">\(\mathsf{P}\) 和 \(\mathsf{NP}\)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="算法复杂性理论入门 | XBD">
+      <meta itemprop="name" content="Automata and Language | XBD">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          算法复杂性理论入门
+          Automata and Language
         </h1>
 
         <div class="post-meta-container">
@@ -237,7 +237,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-01 15:33:04" itemprop="dateModified" datetime="2023-09-01T15:33:04+08:00">2023-09-01</time>
+      <time title="Modified: 2024-03-06 14:37:22" itemprop="dateModified" datetime="2024-03-06T14:37:22+08:00">2024-03-06</time>
     </span>
 
   
@@ -247,14 +247,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>440</span>
+      <span>3.3k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -264,30 +264,215 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>记所有字母的集合为 <span class="math inline">\(\Sigma\)</span>,
+    <div class="post-body" itemprop="articleBody"><h1 id="串和语言">串和语言</h1>
+<p>记字母表为 <span class="math inline">\(\Sigma\)</span>,
 若干字母组合成为字符串 <span class="math inline">\(s\)</span>, 记 <span
 class="math inline">\(\Sigma^*\)</span> 为所有字符串的集合, <span
-class="math inline">\(\emptyset_{s}\)</span> 为空串, 语言 <span
+class="math inline">\(\varepsilon\)</span> 为空串, 语言 <span
 class="math inline">\(L\)</span> 为字符串的集合, <span
-class="math inline">\(\emptyset_L\)</span> 为空语言, 且 <span
+class="math inline">\(\emptyset\)</span> 为空语言, 且 <span
 class="math inline">\(L\subset \Sigma^*\)</span>.</p>
-<p>记作 <span class="math inline">\(\mathcal{C}\)</span> 是 legitimate
-problems 的集合, <span class="math inline">\(\mathcal{C}_A\)</span>
-表示简单的问题的集合, <span class="math inline">\(\mathcal{C}_B\)</span>
-表示困难的问题的集合. 在一对 leg 问题中, 可以定义难度关系,
-这可以引出下面的 reduction lemma:</p>
-<p>对于问题 <span class="math inline">\(P,Q\)</span>, 若 <span
-class="math inline">\(Q\in \mathcal{C}_A\)</span> 且 <span
-class="math inline">\(P\)</span> 不难于 <span
-class="math inline">\(Q\)</span>, 则 <span class="math inline">\(Q\in
-\mathcal{C}_A\)</span>; 若 <span class="math inline">\(P\in
-\mathcal{C}_B\)</span> 且 <span class="math inline">\(P\)</span> 难于
-<span class="math inline">\(Q\)</span>, 则 <span
-class="math inline">\(P\in \mathcal{C}_B\)</span>.</p>
+<p>设 <span class="math inline">\(A,B\)</span> 是两个语言,
+可以定义正则运算:</p>
+<ul>
+<li>并: <span class="math inline">\(A\cup B=\{x:x\in A\lor x\in
+B\}\)</span></li>
+<li>连结: <span class="math inline">\(A\circ B=\{xy:x\in A\land y\in
+B\}\)</span></li>
+<li>星号: <span class="math inline">\(A^*=\{x_1\cdots x_k:k\ge 0,x_i\in
+A\}\)</span></li>
+</ul>
+<h1 id="有穷自动机">有穷自动机</h1>
+<p>有穷自动机是一个五元组 <span
+class="math inline">\(M=(Q,\Sigma,\delta,q_0,F)\)</span>, 其中:</p>
+<ul>
+<li><span class="math inline">\(Q\)</span> 是状态集合</li>
+<li><span class="math inline">\(\Sigma\)</span> 是字母表集合</li>
+<li><span class="math inline">\(\delta:Q\times \Sigma\to Q\)</span>
+是状态转移函数</li>
+<li><span class="math inline">\(q_0\in Q\)</span> 是起始状态</li>
+<li><span class="math inline">\(F\subseteq Q\)</span> 是接受状态集</li>
+</ul>
+<p>特别地, <span class="math inline">\(\delta\)</span>
+可以做一些额外的扩展定义, 这在证明正则语言对正则运算封闭是相当有用的,
+比如 <span class="math inline">\(\delta:Q\times \Sigma^*\to Q\)</span>
+可以接受一个串而不是一个字母.</p>
+<h2 id="有穷自动机的计算">有穷自动机的计算</h2>
+<p>给定 <span class="math inline">\(M=(Q,\Sigma,\delta,q_0,F)\)</span>
+以及输入的字符串 <span class="math inline">\(w=w_1\cdots w_n\)</span>,
+<span class="math inline">\(M\)</span> 的计算是一个状态序列 <span
+class="math inline">\(\{r_i\}_{i=0}^n\)</span> 满足:</p>
+<ul>
+<li><span class="math inline">\(r_0=q_0\)</span></li>
+<li><span class="math inline">\(\delta(r_i,w_{i+1})=r_{i+1},0\le i\le
+n-1\)</span></li>
+</ul>
+<p>若 <span class="math inline">\(r_n\in F\)</span>, 则称 <span
+class="math inline">\(M\)</span> 接受 <span
+class="math inline">\(w\)</span>, 将 <span
+class="math inline">\(M\)</span> 接受的所有语言记作 <span
+class="math inline">\(L(M):=\{w\in\Sigma^*:M\mathrm{~accept~}w\}\)</span>.
+由有穷自动机所识别的语言称为<strong>正则语言</strong>.</p>
+<p><strong>定理1</strong> 正则语言类对正则运算封闭.</p>
+<blockquote>
+<p>证明方法是构造新的自动机使得它能识别并, 连结和星号运算得到的语言.</p>
+</blockquote>
+<h2 id="非确定性有穷自动机">非确定性有穷自动机</h2>
+<p>简称 NFA. 一个 NFA <span class="math inline">\(N\)</span>
+仍然是五元组 <span
+class="math inline">\(N=(Q,\Sigma,\delta,q_0,F)\)</span>, 其中:</p>
+<ul>
+<li><span class="math inline">\(\varepsilon\in \Sigma\)</span>,
+也可以记作 <span class="math inline">\(\Sigma_{\varepsilon}=\Sigma\cup
+\varepsilon\)</span>.</li>
+<li><span class="math inline">\(\delta:Q\times \Sigma_{\varepsilon}\to
+2^Q\)</span>, 这表明每一次转移产生一个状态集, 这个状态集可以是空集.</li>
+</ul>
+<p>DFA 的计算是一个状态序列, 而 NFA 的计算多个状态序列,
+这些状态序列是一颗状态树从根节点到所有叶子节点的路径上的状态形成的序列.
+根节点为起始状态 <span class="math inline">\(q_0\)</span>,
+只要有叶子结点对应的状态为接收状态, 就表明 NFA 接受一个语言, NFA
+每读入一个字符就会产生若干个自动机的副本,
+可以认为这些自动机的计算是同时进行的.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202402201352459.png" /></p>
+<h2 id="nfa-和-dfa-的等价性">NFA 和 DFA 的等价性</h2>
+<p><strong>定理 2</strong> NFA 和 DFA 识别同样的语言.</p>
+<blockquote>
+<p>听起来让人感到惊讶, 因为 NFA 是 DFA 的推广, 直觉上, NFA
+应该能识别更多种类的语言.</p>
+<p>证明方法就是构造一个 DFA 使得它能模拟一个给定的 NFA.</p>
+</blockquote>
+<p><strong><em>Proof</em></strong> 对于 <span
+class="math inline">\(N=(Q,\Sigma,\delta,q_0,F)\)</span>, 先不考虑 <span
+class="math inline">\(\varepsilon\)</span>, 构造 <span
+class="math inline">\(M=(Q&#39;,\Sigma,\delta&#39;,q_0&#39;,F&#39;)\)</span>,
+满足</p>
+<ul>
+<li><span class="math inline">\(Q&#39;=2^Q\)</span></li>
+<li><span class="math inline">\(\delta&#39;(R,a)=\bigcup_{r\in
+R}\delta(r,a)\)</span>, 其中 <span class="math inline">\(R\in
+Q&#39;,a\in\Sigma\)</span>. 这就是对于每一个 <span
+class="math inline">\(Q&#39;\)</span> 的状态, 得到的新状态也是 <span
+class="math inline">\(Q\)</span> 的子集, 这里面的每一个状态都通过 <span
+class="math inline">\(R\)</span> 中的状态转移得来.</li>
+<li><span class="math inline">\(q&#39;_0=\{q_0\}\)</span></li>
+<li><span class="math inline">\(F&#39;=\{R\in Q&#39;:R\cap F\ne
+\emptyset\}\)</span>, 就是所有包含 <span
+class="math inline">\(F\)</span> 中的元素的那些集合.</li>
+</ul>
+<p>如果要考虑 <span class="math inline">\(\varepsilon\)</span>, 则先引入
+<span class="math inline">\(\varepsilon\)</span> 闭包 <span
+class="math inline">\(E(R)\)</span> 为 <span
+class="math inline">\(R\)</span> 中的状态仅沿着 <span
+class="math inline">\(\varepsilon\)</span> 可以到达的状态集, 同时也包括
+<span class="math inline">\(R\)</span> 自身, 那么做修改</p>
+<ul>
+<li><span class="math inline">\(\delta&#39;(R,a)=\bigcup_{r\in
+R}E(\delta(r,a))\)</span></li>
+<li><span class="math inline">\(q_0&#39;=E(\{q_0\})\)</span></li>
+</ul>
+<p>即可. <span class="math inline">\(\square\)</span></p>
+<p>用 NFA 可以更容易地证明正则语言对正则运算的封闭性:</p>
+<ul>
+<li>并: 设 <span class="math inline">\(N_1,N_2\)</span> 分别识别 <span
+class="math inline">\(A_1,A_2\)</span>, 增加初始状态 <span
+class="math inline">\(q_0\)</span> 仅以 <span
+class="math inline">\(\varepsilon\)</span> 分别指向 <span
+class="math inline">\(N_1,N_2\)</span> 的初始状态 <span
+class="math inline">\(q_1,q_2\)</span> 即可.</li>
+<li>连结: <span class="math inline">\(N_1\)</span> 的所有接收状态都以
+<span class="math inline">\(\varepsilon\)</span> 指向 <span
+class="math inline">\(N_2\)</span> 的初始状态.</li>
+<li>星号: 增加一个新的初始状态用于识别空串, 然后所有的接收状态都以 <span
+class="math inline">\(\varepsilon\)</span> 指向旧的初始状态.</li>
+</ul>
+<h2 id="正则表达式">正则表达式</h2>
+<p>单个字母, 空串, 空语言和正则表达式的并, 连结和星号定义为正则表达式.
+这是归纳定义.</p>
+<p>再定义 <span class="math inline">\(R^+\cup \varepsilon=R^*\)</span>,
+<span class="math inline">\(R^k=\underbrace{R\cdots
+R}_{k个}\)</span>.</p>
+<p><strong>定理 3</strong> 正则表达式与 DFA 是等价的,
+它们能描述同一种语言.</p>
+<blockquote>
+<p>正则表达式描述正则语言, 正则语言可以被正则表达式描述.</p>
+</blockquote>
+<p><strong>定理 4</strong> (泵引理) 若 <span
+class="math inline">\(A\)</span> 是一个正则语言, 则存在 <span
+class="math inline">\(p&gt;0\)</span> 使得对于任一 <span
+class="math inline">\(s\in A\land |s|\ge p\)</span>, <span
+class="math inline">\(s\)</span> 都可以被分成三段 <span
+class="math inline">\(s=xyz\)</span>, 满足</p>
+<ul>
+<li><span class="math inline">\(xy^iz\in A,\forall i\ge 0\)</span></li>
+<li><span class="math inline">\(|y|&gt;0\)</span></li>
+<li><span class="math inline">\(|xy|\le p\)</span></li>
+</ul>
+<h1 id="图灵机">图灵机</h1>
+<p>图灵机(Turing Machine, TM)中最简单的模型为单带 TM, 单带 TM <span
+class="math inline">\(M\)</span> 是一个七元组 <span
+class="math inline">\(M=(Q,\Sigma,\Gamma,\delta,q_0,q_{\mathrm{acc}},q_{\mathrm{rej}})\)</span>,
+其中:</p>
+<ul>
+<li><span class="math inline">\(\Gamma\)</span> 是工作字母表, 设 <span
+class="math inline">\(B\)</span> 为空格, 一般有 <span
+class="math inline">\(\Sigma\cup\{B\}\subseteq \Gamma\)</span>,
+表示图灵机能<strong>写</strong>在带子上的字符集.</li>
+<li><span class="math inline">\(\delta:Q\times\Gamma\to Q\times
+\Gamma\times \{\mathrm{Left},\mathrm{Right}\}\)</span> 为状态转移函数,
+表示图灵机接受当前读写头所指的字母转移到一个新的状态并将该字母修改为
+<span class="math inline">\(\Gamma\)</span> 中的一个字母(可以不变),
+<span class="math inline">\(\mathrm{Left,Right}\)</span>
+表示读写头移动的方向.</li>
+<li><span class="math inline">\(q_\mathrm{acc},q_{\mathrm{rej}}\)</span>
+分别为接受状态和拒绝状态.</li>
+</ul>
+<p>其余定义和自动机保持一致.</p>
+<p>可以看出单带图灵机的特点是<strong>双向读写头</strong>,
+图灵机的状态包括三种:</p>
+<ul>
+<li>停机接受</li>
+<li>停机拒绝</li>
+<li>不停机</li>
+</ul>
+<p>图灵机的<strong>格局</strong>指的是图灵机的:</p>
+<ul>
+<li>当前状态</li>
+<li>当前带的内容</li>
+<li>当前扫描内容,</li>
+</ul>
+<p>比如格局 <span
+class="math inline">\(C=\underline{u}qa\underline{v}\)</span> 表示:</p>
+<ul>
+<li>当前状态为 <span class="math inline">\(q\)</span></li>
+<li>当前扫描内容为 <span class="math inline">\(a\)</span></li>
+<li>当前带子的内容为 <span class="math inline">\(uav\)</span>, 其中
+<span class="math inline">\(u\)</span> 为 <span
+class="math inline">\(a\)</span> 左边的内容, <span
+class="math inline">\(v\)</span> 为 <span
+class="math inline">\(a\)</span> 右边的内容.</li>
+</ul>
+<p>图灵机的初始格局为 <span class="math inline">\(q_0w\)</span>, 其中
+<span class="math inline">\(w\)</span> 为输入到图灵机中的字符串.</p>
+<p>一个格局可以产生另外一个格局, 设 <span
+class="math inline">\(C_1=\underline{ua}q_ib\underline{v}\)</span>,
+转移函数 <span class="math inline">\(\delta\)</span> 满足 <span
+class="math inline">\(\delta(q_i,b)=(q_j,c,L)\)</span>, 那么格局 <span
+class="math inline">\(C_1\)</span> 产生的格局为 <span
+class="math inline">\(C_1=\underline{u}q_ia\underline{cv}\)</span>.
+当假定带子是单向有界且当前读写头扫描内容为左/右边界处的字符时,
+则转移函数要求向左/右移动时<strong>只修改不移动</strong>.</p>
+<p>单带 TM 在串 <span class="math inline">\(w\)</span>
+上的计算是格局的序列, 当序列有穷时图灵停机,
+最后一个格局对应的状态决定是接受还是拒绝; 当序列无穷时不停机.</p>
+<p>算法是处处停机的图灵机. <!-- 
+记作 $\mathcal{C}$ 是 legitimate problems 的集合, $\mathcal{C}_A$ 表示简单的问题的集合, $\mathcal{C}_B$ 表示困难的问题的集合. 在一对 leg 问题中, 可以定义难度关系, 这可以引出下面的 reduction lemma:
+
+对于问题 $P,Q$, 若 $Q\in \mathcal{C}_A$ 且 $P$ 不难于 $Q$, 则 $Q\in \mathcal{C}_A$; 若 $P\in \mathcal{C}_B$ 且 $P$ 难于 $Q$, 则 $P\in \mathcal{C}_B$. --></p>
 <h1 id="mathsfp-和-mathsfnp"><span
 class="math inline">\(\mathsf{P}\)</span> 和 <span
 class="math inline">\(\mathsf{NP}\)</span></h1>
-<h1 id="图灵机">图灵机</h1>
 
     </div>
 
@@ -328,7 +513,7 @@ class="math inline">\(\mathsf{NP}\)</span></h1>
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
     </span>
@@ -339,13 +524,13 @@ class="math inline">\(\mathsf{NP}\)</span></h1>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">244k</span>
+    <span title="Word count total">286k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:42</span>
+    <span title="Reading time total">4:20</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

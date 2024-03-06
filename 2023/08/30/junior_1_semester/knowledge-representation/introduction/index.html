@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="课程内容、成绩组成等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识表示与推理 课程概述">
+<meta property="og:url" content="http://example.com/2023/08/30/junior_1_semester/knowledge-representation/introduction/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="课程内容、成绩组成等。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130904533.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130906381.png">
+<meta property="article:published_time" content="2023-08-30T00:44:21.541Z">
+<meta property="article:modified_time" content="2023-12-14T07:20:28.722Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130904533.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/30/junior_1_semester/knowledge-representation/introduction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/08/30/junior_1_semester/knowledge-representation/introduction/","path":"2023/08/30/junior_1_semester/knowledge-representation/introduction/","title":"知识表示与推理 课程概述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>知识表示与推理 课程概述 | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">BASIC CONCEPTS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">什么是知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A8%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">什么是推理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E7%9A%84%E7%9F%A5%E8%AF%86%E6%8E%A8%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">基于逻辑的知识推理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91%E7%9A%84%E6%B0%B8%E7%9C%9F%E8%95%B4%E5%90%AB%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">谓词逻辑的永真蕴含性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%A6%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">问题归约法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%94%E7%BB%8E%E6%8E%A8%E7%90%86%E4%B8%8E%E5%BD%92%E7%BB%93%E6%8E%A8%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">演绎推理与归结推理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-number">4.1.</span> <span class="nav-text">命题逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91"><span class="nav-number">4.2.</span> <span class="nav-text">谓词逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%9D%9F%E8%8C%83%E5%BC%8F"><span class="nav-number">4.2.1.</span> <span class="nav-text">前束范式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skolem-%E6%A0%87%E5%87%86%E5%BD%A2"><span class="nav-number">4.2.2.</span> <span class="nav-text">Skolem 标准形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E4%B8%8E%E5%90%88%E4%B8%80"><span class="nav-number">4.2.3.</span> <span class="nav-text">置换与合一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E5%BD%92%E7%BB%93%E6%8E%A8%E7%90%86%E8%BF%9B%E8%A1%8C%E8%AF%81%E6%98%8E%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.2.4.</span> <span class="nav-text">利用归结推理进行证明的步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%92%E7%BB%93%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5"><span class="nav-number">5.</span> <span class="nav-text">归结过程中的控制策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E5%BC%8F%E8%A7%84%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text">产生式规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E7%BD%91%E7%BB%9C%E5%92%8C%E6%A1%86%E6%9E%B6%E8%A1%A8%E7%A4%BA"><span class="nav-number">7.</span> <span class="nav-text">语义网络和框架表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#prolog"><span class="nav-number">8.</span> <span class="nav-text">Prolog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assaignment"><span class="nav-number">9.</span> <span class="nav-text">Assaignment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-1"><span class="nav-number">9.1.</span> <span class="nav-text">Problem 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-2"><span class="nav-number">9.2.</span> <span class="nav-text">Problem 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-3"><span class="nav-number">9.3.</span> <span class="nav-text">Problem 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-4"><span class="nav-number">9.4.</span> <span class="nav-text">Problem 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-5-optional"><span class="nav-number">9.5.</span> <span class="nav-text">Problem 5 (optional)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%8E%A8%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">不确定推理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E4%BF%A1%E5%BA%A6%E6%8E%A8%E7%90%86"><span class="nav-number">10.1.</span> <span class="nav-text">可信度推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B%E4%B8%8E%E4%BE%8B%E9%A2%98"><span class="nav-number">10.1.1.</span> <span class="nav-text">题型与例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A7%82%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E7%90%86"><span class="nav-number">10.2.</span> <span class="nav-text">主观贝叶斯推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">10.2.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E6%8D%AE%E7%90%86%E8%AE%BA"><span class="nav-number">10.3.</span> <span class="nav-text">证据理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E5%88%86%E9%85%8D%E5%87%BD%E6%95%B0"><span class="nav-number">10.3.1.</span> <span class="nav-text">概率分配函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E7%A8%8B%E5%BA%A6"><span class="nav-number">10.3.2.</span> <span class="nav-text">匹配程度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3-cer"><span class="nav-number">10.3.3.</span> <span class="nav-text">求解 CER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-number">10.3.4.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%8E%A8%E7%90%86"><span class="nav-number">10.4.</span> <span class="nav-text">模糊推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%8E%A8%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%BC%8F"><span class="nav-number">10.4.1.</span> <span class="nav-text">模糊推理的基本模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A6%82%E7%8E%87%E7%9A%84%E6%8E%A8%E7%90%86"><span class="nav-number">10.5.</span> <span class="nav-text">基于概率的推理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C"><span class="nav-number">10.5.1.</span> <span class="nav-text">贝叶斯网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bayes-%E7%B2%BE%E7%A1%AE%E6%8E%A8%E7%90%86"><span class="nav-number">10.5.2.</span> <span class="nav-text">Bayes 精确推理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bayes-%E8%BF%91%E4%BC%BC%E6%8E%A8%E7%90%86"><span class="nav-number">10.5.3.</span> <span class="nav-text">Bayes 近似推理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#section"><span class="nav-number">10.5.3.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1"><span class="nav-number">11.</span> <span class="nav-text">知识图谱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%83%E8%AF%95%E5%86%85%E5%AE%B9"><span class="nav-number">12.</span> <span class="nav-text">考试内容</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/30/junior_1_semester/knowledge-representation/introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="知识表示与推理 课程概述 | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          知识表示与推理 课程概述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-30 08:44:21" itemprop="dateCreated datePublished" datetime="2023-08-30T08:44:21+08:00">2023-08-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-12-14 15:20:28" itemprop="dateModified" datetime="2023-12-14T15:20:28+08:00">2023-12-14</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>22k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>20 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><em>Knowledge is justified true belief.</em> ——
+<strong>Plato</strong></p>
+</blockquote>
+<p>成绩构成：</p>
+<ul>
+<li>期末 <span class="math inline">\(50\%\)</span></li>
+<li>项目 <span class="math inline">\(35\%\)</span></li>
+<li>作业 <span class="math inline">\(10\%\)</span></li>
+<li>课堂表现 <span class="math inline">\(5\%\)</span></li>
+</ul>
+<p>期末考试形式:</p>
+<ul>
+<li><strong>闭卷</strong></li>
+<li>一页纸开卷</li>
+<li>不上网的开卷</li>
+</ul>
+<p>要求:</p>
+<ul>
+<li>不要作弊</li>
+<li>不要交白卷</li>
+<li>不要抄作业, 若参考则需搞懂</li>
+<li>课堂上可以带电脑</li>
+<li>玩手机要静音</li>
+<li>上课说话不要打扰周围人</li>
+<li>有听课的老师来的时候不要睡觉💤</li>
+</ul>
+<h1 id="basic-concepts">BASIC CONCEPTS</h1>
+<h2 id="什么是知识">什么是知识</h2>
+<p>flourish(涌现): 模型在复杂到一定程度以后,
+出现了一些我们原本以为该模型不可能具备的能力.</p>
+<h2 id="什么是推理">什么是推理</h2>
+<p>针对各种事务进行分析和决策, 从一直的知识出发,
+通过一系列思考,找出蕴含的事实, 或者归纳出新的事实.</p>
+<p>知识表示: 对知识的一种描述和约定,
+采用计算机可以接受的、用于描述知识的数据结构.</p>
+<p>知识推理: 基于现有知识, 基于一定方法, 发现新知识的过程.</p>
+<p>推理包括包括:</p>
+<ul>
+<li>演绎 (deduction) 法</li>
+<li>归纳 (induction) 证明</li>
+<li>不确定推理</li>
+<li>知识, 统计, 直觉</li>
+</ul>
+<p>总结为下面的图片:</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309011453073.png" /></p>
+<p>知识表示的形式: 客观事物的机器标识, 约定和模型, 推理的理论基础,
+数据结构, 机器语言</p>
+<p>非单调推理: 在推理过程中, 外界会不断提供线索甚至是新的知识.
+比如<strong>三门问题</strong>.</p>
+<h1 id="基于逻辑的知识推理">基于逻辑的知识推理</h1>
+<p>用一套符号系统表示人类的逻辑, 并使用这一套符号来进行推理.</p>
+<p>1: 命题: 具有真假意义的陈述句.</p>
+<p>2: 公理: 默认正确的命题.</p>
+<p>3: 定理: 仅从公理通过推演出来得到的命题.</p>
+<p>4: 谓词: <span class="math inline">\(P:D\to
+\{\mathbb{T,F}\}\)</span>, <span class="math inline">\(D\)</span>
+中的元素称为个体.</p>
+<p>5: 全称量词 <span class="math inline">\((\forall x)P(x)\)</span>,
+存在量词 <span class="math inline">\((\exists x)P(x)\)</span>.</p>
+<p>6: <span class="math inline">\(p\to q \equiv \neg p\lor
+q\)</span></p>
+<p>7: 设论域为 <span class="math inline">\(\mathcal{D}\)</span>, 则
+<span class="math display">\[
+\exists xP(x)\iff \bigvee_{x\in\mathcal{D}}P(x),\forall xP(x)\iff
+\bigwedge_{x\in \mathcal{D}}P(x)
+\]</span> 8: 析取/or/disjunction; 合取/and/conjunction.</p>
+<h2 id="谓词逻辑的永真蕴含性">谓词逻辑的永真蕴含性</h2>
+<p>与量词有关的四条重要推理规则 US, UG, ES, EG.</p>
+<h1 id="问题归约法">问题归约法</h1>
+<p>归约就是 reduction, 将问题分解为子问题, 解决较小的问题.</p>
+<p><strong>分解</strong>: 如果一个问题 <span
+class="math inline">\(P\)</span> 可以规约为一组子问题 <span
+class="math inline">\(P_1,\cdots,P_n\)</span>, 并且只有 <span
+class="math inline">\(\forall i,P_i\)</span> 有解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(P\)</span> 有解, <span
+class="math inline">\(\exists i,P_i\)</span> 无解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(P\)</span> 无解, 则称此种规约方式为问题的分解.</p>
+<p><strong>等价变化</strong>: 若 <span class="math inline">\(P\)</span>
+归约为为 <span class="math inline">\(P_1,\cdots,P_n\)</span>, 且 <span
+class="math inline">\(\exists i,P_i\)</span> 有解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(P\)</span> 有解, <span
+class="math inline">\(\forall i,P_i\)</span> 无解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(P\)</span> 无解, 则称此种归约方式为问题的等价变换,
+简称变换.</p>
+<p>用<strong>似图结构</strong>把问题规约为后继问题的替换集合,
+这似图结构称为与或图. 与或图中两个没见过的定义:</p>
+<ul>
+<li><p>or vertex: 某个 <span class="math inline">\(x\)</span> 解决则
+<span class="math inline">\(\mathrm{fa}(x)\)</span> 解决,
+比如下面或图中的 <span class="math inline">\(B,C\)</span></p></li>
+<li><p>and vertex: 所有 <span class="math inline">\(x\)</span> 解决
+<span class="math inline">\(\mathrm{fa}(x)\)</span> 才解决</p></li>
+</ul>
+<p>比如:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130904533.png" alt="与图" style="zoom:50%;" /></p>
+<p>以及</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130906381.png" alt="或图" style="zoom:50%;" /></p>
+<p>规范的与或图要求每个点的后继节点只能是 or vertex 或者 and vertex
+的一种, 可以增加附加节点使与或图规范化, 如下图所示:</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309130928871.png"
+alt="与或图的规范化" />
+<figcaption aria-hidden="true">与或图的规范化</figcaption>
+</figure>
+<p><strong>可解节点</strong>: 这是一个递归的定义. 叶节点是可解的; 若
+<span class="math inline">\(\mathrm{son}(x)\)</span> 为 or vertex,
+则某一个 <span class="math inline">\(\mathrm{son}(x)\)</span> 可解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(x\)</span> 可解; 若 <span
+class="math inline">\(\mathrm{son}(x)\)</span> 为 and vertex, 则所有
+<span class="math inline">\(\mathrm{son}(x)\)</span> 可解 <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(x\)</span> 可解;</p>
+<p><strong>解树</strong>:
+由若干可解结点组成且由可解节点能<strong>推出</strong>初始节点可解的子树称为解树.</p>
+<h1 id="演绎推理与归结推理">演绎推理与归结推理</h1>
+<h2 id="命题逻辑">命题逻辑</h2>
+<p>对于命题逻辑, 给定若干命题 <span
+class="math inline">\(\mathrm{KB(Knowledge~Base)}\)</span>,
+要求证明某命题 <span class="math inline">\(p\)</span>, 比如 <span
+class="math inline">\(p\to q,q\to r\)</span>, 要证 <span
+class="math inline">\(p\to r\)</span> 成立,
+通常的做法是使用各种逻辑等值规则, 对 <span class="math inline">\((p\to
+q)\land (q\to r)\)</span> 进行恒等变形, 得到 <span
+class="math inline">\(p\to r\)</span>.</p>
+<p>这种做法是所谓的演绎推理, 一般是手动操作, 当命题数目不多时还足以应付,
+但是数量太多时, 手动推导就显得捉襟见肘了,
+这是自然要提出一种适用于<strong>自动推理</strong>的方法.</p>
+<p>判断 <span class="math inline">\(\mathrm{KB}\vDash p\)</span>
+的计算复杂性为 <span class="math inline">\(\mathsf{coNPC}\)</span> 的,
+同时 <strong><span class="math inline">\(\mathrm{KB}\vDash
+p\mathrm{~~iff~~} \mathrm{KB}\land \neg p\)</span> 不可满足</strong>,
+这类似于 SAT, 已被证明为是 <span
+class="math inline">\(\mathsf{NPC}\)</span> 的.</p>
+<p>通常的做法是将 <span class="math inline">\(\mathrm{KB}\land \neg
+p\)</span> 化成 CNF, 可以得到其<strong>子句集</strong> <span
+class="math inline">\(\mathcal{C}\)</span>, 使用下述称之为 resolution
+的手段 <span class="math display">\[
+\alpha\lor p~~ \neg p\lor \gamma \over \alpha\lor \gamma
+\]</span> 不断对子句集进行化简, 其中 <span
+class="math inline">\(p\)</span> 为命题, 如果最后空子句 <span
+class="math inline">\(\mathrm{NIL}\in \mathcal{C}\)</span>, 则说明 <span
+class="math inline">\(\mathrm{KB}\land \neg p\)</span> 是不可满足的,
+这就意味着 <span class="math inline">\(\mathrm{KB}\vDash p\)</span>,
+这是所谓的<strong>归结算法</strong>, 这是可靠且完备的.</p>
+<p>同时能够看出归结推理是反证法的一种体现, 通过否定结论,
+再结合已知的前提条件, 推出矛盾的结论(互相矛盾的结论将会消解为 <span
+class="math inline">\(\mathrm{NIL}\)</span>), 最后得到证明.</p>
+<h2 id="谓词逻辑">谓词逻辑</h2>
+<p>对于谓词逻辑, 由于量词和变元的存在,
+不能直接像上述方式与结论的否定作析取并化为 CNF 通过 resolution 做推理,
+需要提出一些简化规则让我们可以不考虑量词, 以及将变元视作常量来处理.</p>
+<h3 id="前束范式">前束范式</h3>
+<p><strong>前束范式</strong> 如果公式 <span
+class="math inline">\(A\)</span> 的一切量词都位于该公式的最左边,
+且这些量词的辖域都延伸到公式的末端, 则称 <span
+class="math inline">\(A\)</span> 是一个前束范式, 其一般形式为 <span
+class="math inline">\((Q_1x_1)\cdots(Q_nx_n)M(x_1,\cdots,x_n)\)</span>,
+其中 <span class="math inline">\(Q_i\in\{\forall ,\exists\}\)</span>,
+<span class="math inline">\(M\)</span> 称为 <span
+class="math inline">\(A\)</span> 的<strong>母式/基式</strong>, <span
+class="math inline">\(M\)</span> 中不含有量词.</p>
+<blockquote>
+<p>为什么要设计前束范式?</p>
+<p>前束范式的量词与母式区分得比较清楚, 这方便后续对母式 <span
+class="math inline">\(M(x_1,\cdots,x_n)\)</span> 继续单独处理,
+而不考虑变元时, 母式可以看作是命题逻辑.</p>
+<p>例子: 求 <span class="math display">\[
+\neg(\forall x\exists yP(a,x,y)\to\exists x(\neg(\forall yQ(y,b))\to
+R(x)))
+\]</span> 的前束范式. 反复用 De Morgan law 以及 <span
+class="math inline">\(\to\)</span> 与 <span
+class="math inline">\(\lor\)</span> 的转化即可,
+需要注意的是变量名的替换.</p>
+</blockquote>
+<h3 id="skolem-标准形">Skolem 标准形</h3>
+<p><strong>Skolem 标准形</strong> 只保留全称量词的前束范式.</p>
+<p>Skolemization 比较好理解, 比如对于 <span
+class="math inline">\(\exists x_1\forall x_2\forall x_3\exists x_4\cdots
+P(x_1,x_2,x_3,x_4,\cdots)\)</span>, 直接去掉所有的 <span
+class="math inline">\(\exists\)</span>, 并令 <span
+class="math inline">\(x_1:=a\in\mathcal{D}\)</span>, <span
+class="math inline">\(x_4=f(x_2,x_3)\)</span> 即可.</p>
+<blockquote>
+<p>为什么要设计 Skolem 标准形消去存在量词?</p>
+<p>例: 求 <span class="math inline">\(\exists x\forall y\forall z\exists
+u\forall v \exists w P(x,y,z,u,v,w)\)</span> 的 Skolem 标准形.</p>
+<p>将 <span class="math inline">\(x\)</span> 替换为某个常量 <span
+class="math inline">\(a\)</span>, <span class="math inline">\(u\)</span>
+替换为 <span class="math inline">\(y,z\)</span> 的函数 <span
+class="math inline">\(f(y,z)\)</span>, <span
+class="math inline">\(w\)</span> 替换为 <span
+class="math inline">\(y,z,v\)</span> 的函数 <span
+class="math inline">\(g(y,z,v)\)</span>, 得到 <span
+class="math inline">\(\forall y\forall z\forall v
+P(a,y,z,f(y,z),v,g(y,z,v))\)</span>.</p>
+</blockquote>
+<h3 id="置换与合一">置换与合一</h3>
+<p>表达式的置换: 表达式 <span class="math inline">\(E\)</span>
+的定义域为 <span class="math inline">\(D\)</span>, 置换写做 <span
+class="math inline">\(S=\{x/y\},y\in D\)</span>, 表示用 <span
+class="math inline">\(x\)</span> 替换 <span
+class="math inline">\(E\)</span> 中的 <span
+class="math inline">\(y\)</span> . <span
+class="math inline">\(E\)</span> 用置换 <span
+class="math inline">\(S\)</span> 得到表达式的置换, 记作 <span
+class="math inline">\(ES\)</span>. 有 <span
+class="math inline">\(E(S_1S_2)=(ES_1)S_2\)</span>, 但是没有交换律:
+<span class="math inline">\(ES_1S_2\ne ES_2S_1\)</span>.</p>
+<p><strong>置换的合成</strong> 设 <span
+class="math inline">\(\theta=\{t_1/x_1,\cdots,t_n/x_n\},\)</span> <span
+class="math inline">\(\lambda=\{u_1/y_1,\cdots,u_m/y_m\}\)</span>,
+则两者的<strong>合成</strong> <span
+class="math inline">\(\theta\lambda\)</span> 也是一个置换. <span
+class="math inline">\(\theta\lambda\)</span> 的定义是, 对集合 <span
+class="math inline">\(\{(t_1\lambda)/x_1,\cdots,(t_n\lambda)/x_n,u_1/y_1,\cdots,u_m/y_m\}\)</span>
+做如下删除操作得到的结果:</p>
+<ul>
+<li>去闭环的置换: <span class="math inline">\(t_i\lambda=x_i\)</span>
+时, 删去 <span class="math inline">\((t_i\lambda)/x_i\)</span>,
+这相当于用 <span class="math inline">\(x_i\)</span> 替换 <span
+class="math inline">\(x_i\)</span> 了</li>
+<li>去重复的元素: 若 <span
+class="math inline">\(y_j\in\{x_1,\cdots,x_n\}\)</span>, 删去 <span
+class="math inline">\(u_j/y_j\)</span>, ?</li>
+</ul>
+<p>其中 <span class="math inline">\(t_i\lambda\)</span> 表示对 <span
+class="math inline">\(t_i\)</span> 应用置换规则 <span
+class="math inline">\(\lambda\)</span>, 因为 <span
+class="math inline">\(t_i\)</span> 本身也是表达式.</p>
+<p><strong>合一 (Unification)</strong> 对于表达式集 <span
+class="math inline">\(\mathcal{E}\)</span>, 将置换 <span
+class="math inline">\(S\)</span> 作用在 <span class="math inline">\(\cal
+E\)</span> 中的每一个元素得到 <span
+class="math inline">\(\mathcal{E}S\)</span>, 若置换后 <span
+class="math inline">\(\mathcal{E}S\)</span> 中只有一个元素(置换 <span
+class="math inline">\(S\)</span> 使多个表达式<strong>一致</strong>),
+则称寻找这样的 <span class="math inline">\(S\)</span>
+达到此目的的操作为<strong>合一</strong>. 若存在 <span
+class="math inline">\(S\)</span> 使 <span
+class="math inline">\(\mathcal{E}S\)</span> 中只有一个元素, 称 <span
+class="math inline">\(\mathcal{E}\)</span> 是<strong>可合一的</strong>,
+<span class="math inline">\(S\)</span> 称为 <span
+class="math inline">\(\mathcal{E}\)</span>
+的<strong>合一者</strong>.</p>
+<p><strong>最通用的合一者 (most general unifier, mgu)</strong> 若对
+<span class="math inline">\(\mathcal{E}\)</span> 的任一合一者 <span
+class="math inline">\(S\)</span>, 都存在 <span
+class="math inline">\(S&#39;\)</span> 使 <span
+class="math inline">\(\mathcal{E}S=\mathcal{E}gS&#39;\)</span>, 则称
+<span class="math inline">\(g\)</span> 为 <span
+class="math inline">\(\mathcal{E}\)</span>
+的<strong>最通用合一者</strong>.</p>
+<p>置换与合一主要用在谓词逻辑的 resolution 中, 为了保证做 resolution
+时不会出现不同的变元, 是如下的定理:</p>
+<blockquote>
+<p>设 <span class="math inline">\(C_1,C_2\)</span>
+是两个没有相同变元的子句, <span class="math inline">\(L_1\in C_1,L_2\in
+C_2\)</span> 是文字, 若 <span class="math inline">\(L_1,\neg
+L_2\)</span> 有mgu <span class="math inline">\(\delta\)</span>, 则称
+<span
+class="math inline">\(C_{12}=(C_1\delta-\{L_1\delta\}\cup(C_2\delta-\{L_2\delta\}))\)</span>
+为 <span class="math inline">\(C_1,C_2\)</span> 的一个二元归结式, <span
+class="math inline">\(L_1,L_2\)</span> 是被归结的文字.</p>
+</blockquote>
+<p>即 <span class="math display">\[
+\alpha\lor p~~ \neg p\lor \gamma \over \alpha\delta\lor \gamma\delta
+\]</span> 其中 <span class="math inline">\(\delta\)</span> 是 <span
+class="math inline">\(p,\neg p\)</span> 的 mgu.</p>
+<h3 id="利用归结推理进行证明的步骤">利用归结推理进行证明的步骤</h3>
+<p>设要证 <span class="math inline">\(\mathrm{KB}\vDash p\)</span>.</p>
+<p>1: 将 <span class="math inline">\(\mathrm{KB}\)</span>
+中的所有语句都转化为 Skolem 标准形, 不同辖域内的变元要使用不同的名称.
+比如 <span class="math inline">\(\mathrm{KB}=\{\forall xP(x),\forall x
+Q(x)\}\)</span>, 那么子句集 <span
+class="math inline">\(\mathcal{C}\)</span> 就要写成 <span
+class="math inline">\(\{[P(x)],[Q(y)]\}\)</span> 的形式.</p>
+<p>2: 否定结论 <span class="math inline">\(\neg p\)</span> 并于 <span
+class="math inline">\(\mathrm{KB}\)</span> 做析取得到 <span
+class="math inline">\(\mathrm{KB}\land \neg p\)</span>.</p>
+<p>2: 求解 <span class="math inline">\(\mathrm{KB}\land \neg p\)</span>
+的子句集.</p>
+<p>3: 对于子句集 <span class="math inline">\(\mathcal{C}\)</span>,
+使用谓词逻辑的 resolution 逐一规约, 当 <span
+class="math inline">\(\mathrm{NIL}\in \mathcal{C}\)</span> 时, 证明完毕,
+这一过程可以使用<strong>归结反演树</strong>表示.</p>
+<p>比如对于 <span class="math inline">\(\mathrm{KB}\)</span>: <span
+class="math display">\[
+\begin{aligned}
+&amp;\forall x. \mathrm{GradStudent}(x)\to \mathrm{Student}(x)\newline{}
+&amp;\forall x. \mathrm{Student}(x)\to \mathrm{HardWorker}(x)\newline{}
+&amp;\mathrm{GradStudent(sue)}
+\end{aligned}
+\]</span> 要证 <span class="math inline">\(\mathrm{KB}\vDash
+\mathrm{HardWorker(sue)}\)</span>, 它的反演树如下:</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309262102552.png"
+alt="归结反演树示例" />
+<figcaption aria-hidden="true">归结反演树示例</figcaption>
+</figure>
+<h1 id="归结过程中的控制策略">归结过程中的控制策略</h1>
+<ul>
+<li>删除策略</li>
+<li>语义归结策略</li>
+<li>线性归结策略</li>
+<li>输入归结策略. 输入归结策略是不完备的.</li>
+<li>单元归结策略</li>
+</ul>
+<h1 id="产生式规则">产生式规则</h1>
+<hr />
+<!-- # Resolution
+
+ A Resolution derivation of a clause $c$ from a set of clauses $S$ is a sequence of clauses $c_1, \cdots , c_n$, where the last clause, $c_n$, is $c$, and where each $c_i$ is either an element of $S$ or a resolvent of two earlier clauses in the derivation. We write $S\vdash c$ if there is a derivation of $c$ from $S$. 
+
+
+
+# 演绎推理
+
+演绎推理: 在已知一组为真的事实条件下, 直接运用命题和谓词逻辑的一系列基本规则或定律来推出结论.
+
+
+
+
+
+谓词逻辑的人一共是都可以化成与其等值的前束范式, 但其前述凡是不唯一. 
+
+> 
+
+
+
+
+
+在前束范式的基础之上, 要求只保留全称量词而消去存在量词.
+
+mgu 的求法: **Unification Algorithm**
+
+
+
+为什么要化成 Skolem 标准形?
+
+对于谓词公式 $\mathcal{P}$, 它是不可满足的当且仅当其 Skolem 标准形是不可满足的.
+
+或者说, 对于不可满足的谓词公式 $\mathcal{P}$, $\mathcal{P}$ 与其 Skolem 标准形是**等值**的.
+
+# 归结推理
+
+合取: $\land$ 
+
+析取: $\lor$
+
+归结推理方法可以看作是反证法的具体应用.
+
+在推导过程中使用的推理规则序列成为了定理的一个证明
+
+任何一个谓词公式都可以化为一个 clause 的集合(子句集).
+
+将谓词公式化为字句集合的过程:
+
+- 消去 $\to$ 和 $\iff$
+
+将 
+$$
+\forall x[(\neg P(x)\lor \neg Q(x))\to \exists y(S(x,y)\land Q(x))]\land \forall x (P(x)\lor B(x))
+$$
+化为子句集.
+
+图灵停机问题
+
+设有谓词公式 $\mathcal{P}$, 其标准子句集为 $\mathcal{C}$, 则 $\mathcal{P}$ 不可满足的充要条件是 $\mathcal{C}$ 不可满足.
+
+定义 $H$ 域: 设 $G$ 是谓词公式, 定义在论域 $D$ 上, 设 $H_0$ 是 $G$ 中所有出现的常量的集合, 若 $G$ 中没有常量, 则任取 $a\in D$ 且规定 $H_0=\{a\}$, 且递归定义
+$$
+H_i=H_{i-1}\cup\{\text{all the element like }f(t_1,\cdots,t_n)\}
+$$
+其中 $f(t_1,\cdots,t_n)$ 是出现在 $G$ 中的任一函数符号, $t_1,\cdots,t_n$ 是 $H_{i-1}$ 的元素, 规定 $H_{\infty}$ 为 $G$ (的相应的子句集 $\mathcal{C}$ ) 的 $H$ 域.
+
+**Herbrand 定理** 
+
+**Robinson 归结原理** 
+
+设 $C_1,C_2\in\mathcal{C}$, 若 $L_1\in C_1$ 与 $L_2\in C_2$ 互补, 则从 $C_1,C_2$ 中可以分别消去 $L_1,L_2$ 且将剩余部分做**析取**构成一个新的字句 $C_{12}$, 称这一过程为归结, $C_{12}$ 为 $C_1,C_2$ 的归结式, $C_1,C_2$ 为 $C_{12}$ 的亲本子句. 
+
+$\{(L_1\lor \mathcal{C}_1),(L_2\lor\mathcal{C}_2)\}$ 做归结推理得到 $\{\mathcal{C}_1\lor \mathcal{C}_2\}$.
+
+- 对子句集 $S$ 中的各子句间使用归结推理规则.
+- 将归结所得的归结式放入 $S$ 中, 得到 $S'$
+- 判断 $\mathrm{NIL}\in S'$ 是否成立
+- 置 $S:=S'$ 
+
+给定谓词公式 $p$, $s$ 为 $p$ 相应的 CNF, 则 $p$ 是不可满足的 $\iff$ $s$ 是不可满足的.
+
+一阶谓词逻辑中的归结原理
+
+
+
+ 利用归结推理进行定理证明
+
+给定一个谓词公式集 $\mathcal{F}$, 要证明 $\mathcal{F}$ 能推导出目标公式 $G$, 步骤如下:
+
+1. 否定结论得到 $\neg G$
+2. 将 $\mathcal{F},\neg G$ 转化为子句集 $S$
+3. 对 $S$ 反复进行归结, 若最终 $\mathrm{NIL}\in S$ 则 $\mathcal{F}\to S$ 为真. -->
+<h1 id="语义网络和框架表示">语义网络和框架表示</h1>
+<h1 id="prolog">Prolog</h1>
+<ol type="1">
+<li>大写字母为变量, 小写字母为常量.</li>
+<li><code>Relation(X,Y)</code> 表示 <span
+class="math inline">\(X\)</span> 和 <span
+class="math inline">\(Y\)</span> 具有关系 relation,
+但是这个关系是单向的.</li>
+<li><code>Attribute(X)</code> 表示 <span
+class="math inline">\(X\)</span> 具有属性/性质
+<code>Attribute</code>.</li>
+<li><code>A :- B</code> 等价于 <span class="math inline">\(B\to
+A\)</span>, 即推理关系, <span class="math inline">\(B\)</span> 为真得到
+<span class="math inline">\(A\)</span> 为真, 多个表达式且用
+<code>,</code> 隔开. <code>friend(X,Y):-friend(Y,X).</code></li>
+<li><code>onesidelove(X,Y):-loves(X,Y), \+ loves(Y,X).</code>
+<code>\+</code> 表示否定.</li>
+<li>列表. <code>loc_list([apple, broccoli, crackers],kitchen)</code>
+表示厨房中有列表中的东西. 空表 <code>[]</code> 又可用 <code>nil</code>
+表示.</li>
+</ol>
+<ol type="1">
+<li>已知下述Prolog程序能够发现列表中最大、最小的元素，请基于列表[3,7,4]阐述推理的过程：</li>
+</ol>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">minmax(X,X,[X]).</span><br><span class="line">minmax(Min,Max,[X|L]) :- minmax(Min2,Max2,L),</span><br><span class="line">    min(X,Min2,Min),</span><br><span class="line">    max(X,Max2,Max).</span><br><span class="line">min(X,Y,X) :- X =&lt; Y.</span><br><span class="line">min(X,Y,Y) :- Y =&lt; X.</span><br><span class="line">max(X,Y,X) :- Y =&lt; X.</span><br><span class="line">max(X,Y,Y) :- X =&lt; Y.</span><br></pre></td></tr></table></figure>
+<h1 id="assaignment">Assaignment</h1>
+<p>第一次作业：</p>
+<p>提交时间：不晚于 11月30日晚23点59分</p>
+<p>提交方式：以课程设计小组为单位，邮箱：<a
+href="mailto:xzheng@uestc.edu.cn">xzheng@uestc.edu.cn</a>，或者QQ小窗发送</p>
+<h2 id="problem-1">Problem 1</h2>
+<p>We are given the following knowledge base of travel information:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">byCar(auckland,hamilton).</span><br><span class="line">byCar(hamilton,raglan).</span><br><span class="line">byCar(valmont,saarbruecken).</span><br><span class="line">byCar(valmont,metz).</span><br><span class="line">byTrain(metz,frankfurt).</span><br><span class="line">byTrain(saarbruecken,frankfurt).</span><br><span class="line">byTrain(metz,paris).</span><br><span class="line">byTrain(saarbruecken,paris).</span><br><span class="line">byPlane(frankfurt,bangkok).</span><br><span class="line">byPlane(frankfurt,singapore).</span><br><span class="line">byPlane(paris,losAngeles).</span><br><span class="line">byPlane(bangkok,auckland).</span><br><span class="line">byPlane(losAngeles,auckland).</span><br></pre></td></tr></table></figure>
+<p>Write a predicate <code>travel/2</code> which determines whether it
+is possible to travel from one place to another by ‘chaining together’
+car, train, and plane journeys. For example, your program should answer
+<code>yes</code> to the query <code>travel(valmont,raglan)</code>.</p>
+<p>So, by using <code>travel/2</code> to query the above database, you
+can find out that it is possible to go from Vamont to Raglan. In case
+you are planning a travel, that’s already very good information, but
+what you would then really want to know is how exactly to get from
+Valmont to Raglan.</p>
+<p>Write a predicate <code>travel/3</code> which tells you how to travel
+from one place to another.</p>
+<p>The program should, e.g., answer <code>yes</code> to the query</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travel(valmont,paris,go(valmont,metz,go(metz,paris)))</span><br></pre></td></tr></table></figure>
+<p>and</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X = go(valmont,metz,go(metz,paris,go(paris,losAngeles)))</span><br></pre></td></tr></table></figure>
+<p>to the query <code>travel(valmont,losAngeles,X)</code>.</p>
+<blockquote>
+<p><strong><em>Answer</em></strong>:</p>
+<p>问题一:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% travle(X,Y) 判断能否从X到达Y</span></span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byCar(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byCar(<span class="symbol">Y</span>,<span class="symbol">X</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byTrain(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byTrain(<span class="symbol">Y</span>,<span class="symbol">X</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byPlane(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :- byPlane(<span class="symbol">Y</span>,<span class="symbol">X</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :-</span><br><span class="line">    byCar(<span class="symbol">X</span>,<span class="symbol">Z</span>),</span><br><span class="line">    travel(<span class="symbol">Z</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :-</span><br><span class="line">    byTrain(<span class="symbol">X</span>,<span class="symbol">Z</span>),</span><br><span class="line">    travel(<span class="symbol">Z</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :-</span><br><span class="line">    byPlane(<span class="symbol">X</span>,<span class="symbol">Z</span>),</span><br><span class="line">    travel(<span class="symbol">Z</span>,<span class="symbol">Y</span>).</span><br></pre></td></tr></table></figure>
+<p>为什么</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>) :-</span><br><span class="line">    travel(<span class="symbol">X</span>,<span class="symbol">Z</span>),</span><br><span class="line">    travel(<span class="symbol">Z</span>,<span class="symbol">Y</span>).</span><br></pre></td></tr></table></figure>
+<p>会栈溢出呢?</p>
+<p>问题二:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 实现 go 和 travel</span></span><br><span class="line"><span class="comment">% travel(X,Y,Z) 表示若可以从X到Y, 则Z是从X到Y的方式, </span></span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>,go(<span class="symbol">X</span>,<span class="symbol">Y</span>)):-byCar(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>,go(<span class="symbol">X</span>,<span class="symbol">Y</span>)):-byTrain(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>,go(<span class="symbol">X</span>,<span class="symbol">Y</span>)):-byPlane(<span class="symbol">X</span>,<span class="symbol">Y</span>).</span><br><span class="line">travel(<span class="symbol">X</span>,<span class="symbol">Y</span>,go(<span class="symbol">X</span>,<span class="symbol">Z</span>,<span class="symbol">Path</span>)):-</span><br><span class="line">    (byCar(<span class="symbol">X</span>,<span class="symbol">Z</span>);byTrain(<span class="symbol">X</span>,<span class="symbol">Z</span>);byPlane(<span class="symbol">X</span>,<span class="symbol">Z</span>)),</span><br><span class="line">    travel(<span class="symbol">Z</span>,<span class="symbol">Y</span>,<span class="symbol">Path</span>).</span><br></pre></td></tr></table></figure>
+<p>对于 query <code>travel(valmont,losAngeles,X)</code> 的输出为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X = go(valmont,saarbruecken,go(saarbruecken,paris,go(paris,losAngeles)))</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="problem-2">Problem 2</h2>
+<ol type="1">
+<li>Write a 3-place predicate <code>combine1</code> which takes three
+lists as arguments and combines the elements of the first two lists into
+the third as follows:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?- combine1([a,b,c],[1,2,3],X).</span><br><span class="line"></span><br><span class="line">X = [a,1,b,2,c,3]</span><br><span class="line"></span><br><span class="line">?- combine1([foo,bar,yip,yup],[glub,glab,glib,glob],Result).</span><br><span class="line"></span><br><span class="line">Result = [foo,glub,bar,glab,yip,glib,yup,glob]</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>Now write a 3-place predicate <code>combine2</code> which takes
+three lists as arguments and combines the elements of the first two
+lists into the third as follows:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?- combine2([a,b,c],[1,2,3],X).</span><br><span class="line"></span><br><span class="line">X = [[a,1],[b,2],[c,3]]</span><br><span class="line"></span><br><span class="line">?- combine2([foo,bar,yip,yup],[glub,glab,glib,glob],Result).</span><br><span class="line"></span><br><span class="line">Result = [[foo,glub],[bar,glab],[yip,glib],[yup,glob]]</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>Finally, write a 3-place predicate <code>combine3</code> which takes
+three lists as arguments and combines the elements of the first two
+lists into the third as follows:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?- combine3([a,b,c],[1,2,3],X).</span><br><span class="line"></span><br><span class="line">X = [join(a,1),join(b,2),join(c,3)]</span><br><span class="line"></span><br><span class="line">?- combine3([foo,bar,yip,yup],[glub,glab,glib,glob],R).</span><br><span class="line"></span><br><span class="line">R = [join(foo,glub),join(bar,glab),join(yip,glib),join(yup,glob)]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong><em>Answer</em></strong></p>
+<p>1:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">combine1([],[],[]).</span><br><span class="line">combine1([<span class="symbol">H1</span>|<span class="symbol">T1</span>],[<span class="symbol">H2</span>|<span class="symbol">T2</span>],[<span class="symbol">H1</span>,<span class="symbol">H2</span>|<span class="symbol">T</span>]):-</span><br><span class="line">    combine1(<span class="symbol">T1</span>,<span class="symbol">T2</span>,<span class="symbol">T</span>).</span><br></pre></td></tr></table></figure>
+<p>为什么没有语句 <code>combine1([],[],[]).</code> 时输出为 false
+呢?</p>
+<p>2:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">combine2([],[],[]).</span><br><span class="line">combine2([<span class="symbol">H1</span>|<span class="symbol">T1</span>],[<span class="symbol">H2</span>|<span class="symbol">T2</span>],[[<span class="symbol">H1</span>,<span class="symbol">H2</span>]|<span class="symbol">T</span>]):-</span><br><span class="line">    combine2(<span class="symbol">T1</span>,<span class="symbol">T2</span>,<span class="symbol">T</span>).</span><br></pre></td></tr></table></figure>
+<p>3:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">combine3([],[],[]).</span><br><span class="line">combine3([<span class="symbol">H1</span>|<span class="symbol">T1</span>],[<span class="symbol">H2</span>|<span class="symbol">T2</span>],[join(<span class="symbol">H1</span>,<span class="symbol">H2</span>)|<span class="symbol">T</span>]):-</span><br><span class="line">    combine3(<span class="symbol">T1</span>,<span class="symbol">T2</span>,<span class="symbol">T</span>).</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="problem-3">Problem 3</h2>
+<ol type="1">
+<li>Write a predicate <code>mysubset/2</code> that takes two lists (of
+constants) as arguments and checks, whether the first list is a subset
+of the second.</li>
+<li>Write a predicate <code>mysuperset/2</code> that takes two lists as
+arguments and checks, whether the first list is a superset of the
+second.</li>
+</ol>
+<blockquote>
+<p><strong><em>Answer</em></strong></p>
+<p>1:</p>
+<p><span class="math inline">\(Y\subseteq X\)</span> 只需要保证 <span
+class="math inline">\(\forall y\in Y\to y\in X\)</span>.</p>
+<p>枚举 <span class="math inline">\(Y\)</span> 中的每个元素,
+判断是否都在 <span class="math inline">\(X\)</span> 里.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">member(<span class="symbol">H</span>,[<span class="symbol">H</span>|<span class="symbol">_</span>]).</span><br><span class="line">member(<span class="symbol">X</span>,[<span class="symbol">_</span>|<span class="symbol">T</span>]) :-</span><br><span class="line">       member(<span class="symbol">X</span>,<span class="symbol">T</span>).</span><br><span class="line"></span><br><span class="line">mysubset([],<span class="symbol">_</span>).</span><br><span class="line">mysubset([<span class="symbol">HY</span>|<span class="symbol">TY</span>],<span class="symbol">X</span>):-</span><br><span class="line">       member(<span class="symbol">HY</span>,<span class="symbol">X</span>),</span><br><span class="line">       mysubset(<span class="symbol">TY</span>,<span class="symbol">X</span>).</span><br></pre></td></tr></table></figure>
+<p><code>_</code> 表示任意类型的变量.</p>
+<p>2:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysuperset(<span class="symbol">X</span>,<span class="symbol">Y</span>):- mysubset(<span class="symbol">Y</span>,<span class="symbol">X</span>).</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="problem-4">Problem 4</h2>
+<p>Write a Prolog program to implement the predicate
+<code>frequencies(L,M)</code>, which takes as input a list
+<code>L</code> and returns a list of pairs <code>[x,n]</code>, where
+<code>x</code> is an element of <code>L</code> and <code>n</code> is the
+number of times <code>x</code> appears in <code>L</code>. Here are some
+sample runs in SWI Prolog:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?- frequencies([a,b,a,c,a,c,d,a],L).</span><br><span class="line">L = [[a, 4], [b, 1], [c, 2], [d, 1]] </span><br><span class="line">Yes</span><br><span class="line"></span><br><span class="line">?- frequencies([],L).</span><br><span class="line">L = [] </span><br><span class="line">Yes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong><em>Answer</em></strong></p>
+<p>求 <span class="math inline">\(M\)</span> 中每个元素出现的次数.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cnt(<span class="symbol">_</span>,[],<span class="number">0</span>).</span><br><span class="line">cnt(<span class="symbol">X</span>,[<span class="symbol">X</span>|<span class="symbol">T</span>],<span class="symbol">N</span>):-cnt(<span class="symbol">X</span>,<span class="symbol">T</span>,<span class="symbol">N1</span>),<span class="symbol">N</span> is <span class="symbol">N1</span>+<span class="number">1.</span></span><br><span class="line">cnt(<span class="symbol">X</span>,[<span class="symbol">_</span>|<span class="symbol">T</span>],<span class="symbol">N</span>):- </span><br><span class="line">       cnt(<span class="symbol">X</span>,<span class="symbol">T</span>,<span class="symbol">N</span>).</span><br><span class="line"></span><br><span class="line">del(<span class="symbol">_</span>,[],[]).</span><br><span class="line">del(<span class="symbol">X</span>,[<span class="symbol">H</span>|<span class="symbol">T</span>],[<span class="symbol">H</span>|<span class="symbol">R</span>]):-</span><br><span class="line">       <span class="symbol">X</span> \= <span class="symbol">H</span>,</span><br><span class="line">       del(<span class="symbol">X</span>,<span class="symbol">T</span>,<span class="symbol">R</span>).</span><br><span class="line">del(<span class="symbol">X</span>,[<span class="symbol">X</span>|<span class="symbol">T</span>],<span class="symbol">R</span>):-</span><br><span class="line">       del(<span class="symbol">X</span>,<span class="symbol">T</span>,<span class="symbol">R</span>).</span><br><span class="line"></span><br><span class="line">frequencies([],[]).</span><br><span class="line">frequencies([<span class="symbol">X</span>|<span class="symbol">TM</span>],[[<span class="symbol">X</span>,<span class="symbol">N</span>]|<span class="symbol">T</span>]):-</span><br><span class="line">       cnt(<span class="symbol">X</span>,[<span class="symbol">X</span>|<span class="symbol">TM</span>],<span class="symbol">N</span>),</span><br><span class="line">       del(<span class="symbol">X</span>,[<span class="symbol">X</span>|<span class="symbol">TM</span>],<span class="symbol">M1</span>),</span><br><span class="line">       frequencies(<span class="symbol">M1</span>,<span class="symbol">T</span>).</span><br></pre></td></tr></table></figure>
+<p><code>frequencies</code> 中的 <code>cnt</code> 不要错写成
+<code>cnt(X,TM,N)</code>.</p>
+<p><code>cnt/3</code> 和 <code>del/3</code> 应该能写一块减少码量.</p>
+</blockquote>
+<h2 id="problem-5-optional">Problem 5 (optional)</h2>
+<p>Assume that a binary tree is represented in Prolog using the function
+term</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree(X,LeftSubTree,RightSubTree)</span><br></pre></td></tr></table></figure>
+<p>where <code>X</code> is the element at any node and
+<code>LeftSubTree</code> and <code>RightSubTree</code> are the left
+sub-tree and the right sub-tree for the node respectively. The term nil
+is used when there is no left sub-tree or right-tree. For example, the
+following function term:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree(20,tree(10,nil,nil),tree(40,tree(30,nil,nil),nil))</span><br></pre></td></tr></table></figure>
+<p>would represent the following binary (search) tree:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  20</span><br><span class="line">  / \</span><br><span class="line">10  40</span><br><span class="line">    / </span><br><span class="line">   30 </span><br></pre></td></tr></table></figure>
+<p>Recall that a binary search tree is a binary tree in which all the
+elements in the left sub-tree of a node are less than the element at the
+node and all the elements in the right sub-tree of a node are greater
+than the element at the node. Assume that the binary search tree is
+being used to represent a set of numbers with no duplicates. Write
+Prolog programs for the following predicates:</p>
+<ul>
+<li><code>smallest(X,T)</code> is true if <code>X</code> is the smallest
+element in the binary search tree <code>T</code>.</li>
+<li><code>member(X,T)</code> is true if <code>X</code> is an element in
+the binary search tree <code>T</code>.</li>
+<li><code>height(T,H)</code> is true if <code>H</code> is the height of
+the binary search tree <code>T</code> where height is defined as the
+length of the longest path from root to leaf node.</li>
+</ul>
+<blockquote>
+<p><strong><em>Answer</em></strong></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">member(<span class="symbol">X</span>,tree(<span class="symbol">X</span>,<span class="symbol">_</span>,<span class="symbol">_</span>))</span><br><span class="line">member(<span class="symbol">X</span>,tree(<span class="symbol">_</span>,<span class="symbol">LeftSubTree</span>,<span class="symbol">RightSubTree</span>)):-</span><br><span class="line">    member(<span class="symbol">X</span>,<span class="symbol">LeftSubTree</span>);</span><br><span class="line">    member(<span class="symbol">X</span>,<span class="symbol">RightSubTree</span>).</span><br><span class="line"></span><br><span class="line">smallest(<span class="symbol">X</span>,tree(<span class="symbol">X</span>,nil,nil)).</span><br><span class="line">smallest(<span class="symbol">X</span>,tree(<span class="symbol">_</span>,<span class="symbol">LeftSubTree</span>,<span class="symbol">RightSubTree</span>)):-</span><br><span class="line">    member(<span class="symbol">X</span>,<span class="symbol">LeftSubTree</span>),</span><br><span class="line">    \+member(<span class="symbol">X</span>,<span class="symbol">RightSubTree</span>).</span><br></pre></td></tr></table></figure>
+<p>注意这里的树的高度的定义是路径的长度,
+因此空树和只有一个根节点的树的高度都是 0.</p>
+<p>下面的代码是错误的:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% WRONG</span></span><br><span class="line">height(nil,<span class="number">0</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,nil,nil),<span class="number">0</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,<span class="symbol">LeftSubTree</span>,<span class="symbol">RightSubTree</span>),<span class="symbol">H</span>):-</span><br><span class="line">     height(<span class="symbol">LeftSubTree</span>,<span class="symbol">HL</span>),</span><br><span class="line">     height(<span class="symbol">RightSubTree</span>,<span class="symbol">HR</span>),</span><br><span class="line">     <span class="symbol">H</span> is max(<span class="symbol">HL</span>,<span class="symbol">HR</span>)+<span class="number">1.</span></span><br></pre></td></tr></table></figure>
+<p>此时程序相当于有两个出口, 因此对于下面两个 query:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">?- height(tree(<span class="number">20</span>,tree(<span class="number">10</span>,nil,nil),tree(<span class="number">40</span>,tree(<span class="number">30</span>,nil,nil),nil)),<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">true</span><br><span class="line"></span><br><span class="line">?- height(tree(<span class="number">20</span>,tree(<span class="number">10</span>,nil,nil),tree(<span class="number">40</span>,tree(<span class="number">30</span>,nil,nil),nil)),<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+<p>进行测试得到的结果都是 <code>true</code>, 这意味着这棵树的高度既为 2
+又为 3.</p>
+<p>根据树的高度的定义, 空树的高度是未定义的,
+因为对于空树甚至都没有路径可言, 因此不应该有出口
+<code>height(nil,0).</code>, 但是直接删除会导致报错, 因此枚举所有高度为
+1 的树, 如下</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% CORRECT</span></span><br><span class="line">height(tree(<span class="symbol">_</span>,nil,nil),<span class="number">0</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,tree(<span class="symbol">_</span>,nil,nil),nil),<span class="number">1</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,nil,tree(<span class="symbol">_</span>,nil,nil)),<span class="number">1</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,<span class="symbol">LeftSubTree</span>,<span class="symbol">RightSubTree</span>),<span class="symbol">H</span>):-</span><br><span class="line">     height(<span class="symbol">LeftSubTree</span>,<span class="symbol">HL</span>),</span><br><span class="line">     height(<span class="symbol">RightSubTree</span>,<span class="symbol">HR</span>),</span><br><span class="line">     <span class="symbol">H</span> is max(<span class="symbol">HL</span>,<span class="symbol">HR</span>)+<span class="number">1.</span></span><br></pre></td></tr></table></figure>
+<p>需要注意要确保高度为 1
+且有一个子树为空树的树的非空子树的两个子树都是空树.</p>
+<p>下面的写法就是不对的:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% WRONG</span></span><br><span class="line">height(tree(<span class="symbol">_</span>,nil,nil),<span class="number">0</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,<span class="symbol">_</span>,nil),<span class="number">1</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,nil,<span class="symbol">_</span>),<span class="number">1</span>).</span><br><span class="line">height(tree(<span class="symbol">_</span>,<span class="symbol">LeftSubTree</span>,<span class="symbol">RightSubTree</span>),<span class="symbol">H</span>):-</span><br><span class="line">     height(<span class="symbol">LeftSubTree</span>,<span class="symbol">HL</span>),</span><br><span class="line">     height(<span class="symbol">RightSubTree</span>,<span class="symbol">HR</span>),</span><br><span class="line">     <span class="symbol">H</span> is max(<span class="symbol">HL</span>,<span class="symbol">HR</span>)+<span class="number">1.</span></span><br></pre></td></tr></table></figure>
+<p>这会将恰有一个子树为空树的树的高度也判断为 1.</p>
+</blockquote>
+<h1 id="不确定推理">不确定推理</h1>
+<h2 id="可信度推理">可信度推理</h2>
+<p>可信度推理模型中, 知识是由产生式规则表示的, 一般形式为</p>
+<p>​ IF <span class="math inline">\(E\)</span> THEN <span
+class="math inline">\(H\)</span> (<span
+class="math inline">\(\mathrm{CF}(H,E)\)</span>)</p>
+<p>其中 <span class="math inline">\(E\)</span> 是知识的前提条件, <span
+class="math inline">\(H\)</span> 是知识的结论, <span
+class="math inline">\(\mathrm{CF}(H,E)\)</span> 是知识的可信度, <span
+class="math inline">\(\mathrm{CF}(H,E)\in[-1,1]\)</span>.</p>
+<p>定义 <span
+class="math inline">\(\mathrm{CF}(H,E)=\mathrm{MB}(H,E)-\mathrm{MD(H,E)}\)</span>,
+为 <span
+class="math inline">\(可信度=\mathbf{信任增长度-不信任增长度}\)</span>,
+其中 <span class="math display">\[
+\begin{aligned}
+\mathrm{MB}(H,E)
+&amp;=\begin{cases}
+1,&amp;P(H)=1\\
+\frac{\max\{P(H|E),P(H)\}-P(H)}{1-P(H)},&amp;\text{otherwise}
+\end{cases}\\
+&amp;=\begin{cases}
+1,&amp;P(H)=1\\
+\frac{P(H|E)-P(H)}{1-P(H)},&amp;P(H|E)&gt;P(H)\\
+0,&amp;P(H|E)\le P(H)
+\end{cases}
+\end{aligned}
+\]</span> 以及 <span class="math display">\[
+\begin{aligned}
+\mathrm{MD}(H,E)
+&amp;=\begin{cases}
+1,&amp;P(H)=0\\
+\frac{\min\{P(H|E),P(H)\}-P(H)}{-P(H)},&amp;\text{otherwise}
+\end{cases}\\
+&amp;=\begin{cases}
+1,&amp;P(H)=0\\
+0,&amp;P(H|E)\ge P(H)\\
+\frac{P(H|E)-P(H)}{-P(H)},&amp;P(H|E)&lt;P(H)\\
+\end{cases}
+\end{aligned}
+\]</span> <span class="math inline">\(\mathrm{MB,MD}\in[0,1]\)</span>,
+且</p>
+<ul>
+<li><p>当 <span class="math inline">\(\mathrm{MB}&gt;0\)</span> 时 <span
+class="math inline">\(P(H|E)&gt;P(H)\)</span>, <span
+class="math inline">\(E\)</span> 的发生使 <span
+class="math inline">\(H\)</span> 发生的概率增大.</p></li>
+<li><p>当 <span class="math inline">\(\mathrm{MD}&gt;0\)</span> 时 <span
+class="math inline">\(P(H|E)&lt;P(H)\)</span>, <span
+class="math inline">\(E\)</span> 的发生使 <span
+class="math inline">\(H\)</span> 发生的概率减小.</p></li>
+<li><p>MB 和 MD 只能有一者为正, 另一者为 0.</p></li>
+<li><p><span
+class="math inline">\(\mathrm{MD}(\overline{H}|E)=\mathrm{MB}(H|E)\)</span>,
+即对 <span class="math inline">\(H\)</span> 的信任增长度等于对 <span
+class="math inline">\(\overline{H}\)</span> 的不信任增长度.</p></li>
+<li><p><span class="math inline">\(\mathrm{CF}(H,E)\)</span> 不是概率,
+通过验证 <span
+class="math inline">\(\mathrm{CF}(H,E)+\mathrm{CF}(\overline{H},E)\ne
+1\)</span> 即可.</p></li>
+<li><p><span class="math inline">\(\sum_{i=1}^n\mathrm{CF}(H_i,E)\le
+1\)</span>, 其中 <span class="math inline">\(H_1,\cdots,H_n\)</span>
+互斥.</p></li>
+</ul>
+<p>因此 <span class="math display">\[
+\boxed{\mathrm{MD}(H,E)=\begin{cases}
+\frac{P(H|E)-P(H)}{1-P(H)},&amp;P(H|E)&gt;P(H)\\
+0,&amp;P(H|E)=P(H) \\
+-\frac{P(H)-P(H|E)}{P(H)},&amp;P(H|E)&lt;P(H)
+\end{cases}}
+\]</span></p>
+<hr />
+<p>对于证据 <span class="math inline">\(E\)</span>, 可用 <span
+class="math inline">\(\mathrm{CF(E)}\in [-1,1]\)</span> 衡量 <span
+class="math inline">\(E\)</span> 为真或假的程度, 有如下性质:</p>
+<ul>
+<li><span
+class="math inline">\(\mathrm{CF}(\overline{E})=-\mathrm{CF}(E)\)</span>.</li>
+<li><span class="math inline">\(\mathrm{CF}\left(\bigwedge _{1\le i\le
+n}E_i\right)=\min_{1\le i\le
+n}\mathrm{CF}(E_i),\mathrm{CF}\left(\bigvee_{1\le i\le
+n}E_i\right)=\max_{1\le i\le n}\mathrm{CF}(E_i)\)</span></li>
+<li><span class="math inline">\(\mathrm{CF}(H)=\mathrm{CF}(H,E)\times
+\max\{0,\mathrm{CF}(E)\}\)</span>, 其中 <span
+class="math inline">\(\mathrm{CF}(H)\)</span> 表示 <span
+class="math inline">\(H\)</span> 可信度.</li>
+</ul>
+<h3 id="题型与例题">题型与例题</h3>
+<p>题型: 给定知识 <span class="math inline">\(r_i:\)</span> IF <span
+class="math inline">\(E_i\)</span> THEN <span
+class="math inline">\(H~(\mathrm{CF}(H,E_i)), i=1,\cdots,n\)</span>,
+以及 <span class="math inline">\(\mathrm{CF}(E_i)\)</span>, 求解 <span
+class="math inline">\(\mathrm{CF}(H)\)</span>, 其中每一个 <span
+class="math inline">\(E_i\)</span> 都可能是复合命题, 同时有的 <span
+class="math inline">\(\mathrm{CF}(E_i)\)</span> 并不一定是已知的.</p>
+<p>方法: 根据每一个知识 <span class="math inline">\(r_i\)</span>
+求出一个 <span
+class="math inline">\(\mathrm{CF}_i(H)=\mathrm{CF}(H,E_i)\times
+\max\{0,\mathrm{CF}(E_i)\}\)</span>, 然后对其进行根据符号两两合成,
+具体而言, 对于 <span
+class="math inline">\(\mathrm{CF}_1(H),\mathrm{CF}_2(H)\)</span>,
+可以进行以下合成 (略去 <span class="math inline">\((H)\)</span>) <span
+class="math display">\[
+\boxed{\mathrm{CF}_{1,2}=\begin{cases}
+\mathrm{CF}_1+\mathrm{CF}_2-\mathrm{CF}_1\times
+\mathrm{CF}_2,&amp;\mathrm{CF}_1\ge0,\mathrm{CF}\ge0\\
+\mathrm{CF}_1+\mathrm{CF}_2+\mathrm{CF}_1\times \mathrm{CF}_2,
+&amp;\mathrm{CF}_1&lt;0,\mathrm{CF}_2&lt;0\\
+\frac{\mathrm{CF}_1+\mathrm{CF}_2}{1-\min\{\left\vert{\mathrm{CF}_1}\right\vert,\left\vert{\mathrm{CF}_2}\right\vert\}},&amp;\mathrm{CF}_1\times
+\mathrm{CF}_2&lt;0
+\end{cases}}
+\]</span> 一般优先挑选同号的进行合成.</p>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202312091439552.png" /></p>
+<h2 id="主观贝叶斯推理">主观贝叶斯推理</h2>
+<p>主观贝叶斯推理的<strong>表现形式</strong>为 <strong>IF <em>E</em>
+THEN (LS, LN) <em>H</em></strong> , 其中 LS
+表示<strong>充分性度量,</strong> LN 表示<strong>必要性度量</strong>.</p>
+<p>主观贝叶斯的<strong>推理任务</strong>如下: 对于证据 <span
+class="math inline">\(E\)</span>, 它有一个观察 <span
+class="math inline">\(S\)</span>, 给定先验 <span
+class="math inline">\(P(E)\)</span> 和 <span
+class="math inline">\(P(E|S)\)</span> 以及 <span
+class="math inline">\(P(H),LS,LN\)</span>, 要求将 <span
+class="math inline">\(P(H)\)</span> 更新为后验 <span
+class="math inline">\(P(H|S)\)</span>. 证据和观察都可能是复合的,
+并且证据和观察是一一对应的.</p>
+<p>首先 LS 和 LN 的定义如下: <span class="math display">\[
+LS=\frac{P(E|H)}{P(E|\overline{H})},LN=\frac{P(\overline{E}|H)}{P(\overline{E}|\overline{H})}
+\]</span> 利用 Bayes 公式有 <span class="math display">\[
+LS=\frac{P(H|E)}{P(\overline{H}|E)}\cdot\frac{P(\overline{H})}{P(H)}
+\]</span> 定义几率函数 <span
+class="math inline">\(O(X)=P(X)/P(\overline{X})\)</span>, 那么 <span
+class="math inline">\(P(X)\)</span> 和 <span
+class="math inline">\(O(X)\)</span> 一一对应且 <span
+class="math inline">\(O(X)\in [0,+\infty)\cup\{\infty\}\)</span>, 则 LS
+可以写成 <span class="math inline">\(LS=O(H|E)/O(H)\)</span>, 同理得
+<span class="math inline">\(LN=O(H|\overline{E})/O(H)\)</span>.</p>
+<p>由全概率公式 <span
+class="math inline">\(P(H|S)=P(H|E)P(E|S)+P(H|\overline{E})P(\overline{E}|S)\)</span>,
+可以求出 <span class="math inline">\(P(H|S)\)</span> 三个特殊的值:</p>
+<ul>
+<li>当 <span class="math inline">\(E\)</span> 始终为真或者 <span
+class="math inline">\(P(E|S)=1\)</span> 时, <span
+class="math inline">\(P(H|S)=P(H|E)P(E|S)=P(H|E)\)</span>, 由于 <span
+class="math inline">\(P(H|E)\)</span> 和 <span
+class="math inline">\(O(H|E)=LS\times O(H)\)</span> 是一一对应的,
+因此可以求出 <span class="math inline">\(P(H|E)\)</span>.</li>
+<li>当 <span class="math inline">\(E\)</span> 始终为假或者 <span
+class="math inline">\(P(E|S)=0\)</span> 即 <span
+class="math inline">\(P(\overline{E}|S)=1\)</span> 时, <span
+class="math inline">\(P(H|S)=P(H|\overline{E})\)</span>, 同上由 <span
+class="math inline">\(O(H|E)\)</span> 求出 <span
+class="math inline">\(P(H|E)\)</span>.</li>
+<li>当 <span class="math inline">\(E\)</span> 不真不假且 <span
+class="math inline">\(P(E|S)=P(E)\)</span> 即 <span
+class="math inline">\(E,S\)</span> 无关时, <span
+class="math inline">\(P(H|S)=P(H)\)</span>.</li>
+</ul>
+<blockquote>
+<p>根据上述内容整理得到: <span class="math display">\[
+\boxed{P(H|E)=\frac{LS\times P(H)}{(LS-1)\times
+P(H)+1},P(H|\overline{E})=\frac{LN\times P(H)}{(LN-1)\times P(H)+1}}
+\]</span> 此时不出现 <span class="math inline">\(O(X)\)</span>
+之类的东西.</p>
+</blockquote>
+<p>三个特殊点为 <span
+class="math inline">\((0,P(H|\overline{H})),(P(E),P(H)),(1,P(H|E))\)</span></p>
+<p>由上面的全概率公式得到的结果可以知道 <span
+class="math inline">\(P(H|S)\)</span> 关于 <span
+class="math inline">\(P(E|S)\)</span> 是<strong>分段线性</strong>的,
+因此可以求出区间 <span class="math inline">\((0,P(E)),(P(E),1)\)</span>
+上 <span class="math inline">\(P(H|S)\)</span> 和 <span
+class="math inline">\(P(E|S)\)</span> 的关系式, 那么根据 <span
+class="math inline">\(P(E|S)\)</span> 实际的值就可以求出 <span
+class="math inline">\(P(H|S)\)</span>.</p>
+<p>当有多个证据 <span class="math inline">\(E_1,\cdots,E_n\)</span>
+及对应观察 <span class="math inline">\(S_1,\cdots,S_n\)</span>,
+有如下关系: <span class="math display">\[
+O(H|S_1,..,S_n)=O(H)\prod_{i=1}^n\frac{O(H|S_i)}{O(H)}
+\]</span> 于是可以求出 <span
+class="math inline">\(P(H|S_1,..,S_n)\)</span>.</p>
+<p>若 <span
+class="math inline">\(r:\mathrm{IF}~E\mathrm{~THEN}~(LS,LN)~H\)</span>
+的 <span class="math inline">\(E\)</span> 是复合公式满足 <span
+class="math inline">\(E=f(E_1,\cdots,E_n)\)</span>, 则需要求 <span
+class="math inline">\(P(H|f(S_1,\cdots,S_n))\)</span>, 且这相当于求
+<span class="math inline">\(P(H|S_j)\)</span>, <span
+class="math inline">\(j\)</span>
+满足按照<strong>合取最小析取最大</strong>的规则对 <span
+class="math inline">\(f(E_1,\cdots,E_n)\)</span> 得到 <span
+class="math inline">\(P(E_j|S_j)=g(P(E_1|S_1),\cdots,P(S_n|E_n))\)</span>.
+?</p>
+<h3 id="例题">例题</h3>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202312091730673.png" /></p>
+<p>下面的做法是错的:</p>
+<blockquote>
+<p>根据 <span class="math inline">\(r_1,r_2\)</span> 算出 <span
+class="math inline">\(P(H_1|S_2),P(H_1|S_2)\)</span>, 要计算 <span
+class="math inline">\(O(H_2|S_1,S_2)\)</span> 可计算 <span
+class="math inline">\(O(H_2|S_1),O(H_2|S_2)\)</span>, 计算 <span
+class="math inline">\(P(H_2|S_i)\)</span> 可根据 <span
+class="math inline">\(P(H_1|S_i)\)</span>.</p>
+</blockquote>
+<p>原因可能是 <span class="math inline">\(H_2\)</span> 不直接受 <span
+class="math inline">\(S_1,S_2\)</span> 的影响, 因此分开计算 <span
+class="math inline">\(O(H_2|S_1),O(H_2|S_2)\)</span> 是没有意义的.</p>
+<h2 id="证据理论">证据理论</h2>
+<p>证据理论用于处理集合上的不确定性问题, 其推理模型为 <strong>IF <span
+class="math inline">\(E\)</span> THEN <span
+class="math inline">\(H=\{h_1,\cdots,h_n\},\mathrm{CF}=\{c_1,\cdots,c_n\}\)</span>,</strong>
+其中结论 <span class="math inline">\(H\subseteq \Omega\)</span> , <span
+class="math inline">\(\Omega\)</span> 是样本空间, CF 是可信度因子的集合,
+<span class="math inline">\(c_i,h_i\)</span> 是一一对应的关系即 <span
+class="math inline">\(h_i\)</span> 的可信度为 <span
+class="math inline">\(c_i\)</span>, 满足 <span
+class="math inline">\(c_i\ge 0\land \sum_{i=1}^nc_i\le 1\)</span>.</p>
+<p>任务为给定证据的确定性 <span
+class="math inline">\(\mathrm{CER}(E)\)</span> 求结论 <span
+class="math inline">\(H\)</span> 的确定性 <span
+class="math inline">\(\mathrm{CER}(H)\)</span>.</p>
+<p>首先定义 CER. 这首先需要定义<strong>概率分配函数</strong>和在证据
+<span class="math inline">\(E&#39;\)</span> 的条件下, <span
+class="math inline">\(A\subseteq \Omega\)</span> 与 <span
+class="math inline">\(E&#39;\)</span> 的<strong>匹配程度</strong> <span
+class="math inline">\(\mathrm{MD}(A|E&#39;)\)</span>.</p>
+<h3 id="概率分配函数">概率分配函数</h3>
+<p>设函数 <span class="math inline">\(m:2^{\Omega}\to[0,1]\)</span> 满足
+<span class="math inline">\(m(\emptyset)=0,\sum_{A\subseteq
+\Omega}m(A)=1\)</span>, 则称函数 <span class="math inline">\(m\)</span>
+是 <span class="math inline">\(2^{\Omega}\)</span> 上的概率分配函数,
+<span class="math inline">\(m(A)\)</span> 称为 <span
+class="math inline">\(A\)</span> 的基本概率数.</p>
+<p>设 <span class="math inline">\(\Omega=\{s_1,\cdots,s_n\}\)</span>, 用
+<span class="math inline">\(m(s_i)\)</span> 来代替 <span
+class="math inline">\(m(\{s_i\})\)</span>, 有下面的几个重点:</p>
+<ol type="1">
+<li><p>我们关注一个特殊的概率分配函数 <span
+class="math inline">\(m\)</span>, 满足:</p>
+<ul>
+<li><span class="math inline">\(m(s_i)\ge 0\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^nm(s_i)\le 1\)</span></li>
+<li><span
+class="math inline">\(m(\Omega)=1-\sum_{i=1}^nm(s_i)\)</span></li>
+<li><span class="math inline">\(\forall A\subseteq \Omega\land |A|\ge2,
+m(A)=0\)</span>.</li>
+</ul>
+<p>下文不做特别说明, 出现的概率分配函数都指该概率分配函数.</p></li>
+<li><p>在上文特殊的概率分配函数的基础上, 定义信任函数 <span
+class="math inline">\(\mathrm{Bel}:2^{\Omega}\to [0,1]\)</span>
+和似然函数 <span
+class="math inline">\(\mathrm{Pl}:2^{\Omega}\to[0,1]\)</span>.</p>
+<ul>
+<li><span class="math inline">\(\mathrm{Bel}(A)=\sum_{s_i\in
+A}m(s_i)\)</span>, <span
+class="math inline">\(\mathrm{Bel}(\Omega)=\sum_{B\subseteq
+\Omega}m(B)=1\)</span>. <span
+class="math inline">\(\mathrm{Bel}(A)\)</span> 表示对 <span
+class="math inline">\(A\)</span> 的总体信任度.</li>
+<li><span
+class="math inline">\(\mathrm{Pl}(A)=1-\mathrm{Bel}(\overline{A})=m(\Omega)+\mathrm{Bel}(A)\)</span>;
+<span
+class="math inline">\(\mathrm{Pl}(\Omega)=1\)</span>.似然函数也称上限函数,
+表示对 <span class="math inline">\(A\)</span> 的非假信任度.</li>
+</ul>
+<p><span class="math display">\[
+\boxed{\mathrm{Pl}(A)-\mathrm{Bel}(A)=m(\Omega)}
+\]</span></p></li>
+<li><p>定义<strong>类概率函数</strong> <span
+class="math inline">\(f:2^{\Omega}\to [0,1]\)</span> 满足 <span
+class="math display">\[
+f(A)=\mathrm{Bel}(A)+\frac{|A|}{|\Omega|}(\mathrm{Pl}(A)-\mathrm{Bel}(A))
+\]</span> 它有如下性质:</p>
+<ul>
+<li><span class="math inline">\(\sum_{i=1}^nf(s_i)=1\)</span></li>
+<li><span class="math inline">\(\mathrm{Bel}(A)\le f(A)\le
+\mathrm{Pl}(A)\)</span></li>
+<li><span class="math inline">\(f(\overline{A})+f(A)=1\)</span></li>
+<li><span
+class="math inline">\(f(\Omega)=1,f(\emptyset)=1\)</span>.</li>
+</ul></li>
+<li><p>概率分配函数的合成: <strong>Dempster 合成规则</strong>.
+对于概率分配函数 <span class="math inline">\(m_1,m_2\)</span>,
+定义两者的合成(正交和) <span class="math inline">\(m=m_1\oplus
+m_2\)</span> 满足:</p>
+<ul>
+<li><p><span
+class="math inline">\(m(s_i)=(m_1(s_i)m_2(s_i)+m_1(s_i)m_2(\Omega)+m_1(\Omega)m_2(s_i))/K=M_i/K\)</span>.</p></li>
+<li><p><span
+class="math inline">\(m(\Omega)=\frac{m_1(\Omega)m_2(\Omega)}{m_1(\Omega)m_2(\Omega)+\sum_{i=1}^nM_i}\)</span>.</p></li>
+</ul>
+<p>其中 <span class="math inline">\(K\)</span> 是归一化常数, 满足 <span
+class="math inline">\(\sum_{i=1}^nm(s_i)+m(\Omega)=1\)</span>, 最终
+<span class="math display">\[
+K=m_1(\Omega)m_2(\Omega)+\sum_{i=1}^n M_i.
+\]</span> 在确定了 <span class="math inline">\(K\)</span>之后, <span
+class="math inline">\(m(\Omega)\)</span> 也可以通过公式 <span
+class="math inline">\(m(\Omega)=1-\sum_{i=1}^nm(s_i)\)</span>
+来确定.</p></li>
+</ol>
+<h3 id="匹配程度">匹配程度</h3>
+<p><span class="math inline">\(\mathrm{MD}(H|E&#39;)=1\)</span>.</p>
+<h3 id="求解-cer">求解 CER</h3>
+<p>步骤如下:</p>
+<ol type="1">
+<li>求 <span class="math inline">\(H\)</span> 的概率分配函数 <span
+class="math inline">\(m(h_i)=c_i\times\mathrm{CER}(E),m(\Omega)=1-\sum
+m(h_i)\)</span>. 若有两条知识 <span
+class="math inline">\(E_1,E_2\)</span>同时支持 <span
+class="math inline">\(H\)</span>, 则分别求概率分配函数 <span
+class="math inline">\(m_1,m_2\)</span> 并进行正交和得到 <span
+class="math inline">\(H\)</span> 的概率分配函数 <span
+class="math inline">\(m=m_1\oplus m_2\)</span>.</li>
+<li>求解 <span class="math inline">\(H\)</span> 的信任函数值 <span
+class="math inline">\(\mathrm{Bel}(H)\)</span> 和似然函数值 <span
+class="math inline">\(\mathrm{Pl}(H)\)</span>, 并得到类概率函数值 <span
+class="math inline">\(f(H)\)</span>.</li>
+<li>最终 <span
+class="math inline">\(\mathrm{CER}(H)=\mathrm{MD}(H|E&#39;)\times
+f(H)\)</span>.</li>
+</ol>
+<h3 id="例题-1">例题</h3>
+<p><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202312092037847.png" /></p>
+<h2 id="模糊推理">模糊推理</h2>
+<p>Zadeh 创建了模糊理论, 在 Zadeh 的推理模型中, 产生式规则的表示形式为
+<strong>IF <span class="math inline">\(x\)</span> is <span
+class="math inline">\(F\)</span> THEN <span
+class="math inline">\(y\)</span> is <span
+class="math inline">\(G\)</span></strong>, 其中 <span
+class="math inline">\(x\in U,y\in V\)</span> 是论域 <span
+class="math inline">\(U,V\)</span> 中的变量, 表示对象; <span
+class="math inline">\(F,G\)</span> 分别是论域 <span
+class="math inline">\(U,V\)</span> 上的<strong>模糊集</strong>,
+表示概念.</p>
+<p>模糊命题 <span class="math inline">\(x\)</span> is <span
+class="math inline">\(F\)</span> 用于以一种不确定的方式描述 <span
+class="math inline">\(x\)</span> 的性质, <span
+class="math inline">\(F\)</span> 又叫做模糊谓词, 比如 big, small, cold,
+old 等相对未良定义的性质.</p>
+<p>设 <span class="math inline">\(F\)</span> 是 <span
+class="math inline">\(U\)</span> 上的模糊集/模糊关系, 其隶属函数 <span
+class="math inline">\(\mu_F:U\to [0,1]\)</span> 用于衡量 <span
+class="math inline">\(U\)</span> 中的元素有多么 <span
+class="math inline">\(F\)</span>. 若 <span
+class="math inline">\(\mu_F(u_2)&gt;\mu_F(u_1)\)</span>, 则称 <span
+class="math inline">\(u_2\)</span> 要比 <span
+class="math inline">\(u_1\)</span> 更 <span
+class="math inline">\(F\)</span>. 当 <span
+class="math inline">\(U\)</span> 是离散集时, 可以将 <span
+class="math inline">\(F\)</span> 记作 <span
+class="math inline">\(F=\sum_{u\in U}\mu_F(u)/u\)</span>.
+现在给隶属函数的取值集合 <span
+class="math inline">\(\mathfrak{U}=[0,1]\)</span> 定义一些新的运算, 设
+<span class="math inline">\(a,b\in \mathfrak{U}\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(a\land b=\min(a,b),a\lor
+b=\max(a,b)\)</span></li>
+<li>可将 <span class="math inline">\(F\)</span> 表示为 <span
+class="math inline">\(\mathfrak{U}^{n}\)</span> 中的元素, 设矩阵 <span
+class="math inline">\(R\in \mathfrak{U}^{n\times m}\)</span>, 定义 <span
+class="math inline">\(F\circ R\)</span> 为在普通的矩阵乘法的基础上将
+<span class="math inline">\(+\)</span> 改为上述定义的 <span
+class="math inline">\(\land\)</span> , 将 <span
+class="math inline">\(\times\)</span> 改为上述定义的 <span
+class="math inline">\(\lor\)</span>.</li>
+</ol>
+<p><span class="math inline">\(F\)</span> 又可被模糊修饰词 <span
+class="math inline">\(m:M\to M\)</span> 作用, 其中 <span
+class="math inline">\(M\)</span> 为全体模糊谓词的集合.
+模糊修饰词用于改变模糊谓词的强弱, 也称为程度词.</p>
+<p>模糊知识 <strong>IF <span class="math inline">\(x\)</span> is <span
+class="math inline">\(F\)</span> THEN <span
+class="math inline">\(y\)</span> is <span
+class="math inline">\(G\)</span></strong> 表示 <span
+class="math inline">\(F,G\)</span> 之间存在着确定的因果关系,
+设两者的论域为 <span class="math inline">\(U,V\)</span>,
+则可以定义两者的因果关系为矩阵 <span class="math inline">\(R\in
+\mathfrak{U}^{|U|\times |V|}\)</span>, 该矩阵有下面三种常见的定义方式,
+设 <span class="math inline">\(U=(u_i),V=(v_j)\)</span>, 则:</p>
+<ol type="1">
+<li><p>Zadeh 提出的 <span class="math inline">\(R_m=(R_{ij})\)</span>
+满足 <span class="math inline">\(R_{ij}=(\mu_F(u_i)\land
+\mu_G(v_j))\lor(1-\mu_F(u_i))\)</span></p></li>
+<li><p>Mamdani 提出的 <span class="math inline">\(R_c=(R_{ij})\)</span>
+满足 <span class="math inline">\(R_{ij}=\mu_F(u_i)\land
+\mu_G(v_j)\)</span></p></li>
+<li><p>Mizumoto 提出的 <span class="math inline">\(R_g=(R_{ij})\)</span>
+满足 <span class="math inline">\(R_{ij}=\mu_F(u_i)\to
+\mu_G(v_j)\)</span>, 其中 <span class="math display">\[
+a\to b=\begin{cases}
+1,&amp; a\le b\\
+b,&amp; a&gt;b
+\end{cases}
+\]</span></p></li>
+</ol>
+<h3 id="模糊推理的基本模式">模糊推理的基本模式</h3>
+<p>包括模糊假言推理, 模糊拒取式推理和模糊三段论推理.</p>
+<ol type="1">
+<li><p>假言推理: <span class="math inline">\(G&#39;=F\circ
+R\)</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">知识: IF x is F THEN y is G (R)</span><br><span class="line">证据: x is F&#x27;</span><br><span class="line">结论: y is G&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>拒取式推理: <span class="math inline">\(F&#39;=R\circ
+G&#39;\)</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">知识: IF x is F THEN y is G (R)</span><br><span class="line">证据: y is G&#x27;</span><br><span class="line">结论: x is F&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>三段论: <span class="math inline">\(R_3=R_1\circ
+R_2\)</span>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">知识: IF x is F THEN y is G (R_1)</span><br><span class="line">证据: IF y is G THEN z is H (R_2)</span><br><span class="line">结论: IF x is F THEN y is G (R_3)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="基于概率的推理">基于概率的推理</h2>
+<h3 id="贝叶斯网络">贝叶斯网络</h3>
+<p>给定随机变量集合 <span
+class="math inline">\(\mathcal{X}=\{X_1,\cdots,X_n\}\)</span>,
+贝叶斯网络是二元组 <span class="math inline">\((B_s,B_p)\)</span>,
+其中</p>
+<ul>
+<li><span class="math inline">\(B_s\)</span> 为以 <span
+class="math inline">\(\mathcal{X}\)</span> 为节点的 DAG
+且有向边表示随机变量之间的条件关系</li>
+<li><span
+class="math inline">\(B_p=\{P(X_i|\mathrm{par}(X_i)):X_i\in\mathcal{X}\}\)</span>
+为条件概率集合, 在一个具体的贝叶斯网络中, <span
+class="math inline">\(B_p\)</span>
+的体现形式为每个节点旁边的概率表.</li>
+</ul>
+<p>对于结点 <span class="math inline">\(X_i\)</span>, 定义其父节点集合为
+<span class="math inline">\(\mathrm{par}(X_i)\)</span>, 其祖先节点集合为
+<span
+class="math inline">\(\mathrm{par}(\mathrm{par}(X_i))\)</span>.</p>
+<p>贝叶斯网络最重要的特性是<strong>局部化特征</strong>,
+任意一个结点与其祖先节点都是<strong>条件独立</strong>的,
+它与下面的规则等价:</p>
+<ul>
+<li>对于一个节点, 定义它的 Markov Blanket (or Markov Boundary) <span
+class="math inline">\(\mathrm{mb}(X_i)=\mathrm{par}(X_i)\cup\mathrm{son}(X_i)\cup\mathrm{par}(\mathrm{son}(X_i))\)</span>,
+该节点条件独立于 <span
+class="math inline">\(\mathcal{X}\backslash{\mathrm{mb}(X_i)}\)</span>
+中的结点.</li>
+</ul>
+<p>根据条件独立这一特点, 应用链规则 <span
+class="math inline">\(P(x_1,\cdots,x_n)=\prod_{1\le i\le
+n}P(x_i|x_{i-1},\cdots,x_1)\)</span>, 可以得到 <span
+class="math display">\[
+\boxed{P(x_1,\cdots,x_n)=\prod_{1\le i\le n}P(x_i|\mathrm{par}(x_i))}
+\]</span></p>
+<h3 id="bayes-精确推理">Bayes 精确推理</h3>
+<p>对于具有<strong>单连通性</strong>的贝叶斯网络 <span
+class="math inline">\((B_s,B_p)\)</span>, 设 <span
+class="math inline">\(s\)</span> 是观察到的特定事件(集), <span
+class="math inline">\(X\)</span> 是查询变量, <span
+class="math inline">\(\mathcal{Y}\)</span> 是证据变量集合,
+则若要查询后验概率 <span class="math inline">\(P(X|s)\)</span>, 有 <span
+class="math display">\[
+P(X|s)=\alpha P(X,s)=\alpha\sum_{Y}P(X,s,Y)=\alpha \sum_{Y}\prod_{Z\in
+XYs}P(Z|\mathrm{par}(Z))
+\]</span> 其中 <span class="math inline">\(\alpha\)</span> 是归一化常数,
+满足 <span class="math inline">\(\alpha\sum_XP(X,s)=1\)</span>.</p>
+<h3 id="bayes-近似推理">Bayes 近似推理</h3>
+<h5 id="section"><img
+src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202312082132284.png" /></h5>
+<h1 id="知识图谱">知识图谱</h1>
+<p>PRA</p>
+<h1 id="考试内容">考试内容</h1>
+<p>PPT: 请好好地看看我.</p>
+<p><strong>命题逻辑部分</strong>考证明题, 包括的题型:</p>
+<ol type="1">
+<li><p>直接证明谓词逻辑和命题逻辑.</p></li>
+<li><p>归结法证明谓词逻辑和命题逻辑.
+<strong>归结推理</strong>题目会明确说要用归结推理.</p>
+<p>注意步骤, 每一步推导都要写出基于的事实欲推理的公式.</p></li>
+</ol>
+<p><strong>产生式系统部分</strong>包括的题型:</p>
+<ol type="1">
+<li>给定规则 (prolog程序) 和一个例子,
+阐述例子是如何得到一步一步得到最终的结果的.</li>
+<li>给定任务, 写出 prolog (即相应的产生式规则), 请将
+<code>textbook</code> 和 <code>exercise</code> 中的题目看一下.</li>
+</ol>
+<blockquote>
+<p>如果考试的时候的题目发现写的 prolog 超过三行 (三个逻辑),
+那么大概是写错了.</p>
+</blockquote>
+<p><strong>语义网络部分</strong>包括的题型:</p>
+<ol type="1">
+<li>给定知识用语义网络进行表示, 画出语义网络, 注意要尽可能地详细.</li>
+</ol>
+<blockquote>
+<p>复习的时候不用看全称量词部分, 只考到蕴含: 如果...那么...</p>
+<p>尽量写得稍微完整一些.</p>
+</blockquote>
+<p><strong>不确定推理部分</strong>的题型:</p>
+<ol type="1">
+<li>可信度推理</li>
+<li>主观贝叶斯推理</li>
+<li>证据理论</li>
+<li>模糊推理</li>
+<li>基于概率的推理</li>
+</ol>
+<blockquote>
+<p>至少考三道题左右, 给例子算答案, 记得带计算器, 例题参考 PPT,
+公式要掌握熟练. 建议抄一遍PPT.</p>
+<p>讲贝叶斯推理的时候把课给翘了.</p>
+</blockquote>
+<p><strong>知识图谱推理部分</strong>的题型:</p>
+<ol type="1">
+<li><p>PRA (基于路径排序的推理算法).</p>
+<p>第一种情况: 不管路径上的关系, 直接计算路径上的概率;</p>
+<p>第二种情况: 在路径上给出关系, 计算概率的加和.</p></li>
+<li><p><em>TransE, TrnasH, TransP, TransD</em> 有什么共同点. 看一眼 PPT
+就行.</p></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/28/junior_1_semester/machine-learning-frontier/course1/" rel="prev" title="机器学习前沿 课程介绍与基础">
+                  <i class="fa fa-angle-left"></i> 机器学习前沿 课程介绍与基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/31/junior_1_semester/statistical-learning/cnn/" rel="next" title="常见的神经网络">
+                  常见的神经网络 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">286k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">4:20</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
