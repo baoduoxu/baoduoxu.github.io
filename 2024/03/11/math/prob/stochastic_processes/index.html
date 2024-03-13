@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
+  <link rel="mask-icon" href="/images/infinity-solid.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="[object Object]">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="随机过程抄书笔记.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stochastic Processes">
+<meta property="og:url" content="http://example.com/2024/03/11/math/prob/stochastic_processes/index.html">
+<meta property="og:site_name" content="XBD">
+<meta property="og:description" content="随机过程抄书笔记.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-11T11:29:22.194Z">
+<meta property="article:modified_time" content="2024-03-13T13:53:40.839Z">
+<meta property="article:author" content="Baoduo Xu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/03/11/math/prob/stochastic_processes/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/03/11/math/prob/stochastic_processes/","path":"2024/03/11/math/prob/stochastic_processes/","title":"Stochastic Processes"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Stochastic Processes | XBD</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XBD</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#riemann--stieltjes-%E7%A7%AF%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">Riemann- Stieltjes 积分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%96%B9%E5%B7%AE"><span class="nav-number">2.</span> <span class="nav-text">条件数学期望与条件方差</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">基本定义与概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%88%86%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">随机过程的分布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81"><span class="nav-number">5.</span> <span class="nav-text">随机过程的数字特征</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BA%92%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">多维随机过程的互相关函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">随机过程的基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E7%9F%A9%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.</span> <span class="nav-text">二阶矩过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.1.</span> <span class="nav-text">正态过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%BD%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.2.</span> <span class="nav-text">宽平稳过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%A2%9E%E9%87%8F%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.3.</span> <span class="nav-text">正交增量过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.4.</span> <span class="nav-text">马尔可夫过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%B9%B3%E7%A8%B3%E7%8B%AC%E7%AB%8B%E5%A2%9E%E9%87%8F%E8%BF%87%E7%A8%8B"><span class="nav-number">7.2.</span> <span class="nav-text">独立过程与平稳独立增量过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B-1"><span class="nav-number">8.</span> <span class="nav-text">马尔可夫过程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Baoduo Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/baoduo_xu@foxmail.com" title="E-Mail → baoduo_xu@foxmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/ta-mei-yu-zhi-jian-de-wen-rou" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;ta-mei-yu-zhi-jian-de-wen-rou" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/math/prob/stochastic_processes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Baoduo Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XBD">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Stochastic Processes | XBD">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Stochastic Processes
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-11 19:29:22" itemprop="dateCreated datePublished" datetime="2024-03-11T19:29:22+08:00">2024-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-13 21:53:40" itemprop="dateModified" datetime="2024-03-13T21:53:40+08:00">2024-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/probability-theory/" itemprop="url" rel="index"><span itemprop="name">probability theory</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="riemann--stieltjes-积分">Riemann- Stieltjes 积分</h1>
+<h1 id="条件数学期望与条件方差">条件数学期望与条件方差</h1>
+<h1 id="基本定义与概念">基本定义与概念</h1>
+<p><strong>定义1</strong> (<span
+class="math inline">\(\sigma\)</span>-代数) 对于集合 <span
+class="math inline">\(\Omega\)</span>, 设集族 <span
+class="math inline">\(\mathscr{F}\subseteq 2^{\Omega}\)</span> 满足</p>
+<ul>
+<li><span class="math inline">\(\emptyset\in\mathscr{F}\)</span></li>
+<li><span class="math inline">\(A\in\mathscr{F}\Rightarrow
+\overline{A}\in\mathscr{F}\)</span></li>
+<li>若 <span class="math inline">\(\{A_i\}_{i=1}^{\infty}\)</span> 满足
+<span class="math inline">\(A_i\in \mathscr{F}\)</span>, 则 <span
+class="math inline">\(\bigcup_{i=1}^{\infty}A_i\in
+\mathscr{F}\)</span></li>
+</ul>
+<p>则称 <span class="math inline">\(\mathscr{F}\)</span> 为 <span
+class="math inline">\(\sigma\)</span>-代数. <span
+class="math inline">\(\blacksquare\)</span></p>
+<p>这个定义是在说 <span class="math inline">\(\sigma\)</span>-代数对
+<strong>可列交/有限并/有限交/差运算</strong> 是封闭的.</p>
+<p>若 <span class="math inline">\(\Omega\)</span> 是样本空间, 则其与
+<span class="math inline">\(\sigma\)</span>-代数 <span
+class="math inline">\(\mathscr{F}\)</span> 形成的序偶 <span
+class="math inline">\((\Omega,\mathscr{F})\)</span> 称为可测空间.</p>
+<p><strong>定义2</strong> (概率空间) 对于可测空间 <span
+class="math inline">\((\Omega,\mathscr{F})\)</span>, 设函数 <span
+class="math inline">\(P:\mathscr{F}\to\mathbb{R}\)</span>, 若 <span
+class="math inline">\(P\)</span> 满足</p>
+<ul>
+<li><span class="math inline">\(\forall A\in \mathscr{F},P(A)\in
+[0,1]\)</span></li>
+<li><span class="math inline">\(P(\Omega)=1\)</span></li>
+<li>对 <span class="math inline">\(\{A_i\}_{i=1}^{\infty},A_i\in
+\mathscr{F},\forall i\ne j,A_i\cap A_j=\emptyset,\)</span> 则 <span
+class="math inline">\(P\left(\bigcup_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}P(A_i)\)</span>
+成立</li>
+</ul>
+<p>则称 <span class="math inline">\(P\)</span> 是 <span
+class="math inline">\((\Omega,\mathscr{F})\)</span> 上的概率/测度, 称
+<span class="math inline">\((\Omega,\mathscr{F},P)\)</span> 为概率空间.
+设 <span class="math inline">\(X:\Omega\to\mathbb{R}\)</span> 满足 <span
+class="math inline">\(\forall x\in\mathbb{R}\)</span> 都有 <span
+class="math inline">\(\{\omega:X(\omega)\le x\}\in\mathscr{F}\)</span>,
+则称 <span class="math inline">\(X\)</span> 是定义在 <span
+class="math inline">\((\Omega,\mathscr{F},P)\)</span> 上的随机变量,
+称函数 <span class="math inline">\(F_X(x)=P(X\le
+x)=P(\omega:X(\omega)\le x)\)</span> 是 <em>r.v</em> <span
+class="math inline">\(X\)</span> 的分布函数. <span
+class="math inline">\(\blacksquare\)</span></p>
+<p><strong>定义3</strong> (随机过程) 给定概率空间 <span
+class="math inline">\((\Omega,\mathscr{F},P)\)</span>
+和具有全序关系的集合 <span
+class="math inline">\(T\)</span>(一般而言是<strong>指标集</strong>),
+若对每个 <span class="math inline">\(t\in T\)</span> 都有定义在 <span
+class="math inline">\((\Omega,\mathscr{F},P)\)</span> 上的 r.v. <span
+class="math inline">\(X_t(\omega),\omega\in \Omega\)</span> 与之对应,
+则称依赖于 <span class="math inline">\(t\)</span> 的 <em>r.v</em>. <span
+class="math inline">\(X_t\)</span> 为随机过程, 记作 <span
+class="math inline">\(\{X_t(\omega)\}_{t\in T}\)</span> 或 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span> ,也就是说随机过程是
+<span class="math inline">\(T\times \Omega\)</span> 上的实/复值函数.
+随机过程简记为 <em>s.p.</em><span
+class="math inline">\(\blacksquare\)</span></p>
+<p>分布函数的性质, 联合分布以及随机变量的数字特征就不再赘述.</p>
+<p><span class="math inline">\(T\)</span> 还有不同情况:</p>
+<ul>
+<li>当 <span class="math inline">\(T\)</span> 是有限集时 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span> 是多维
+<em>r.v.</em>;</li>
+<li>当 <span class="math inline">\(T\)</span> 是无限集时称 <span
+class="math inline">\(\{X_t\}_{t\in T}=\{X_t\}_{t=1}^{\infty}\)</span>
+是时间序列</li>
+<li>当 <span class="math inline">\(T\)</span> 是多维指标集时,
+<em>s.p.</em> 又称为随机场. 比如 <span
+class="math inline">\(T=(a,b)\times (c,d)\times [0,+\infty)\)</span>
+,定义在 <span class="math inline">\(T\)</span> 上的 <em>s.p.</em>
+可以看作是 <span class="math inline">\(\mathbb{R}^2\)</span> 上的区域
+<span class="math inline">\((a,b)\times (c,d)\)</span>
+上每一点的随机变量随时间的变化, 典型的例子应该是一个区域的温度.</li>
+</ul>
+<p>由于 <em>s.p.</em> 是 <span class="math inline">\(\Omega\times
+T\)</span> 上的函数:</p>
+<ul>
+<li>当固定 <span class="math inline">\(t\)</span> 时, <span
+class="math inline">\(X_t(\omega)\)</span> 就是一个普通的 <span
+class="math inline">\((\Omega,\mathscr{F},P)\)</span> 上的
+<em>r.v</em>..</li>
+<li>当固定 <span class="math inline">\(\omega\)</span> 时, <span
+class="math inline">\(x_t(\omega):T\to\mathbb{F}\)</span> 是一个函数,
+并且由于存在复随机过程, 因此 <span
+class="math inline">\(\mathbb{F}\)</span> 可以为 <span
+class="math inline">\(\mathbb{R}\)</span> 或 <span
+class="math inline">\(\mathbb{C}\)</span>. <span
+class="math inline">\(x_t(\omega)\)</span> 称为 <em>s.p.</em> <span
+class="math inline">\(\{X_t(\omega)\}_{t\in T}\)</span> 相对于样本 <span
+class="math inline">\(\omega\)</span> 的样本函数/轨道/路径,
+可以看作是特定条件下对 <em>s.p.</em> 的一次观察结果.</li>
+</ul>
+<h1 id="随机过程的分布">随机过程的分布</h1>
+<p><span class="math inline">\(X_t(\omega)\)</span> 的分布函数为 <span
+class="math inline">\(F_t(x)=P(X_t\le x),x\in\mathbb{R}\)</span>, 称
+<span class="math inline">\(\{F_t(x)\}_{t\in T}\)</span> 为 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span>
+的<strong>一维分布函数族</strong>.</p>
+<p>对于 <span class="math inline">\(X_{t_1},\cdots,X_{t_n}\)</span>,
+它们的 <span class="math inline">\(n\)</span> 维联合分布函数为 <span
+class="math inline">\(F_{\mathbf{t}}(\mathbf{x})=P(X_\mathbf{t}\le
+\mathbf{x})\)</span>, 其中 <span
+class="math inline">\(\mathbf{x}=(x_1,\cdots,x_n)\in\mathbb{R}^n,\mathbf{t}=(t_1,\cdots,t_n)\)</span>,
+<span
+class="math inline">\(X_\mathbf{t}=(X_{t_1},\cdots,\mathbf{X}_{t_n})\)</span>.</p>
+<p>称 <span
+class="math inline">\(\{F_{\mathbf{t}}(\mathbf{x})\}_{\mathbf{t}\in
+T^n}\)</span> 为 <span class="math inline">\(\{X_t\}_{t\in T}\)</span>
+的<strong>有限分布函数族</strong>, 简称为<strong>有限维分布</strong>.
+多维联合分布函数具有:</p>
+<ul>
+<li><p>对称性: 设 <span class="math inline">\(\pi,\sigma\)</span>
+是两个排列, 则 <span
+class="math inline">\(F_{\mathbf{t}_{\pi}}(\mathbf{x}_{\pi})=F_{\mathbf{t}_{\sigma}}(\mathbf{x}_{\sigma})\)</span>,
+其中 <span
+class="math inline">\(\mathbf{t}_{\pi}=(t_{\pi(1)},\cdots,t_{\pi(n)})\)</span>,
+其它一样.</p></li>
+<li><p>相容性: 相容性可看作是边缘分布的推广: <span
+class="math display">\[
+F_{t_1,\cdots,t_m}(x_1,\cdots,x_m)=\lim_{x_{m+1},\cdots,x_n\to\infty}F_{t_1,\cdots,t_n}(x_1,\cdots,x_n)
+\]</span> 其中 <span class="math inline">\(m&lt;n\)</span>.</p></li>
+</ul>
+<p><strong>定理1</strong> (<em>Kolmogorov</em> 随机过程存在定理) 设
+<span
+class="math inline">\(\{F_{\mathbf{t}}(\mathbf{x})\}_{\mathbf{t}\in
+T^n}\)</span> 是满足对称性和相容性的有限维分布, 则存在 <span
+class="math inline">\((\Omega,\mathscr{F},P)\)</span> 上的 <em>s.p.</em>
+<span class="math inline">\(\{X_t\}_{t\in T}\)</span> 使得 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span> 的有限维分布函数族等于
+<span
+class="math inline">\(\{F_{\mathbf{t}}(\mathbf{x})\}_{\mathbf{t}\in
+T^n}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+<p>对于 <span
+class="math inline">\(X_{\mathbf{t}}=(X_{t_1},\cdots,X_{t_n})\)</span>,
+定义它的 <span class="math inline">\(n\)</span> 维特征函数为 <span
+class="math display">\[
+\varphi_{\mathbf{t}}(\mathbf{u})=\mathbb{E}(\mathrm{e}^{\mathrm{j}\langle{\mathbf{u},X_{\mathbf{t}}}\rangle}),\mathbf{u}=(u_1,\cdots,u_n)
+\]</span> 并且 <span
+class="math inline">\(\{\varphi_{\mathbf{t}}(\mathbf{u})\}_{\mathbf{t}\in
+T^n}\)</span> 称为 <span class="math inline">\(\{X_t\}_{t\in T}\)</span>
+的有限维特征函数族.
+这个有限维特征函数满足类似于多维联合分布函数的性质:</p>
+<ul>
+<li><p>对称性: <span
+class="math inline">\(\varphi_{\mathbf{t}_{\pi}}(\mathbf{u}_{\pi})=\varphi_{\mathbf{t}_{\sigma}}(\mathbf{u}_{\sigma})\)</span></p></li>
+<li><p>相容性: <span class="math display">\[
+\varphi_{t_1,\cdots,t_m}(u_1,\cdots,u_m)=\varphi_{t_1,\cdots,t_n}(\underbrace{u_1,\cdots,u_m,0,\cdots,0}_{n个}),m&lt;n
+\]</span></p></li>
+</ul>
+<p>除此之外, 还可以定义多维随机过程 <span
+class="math inline">\(\{(X^{(1)}_t,\cdots,X^{(n)}_t)\}_{t\in
+T}\)</span>.</p>
+<h1 id="随机过程的数字特征">随机过程的数字特征</h1>
+<p>类比随机变量的期望和方差, 随机过程也有均值函数和方差函数.</p>
+<p>对 <span class="math inline">\(\{X_t\}_{t\in T}\)</span>,
+定义其均值函数 <span class="math display">\[
+m(t)=\mathbb{E}(X_t)=\int_{-\infty}^{+\infty}x\mathrm{d}F_t(x)
+\]</span> 定义其方差函数为 <span class="math display">\[
+D_X(t)=\mathrm{Var}(X_t)=\mathbb{E}(X_t-m(t))^2
+\]</span> 并且定义 <span
+class="math inline">\(\sigma(t)=\sqrt{D(t)}\)</span> 为 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span> 的均方差函数.</p>
+<p>除了实随机过程外, 还可定义复随机过程 <span
+class="math inline">\(\{Z_t\}_{t\in T}\)</span> 满足 <span
+class="math inline">\(Z_t=X_t+\mathrm{j}Y_t\)</span>, 其中 <span
+class="math inline">\(\{X_t\}_{t\in T},\{Y_t\}_{t\in T}\)</span>
+都是实随机过程, 复随机过程也有均值函数和方差函数, 但是 <span
+class="math inline">\(D_Z(t)\)</span> 的定义为 <span
+class="math inline">\(D_Z(t)=\mathrm{Var}(|Z_t-m_Z(t)|^2)\)</span>,
+即要取模长, 可以证明: <span class="math display">\[
+m_Z(t)=m_X(t)+\mathrm{j}m_Y(t),D_Z(t)=D_X(t)+D_Y(t)
+\]</span> 除此之外还有如下定义:</p>
+<ul>
+<li>自相关系数函数 <span
+class="math inline">\(\rho(s,t)=\frac{\mathrm{Cov}(X_s,S_t)}{\sigma(s)\sigma(t)},s,t\in
+T\)</span></li>
+<li>协方差函数 <span
+class="math inline">\(C(s,t)=\mathrm{Cov}(X_s,X_t)=\mathbb{E}((X_s-m(s))(X_t-m(t)))\)</span>,
+如果说是复随机过程则 <span
+class="math inline">\(C_Z(s,t)=\mathrm{Cov}(Z_s,\overline{Z_t})\)</span>.</li>
+<li>自相关函数 <span class="math inline">\(R(s,t)=E(X_sX_t)\)</span>,
+如果是复随机过程则 <span
+class="math inline">\(R_Z(s,t)=\mathbb{E}(Z_s,\overline{Z_t})\)</span></li>
+</ul>
+<p>可以发现 <span
+class="math inline">\(C(s,t)=R(s,t)-m(s)m(t)\)</span>.</p>
+<p>可能要自己算个例子才能更熟悉一些.</p>
+<h1 id="多维随机过程的互相关函数">多维随机过程的互相关函数</h1>
+<p>对于 <em>s.p.</em> <span class="math inline">\(\{X_t\}_{t\in
+T},\{Y_t\}_{t\in T}\)</span>, 定义 <span
+class="math inline">\(n+m\)</span> 维随机向量 <span
+class="math inline">\((X_{t_1},\cdots,X_{t_n},Y_{t_1},\cdots,Y_{t_m})=(X_{\mathbf{t}},Y_{\mathbf{s}})\)</span>
+的联合分布函数 <span class="math display">\[
+F_{t_1,\cdots,t_n,s_1,\cdots,s_m}(x_1,\cdots,x_n,y_1,\cdots,y_m)=P(X_{\mathbf{t}}\le
+\mathbf{x},Y_{\mathbf{s}}\le \mathbf{y})
+\]</span> 称为 <span class="math inline">\(\{X_t\}_{t\in
+T},\{Y_t\}_{t\in T}\)</span> 的 <span class="math inline">\(n+m\)</span>
+维联合分布函数. 若 <span
+class="math inline">\(F_{\mathbf{t},\mathbf{s}}(\mathbf{x},\mathbf{y})=F_{\mathbf{t}}(\mathbf{x})F_{\mathbf{s}}(\mathbf{y})\)</span>,
+则称 <span class="math inline">\(\{X_t\}_{t\in T},\{Y_t\}_{t\in
+T}\)</span> 相互独立.</p>
+<p>对于两个复随机过程 <span class="math inline">\(\{Z_t^{(1)}\}_{t\in
+T},\{Z^{(2)}_t\}_{t\in T}\)</span> 有互协方差函数: <span
+class="math display">\[
+C_{Z^{(1)}Z^{(2)}}(s,t)=\mathbb{E}[(Z_s^{(1)}-m_{Z^{(1)}}(s))(\overline{Z_t^{(2)}-m_{Z^{(2)}}(t)})]
+\]</span> 和互相关函数 <span class="math display">\[
+R_{Z^{(1)}Z^{(2)}}(s,t)=\mathbb{E}(Z_s^{(1)})\mathbb{E}(\overline{Z_t^{(2)}})
+\]</span> 它们描述了特定点时的 <span
+class="math inline">\(Z_s^{(1)},Z_t^{(2)}\)</span> 两个 <em>r.v.</em>
+的数字特征, <span class="math inline">\(C(s,t),R(s,t)\)</span> 随着
+<span class="math inline">\(s,t\)</span>
+变通反映了它们的整体相关程度.</p>
+<p>若 <span class="math inline">\(\forall
+s,t,\mathbb{E}(X_sY_t)=\mathbb{E}(X_s)\mathbb{E}(Y_t)\)</span>,
+称两个随机过程互不相关, 若 <span class="math inline">\(\forall
+s,t,R_{XY}(s,t)=0\)</span>, 称两个随机过程相互正交.
+显然相互独立是互不相关的充分条件.</p>
+<h1 id="随机过程的基本类型">随机过程的基本类型</h1>
+<h2 id="二阶矩过程">二阶矩过程</h2>
+<p>二阶矩过程是 <span
+class="math inline">\(\mathbb{E}(|X_t|^2)&lt;\infty\)</span> 的随机过程,
+它的协方差函数和相关函数总是存在的, 这是由 Schwartz 不等式保证的.
+下面的随机过程都是二阶矩过程.</p>
+<h3 id="正态过程">正态过程</h3>
+<p>任意维随机向量都服从联合正态分布的随机过程,
+或者是说有限维分布是正态分布函数族的随机过程.</p>
+<h3 id="宽平稳过程">宽平稳过程</h3>
+<p><span class="math inline">\(m(t)\equiv m,C(s,t)=C(s-t)\)</span>.</p>
+<h3 id="正交增量过程">正交增量过程</h3>
+<h3 id="马尔可夫过程">马尔可夫过程</h3>
+<p>见下.</p>
+<h2 id="独立过程与平稳独立增量过程">独立过程与平稳独立增量过程</h2>
+<hr />
+<p>下面只着重介绍马氏过程.</p>
+<h1 id="马尔可夫过程-1">马尔可夫过程</h1>
+<p>马氏过程的典型特点是将来状态只与上一个状态有关,
+也就是<strong>无后效性</strong>, 定义是, 对于 <span
+class="math inline">\(\{X_t\}_{t\in T}\)</span>,
+若过程的条件分布函数存在且对任意 <span class="math inline">\(n\)</span>
+个时刻都有 <span class="math display">\[
+P(X_{t_n}=x_{t_n}|,X_{t_1}=x_{t_1},\cdots,X_{t_{n-1}}=x_{t_{n-1}})=P(X_{t_n}=x_{t_n}|X_{t_{n-1}}=x_{t_{n-1}})
+\]</span> 则称 <span class="math inline">\(\{X_t\}_{t\in T}\)</span>
+是马尔可夫过程, 其中 <span
+class="math inline">\(t_1&lt;\cdots&lt;t_n\)</span>,
+后文默认这样的序关系存在. 条件分布函数满足 <span class="math display">\[
+F_{t_n|t_1,\cdots,t_{n-1}}(x_n|x_1,\cdots,x_{n-1})=F_{t_n|t_{n-1}}(x_n|x_{n-1})
+\]</span> 若条件密度函数也存在, 就有 <span
+class="math inline">\(f_{t_n|t_1,\cdots,t_{n-1}}(x_n|x_1,\cdots,x_{n-1})=f_{t_n|t_{n-1}}(x_n|x_{n-1})\)</span>.</p>
+<p>很容易证明<strong>独立过程</strong>和<strong>初始分布 <span
+class="math inline">\(X_0=0\)</span>
+的独立增量过程</strong>都是马氏过程,
+也就推知维纳过程和泊松过程都是马氏过程.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/28/junior_1_semester/cv/" rel="prev" title="计算机视觉与模式识别">
+                  <i class="fa fa-angle-left"></i> 计算机视觉与模式识别
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Baoduo Xu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">297k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">4:30</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

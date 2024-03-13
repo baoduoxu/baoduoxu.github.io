@@ -30,7 +30,7 @@
 <meta property="og:description" content="Something about the theory of computation.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-11T03:30:41.000Z">
-<meta property="article:modified_time" content="2024-03-06T06:37:22.562Z">
+<meta property="article:modified_time" content="2024-03-13T12:22:39.098Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
 
@@ -142,7 +142,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E5%92%8C%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">串和语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">有穷自动机的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">非确定性有穷自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfa-%E5%92%8C-dfa-%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7"><span class="nav-number">2.3.</span> <span class="nav-text">NFA 和 DFA 的等价性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">图灵机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfp-%E5%92%8C-mathsfnp"><span class="nav-number">4.</span> <span class="nav-text">\(\mathsf{P}\) 和 \(\mathsf{NP}\)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E5%92%8C%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">串和语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">有穷自动机的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">非确定性有穷自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nfa-%E5%92%8C-dfa-%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7"><span class="nav-number">2.3.</span> <span class="nav-text">NFA 和 DFA 的等价性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">图灵机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#church-turing-thesis"><span class="nav-number">4.</span> <span class="nav-text">Church-Turing thesis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">时间复杂性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfp-%E7%B1%BB"><span class="nav-number">6.</span> <span class="nav-text">\(\mathsf{P}\)
+类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfnp-%E7%B1%BB"><span class="nav-number">7.</span> <span class="nav-text">\(\mathsf{NP}\)
+类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathsfnp-complete"><span class="nav-number">8.</span> <span class="nav-text">\(\mathsf{NP}\)-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E7%BA%A6"><span class="nav-number">8.1.</span> <span class="nav-text">规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathsfnp-complete-1"><span class="nav-number">8.2.</span> <span class="nav-text">\(\mathsf{NP}\)-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mathsfnp-hard"><span class="nav-number">8.2.1.</span> <span class="nav-text">\(\mathsf{NP}\)-Hard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levin-cook-%E5%AE%9A%E7%90%86"><span class="nav-number">8.3.</span> <span class="nav-text">Levin-Cook 定理</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -237,7 +239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-03-06 14:37:22" itemprop="dateModified" datetime="2024-03-06T14:37:22+08:00">2024-03-06</time>
+      <time title="Modified: 2024-03-13 20:22:39" itemprop="dateModified" datetime="2024-03-13T20:22:39+08:00">2024-03-13</time>
     </span>
 
   
@@ -247,14 +249,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3.3k</span>
+      <span>7.3k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>3 mins.</span>
+      <span>7 mins.</span>
     </span>
 </div>
 
@@ -315,7 +317,8 @@ class="math inline">\(L(M):=\{w\in\Sigma^*:M\mathrm{~accept~}w\}\)</span>.
 由有穷自动机所识别的语言称为<strong>正则语言</strong>.</p>
 <p><strong>定理1</strong> 正则语言类对正则运算封闭.</p>
 <blockquote>
-<p>证明方法是构造新的自动机使得它能识别并, 连结和星号运算得到的语言.</p>
+<p>证明方法是构造新的自动机使得它能识别<strong>并,
+连结和星号运算</strong>得到的语言.</p>
 </blockquote>
 <h2 id="非确定性有穷自动机">非确定性有穷自动机</h2>
 <p>简称 NFA. 一个 NFA <span class="math inline">\(N\)</span>
@@ -324,16 +327,17 @@ class="math inline">\(N=(Q,\Sigma,\delta,q_0,F)\)</span>, 其中:</p>
 <ul>
 <li><span class="math inline">\(\varepsilon\in \Sigma\)</span>,
 也可以记作 <span class="math inline">\(\Sigma_{\varepsilon}=\Sigma\cup
-\varepsilon\)</span>.</li>
+\{\varepsilon\}\)</span>.</li>
 <li><span class="math inline">\(\delta:Q\times \Sigma_{\varepsilon}\to
 2^Q\)</span>, 这表明每一次转移产生一个状态集, 这个状态集可以是空集.</li>
+<li>其余定义和 DFA 保持一致.</li>
 </ul>
-<p>DFA 的计算是一个状态序列, 而 NFA 的计算多个状态序列,
+<p>DFA 的计算是一个状态序列, 而 NFA 的计算是多个状态序列,
 这些状态序列是一颗状态树从根节点到所有叶子节点的路径上的状态形成的序列.
 根节点为起始状态 <span class="math inline">\(q_0\)</span>,
 只要有叶子结点对应的状态为接收状态, 就表明 NFA 接受一个语言, NFA
 每读入一个字符就会产生若干个自动机的副本,
-可以认为这些自动机的计算是同时进行的.</p>
+可以认为这些自动机的计算是并行的.</p>
 <p><img
 src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202402201352459.png" /></p>
 <h2 id="nfa-和-dfa-的等价性">NFA 和 DFA 的等价性</h2>
@@ -362,7 +366,7 @@ class="math inline">\(R\)</span> 中的状态转移得来.</li>
 class="math inline">\(F\)</span> 中的元素的那些集合.</li>
 </ul>
 <p>如果要考虑 <span class="math inline">\(\varepsilon\)</span>, 则先引入
-<span class="math inline">\(\varepsilon\)</span> 闭包 <span
+<span class="math inline">\(\varepsilon\)</span>-闭包 <span
 class="math inline">\(E(R)\)</span> 为 <span
 class="math inline">\(R\)</span> 中的状态仅沿着 <span
 class="math inline">\(\varepsilon\)</span> 可以到达的状态集, 同时也包括
@@ -389,7 +393,7 @@ class="math inline">\(\varepsilon\)</span> 指向旧的初始状态.</li>
 </ul>
 <h2 id="正则表达式">正则表达式</h2>
 <p>单个字母, 空串, 空语言和正则表达式的并, 连结和星号定义为正则表达式.
-这是归纳定义.</p>
+这说明正则表达式是归纳定义的.</p>
 <p>再定义 <span class="math inline">\(R^+\cup \varepsilon=R^*\)</span>,
 <span class="math inline">\(R^k=\underbrace{R\cdots
 R}_{k个}\)</span>.</p>
@@ -413,7 +417,7 @@ class="math inline">\(s=xyz\)</span>, 满足</p>
 <p>图灵机(Turing Machine, TM)中最简单的模型为单带 TM, 单带 TM <span
 class="math inline">\(M\)</span> 是一个七元组 <span
 class="math inline">\(M=(Q,\Sigma,\Gamma,\delta,q_0,q_{\mathrm{acc}},q_{\mathrm{rej}})\)</span>,
-其中:</p>
+拥有一条(单向)无限长的 tape 以及读写头, 其中:</p>
 <ul>
 <li><span class="math inline">\(\Gamma\)</span> 是工作字母表, 设 <span
 class="math inline">\(B\)</span> 为空格, 一般有 <span
@@ -457,7 +461,7 @@ class="math inline">\(a\)</span> 右边的内容.</li>
 <span class="math inline">\(w\)</span> 为输入到图灵机中的字符串.</p>
 <p>一个格局可以产生另外一个格局, 设 <span
 class="math inline">\(C_1=\underline{ua}q_ib\underline{v}\)</span>,
-转移函数 <span class="math inline">\(\delta\)</span> 满足 <span
+若转移函数 <span class="math inline">\(\delta\)</span> 满足 <span
 class="math inline">\(\delta(q_i,b)=(q_j,c,L)\)</span>, 那么格局 <span
 class="math inline">\(C_1\)</span> 产生的格局为 <span
 class="math inline">\(C_1=\underline{u}q_ia\underline{cv}\)</span>.
@@ -466,13 +470,215 @@ class="math inline">\(C_1=\underline{u}q_ia\underline{cv}\)</span>.
 <p>单带 TM 在串 <span class="math inline">\(w\)</span>
 上的计算是格局的序列, 当序列有穷时图灵停机,
 最后一个格局对应的状态决定是接受还是拒绝; 当序列无穷时不停机.</p>
-<p>算法是处处停机的图灵机. <!-- 
-记作 $\mathcal{C}$ 是 legitimate problems 的集合, $\mathcal{C}_A$ 表示简单的问题的集合, $\mathcal{C}_B$ 表示困难的问题的集合. 在一对 leg 问题中, 可以定义难度关系, 这可以引出下面的 reduction lemma:
-
-对于问题 $P,Q$, 若 $Q\in \mathcal{C}_A$ 且 $P$ 不难于 $Q$, 则 $Q\in \mathcal{C}_A$; 若 $P\in \mathcal{C}_B$ 且 $P$ 难于 $Q$, 则 $P\in \mathcal{C}_B$. --></p>
-<h1 id="mathsfp-和-mathsfnp"><span
-class="math inline">\(\mathsf{P}\)</span> 和 <span
-class="math inline">\(\mathsf{NP}\)</span></h1>
+<h1 id="church-turing-thesis">Church-Turing thesis</h1>
+<p><strong>算法是处处停机的图灵机.</strong></p>
+<h1 id="时间复杂性">时间复杂性</h1>
+<p>令 <span class="math inline">\(M\)</span>
+是一个在所有输入上都停机的确定性图灵机, <span
+class="math inline">\(M\)</span> 的运行时间或者时间复杂度是一个函数
+<span class="math inline">\(f:\mathbb{N}\to\mathbb{N}\)</span> 且 <span
+class="math inline">\(f(n)\)</span> 表示 <span
+class="math inline">\(M\)</span> 在所有长度为 <span
+class="math inline">\(n\)</span> 的输入上运行所经过的最大步数.
+定义时间复杂性类 <span
+class="math inline">\(\mathrm{TIME}(t(n))\)</span> 为由 <span
+class="math inline">\(O(t(n))\)</span>
+时间的图灵机<strong>判定</strong>的所有语言的集合. 比如可以验证 <span
+class="math inline">\(A=\{0^k1^k:k\ge 0\}\in\mathrm{TIME}(n^2)\)</span>,
+这可以转化成一个算法的设计
+(根据图灵机读写头的特点类比指针设计一个复杂度为 <span
+class="math inline">\(O(n^2)\)</span> 的算法来判断一个字符串是否是形如
+<span class="math inline">\(0^k1^k\)</span> 的,
+根据此算法可以构造一个单带确定型图灵机 <span
+class="math inline">\(M_1\)</span>).
+当然实际上可以设计出一个更好的单带图灵机 <span
+class="math inline">\(M_2\)</span> 使得 <span
+class="math inline">\(A\in\mathrm{TIME}(n\log n)\)</span>,
+如果是多带图灵机, 则可以在 <span class="math inline">\(O(n)\)</span>
+时间内判定 <span class="math inline">\(A\)</span>,
+这些例子说明了<strong>语言的复杂度和选择的计算模型有关</strong>.
+那么自然就要考虑不同模型之间的复杂性关系,
+也就是计算模型的选择到底是怎么影响语言的时间复杂度的.</p>
+<p>可以证明<strong>每一个 <span class="math inline">\(t(n)\)</span>
+时间的多带图灵机都和一个 <span class="math inline">\(O(t^2(n))\)</span>
+时间的单带图灵机等价</strong>,
+只需要对于给定的多带图灵机用一个单带图灵机来模拟它即可.</p>
+<p>那非确定型 TM 呢? 可以证明<strong>每一个 <span
+class="math inline">\(t(n)\)</span> 时间的非确定型单带 TM 都和某一个
+<span class="math inline">\(2^{O(t(n))}\)</span> 时间的确定型单带 TM
+等价</strong>, 证明方式同样是用确定型单带 TM 来模拟非确定型单带 TM.</p>
+<h1 id="mathsfp-类"><span class="math inline">\(\mathsf{P}\)</span>
+类</h1>
+<p>集合 <span class="math inline">\(\mathsf{P}\)</span>
+是确定型单带图灵机在多项式时间内可判定的语言类, 也就是说 <span
+class="math display">\[
+\mathsf{P}=\bigcup_{k\ge 0}\mathrm{TIME}(n^k)
+\]</span> <span class="math inline">\(\mathsf{P}\)</span>
+<strong>大致对应于</strong>在计算机上实际可解的那些问题.
+对于所有与确定型单带 TM 等价的计算模型而言, <span
+class="math inline">\(\mathsf{P}\)</span> 是不变的, 这意味着 <span
+class="math inline">\(\mathsf{P}\)</span> 在数学上具有稳健性.</p>
+<h1 id="mathsfnp-类"><span class="math inline">\(\mathsf{NP}\)</span>
+类</h1>
+<p>定义语言 <span class="math inline">\(A\)</span>
+的<strong>验证机</strong> (verifier) 是一个算法 <span
+class="math inline">\(V\)</span>, 即 <span
+class="math inline">\(A=\{w:\text{for a string }c,V\text{ accepts
+}\langle{w,c}\rangle\}\)</span>. <span class="math inline">\(c\)</span>
+被称为 <span class="math inline">\(A\)</span>
+的成员资格证书或者一个证明. 比如对于问题 <span
+class="math inline">\(\mathrm{CLIQUE}=\{\langle{G,k}\rangle:G\text{ has
+a }k\text{-clique}\}\)</span> 构造验证机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">V=&quot;对输入&lt;&lt;G,k&gt;,c&gt;:</span><br><span class="line">    1) 检查 c 是否是 G 中 k 个结点的集合;</span><br><span class="line">    2) 检查 G 的边集是否包含连接 c 中结点的所有边(即判断 c 是否是个团);</span><br><span class="line">    3) 若两项检查都通过, 则接受, 否则拒绝.</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+<p>将一个语言的证书交给该语言的 verifier 后,
+如果能在多项式时间内检查输入是否在语言中, 就称该语言具有多项式时间的
+verifier, 定义 <span class="math inline">\(\mathsf{NP}\)</span>
+是具有多项式时间验证机的语言类. 可以证明一个语言在 <span
+class="math inline">\(\mathsf{NP}\)</span>
+中当且仅当它能被某个非确定型多项式时间图灵机判定.</p>
+<p>这个类的名称 <span
+class="math inline">\(\mathsf{NP}(\mathrm{nondeterministic~polynomial})\)</span>
+就来源于<strong>非确定型多项式时间 TM.</strong></p>
+<p>对于某些 <span class="math inline">\(\mathsf{NP}\)</span>
+问题的补问题, 定义它们属于 <span
+class="math inline">\(\mathsf{coNP}\)</span>, <span
+class="math inline">\(\mathsf{coNP}\)</span> 包括 <span
+class="math inline">\(\mathsf{P}\)</span> 中问题的补问题, 不清楚 <span
+class="math inline">\(\mathsf{coNP}\)</span> 与 <span
+class="math inline">\(\mathsf{NP}\)</span> 是否相等.</p>
+<h1 id="mathsfnp-complete"><span
+class="math inline">\(\mathsf{NP}\)</span>-complete</h1>
+<h2 id="规约">规约</h2>
+<p>对于函数 <span class="math inline">\(f:\Sigma^*\to\Sigma^*\)</span>,
+若存在多项式时间图灵机 <span class="math inline">\(M\)</span>
+使得在任何输入 <span class="math inline">\(w\)</span> 上, <span
+class="math inline">\(M\)</span> 停机时 <span
+class="math inline">\(f(w)\)</span> 恰好在 <span
+class="math inline">\(M\)</span> 的带子上, 则称 <span
+class="math inline">\(f\)</span>
+为<strong>多项式时间可计算函数</strong>.</p>
+<p>若存在多项式可计算函数 <span class="math inline">\(f\)</span>
+使得对于语言 <span class="math inline">\(A,B\)</span> 以及每一个<span
+class="math inline">\(w\in\Sigma^*\)</span>, 都有 <span
+class="math inline">\(w\in A\iff f(w)\in B\)</span>, 则称语言 <span
+class="math inline">\(A\)</span>
+多项式时间映射可规约(简称多项式时间可规约)到语言 <span
+class="math inline">\(B\)</span>, 记作 <span
+class="math inline">\(A\le_P B\)</span>, <span
+class="math inline">\(f\)</span> 称为 <span
+class="math inline">\(A\)</span> 到 <span
+class="math inline">\(B\)</span> 的多项式时间规约.</p>
+<p>直觉上若 <span class="math inline">\(A\in \mathsf{P}\land
+B\le_PA\)</span>, 则 <span
+class="math inline">\(B\in\mathsf{P}\)</span>, 这是正确的, 只需要根据
+<span class="math inline">\(A\)</span> 的多项式时间算法 <span
+class="math inline">\(M\)</span> 与多项式时间可计算函数 <span
+class="math inline">\(f\)</span> 构造出 <span
+class="math inline">\(B\)</span> 的一个多项式时间算法 <span
+class="math inline">\(N\)</span> 即可: 对于 <span
+class="math inline">\(w\in B\)</span>, 先在多项式时间计算出 <span
+class="math inline">\(f(w)\)</span>, 然后将 <span
+class="math inline">\(f(w)\in A\)</span> 输入到 <span
+class="math inline">\(M\)</span> 中, 这一定会被 <span
+class="math inline">\(M\)</span> 接受,
+那么将这两个过程作为一个整体就构造出了一个在多项式时间内判定 <span
+class="math inline">\(B\)</span> 的一个图灵机, 这就意味着 <span
+class="math inline">\(B\in\mathsf{P}\)</span>.</p>
+<p>现在给出一个非常经典的多项式规约: 由 <span
+class="math inline">\(\mathrm{3SAT}\)</span> 归约到 <span
+class="math inline">\(\mathrm{CLIQUE}\)</span>.</p>
+<p>定义 <span class="math inline">\(\phi=\bigwedge_{1\le i\le k}(a_i\lor
+b_i\lor c_i)\)</span>, <span
+class="math inline">\(\mathrm{3SAT}=\{\langle{\phi}\rangle:\phi \text{
+is satisifiable}\}\)</span>, <span
+class="math inline">\(\mathrm{CLIQUE}=\{\langle{G,k}\rangle:G\text{ has
+a }k\text{-clique}\}\)</span>, 现在需要构造出多项式时间可计算函数 <span
+class="math inline">\(f\)</span> 使得 <span
+class="math inline">\(f(\langle{\phi}\rangle)=\langle{G,k}\rangle\)</span>.
+构造 <span
+class="math inline">\(G=K_{\underbrace{3,\cdots,3}_k}=\left(\bigcup_{1\le
+i\le k}\{a_i,b_i,c_i\},E\right)\)</span>, <span
+class="math inline">\(E\)</span> 除了满足每个三元组 <span
+class="math inline">\(\{a_i,b_i,c_i\}\)</span> 内部无边外,
+对于不同三元组中的点 <span class="math inline">\(u,v\)</span>, 若 <span
+class="math inline">\(\overline{u}\ne v\)</span> 则 <span
+class="math inline">\((u,v)\in E\)</span>, 反之不相连, 这个 <span
+class="math inline">\(f\)</span> 可以在 <span
+class="math inline">\(O(9k^2)=O(k^2)\)</span> 内用 <span
+class="math inline">\(\phi\)</span> 构造出 <span
+class="math inline">\(G\)</span>, 只需要枚举每一对文字即可. 现在证明
+<span class="math inline">\(\phi\)</span> 可满足当且仅当 <span
+class="math inline">\(G\)</span> 有 <span
+class="math inline">\(k\)</span>-clique.</p>
+<p>当 <span class="math inline">\(\phi\)</span> 可满足时,
+每个子句至少含有一个值为 <span class="math inline">\(1\)</span> 的文字,
+在 <span class="math inline">\(G\)</span> 中选择这些点,
+这些点不在同一个三元组而且也不可能是相反的两个文字,
+那么这些点就一定互相相连, 这就是 <span class="math inline">\(G\)</span>
+的一个 <span class="math inline">\(k\)</span>-clique.</p>
+<p>当 <span class="math inline">\(G\)</span> 有 <span
+class="math inline">\(k\)</span>-clique <span
+class="math inline">\(C\)</span> 时, 每个三元组恰好有个点在 <span
+class="math inline">\(C\)</span> 中, 将 <span
+class="math inline">\(C\)</span> 每个点在 <span
+class="math inline">\(\phi\)</span> 中对应的文字赋值为 <span
+class="math inline">\(1\)</span>, 就可以使 <span
+class="math inline">\(\phi\)</span> 得到满足.</p>
+<p>这就结束了证明. <span class="math inline">\(\square\)</span></p>
+<h2 id="mathsfnp-complete-1"><span
+class="math inline">\(\mathsf{NP}\)</span>-complete</h2>
+<p><span class="math inline">\(\mathsf{NP}\)</span>-complete 简称 <span
+class="math inline">\(\mathsf{NPC}\)</span>.</p>
+<p>Stephen Cook 和 Leonid Levin 发现若 <span
+class="math inline">\(\mathsf{NP}\)</span>
+中的某些问题存在多项式时间算法, 那么 <span
+class="math inline">\(\mathsf{NP}\)</span>
+中的所有问题都是多项式时间可解的, 定义这些问题是 <span
+class="math inline">\(\mathsf{NP}\)</span>-complete, 对应的集合写成
+<span class="math inline">\(\mathsf{NPC}\)</span>. 这样一来为了证明探究
+<span class="math inline">\(\mathsf{P}=\mathsf{NP}\)</span> 是否成立,
+只需要关注 <span class="math inline">\(\mathsf{NPC}\)</span>
+中的一个问题即可.(当然好像 <span class="math inline">\(\mathsf{P\ne
+NP}\)</span> 更可能成立, 因此当一个问题属于 <span
+class="math inline">\(\sf NPC\)</span> 时,
+似乎就给该问题的难解性提供了一个有力证据.)</p>
+<p>更规范的定义是, 如果语言 <span class="math inline">\(B\)</span>
+满足下面两个条件:</p>
+<ol type="1">
+<li><span class="math inline">\(B\in \mathsf{NP}\)</span></li>
+<li><span class="math inline">\(\forall A\in\mathsf{NP}\)</span>, <span
+class="math inline">\(A\le_PB\)</span>.</li>
+</ol>
+<p>则称 <span class="math inline">\(B\)</span> 是 <span
+class="math inline">\(\mathsf{NP}\)</span>-complete (<span
+class="math inline">\(\mathsf{NP}\)</span>完全的, 也可以写成 <span
+class="math inline">\(\mathsf{NPC}\)</span>).</p>
+<p><span class="math inline">\(\le_P\)</span> 可以看作是 <span
+class="math inline">\(\Sigma^*\)</span> 上的序关系,
+而且它至少具有传递性和自反性.</p>
+<h3 id="mathsfnp-hard"><span
+class="math inline">\(\mathsf{NP}\)</span>-Hard</h3>
+<p>相较于 <span class="math inline">\(\mathsf{NP}\)</span>-complete,
+<span class="math inline">\(\mathsf{NP}\)</span>-Hard
+的问题只需满足上面的条件 2, 也就是说, 如果语言 <span
+class="math inline">\(B\)</span> 满足 <span
+class="math inline">\(\forall A\in\mathsf{NP}\)</span>, <span
+class="math inline">\(A\le_PB\)</span>, 但是不知道 <span
+class="math inline">\(B\)</span> 与 <span
+class="math inline">\(\mathsf{NP}\)</span> 的关系, 那就称语言 <span
+class="math inline">\(B\)</span> 是 <span
+class="math inline">\(\mathsf{NP}\)</span>-Hard 或者 <span
+class="math inline">\(\mathsf{NP}\)</span> 难的.</p>
+<h2 id="levin-cook-定理">Levin-Cook 定理</h2>
+<p><span class="math display">\[
+\mathrm{SAT}\in\mathsf{P}\iff \mathsf{P}=\mathsf{NP}
+\]</span></p>
+<p>证明 <span class="math inline">\(\mathrm{SAT}\in \mathsf{NP}\)</span>
+是简单的, 主要困难在于如何证明 <span
+class="math inline">\(\mathsf{NP}\)</span> 中的每个问题都可多项式归约到
+<span class="math inline">\(\mathrm{SAT}\)</span>, 这等价于证明 <span
+class="math inline">\(\mathrm{SAT}\)</span> 是 <span
+class="math inline">\(\mathsf{NPC}\)</span> 的.</p>
 
     </div>
 
@@ -524,13 +730,13 @@ class="math inline">\(\mathsf{NP}\)</span></h1>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">286k</span>
+    <span title="Word count total">297k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:20</span>
+    <span title="Reading time total">4:30</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
