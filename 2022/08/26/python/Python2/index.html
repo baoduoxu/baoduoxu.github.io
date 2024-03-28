@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/infinity-solid.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/infinity-solid.svg">
@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CCascadia+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palatino:300,300italic,400,400italic,700,700italic%7CFira+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="[object Object]">
 
@@ -29,10 +29,12 @@
 <meta property="og:site_name" content="XBD">
 <meta property="og:description" content="什么是面向对象 面向对象编程（Object-oriented Programming，简称OOP），指一种封装代码的方法。代码封装即隐藏实现功能的具体代码，仅留给用户使用的接口。面向对象编程实在面向过程编程的基础上发展来的，它比面向过程编程具有更强的灵活性和扩展性。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png">
 <meta property="article:published_time" content="2022-08-26T03:16:20.833Z">
 <meta property="article:modified_time" content="2023-09-04T00:49:56.359Z">
 <meta property="article:author" content="Baoduo Xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png">
 
 
 <link rel="canonical" href="http://example.com/2022/08/26/python/Python2/">
@@ -55,7 +57,119 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -78,7 +192,6 @@
       <p class="site-title">XBD</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Everything will end up being TRIVIAL.</p>
   </div>
 
   <div class="site-nav-right">
@@ -155,7 +268,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -301,9 +414,9 @@ Programming，简称OOP），指一种<strong>封装代码</strong>的方法。�
 方法，它是一个特殊的类实例方法，称为构造方法或构造函数。构造方法用于创建对象时使用，每当创建一个类的实例对象时，Python解释器都会自动调用它。<code>__init__()</code>
 方法必须包含一个名为 <code>self</code> 的参数作为它的第一个参数。注意
 <code>__init__</code> 有四个下划线。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>+self.name)</span><br><span class="line">p1=student(<span class="string">&quot;A&quot;</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,number</span>):<span class="comment">#将值付给对象的属性</span></span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line">        self.number=number</span><br><span class="line">        </span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"My name is "</span>+self.name)</span><br><span class="line">p1=student(<span class="string">"A"</span>,<span class="number">19</span>,<span class="number">12345678</span>)<span class="comment">#传递参数，无需给self传参</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1.name)</span><br><span class="line">p1.myfunc()</span><br></pre></td></tr></table></figure>
 <p>如果上面的 <code>_init_()</code> 方法没有任何参数，像下面这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;involking construction method&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;My name is &quot;</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"involking construction method"</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">myfunc</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"My name is "</span>)</span><br><span class="line"></span><br><span class="line">p1=student()<span class="comment">#只定义一个对象p1</span></span><br></pre></td></tr></table></figure>
 <p>运行后会报错：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: student.__init__() takes 0 positional arguments but 1 was given</span><br></pre></td></tr></table></figure>
 <p>而只要加上 <code>self</code> 参数就可以正常输出
@@ -340,13 +453,13 @@ Programming，简称OOP），指一种<strong>封装代码</strong>的方法。�
 <ul>
 <li><p>类体中、所有函数之外的范围内定义的变量叫做<strong>类属性或类变量</strong></p>
 <p>类变量被所有类的实例化对象所共有。可以直接用类名或者类化对象调用类变量，同时也可以使用类名调用类变量来修改它的值，<strong>不能通过类对象修改类变量的值</strong>，因为通过类对象“修改类变量”并不是在修改它，而是定义新的<strong>实例变量</strong>。比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stu1=student()</span><br><span class="line">stu1.age=<span class="number">3</span><span class="comment">#这里本质上是给stu1对象添加了新的实例变量age</span></span><br><span class="line">stu2=student()</span><br><span class="line"><span class="built_in">print</span>(stu2.age)<span class="comment">#上面将stu1的age修改为3， 但是其他的类对象的age仍然是1</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line">stu1.gender=<span class="string">&quot;male&quot;</span><span class="comment">#添加实例变量，这个实例变量独属于stu1对象，其他对象无法调用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stu1=student()</span><br><span class="line">stu1.age=<span class="number">3</span><span class="comment">#这里本质上是给stu1对象添加了新的实例变量age</span></span><br><span class="line">stu2=student()</span><br><span class="line"><span class="built_in">print</span>(stu2.age)<span class="comment">#上面将stu1的age修改为3， 但是其他的类对象的age仍然是1</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line">stu1.gender=<span class="string">"male"</span><span class="comment">#添加实例变量，这个实例变量独属于stu1对象，其他对象无法调用</span></span><br></pre></td></tr></table></figure>
 <p>通过类名修改类变量的值，会影响到所有的类对象。</p>
 <p><strong>不推荐使用类对象来调用类变量</strong>，因为实例变量与类变量可以重名，此时无法使用类对象调用类变量而只能调用实例变量。</p></li>
 <li><p>类体中，所有函数内部，以 <code>self.变量名1=变量名2/值</code>
 的方式定义的变量就做<strong>实例属性或实例变量</strong>。</p>
 <p>与类变量不同的是，实例变量<strong>不能通过类名调用</strong>，只能通过实例化对象调用。类对象只有调用了某方法，才能拥有该方法的实例变量，比如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stu=student()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#会报错，输出下面的语句</span></span><br><span class="line"><span class="comment">#AttributeError: &#x27;student&#x27; object has no attribute &#x27;para&#x27;</span></span><br><span class="line">stu.myfunc()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#上面的语句调用过myfunc()方法后可以输出0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stu=student()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#会报错，输出下面的语句</span></span><br><span class="line"><span class="comment">#AttributeError: 'student' object has no attribute 'para'</span></span><br><span class="line">stu.myfunc()</span><br><span class="line"><span class="built_in">print</span>(stu.para)<span class="comment">#上面的语句调用过myfunc()方法后可以输出0</span></span><br></pre></td></tr></table></figure>
 <p>修改某个类对象的实例变量之后，不会影响其他的类对象，也不会影响与之重名的类变量。</p></li>
 <li><p>类体中、所有函数内部以 <code>para_name=value</code>
 的方式定义的变量称为<strong>局部变量</strong>。和C/C++一样，局部变量只能在函数内部使用。</p></li>
@@ -364,7 +477,7 @@ Programming，简称OOP），指一种<strong>封装代码</strong>的方法。�
 <p><strong><em>两种调用方法</em></strong>，类名调用实例方法和类对象调用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方法一</span></span><br><span class="line">student.myfunc(stu1)<span class="comment">#需要手动传值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方法二</span></span><br><span class="line">stu1.myfunc()</span><br></pre></td></tr></table></figure>
 <p>注意：用类名调用实例方法使Python并不会自动给self参数传值，需要手动传值（除非没有self参数），且传值的内容没有限制，比如下面传入了字符串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.myfunc(<span class="string">&quot;zhangsan&quot;</span>)<span class="comment">#传入张三</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.myfunc(<span class="string">"zhangsan"</span>)<span class="comment">#传入张三</span></span><br></pre></td></tr></table></figure></li>
 <li><p><strong>类方法</strong>：前面用 <code>@classmethod</code>
 修饰，必须包含 <code>cls</code> 参数（当然也可以不命名为
 <code>cls</code>），用类名直接调用即可。</p></li>
@@ -372,16 +485,16 @@ Programming，简称OOP），指一种<strong>封装代码</strong>的方法。�
 修饰，类名与类对象都可调用。</p></li>
 </ul>
 <h4 id="动态增加实例方法">动态增加实例方法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>():<span class="comment">#定义一个函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method!&quot;</span>)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1()<span class="comment">#调用后成功输出Add new method!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>():<span class="comment">#定义一个函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Add new method!"</span>)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1()<span class="comment">#调用后成功输出Add new method!</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>对于动态增加的方法，Python不会自动将方法调用者绑定到它们的第一个参数，因此程序必须手动为第一个参数传入参数值。</p>
 </blockquote>
 <p>如果我们定义的新方法有参数 <code>self</code> ，比如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1(p1,<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里要把p1作为参数手动传给self</span></span><br><span class="line"><span class="comment">#或者用lambda匿名函数</span></span><br><span class="line">p1.method2=<span class="keyword">lambda</span> self:<span class="built_in">print</span>(<span class="string">&quot;Add another method!&quot;</span>)</span><br><span class="line">p1.method2(p1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Add new method and output "</span>+content)</span><br><span class="line">p1.method1=method<span class="comment">#格式:对象名.新方法名=前面定义的函数名</span></span><br><span class="line">p1.method1(p1,<span class="string">"abcdefg"</span>)<span class="comment">#这里要把p1作为参数手动传给self</span></span><br><span class="line"><span class="comment">#或者用lambda匿名函数</span></span><br><span class="line">p1.method2=<span class="keyword">lambda</span> self:<span class="built_in">print</span>(<span class="string">"Add another method!"</span>)</span><br><span class="line">p1.method2(p1)</span><br></pre></td></tr></table></figure>
 <p>借助 <code>types</code> 模块下的
 <code>MethodType</code>，我们可以直接将 <code>self</code>
 参数与对象绑定，再使用方法时便无需给手动给 <code>self</code> 传参：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Add new method and output &quot;</span>+content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">p1.method1=MethodType(method,p1)</span><br><span class="line"></span><br><span class="line">p1.method1(<span class="string">&quot;abcdefg&quot;</span>)<span class="comment">#这里无需写参数p1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self,content</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Add new method and output "</span>+content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">p1.method1=MethodType(method,p1)</span><br><span class="line"></span><br><span class="line">p1.method1(<span class="string">"abcdefg"</span>)<span class="comment">#这里无需写参数p1</span></span><br></pre></td></tr></table></figure>
 <h2 id="继承">继承</h2>
 <p>继承机制经常用于创建和现有类功能类似的新类。通过继承机制，可以轻松实现类的重复使用，避免了代码的复制粘贴。</p>
 <h3 id="父类">父类</h3>
@@ -410,29 +523,28 @@ Programming，简称OOP），指一种<strong>封装代码</strong>的方法。�
 <p>迭代器是一种可迭代的对象。</p>
 <p>字符串、列表、元组、字典和集合都是<strong>可迭代的对象</strong>，我们可以从中获取<strong>迭代器</strong>。</p>
 <p><code>iter()</code> 方法返回一个迭代器：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">&quot;1234567&quot;</span></span><br><span class="line">it=<span class="built_in">iter</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(it)<span class="comment">#输出迭代器对象的地址:</span></span><br><span class="line"><span class="comment">#&lt;str_iterator object at 0x0000028B1455BFA0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(it))<span class="comment">#输出it的数据类型:</span></span><br><span class="line"><span class="comment">#&lt;class &#x27;str_iterator&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">"1234567"</span></span><br><span class="line">it=<span class="built_in">iter</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(it)<span class="comment">#输出迭代器对象的地址:</span></span><br><span class="line"><span class="comment">#&lt;str_iterator object at 0x0000028B1455BFA0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(it))<span class="comment">#输出it的数据类型:</span></span><br><span class="line"><span class="comment">#&lt;class 'str_iterator'&gt;</span></span><br></pre></td></tr></table></figure>
 <p><code>next()</code>
 方法返回容器内的下一个元素，两个参数，第一个参数为迭代器，第二个参数可以不设置，其作用是在没有此参数且没有下一个元素的时候抛出
 <code>StopIteration</code> 异常;
 设置第二个参数时会返回该参数（称为默认值default）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#接上</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    x=<span class="built_in">next</span>(it,<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="string">&#x27;a&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment">#输出 1 2 3 4 5 6 7 a (字符之间实际为换行)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#接上</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(it))<span class="comment">#输出2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    x=<span class="built_in">next</span>(it,<span class="string">'a'</span>)</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="string">'a'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment">#输出 1 2 3 4 5 6 7 a (字符之间实际为换行)</span></span><br></pre></td></tr></table></figure>
 <h4 id="创建迭代器">创建迭代器</h4>
 <p>可迭代的对象必须要含有 <code>__iter__()</code> 方法和
 <code>__next__</code> 方法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Numbers</span>:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        <span class="keyword">if</span> self.a&lt;<span class="number">20</span>:</span><br><span class="line">            self.a+=<span class="number">1</span></span><br><span class="line">            x=self.a</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            raise StopIteration</span><br><span class="line"></span><br><span class="line">num=<span class="built_in">Numbers</span>()</span><br><span class="line">it=<span class="built_in">iter</span>(num)</span><br><span class="line"><span class="keyword">for</span> i in <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">next</span>(it,<span class="string">&quot;a&quot;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Numbers</span>:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        <span class="keyword">if</span> self.a&lt;<span class="number">20</span>:</span><br><span class="line">            self.a+=<span class="number">1</span></span><br><span class="line">            x=self.a</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            raise StopIteration</span><br><span class="line"></span><br><span class="line">num=<span class="built_in">Numbers</span>()</span><br><span class="line">it=<span class="built_in">iter</span>(num)</span><br><span class="line"><span class="keyword">for</span> i in <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">next</span>(it,<span class="string">"a"</span>))</span><br></pre></td></tr></table></figure>
 <h2 id="正则表达式">正则表达式</h2>
 <h2 id="一些报错">一些报错</h2>
 <p>不想再单独写一篇文章记录了，随手记下来吧。</p>
 <p>1：频繁报错下面内容，常常在复制粘贴别处代码后出现：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Inconsistent use of tabs and spaces in indentationPylance</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png" /></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png"></p>
 <p>混用了Tab键和Space键的缩进（表面看上去毫无问题啊，就算删掉全部换成Tab也还是会报错……不知道具体原因是什么）</p>
 <p>两种解决方法：</p>
 <p>1）前面缩进正常的部分的前面的空格复制粘贴到报错的部分。</p>
 <p>2）全选Shift+Tab，再把需要Tab的地方进行缩进。（有点麻烦</p>
 <p>2:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;int&#x27; object is not callable</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'int' object is not callable</span><br></pre></td></tr></table></figure>
 <p>上面的报错内容一般是函数名和变量名重复了。需要注意的是，若函数名为
 <code>f</code> 而变量名为 <code>F</code>
 (即相同字母的大小写)，也有可能报上述错误。</p>
@@ -487,13 +599,13 @@ src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/1662885014516.png
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">297k</span>
+    <span title="Word count total">310k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">4:30</span>
+    <span title="Reading time total">4:42</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

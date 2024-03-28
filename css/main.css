@@ -475,7 +475,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: Cascadia Mono, consolas, Menlo, monospace, 'Noto Serif SC';
+  font-family: Fira Code, consolas, Menlo, monospace, 'Noto Serif SC';
 }
 code {
   border-radius: 3px;
@@ -2622,7 +2622,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #87063e;
+  background: #03de93;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
