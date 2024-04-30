@@ -380,9 +380,10 @@ mjx-container[display="true"] + br {
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="第一轮评价"><a href="#第一轮评价" class="headerlink" title="第一轮评价"></a>第一轮评价</h1><p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280842699.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280843070.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280843201.png" alt=""></p>
+    <div class="post-body" itemprop="articleBody"><h1 id="第一轮评价">第一轮评价</h1>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280842699.png"></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280843070.png"></p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202308280843201.png"></p>
 <!-- 每个任务是一个五元组 $v=(s,t,p,q,d)$, 表示每个任务的起止时间和起止地点以及流向 $d$, 其中 $s,t$ 的单位为秒, $p,q\in \{1,2,3\}$, $d\in\{1,2\}$, $d=1$ 表示正向($p_s<p_e$), $d=2$ 表示反向 $(p_s>p_e)$.
 
 设任务数为 $n$, 那么构造一个有 $|V|=n$ 个结点的有向无环图 $G=(V,E)$, $(v_i,v_j)\in E$ 当且仅当:
@@ -432,7 +433,7 @@ if $u$ 没有被访问过且 $u,v$ 的时间差小于 $1200$ 秒:
 
 dfs($u,t,s,\mathtt{ans}$)
 
-
+ 
 
 ## 问题2
 
@@ -453,6 +454,7 @@ dfs($u,t,s,\mathtt{ans}$)
 初始化每个区间 $k$ 的儿子为 $\mathrm{son}(k)=k$, 若 $l_i-n=r_j$ 则令 $\mathrm{son}(i)=j$;
 
 输出路径时, 维护入度的数组, 入度为零的点一定是起点, 找到路径后将路径删去, 修改度数, 直到所有的点都被输出. -->
+
     </div>
 
     
@@ -503,13 +505,13 @@ dfs($u,t,s,\mathtt{ans}$)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">331k</span>
+    <span title="Word count total">384k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">5:01</span>
+    <span title="Reading time total">5:49</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
