@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":200},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="编译型语言和解释型语言  有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。">
+    <meta name="description" content="编译型语言和解释型语言 有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。  编译器和解释">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python入门(1):基础用法">
 <meta property="og:url" content="http://example.com/2022/08/25/python/Python1/index.html">
 <meta property="og:site_name" content="XBD">
-<meta property="og:description" content="编译型语言和解释型语言  有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。">
+<meta property="og:description" content="编译型语言和解释型语言 有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做编译器。 有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为解释器。  编译器和解释">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-25T02:05:21.000Z">
 <meta property="article:modified_time" content="2023-09-04T00:49:50.441Z">
@@ -367,7 +367,7 @@ mjx-container[display="true"] + br {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>6.6k</span>
+      <span>6.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -384,45 +384,37 @@ mjx-container[display="true"] + br {
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="编译型语言和解释型语言">编译型语言和解释型语言</h2>
-<ul>
-<li>有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如
-C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做<strong>编译器</strong>。</li>
+    <div class="post-body" itemprop="articleBody"><h2 id="编译型语言和解释型语言"><a href="#编译型语言和解释型语言" class="headerlink" title="编译型语言和解释型语言"></a>编译型语言和解释型语言</h2><ul>
+<li>有的编程语言要求必须将所有源代码一次性转换成二进制指令，也就是可执行程序，比如 C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器叫做<strong>编译器</strong>。</li>
 <li>有的编程语言可以一边执行一边转换，需要那些源代码就转换哪些源代码，不会生成可执行程序，比如Python、JavaScript、PHP和Shell等，这类编程语言称为解释型语言，使用的转换器称为<strong>解释器</strong>。</li>
 </ul>
 <p>编译器和解释器简单来说都是翻译工具。</p>
 <span id="more"></span>
 <p><strong>编译型语言特点</strong>：</p>
 <ul>
-<li><p>拥有可执行程序后可以随时运行，不需要重新编译，即“一次编译，无限次运行”，因此编译型语言可以脱离开发环境运行（什么是开发环境？）；</p></li>
+<li><p>拥有可执行程序后可以随时运行，不需要重新编译，即“一次编译，无限次运行”，因此编译型语言可以脱离开发环境运行（什么是开发环境？）；</p>
+</li>
 <li><p>编译型语言通常是不能跨平台的，也就是不能再不同的操作系统之间随意切换。不能跨平台表现在两方面：</p>
 <p>1：<strong>可执行程序不能跨平台</strong>。不同的操作系统对可执行程序的内部结构有着截然不同的要求，彼此之间不能兼容；</p>
 <blockquote>
 <p>相同的也可能不行，比如x64程序不能在x86平台上运行。</p>
 </blockquote>
-<p>2：<strong>源代码不能跨平台</strong>。不同平台支持的函数、类型、变量等可能都不同，基于某个平台编写的源代码一般不能拿到另一平台上直接运行。比如在C中，Windows中的
-<code>Sleep()</code> 函数在 Linux下是 <code>sleep()</code>
-，且前者单位为毫秒，后者单位为秒。Windows 64位和Linux中C的
-<code>long</code> 类型占用的字节分别为 4 和 8 。</p>
+<p>2：<strong>源代码不能跨平台</strong>。不同平台支持的函数、类型、变量等可能都不同，基于某个平台编写的源代码一般不能拿到另一平台上直接运行。比如在C中，Windows中的 <code>Sleep()</code> 函数在 Linux下是 <code>sleep()</code> ，且前者单位为毫秒，后者单位为秒。Windows 64位和Linux中C的 <code>long</code> 类型占用的字节分别为 4 和 8 。</p>
 <blockquote>
 <p>所以编译型语言的主要缺点就是可移植性差。</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ul>
-<p><strong>解释型语言特点：</strong></p>
+<p><strong>解释型语言特点：</strong> </p>
 <ul>
 <li>效率较编译型语言低。因此底层功能常用C/C++，而应用层面才会用解释型语言。</li>
 <li>运行解释性语言时，我们始终都需要源代码和解释器，因此它无法脱离开发环境。</li>
 <li>“一次编写，到处运行”。在不同的平台下，解释器会将相同的源代码转化为不同的机器码，解释器帮助我们屏蔽了不同平台之间的差异性。</li>
 </ul>
-<h2 id="模块和包">模块和包</h2>
-<p>可以类比为C/C++中的头文件，但与头文件不同的是，任何python程序都可以作为其他python程序的模块。用
-<code>import</code> 关键字可以引入一个模块。比如：</p>
+<h2 id="模块和包"><a href="#模块和包" class="headerlink" title="模块和包"></a>模块和包</h2><p>可以类比为C/C++中的头文件，但与头文件不同的是，任何python程序都可以作为其他python程序的模块。用 <code>import</code> 关键字可以引入一个模块。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">say</span>()</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment">#上述文件命名为hello.py,与下面的名为say.py的文件放置在同一目录下</span></span><br><span class="line"><span class="keyword">import</span> hello</span><br><span class="line">hello.say()</span><br><span class="line"><span class="comment">#会输出hello</span></span><br></pre></td></tr></table></figure>
-<p>这里面 <code>hello.py</code>
-实际上就是一个自定义的模块，调用模块中的函数时，语法为
-<code>模块名.函数名</code> 。</p>
-<h2 id="基础语法">基础语法</h2>
-<p>1：无需加分号。</p>
+<p>这里面 <code>hello.py</code> 实际上就是一个自定义的模块，调用模块中的函数时，语法为 <code>模块名.函数名</code> 。 </p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p>1：无需加分号。</p>
 <p>2：注意缩进：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="number">5</span>&gt;<span class="number">2</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment">#注意下面的语句会报错</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">5</span>&gt;<span class="number">2</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure>
 <p>3：没有声明变量的命令。</p>
@@ -430,241 +422,190 @@ C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器�
 <p>5：变量命名规则同 MATLAB。</p>
 <p>6：一行中多个变量赋值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a,b,c=<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
-<p>7：两个字符串拼接用
-<code>+</code>（文本与变量、变量与变量之间都可），数字之间用
-<code>+</code> 是正常运算：</p>
+<p>7：两个字符串拼接用 <code>+</code>（文本与变量、变量与变量之间都可），数字之间用 <code>+</code> 是正常运算：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=world</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hello "</span>+a)<span class="comment">#会输出hello world</span></span><br><span class="line"><span class="built_in">print</span>(a+a)<span class="comment">#会输出worldworld</span></span><br></pre></td></tr></table></figure>
 <p>8：函数，用关键字 <code>def</code> 即可，注意缩进：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myfunc</span>()</span><br><span class="line">	......</span><br></pre></td></tr></table></figure>
-<p>9：全局变量与局部变量同C/C++。在函数内部创建全局变量用
-<code>global</code> 关键字，在函数内部修改全局变量需要加上
-<code>global</code> 关键字：</p>
+<p>9：全局变量与局部变量同C/C++。在函数内部创建全局变量用 <code>global</code> 关键字，在函数内部修改全局变量需要加上 <code>global</code> 关键字：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="string">'a'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">myfunc</span>()</span><br><span class="line">	<span class="keyword">global</span> x</span><br><span class="line"> 	x=<span class="string">'b'</span></span><br><span class="line"> 	<span class="built_in">print</span>(x)</span><br><span class="line">myfunc()<span class="comment">#输出b</span></span><br><span class="line"><span class="built_in">print</span>(x)<span class="comment">#输出b</span></span><br></pre></td></tr></table></figure>
 <p>10: 输入：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">input</span>(<span class="string">"一些描述"</span>)</span><br></pre></td></tr></table></figure>
-<p><code>input()</code>
-函数默认返回字符串，如果使用输入的数字，需要用对应的类型进行转换：</p>
+<p><code>input()</code> 函数默认返回字符串，如果使用输入的数字，需要用对应的类型进行转换：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">x=<span class="built_in">float</span>(<span class="built_in">input</span>())</span><br></pre></td></tr></table></figure>
-<h2 id="数据类型">数据类型</h2>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><div class="table-container">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">类型</th>
-<th style="text-align: center;">类型</th>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">类型</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">文本类型</td>
-<td style="text-align: center;"><code>str</code></td>
+<tr>
+<td style="text-align:center">文本类型</td>
+<td style="text-align:center"><code>str</code></td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">数值类型</td>
-<td style="text-align: center;"><code>int</code>, <code>float</code>,
-<code>complex</code></td>
+<tr>
+<td style="text-align:center">数值类型</td>
+<td style="text-align:center"><code>int</code>, <code>float</code>, <code>complex</code></td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">序列类型</td>
-<td style="text-align: center;"><code>list</code>, <code>tuple</code>,
-<code>range</code></td>
+<tr>
+<td style="text-align:center">序列类型</td>
+<td style="text-align:center"><code>list</code>, <code>tuple</code>, <code>range</code></td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">映射类型</td>
-<td style="text-align: center;"><code>dict</code></td>
+<tr>
+<td style="text-align:center">映射类型</td>
+<td style="text-align:center"><code>dict</code></td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">集合类型</td>
-<td style="text-align: center;"><code>set</code>,
-<code>frozenset</code></td>
+<tr>
+<td style="text-align:center">集合类型</td>
+<td style="text-align:center"><code>set</code>, <code>frozenset</code></td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">布尔类型</td>
-<td style="text-align: center;"><code>bool</code></td>
+<tr>
+<td style="text-align:center">布尔类型</td>
+<td style="text-align:center"><code>bool</code></td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">二进制类型</td>
-<td style="text-align: center;"><code>bytes</code>,
-<code>bytearray</code>, <code>memoryview</code></td>
+<tr>
+<td style="text-align:center">二进制类型</td>
+<td style="text-align:center"><code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>1：用 <code>type()</code> 获得数据类型。</p>
 <p>2：指定数据类型时可以用 <code>x=name(content)</code>，如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">str</span>(”hello world“)</span><br></pre></td></tr></table></figure>
 <p>3：复数 <code>complex</code> 用 <code>j</code> 作为虚部。</p>
-<p>4：用 <code>int(data)</code>, <code>flaot(data)</code>,
-<code>complex(data)</code>
-进行数据类型转换，注意无法将复数转化为其他类型的数据。</p>
-<p>5：<code>bool()</code> 也可以用来评判数据为 <code>True</code> 还是
-<code>False</code>，除空字符 <code>"" ''</code> 、<code>0</code>
-和空列表 <code>(),[],{}</code> 外，<code>bool()</code> 总是返回
-<code>True</code> .</p>
-<h3 id="字符串">字符串</h3>
-<p>1：用三个引号可以将多行字符串赋值给变量，单引号与双引号均可：</p>
+<p>4：用 <code>int(data)</code>, <code>flaot(data)</code>, <code>complex(data)</code> 进行数据类型转换，注意无法将复数转化为其他类型的数据。</p>
+<p>5：<code>bool()</code> 也可以用来评判数据为 <code>True</code> 还是 <code>False</code>，除空字符 <code>"" ''</code> 、<code>0</code> 和空列表 <code>(),[],{}</code> 外，<code>bool()</code> 总是返回 <code>True</code> . </p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>1：用三个引号可以将多行字符串赋值给变量，单引号与双引号均可：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">"""aa</span></span><br><span class="line"><span class="string">bb</span></span><br><span class="line"><span class="string">cc"""</span></span><br><span class="line"><span class="built_in">print</span>(a)<span class="comment">#换行符会被保留</span></span><br></pre></td></tr></table></figure>
-<p>2：Python中的字符串是表示unicode字符的字节数组，但是python不像 C/C++
-那样有字符类型，单个字符就是长度为1的字符串。</p>
+<p>2：Python中的字符串是表示unicode字符的字节数组，但是python不像 C/C++ 那样有字符类型，单个字符就是长度为1的字符串。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">"abcdefg"</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>])<span class="comment">#输出b</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>:<span class="number">5</span>])<span class="comment">#输出cdef</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">5</span>:-<span class="number">2</span>])<span class="comment">#输出cde,输出的字符的范围为左闭右开区间</span></span><br><span class="line"><span class="built_in">print</span>(a[-<span class="number">3</span>])<span class="comment">#输出倒数第三个字母</span></span><br></pre></td></tr></table></figure>
 <p>3：字符串的内置方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">" abcdefg "</span></span><br><span class="line">a.strip()<span class="comment">#删除开头和结尾的空白字符</span></span><br><span class="line">a.lower<span class="comment">#返回小写的字符串</span></span><br><span class="line">a.upper<span class="comment">#返回大写的字符串</span></span><br><span class="line">a.replace(<span class="string">"要替换的部分"</span>,<span class="string">"用来替换的部分"</span>)<span class="comment">#replace()方法是用另一字符串来替换字符串，对长度无要求</span></span><br><span class="line">a.split(<span class="string">"分隔符"</span>)<span class="comment">#根据分隔符输出每一部分，分隔符是自己定义的</span></span><br></pre></td></tr></table></figure>
-<p>不能直接用 <code>+</code> 组合字符串和数字，但是可以用
-<code>format()</code> 方法。<code>format()</code>
-方法接受传递的参数，格式化它们并且将它们放在占位符 <code>{}</code>
-所在的字符串中：</p>
+<p>不能直接用 <code>+</code> 组合字符串和数字，但是可以用 <code>format()</code> 方法。<code>format()</code> 方法接受传递的参数，格式化它们并且将它们放在占位符 <code>{}</code> 所在的字符串中：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">"I am {} years old"</span></span><br><span class="line">age=<span class="number">19</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>.<span class="built_in">format</span>(age))<span class="comment">#输出I am 19 years old</span></span><br></pre></td></tr></table></figure>
 <p>4：一些关键词</p>
-<p>可以用 <code>in</code> 或者是 <code>not in</code>
-来判断字符串种是否存在特定短语或字符。</p>
+<p>可以用 <code>in</code> 或者是 <code>not in</code> 来判断字符串种是否存在特定短语或字符。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">"China is a great country"</span></span><br><span class="line">x=<span class="string">"ina"</span> <span class="keyword">in</span> <span class="built_in">str</span></span><br><span class="line"><span class="built_in">print</span>(x)<span class="comment">#会输出布尔类型的值</span></span><br></pre></td></tr></table></figure>
 <p>5：一些函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">len</span>(<span class="built_in">str</span>)<span class="comment">#获得str的长度</span></span><br></pre></td></tr></table></figure>
-<h2 id="运算符">运算符</h2>
-<p>很多运算符与C/C++几乎都一样，下面是一些特别的例子：</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>很多运算符与C/C++几乎都一样，下面是一些特别的例子：</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">运算符</th>
-<th style="text-align: center;">名称</th>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">名称</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>**</code></td>
-<td style="text-align: center;">幂</td>
+<tr>
+<td style="text-align:center"><code>**</code></td>
+<td style="text-align:center">幂</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><code>//</code></td>
-<td style="text-align: center;">整除</td>
+<tr>
+<td style="text-align:center"><code>//</code></td>
+<td style="text-align:center">整除</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><code>is, is not</code></td>
-<td style="text-align: center;">身份运算符，判断两个变量是否为同一个对象</td>
+<tr>
+<td style="text-align:center"><code>is, is not</code></td>
+<td style="text-align:center">身份运算符，判断两个变量是否为同一个对象</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><code>and, or, not</code></td>
-<td style="text-align: center;">逻辑运算符</td>
+<tr>
+<td style="text-align:center"><code>and, or, not</code></td>
+<td style="text-align:center">逻辑运算符</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;"><code>in, not in</code></td>
-<td style="text-align: center;">成员运算符，用于测试序列是否在对象中出现</td>
+<tr>
+<td style="text-align:center"><code>in, not in</code></td>
+<td style="text-align:center">成员运算符，用于测试序列是否在对象中出现</td>
 </tr>
 </tbody>
 </table>
-<h2 id="一些数据结构">一些数据结构</h2>
-<h3 id="列表">列表</h3>
-<p>列表很像STL中的
-<code>vector</code>，是有序且可以更改的集合。可以代替C/C++中的数组。</p>
+</div>
+<h2 id="一些数据结构"><a href="#一些数据结构" class="headerlink" title="一些数据结构"></a>一些数据结构</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表很像STL中的 <code>vector</code>，是有序且可以更改的集合。可以代替C/C++中的数组。</p>
 <p>1：创建列表：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">list2=[<span class="string">"ab"</span>,<span class="string">"bc"</span>,<span class="string">"ac"</span>]</span><br><span class="line">list3=<span class="built_in">list</span>((<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>))<span class="comment">#注意有两对括号</span></span><br></pre></td></tr></table></figure>
-<p>输出 <code>list1</code> 和 <code>list2</code>
-会将元素连同方括号与引号都输出，同时只会输出单引号。</p>
+<p>输出 <code>list1</code> 和 <code>list2</code> 会将元素连同方括号与引号都输出，同时只会输出单引号。</p>
 <p>2：索引与字符串（数组）的索引规则相同。利用索引可以更改特定项目的值。</p>
-<p>3：可以用 <code>in</code>
-关键字。包括后面的元组、集合和字典都可以使用该关键字用来判断某个元素是否在其中。</p>
-<p>4：可以用 <code>len()</code>
-函数。包括后面的元组、集合和字典都可以用该函数求出它的长度/元素个数。</p>
+<p>3：可以用 <code>in</code> 关键字。包括后面的元组、集合和字典都可以使用该关键字用来判断某个元素是否在其中。</p>
+<p>4：可以用 <code>len()</code> 函数。包括后面的元组、集合和字典都可以用该函数求出它的长度/元素个数。</p>
 <p>5：增：</p>
 <ul>
-<li>用 <code>insert(loc, element)</code> 将 <code>element</code>
-插入作为第 <code>loc+1</code> 个位置；</li>
-<li><code>append(element)</code> 方法在列表的末尾增添元素
-<code>element</code>；同样也能添加另一个列表</li>
+<li>用 <code>insert(loc, element)</code> 将 <code>element</code> 插入作为第 <code>loc+1</code> 个位置；</li>
+<li><code>append(element)</code> 方法在列表的末尾增添元素 <code>element</code>；同样也能添加另一个列表</li>
 </ul>
 <p>6：删：</p>
 <ul>
-<li><code>remove(element)</code> 方法删除指定的项目
-<code>element</code>；</li>
-<li><code>pop(num)</code>
-方法删除指定的索引，若未指定索引，则删除最后一项；</li>
+<li><code>remove(element)</code> 方法删除指定的项目 <code>element</code>；</li>
+<li><code>pop(num)</code> 方法删除指定的索引，若未指定索引，则删除最后一项； </li>
 <li><code>del list1[num]</code> 删除指定的索引；</li>
-<li><code>del list1</code>
-删除整个列表（删除后使用该变量会报错：<code>NameError: name 'list1' is not defined.</code>）；</li>
+<li><code>del list1</code> 删除整个列表（删除后使用该变量会报错：<code>NameError: name 'list1' is not defined.</code>）；</li>
 <li><code>clear()</code> 方法清空列表得到空列表。</li>
 </ul>
 <p>7：复制列表</p>
 <ul>
 <li>直接赋值：<code>list2=list1</code></li>
 <li>用 <code>copy()</code> 方法： <code>list2=list1.copy()</code></li>
-<li>用 <code>list()</code> 构造函数：
-<code>list2=list(list1)</code></li>
+<li>用 <code>list()</code> 构造函数： <code>list2=list(list1)</code></li>
 </ul>
 <p>8：合并列表</p>
 <ul>
 <li>用运算符 <code>+</code></li>
-<li>用 <code>extend()</code> 方法：
-<code>list2.extend(list1)</code></li>
+<li>用 <code>extend()</code> 方法： <code>list2.extend(list1)</code> </li>
 </ul>
-<h3 id="元组">元组</h3>
-<p>元组是有序且不可更改的集合，因此也就不能增删补以及拷贝赋值。</p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>元组是有序且不可更改的集合，因此也就不能增删补以及拷贝赋值。</p>
 <p>1：创建</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple1=(<span class="string">"apple"</span>,)<span class="comment">#必须要加逗号，否则不能被识别为元组，而会被识别为字符串</span></span><br><span class="line">tuple2=(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>)</span><br><span class="line">tuple3=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <p>若</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple0=(<span class="string">"1"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple2))</span><br><span class="line"><span class="comment">#会输出&lt;class 'str'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>2：索引与字符串（数组）的索引规则相同。只能利用索引访问元的值。如果想要更改元组中的值，可以把元组转化成列表（用
-<code>list()</code> ），再用 <code>tuple()</code> 转化为元组。</p>
-<p>3：不能删除元组中的项目，但是可以用 <code>del</code>
-关键字删除元组。效果同列表。</p>
+<p>2：索引与字符串（数组）的索引规则相同。只能利用索引访问元的值。如果想要更改元组中的值，可以把元组转化成列表（用 <code>list()</code> ），再用 <code>tuple()</code> 转化为元组。</p>
+<p>3：不能删除元组中的项目，但是可以用 <code>del</code> 关键字删除元组。效果同列表。</p>
 <p>4：常用方法：</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">方法</th>
-<th style="text-align: center;">描述</th>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>count()</code></td>
-<td style="text-align: center;">返回元组中指定值出现的次数</td>
+<tr>
+<td style="text-align:center"><code>count()</code></td>
+<td style="text-align:center">返回元组中指定值出现的次数</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;"><code>index()</code></td>
-<td style="text-align: center;">在元组中搜索指定的值并返回它的下标</td>
+<tr>
+<td style="text-align:center"><code>index()</code></td>
+<td style="text-align:center">在元组中搜索指定的值并返回它的下标</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>5：合并只能用 <code>+</code>。</p>
 <p>6：和列表一样可以用 <code>tuple()</code> 构建元组。</p>
-<h3 id="集合">集合</h3>
-<p>1：集合是无序的，不能像前面三种结构那样用下标进行索引，只能遍历或用关键字
-<code>in</code>。</p>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>1：集合是无序的，不能像前面三种结构那样用下标进行索引，只能遍历或用关键字 <code>in</code>。</p>
 <p>2：集合中的元素无法更改，但是可以增加新元素。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1={<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>}<span class="comment">#也可以用set()构造集合，类似于前面的数据类型</span></span><br><span class="line"><span class="comment">#set1=set(("1","2","3"))</span></span><br><span class="line">set1.add(<span class="string">"4"</span>)<span class="comment">#在集合中添加一项</span></span><br><span class="line">set1.upsate([<span class="string">"5"</span>,<span class="string">"6"</span>,<span class="string">"7"</span>])<span class="comment">#在集合中添加多个元素，要用中括号</span></span><br></pre></td></tr></table></figure>
-<p>3：也可以删除元素。用 <code>remove()</code> 方法或者
-<code>discard()</code> 方法来删除指定元素，括号内填写要删除的元素；用
-<code>pop()</code> 方法来删除随机元素并返回删除的元素；
-<code>clear()</code>
-方法删除集合中的所有元素得到空集合；<code>del</code>
-关键字删除集合。</p>
-<p>如果要删除的项目不存在， 用 <code>remove()</code> 会报错，而
-<code>discard()</code> 不会（不会输出任何信息）。</p>
-<p>4： <code>union()</code>
-方法返回两个集合的并集，<code>update()</code>
-方法可以将一个集合中的元素插入到另一个集合中（得到的也是并集，会直接赋值给使用该方法的集合）。</p>
-<h3 id="字典">字典</h3>
-<p>1：创建。</p>
+<p>3：也可以删除元素。用 <code>remove()</code> 方法或者 <code>discard()</code> 方法来删除指定元素，括号内填写要删除的元素；用 <code>pop()</code> 方法来删除随机元素并返回删除的元素； <code>clear()</code> 方法删除集合中的所有元素得到空集合；<code>del</code> 关键字删除集合。</p>
+<p>如果要删除的项目不存在， 用 <code>remove()</code> 会报错，而 <code>discard()</code>  不会（不会输出任何信息）。</p>
+<p>4： <code>union()</code> 方法返回两个集合的并集，<code>update()</code> 方法可以将一个集合中的元素插入到另一个集合中（得到的也是并集，会直接赋值给使用该方法的集合）。</p>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>1：创建。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict1={</span><br><span class="line">key1: value1,</span><br><span class="line">key2: value2,</span><br><span class="line">key3: value3,</span><br><span class="line">...</span><br><span class="line">}<span class="comment">#key只能为字符串,注意逗号</span></span><br><span class="line">dict1=<span class="built_in">dict</span>(key1=value1,key2=value2,...)<span class="comment">#注意用等号而不是冒号</span></span><br></pre></td></tr></table></figure>
 <p>2：访问。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=dict1[key1]</span><br><span class="line">x=dict1.get(key1)</span><br><span class="line">dict1[key1]=value4<span class="comment">#将key1对应的值更为value4</span></span><br></pre></td></tr></table></figure>
-<p>3：循环遍历字典返回key，用 <code>values()</code> 方法返回value，用
-<code>items()</code> 方法遍历 key 和 value（需要两个循环变量）。</p>
+<p>3：循环遍历字典返回key，用 <code>values()</code> 方法返回value，用 <code>items()</code> 方法遍历 key 和 value（需要两个循环变量）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x,y <span class="keyword">in</span> dict1.items()</span><br><span class="line">	<span class="built_in">print</span>(x,y)</span><br></pre></td></tr></table></figure>
 <p>4：删。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict1.pop(key1)<span class="comment">#pop()方法删除指定key的item</span></span><br><span class="line">dict1.popitem()<span class="comment">#popitem()方法删除最后一项</span></span><br><span class="line"><span class="keyword">del</span> dict1[key1]<span class="comment">#del关键字也可以删除指定key的item,同时也可以删除整个字典</span></span><br><span class="line">dict1.clear()<span class="comment">#清空字典</span></span><br></pre></td></tr></table></figure>
 <p>5：复制字典。</p>
-<p><code>dict2=dict1</code> 表示 <code>dict2</code> 是
-<code>dict1</code> 的引用，更改 <code>dict1</code> 也会造成
-<code>dict2</code> 的更改 ，复制的正确方法：</p>
+<p><code>dict2=dict1</code> 表示 <code>dict2</code> 是 <code>dict1</code> 的引用，更改 <code>dict1</code> 也会造成 <code>dict2</code> 的更改 ，复制的正确方法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict2=dict1.copy()</span><br><span class="line">dict2=<span class="built_in">dict</span>(dict1)</span><br></pre></td></tr></table></figure>
-<h2 id="分支与循环">分支与循环</h2>
-<h3 id="分支">分支</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> b&gt;a: <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="comment">#   </span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="keyword">else</span>:<span class="comment">#不要忘记冒号</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&lt;=a"</span>)</span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="keyword">elif</span> b==a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b==a"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&lt;a"</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"b&gt;a"</span>) <span class="keyword">if</span> b&gt;a <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">"b&lt;=a"</span>)<span class="comment">#语句放在前面单行执行</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">	<span class="keyword">pass</span><span class="comment">#空的语句会报错,用pass来避免</span></span><br></pre></td></tr></table></figure>
-<h3 id="循环">循环</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#while循环</span></span><br><span class="line"><span class="keyword">while</span> condition:</span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#for循环:用于遍历序列,包括list,tuple,set,dict和string</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> list1:</span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#range()函数返回一个数字序列,且默认从0开始</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):<span class="comment">#x范围为0到9</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">10</span>):<span class="comment">#x范围为左闭右开区间,即x属于与3~9</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">50</span>,<span class="number">6</span>):<span class="comment">#第三个参数指定增量</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#最后加一句else可以在循环结束时执行一些语句</span></span><br><span class="line"><span class="comment">#和if一样同样可以用pass</span></span><br></pre></td></tr></table></figure>
-<p>C/C++中的 <code>break</code> 和 <code>continue</code>
-在Python中依然可以用。</p>
-<h2 id="函数">函数</h2>
-<p>1：默认参数。</p>
+<h2 id="分支与循环"><a href="#分支与循环" class="headerlink" title="分支与循环"></a>分支与循环</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> b&gt;a: <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="comment">#   </span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="keyword">else</span>:<span class="comment">#不要忘记冒号</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&lt;=a"</span>)</span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&gt;a"</span>)</span><br><span class="line"><span class="keyword">elif</span> b==a:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b==a"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"b&lt;a"</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"b&gt;a"</span>) <span class="keyword">if</span> b&gt;a <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">"b&lt;=a"</span>)<span class="comment">#语句放在前面单行执行</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">if</span> b&gt;a:</span><br><span class="line">	<span class="keyword">pass</span><span class="comment">#空的语句会报错,用pass来避免</span></span><br></pre></td></tr></table></figure>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#while循环</span></span><br><span class="line"><span class="keyword">while</span> condition:</span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#for循环:用于遍历序列,包括list,tuple,set,dict和string</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> list1:</span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#range()函数返回一个数字序列,且默认从0开始</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):<span class="comment">#x范围为0到9</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">10</span>):<span class="comment">#x范围为左闭右开区间,即x属于与3~9</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>,<span class="number">50</span>,<span class="number">6</span>):<span class="comment">#第三个参数指定增量</span></span><br><span class="line">	<span class="comment">#code</span></span><br><span class="line"><span class="comment">#最后加一句else可以在循环结束时执行一些语句</span></span><br><span class="line"><span class="comment">#和if一样同样可以用pass</span></span><br></pre></td></tr></table></figure>
+<p>C/C++中的 <code>break</code> 和 <code>continue</code> 在Python中依然可以用。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>1：默认参数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">country=<span class="string">"China"</span></span>):<span class="comment">#默认参数用=</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"I am from "</span>+country)</span><br><span class="line"></span><br><span class="line">myfunc()<span class="comment">#调用不带参数的函数时使用默认参数</span></span><br><span class="line">myfunc(<span class="string">"England"</span>)<span class="comment">#调用的函数有参数时使用该参数</span></span><br></pre></td></tr></table></figure>
 <p>2：参数传入函数后数据类型不变。</p>
 <p>3：关键字参数</p>
@@ -673,8 +614,7 @@ C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器�
 <p>4：任意参数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myfunc</span>(<span class="params">*kids</span>)<span class="comment">#加上*表明参数数目未知</span></span><br><span class="line">	<span class="built_in">print</span>(kids[<span class="number">2</span>])<span class="comment">#此时可以把kids当作tuple</span></span><br><span class="line">myfunc(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)<span class="comment">#调用后输出3</span></span><br></pre></td></tr></table></figure>
 <p>函数将接受一个类型为tuple的参数，并可以用它的索引方式访问元素。</p>
-<h3 id="lambda匿名函数">lambda匿名函数</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名=<span class="keyword">lambda</span> 参数:表达式</span><br></pre></td></tr></table></figure>
+<h3 id="lambda匿名函数"><a href="#lambda匿名函数" class="headerlink" title="lambda匿名函数"></a>lambda匿名函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名=<span class="keyword">lambda</span> 参数:表达式</span><br></pre></td></tr></table></figure>
 <p>比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f=<span class="keyword">lambda</span> x,y:x+y<span class="comment">#多个参数时加逗号</span></span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">2</span>,<span class="number">3</span>))<span class="comment">#输出5</span></span><br></pre></td></tr></table></figure>
 <p>或者用在 <code>return</code> 语句中：</p>
@@ -683,7 +623,6 @@ C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器�
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myfun4</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> a:a*n</span><br><span class="line"><span class="built_in">print</span>(myfun4(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <p>参数数量不够，会输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;function myfun4.&lt;locals&gt;.&lt;lambda&gt; at 0x000001E7B43AEEF0&gt;</span><br></pre></td></tr></table></figure>
-
     </div>
 
     
@@ -734,13 +673,13 @@ C、C++、Golang、汇编语言等都属于编译型语言，使用的转换器�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">384k</span>
+    <span title="Word count total">331k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">5:49</span>
+    <span title="Reading time total">5:01</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>

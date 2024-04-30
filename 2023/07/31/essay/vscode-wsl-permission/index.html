@@ -255,7 +255,7 @@ mjx-container[display="true"] + br {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vscode%E8%BF%9E%E6%8E%A5-wsl2-%E6%97%A0%E6%9D%83%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">VSCode连接 WSL2 无权访问文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wsl2%E5%AE%89%E8%A3%85docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">WSL2安装Docker遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference-1"><span class="nav-number">2.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">git 常见命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generate-new-token-for-picgo"><span class="nav-number">4.</span> <span class="nav-text">Generate new token for PicGo</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode%E8%BF%9E%E6%8E%A5-WSL2-%E6%97%A0%E6%9D%83%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">VSCode连接 WSL2 无权访问文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WSL2%E5%AE%89%E8%A3%85Docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">WSL2安装Docker遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference-1"><span class="nav-number">2.1.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">git 常见命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Generate-new-token-for-PicGo"><span class="nav-number">4.</span> <span class="nav-text">Generate new token for PicGo</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -386,33 +386,24 @@ mjx-container[display="true"] + br {
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="vscode连接-wsl2-无权访问文件">VSCode连接 WSL2 无权访问文件</h1>
-<p>执行下面的命令即可:</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="VSCode连接-WSL2-无权访问文件"><a href="#VSCode连接-WSL2-无权访问文件" class="headerlink" title="VSCode连接 WSL2 无权访问文件"></a>VSCode连接 WSL2 无权访问文件</h1><p>执行下面的命令即可:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username path</span><br></pre></td></tr></table></figure>
 <p>比如:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R xubaoduo /home/xubaoduo/project</span><br></pre></td></tr></table></figure>
-<h2 id="reference"><strong>Reference</strong></h2>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied">https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied</a></p>
-<h1 id="wsl2安装docker遇到的问题">WSL2安装Docker遇到的问题</h1>
-<p>在官网下载运行安装打开后出现下面的情况:</p>
-<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a><strong>Reference</strong></h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied">https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied</a></p>
+<h1 id="WSL2安装Docker遇到的问题"><a href="#WSL2安装Docker遇到的问题" class="headerlink" title="WSL2安装Docker遇到的问题"></a>WSL2安装Docker遇到的问题</h1><p>在官网下载运行安装打开后出现下面的情况:</p>
+<p><img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202307311712344.png" alt=""></p>
 <p>以管理员权限运行cmd后, 输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path - C:\Windows\system32</span><br></pre></td></tr></table></figure>
 <p>再打开就解决了.</p>
-<p>在WSL2的CLI中输入 <code>docker --veriosn</code> 后提示 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The command 'docker' could not be found in this WSL 2 distro.</span><br><span class="line">We recommend to activate the WSL integration in Docker Desktop settings.</span><br><span class="line"></span><br><span class="line">For details about using Docker Desktop with WSL 2, visit:</span><br><span class="line"></span><br><span class="line">https://docs.docker.com/go/wsl2/</span><br></pre></td></tr></table></figure>
-只需要运行下面两句安装即可:</p>
+<p>在WSL2的CLI中输入 <code>docker --veriosn</code> 后提示<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The command 'docker' could not be found in this WSL 2 distro.</span><br><span class="line">We recommend to activate the WSL integration in Docker Desktop settings.</span><br><span class="line"></span><br><span class="line">For details about using Docker Desktop with WSL 2, visit:</span><br><span class="line"></span><br><span class="line">https://docs.docker.com/go/wsl2/</span><br></pre></td></tr></table></figure><br>只需要运行下面两句安装即可:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install docker.io</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>微软商店的 Windows Terminal 确实挺好看的.</p>
 </blockquote>
-<h2 id="reference-1">Reference</h2>
-<p>ChatGPT以及StackOverflow.</p>
-<h1 id="git-常见命令">git 常见命令</h1>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/note/56524">这里。</a></p>
-<h1 id="generate-new-token-for-picgo">Generate new token for PicGo</h1>
-<p>主页的 <code>Settings</code> 中, 选择最下方的
-<code>Developer settings</code>, 在 <code>Personal access token</code>
-中就能找到.</p>
+<h2 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h2><p>ChatGPT以及StackOverflow.</p>
+<h1 id="git-常见命令"><a href="#git-常见命令" class="headerlink" title="git 常见命令"></a>git 常见命令</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/note/56524">这里。</a></p>
+<h1 id="Generate-new-token-for-PicGo"><a href="#Generate-new-token-for-PicGo" class="headerlink" title="Generate new token for PicGo"></a>Generate new token for PicGo</h1><p>主页的  <code>Settings</code> 中, 选择最下方的 <code>Developer settings</code>, 在 <code>Personal access token</code> 中就能找到.</p>
 <p>看来一个月就过期有点频繁.</p>
 
     </div>
@@ -465,13 +456,13 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">384k</span>
+    <span title="Word count total">331k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">5:49</span>
+    <span title="Reading time total">5:01</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
