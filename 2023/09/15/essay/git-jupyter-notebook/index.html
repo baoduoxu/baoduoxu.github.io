@@ -293,30 +293,19 @@ mjx-container[display="true"] + br {
                 
             
         
-        <link rel="stylesheet" type="text/css" href="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><p>在 VSCode 中用 <code>git init</code> 初始化, 在修改文件后,
-可以直接打开右上角的 <code>Open Changes</code>
-查看修改过后的版本与上一版本的对比, 此时 <code>.ipynb</code>
-文件仍然是富文本格式而不是 JSON 格式, 效果如下:</p>
-<figure>
-<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151123413.png" title="红色的圈为 Open Changes 选项" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151123413.png" alt="红色的圈为 Open Changes 选项"></a>
-<figcaption aria-hidden="true">红色的圈为 Open Changes 选项</figcaption>
-</figure>
-<p>但是如果要对比历史某一版本与当前版本, 比如用 Git Graph
-插件的查看情况, 只能显示 JSON 格式:</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151126958.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151126958.png"></a></p>
+        <link rel="stylesheet" type="text/css" href="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><p>在 VSCode 中用 <code>git init</code> 初始化, 在修改文件后, 可以直接打开右上角的 <code>Open Changes</code> 查看修改过后的版本与上一版本的对比, 此时 <code>.ipynb</code> 文件仍然是富文本格式而不是 JSON 格式, 效果如下:</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151123413.png" title="红色的圈为 Open Changes 选项" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151123413.png" alt="红色的圈为 Open Changes 选项"></a></p>
+<p>但是如果要对比历史某一版本与当前版本, 比如用 Git Graph 插件的查看情况, 只能显示 JSON 格式:</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151126958.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151126958.png" alt=""></a></p>
 <p>看起来很难受.</p>
-<p>解决方法是使用 <a target="_blank" rel="noopener" href="https://nbdime.readthedocs.io/en/latest/installing.html">nbdime</a>.
-根据官方教程安装:</p>
+<p>解决方法是使用 <a target="_blank" rel="noopener" href="https://nbdime.readthedocs.io/en/latest/installing.html">nbdime</a>. 根据官方教程安装:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install nbdime</span><br></pre></td></tr></table></figure>
-<p>根据 <a target="_blank" rel="noopener" href="https://nbdime.readthedocs.io/en/latest/vcs.html#git-integration">Version
-Control 部分的教程</a>, 在本地仓库中初始化:</p>
+<p>根据  <a target="_blank" rel="noopener" href="https://nbdime.readthedocs.io/en/latest/vcs.html#git-integration">Version Control 部分的教程</a>, 在本地仓库中初始化:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbdime config-git --<span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
 <p>然后类似于 <code>git diff</code> 的用法:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbdiff-web &lt;commit&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-<p>其中 <code>&lt;commit&gt;</code> 选项表示提交的历史版本的 hash 值,
-<code>&lt;path&gt;</code> 为想要查看的文件的路径,
-运行之后会在浏览器打开一个网页, 显示对比, 如下所示:</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151135341.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151135341.png"></a></p>
+<p>其中 <code>&lt;commit&gt;</code> 选项表示提交的历史版本的 hash 值, <code>&lt;path&gt;</code> 为想要查看的文件的路径, 运行之后会在浏览器打开一个网页, 显示对比, 如下所示:</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151135341.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202309151135341.png" alt=""></a></p>
 </div><script src="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if("undefined"!=typeof lightGallery) {
         var options1 = {
             selector: '.gallery-item'
