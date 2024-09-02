@@ -290,7 +290,7 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#llama"><span class="post-toc-text">Llama</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rmsnorm"><span class="post-toc-text">RMSNorm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rope"><span class="post-toc-text">RoPE</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#llamamlp"><span class="post-toc-text">LlamaMLP</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pretrain"><span class="post-toc-text">Pretrain</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sft"><span class="post-toc-text">SFT</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rlhf"><span class="post-toc-text">RLHF</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#llama"><span class="post-toc-text">Llama</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rmsnorm"><span class="post-toc-text">RMSNorm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rope"><span class="post-toc-text">RoPE</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#llamamlp"><span class="post-toc-text">LlamaMLP</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pretrain"><span class="post-toc-text">Pretrain</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sft"><span class="post-toc-text">SFT</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rlhf"><span class="post-toc-text">RLHF</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nlp-%E5%9F%BA%E7%A1%80"><span class="post-toc-text">NLP 基础</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E6%95%B0%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="post-toc-text">参数量计算</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83"><span class="post-toc-text">分布式训练</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="post-toc-text">一些问题</span></a></li></ol>
             
         
         <link rel="stylesheet" type="text/css" href="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="llama">Llama</h1>
@@ -301,6 +301,65 @@ mjx-container[display="true"] + br {
 <h1 id="pretrain">Pretrain</h1>
 <h1 id="sft">SFT</h1>
 <h1 id="rlhf">RLHF</h1>
+<h1 id="nlp-基础">NLP 基础</h1>
+<p>NLP 任务的特点:</p>
+<ul>
+<li>输入是一个一维线性序列</li>
+<li>输入不定长</li>
+<li>单词和句子的位置关系很重要</li>
+<li>句子中长距离特征对于语义理解也很重要</li>
+</ul>
+<p>三大模型的优势与问题:</p>
+<ul>
+<li>RNN 采用线性序列结构不断从前往后手机输入信息, 但是线性序列结构在反向传播时路径太长, 存在梯度消失或梯度爆炸问题.</li>
+<li>RNN 与 Transformer 的长距离特征捕获能力长不多</li>
+<li>RNN 在并行计算方面有严重缺陷, 这是它本身的序列依赖特性导致的</li>
+</ul>
+<h1 id="参数量计算">参数量计算</h1>
+<h1 id="分布式训练">分布式训练</h1>
+<h1 id="一些问题">一些问题</h1>
+<p>1: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/588325646/answer/3383505083">为什么现在的LLM都是Decoder only的架构？ - 知乎 (zhihu.com)</a></p>
+<p>参考  <a target="_blank" rel="noopener" href="https://kexue.fm/archives/9529">为什么现在的LLM都是Decoder-only的架构？ - 科学空间|Scientific Spaces (kexue.fm)</a></p>
+<p>BERT 是 Encoder-Only 的代表; T5 和 BART 是 encoder-decoder 架构的代表; GPT 是 decoder-only 架构的代表.</p>
+<ul>
+<li>
+<p><em><strong>a</strong></em>. 在理论上 Encoder 的双向注意力会存在<strong>低秩问题</strong>, 可能会削弱模型表达能力; encoder-decoder 架构在某种场景下表现得更好可能是由于它多了一倍参数, 同等参数量和同等推理成本下, decoder-only 更具优势</p>
+</li>
+<li>
+<p><em><strong>b.</strong></em> 过去的研究表明 decoder-only 架构的泛化性能更好; 许多工作表明 decoder-only 模型在各种下游任务上 <strong>zero-shot 或者 few-shot (in-context) 的泛化能力都更强</strong></p>
+</li>
+<li>
+<p><em><strong>c.</strong></em> decoder-only 结构<strong>支持 KV Cache</strong>, 效率更高</p>
+</li>
+<li>
+<p><em><strong>d.</strong></em> OpenAI 作为开创者带来的风气.</p>
+</li>
+</ul>
+<p>2: 目前主流的(开源) LLM 都有哪些?</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png" alt=""></a></p>
+<p>GPT 家族, LLaMA 家族和 PaLM 家族. (不过没怎么见过 PaLM 家族)</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wgwang/awesome-LLMs-In-China">国内的一些大模型</a>:</p>
+<ul>
+<li>文心一言</li>
+<li>ChatGLM</li>
+<li>Qwen</li>
+<li>Intern</li>
+<li>CPM (OpenBMB)</li>
+</ul>
+<p>3: 目前主流的(开源) MLLM 都有哪些?</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png" alt=""></a></p>
+<ul>
+<li>LLaVA</li>
+<li>Qwen-VL</li>
+<li>BLIP2</li>
+<li>InstructBLIP</li>
+<li>MiniGPT-4</li>
+</ul>
+<p>4: Prefix LM 和 Causal LM 的区别.</p>
+<ul>
+<li>Prefix LM 是 encoder-decoder 模型的变体, 共享同一个 Trasnformer. 在生成每个词时都考虑之前的上下文信息, 根据给定的前缀预测下一个可能的词; encoder 部分采用 auto-encoding 模式, decoder 部分采用 auto-regressive 模式.</li>
+<li>Causal LM 就是自回归语言模型.</li>
+</ul>
 </div><script src="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if("undefined"!=typeof lightGallery) {
         var options1 = {
             selector: '.gallery-item'
