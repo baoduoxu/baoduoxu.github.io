@@ -311,32 +311,36 @@ mjx-container[display="true"] + br {
 </ul>
 <p>三大模型的优势与问题:</p>
 <ul>
-<li>RNN 采用线性序列结构不断从前往后手机输入信息, 但是线性序列结构在反向传播时路径太长, 存在梯度消失或梯度爆炸问题.</li>
+<li>RNN 采用线性序列结构不断从前往后手机输入信息,
+但是线性序列结构在反向传播时路径太长, 存在梯度消失或梯度爆炸问题.</li>
 <li>RNN 与 Transformer 的长距离特征捕获能力长不多</li>
 <li>RNN 在并行计算方面有严重缺陷, 这是它本身的序列依赖特性导致的</li>
 </ul>
 <h1 id="参数量计算">参数量计算</h1>
 <h1 id="分布式训练">分布式训练</h1>
 <h1 id="一些问题">一些问题</h1>
-<p>1: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/588325646/answer/3383505083">为什么现在的LLM都是Decoder only的架构？ - 知乎 (zhihu.com)</a></p>
-<p>参考  <a target="_blank" rel="noopener" href="https://kexue.fm/archives/9529">为什么现在的LLM都是Decoder-only的架构？ - 科学空间|Scientific Spaces (kexue.fm)</a></p>
-<p>BERT 是 Encoder-Only 的代表; T5 和 BART 是 encoder-decoder 架构的代表; GPT 是 decoder-only 架构的代表.</p>
+<p>1: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/588325646/answer/3383505083">为什么现在的LLM都是Decoder
+only的架构？ - 知乎 (zhihu.com)</a></p>
+<p>参考 <a target="_blank" rel="noopener" href="https://kexue.fm/archives/9529">为什么现在的LLM都是Decoder-only的架构？
+- 科学空间|Scientific Spaces (kexue.fm)</a></p>
+<p>BERT 是 Encoder-Only 的代表; T5 和 BART 是 encoder-decoder
+架构的代表; GPT 是 decoder-only 架构的代表.</p>
 <ul>
-<li>
-<p><em><strong>a</strong></em>. 在理论上 Encoder 的双向注意力会存在<strong>低秩问题</strong>, 可能会削弱模型表达能力; encoder-decoder 架构在某种场景下表现得更好可能是由于它多了一倍参数, 同等参数量和同等推理成本下, decoder-only 更具优势</p>
-</li>
-<li>
-<p><em><strong>b.</strong></em> 过去的研究表明 decoder-only 架构的泛化性能更好; 许多工作表明 decoder-only 模型在各种下游任务上 <strong>zero-shot 或者 few-shot (in-context) 的泛化能力都更强</strong></p>
-</li>
-<li>
-<p><em><strong>c.</strong></em> decoder-only 结构<strong>支持 KV Cache</strong>, 效率更高</p>
-</li>
-<li>
-<p><em><strong>d.</strong></em> OpenAI 作为开创者带来的风气.</p>
-</li>
+<li><p><strong><em>a</em></strong>. 在理论上 Encoder
+的双向注意力会存在<strong>低秩问题</strong>, 可能会削弱模型表达能力;
+encoder-decoder 架构在某种场景下表现得更好可能是由于它多了一倍参数,
+同等参数量和同等推理成本下, decoder-only 更具优势</p></li>
+<li><p><strong><em>b.</em></strong> 过去的研究表明 decoder-only
+架构的泛化性能更好; 许多工作表明 decoder-only 模型在各种下游任务上
+<strong>zero-shot 或者 few-shot (in-context)
+的泛化能力都更强</strong></p></li>
+<li><p><strong><em>c.</em></strong> decoder-only 结构<strong>支持 KV
+Cache</strong>, 效率更高</p></li>
+<li><p><strong><em>d.</em></strong> OpenAI
+作为开创者带来的风气.</p></li>
 </ul>
 <p>2: 目前主流的(开源) LLM 都有哪些?</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212112015.png"></a></p>
 <p>GPT 家族, LLaMA 家族和 PaLM 家族. (不过没怎么见过 PaLM 家族)</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/wgwang/awesome-LLMs-In-China">国内的一些大模型</a>:</p>
 <ul>
@@ -347,7 +351,7 @@ mjx-container[display="true"] + br {
 <li>CPM (OpenBMB)</li>
 </ul>
 <p>3: 目前主流的(开源) MLLM 都有哪些?</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408212119002.png"></a></p>
 <ul>
 <li>LLaVA</li>
 <li>Qwen-VL</li>
@@ -357,7 +361,10 @@ mjx-container[display="true"] + br {
 </ul>
 <p>4: Prefix LM 和 Causal LM 的区别.</p>
 <ul>
-<li>Prefix LM 是 encoder-decoder 模型的变体, 共享同一个 Trasnformer. 在生成每个词时都考虑之前的上下文信息, 根据给定的前缀预测下一个可能的词; encoder 部分采用 auto-encoding 模式, decoder 部分采用 auto-regressive 模式.</li>
+<li>Prefix LM 是 encoder-decoder 模型的变体, 共享同一个 Trasnformer.
+在生成每个词时都考虑之前的上下文信息, 根据给定的前缀预测下一个可能的词;
+encoder 部分采用 auto-encoding 模式, decoder 部分采用 auto-regressive
+模式.</li>
 <li>Causal LM 就是自回归语言模型.</li>
 </ul>
 </div><script src="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if("undefined"!=typeof lightGallery) {

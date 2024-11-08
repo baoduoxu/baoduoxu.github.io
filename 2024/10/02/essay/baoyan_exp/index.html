@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <style>
+        body
+        {
+            font-family: "Times New Roman", Helvetica, Tahoma, Arial,   "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif !important;
+
+        }
+    </style>
+
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2024年 (25届) 计算机保研经验贴 (清华 AI, 南大 CS, 人大高瓴)" />
+    <meta name="hexo-theme-A4" content="v1.9.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/abstract-8750691.svg">
+    <title>Xu Baoduo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '53px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/abstract-8750691.svg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xu Baoduo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            2024年 (25届) 计算机保研经验贴 (清华 AI, 南大 CS, 人大高瓴)
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bg"><span class="post-toc-text">bg</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%81%8F%E5%A5%BD%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%AE%9A%E4%BD%8D"><span class="post-toc-text">偏好与个人定位</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%E4%B8%8E%E5%BF%83%E6%80%81"><span class="post-toc-text">前期准备与心态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%8F%E4%BB%A4%E8%90%A5%E8%AE%B0%E5%BD%95"><span class="post-toc-text">夏令营记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B8%85%E5%8D%8E-ai"><span class="post-toc-text">清华 AI</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A5%97%E7%A3%81%E5%92%8C%E6%8A%A5%E5%90%8D"><span class="post-toc-text">套磁和报名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%90%A5"><span class="post-toc-text">参营</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E6%9D%82%E9%A1%B9"><span class="post-toc-text">其他杂项</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%97%E5%A4%A7-cs"><span class="post-toc-text">南大 CS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A5%97%E7%A3%81-%E6%8A%A5%E5%90%8D%E5%92%8C%E7%BA%BF%E4%B8%8A-408"><span class="post-toc-text">套磁, 报名和线上 408</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%90%A5-1"><span class="post-toc-text">参营</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="post-toc-text">结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%BA%E5%A4%A7%E9%AB%98%E7%93%B4"><span class="post-toc-text">人大高瓴</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8A%A5%E5%90%8D"><span class="post-toc-text">报名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%90%A5-2"><span class="post-toc-text">参营</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%9C-1"><span class="post-toc-text">结果</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9D%82%E9%A1%B9"><span class="post-toc-text">杂项</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A2%84%E6%8E%A8%E5%85%8D"><span class="post-toc-text">预推免</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%84%9F%E6%83%B3"><span class="post-toc-text">感想</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="intro">Intro</h2>
+<blockquote>
+<p>这是一篇相对来说比较规范的个人纪录的帖子,
+会尽量减少无意义的碎碎念.</p>
+</blockquote>
+<p>国庆期间比较闲, 想写些东西, 但是真正写的时候又不知如何提笔,
+只能写一些不需要搜肠刮肚的流水账. 老实说, 对我自己而言,
+我的保研结果只能说是差强人意, 而且我个人的保研经历的参考价值不是很大,
+但我觉得总有人能借鉴到, 我也乐于分享经历,
+写出来也是给大学三年的保研准备画上句号, 所以还是草草记录下来.</p>
+<h2 id="bg">bg</h2>
+<p><del>补药开盒球球了</del></p>
+<ul>
+<li><p>本科: 某中九 人工智能</p></li>
+<li><p>排名: 夏令营 5(.)% (4/60+), 预推免 8%(幸好也没用上)</p></li>
+<li><p>竞赛: 数竞国二以及一些水省校奖</p></li>
+<li><p>科研经历: 一段 theory 的经历, 一段 mllm 的经历, 均无实质产出,
+theory 的经历有一个能发文章还说得过去的比较小的结果,
+但时至今日还在修修改改(), 还有一段没起到作用的课程项目, 涉及到了一些
+llm</p></li>
+<li><p>英语: 四级 550+, 六级 580</p>
+<blockquote>
+<p>这样看起来也是约等于三无选手了</p>
+</blockquote></li>
+<li><p>最终去向: 南大 CS 直博</p></li>
+</ul>
+<h2 id="偏好与个人定位">偏好与个人定位</h2>
+<ul>
+<li>学硕直博均可, 甚至偏向直博(方向原因) , 不太想专硕.</li>
+<li>导师人品 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.09ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.312ex" role="img" focusable="false" viewBox="0 -540 778 580"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path></g></g></g></svg></mjx-container></span> 方向 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.516ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="2.172ex" role="img" focusable="false" viewBox="0 -732 778 960"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2273" d="M90 697Q83 704 83 712T88 726T99 732Q107 732 253 664T543 527T687 457Q694 452 694 442T687 427Q685 425 395 288L107 152H101Q83 154 83 172Q83 173 83 175Q82 182 98 191Q117 201 248 263Q326 300 378 324L626 442L360 568Q91 696 90 697ZM56 -194Q56 -107 106 -51T222 6Q260 6 296 -12T362 -56T420 -108T483 -153T554 -171Q616 -171 654 -128T694 -29Q696 6 708 6Q722 6 722 -26Q722 -102 676 -164T557 -227Q518 -227 481 -209T415 -165T358 -113T294 -69T223 -51Q163 -51 125 -93T83 -196Q81 -228 69 -228Q56 -228 56 -202V-194Z"></path></g></g></g></svg></mjx-container></span> 学校, 其实我很在意 title,
+但反思了保研期间做的决定, 发现我还是将方向放在了更靠前的位置,
+在某种程度上而言, 这个想法影响了我做的一些选择</li>
+<li>方向: 四月份前想做 tcs (track A); 四月份后更偏向于有点 theory 的 ai
+方向 (optimization in deep learning / learning theory 均可), 还有
+llm/mllm; 没那么 theory 的方向主要考虑大模型,
+这些大概是考虑到自己的兴趣, 能力, 科研经历以及竞争激烈程度做的决定</li>
+<li>学校: 主要考虑清北华五人, 不太想去所,
+希望保留体验校园生活的机会</li>
+<li>其他: 地域, 学校环境, 食堂. 其中地域影响了一些决定,
+没怎么考虑深圳的学校, 不喜欢太南的地方, 所以后面 hitsz
+和北深我都没报.</li>
+</ul>
+<h2 id="前期准备与心态">前期准备与心态</h2>
+<h2 id="夏令营记录">夏令营记录</h2>
+<p>我没有海投, 可能有不感兴趣, 怕麻烦, 胆怯,
+以及想给其他人留些机会的诸多心理因素作祟. 下面是我夏令营报名的情况:</p>
+<table>
+<thead>
+<tr class="header">
+<th>院校</th>
+<th>硕博</th>
+<th>是否入营</th>
+<th>结果</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>清华叉院</td>
+<td>直博</td>
+<td>×</td>
+<td></td>
+<td>推荐到清 AI</td>
+</tr>
+<tr class="even">
+<td>清华 AI</td>
+<td>直博</td>
+<td>√</td>
+<td>寄</td>
+<td>似乎只有直博</td>
+</tr>
+<tr class="odd">
+<td>清深 AI</td>
+<td>专硕</td>
+<td>×</td>
+<td></td>
+<td>没陶瓷</td>
+</tr>
+<tr class="even">
+<td>北大计算机</td>
+<td>直博</td>
+<td>×</td>
+<td></td>
+<td>没联系到老师</td>
+</tr>
+<tr class="odd">
+<td>北大智能</td>
+<td>直博</td>
+<td>×</td>
+<td></td>
+<td>没联系到老师</td>
+</tr>
+<tr class="even">
+<td>南大 CS</td>
+<td>直博</td>
+<td>√</td>
+<td>优营</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>上交电院 CS</td>
+<td>直博</td>
+<td>×</td>
+<td></td>
+<td>疑似歧视非 CS</td>
+</tr>
+<tr class="even">
+<td>中科大 CS</td>
+<td>-</td>
+<td>×</td>
+<td></td>
+<td>疑似歧视非 CS</td>
+</tr>
+<tr class="odd">
+<td>人大信院</td>
+<td>学硕</td>
+<td>×</td>
+<td></td>
+<td>还不是你不够强?</td>
+</tr>
+<tr class="even">
+<td>人大高瓴</td>
+<td>直博</td>
+<td>√</td>
+<td>wl 靠后</td>
+<td>感谢 rk2,3 不报高瓴</td>
+</tr>
+</tbody>
+</table>
+<p>其实有很多营我是想尝试报的, 比如贵系, 复旦, 软微, 浙大, 计算所和自所,
+但是因为各种各样的原因没报上, 要么是心理原因, 要么是时间原因,
+比如贵系是纯纯不敢报; 软微是以为入不了营(听某人说卡
+3%)+不怎么想报+时间赶不上; 复旦的话,参加南大 cs 开放日时看错时间错过了
+(其实报了也入不了); 浙大也是莫名的不想报;
+两所就是前面提到的不想去所的原因没报(其实还有没联系老师的原因);
+其实还是感觉挺遗憾的, 没有给自己多尝试的机会.</p>
+<h3 id="清华-ai">清华 AI</h3>
+<h4 id="套磁和报名">套磁和报名</h4>
+<p>我最初没有考虑过清北, 因为我觉得自己排名没到前 5%,
+竞赛和科研也都不出色, 能力也不是很强 (尤其是工程能力), 配不上清北,
+应该也不会有老师看得上我.
+所以在四月份以及四月份之前我没有想着去早早套磁老师, 也是不敢去套磁.</p>
+<p>后来四月下旬偶然看到了一些茶园的经验贴, 发现好像可以尝试,
+不是完全没机会, 并且茶园也开始报名了 (这个时候还是 5.8 截止),
+这个点基本没啥学校开营, 而且了解到茶园是弱 com,
+我就尝试联系茶园的老师了, 不过这个时候我还没注意到 AI 院的夏令营,
+不过茶园的夏令营真是太早了. 考虑到自己的兴趣以及经历, 我主要联系的是做
+theory 的老师, 想着竞争压力会小一些, 因为当时觉得自己只有 theory
+的经历还能看得过去, 在 ai 方向几乎没有任何竞争力,
+所以在某种程度上而言也是不得不联系做 theory 的老师.</p>
+<p>四月底五月初发出第一封套磁信我也是做了十足的心理准备, 先联系了 l
+老师, 甚至给老师主页留的两个邮箱都发了. 当然其实不是很顺利, 联系 l
+老师的人估计也挺多的, 幸运的是老师回复了, 没有已读不回, 虽然是官回.
+后来我还是觉得 tcs 不是好方向, 最好还是和 ai 有点关系吧
+(关于方向的选择我内心做了很多斗争), 而且也没有太多做 tcs 的老师,
+所以后面又联系了 y 老师和 z 老师, 但是都给了官回.
+其实这个时候已经不抱太大希望了, 因为已经快到报名截止日期了,
+我联系的太晚了. 报名截止之前, 也一直没有收到考核的消息, 没办法,
+我只能在报名系统上填了 l 老师和 z 老师的名字了, 但是幸运且出乎意料的是,
+报名截止的第二天上午, z 老师发来了考核的邮件.</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408031717864.png" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/baoduoxu/BlogImage/main/image/202408031717864.png"></a></p>
+<p>我下午才看到, 不到一天的时间挺紧的,
+不过好在要求只讲背景参考文献和文章贡献, 不需要对文章有非常深入的了解.
+经过比较痛苦的选论文-读论文环节 (光选文章花了一个下午), 就去参加面试了.
+但是其实还蛮顺利的, 出乎我的意料, 老师觉得我讲的还不错,
+尤其是对于一个相对陌生的领域而言. 又跟老师讲了 theory 的科研项目,
+闲聊了下就结束了. 最后老师说会推荐入营, 有可能会推荐到 AI 院,
+当时真是蛮高兴的了.</p>
+<p>最后是 5.20 下午出的入营通知, 当时茶园出结果的时候我没看到我的名字,
+还以为没入营, 有点心灰意冷, 后来有同学提醒在 AI
+院的报名页面上的入营名单看到我了, 才放心下来. 茶园和 AI
+院给住宿和路费都有一定额度的补贴, 这一点是十分贴心了.</p>
+<h4 id="参营">参营</h4>
+<blockquote>
+<p>5.15 报名截止(最初是 5.8, 后延期), 5.20 下午出名单, 5.24 下午报道,
+5.26/27 线下参加夏令营.</p>
+</blockquote>
+<p>由于今年第一次招生, 应该是由茶园代管, 形式和茶园非常相似,
+除了多了三小时英文题面英文作答的笔试, 时间在 5.26 上午. 5.26
+下午是开营仪式, 主要是各个老师介绍自己的研究方向, 5.27
+日全天都可以私下与老师取得联系, 同时安排有实验室参观, 不过我没报名,
+这是一个错误的决定; 我也没联系其他老师, 这是另一个错误的决定.</p>
+<p>笔试内容包括数学和概率/算法/AI基础. 我整理了一份非常详细的回忆版,
+可以私信我获取,
+或者我考虑后续发出来并给一份自己的解答(如果不违反某些规则的话).
+但是说来惭愧, 我笔试分数很低, 就显得我对 theory 有兴趣这一事实站不住脚,
+有点像是为了往自己脸上贴金故意这样说的, 不过事实确实如此,
+我数理和算法基础其实蛮差的, 学什么都是泛泛的了解下,
+所以这个笔试的结果其实也不是很出乎意料, 但是还是挺难过的,
+这也直接暴露出了我学习过程中非常致命的问题, 做题不够.
+如果明年还是类似的形式, 且有心报名 AI 院的话,
+我建议平时就有意识地做一些下面内容相关的习题:</p>
+<ul>
+<li><p>算法分析. 其实刷算法题能起到类似的效果, 但是对于笔试而言,
+重点在于<strong>用英文逻辑清晰地叙述出算法流程</strong>
+(用伪代码是一个更好的方式)
+以及<strong>给出正确且有条理的复杂度分析</strong>,
+这更像是在做数学题或是写题解; 而做算法题的话,
+写出能够正确运行的代码更为重要, 两者侧重点还是很不一样的.
+题目的叙述风格和题面长度也会有一些差别.</p>
+<blockquote>
+<p>P.S. 今年考了很多计算几何. 如果学校开设了 (高级)
+算法分析课程的话更好一些, 可惜我们学校没有.</p>
+</blockquote></li>
+<li><p>组合与概率. 除了最基础的那些外, 群在计数中的应用也蛮重要的,
+还要熟悉一些随机过程, 主要是 Markov Chain 了.</p></li>
+<li><p>机器学习与深度学习中的数学. 差不多是参数估计和优化那一套,
+还有要对向量和矩阵求导熟练,
+可能还需要对一些计算数学中的方法和矩阵分析中的内容熟悉.</p></li>
+</ul>
+<p>结束之后我觉得毫无希望了, 我就完全没有再管了, 也没有继续联系老师,
+因为我觉得其他老师看到我的笔试成绩也不会对我感兴趣. 今年第一年情况特殊,
+从夏令营结束到最终出结果过了两个月的时间, 也是非常煎熬了,
+明年估计会有改善. 和茶园一样有综合面试, 但是在预推免了,
+具体情况我就不清楚了, 可以参考其他大佬的经验贴.</p>
+<p>不管结局怎么样, 以我的 bg,
+能在清华这边走一趟都是莫大的幸运以及荣幸了, 清华的环境真的很好,
+食堂也非常好吃, 而且老师都非常友善, 茶园的学术氛围很浓厚,
+希望以后还有来学习的机会.</p>
+<h4 id="其他杂项">其他杂项</h4>
+<ul>
+<li>不管饭. 幸好可以蹭高中同学的饭卡. 饭比我们学校好吃太多了,
+又是羡慕的一天, 在此感谢高中同学请吃饭.</li>
+<li>某友人家在北京, 我出发前的某天晚上去他宿舍聊天,
+他突然提议我可以住在他家, 虽然离海淀不近, 但好在地铁一个小时就能到,
+所以刚到那天和走的前一天在他家借宿了两晚以及吃了几顿饭, 也是省了一些钱,
+在此再次表达对他和他父母的感谢.</li>
+<li>也想再表达对推荐我入营的老师的感谢, 让我有这么一次见世面的机会,
+能入营这个确实是非常出乎我的意料.</li>
+</ul>
+<h3 id="南大-cs">南大 CS</h3>
+<h4 id="套磁-报名和线上-408">套磁, 报名和线上 408</h4>
+<p>南大 CS 的报名结束时间早于茶园, 所以我准备的第一个营应该是这个.
+我很早就听说南大 CS 强 com, 会卡我们学校的 5%, 还有非常逆天的线上 408,
+所以考虑到自己的排名不到 5%, 很有可能简历筛都过不去(后来证实确实卡 5%),
+遂报直博. 报直博必须要有老师要, 老师需要交一个表, 所以也需要先套磁,
+当然也是联系的做 theory 的老师. 面试只讲了和 theory 有关的经历,
+老师觉得不错, 就顺理成章地填了这个老师.</p>
+<p>直博 bar 确实要低, 然后线上 408 也是顺利通过了, 但是考了很多编译原理,
+非常抽象, 除此之外就是离散数学, 408, 编程语言(好像主要是 C++),
+还有一些算法题. 后来想其实本身报直博的不算太多,
+然后联系导师这一阶段可能就筛了一些人, 所以线上 408
+应该也不会筛太多报直博的人.</p>
+<h4 id="参营-1">参营</h4>
+<p>直博日程安排只有两天, 5.31 上午报道, 5.31 下午面试, 6.1 上午机试,
+下午无特殊活动; 应该是人比较少, 面试一下午就面完了, 硕士日程安排有三天,
+面试时间安排了三个时间段.</p>
+<p>这个算是保研期间第一次参加比较正式的面试, 清 AI 没有安排面试,
+所以还是比较紧张的.</p>
+<p>上午去报道, 发的东西和清华差不多, 不过清华还给了个纸袋子和一个本子,
+这边只有一个文件夹. 比较意外的是我忘记打印材料了,
+来之前没有细看要交什么材料, 之前打印过的材料都交到清华那边了, 就很尴尬,
+最后还是求助工作人员重新打了一下身份证复印件, 还好要交的材料不多. 给了
+5.31 和 6.1 中午下午一共四顿的饭票, 每顿 20 元, 这一点比清华强 (bushi),
+而且后来机试之后补了 6.2 中午的饭票(虽然提前走了也没用上).
+只能在一个食堂吃, 这个食堂略一般, 甚至和我们学校都快不分伯仲了,
+价格也不太便宜, 至少 5.30 中午吃的比较一般,
+不知道是怎么做到既寡淡又油腻的. 不安排住宿, 也不给任何补贴,
+但是参营手册上写了如果贫困可以申请补助.
+不过非常幸运的是联系的老师全帮我报销了, 这一点确实非常令我吃惊,
+也是非常感谢老师.</p>
+<p>吃完饭在教室里小憩了一会儿就去合影以及面试了, 合影感觉也蛮草率的.
+直博面试和硕士面试差别比较大, 直博生每个人要面试 A, B, C 三类房间,
+每个房间有两个老师, 每类房间问的问题侧重点不一样, 也可以不按顺序,
+反正不管怎么样都是排队. 比较奇怪的是老师不做任何记录, 只负责签名,
+所有的记录由本人回忆完成, 这不是自己想怎么写就怎么写? 有点逆天了,
+所以感觉面试也像是走个过场. 硕士那边就只面一个房间, 有英文介绍课程,
+知识点和算法, 感觉要难不少, 而且全程也是有老师记录,
+对项目也会有比较细致的拷打. 面试完找联系的老师聊了聊,
+老师说面试问题不大, 给我介绍了他的研究方向.</p>
+<p>6.1 上午机试, 晚上还没睡好, 早上又起了个大早,
+晚上和早上起床后还特意看了看模板, 虽然没记住多少, 不过也没排上用场.
+机试只能说更逆天, 按照以往的消息说会着重考 DP 和搜索之类的算法题,
+结果今年考得偏工程一些, 几乎没有什么算法. 没怎么准备机试,
+第一题卡了非常久的时间, 最后还是按暴力搞的, 花了一个半小时,
+都快感觉自己要爆零了, 好在最后做出来了一道题.</p>
+<h4 id="结果">结果</h4>
+<p>顺利优营了. 虽然我感觉我面试和机试表现得都很一般,
+但是这个结果就是没有很出乎意料, 就好像第六感一样,
+冥冥中感觉就会拿到优营. 当然应该还是已经筛过两次了, 直博没啥人了,
+也没听说直博有谁没优营.</p>
+<p>这个结果出的也非常早, 6.12, 这个点还有好多营都还没有结束报名,
+所以我至少不太焦虑了, 而且拿了 CS 的优营之后我也没有考虑报南大 AI,
+一是听说 CS 和 AI 只能入一个, 二是觉得没报 LAMDA, 去 AI
+那边好像也没啥老师了. 但最后没报还是有点后悔.</p>
+<h3 id="人大高瓴">人大高瓴</h3>
+<h4 id="报名">报名</h4>
+<p>人大信院和高瓴报名时间基本一致, 今年夏令营的时间错开了, 可以都报,
+听说以前夏令营安排的时间是重合的, 所以即使报名两个也只能参营一个.</p>
+<h4 id="参营-2">参营</h4>
+<p>高瓴直博日程安排是两天, 7.9-7.10, 学硕日程安排是三天, 7.9-7.11. 7.9
+日是开营仪式和笔试还有师生自由交流, 7.10 是直博面试, 7.11 是学硕面试.
+今年高瓴安排有住宿, 并且直博 7.10 当天面试结束后可以再住一天.</p>
+<p>7.8 日报道, 在立德楼, 到 18 层之后先充了会儿电再去报道的,
+路上手机没电关机了. 发了一个纸袋, 洗澡用的卡和营服. 然后就去找宿舍了.
+宿舍在红 2, 只有三层楼, 估计是比较老的楼了. 四人间来了三个人,
+评价是环境不如我校, 没有独立浴, 还要去公共澡堂洗澡.
+很奇怪的是有单独一张床且非上床下桌在一个单独的房间里, 相对更舒服一些,
+另外三张是上床下桌. 某友人参加了信院直博的营, 在我来北京之前告诉我他在
+109 遗留了一个盆, 不过我在三楼, 没用上, 这几天也没洗成衣服,
+而且还忘记带拖鞋和毛巾了, 超市卖的还挺贵的.
+第一天晚上为了找超市去校园逛了逛, 六年前来过一次人大,
+特意对比了一下六年前和现在的区别. 一勺池有水了. 18
+年底来的时候还没有高瓴.</p>
+<p>7.9 上午开营仪式在八百人大教室参加开营仪式. 宣讲的老师都挺厉害的,
+可惜昨晚没睡好, 太困了, 中间好多老师讲的内容都错过了.
+边听边看考研数学复习概率论. 下午笔试, 疏忽只打印了一份考核通知书,
+好在没什么大问题. 签了保密协议不方便透露题目,
+评价是完完全全的考研数学和考研数据结构, 非常基础但覆盖面很广,
+但是若生疏的话还是不一定能考高分的. 笔试结束后是 AI
+学术市集师生自由交流, 就是在立德楼 18 楼的走廊上放了每个导师的宣传,
+旁边站着他的博士生或者硕士生来介绍, 还是挺热闹的.
+这边做计算经济和博弈的老师确实还挺多的,
+粗略看了一下好像有至少有三个老师. 宣讲的时候说高瓴 ALL IN 大模型,
+但还是有少量老师没做太多大模型的. 看完就回去准备面试了.</p>
+<p>7.10 面试安排到了下午, 昨晚睡得还是不好, 今天九点多才起床,
+也没吃早饭. 上午又简单看了看简历上相关的内容, 就去立德楼准备面试了.
+高瓴面试考核这一点非常严格, 要求等候在一间屋子里, 不允许看电子产品,
+我听说以前甚至还不允许看纸质资料. 随机抽签抽到了 18, 我还以为按照顺序来,
+没想到竟然是乱序, 最后还是等到了三点多差不多等了三个小时左右才被叫出去.
+而且叫出去之后还是在两间教室前排了很久的队. 两间房间面试,
+第一间是德智体美劳面试, 非常轻松, 纯聊天性质, 老师很友善.
+第二间面英语项目算法题和数学题. 前一天准备复习的完全没用上,
+项目一点也不问. 算法题表现很不好, 只给了暴力做法.
+其他感觉都表现得中规中矩, 数学简单顺利做出来了.
+顺带提一点我进去的时候竟然没看到旁边有个很大的显示器有 10 分钟的倒计时,
+导致我英语和项目可能相对多花了一点时间,
+算法题可能就只有两三分钟的思考时间, 但老师还是很好的,
+看我沉默了很久给了一些提示, 可惜我没 get 到提示的点, 很遗憾没答出来.
+还是有点寄的. 面试完之后去找联系过的老师聊了聊. 老师人很随和, 侃侃而谈,
+问了我面试和笔试情况, 觉得还可以. 然后跟我介绍了组内的情况,
+感觉和我想做的方向十分 match, 既有理论又有应用, 也允许实习,
+这下还是挺想来高瓴了. 后来自己也重新权衡了一下,
+北京环境还是相对来说要比南京强的.</p>
+<h4 id="结果-1">结果</h4>
+<p>高瓴发了很长的优营名单, 但是实际上是依据人数从前往后录,
+所以排在后面的本质上是候补, 我以为笔试和面试表现得还行,
+但是结果并不如意, 排名比较偏后, 看来是太自信了. 按照去年的情况,
+候补到我的概率几乎为零, 所以也是寄了.</p>
+<h4 id="杂项">杂项</h4>
+<ul>
+<li>后来才意识到高瓴是超强 com, 首先联系老师没有任何用,
+其次即使有较出色的科研经历, 在考核过程中能起到的作用也比较有限 (猜测),
+不过也许很出色的科研经历会让老师在面试的时候打高分. 不过就我而言,
+面试过程中没有被问任何和项目有关的内容,
+还是数学题和算法题能做出来更重要, 这个感觉就很看运气了.</li>
+<li>高瓴很看重 CSP, 听说今年有一次 CSP 比较简单, 很多人都拿到了 CSP 10
+分的加分, 但我没有, 也许这也是排名靠后的一个原因.</li>
+<li>高瓴结束后还要去南京一趟, 7.10 晚上幸好还能在宿舍住一晚, 然后 7.11
+晚上正好睡卧铺, 省了两天住宿钱.</li>
+</ul>
+<h2 id="预推免">预推免</h2>
+<p>其实高瓴结束后我的保研历程就差不多结束了. 当然因为夏令营有了清 AI
+的参营经历, 我就更加想去 tp 了, 所以预推免我就</p>
+<h2 id="感想">感想</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.15.244</span><br></pre></td></tr></table></figure>
+</div><script src="https://jsd.cdn.zzko.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if("undefined"!=typeof lightGallery) {
+        var options1 = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-10-02</span>
+            
+                <span>该篇文章被 Baoduo Xu</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%9D%82%E9%A1%B9/'>
+                            杂项
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        以上 
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://waline-comment-qacqekcek-baoduoxus-projects.vercel.app/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎留下评论! 留下邮箱信息可以及时收到回复!', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>Too Young Too Naive</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
